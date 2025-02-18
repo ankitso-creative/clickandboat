@@ -1,0 +1,159 @@
+body {
+    --ck-z-default: 100;
+    --ck-z-modal: calc(var(--ck-z-default) + 999);
+}
+
+.draggable-column.over {
+    border: 2px dashed #000 !important;
+}
+
+.draggable-column.moving {
+    opacity: 0.45 !important;
+    transform: scale(0.8) !important;
+}
+
+#sectionEditModal .modal-fullscreen {
+    width: 100vw;
+    max-width: none;
+    height: 100%;
+    margin: 0;
+}
+
+#sectionEditModal .modal-fullscreen .modal-content {
+    height: 100%;
+    border: 0;
+    border-radius: 0;
+}
+
+
+#sectionEditModal .modal-header {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: space-between
+}
+
+#sectionEditModal button.close {
+    margin-left: auto;
+    margin-right: 50px;
+}
+
+#sectionEditModal .form-input {
+    border: none;
+    box-shadow: none;
+    outline: none;
+    width: 100%;
+}
+
+#sectionEditModal .input-group {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+}
+
+#sectionEditModal .title {
+    font-size: 4.7rem;
+}
+
+#sectionEditModal .sub-title {
+    margin-bottom: 1.5rem;
+    font-size: 40px;
+}
+
+#sectionEditModal .modal-lg {
+    width: 1200px;
+}
+
+#sectionEditModal .modal-content {
+    margin: auto;
+}
+
+.section-edit-form {
+    width: 98%;
+}
+
+.cke_toolgroup,
+.cke_top {
+    background-color: #ffffff !important;
+}
+
+#sectionEditModalContent input {
+    margin: 10px 0;
+    border: none;
+    outline: none;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 24px;
+}
+
+#sectionEditModalContent .mx-auto {
+    margin: 0 auto
+}
+
+#sectionEditModalContent .cke_chrome {
+    width: 100% !important;
+}
+
+#sectionEditModalContent .row {
+    display: flex;
+}
+
+.cke_dialog,
+.sweet-alert {
+    z-index: 10051 !important;
+}
+
+.cke {
+    z-index: 10055 !important;
+}
+
+.custom-submit-modal-button {
+    float: right;
+    margin-top: 14px;
+}
+
+.custom-submit-modal-button.close-btn {
+    margin-right: 10px;
+}
+
+/* //section prview */
+#draggable-full .title {
+    font-size: 4.7rem;
+    border: none;
+    outline: none;
+}
+
+#draggable-full .title,
+#draggable-full .sub-title {
+    border: none;
+    outline: none;
+    width: 100%;
+}
+
+#draggable-full .title:hover,
+#draggable-full .sub-title:hover {
+    outline: none;
+}
+
+#draggable-full .sub-title {
+    margin-bottom: 1.5rem;
+    font-size: 40px
+}
+
+#draggable-full .description {
+    margin-bottom: .75rem
+}
+
+.item-footer{
+    display: none
+}
+
+#draggable-full:hover .draggable-column .item-footer{
+    display: flex
+
+}
+
+.preview-div{
+    padding: 3rem;
+}

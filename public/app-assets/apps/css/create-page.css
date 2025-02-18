@@ -1,0 +1,1114 @@
+@font-face {
+    font-family: "MinervaModern";
+    src: url("http://192.168.1.100:8001/resources/fonts/MinervaModern-Black.woff2") format("woff2"), url("http://192.168.1.100:8001/resources/fonts/MinervaModern-BoldItalic.woff") format("woff");
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "MinervaModern";
+    src: url("http://192.168.1.100:8001/resources/fonts/MinervaModern-Bold.woff2") format("woff2"), url("http://192.168.1.100:8001/resources/fonts/MinervaModern-Bold.woff") format("woff");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "MinervaModern";
+    src: url("http://192.168.1.100:8001/resources/fonts/MinervaModern-Regular.woff2") format("woff2"), url("http://192.168.1.100:8001/resources/fonts/MinervaModern-Regular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "MinervaModern";
+    src: url("http://192.168.1.100:8001/resources/fonts/MinervaModern-Italic.woff2") format("woff2"), url("http://192.168.1.100:8001/resources/fonts/MinervaModern-Italic.woff") format("woff");
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "MinervaModern";
+    src: url("http://192.168.1.100:8001/resources/fonts/MinervaModern-Black.woff2") format("woff2"), url("http://192.168.1.100:8001/resources/fonts/MinervaModern-Black.woff") format("woff");
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "MinervaModern";
+    src: url("http://192.168.1.100:8001/resources/fonts/MinervaModern-BlackItalic.woff2") format("woff2"), url("http://192.168.1.100:8001/resources/fonts/MinervaModern-BlackItalic.woff") format("woff");
+    font-weight: 900;
+    font-style: italic;
+    font-display: swap;
+}
+
+img,
+video {
+    width: 100%;
+}
+
+input:-webkit-autofill {
+    background-color: transparent !important;
+    color: #fff !important;
+}
+
+input:-webkit-autofill:hover {
+    background-color: transparent !important;
+    color: #fff !important;
+}
+
+input:-webkit-autofill:focus {
+    background-color: transparent !important;
+    color: #fff !important;
+}
+
+input:-webkit-autofill:active {
+    background-color: transparent !important;
+    color: #fff !important;
+}
+
+#holder img,
+#holder-empty img,
+#holder-banner img {
+    width: 100%
+}
+
+#holder-banner {
+    position: relative;
+}
+
+#banner_title {
+    position: absolute;
+    top: 107px;
+    left: auto;
+    right: auto;
+    background: transparent;
+    color: #fff !important;
+}
+
+.dropdown-menu>li>a {
+    padding: 8px 38px !important;
+}
+
+#draggable-full {
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#draggable-full .draggable-column {
+    padding: 3rem;
+    padding-top: 6rem;
+    margin: 1rem;
+    border: 1px solid #e4e4e7;
+    border-radius: 10px !important;
+    position: relative;
+    width: 100%;
+}
+
+#draggable-full .draggable-column .remove-this-section-button {
+    position: absolute;
+    top: -40px;
+    right: 0px;
+    border-radius: 4px !important;
+}
+
+#draggable-full .draggable-column .move-this-section-button {
+    position: absolute;
+    top: -40px;
+    right: 45px;
+    border-radius: 4px !important;
+    background: transparent;
+    color: #337ab7;
+}
+
+#draggable-full .draggable-column .move-this-section-button.up {
+    position: absolute;
+    top: -40px;
+    right: 92px;
+    border-radius: 4px !important;
+}
+
+#draggable-full .item-footer {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.add-page h5 {
+    font-family: "Varela", sans-serif;
+}
+
+.add-page .card {
+    padding: 3rem;
+    margin: 1rem;
+    border: 1px solid #e4e4e7;
+    border-radius: 10px !important;
+}
+
+.add-page .card h5 {
+    font-size: 2.7rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+
+}
+
+.update-btn {
+    border-radius: 4px !important;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+#airport-section,
+#aircraft-section {
+    margin-bottom: 15px;
+}
+
+#airport-section>[class*='col-'],
+#aircraft-section>[class*='col-'] {
+    padding-right: 15px;
+    /* Space between columns */
+    padding-left: 15px;
+    margin-bottom: 20px;
+}
+
+.airport-column,
+.testimonial-column {
+    border: 1px solid #c2cad8;
+    border-radius: 10px;
+    padding: 10px;
+    position: relative;
+}
+
+.airport-column h2 {
+    font-weight: 900;
+    font-size: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.airport-column img {
+    width: 100%;
+    height: 340px;
+    object-fit: cover;
+}
+
+.airport-column p {
+    line-height: 10px;
+    margin: 0;
+    margin-bottom: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.testimonial-column p {
+    text-align: center;
+}
+
+.airport-column button,
+.testimonial-column i {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+.testimonial-column i {
+    top: 6px;
+    right: 6px;
+    cursor: pointer;
+    display: none !important;
+}
+
+.testimonial-column:hover i {
+    display: inline-block !important;
+}
+
+.testimonial-column h3 {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 600;
+    font-family: cursive;
+    position: relative;
+    display: inline-block;
+    width: auto;
+    margin: 0 auto;
+}
+
+.testimonial-column h3::before {
+    content: '-';
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(-100%);
+}
+
+.testimonial-column p.address {
+    margin: 0;
+    text-align: center;
+    font-family: cursive;
+    margin-top: 3px;
+}
+
+#experience-section .image {
+    width: 100%;
+    display: flex
+}
+
+#experience-section .image img {
+    width: 7rem;
+    height: 7rem;
+    margin: 0 auto;
+}
+
+#experience-section input,
+#experience-section textarea {
+    width: 100%;
+    background: transparent;
+    text-align: center;
+    border: none;
+    outline: none;
+    padding: 5px 35px;
+}
+
+#experience-section textarea,
+#aircraft_description,
+#airport_description,
+#emptyleg_description,
+#about_description {
+    width: 100%;
+    resize: none;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    font-family: inherit;
+    border: none;
+    outline: none;
+    padding: 5px 35px;
+}
+
+#experience-section .main-title {
+    margin-bottom: 40px;
+}
+
+#experience-section .main-title input.title {
+    font-size: 22px;
+}
+
+#experience-section textarea::placeholder {
+    text-align: center
+}
+
+#experience-section input.title {
+    font-size: 18px;
+    font-weight: 900;
+}
+
+#experience-section input.descriptions {
+    font-size: 14px;
+    font-weight: normal;
+}
+
+#experience-section .form-group {
+    margin-bottom: 0;
+}
+
+#experience-section .mx-auto {
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+#experience-section .mx-auto .col-md-4 {
+    box-shadow: #63636333 0 2px 8px;
+    padding: 50px 0;
+}
+
+#cke_1_contents,
+#cke_2_contents,
+#cke_3_contents,
+#cke_4_contents,
+#cke_5_contents,
+#cke_6_contents,
+#cke_7_contents,
+#cke_8_contents,
+#cke_9_contents,
+#cke_10_contents,
+#cke_11_contents,
+#cke_12_contents,
+#cke_13_contents,
+#cke_14_contents,
+#cke_15_contents,
+#cke_16_contents,
+#cke_17_contents,
+#cke_18_contents,
+#cke_19_contents,
+#cke_20_contents {
+    height: 200px !important
+}
+
+#aircraft_title,
+#airport_title,
+#emptyleg_title2,
+#emptyleg_title,
+#about_title,
+#banner_title,
+#title,
+.title-input,
+.subtitle-input {
+    text-align: center;
+    border: none;
+    height: 50px;
+    color: #333;
+    font-size: 3.7rem;
+    border: none;
+    font-weight: 500;
+}
+
+.subtitle-input {
+    font-size: 1.3rem !important;
+}
+
+#emptyleg_button_text2,
+#emptyleg_button_text,
+#about_button_text,
+#quote_button_text,
+.button-input {
+    background: #000;
+    color: #fff;
+    text-align: center;
+    border: none;
+    outline: none;
+    min-width: 100px;
+    height: 50px;
+    max-width: 150px;
+    margin: 0 auto;
+    border-radius: 25px !important;
+    margin-top: 26px;
+}
+
+#emptyleg_button_text2::placeholder,
+#emptyleg_button_text::placeholder,
+#about_button_text::placeholder,
+#quote_button_text::placeholder,
+.button-input::placeholder {
+    color: #e6e6e6;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.mx-auto {
+    margin: 0 auto;
+}
+
+.col-md-12 {
+    float: none;
+    width: 100%;
+}
+
+.modal-img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    width: 100%;
+    height: 250px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #f0f0f0;
+}
+
+.faq-container h1 {
+    margin: 50px 0 30px;
+    text-align: center;
+}
+
+.faq-container .faq-container {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.faq-container .faq {
+    background-color: transparent;
+    border: 1px solid #d1d7e1;
+    border-radius: 10px;
+    margin: 0px 0;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    transition: 0.3s ease;
+    width: 100%;
+}
+
+.faq-container .faq .delete-this-faq {
+    position: absolute;
+    top: 9px;
+    right: 9px;
+    font-size: 19px;
+    display: none;
+    cursor: pointer;
+}
+
+.faq-container .faq:hover .delete-this-faq {
+    display: block !important;
+}
+
+.faq-container .faq.active {
+    background-color: #fff;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.faq-container .faq.active::before,
+.faq-container .faq.active::after {
+    /* content: "\f075"; */
+    font-family: "Font Awesome 5 Free";
+    color: #2ecc71;
+    font-size: 7rem;
+    position: absolute;
+    opacity: 0.2;
+    top: 20px;
+    left: 20px;
+    z-index: 0;
+}
+
+.faq-container .faq.active::before {
+    color: #3498db;
+    top: -10px;
+    left: -30px;
+    transform: rotateY(180deg);
+}
+
+.faq-container .faq-title {
+    margin: 0 35px 0 0;
+    color: #000;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.faq-container .faq-text {
+    display: none;
+    margin: 14px 0 0;
+    font-size: 12px;
+}
+
+.faq-container .faq.active .faq-text {
+    display: block;
+}
+
+.faq-container .faq-toggle {
+    background-color: transparent;
+    border: 0;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    padding: 0;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    height: 30px;
+    width: 30px;
+}
+
+.faq-container .faq-toggle:focus {
+    outline: 0;
+}
+
+.faq-container .faq-toggle .fa-times {
+    display: none;
+}
+
+.faq-container .faq.active .faq-toggle .fa-times {
+    color: #e7505a;
+    display: block;
+}
+
+.faq-container .faq.active .faq-toggle .fa-chevron-down {
+    display: none;
+}
+
+.faq-container .faq.active .faq-toggle {
+    background-color: transparent;
+}
+
+.error.invalid-feedback {
+    color: red;
+}
+
+.validate {
+    border: 1px dashed #ffe2e2 !important;
+}
+
+.why-choose-us {
+    background-color: #f7f7f7;
+}
+
+.card-col {
+    background: #ffffff;
+    padding: 0;
+    border-radius: 10px !important;
+    width: calc(33.33333% - 20px) !important;
+    margin: 10px 10px;
+}
+
+.card-col .image img {
+    width: 100%;
+    border-top-left-radius: 10px !important;
+    border-top-right-radius: 10px !important;
+}
+
+.card-col .form-group {
+    margin: 0;
+    padding: 0 10px;
+}
+
+.partner.instagram .form-group {
+    margin: 0;
+}
+
+.card-col input.title {
+    font-size: 1.5rem !important;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.card-col textarea {
+    width: 100%;
+    height: 215px;
+    text-align: center;
+    border: none;
+    outline: none;
+    font-family: monospace;
+    resize: none;
+    overflow: hidden;
+}
+
+.quote-tool {
+    background-color: #a0c3d9;
+    border-radius: 10px !important;
+}
+
+.col-md-10.quote-tool,
+.quote-tool .col-md-6 {
+    padding: 0;
+}
+
+.quote-tool #quote-tool-holder-image img {
+    width: 100%;
+    border-top-left-radius: 10px !important;
+    border-bottom-left-radius: 10px !important;
+}
+
+.quote-tool .col-md-6.quote-tool-right-col {
+    padding: 20px 36px !important;
+}
+
+.quote-tool-right-col .title-input {
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    text-align: left;
+    color: #000;
+    font-weight: 600px;
+    margin-top: 10px;
+}
+
+.quote-tool-right-col textarea {
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    text-align: left;
+    color: #000;
+    height: 73px;
+    resize: none;
+}
+
+.quote-tool .quote-tool-right-col .button-input {
+    margin: 0 !important;
+    max-width: 216px;
+}
+
+#holder-thumbnail img {
+    width: 100%;
+    max-height: 300px;
+}
+
+.home-service-section .form-group input.title {
+    text-align: center;
+}
+
+.home-service-section .card-col .image img {
+    border-radius: 0px !important;
+}
+
+.home-service-section .card-col .form-group input.title {
+    font-size: 22px;
+    text-align: left;
+}
+
+.home-service-section .card-col .form-group textarea {
+    text-align: left;
+    font-family: 'Varela';
+    height: 107px;
+}
+
+.home-service-section .card-col .form-group .button-input {
+    background: transparent;
+    border: 1px solid #000;
+    color: #000;
+    margin-left: 0px;
+    max-width: 215px;
+}
+
+.home-service-section .card-col.last .form-group .button-input {
+    max-width: 235px;
+}
+
+.home-service-section .card-col {
+    padding-bottom: 20px;
+    --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);
+    --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.form-group .url-input {
+    margin-top: 10px;
+    border: 1px dashed #000;
+    border-radius: 5px !important;
+}
+
+div.slug {
+    position: relative;
+}
+
+div.slug label {
+    position: absolute;
+    top: 0px;
+    color: #939393;
+    left: 20px;
+    background: #fff;
+    font-size: 11px;
+}
+
+.magazines-on-request #magazines-on-request-card-3-holder img {
+    width: 100%;
+}
+
+.magazines-on-request .form-group .title-input {
+    resize: none;
+    height: 165px;
+    min-height: 165px;
+    max-height: 165px;
+    overflow: hidden;
+}
+
+.magazines-on-request .form-group textarea.description-input {
+    resize: none;
+    text-align: center;
+    border: none;
+    outline: none;
+    /* text-decoration: underline; */
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 8px;
+    font-size: 18px;
+}
+
+.partner .form-group .title-input {
+    font-size: 46px;
+    font-weight: 500;
+}
+
+.partner .image img {
+    width: 100%;
+}
+
+.partner .col-md-3 {
+    margin-bottom: 10px;
+}
+
+.partner.instagram .col-md-3 {
+    width: 20%;
+}
+
+.partner .partners-card {
+    position: relative;
+    padding: 10px;
+    transition-property: border, transform;
+    transition-duration: 0.5s;/ transition-timing-function: ease-in-out;
+    transition-delay: 0.1s;
+}
+
+.partner .partners-card i.del {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: none;
+    cursor: pointer;
+    background-color: #f00;
+    padding: 10px;
+    color: #fff;
+}
+
+.partner .partners-card:hover i.del {
+    display: block;
+}
+
+.partner .partners-card:hover,
+.exclusive-benefits .benefit-card:hover {
+    border: 1px dashed #ff9696;
+    border-radius: 5px !important;
+}
+
+.partner .add-more-button,
+#benefit-section-cards .add-more-card .add-more-button {
+    background: #747474;
+    color: #fff;
+    border: none;
+    outline: none;
+    padding: 10px 60px;
+    height: 111px;
+    border-radius: 3px !important;
+    font-size: 20px;
+}
+
+.exclusive-benefits .title-container textarea {
+    border: none;
+    outline: none;
+    resize: none;
+    max-width: 600px;
+    text-align: center;
+    height: 95px;
+    overflow: hidden;
+}
+
+.exclusive-benefits .image {
+    display: flex;
+}
+
+.exclusive-benefits .image img {
+    width: auto;
+    margin: 0 auto;
+    max-width: 80px;
+    margin-bottom: 10px;
+}
+
+.benefit-card {
+    position: relative;
+    padding: 10px;
+    border: 1px solid transparent;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    margin-bottom: 20px;
+}
+
+.benefit-card i.del {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+    display: none;
+}
+
+.exclusive-benefits .benefit-card:hover i.del {
+    display: block;
+}
+
+.benefit-card .form-group {
+    margin: 5px;
+}
+
+.benefit-card .form-group .title-input {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.benefit-card .form-group textarea {
+    border: none;
+    text-align: center;
+    margin-top: -17px;
+    font-size: 14px;
+    height: 85px;
+    resize: none;
+}
+
+.exclusive-benefits #benefit-section-cards .add-more-card button {
+    margin: auto auto;
+}
+
+.exclusive-benefits #benefit-section-cards .add-more-card {
+    display: flex;
+}
+
+.ff-corse-banner-description .quote-tool-right-col {
+    min-height: 266px;
+    display: flex;
+}
+
+.ff-corse-banner-description.hotel-banner-description .quote-tool-right-col {
+    flex-wrap: wrap;
+}
+
+.ff-corse-banner-description.hotel-banner-description .quote-tool-right-col .subtitle-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.ff-corse-banner-description.hotel-banner-description .quote-tool-right-col .subtitle-group i {
+    background-color: #000000;
+    color: #fff;
+    padding: 10px;
+}
+
+.ff-corse-banner-description.hotel-banner-description .quote-tool-right-col .subtitle-group input {
+    background-color: transparent;
+    padding: 5px;
+    height: 29px;
+    font-size: 24px !important;
+    font-weight: 600;
+    text-align: left;
+}
+
+
+.ff-corse-banner-description .quote-tool-right-col .form-group {
+    margin: auto 0;
+    width: 100%;
+}
+
+.ff-corse-banner-description .quote-tool-right-col .form-group textarea {
+    overflow: hidden;
+}
+
+.ff-corse-banner-description .quote-tool #quote-tool-holder-image img {
+    height: 266px;
+}
+
+.ff-corse-full-banner .form-group .description-input {
+    border: none;
+    resize: none;
+    min-height: 80px;
+    text-align: center;
+}
+
+.partner.instagram .form-group.follow-btn .button-input {
+    padding-left: 30px;
+    max-width: 20rem;
+}
+
+.partner.instagram .form-group.follow-btn {
+    position: relative;
+}
+
+.partner.instagram .form-group.follow-btn .button-input.linktree {
+    max-width: 14rem;
+    padding-left: 13px;
+}
+
+.partner.instagram .form-group.follow-btn i,
+.partner.instagram .form-group.follow-btn svg {
+    color: #fff;
+    position: absolute;
+    top: 43px;
+    left: 15px;
+    font-size: 20px;
+    width: 20px;
+}
+
+.partner.instagram .form-group.follow-btn svg {
+    width: 22px;
+    top: 41px;
+    left: 36px;
+}
+
+.all-services .card-col {
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / .1), 0 2px 4px -2px rgb(0 0 0 / .1);
+    border-radius: 0 !important;
+    padding-bottom: 20px;
+    ;
+}
+
+.all-services .card-col .image img {
+    width: 100%;
+    border-radius: 0 !important;
+}
+
+.all-services .card-col h1 {
+    text-align: left;
+    padding: 6px 12px;
+    font-size: 25px;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.all-services .card-col p {
+    text-align: left;
+    padding: 0 12px;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    /* Number of lines to show */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.all-services .card-col button {
+    background-color: transparent;
+    border: 1px solid #000;
+    color: #000;
+    max-width: 240px;
+    margin-top: 10px;
+    margin-left: 10px;
+    padding: 10px;
+    border-radius: 20px !important;
+}
+
+.avier-form .left-card {
+    padding-right: 50px;
+    border-right: 1px solid #000;
+}
+
+.avier-form .right-card {
+    padding-left: 50px;
+}
+
+#draggable-full .draggable-column .avier-form .left-card div.cke_inner div.cke_contents.cke_reset {
+    height: 300px !important;
+}
+
+#draggable-full .draggable-column .avier-form .form-group input.title {
+    font-size: 22px;
+}
+
+#draggable-full .draggable-column .avier-form .form-group input.subtitle-input {
+    font-size: 16px !important;
+    height: auto;
+    width: 100%;
+    border: none;
+    outline: none;
+}
+
+.avier-form .right-card div.form {
+    width: 100%;
+    height: 250px;
+    border: 1px solid #000;
+    display: flex;
+}
+
+.avier-form .right-card div.form span {
+    margin: auto auto;
+    color: #f00;
+}
+
+.avier-form .right-card div.form-group input.form-control.button-input {
+    margin-right: 0;
+    margin-left: auto;
+}
+
+#draggable-full .draggable-column .contact-form .card-body .form-group input.title {
+    text-align: center !important;
+    font-size: 28px;
+}
+
+#draggable-full .hotel-form .form-group input.sub-title {
+    font-size: 16px;
+}
+
+
+/* Villa CSS */
+.about-section-villa .form-group{
+    margin-bottom: 0px;
+}
+.form-group input.address {
+    border: none;
+    text-align: center;
+    font-size: 19px;
+    font-family: "MinervaModern";
+    font-weight: normal;
+}
+.form-group input.tt{
+    font-family: "MinervaModern";
+    font-weight: 600;
+    height: 43px;
+}
+.form-group input.tourist_license{
+    border:none;
+    outline:none;
+    text-align: center;
+    font-size: 22px;
+    font-family: 'MinervaModern';
+    font-weight: 600;
+}
+
+.form-group textarea.descr{
+    border:none;
+    text-align: center;
+    outline:none;
+    height:32px;
+    resize: none;
+    overflow: hidden;
+}
+
+.form-group input.title-input.text-align-left{
+    text-align: left;
+}
+
+.about-section-villa #benefit-section-cards{
+    margin-top: 20px;
+
+    .benefit-card .image{
+        display: flex;
+        margin-bottom: 10px;
+    }
+    .benefit-card .image img{
+        width: 85px;
+        height: auto;
+        margin: 0 auto;
+    }
+
+    .benefit-card textarea.nn{
+        font-size: 18px;
+        font-weight: 600;
+    }
+}
+
+.check-boxes .form-group{
+    display: flex;
+    gap:1rem;
+}
+
+.check-boxes .form-group label{
+    color:#000;
+}
+.check-boxes .form-group input[type="checkbox"]{
+    margin-top: 3px;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+#map{
+    width:100%;
+    height:500px;
+}
+.cke_combo_button{
+    background-color: #ffffff!important;
+}

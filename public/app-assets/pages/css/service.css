@@ -1,0 +1,296 @@
+.loading {
+    pointer-events: none;
+}
+.card {
+    padding: 2rem;
+}
+.spacer {
+    padding: 1rem 4rem;
+}
+.pl-0 {
+    padding-left: 0;
+}
+.page-title {
+    font-weight: bold;
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 0;
+}
+.no-flex {
+    display: block !important;
+}
+.row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: 0;
+}
+.col-md-12 {
+    margin: 0px;
+    padding: 0;
+}
+.image-wrapper .preview {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    margin: 2rem 0;
+    padding: 1rem;
+    background: transparent;
+}
+.image-wrapper .preview.preview-quote {
+    height: 260px !important;
+}
+.image-wrapper .preview:hover {
+    border: 1px dotted #333;
+}
+.image-wrapper .preview img {
+    height: 100%;
+    width: 100%;
+   /* width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+   */
+}
+#template-preview {
+    display: flex;
+    padding-right: 4rem;
+    flex-direction: column;
+   /*margin: 2rem 0;
+   */
+}
+#template-preview .description-wrapper textarea {
+    height: 121px;
+    width: 100%;
+    padding: 2rem 0;
+    border: none;
+    outline: none;
+    text-align: left;
+    overflow: hidden;
+}
+#template-preview .description-wrapper textarea.quote {
+    background: transparent;
+}
+#template-preview .section-preview {
+    display: flex;
+    align-items: center;
+    padding: 3rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 1rem 0;
+    position: relative;
+    padding-top: 6rem;
+}
+#template-preview .section-preview .close-button {
+    position: absolute;
+    right: 0.5rem;
+    top: 0.8rem;
+    background: transparent;
+    color: #d91e18;
+    border: none;
+    font-size: 24px;
+}
+#template-preview .section-preview .close-button:hover {
+    opacity: 0.7;
+}
+#template-preview .section-preview .move-this-section-button {
+    position: absolute;
+    top: 9px;
+    right: 36px;
+    background-color: transparent;
+    color: #337ab7;
+}
+#template-preview .section-preview .move-this-section-button.up {
+    right: 82px;
+}
+#template-preview .section-preview img {
+    width: 100%;
+}
+#template-preview .section-preview .input-title {
+    margin-bottom: 0.25rem;
+    font-size: 25px;
+    line-height: 3rem;
+    border: 1px solid transparent;
+    outline: none;
+    width: 100%;
+    background-color: transparent;
+    margin-top: 4rem;
+}
+#template-preview .section-preview .input-title:focus-visible {
+    border: 1px dotted #d9d9d9;
+    outline: 0px dotted #d9d9d9;
+    border-radius: 4px !important;
+}
+#template-preview .section-preview .input-button {
+    background: #000;
+    color: #fff;
+    text-align: center;
+    border: none;
+    outline: none;
+    min-width: 180px;
+    width: 230px;
+    height: 50px;
+    max-width: 300px;
+    margin: 0 auto;
+    border-radius: 25px !important;
+    padding: 1rem 2rem;
+}
+#template-preview .cke_top {
+    background: transparent;
+}
+#template-preview .cke_top .cke_toolgroup {
+    background: transparent;
+    border: 1px solid #fff;
+    border-bottom-color: #fff;
+}
+#template-preview .cke_chrome {
+    border: 1px solid #f1f1f1;
+}
+#template-preview .cke_top {
+    border: 1px solid #f1f1f1;
+}
+#template-preview .cke_button_on {
+    background: #ededed;
+}
+#template-preview .cke_contents {
+    height: 215px !important;
+}
+#template-preview #cke_146_contents .cke_wysiwyg_frame {
+    background: transparent;
+}
+.image-upload {
+    position: relative;
+    max-width: 100%;
+    margin: 0;
+}
+.image-upload .image-edit {
+    position: absolute;
+    right: 12px;
+    z-index: 1;
+    top: 10px;
+}
+.image-upload .image-edit input {
+    display: none;
+}
+.image-upload .image-edit input + label {
+    display: inline-block;
+    width: 34px;
+    height: 34px;
+    margin-bottom: 0;
+    border-radius: 100%;
+    background: #fff;
+    border: 1px solid transparent;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+    cursor: pointer;
+    font-weight: normal;
+    transition: all 0.2s ease-in-out;
+}
+.image-upload .image-edit input + label:hover {
+    background: #f1f1f1;
+    border-color: #d6d6d6;
+}
+.image-upload .image-edit input + label:after {
+    content: "\f040";
+    font-family: 'FontAwesome';
+    color: #757575;
+    position: absolute;
+    top: 10px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    margin: auto;
+}
+.image-upload .image-preview {
+    width: 100%;
+    height: 360px;
+    position: relative;
+    border-radius: 0;
+    border-radius: 4px;
+}
+.image-upload .image-preview > div {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.m-30 {
+    margin-left: 30px !important;
+    margin-right: 30px !important;
+}
+.m-20 {
+    margin-left: 20px !important;
+    margin-right: 20px !important;
+}
+.m-5 {
+    margin-left: 5px !important;
+    margin-right: 5px !important;
+}
+#holder {
+    justify-content: center;
+    display: flex;
+}
+#holder img {
+    height: 200px;
+}
+#thumbnail {
+    border-radius: 0 !important;
+    height: 34px !important;
+    border-top: 0;
+}
+.mt-2 {
+    margin-top: 2rem;
+}
+.mt-3 {
+    margin-top: 3rem;
+}
+.modal-header {
+    display: flex;
+   /*justify-content: space-between;
+   */
+   /*align-items: center*/
+}
+.modal-title {
+    font-size: 32px;
+    font-weight: bold;
+}
+.modal .modal-header .close {
+    position: absolute;
+    right: 2rem;
+    top: 3rem;
+}
+.card {
+    padding: 3rem;
+    margin: 1rem;
+    border: 1px solid #e4e4e7;
+    border-radius: 10px !important;
+}
+.card h5 {
+    font-size: 2.7rem;
+    font-weight: 600;
+    margin-bottom: 4rem;
+}
+.ml-0 {
+    margin-left: 0 !important;
+}
+.content-cell {
+    padding: 2rem;
+}
+.instant-quote-tool div.image img {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+.card-image img {
+    width: 100%;
+}
+.cke_combo_button {
+    background-color: #fff !important;
+}
+.error.invalid-feedback{
+    color: #ff1010;
+    font-size: 12px;
+}

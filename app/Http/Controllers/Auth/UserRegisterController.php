@@ -1,0 +1,78 @@
+<?php
+
+namespace App\Http\Controllers\Auth;
+
+use App\Enums\Auth\Role\RolesEnum;
+use App\Events\Auth\UserRegistered;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+
+class UserRegisterController extends Controller
+{
+    public function index()
+    {
+        if (Auth::check()) {
+            return redirect()->route('customer.dashboard');  // Redirect to dashboard if user is already logged in
+        }
+        return view('front.register');
+    }
+    public function registerYourBoat()
+    {
+        if (Auth::check()) {
+            return redirect()->route('customer.dashboard');  // Redirect to dashboard if user is already logged in
+        }
+        return view('front.register_your_boat');
+    }
+    public function register(Request $request)
+    {
+        if (Auth::check()) {
+            return redirect()->route('customer.dashboard');  // Redirect to dashboard if user is already logged in
+        }
+        $messages = [
+            'fname.required' => 'Please enter your first name.',
+            'fname.string' => 'Your first name must be a string.',
+            'lname.required' => 'Please enter your last name.',
+            'lname.string' => 'Your last name must be a string.',
+            'email.required' => 'Email address is required.',
+            'email.email' => 'Please provide a valid email address.',
+            'email.unique' => 'This email is already registered.',
+            'password.required' => 'A password is required.',
+        ];
+        // Validate the incoming request data
+        $validator = Validator::make($request->all(), [
+            'fname' => 'required|string',
+            'lname' => 'required|string',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required',
+            'role' => '',
+        ],$messages);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+        $status = 1;
+        if(isset($request->role)):
+            $status = 0;
+        endif;
+        $user = User::create([
+            'name' => $request->fname.' '.$request->lname,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'role' => $request->role ?? 'customer',
+            'status' => $status,
+        ]);
+        if($user->role == RolesEnum::BOATOWNER->value)
+        {
+            event(new UserRegistered($user));
+            return redirect()->route('register-your-boat')->with('success', 'Registration successful! Please wait for admin approval.');
+        }
+        else
+        {
+            Auth::login($user);
+            return redirect()->route('customer.dashboard')->with('success', 'Registration successful!');
+        }
+    }
+}

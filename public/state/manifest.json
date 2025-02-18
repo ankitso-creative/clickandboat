@@ -1,0 +1,7 @@
+{
+  "resources/bootstrap/bootstrap.scss": {
+    "file": "assets/bootstrap-EhA34m26.css",
+    "src": "resources/bootstrap/bootstrap.scss",
+    "isEntry": true
+  }
+}
