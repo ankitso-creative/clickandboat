@@ -66,23 +66,32 @@
                                     <th>#</th>
                                     <th>Name</th>
                                     <th>Created At</th>
+                                    <th>Active</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- @if($allBoatOwner)
-                                    @foreach ($allBoatOwner as $boatOwner)
+                                @if($results)
+                                    @foreach ($results as $result)
                                         @php
                                             $checked = '';
-                                            if($boatOwner->status == 1):
+                                            if($result->status == 1):
                                                 $checked = 'checked';
                                             endif;
-                                        @endphp --}}
+                                        @endphp 
                                         <tr>
-                                            
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $result->title }}</td>
+                                            <td>{{ $result->created_at }}</td>
+                                            <td><input  {{ $checked }} value="{{ $result->id }}" type="checkbox" data-size="mini" class="make-switch change_status" data-on-color="success" data-off-color="danger"></td>
+                                            <td>
+                                                <a href="{{ route('admin.blog.edit', $result->id) }}" class="btn btn-circle btn-icon-only btn-default tooltips" title = "Edit" href="javascript:;"> <i class="icon-note"></i></a>
+                                                <a href="{{ route('admin.blog.destroy', $result->id) }}" class="btn btn-circle btn-icon-only btn-default tooltips delete_row" title = "Delete" href="javascript:;"> <i class="icon-trash"></i></a>
+                                            </td>
                                         </tr> 
-                                    {{-- @endforeach
+                                    @endforeach
                                 @else
-                                @endif --}}
+                                @endif 
                             </tbody>
                         </table>                                               
                     </div>
