@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\BookingController as AdminBookingController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ListingController;
@@ -46,6 +47,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:sanctum', 'verified', 
     Route::delete('listing/remove', [ListingController::class, 'removeImage'])->name('removegallery'); 
     Route::post('listing/change_status', [ListingController::class, 'changeStatus'])->name('listing.change-status');
     Route::resource('bookings', AdminBookingController::class);  
+    Route::resource('blog',BlogController::class);
     Route::get('settings', [SettingController::class, 'index'])->name('settings.index');  
     Route::post('setting_update', [SettingController::class, 'storeUpdate'])->name('setting_update');  
     Route::post('upload_logo', [SettingController::class, 'uploadLogo'])->name('upload_logo');  

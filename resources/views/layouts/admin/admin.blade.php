@@ -136,9 +136,7 @@
             <!-- BEGIN SIDEBAR -->
             <div class="page-sidebar-wrapper">
                 <div class="page-sidebar navbar-collapse collapse">
-                    <ul class="page-sidebar-menu  page-header-fixed page-sidebar-menu-hover-submenu "
-                        data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200"
-                        style="padding-top: 20px">
+                    <ul class="page-sidebar-menu  page-header-fixed page-sidebar-menu-hover-submenu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" style="padding-top: 20px">
                         <!-- END SIDEBAR TOGGLER BUTTON -->
                         <li class="nav-item start {{ $active == 'dashboard' ? 'active open' : '' }}">
                             <a href="{{ route('admin.dashboard') }}" class="nav-link">
@@ -166,6 +164,14 @@
                                     </a>
                                 </li>
                             </ul>
+                        </li>
+                        <li class="nav-item start {{ $active == 'blog' ? 'active open' : '' }}">
+                            <a href="{{ route('admin.blog.index') }}" class="nav-link">
+                                <i class="fa fa-file-text"></i>
+                                <span class="title">Manage Blogs</span>
+                                <span class="selected"></span>
+                                <span class="arrow open"></span>
+                            </a>
                         </li>
                         <li class="nav-item start {{ $active == 'listing' ? 'active open' : '' }}">
                             <a href="{{ route('admin.listing') }}" class="nav-link">
