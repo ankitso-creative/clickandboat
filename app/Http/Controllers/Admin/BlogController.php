@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\Admin\Blog\BlogStoreRequest;
+use App\Http\Requests\Admin\Blog\BlogUpdateRequest;
 use App\Services\Admin\Blog\BlogService;
 class BlogController extends Controller
 {
@@ -18,8 +19,9 @@ class BlogController extends Controller
     }
     public function index()
     {
+        $results = $this->service->allBlogs();
         $active = 'blog';
-        return view('admin.blog.index',compact('active'));
+        return view('admin.blog.index',compact('active','results'));
     }
 
     /**
@@ -37,7 +39,13 @@ class BlogController extends Controller
     public function store(BlogStoreRequest $request)
     {
         $request = $request->all();
-        $this->service->store($request);
+        $result = $this->service->store($request);
+        if($result):
+           return redirect()->route('admin.blog.index')->with('success', 'Blog created successfully!'); 
+        else:
+            session()->flash('error', 'There was an error with your submission.');
+            return redirect()->route('admin.blog.index');  
+        endif;
     }
 
     /**
@@ -53,15 +61,24 @@ class BlogController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $active = 'blog';
+        $result = $this->service->blogEdit($id);
+        return view('admin.blog.edit',compact('active','result'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(BlogUpdateRequest $request, string $id)
     {
-        //
+        $request = $request->all();
+        $result = $this->service->blogUpdate($request,$id);
+        if($result):
+           return redirect()->route('admin.blog.index')->with('success', 'Blog created successfully!'); 
+        else:
+            session()->flash('error', 'There was an error with your submission.');
+            return redirect()->route('admin.blog.index');  
+        endif;
     }
 
     /**
@@ -69,6 +86,10 @@ class BlogController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        return $result = $this->service->blogDestroy($id);
+    }
+    public function changeStatus(Request $request)
+    {
+       return $this->service->changeStatus($request);
     }
 }

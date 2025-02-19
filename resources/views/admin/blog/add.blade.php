@@ -15,7 +15,7 @@
     <div class="page-content-wrapper">
         <!-- BEGIN CONTENT BODY -->
         <div class="page-content">
-            <h1 class="page-title"> Manage Users: Add</h1>
+            <h1 class="page-title"> Manage Blog: Add</h1>
             <div class="clear"></div>
             <div class="row">
 				<div class="col-md-12">
@@ -31,7 +31,7 @@
 									</div>
 									<div class="col-sm-12">
 										<label>Description:<span class="required"> * </span></label>
-										<input type="text" name="Description" value="{{ old('description') }}" id="summernote" class="form-control"/> 
+										<textarea  name="description" id="summernote" class="form-control"> </textarea>
                                         @error('description')<span class="required">{{ $message }}</span>@enderror
 									</div>
 								</div>

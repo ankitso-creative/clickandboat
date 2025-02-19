@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->longText('description');
             $table->integer('read_minutes')->nullable();
+            $table->integer('status')->default('1');
             $table->timestamps();
         });
     }
