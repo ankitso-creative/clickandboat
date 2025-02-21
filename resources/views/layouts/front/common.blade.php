@@ -58,10 +58,10 @@
                        </li>
                        <li><a class="nav-link gbp_btn" href="#">GBP: £</a></li>
                         <li class="nav-item">
-                            <a class="nav-link" id="boat-register" href="javascript:;">Register your boat  </a>
+                            <a class="nav-link" href="{{ route('register-your-boat') }}">Register your boat  </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="sign-up" href="javascript:;">Sign Up</a>
+                            <a class="nav-link" href="{{ route('register') }}">Sign Up</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link">Help</a>
