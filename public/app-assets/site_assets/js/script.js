@@ -296,8 +296,6 @@ $(document).ready(function() {
     var ellipsestext = "...";
     var moretext = "View More >";
     var lesstext = "View Less ^";
-    
-
     $('.more').each(function() {
         var content = $(this).html();
  
@@ -309,8 +307,7 @@ $(document).ready(function() {
         }
  
     });
- 
-    $(".morelink").click(function(){
+ 	$(".morelink").click(function(){
         if($(this).hasClass("less")) {
             $(this).removeClass("less");
             $(this).html(moretext);
@@ -327,19 +324,17 @@ $(document).ready(function() {
 	$(document).on('click','#boat-register', function() {
 		var baseUrl = $('#baseUrl').val();
 		$.ajax({
-			url: baseUrl+'/ajax/getregisterboatform',  // URL for the image upload endpoint
+			url: baseUrl+'/ajax/getregisterboatform',
 			type: 'GET',
 			success: function(response) {
 				if (response.success) {
-					$('#logo-img').removeClass('hide');
-					$('#website-logo').attr('src', response.imageUrl);
+					alert('dsf');
 				} else {
-					$('.alert-danger').css("display",'block');
-					$('#error-msg').html("Image upload failed!");
+					alert('dsf');
 				}
 			},
 			error: function(xhr, status, error) {
-				$('#statusMessage').text('An error occurred while uploading the image.').css('color', 'red');
+				alert('dsf');
 			}
 		});
 		$('#lrModal').modal(); 
