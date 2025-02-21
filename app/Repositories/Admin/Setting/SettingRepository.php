@@ -22,6 +22,7 @@ class SettingRepository{
                 endif;
             endforeach;
         endif;
+        //dd($data);
         return $data;
     }
     public function storeUpdate($request)
@@ -54,8 +55,8 @@ class SettingRepository{
     public function uploadLogoWhite($request)
     {
         $setting = Setting::first();
-        if($setting->hasMedia('image-white')) {
-            $setting->getMedia('image-white')->each(function ($media) {
+        if($setting->hasMedia('logo-white')) {
+            $setting->getMedia('logo-white')->each(function ($media) {
                 $media->delete();
             });
         }
