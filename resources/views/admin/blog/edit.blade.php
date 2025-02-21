@@ -38,7 +38,7 @@
 									<div class="clearfix"></div>
 								</div>
 								<div class="actions btn-set text-right">
-									<button type="button" onclick="window.location = '';"class="btn btn default">
+									<button type="button" onclick="window.location = '';" class="btn btn default">
 										<i class="fa fa-angle-left"></i> Back
 									</button>	
 									<input type="hidden" name="s" value="ok">

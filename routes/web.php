@@ -48,6 +48,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth:sanctum', 'verified', 
     Route::post('listing/change_status', [ListingController::class, 'changeStatus'])->name('listing.change-status');
     Route::resource('bookings', AdminBookingController::class);  
     Route::resource('blog',BlogController::class);
+    Route::post('change_status', [BlogController::class, 'changeStatus'])->name('changestatus');
     Route::get('settings', [SettingController::class, 'index'])->name('settings.index');  
     Route::post('setting_update', [SettingController::class, 'storeUpdate'])->name('setting_update');  
     Route::post('upload_logo', [SettingController::class, 'uploadLogo'])->name('upload_logo');  

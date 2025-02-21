@@ -27,15 +27,15 @@ class BlogRepository
        $blog = Blog::find($id);
        $blog->title = $request['title'];
        $blog->description = $request['description'];
-       if($blog->update()):
-           return true;
-       else:
-           return false;
-       endif;
+        if($blog->update()):
+            return true;
+        else:
+            return false;
+        endif;
     }
     public function blogDestroy($id)
     {
-       $blog = Blog::find($id);
+        $blog = Blog::find($id);
         if($blog->delete()):
             session()->flash('success', 'Blog deleted successfully.');
             return response()->json([
