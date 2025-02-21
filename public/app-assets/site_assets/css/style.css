@@ -1,16 +1,308 @@
 /* 
     Web design by : So-creative
  */
+@font-face {
+    font-family: 'GT America Trial Cn Md';
+    src: url('../fonts/GTAmericaTrial-CnMd.woff2') format('woff2'),
+        url('../fonts/GTAmericaTrial-CnMd.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'GT America Trial Cn Bd';
+    src: url('../fonts/GTAmericaTrial-CnBd.woff2') format('woff2'),
+        url('../fonts/GTAmericaTrial-CnBd.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
 
- @font-face {
-    font-family: 'Barlow Condensed';
-    src: url('../fonts/BarlowCondensed-Regular.woff2') format('woff2'),
-        url('../fonts/BarlowCondensed-Regular.woff') format('woff');
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-Thin.woff2') format('woff2'),
+        url('../fonts/Montserrat-Thin.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-SemiBold.woff2') format('woff2'),
+        url('../fonts/Montserrat-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-BoldItalic.woff2') format('woff2'),
+        url('../fonts/Montserrat-BoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-ExtraBoldItalic.woff2') format('woff2'),
+        url('../fonts/Montserrat-ExtraBoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-ExtraBoldItalic.woff2') format('woff2'),
+        url('../fonts/Montserrat-ExtraBoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-ExtraBold.woff2') format('woff2'),
+        url('../fonts/Montserrat-ExtraBold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-ExtraLight.woff2') format('woff2'),
+        url('../fonts/Montserrat-ExtraLight.woff') format('woff');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-ExtraBold.woff2') format('woff2'),
+        url('../fonts/Montserrat-ExtraBold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-ExtraLightItalic.woff2') format('woff2'),
+        url('../fonts/Montserrat-ExtraLightItalic.woff') format('woff');
+    font-weight: 200;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-ExtraLightItalic.woff2') format('woff2'),
+        url('../fonts/Montserrat-ExtraLightItalic.woff') format('woff');
+    font-weight: 200;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-Italic.woff2') format('woff2'),
+        url('../fonts/Montserrat-Italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-ExtraLight.woff2') format('woff2'),
+        url('../fonts/Montserrat-ExtraLight.woff') format('woff');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-Italic.woff2') format('woff2'),
+        url('../fonts/Montserrat-Italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-Light.woff2') format('woff2'),
+        url('../fonts/Montserrat-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-Light.woff2') format('woff2'),
+        url('../fonts/Montserrat-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-LightItalic.woff2') format('woff2'),
+        url('../fonts/Montserrat-LightItalic.woff') format('woff');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-Medium.woff2') format('woff2'),
+        url('../fonts/Montserrat-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-Medium.woff2') format('woff2'),
+        url('../fonts/Montserrat-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-LightItalic.woff2') format('woff2'),
+        url('../fonts/Montserrat-LightItalic.woff') format('woff');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-SemiBold.woff2') format('woff2'),
+        url('../fonts/Montserrat-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-MediumItalic.woff2') format('woff2'),
+        url('../fonts/Montserrat-MediumItalic.woff') format('woff');
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-Regular.woff2') format('woff2'),
+        url('../fonts/Montserrat-Regular.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
 }
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-MediumItalic.woff2') format('woff2'),
+        url('../fonts/Montserrat-MediumItalic.woff') format('woff');
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-Regular.woff2') format('woff2'),
+        url('../fonts/Montserrat-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-SemiBoldItalic.woff2') format('woff2'),
+        url('../fonts/Montserrat-SemiBoldItalic.woff') format('woff');
+    font-weight: 600;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-SemiBoldItalic.woff2') format('woff2'),
+        url('../fonts/Montserrat-SemiBoldItalic.woff') format('woff');
+    font-weight: 600;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-Thin.woff2') format('woff2'),
+        url('../fonts/Montserrat-Thin.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-SemiBold.woff2') format('woff2'),
+        url('../fonts/Montserrat-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-Thin.woff2') format('woff2'),
+        url('../fonts/Montserrat-Thin.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-ThinItalic.woff2') format('woff2'),
+        url('../fonts/Montserrat-ThinItalic.woff') format('woff');
+    font-weight: 100;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-ThinItalic.woff2') format('woff2'),
+        url('../fonts/Montserrat-ThinItalic.woff') format('woff');
+    font-weight: 100;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-Black.woff2') format('woff2'),
+        url('../fonts/Montserrat-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
 
 * {
     margin: 0;
@@ -22,9 +314,9 @@
     color: #fff;
 }
 p {
-    font-size: 14px;
+    font-size: 15px;
     margin-bottom: 0;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Montserrat';
     line-height:26px !important;
     font-weight:400;
 }
@@ -35,7 +327,6 @@ li {
     padding: 0;
 }
 body {
-    font-family: 'Open Sans', sans-serif;
     font-weight: normal;
     font-style: normal;
     overflow-x: hidden !important;
@@ -45,9 +336,710 @@ html {
     scroll-behavior: smooth;
 }
 a{
-     font-family: 'Open Sans', sans-serif !important;
+    font-family: 'GT America Trial Cn Md' !important;
 }
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'GT America Trial Cn Bd';
     font-weight:700 !important;
+}
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+.navbar {
+    box-shadow: none;
+    background: transparent;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 15px 19px;
+}
+.navbar-nav {
+    margin-left: auto;
+}
+#nav-bar img {
+    width: 95%;
+}
+.navbar-nav li a {
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: 500;
+    color: #fff !important;
+    text-shadow: 2px 2px 5px #000000;
+    letter-spacing: 1.2px;
+}
+.navbar-nav li a i {
+    font-size: 23px;
+}
+.navbar-nav li a {
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: 500;
+    color: #fff !important;
+    letter-spacing: 0.3px;
+    text-shadow: 4px 3px 5px black,
+    0 0 2em black,
+    0 0 1.2em black;
+}
+.navbar-nav .dropdown a {
+    background: #0000006b;
+    border-radius: 10px;
+    margin: 0 7px;
+    border: 1px solid #fff;
+    padding: 4px 12px 0 12px !important;
+    text-shadow: none;
+}
+.navbar-nav li .gbp_btn{
+    background: #0000006e;
+    color: #fff;
+    border-radius: 11px;
+    margin: 0 7px;
+    border: 1px solid #fff;
+    padding: 4px 12px 0 12px !important;
+}
+/*--------------------------------------------------------------
+# Home Banner
+--------------------------------------------------------------*/
+.home_banner_section{
+    background-image: url(../img/homebanner-img.jpg);
+    width: 100%;
+    height: 640px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.banner_text {
+    padding-top: 100px;
+}
+.banner_text {
+    position: absolute;
+    top: 375px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.banner_text h1 {
+    font-size: 76px;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+}
+.banner_text h1 .banner_text_style{
+    color: #f9a126;
+}
+.pseudo-search {
+    display: inline;
+    border: 2px solid #ccc;
+    border-radius: 11px;
+    padding: 10px 15px;
+    transition: background-color 0.5 ease-in-out;
+  
+    input {
+      border: 0;
+      background-color: transparent;
+      width: 200px;
+      outline: none;
+  
+    }
+    
+    button, i {
+      border: none;
+      background: none;
+      cursor: pointer;
+    }
+    
+    select {
+      border: none;
+    }
+  
+  }
+  .banner_form {
+    max-width: 1200px;
+    margin: 0px auto;
+    background: #0000003d;
+    border-radius: 15px;
+    position: relative;
+    top: -127px;
+    height: 108px;
+    padding: 15px 0;
+}
+.has-search .form-control {
+    padding-left: 41px;
+    background: #00000047;
+    border: 1px solid #fff;
+    border-radius: 15px;
+    width: 250px;
+    height: 45px;
+}
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 35px;
+    height: 45px;
+    line-height: 46px;
+    text-align: center;
+    pointer-events: none;
+    color: #fff;
+    border-right: 1px solid #fff;
+}
+.banner_form label {
+    color: #fff;
+    text-transform: uppercase;
+    margin: 0;
+    padding-bottom: 8px;
+}
+.has-search ::placeholder {
+    color: #fff;
+    opacity: 0.7; /* Firefox */
+    font-size: 15px;
+  }
+  
+.has-search  ::-ms-input-placeholder { /* Edge 12-18 */
+    color: #fff;
+    font-size: 15px;
+  }
+  .search_btn {
+    background: #f8a126;
+    color: #fff;
+    border: 1px solid #f8a126;
+    padding: 9px 40px;
+    border-radius: 15px;
+    text-transform: uppercase;
+    font-size: 15px;
+    margin-top: 33px;
+    cursor: pointer;
+}
+.datepicker .input-group-text {
+    background: #00000047;
+    border-radius: 15px 0px 0px 15px !important;
+    height: 44px;
+    color: #fff;
+    font-size: 15px;
+}
+.datepicker input#fecha1 {
+    background: #00000047;
+    font-size: 15px;
+    border-radius: 0px 15px 15px 0px;
+    border-left: 0px;
+}
+.datepicker.date.input-group {
+    width: 182px;
+}
+.boat_select select {
+    padding-left: 48px;
+    background: #00000047;
+    border: 1px solid #fff;
+    border-radius: 15px;
+    width: 233px;
+    height: 45px;
+    color: #b8b8b8d1;
+    outline: none;
+}
+.boat_select span {
+    position: absolute;
+    top: 33px;
+    left: 34px;
+    color: #fff;
+    border-right: 1px solid#fff;
+    height: 43px;
+}
+.boat_select i {
+    position: relative;
+    top: 10px;
+    left: -6px;
+}
+.boat_select select option {
+    background: #f8a126;
+    color: #fff;
+    padding-left: 0px !important;
+}
+.boat_select select option:hover{
+    background:#000;
+}
+/*--------------------------------------------------------------
+# Featured boats section
+--------------------------------------------------------------*/
+.featured_boat_heading h2 {
+    font-size: 64px;
+    color: #000;
+    text-align: center;
+    text-transform: uppercase;
+    padding-bottom: 35px;
+}
+.featured_boats_section {
+    margin-top: -25px;
+    padding: 0 20px;
+}
+.featured_board_boxes img {
+    width: 100%;
+    height: 360px;
+    object-fit: cover;
+}
+.featured_board_boxes {
+    position: relative;
+    margin: 0 0 30px 0px;
+    overflow: hidden;
+}
+.featured_box_text {
+    position: absolute;
+    bottom: 34px;
+    left: 15px;
+    color: #fff;
+    z-index: 999;
+    font-size: 24px;
+}
+.featured_board_boxes p {
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.featured_board_boxes h3 {
+    font-size: 44px;
+    text-transform: uppercase;
+}
+.featured_price {
+    color: #000;
+    padding: 10px 0px 0px 18px;
+    text-transform: inherit !important;
+}
+/*--------------------------------------------------------------
+# Boat renter owner section
+--------------------------------------------------------------*/
+.boat_renter_box ul{
+    list-style: none;
+}
+.boat_reanter_owner_section h2 {
+    font-size: 45px;
+    text-align: center;
+    color: #000;
+    text-transform: uppercase;
+    padding-bottom: 20px;
+}
+.boat_reanter_owner_section {
+    margin-top: 50px;
+}
+.boat_renter_box .boat_renter_text {
+    padding: 24px 40px;
+    border: 1px solid #ebebeb;
+    margin: 20px 0;
+    height: 151px;
+    border-radius: 15px;
+    position: relative;
+}
+.boat_reanter_owner_section .container-fluid {
+    max-width: 1335px;
+    margin: 0px auto;
+    padding: 0 30px;
+}
+.boat_renter_text p {
+    font-size: 15px;
+    color: #000;
+    font-weight: 600;
+}
+.boat_renter_text img {
+    position: absolute;
+    top: -16px;
+    left: -25px;
+}
+.boat_reanter_owner_section .boat_renter_box.box-one {
+    padding-right: 20px;
+}
+.boat_reanter_owner_section .boat_renter_box.box-two {
+    padding-left: 20px;
+}
+.find_boat_btn,
+.estimate_btn {
+    text-align: center;
+}
+.find_boat_btn a,
+.estimate_btn a {
+    background: #f9a126;
+    display: inline-block;
+    color: #fff;
+    border-radius: 15px;
+}
+.find_boat_btn a{
+    padding: 12px 40px;
+}
+.estimate_btn a {
+    padding: 12px 14px;
+}
+/*--------------------------------------------------------------
+# Boat type section
+--------------------------------------------------------------*/
+.boat_type_section_slider .container-fluid {
+    max-width: 1400px;
+    margin: 0px auto;
+}
+.boat_type_section_slider {
+    margin-top: 60px;
+}
+.boat_type_section_slider h2 {
+    font-size: 64px;
+    color: #000;
+    text-align: center;
+    text-transform: uppercase;
+    padding-bottom: 35px;
+}
+.boat_type_section_slider .boat_type_box img{
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+.boat_type_box {
+    position: relative;
+    margin: 0 0 30px 0px;
+    overflow: hidden;
+}
+.boat_type_text {
+    position: absolute;
+    bottom: -5px;
+    left: 15px;
+    color: #fff;
+    z-index: 999;
+    font-size: 24px;
+}
+.boat_type_box h3 {
+    font-size: 44px;
+    text-transform: uppercase;
+    text-shadow: 2px 3px 3px black, 0 0 2em black, 0 0 0.2px black;
+}
+.boat_type_sec {
+    padding: 0px 35px;
+}
+/*--------------------------------------------------------------
+# home page location section
+--------------------------------------------------------------*/
+.home_page_slider_Sec {
+    margin-top: 40px;
+}
+.home_page_slider_box {
+    position: relative;
+    transition: 0.3s;
+    margin: 0 15px;
+}
+.home_page_slider_box img {
+    width: 100%;
+}
+.home_page_box_text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 95%;
+    text-align: center;
+}
+.home_page_box_text h3 {
+    font-size: 15px;
+    color: #fff;
+    text-transform: uppercase;
+}
+.home_page_box_text h2 {
+    font-size: 64px;
+    color: #fff;
+    text-transform: uppercase;
+    padding-top: 15px;
+}
+.home_page_box_text p {
+    color: #fff;
+    font-weight: 600;
+}
+/*--------------------------------------------------------------
+# Boat by loaction section
+--------------------------------------------------------------*/
+.boat_by_location{
+    background-image: url(../img/location-bg.jpg);
+    width: 100%;
+    height: 420px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.boat_by_location_section {
+    margin-top: 35px;
+    position: relative;
+}
+.boat_by_location_section h2{
+    font-size: 64px;
+    color: #000;
+    text-align: center;
+    text-transform: uppercase;
+    padding-bottom: 45px;
+}
+.boat_by_location .row {
+    text-align: center;
+    position: absolute;
+    top: 63%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 900px;
+}
+.boat_by_location_box {
+    background: #5597a39c;
+    padding: 31px 7px;
+    border-radius: 15px;
+    margin: 18px 0px;
+    height: 123px;
+    position: relative;
+    border: 1px solid #fffd;
+}
+.boat_by_location_box h3 {
+    font-size: 28px;
+    color: #fff;
+    text-transform: uppercase;
+    margin: 0px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    padding: 0 15px;
+}
+/*--------------------------------------------------------------
+# Follow sailer section
+--------------------------------------------------------------*/
+.follow_sailer_section {
+    margin-top: 65px;
+}
+.follow_sailer_section .container-fluid {
+    max-width: 1060px;
+    margin: 0px auto;
+}
+.follow_sailer_section h2{
+    font-size: 64px;
+    color: #000;
+    text-align: center;
+    text-transform: uppercase;
+    padding-bottom: 45px;
+}
+.follow_sailer_box {
+    border: 1px solid #ebebeb;
+    border-radius: 15px;
+    height: 220px;
+    padding: 35px 30px;
+    margin-bottom: 15px;
+}
+.custmer_revie {
+    display: flex;
+}
+.custmer_text p {
+    font-size: 12px !important;
+    font-weight: 600;
+}
+.follow_main_text {
+    font-size: 15px;
+    font-weight: 600;
+    padding-top: 15px;
+}
+.custmer_text h5 {
+    font-size: 18px;
+    margin: 0;
+}
+.custmer_text {
+    margin-left: 16px;
+    padding-top: 8px;
+}
+.follow_sailer_box a {
+    color: #000;
+    text-decoration: underline;
+    display: inline-block;
+    padding-top: 7px;
+    font-family: 'Montserrat' !important;
+}
+/*--------------------------------------------------------------
+# Unique slider section
+--------------------------------------------------------------*/
+.unique_slider {
+    margin: 0 30px;
+    margin-top: 50px;
+}
+.unique_slider h2{
+    font-size: 64px;
+    color: #000;
+    text-align: center;
+    text-transform: uppercase;
+    padding-bottom: 45px;
+}
+.unique_slider {
+    padding: 20px 0px;
+    margin-top: 50px;
+}
+.unique_slider_box {
+    background: #f2f2f2;
+    border-radius: 15px;
+    text-align: center;
+    padding: 20px 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.unique_slider_box h3 {
+    font-size: 28px;
+    text-transform: uppercase;
+    padding-top: 15px;
+    color: #000;
+}
+.unique_slider_box p {
+    font-size: 15px;
+    font-weight: 400;
+    color: #000;
+}
+.unique_slider_box:hover {
+    background: #f9a126;
+}
+.unique_slider_box:hover h3,
+.unique_slider_box:hover p {
+    color: #fff;
+}
+.unique_slider_box:hover img {
+    filter: invert(1);
+}
+.unique_slider_box  img {
+    margin: 0px auto;
+}
+/*--------------------------------------------------------------
+# Next trip section
+--------------------------------------------------------------*/
+.next_trip_section {
+    margin-top: 50px;
+    margin-bottom: 85px;
+}
+.next_trip_section h2{
+    font-size: 64px;
+    color: #000;
+    text-align: center;
+    text-transform: uppercase;
+    padding-bottom: 45px;
+}
+.next_trip_box img {
+    width: 100%;
+    height: 290px;
+    object-fit: cover;
+    border-radius: 15px 15px 0px 0px;
+}
+.next_trip_section .container-fluid {
+    padding: 0px 30px;
+}
+.next_trip_text h3 {
+    font-size: 28px;
+    text-transform: uppercase;
+    color: #000;
+}
+.next_trip_text p {
+    font-weight: 400;
+    color: #000;
+}
+.next_trip_box {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    border-radius: 15px;
+}
+.next_trip_text {
+    padding: 20px 25px;
+}
+.next_trip_text .trip_date_text span:last-child {
+    float: right;
+    font-size: 12px;
+    font-weight: 600;
+}
+.trip_date_text a {
+    color: #000;
+    text-decoration: underline;
+    display: inline-block;
+    font-family: 'Montserrat' !important;
+    font-weight: 500;
+}
+.trip_date_text {
+    padding-top: 15px;
+}
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+.footer {
+    background: #37393c;
+    padding-top: 70px;
+    padding-bottom: 20px;
+}
+.footer .container-fluid {
+    max-width: 1175px;
+    margin: 0px auto;
+}
+.footer_newsletter h3 {
+    color: #fff;
+    font-size: 25px;
+    text-transform: uppercase;
+}
+.footer_newsletter p {
+    font-size: 20px;
+    color: #fff;
+    font-weight: 600;
+}
+.footer_newsletter a {
+    font-size: 16px;
+    color: #f8a126;
+    font-family: 'Montserrat' !important;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.footer_newsletter p {
+    font-size: 20px;
+    color: #fff;
+    font-weight: 400;
+    padding-top: 5px;
+    padding-bottom: 12px;
+}
+.footer .container-fluid h5 {
+    font-size: 15px;
+    color: #f8a126;
+    text-transform: uppercase;
+    padding-bottom: 15px;
+}
+.footer_menu ul {
+    list-style: none;
+}
+.footer_menu ul li{
+    padding: 5px 0px;
+}
+.footer_menu ul li a {
+    font-size: 15px;
+    color: #fff;
+    font-family: 'Montserrat' !important;
+    font-weight: 400;
+}
+.footer .container-fluid .call_box_sec a, .footer .container-fluid .email_box_sec a {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 400 !important;
+    font-family: 'Montserrat' !important;
+}
+.footer .container-fluid .email_box_sec {
+    padding-top: 36px;
+}
+.footer_social_links ul {
+    list-style: none;
+}
+.footer_social_links ul li{
+    display: inline-block;
+}
+.footer_social_links ul li a i {
+    color: #353639;
+    background: #fff;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 50%;
+    text-align: center;
+}
+.footer_social_links ul li {
+    display: inline-block;
+    padding: 0 10px 0px 0;
+}
+.footer_social_links {
+    float: right;
+}
+.footer_menu {
+    padding-left: 110px;
+}
+.cal_mail_box {
+    padding-left: 100px;
+}
+.copyright p {
+    color: #fff;
+    text-align: center;
+    padding-top: 30px;
 }
