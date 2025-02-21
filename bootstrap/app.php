@@ -7,6 +7,7 @@ use Illuminate\Foundation\Configuration\Middleware;
 use App\Http\Middleware\OnlyAdminMiddleware;
 use App\Http\Middleware\OnlyCustomerMiddleware;
 use App\Http\Middleware\OnlyBoatownerMiddleware;
+use App\Http\Middleware\EnsureAjaxRequest;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -20,6 +21,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'onlyAdmin' => OnlyAdminMiddleware::class,
             'onlyCustomer' => OnlyCustomerMiddleware::class,
             'onlyBoatowner' => OnlyBoatownerMiddleware::class,
+            'ajax' => EnsureAjaxRequest::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

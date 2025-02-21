@@ -24,6 +24,7 @@
 </head>
 
 <body class="page">
+    <input type="hidden" value="{{ url('/') }}" id="baseUrl">
     <header class="header header-slider">
             <div class="header_main">
             <nav class="navbar navbar-expand-lg navbar-light" id="nav-bar">

@@ -325,7 +325,24 @@ $(document).ready(function() {
 });
 $(document).ready(function() {
 	$(document).on('click','#boat-register', function() {
-		$('#lrModal').modal('show');  // Opens the modal
+		var baseUrl = $('#baseUrl').val();
+		$.ajax({
+			url: baseUrl+'/ajax/getregisterboatform',  // URL for the image upload endpoint
+			type: 'GET',
+			success: function(response) {
+				if (response.success) {
+					$('#logo-img').removeClass('hide');
+					$('#website-logo').attr('src', response.imageUrl);
+				} else {
+					$('.alert-danger').css("display",'block');
+					$('#error-msg').html("Image upload failed!");
+				}
+			},
+			error: function(xhr, status, error) {
+				$('#statusMessage').text('An error occurred while uploading the image.').css('color', 'red');
+			}
+		});
+		$('#lrModal').modal(); 
 	});
 	
 });
