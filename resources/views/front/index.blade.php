@@ -446,13 +446,5 @@
         </section>
 
 <!-- /next trip Section --> 
-<script>
-    $(function () {
-  $('.datepicker').datepicker({
-    language: "es",
-    autoclose: true,
-    format: "dd/mm/yyyy"
-  });
-});
-</script>
+
 @endsection

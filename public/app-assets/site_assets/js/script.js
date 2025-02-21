@@ -96,15 +96,15 @@ $(document).ready(function(){
 	if($('.location_slider').length)
 	{
 	$('.location_slider').slick({
-			slidesToShow: 2,           // Number of slides visible at once (adjust as needed)
+			slidesToShow: 2,           
 			slidesToScroll: 1,
 			autoplay: true,
-			autoplaySpeed: 0,          // Setting this to 0 makes the slide continuously move
-			speed: 10000,               // Duration for one complete slide transition (increase for slower movement)
-			cssEase: 'linear',         // Ensures smooth, continuous motion
+			autoplaySpeed: 0,         
+			speed: 10000,               
+			cssEase: 'linear',        
 			infinite: true,
-			arrows: false,             // Hides navigation arrows for a cleaner marquee effect
-			pauseOnHover: false,       // Keeps the marquee moving even when hovered
+			arrows: false,            
+			pauseOnHover: false,      
 			pauseOnFocus: false,
 			variableWidth: true,
 			
@@ -322,6 +322,12 @@ $(document).ready(function() {
         $(this).prev().toggle();
         return false;
     });
+});
+$(document).ready(function() {
+	$(document).on('click','#boat-register', function() {
+		$('#lrModal').modal('show');  // Opens the modal
+	});
+	
 });
 
 

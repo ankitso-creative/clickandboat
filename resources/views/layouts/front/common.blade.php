@@ -16,9 +16,9 @@
     <link rel="stylesheet" href="{{ asset('app-assets/site_assets/css/slick-theme.css') }}">   
     <link rel="stylesheet" href="{{ asset('app-assets/site_assets/css/slick.css') }}">   
     <link rel="stylesheet" href="{{ asset('app-assets/site_assets/css/style.css') }}"> 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"  />  
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <script src="{{ asset('app-assets/site_assets/libs/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('app-assets/site_assets/js/jquery.js') }}"></script>
 
     @yield('css')
 </head>
@@ -57,10 +57,10 @@
                        </li>
                        <li><a class="nav-link gbp_btn" href="#">GBP: £</a></li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Register your boat  </a>
+                            <a class="nav-link" id="boat-register" href="javascript:;">Register your boat  </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Sign Up</a>
+                            <a class="nav-link" id="sign-up" href="javascript:;">Sign Up</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link">Help</a>
@@ -126,6 +126,47 @@
             <p>© Boat Daze | All rights reserved</p>
         </div>
     </footer>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bootstrap Modal with jQuery</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  
+  <!-- Bootstrap JS -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+
+  <!-- Modal -->
+    <div class="modal" id="lrModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal Title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Content goes here.
+                </div>
+            </div>
+        </div>
+    </div>
+
+  <!-- jQuery to trigger the modal -->
+
+</body>
+</html>
+
     <!-- .footer-->
     <!-- ++++++++++++-->
     <!-- MAIN SCRIPTS-->
@@ -133,7 +174,7 @@
     
     <script src="{{ asset('app-assets/site_assets/js/bootstrap.mim.js') }}"></script>
     <script src="{{ asset('app-assets/site_assets/js/popper.mim.js') }}"></script>
-    <script src="{{ asset('app-assets/site_assets/js/map.js') }}"></script>
+    {{-- <script src="{{ asset('app-assets/site_assets/js/map.js') }}"></script> --}}
     <script src="{{ asset('app-assets/site_assets/js/slick.min.js') }}"></script>
     <script src="{{ asset('app-assets/site_assets/js/script.js') }}"></script>
    @yield('js')
