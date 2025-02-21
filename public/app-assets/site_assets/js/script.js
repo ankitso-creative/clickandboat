@@ -22,15 +22,16 @@ $(document).ready(function(){
 			$('.search-popup').addClass('d-none')
 		}
 	})
-	if($('.sporten-sliders').length)
+	if($('.unique_sliders').length)
 	{
-		$('.sporten-sliders').slick({
-		    infinite: true,
-		   	//centerMode: true,
-		  	slidesToShow: 3,
+		$('.unique_sliders').slick({
+		    //infinite: true,
+		  	slidesToShow: 4,
 			slidesToScroll: 1,
+			autoplay: true,
+			draggable: true,
 			loop: true,
-		  	//autoplay: true,
+			arrows: true,
 		 	autoplaySpeed: 3000,
 		 	responsive: [
 			{
@@ -57,7 +58,58 @@ $(document).ready(function(){
 		  ]
 		});
 	}
-	
+	if($('.boat_type_slider').length)
+		{
+			$('.boat_type_slider').slick({
+				//infinite: true,
+				  slidesToShow: 2,
+				slidesToScroll: 1,
+				autoplay: true,
+				draggable: true,
+				loop: true,
+				 autoplaySpeed: 3000,
+				 responsive: [
+				{
+				  breakpoint: 1000,
+				  settings: {
+					slidesToShow: 3,
+					slidesToScroll: 1
+				  }
+				},
+				{
+				  breakpoint: 770,
+				  settings: {
+					slidesToShow: 2,
+					slidesToScroll: 1
+				  }
+				},
+				{
+				  breakpoint: 480,
+				  settings: {
+					slidesToShow: 1,
+					slidesToScroll: 1
+				  }
+				}
+			  ]
+			});
+		}
+	if($('.location_slider').length)
+	{
+	$('.location_slider').slick({
+			slidesToShow: 2,           // Number of slides visible at once (adjust as needed)
+			slidesToScroll: 1,
+			autoplay: true,
+			autoplaySpeed: 0,          // Setting this to 0 makes the slide continuously move
+			speed: 10000,               // Duration for one complete slide transition (increase for slower movement)
+			cssEase: 'linear',         // Ensures smooth, continuous motion
+			infinite: true,
+			arrows: false,             // Hides navigation arrows for a cleaner marquee effect
+			pauseOnHover: false,       // Keeps the marquee moving even when hovered
+			pauseOnFocus: false,
+			variableWidth: true,
+			
+			});
+}
 	if($('.package_slider').length)
 	{
 		$('.package_slider').slick({
