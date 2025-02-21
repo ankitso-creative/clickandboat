@@ -20,6 +20,7 @@ use App\Http\Controllers\BoatOwner\ProfileController as BoatOwnerProfileControll
 use App\Http\Controllers\Customer\BookingController;
 use App\Http\Controllers\Customer\DashboardController as CustomerDashboardController;
 use App\Http\Controllers\Customer\ProfileController;
+use App\Http\Controllers\Site\AjaxController;
 use App\Http\Controllers\Site\PagesController;
 
 Route::prefix('admin')->name('admin.')->group(function () {
@@ -120,7 +121,9 @@ Route::get('single/{slug}', [PagesController::class, 'single'])->name('single');
 Route::match(['get', 'post'],'checkout', [PagesController::class, 'checkout'])->name('checkout');
 Route::get('getbookingprice', [PagesController::class, 'getBookingPrice'])->name('getbookingprice');
 
-
+Route::prefix('ajax')->name('ajax.')->middleware('ajax')->group(function () {
+    Route::get('getregisterboatform', [AjaxController::class, 'getRegisterBoatForm'])->name('getregisterboatform');
+});
 
 
 
