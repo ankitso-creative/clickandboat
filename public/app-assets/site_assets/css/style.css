@@ -399,6 +399,10 @@ h1, h2, h3, h4, h5, h6 {
 .navbar-brand {
     width: 18%;
 }
+.dropdown .dropdown-item {
+    background: #f8a126 !important;
+    margin: 0px 5px 6px 0 !important;
+}
 /*--------------------------------------------------------------
 # Home Banner
 --------------------------------------------------------------*/
@@ -509,6 +513,12 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 15px;
     margin-top: 33px;
     cursor: pointer;
+    transition: 0.3s;
+}
+.search_btn:hover {
+    background: none;
+    color: #f8a126;
+    border: 1px solid #f8a126;
 }
 .datepicker .input-group-text {
     background: #00000047;
@@ -658,6 +668,13 @@ h1, h2, h3, h4, h5, h6 {
     display: inline-block;
     color: #fff;
     border-radius: 15px;
+    border: 1px solid #f8a126;
+}
+.find_boat_btn a:hover,
+.estimate_btn a:hover {
+    background: none;
+    color: #f8a126;
+    border: 1px solid #f8a126;
 }
 .find_boat_btn a{
     padding: 12px 40px;
@@ -896,11 +913,33 @@ h1, h2, h3, h4, h5, h6 {
 .unique_slider_box  img {
     margin: 0px auto;
 }
+.unique_slider .slick-prev::before {
+    content: url(../img/slider-icon-pre.png) !important;
+}
+.unique_slider .slick-next::before {
+    content: url(../img/slider-icon-next.png) !important;
+}
+.unique_slider .slick-prev,
+.unique_slider .slick-next {
+    width: 40px !important;
+    height: 40px !important;
+    z-index: 1 !important;
+}
+.unique_slider .slick-prev {
+    bottom: -100px;
+    top: auto;
+    left: 48%;
+}
+.unique_slider .slick-next {
+    bottom: -100px;
+    top: auto;
+    left: 52%;
+}
 /*--------------------------------------------------------------
 # Next trip section
 --------------------------------------------------------------*/
 .next_trip_section {
-    margin-top: 50px;
+    margin-top: 100px;
     margin-bottom: 85px;
 }
 .next_trip_section h2{
