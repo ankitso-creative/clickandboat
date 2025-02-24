@@ -20,6 +20,42 @@ class UserRegisterController extends Controller
         }
         return view('front.register');
     }
+    public function checkBoat()
+    {
+        $role = 'boatowner';
+        return view('front.checkusers',compact('role'));
+    }
+    public function checkUser()
+    {
+        $role = 'customer';
+        return view('front.checkusers',compact('role'));
+    }
+    public function checkUserEmailLogin(Request $request)
+    {
+        $messages = [
+            'email.required' => 'Email address is required.',
+            'email.email' => 'Please provide a valid email address.',
+        ];
+        // Validate the incoming request data
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|string|email|max:255',
+            'role' => '',
+        ],$messages);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+        $emailExists = User::where('email', $request->email)->exists();
+        if($emailExists):
+            return redirect()->route('login');
+        else:
+            if($request->email == 'boatowner'):
+                return redirect()->route('register_your_boat'); 
+            else:
+                return redirect()->route('register'); 
+            endif;
+        endif;
+        
+    }
     public function registerYourBoat()
     {
         if (Auth::check()) {

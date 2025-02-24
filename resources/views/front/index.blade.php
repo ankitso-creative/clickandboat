@@ -15,7 +15,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="banner_text">
-                            <h1>Boat Booking<span class="banner_text_style">...</span><br>Made <span class="banner_text_style">Easy.</span></h1>
+                            <h1>{{ __('home.banner')}}<span class="banner_text_style">...</span><br>{{ __('home.bannet-text')}} <span class="banner_text_style">{{ __('home.bannet1')}}.</span></h1>
                         </div>
                     </div>
                 </div>
@@ -26,14 +26,14 @@
                 <form>
                 <div class="row">
                     <div class="col">
-                        <label>Place of departure</label>
+                        <label>{{ __('home.search-area')}}</label>
                     <div class="form-group has-search">
                         <span class="fa fa-search form-control-feedback"></span>
                         <input type="text" class="form-control" placeholder="Ibiza, Croatia, Sardinia...">
                     </div>
                     </div>
                     <div class="col">
-                        <label>Starting date</label>
+                        <label>{{ __('home.starting-date')}}</label>
                         <div class="mb-4 form-group">
                         <div class="datepicker date input-group">
                         <div class="input-group-append">
@@ -44,7 +44,7 @@
                     </div>
                     </div>
                     <div class="col">
-                        <label>Ending date</label>
+                        <label>{{ __('home.ending-date')}}</label>
                         <div class="mb-4 form-group">
                         <div class="datepicker date input-group">
                         <div class="input-group-append">
@@ -55,7 +55,7 @@
                     </div>
                     </div>
                     <div class="col">
-                        <label>Boat type</label>
+                        <label>{{ __('home.boat-type')}}</label>
                         <div class="boat_select">
                         <span><i class="fa-solid fa-sailboat"></i></span>
                         <select name="cars" id="cars">
@@ -67,7 +67,7 @@
                         </div>
                     </div>
                     <div class="col">
-                      <button class="search_btn">Search</button>
+                      <button class="search_btn">{{ __('home.search')}}</button>
                     </div>
                 </div>
                 </form>
