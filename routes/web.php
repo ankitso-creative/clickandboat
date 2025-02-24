@@ -106,6 +106,9 @@ Route::middleware('Setlang')->group(function(){
     Route::get('reset-password/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
     Route::post('reset-password', [ResetPasswordController::class, 'reset'])->name('password.update');
 
+    Route::get('/boatlogin', [UserRegisterController::class, 'checkBoat'])->name('boatlogin');
+    Route::get('/userlogin', [UserRegisterController::class, 'checkUser'])->name('userlogin');
+    Route::post('/checkemail', [UserRegisterController::class, 'checkUserEmailLogin'])->name('checkemail');
     Route::get('/register', [UserRegisterController::class, 'index'])->name('register');
     Route::get('/register_your_boat', [UserRegisterController::class, 'registerYourBoat'])->name('register-your-boat');
     Route::post('/do_register', [UserRegisterController::class, 'register'])->name('do_register');
