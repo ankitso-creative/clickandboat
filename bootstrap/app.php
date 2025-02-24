@@ -8,6 +8,7 @@ use App\Http\Middleware\OnlyAdminMiddleware;
 use App\Http\Middleware\OnlyCustomerMiddleware;
 use App\Http\Middleware\OnlyBoatownerMiddleware;
 use App\Http\Middleware\EnsureAjaxRequest;
+use App\Http\Middleware\SetLang;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -22,6 +23,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'onlyCustomer' => OnlyCustomerMiddleware::class,
             'onlyBoatowner' => OnlyBoatownerMiddleware::class,
             'ajax' => EnsureAjaxRequest::class,
+            'Setlang' => SetLang::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

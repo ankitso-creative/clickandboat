@@ -79,7 +79,7 @@
         <section class="featured_boats_section">
             <div class="container-fluid">
                 <div class="featured_boat_heading">
-                    <h2>Featured boats</h2>
+                    <h2>{{ __('home.featured-boats')}}</h2>
                 </div>
                 <div class="row">
                     <div class="col-sm-12 col-md-6 col-lg-4">
