@@ -1,5 +1,4 @@
 @extends('layouts.front.common')
-
 @section('meta')
     <title>Manage Users</title>
 @endsection

@@ -951,6 +951,137 @@ h1, h2, h3, h4, h5, h6 {
     padding-top: 15px;
 }
 /*--------------------------------------------------------------
+# Signup form
+--------------------------------------------------------------*/
+.login_sign_up_form{
+    background-image: url(../img/REGISTER-PAGE--SIGN-UP.jpg);
+    width: 100%;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+.login_sign_up_form .container {
+    max-width: 800px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.login_sign_up_form .col-md-12 {
+    background: #fff;
+    padding: 0;
+    border-radius: 15px;
+    padding-bottom: 50px;
+}
+.signup_form {
+    background: #f9a126;
+    border-radius: 15px 15px 0px 0;
+}
+.signup_form h2 {
+    font-size: 28px;
+    color: #fff;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+.signup_form h2 {
+    font-size: 28px;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+}
+.singup_welcome_section {
+    max-width: 450px;
+    margin: 40px auto 0;
+}
+.singup_welcome_section h2 {
+    font-size: 28px;
+    text-align: center;
+    text-transform: uppercase;
+    padding-bottom: 20px;
+    color: #000;
+}
+.sing_upform_logo{
+    text-align: center;
+}
+.sing_upform_logo img {
+    width: 30%;
+    padding-bottom: 25px;
+}
+.singup_welcome_section button {
+    background: #f9a126;
+    border: 1px solid #f9a126;
+    padding: 10px 15px;
+    display: block;
+    width: 100%;
+    border-radius: 15px;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s;
+    text-transform: uppercase;
+}
+.singup_welcome_section button:hover{
+    background:none;
+    color: #f9a126;
+    border: 1px solid #f9a126;
+}
+.form_or_text {
+    text-align: center;
+    font-weight: 600;
+    position: relative;
+    margin-top: 20px;
+    text-transform: uppercase;
+    color: #000;
+}
+.form_or_text:after {
+    content: "";
+    width: 205px;
+    height: 1px;
+    background: #ced4da;
+    position: absolute;
+    top: 50%;
+    right: 0;
+}
+.form_or_text:before {
+    content: "";
+    width: 205px;
+    height: 1px;
+    background: #ced4da;
+    position: absolute;
+    top: 50%;
+    left: 0;
+}
+.form_signup_other_option a {
+    font-size: 15px;
+    color: #000;
+    text-transform: uppercase;
+    border: 1px solid #ced4da;
+    display: block;
+    text-align: center;
+    padding: 14px 0 8px 0px;
+    border-radius: 7px;
+}
+.form_signup_other_option .col-md-4 {
+    padding: 0 7px;
+}
+.form_signup_other_option {
+    margin-top: 20px;
+}
+.form_signup_other_option .row{
+    padding: 0 20px;
+}
+.form_signup_other_option img {
+    margin: 0px 3px 5px 0;
+}
+.singup_welcome_section input {
+    height: 50px;
+}
+
+.singup_welcome_section ::placeholder { 
+    color: #000;
+  }
+/*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
 .footer {
