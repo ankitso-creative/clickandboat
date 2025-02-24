@@ -50,10 +50,9 @@
                             English
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            <a class="dropdown-item" href="setlang/es">Spanish</a>
+                            <a class="dropdown-item" href="setlang/en">English</a>
+                            
                             </div>
                        </li>
                        <li><a class="nav-link gbp_btn" href="#">GBP: £</a></li>
