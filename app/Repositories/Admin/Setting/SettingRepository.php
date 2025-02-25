@@ -1,5 +1,7 @@
 <?php
 namespace App\Repositories\Admin\Setting;
+
+use App\Models\Admin\Language;
 use App\Models\Admin\Setting;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Illuminate\Support\Facades\Storage;
@@ -66,5 +68,20 @@ class SettingRepository{
             'message' => 'Logo uploaded successfully.',
             'imageUrl' => $media->getUrl()
         ]);
+    }
+    public function getAllLanguages()
+    {
+        return Language::all();
+    }
+    public function storeLanguage($request)
+    {
+        $language = new Language();
+        $language->name = $request['name'];
+        $language->code = $request['code'];
+        if($language->save()):
+            return true;
+        else:
+            return false;
+        endif;
     }
 }
