@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Language\LanguageStoreRequest;
 use App\Services\Admin\Setting\SettingService;
+use Illuminate\Foundation\Console\LangPublishCommand;
 use Illuminate\Http\Request;
 
 class SettingController extends Controller
@@ -49,13 +51,30 @@ class SettingController extends Controller
         $request = $request->all();
         return $this->service->uploadLogoWhite($request);
     }
-
+    public function getLanguages()
+    {
+        $languages = $this->service->getAllLanguages();
+        $active = 'settings';
+        return view('admin.setting.languages', compact('active','languages'));
+    }
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function addLanguage()
     {
-        //
+        $active = 'settings';
+        return view('admin.setting.add', compact('active'));
+    }
+    public function storeLanguage(LanguageStoreRequest $request)
+    {
+        $request = $request->all();
+        $results = $this->service->storeLanguage($request);
+        if($results):
+           return redirect()->route('admin.languages')->with('success', 'Language added successfully!'); 
+        else:
+            session()->flash('error', 'There was an error with your submission.');
+            return redirect()->route('admin.languages');  
+        endif;
     }
 
     /**

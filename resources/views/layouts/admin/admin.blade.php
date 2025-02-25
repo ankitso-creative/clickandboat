@@ -189,13 +189,24 @@
                                 <span class="arrow open"></span>
                             </a>
                         </li>
-                        <li class="nav-item start {{ $active == 'settings' ? 'active open' : '' }}">
-                            <a href="{{ route('admin.settings.index') }}" class="nav-link">
+                        <li class="nav-item {{ $active == 'settings' ? 'active open' : '' }}">
+                            <a href="javascript:;" class="nav-link nav-toggle">
                                 <i class="fa fa-gear"></i>
                                 <span class="title">Manage Settings</span>
-                                <span class="selected"></span>
-                                <span class="arrow open"></span>
+                                <span class="arrow"></span>
                             </a>
+                            <ul class="sub-menu">
+                                <li class="nav-item  ">
+                                    <a href="{{ route('admin.settings.index') }}" class="nav-link ">
+                                        <span class="title">General Settings</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item  ">
+                                    <a href="{{ route('admin.languages') }}" class="nav-link ">
+                                        <span class="title">Language Settings</span>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                     <!-- END SIDEBAR MENU -->

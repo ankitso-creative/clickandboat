@@ -60,6 +60,10 @@ Route::middleware('Setlang')->group(function(){
         Route::post('setting_update', [SettingController::class, 'storeUpdate'])->name('setting_update');  
         Route::post('upload_logo', [SettingController::class, 'uploadLogo'])->name('upload_logo');  
         Route::post('upload_logo_white', [SettingController::class, 'uploadLogoWhite'])->name('upload_logo_white');  
+        Route::get('settings/add-language', [SettingController::class, 'addLanguage'])->name('add-language');  
+        Route::post('settings/store-language', [SettingController::class, 'storeLanguage'])->name('store-language');  
+        Route::get('settings/languages', [SettingController::class, 'getLanguages'])->name('languages');  
+        Route::post('settings/language-status', [SettingController::class, 'changeStatus'])->name('language-status');  
     });
     Route::prefix('boatowner')->name('boatowner.')->middleware(['auth:sanctum', 'verified', 'onlyBoatowner'])->group(function () {
         Route::get('dashboard', [BoatOwnerDashboardController::class, 'index'])->name('dashboard');

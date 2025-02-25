@@ -26,4 +26,12 @@ class SettingService{
     {
         return $this->repostiry->uploadLogoWhite($request);
     }
+    public function getAllLanguages()
+    {
+        return $this->repostiry->getAllLanguages();
+    }
+    public function storeLanguage($request)
+    {
+        return $this->repostiry->storeLanguage($request);
+    }
 }
