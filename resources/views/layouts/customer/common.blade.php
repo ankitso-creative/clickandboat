@@ -12,9 +12,14 @@
     <meta name="HandheldFriendly" content="true">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     @yield('meta')
-    <link rel="stylesheet" href="{{ asset('app-assets/site_assets/css/master.css') }}">   
+    <link rel="stylesheet" href="{{ asset('app-assets/site_assets/css/bootstrap.min.css') }}">   
+    <link rel="stylesheet" href="{{ asset('app-assets/site_assets/css/mdbootstrap.css') }}">   
+    <link rel="stylesheet" href="{{ asset('app-assets/site_assets/css/slick-theme.css') }}">   
+    <link rel="stylesheet" href="{{ asset('app-assets/site_assets/css/slick.css') }}">   
+    <link rel="stylesheet" href="{{ asset('app-assets/site_assets/css/style.css') }}"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"  />  
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <script src="{{ asset('app-assets/site_assets/libs/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('app-assets/site_assets/js/jquery.js') }}"></script>
 
     @yield('css')
 </head>
@@ -160,37 +165,12 @@
     <!-- ++++++++++++-->
     <!-- MAIN SCRIPTS-->
     <!-- ++++++++++++-->
-    
-    <script src="{{ asset('app-assets/site_assets/libs/jquery-migrate-1.4.1.min.js') }}"></script>
-    <!-- Bootstrap-->
-    <script src="{{ asset('app-assets/site_assets/plugins/popever/popper.min.js') }}"></script>
-    <script src="{{ asset('app-assets/site_assets/libs/bootstrap-4.1.3/js/bootstrap.min.js') }}"></script>
-    <!---->
-    <!-- Color scheme-->
-    <script src="{{ asset('app-assets/site_assets/plugins/switcher/js/dmss.js') }}"></script>
-    <!-- Select customization & Color scheme-->
-    <script src="{{ asset('app-assets/site_assets/libs/bootstrap-select.min.js') }}"></script>
-    <!-- Pop-up window-->
-    <script src="{{ asset('app-assets/site_assets/plugins/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
-    <!-- Headers scripts-->
-    <script src="{{ asset('app-assets/site_assets/plugins/headers/slidebar.') }}"></script>
-    <script src="{{ asset('app-assets/site_assets/plugins/headers/header.js') }}"></script>
-    <!-- Mail scripts-->
-    <script src="{{ asset('app-assets/site_assets/plugins/jqBootstrapValidation.js') }}"></script>
-    <!-- Progress numbers-->
-    <script src="{{ asset('app-assets/site_assets/plugins/rendro-easy-pie-chart/jquery.easypiechart.min.js') }}"></script>
-    <script src="{{ asset('app-assets/site_assets/plugins/rendro-easy-pie-chart/jquery.waypoints.min.') }}"></script>
-    <!-- Animations-->
-    <script src="{{ asset('app-assets/site_assets/plugins/scrollreveal/scrollreveal.min.js') }}"></script>
-    <!-- Scale images-->
-    <script src="{{ asset('app-assets/site_assets/plugins/ofi.min.js') }}"></script>
-    <!-- User customization-->
-    <script src="{{ asset('app-assets/site_assets/js/custom.js') }}"></script>
-
-    <!-- User map-->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCreq2ZVp-3lJ-_KCZpeJVZ5RN3VJXk-9c"></script>
-    <!-- Maps customization-->
-    <script src="{{ asset('app-assets/site_assets/js/map-custom.js') }}"></script>
+    <script src="{{ asset('app-assets/site_assets/js/bundle.min.js') }}"></script>
+    <script src="{{ asset('app-assets/site_assets/js/bootstrap.mim.js') }}"></script>
+    <script src="{{ asset('app-assets/site_assets/js/popper.mim.js') }}"></script>
+    {{-- <script src="{{ asset('app-assets/site_assets/js/map.js') }}"></script> --}}
+    <script src="{{ asset('app-assets/site_assets/js/slick.min.js') }}"></script>
+    <script src="{{ asset('app-assets/site_assets/js/script.js') }}"></script>
     @yield('js')
 
 </body>
