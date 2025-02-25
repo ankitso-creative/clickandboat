@@ -84,4 +84,44 @@ class SettingRepository{
             return false;
         endif;
     }
+    public function editLanguage($id)
+    {
+        return Language::find($id);
+    }
+    public function updateLanguage($request,$id)
+    {
+        $language = Language::find($id);
+        $language->name = $request['name'];
+        $language->code = $request['code'];
+        if($language->update()):
+            return true;
+        else:
+            return false;
+        endif;
+    }
+    public function change_status($request)
+    {
+        $id = $request['id'];
+        $language = Language::where('id',$id)->first();
+        $language->status = $request['value'];
+        $language->update();
+        return $language;
+    }
+    public function destroyLanguage($id)
+    {
+        $language = Language::where('id',$id)->first();
+        if($language->delete()):
+            session()->flash('success', 'Language deleted successfully.');
+            return response()->json([
+                'success' => true, 
+                'url' =>route('admin.languages')
+            ]);
+        else:
+            session()->flash('success', 'There was an error deleting the user. Please try again.');
+            return response()->json([
+                'success' => true, 
+                'url' =>route('admin.languages')
+            ]);
+        endif;
+    }
 }

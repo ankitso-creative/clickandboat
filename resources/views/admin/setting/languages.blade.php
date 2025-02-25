@@ -83,8 +83,8 @@
                                             <td>{{ $language->name }}</td>
                                             <td><input  {{ $checked }} value="{{ $language->id }}" type="checkbox" data-size="mini" class="make-switch change_status" data-on-color="success" data-off-color="danger"></td>
                                             <td>
-                                                <a href="{{ route('admin.users.edit', $language->id) }}" class="btn btn-circle btn-icon-only btn-default tooltips" title = "Edit" href="javascript:;"> <i class="icon-note"></i></a>
-                                                <a href="{{ route('admin.users.destroy', $language->id) }}" class="btn btn-circle btn-icon-only btn-default tooltips delete_row" title = "Delete" href="javascript:;"> <i class="icon-trash"></i></a>
+                                                <a href="{{ route('admin.edit-language', $language->id) }}" class="btn btn-circle btn-icon-only btn-default tooltips" title = "Edit" href="javascript:;"> <i class="icon-note"></i></a>
+                                                <a href="{{ route('admin.destroy-language', $language->id) }}" class="btn btn-circle btn-icon-only btn-default tooltips delete_row" title = "Delete" href="javascript:;"> <i class="icon-trash"></i></a>
                                             </td>
                                         </tr> 
                                     @endforeach

@@ -61,7 +61,10 @@ Route::middleware('Setlang')->group(function(){
         Route::post('upload_logo', [SettingController::class, 'uploadLogo'])->name('upload_logo');  
         Route::post('upload_logo_white', [SettingController::class, 'uploadLogoWhite'])->name('upload_logo_white');  
         Route::get('settings/add-language', [SettingController::class, 'addLanguage'])->name('add-language');  
+        Route::get('settings/edit-language/{id}', [SettingController::class, 'edit'])->name('edit-language');  
         Route::post('settings/store-language', [SettingController::class, 'storeLanguage'])->name('store-language');  
+        Route::put('settings/update-language/{id}', [SettingController::class, 'update'])->name('update-language');  
+        Route::delete('settings/destroy-language/{id}', [SettingController::class, 'destroy'])->name('destroy-language');  
         Route::get('settings/languages', [SettingController::class, 'getLanguages'])->name('languages');  
         Route::post('settings/language-status', [SettingController::class, 'changeStatus'])->name('language-status');  
     });
@@ -124,11 +127,13 @@ Route::middleware('Setlang')->group(function(){
     });
 
     Route::get('/', [PagesController::class, 'index'])->name('home');
-    Route::get('/about-us', [PagesController::class, 'WhoWeAre'])->name('who-we-are');
-    Route::get('/ourwork', [PagesController::class, 'ourWork'])->name('ourwork');
+    Route::get('/about-us', [PagesController::class, 'aboutUs'])->name('about-us');
+    Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
+    Route::get('/ourfleet', [PagesController::class, 'ourFleet'])->name('ourfleet');
+    Route::get('/location', [PagesController::class, 'location'])->name('location');
     Route::get('/privacy-policy', [PagesController::class, 'PrivacyPolicy'])->name('privacy-policy');
     Route::get('/terms-condition', [PagesController::class, 'terms'])->name('terms-condition');
-    Route::get('/blog', [PagesController::class, 'blog'])->name('blog');
+    Route::get('/blogs', [PagesController::class, 'blog'])->name('blogs');
 
     Route::get('single/{slug}', [PagesController::class, 'single'])->name('single');
     Route::match(['get', 'post'],'checkout', [PagesController::class, 'checkout'])->name('checkout');

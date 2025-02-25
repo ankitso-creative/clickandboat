@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Language\LanguageStoreRequest;
+use App\Http\Requests\Admin\Language\LanguageUpdateRequest;
 use App\Services\Admin\Setting\SettingService;
-use Illuminate\Foundation\Console\LangPublishCommand;
 use Illuminate\Http\Request;
 
 class SettingController extends Controller
@@ -82,15 +82,28 @@ class SettingController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $language = $this->service->editLanguage($id);
+        $active = 'settings';
+        return view('admin.setting.edit', compact('active','language'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(LanguageUpdateRequest $request, string $id)
     {
-        //
+        $request = $request->all();
+        $results = $this->service->updateLanguage($request,$id);
+        if($results):
+           return redirect()->route('admin.languages')->with('success', 'Language updated successfully!'); 
+        else:
+            session()->flash('error', 'There was an error with your submission.');
+            return redirect()->route('admin.languages');  
+        endif;
+    }
+    public function changeStatus(Request $request)
+    {
+       return $this->service->change_status($request);
     }
 
     /**
@@ -98,6 +111,7 @@ class SettingController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        return $this->service->destroyLanguage($id);
+        
     }
 }
