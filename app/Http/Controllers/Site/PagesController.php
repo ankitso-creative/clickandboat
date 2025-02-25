@@ -68,13 +68,21 @@ class PagesController extends Controller
         $price = bookingPrice($request);
         return view('front.checkout',compact('dateData','listing','price'));
     }
-    public function WhoWeAre()
+    public function aboutUs()
     {
-        return view('front.who-we-are');
+        return view('front.about');
     }
-    public function ourWork()
+    public function contact()
     {
-        return view('front.ourwork');
+        return view('front.contact');
+    }
+    public function location()
+    {
+        return view('front.location');
+    }
+    public function ourFleet()
+    {
+        return view('front.ourfleet');
     }
     public function PrivacyPolicy()
     {

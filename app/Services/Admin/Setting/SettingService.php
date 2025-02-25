@@ -34,4 +34,20 @@ class SettingService{
     {
         return $this->repostiry->storeLanguage($request);
     }
+    public function editLanguage($id)
+    {
+        return $this->repostiry->editLanguage($id);
+    }
+    public function updateLanguage($request,$id)
+    {
+        return $this->repostiry->updateLanguage($request,$id);
+    }
+    public function change_status($request)
+    {
+        return $this->repostiry->change_status($request);
+    }
+    public function destroyLanguage($id)
+    {
+        return $this->repostiry->destroyLanguage($id);
+    }
 }

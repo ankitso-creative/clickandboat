@@ -339,7 +339,11 @@ $(document).ready(function() {
 		});
 		$('#lrModal').modal(); 
 	});
-	
+	$(document).on('change','#language', function() {
+		var baseUrl = $('#baseUrl').val();
+		var val = $(this).val();
+		window.location.href = baseUrl + '/setlang/' +val;
+	});	
 });
 
 

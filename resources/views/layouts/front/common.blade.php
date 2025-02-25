@@ -44,15 +44,10 @@
                             <a class="dropdown-item" href="#">Something else here</a>
                             </div>
                        </li>
-                       <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            English
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="setlang/es">Spanish</a>
-                            <a class="dropdown-item" href="setlang/en">English</a>
-                            
-                            </div>
+                       <li class="nav-item">
+                            <select class="select-language" id="language">
+                                {{!! selectOption('languages','name','code',session()->get('lang'),array('status' , '1'),) !!}}
+                            <select>
                        </li>
                        <li><a class="nav-link gbp_btn" href="#">GBP: £</a></li>
                         <li class="nav-item">
@@ -87,11 +82,12 @@
                     <div class="footer_menu">
                         <h5>About Boat Daze</h5>
                         <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Locations</a></li>
-                            <li><a href="#">Our Fleet</a></li>
-                            <li><a href="#">Contact </a></li>
-                            <li><a href="#">Blog</a></li>
+                            <li><a href="{{ route('home') }}">Home</a></li>
+                            <li><a href="{{ route('about-us') }}">About Us</a></li>
+                            <li><a href="{{ route('location') }}">Locations</a></li>
+                            <li><a href="{{ route('ourfleet') }}">Our Fleet</a></li>
+                            <li><a href="{{ route('contact') }}">Contact </a></li>
+                            <li><a href="{{ route('blogs') }}">Blog</a></li>
                         </ul>
                     </div>
                 </div>
