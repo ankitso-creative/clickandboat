@@ -18,28 +18,16 @@
         display: none !important;
     }
 </style>
-    <div class="section-title-page area-bg area-bg_dark area-bg_op_60">
-        <div class="area-bg__inner">
-            <div class="container text-center">
-                <h1 class="b-title-page">Register Your Boat</h1>
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item"><a href="blog.html">Pages</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Register Your Boat</li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-    </div> 
     <!-- end .b-title-page-->
-    <div class="l-main-content">
+    <div class="l-main-content sign_up_form_section">
         <div class="container">
+        <div class="sing_upform_logo">
+                <img src="{{ asset('app-assets/site_assets/img/Booker-Boat-Logo-V1-white.png') }}">
+            </div>
             <div class="row">
-                <div class="mx-auto col-md-6">
+                <div class="mx-auto col-md-12">
+                <h2 class="text-center ui-title-inner">test</h2>
                     <section class="section-form-contacts">
-                        <h2 class="text-center ui-title-inner">test</h2>
-                        <p class="text-center">Nulla pariatur excepteur sint occaecat cupidatat no proident culpa qui officia des mollit anim id est lab orum ut perspiciatis unde omnis iste natuser sit volupta tem accusantium sed ipsum laudantium.</p>
                         <div id="success"></div>
                         @if(session('success'))
                             <div class="alert alert-success" style="display: block;">
@@ -74,13 +62,16 @@
                                 @enderror
                             </div>
                             <div class="form-group">
+                                <input class="form-control" type="tel" id="phone" name="phone" placeholder="Telephone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required>
+                            </div>
+                            <div class="form-group">
                                 <input class="form-control" id="user-password" type="password" name="password" placeholder="Password" />
                                 <input value="boatowner" type="hidden" name="role">
                                 @error('password')
                                     <span class="danger">{{ $message }}</span>
                                 @enderror
                             </div>
-                            <button type="submit" class="btn btn-primary">Register Your Boat</button>
+                            <button type="submit" class="btn_singup">Register Your Boat</button>
                         </form>
                     </section>
                 </div>
