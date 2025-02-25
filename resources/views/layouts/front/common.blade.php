@@ -56,10 +56,10 @@
                        </li>
                        <li><a class="nav-link gbp_btn" href="#">GBP: £</a></li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register-your-boat') }}">Register your boat  </a>
+                            <a class="nav-link" href="{{ route('boatlogin') }}">Register your boat  </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">Sign Up</a>
+                            <a class="nav-link" href="{{ route('userlogin') }}">Sign Up</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link">Help</a>
