@@ -14,7 +14,7 @@
 @section('content')
 <div class="col-lg-9 main-dashboard">
     <div class="page-title">
-        <h1>Your Profile</h1>
+        <h1>Complete your profile</h1>
     </div>
     @if(session('success'))
         <div class="alert alert-success" style="display: block;">
@@ -39,10 +39,13 @@
     @endif
     <ul class="nav nav-tabs" id="details-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="profile-tab" data-toggle="tab" data-target="#profile" type="button" role="tab" aria-controls="personal-detail" aria-selected="true">Profile Photo</button>
+            <button class="nav-link active" id="profile-tab" data-toggle="tab" data-target="#profile" type="button" role="tab" aria-controls="personal-detail" aria-selected="true">Verifications </button>
         </li>
         <li class="nav-item" role="presentation">
             <button class="nav-link" id="personal" data-toggle="tab" data-target="#personal-detail" type="button" role="tab" aria-controls="personal-detail" aria-selected="true">Information</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="experience-tab" data-toggle="tab" data-target="#experience" type="button" role="tab" aria-controls="experience" aria-selected="false">Boating experience level </button>
         </li>
         <li class="nav-item" role="presentation">
             <button class="nav-link" id="password-tab" data-toggle="tab" data-target="#password" type="button" role="tab" aria-controls="password" aria-selected="false">Password</button>
@@ -53,10 +56,35 @@
     </ul>
     <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <div class="verification_box_section">
+                <h2>Verification of your profile</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="verification_box">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <h3>Your email<br> address</h3>
+                            <p>Item checked</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="verification_box">
+                            <i class="fa-solid fa-circle-xmark"></i>
+                            <h3>Your<br> Sailing CV</h3>
+                            <p>Item checked</p>
+                        </div>
+                        <div class="complete_cv">
+                            <p>Complete my nautical CV</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade show" id="personal-detail" role="tabpanel" aria-labelledby="personal">
             <div class="card-section">
                 <div class="card-sec-title">
-                    <h2>Change Your Profile Photo</h2>
+                    <h2>Personal Information</h2>
                 </div>
+                <div class="card-section-two">
                 <div class="card-content">
                     <div class="line-entry change-avatar">
                         <div id="statusMessage"></div>
@@ -67,23 +95,17 @@
                             <h6>Change your photo</h6>
                             <p>Minimum size: 260px x 260px</p>
                             <input type="file" name="file" class="inputfile" id="file-input">
-                            <label for="file-input" id="fileSelectButton" class="btn btn-primary">Select an image</label>
+                            <label for="file-input" id="fileSelectButton" class="select_img_btn">Select an image</label>
                         </div>
                         <div class="clear"></div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="tab-pane fade show" id="personal-detail" role="tabpanel" aria-labelledby="personal">
-            <div class="card-section">
-                <div class="card-sec-title">
-                    <h2>Personal Information</h2>
-                </div>
                 <div class="card-content">
                     <form class="personal-details-form" action="{{ route('customer.profile.update') }}" method="post">
                         @csrf
                         @method('PUT')
-                        <div class="row">
+                        <div class="mt-4 row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="label-default">First Name<span class="required"> *</span></label>
@@ -182,8 +204,8 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="form-group">
-                                    <button class="btn btn-primary">Save</button>
+                                <div class="text-center form-group">
+                                    <button class="save_btn">Save</button>
                                 </div>
                             </div>
                         </div>
@@ -240,7 +262,7 @@
                     <form class="deactivate-form" action="" method="">
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="form-group text-center">
+                                <div class="text-center form-group">
                                     <button class="btn btn-primary">Deactivate Account</button>
                                 </div>
                             </div>
