@@ -96,4 +96,8 @@ class PagesController extends Controller
     {
         return view('front.blog');
     }
+    public function help()
+    {
+        return view('front.help');
+    }
 }

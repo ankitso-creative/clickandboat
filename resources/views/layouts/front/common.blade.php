@@ -46,7 +46,7 @@
                        </li>
                        <li class="nav-item">
                             <select class="select-language" id="language">
-                                {{!! selectOption('languages','name','code',session()->get('lang'),array('status' , '1'),) !!}}
+                                {{!! selectOption('languages','name','code',session()->get('lang'),array('status' , '1')) !!}}
                             <select>
                        </li>
                        <!-- <li><a class="nav-link gbp_btn" href="#">GBP: £</a></li> -->
@@ -67,7 +67,7 @@
                             <a class="nav-link" href="{{ route('userlogin') }}">Sign Up</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link">Help</a>
+                            <a href="{{ route('help') }}" class="nav-link">Help</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link"><i class="fa-solid fa-user"></i></a>
@@ -129,11 +129,8 @@
             <p>© Boat Daze | All rights reserved</p>
         </div>
     </footer>
-    
 
 
-  <!-- Modal -->
-    <!-- <div class="modal" id="lrModal" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
