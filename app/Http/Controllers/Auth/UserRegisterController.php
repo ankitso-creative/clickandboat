@@ -22,11 +22,17 @@ class UserRegisterController extends Controller
     }
     public function checkBoat()
     {
+        if (Auth::check()) {
+            return redirect()->route('customer.dashboard');  // Redirect to dashboard if user is already logged in
+        }
         $role = 'boatowner';
         return view('front.checkusers',compact('role'));
     }
     public function checkUser()
     {
+        if (Auth::check()) {
+            return redirect()->route('customer.dashboard');  // Redirect to dashboard if user is already logged in
+        }
         $role = 'customer';
         return view('front.checkusers',compact('role'));
     }

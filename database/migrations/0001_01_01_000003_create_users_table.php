@@ -18,8 +18,10 @@ return new class extends Migration
             $table->enum('role', RolesEnum::values())->default(RolesEnum::CUSTOMER->value);
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->rememberToken();
+            $table->string('provider')->nullable();
+            $table->string('provider_id')->nullable();
             $table->integer('status')->default('0');
             $table->timestamps();
         });
