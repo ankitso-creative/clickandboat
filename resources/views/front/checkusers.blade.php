@@ -18,6 +18,9 @@
         display: none !important;
     }
 </style>
+<?php
+session()->put("role",$role)
+?>
     <section class="login_sign_up_form">
         <div class="container">
             <div class="sing_upform_logo">
@@ -46,10 +49,10 @@
                     <div class="form_signup_other_option">
                         <div class="row justify-content-center">
                             <div class="col-md-4">
-                                <a href="#"><img src="{{ asset('app-assets/site_assets/img/signup-facebookicom.png') }}"> Continue with Facebook</a>
+                                <a href="{{ route('facebooklogin') }}"><img src="{{ asset('app-assets/site_assets/img/signup-facebookicom.png') }}"> Continue with Facebook</a>
                             </div>
                             <div class="col-md-4">
-                                <a href="#"><img src="{{ asset('app-assets/site_assets/img/signup-gooleicon.png') }}"> Continue with Google</a>
+                                <a href="{{ route('googlelogin')}}"><img src="{{ asset('app-assets/site_assets/img/signup-gooleicon.png') }}"> Continue with Google</a>
                             </div>
                             <div class="col-md-4">
                                 <a href="#"><img src="{{ asset('app-assets/site_assets/img/signup-appleiconpng.png') }}"> Continue with Apple</a>

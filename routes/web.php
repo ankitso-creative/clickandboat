@@ -12,6 +12,7 @@ use App\Http\Controllers\Auth\UserLoginController;
 use App\Http\Controllers\Auth\UserRegisterController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\Auth\SocialAuthController;
 use App\Http\Controllers\BoatOwner\BookingController as BoatOwnerBookingController;
 use App\Http\Controllers\BoatOwner\CustomerController;
 use App\Http\Controllers\BoatOwner\DashboardController as BoatOwnerDashboardController;
@@ -113,6 +114,12 @@ Route::middleware('Setlang')->group(function(){
     Route::get('reset-password/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
     Route::post('reset-password', [ResetPasswordController::class, 'reset'])->name('password.update');
 
+    Route::get('login/facebook', [SocialAuthController::class, 'redirectToFacebook'])->name('facebooklogin');
+    Route::get('login/facebook/callback', [SocialAuthController::class, 'handleFacebookCallback']);
+
+    Route::get('login/google', [SocialAuthController::class, 'redirectToGoogle'])->name('googlelogin');
+    Route::get('login/google/callback', [SocialAuthController::class, 'handleGoogleCallback']);
+
     Route::get('/boatlogin', [UserRegisterController::class, 'checkBoat'])->name('boatlogin');
     Route::get('/userlogin', [UserRegisterController::class, 'checkUser'])->name('userlogin');
     Route::post('/checkemail', [UserRegisterController::class, 'checkUserEmailLogin'])->name('checkemail');
@@ -128,6 +135,7 @@ Route::middleware('Setlang')->group(function(){
 
     Route::get('/', [PagesController::class, 'index'])->name('home');
     Route::get('/about-us', [PagesController::class, 'aboutUs'])->name('about-us');
+    Route::get('/help', [PagesController::class, 'help'])->name('help');
     Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
     Route::get('/ourfleet', [PagesController::class, 'ourFleet'])->name('ourfleet');
     Route::get('/location', [PagesController::class, 'location'])->name('location');
