@@ -49,7 +49,17 @@
                                 {{!! selectOption('languages','name','code',session()->get('lang'),array('status' , '1')) !!}}
                             <select>
                        </li>
-                       <li><a class="nav-link gbp_btn" href="#">GBP: £</a></li>
+                       <!-- <li><a class="nav-link gbp_btn" href="#">GBP: £</a></li> -->
+                       <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle about_menu" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            GBP: £
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
+                       </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('boatlogin') }}">Register your boat  </a>
                         </li>
@@ -120,8 +130,7 @@
         </div>
     </footer>
 
-    <!-- Modal -->
-    <div class="modal" id="lrModal" tabindex="-1" role="dialog">
+
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -135,7 +144,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
 
 
