@@ -129,11 +129,6 @@
             <p>© Boat Daze | All rights reserved</p>
         </div>
     </footer>
-
-
-
-
-
     <!-- .footer-->
     <!-- ++++++++++++-->
     <!-- MAIN SCRIPTS-->

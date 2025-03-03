@@ -19,5 +19,9 @@ class PageService{
     {
         return $this->repository->getListingData();
     }
+    public function allListingData()
+    {
+        return $this->repository->allListingData();
+    }
 }
 ?>
