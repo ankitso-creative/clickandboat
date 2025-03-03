@@ -28,15 +28,15 @@
     <div id="page-preloader"><span class="spinner border-t_second_b border-t_prim_a"></span></div>
     <!-- Loader end-->
     <div class="l-theme animated-css" data-header="sticky" data-header-top="200" data-canvas="container">
-        <header class="header-dashboard p-3">
+        <header class="p-3 header-dashboard">
             <div class="container-fluid">
             	<div class="row">
-            		<div class="col-lg-3 my-auto">
+            		<div class="my-auto col-lg-3">
             			<a href="" class="dashboard-logo">
             				<img src="{{ logoURL() }}" class="img-fluid" alt="logo">
             			</a>
             		</div>
-            		<div class="col-lg-9 my-auto">
+            		<div class="my-auto col-lg-9">
             			<div class="menus-customer">
             				<div class="currency-menus">
             					{{-- <form class="" action="" method="">
@@ -64,7 +64,7 @@
             	</div>
             </div>
         </header>
-       	<section class="main-dashboard-container container-fluid p-0">
+       	<section class="p-0 main-dashboard-container container-fluid">
             <div class="row account-overview">
                 @if($active !='listing')
                     <div class="col-lg-3">
@@ -92,74 +92,56 @@
             </div>
         </section>
         <footer class="footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 col-md-6">
-                        <div class="footer-section">
-                            <a class="footer__logo" href="index.html"><img class="img-fluid" src="{{ asset('app-assets/site_assets/img/blackandboat-logo-01.png') }}" alt="Logo"></a>
-                            <div class="footer-info">Ceipisicing elit sed do eiusmod tempor laboe dolore magna aliqa Ut enim ad minim veniam quis nostrud exercitation ullam co laboris nis aliquip comsecd.</div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12 col-md-6 col-lg-3">
+                    <div class="footer_newsletter">
+                        <h3>Stay In The Know</h3>
+                        <p>We Will Be Delighted To Assist</p>
+                        <a href="#">Contact Us <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-12 col-md-6 col-lg-3">
+                    <div class="footer_menu">
+                        <h5>About Boat Daze</h5>
+                        <ul>
+                            <li><a href="{{ route('home') }}">Home</a></li>
+                            <li><a href="{{ route('about-us') }}">About Us</a></li>
+                            <li><a href="{{ route('location') }}">Locations</a></li>
+                            <li><a href="{{ route('ourfleet') }}">Our Fleet</a></li>
+                            <li><a href="{{ route('contact') }}">Contact </a></li>
+                            <li><a href="{{ route('blogs') }}">Blog</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-12 col-md-6 col-lg-3">
+                    <div class="cal_mail_box">
+                        <div class="call_box_sec">
+                            <h5>Call Us</h5>
+                            <p><a href="tel:+1 755 302 8549">+1 755 302 8549</a></p>
                         </div>
-                        <section class="footer-section">
-                            <h3 class="footer-section__title footer-section__title_sm">Subscribe Newsletter</h3>
-                            <form class="footer-form">
-                                <div class="form-group">
-                                    <input class="footer-form__input form-control" type="email" placeholder="your email"><i class="ic far fa-envelope-open"></i> </div>
-                            </form>
-                        </section>
+                        <div class="email_box_sec">
+                            <h5>Email Us</h5>
+                            <p><a href="mailto:support@domain.com">support@domain.com</a></p>
+                        </div>
                     </div>
-                    <div class="col-lg-3 col-md-6">
-                        <section class="footer-section footer-section_link pl-5">
-                            <h3 class="footer-section__title">Boat Services</h3>
-                            <ul class="footer-list list-unstyled">
-                                <li><a href="#">Wedding Facility</a></li>
-                                <li><a href="#">Cruise and Marina</a></li>
-                                <li><a href="#">Yacht Party Event</a></li>
-                                <li><a href="#">Corporate Event</a></li>
-                                <li><a href="#">Fishing Cruiser</a></li>
-                                <li><a href="#">Overnight Stay</a></li>
-                                <li><a href="#">Birthday Party Yacht</a></li>
-                                <li><a href="#">Boar Rentals</a></li>
-                            </ul>
-                        </section>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <section class="footer-section footer-section_link">
-                            <h3 class="footer-section__title">About Nevica</h3>
-                            <ul class="footer-list list-unstyled">
-                                <li><a href="#"> Home</a></li>
-                                <li><a href="#">Services</a></li>
-                                <li><a href="#">About us</a></li>
-                                <li><a href="#">Boat Fleet</a></li>
-                                <li><a href="#">Parts Shop </a></li>
-                                <li><a href="#">Contact us</a></li>
-                                <li><a href="#">Buy or Sell Boats</a></li>
-                                <li><a href="#">Featured Vehicles</a></li>
-                            </ul>
-                        </section>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <section class="footer-section">
-                            <h3 class="footer-section__title">Get In Touch</h3>
-                            <div class="footer-contacts">
-                                <div class="footer-contacts__item"><i class="ic icon-location-pin"></i>Fairview Ave, El Monte, CA 91732</div>
-                                <div class="footer-contacts__item"><i class="ic icon-envelope"></i><a href="mailto:support@domain.com">support@domain.com</a></div>
-                                <div class="footer-contacts__item"><i class="ic icon-earphones-alt"></i> Phone: <a class="footer-contacts__phone" href="tel:+17553028549">+1 755 302 8549</a> </div>
-                            </div>
-                            <ul class="footer-soc list-unstyled">
-                                <li class="footer-soc__item"><a class="footer-soc__link" href="#" target="_blank"><i class="ic fab fa-twitter"></i></a></li>
-                                <li class="footer-soc__item"><a class="footer-soc__link" href="#" target="_blank"><i class="ic fab fa-behance"></i></a></li>
-                                <li class="footer-soc__item"><a class="footer-soc__link" href="#" target="_blank"><i class="ic fab fa-facebook-f"></i></a></li>
-                                <li class="footer-soc__item"><a class="footer-soc__link" href="#" target="_blank"><i class="ic fab fa-instagram"></i></a></li>
-                                <li class="footer-soc__item"><a class="footer-soc__link" href="#" target="_blank"><i class="ic fab fa-youtube"></i></a></li>
-                            </ul><a class="btn btn-white" href="#">confirm booking</a>
-                        </section>
+                </div>
+                <div class="col-md-12 col-md-6 col-lg-3">
+                    <div class="footer_social_links">
+                        <h5>Follow Us</h5>
+                        <ul>
+                            <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+                            <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
-            <div class="footer-copyright">
-                <div class="container">(c) 2022 Nevica - Boat Rentals . All rights reserved.</div>
-            </div>
-        </footer>
+        </div>
+        <div class="copyright">
+            <p>© Boat Daze | All rights reserved</p>
+        </div>
+    </footer>
         <!-- .footer-->
     </div>
     <!-- end layout-theme-->
