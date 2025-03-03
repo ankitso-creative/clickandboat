@@ -112,42 +112,20 @@
 @endsection
 
 @section('content')
-<div class="section-title-page area-bg area-bg_dark area-bg_op_60">
-   <div class="area-bg__inner">
-      <div class="container text-center">
-         <h1 class="b-title-page">{{ $listing->type }} {{ $listing->manufacturer }} {{ $listing->model }} {{ $listing->otherListingSetting->horsepower ?? '' }}hp</h1>
-         <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-               <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-               <li class="breadcrumb-item"><a href="blog.html">Pages</a></li>
-               <li class="breadcrumb-item active" aria-current="page">{{ $listing->type }} {{ $listing->manufacturer }} {{ $listing->model }} {{ $listing->otherListingSetting->horsepower ?? '' }}hp</li>
-            </ol>
-         </nav>
-         <!-- end .breadcrumb-->
-      </div>
-   </div>
-</div>
+<section class="single_boat_banner">
+</section>
 <!-- end .b-title-page-->
 <div class="l-main-content">
    <section class="boat-title">
       <div class="container">
          <div class="row">
             <div class="col-md-12">
-               <h2>Yacht charter in {{ $listing->city }} · {{ $listing->model }} — {{ $listing->manufacturer }} Open (2023)</h2>
+               <h1>Yacht charter in {{ $listing->city }} · {{ $listing->model }} — {{ $listing->manufacturer }} Open (2023)</h1>
             </div>
          </div>
          <div class="row">
-            <div class="col-md-6">
+            <div class="text-center col-md-12">
                <ul class="rating-menus">
-                  <li>
-                     <svg width="18" height="18" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" class="ratingStars__star">
-                        <path d="M14.9834 4.7703C15.2976 3.77533 16.6264 3.74424 17.004 4.67702L17.0375 4.7703L19.1348 11.5132H25.5781C26.6073 11.5132
-                           27.0448 12.8406 26.2761 13.4896L26.2052 13.545L20.9511 17.4077L22.9835 23.8603C23.2993 24.8604 22.2212 25.7122 21.3858
-                           25.1586L21.3186 25.1107L15.9997 21.114L10.6807 25.1107C9.86024 25.7189 8.75322 24.9322 8.99271 23.9432L9.01582 23.8603L11.0483
-                           17.4077L5.79417 13.545C4.95401 12.9377 5.33808 11.5929 6.33194 11.5166L6.4212 11.5132H12.8645L14.9834 4.7703Z"></path>
-                     </svg>
-                     5.0 <a href="#">(55 reviews)</a>
-                  </li>
                   <li>
                      <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M14.6666 6.66666C14.6666 4.99999 10.6666 2.66666 7.99998 2.66666C5.33331 2.66666 1.33331 4.99999 1.33331 6.66666C1.33331 7.56633 1.6247 8.466 2.20748 9.36568C4.13831 8.89966 6.06915 8.66666 7.99998 8.66666C9.89884 8.66666 11.7977 8.89201 13.6965 9.34271C14.3433 8.12733 14.6666 7.23531 14.6666 6.66666ZM7.99998 9.99999C9.77776 9.99999 11.5555 10.2222 13.3333 10.6667C12.2222 12.4444 10.4444 13.3333 7.99998 13.3333C5.55554 13.3333 3.77776 12.4444 2.66665 10.6667C4.44442 10.2222 6.2222 9.99999 7.99998 9.99999ZM7.99998 6.66666C8.55226 6.66666 8.99998 6.21894 8.99998 5.66666C8.99998 5.11437 8.55226 4.66666 7.99998 4.66666C7.44769 4.66666 6.99998 5.11437 6.99998 5.66666C6.99998 6.21894 7.44769 6.66666 7.99998 6.66666Z"></path>
@@ -173,7 +151,7 @@
                   </li>
                </ul>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-12">
                <ul class="share-menu">
                   <li>
                      <a href="#">
@@ -211,7 +189,7 @@
                   $profileImage = $listing->user->getFirstMediaUrl('profile_image');
                @endphp
                <div class="banner-first-image">
-                  <a href="#"><img src="{{ $image }}" alt="Image" class="img-fluid"></a>
+                  <a href="#"><img src="{{ asset('app-assets/site_assets/img/feature-img-1.jpg') }}" alt="Image" class="img-fluid"></a>
                </div>
             </div>
             <div class="col-md-6">
@@ -223,10 +201,10 @@
                         @endif
                      @endforeach
                   @else
-                     <a href="#"><img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" alt="Image" class="img-fluid"></a>
-                     <a href="#"><img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" alt="Image" class="img-fluid"></a>
-                     <a href="#"><img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" alt="Image" class="img-fluid"></a>
-                     <a href="#"><img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" alt="Image" class="img-fluid"></a>
+                     <a href="#"><img src="{{ asset('app-assets/site_assets/img/feature-img-3.jpg') }}" alt="Image" class="img-fluid"></a>
+                     <a href="#"><img src="{{ asset('app-assets/site_assets/img/feature-img-3.jpg') }}" alt="Image" class="img-fluid"></a>
+                     <a href="#"><img src="{{ asset('app-assets/site_assets/img/feature-img-3.jpg') }}" alt="Image" class="img-fluid"></a>
+                     <a href="#"><img src="{{ asset('app-assets/site_assets/img/feature-img-3.jpg') }}" alt="Image" class="img-fluid"></a>
                   @endif
                      {{-- <div class="view-more-photos">
                      <a href="#"> View the photos (+10)</a>
@@ -249,14 +227,6 @@
                            <li>{{ $listing->otherListingSetting->horsepower ?? '' }} horsepower</li> 
                            <li>{{ $listing->length }} meters</li>
                         </ul>
-                     </div>
-                     <div class="specification-user-image">
-                        <a href="#">
-                           <img src="{{ $profileImage ?? 'https://static1.clickandboat.com/v1/o/img/mask~dddc60cc1d.png' }}" alt="user" class="img-fluid">
-                           <div class="specification-user-badge">
-                              <i class="fas fa-trophy"></i>
-                           </div>
-                        </a>
                      </div>
                   </div>
                </div>
@@ -283,67 +253,16 @@
                         <p>As a dedicated boat renter with great reviews, Mario ensures that they provide high quality services.</p>
                      </div>
                   </div>
-                  <div class="keyinfo-sec">
-                     <div class="keyinfo-icon">
-                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                           <path d="M9.50913 7.50912C9.18189 7.83637 8.78996 7.99999 8.33333 7.99999C7.87671 7.99999 7.48478 7.83637 7.15754 7.50912C6.83029 7.18188 6.66667 6.78994 6.66667 6.33332C6.66667 5.8767 6.83029 5.48477 7.15754 5.15752C7.48478 4.83028 7.87671 4.66666 8.33333 4.66666C8.78996 4.66666 9.18189 4.83028 9.50913 5.15752C9.83638 5.48477 10 5.8767 10 6.33332C10 6.78994 9.83638 7.18188 9.50913 7.50912Z" fill="#343A40"></path>
-                           <path fill-rule="evenodd" clip-rule="evenodd" d="M11.6093 8.20023L16.1866 7.36912C16.76 7.26502 17.3517 7.39006 17.832 7.71686L19.6752 8.97081C19.6827 8.97591 19.6901 8.98112 19.6973 8.98643L20.095 8.32358C20.2634 8.043 20.6105 7.92607 20.9143 8.0476L24.1284 9.33325H28.6667V10.6666H24.1209L18.9008 12.6241C18.6353 12.7237 18.3359 12.6444 18.1545 12.4266C17.973 12.2088 17.9491 11.9 18.095 11.6569L18.9363 10.2547C18.8989 10.2376 18.8624 10.2171 18.8273 10.1933L17.0842 9.01143C16.8567 8.85717 16.5789 8.79366 16.3098 8.8535C16.2682 8.86276 16.2243 8.87272 16.1782 8.88337C15.9271 8.94133 15.6594 8.99516 15.3749 9.04484C15.0904 9.09452 14.8226 9.14421 14.5715 9.19389C14.3205 9.24357 14.1364 9.2767 14.0193 9.29326L16.6803 11.057C16.9648 11.2392 17.1572 11.4876 17.2576 11.8023C17.3581 12.1169 17.3748 12.4647 17.3079 12.8456L16.8138 15.8899C17.4602 15.681 18.0587 15.5085 18.6092 15.3726C19.4298 15.17 20.1339 15.0687 20.7215 15.0687C20.8739 15.0687 21.1792 15.0706 21.4813 15.1195C21.6321 15.144 21.809 15.1841 21.9774 15.2558C22.1382 15.3243 22.3579 15.4498 22.507 15.6841C22.7866 16.1235 22.7436 16.605 22.6286 16.9752C22.5137 17.345 22.3003 17.7002 22.0845 18.0014C21.6897 18.5521 21.1882 19.0541 20.9394 19.3031C20.915 19.3275 20.8926 19.3498 20.8735 19.3692C19.8462 20.4051 18.9833 21.0174 17.4378 22.0942C17.1357 22.3047 16.7202 22.2304 16.5097 21.9283C16.2992 21.6262 16.3735 21.2107 16.6756 21.0002C18.2244 19.9212 18.9946 19.3703 19.9267 18.4303L19.9948 18.3619C20.2489 18.107 20.6738 17.6808 21.0007 17.2247C21.1808 16.9734 21.3016 16.7524 21.3553 16.5795C21.3714 16.5279 21.379 16.4882 21.3821 16.459C21.3516 16.4512 21.3138 16.4431 21.2681 16.4357C21.0807 16.4053 20.8687 16.402 20.7215 16.402C20.2773 16.402 19.6863 16.48 18.9289 16.6671C18.1723 16.8539 17.3034 17.1183 16.3188 17.4645L14.3763 18.318C13.6404 18.667 12.9088 19.0401 12.1814 19.4374L9.9942 20.702L9.9735 20.7152C9.95281 20.7283 9.92184 20.7481 9.88188 20.7739C9.80194 20.8256 9.68618 20.9013 9.54491 20.9962C9.26184 21.1864 8.87886 21.4519 8.47732 21.7544C8.07425 22.0581 7.66122 22.3925 7.31409 22.7203C6.95572 23.0587 6.71304 23.3482 6.60226 23.5598C6.43142 23.8859 6.02853 24.0118 5.70237 23.841C5.37621 23.6702 5.2503 23.2673 5.42113 22.9411C5.6378 22.5274 6.01356 22.1145 6.39867 21.7509C6.79502 21.3766 7.2505 21.0093 7.67501 20.6895C8.10104 20.3685 8.50471 20.0887 8.80139 19.8894C8.94999 19.7896 9.07239 19.7095 9.15813 19.6541C9.20102 19.6264 9.23477 19.6048 9.25809 19.59L9.2851 19.5729L9.29244 19.5683L9.29515 19.5666L9.64946 20.1313C9.29551 19.5663 9.29523 19.5665 9.29515 19.5666L9.30552 19.5601L9.85202 19.2441V16.7862C9.85202 16.2896 10.0801 15.8199 10.472 15.5097L10.6679 15.3546C11.0445 15.0565 11.4377 14.746 11.8478 14.423C12.2578 14.1001 12.6511 13.7937 13.0277 13.5039C13.4042 13.2141 13.6845 13.0029 13.8686 12.8704C13.718 12.7711 13.5004 12.6262 13.2159 12.4357C12.9314 12.2453 12.6427 12.0548 12.3499 11.8644C12.057 11.6739 11.7934 11.5 11.5591 11.3427C11.3248 11.1854 11.1742 11.0819 11.1072 11.0322C10.488 12.0755 9.67211 12.9243 8.65959 13.5784C7.86886 14.0893 7.01945 14.4158 6.11134 14.558C5.68994 14.624 5.33333 14.2823 5.33333 13.8601C5.33333 13.4604 5.65493 13.1387 6.05314 13.0714C6.71034 12.9604 7.31975 12.7278 7.88137 12.3736C8.64285 11.8933 9.24116 11.2723 9.67629 10.5105L10.5549 8.97032C10.6888 8.73846 10.852 8.56043 11.0445 8.43622C11.2369 8.31201 11.4252 8.23335 11.6093 8.20023ZM11.3582 18.3731L11.5279 18.275L11.535 18.2712C12.2896 17.8588 13.0492 17.4714 13.8138 17.109L13.8224 17.105L15.1673 16.514L15.5255 14.1374C15.3749 14.2367 15.0903 14.4272 14.6719 14.7087C14.2535 14.9903 13.8184 15.2884 13.3665 15.603C12.9147 15.9177 12.4963 16.2075 12.1114 16.4725C12.0046 16.546 11.9082 16.6124 11.822 16.6719C11.5303 16.8733 11.3582 17.203 11.3582 17.555V18.3731ZM22.1548 9.97986L20.9462 9.49642L20.2211 10.705L22.1548 9.97986Z" fill="#343A40"></path>
-                           <path d="M24.6668 23.3333C25.0087 23.3333 25.2904 23.5907 25.329 23.9222L25.3334 24C25.3334 24.0622 25.3363 24.1238 25.3419 24.1846L25.354 24.288L25.3671 24.3673L25.3924 24.484L25.4067 24.5381L25.4301 24.6159L25.4711 24.7306L25.5372 24.8805L25.5782 24.9595L25.6264 25.0427L25.6884 25.1378L25.7598 25.2345L25.8345 25.3241L25.9141 25.409C26.2462 25.7436 26.6958 25.9614 27.1959 25.9953L27.4112 26.0045C27.7428 26.043 28.0001 26.3248 28.0001 26.6667C28.0001 27.0085 27.7428 27.2903 27.4112 27.3288L27.3334 27.3333C26.9314 27.3333 26.5459 27.2621 26.189 27.1317L25.9999 27.0559C25.9297 27.0252 25.8608 26.9922 25.7933 26.9569L25.6587 26.8827L25.4932 26.7797L25.3318 26.6656L25.1797 26.5442L25.1192 26.4917L25.0246 26.4042L24.9025 26.2808L24.7924 26.1575L24.6666 26.0001C24.0588 26.8097 23.0906 27.3333 22.0001 27.3333C20.9096 27.3333 19.9414 26.8097 19.3333 26.0001C18.7254 26.8097 17.7573 27.3333 16.6668 27.3333C15.5763 27.3333 14.6081 26.8097 14 26.0001C13.3921 26.8097 12.4239 27.3333 11.3334 27.3333C10.243 27.3333 9.27477 26.8097 8.66663 26.0001L8.65661 26.0141C8.36572 26.3987 8.0027 26.7054 7.59789 26.926C7.51679 26.9705 7.4337 27.0116 7.34877 27.0492L7.19492 27.1119C7.15508 27.1281 7.11446 27.1428 7.07348 27.1567L7.06297 27.1594C6.97659 27.1893 6.88808 27.2151 6.79814 27.2372L6.6545 27.2691L6.50525 27.2953L6.42611 27.3062L6.29846 27.3202L6.12933 27.3309L6.00011 27.3333C5.47902 27.3344 4.95103 27.2125 4.46021 26.9564L4.33344 26.8867C4.01458 26.7026 3.90533 26.2949 4.08943 25.9761C4.26037 25.68 4.62414 25.5646 4.93054 25.6971L5.00011 25.732C5.31691 25.9149 5.66296 26.0013 6.00418 26.0003C6.07107 26 6.14117 25.9963 6.21023 25.9891C6.48098 25.9602 6.74383 25.8766 6.98173 25.7429C7.06156 25.6979 7.13801 25.6475 7.21057 25.5922L7.34458 25.4814L7.42466 25.4045L7.51074 25.3108L7.579 25.2278L7.64561 25.1371L7.69906 25.0553L7.74536 24.9775C7.88442 24.7298 7.97226 24.4494 7.99451 24.1508L8.0046 23.9222C8.04311 23.5907 8.32489 23.3333 8.66678 23.3333C9.00867 23.3333 9.29045 23.5907 9.32896 23.9222L9.33344 24C9.33344 25.1046 10.2289 26 11.3334 26C12.438 26 13.3334 25.1046 13.3334 24L13.3379 23.9222C13.3764 23.5907 13.6582 23.3333 14.0001 23.3333C14.342 23.3333 14.6238 23.5907 14.6623 23.9222L14.6668 24C14.6668 25.1046 15.5622 26 16.6668 26C17.7713 26 18.6668 25.1046 18.6668 24L18.6713 23.9222C18.7098 23.5907 18.9916 23.3333 19.3334 23.3333C19.6753 23.3333 19.9571 23.5907 19.9956 23.9222L20.0001 24C20.0001 25.1046 20.8955 26 22.0001 26C23.1047 26 24.0001 25.1046 24.0001 24L24.0046 23.9222C24.0431 23.5907 24.3249 23.3333 24.6668 23.3333Z" fill="#343A40"></path>
-                        </svg>
-                     </div>
-                     <div class="keyinfo-texts">
-                        <h4>Perfect for watersports</h4>
-                        <p>This boat has the necessary equipment for practising nautical sports (wakeboarding, water skiing…).</p>
-                     </div>
-                  </div>
                </div>
                <div class="boat-card-content-sec">
                   <div class="boat-description-sec">
                      <h3>Description of {{ $listing->user->name }}'s {{ $listing->type }}</h3>
+                     <p class="boat_des_heading">Motorboat Nordkapp Open 705 200hp</p>
+                     <p>Mauris nisl dolor, consectetur ut maximus sit amet, molestie non ipsum. Etiam imperdiet varius urna sollicitudin convallis. Maecenas orci erat, consequat ac aliquam pellentesque, porttitor in tortor. Donec pretium vehicula dolor sed placerat. Duis id dui blandit ligula malesuada sollicitudin vel et eros. Maecenas mollis, velit ac consectetur consequat, lorem risus gravida orci, tristique bibendum massa elit in nisl. Proin auctor diam eget diam auctor, non consequat lectus sodales. Donec consequat posuere iaculis.</p>
+                     <a href="">Read More</a>
                      <h6>{{ $listing->title }}</h6>
                      <p>{{ $listing->description }}</p>
                      {{-- <a href="#" class="read_more_desc">Read More</a> --}}
-                  </div>
-               </div>
-               <div class="boat-card-content-sec">
-                  <div class="ideas-sec">
-                     <h3>Itinerary ideas</h3>
-                     <p>Here are a few itineraries people often do around Split</p>
-                     <div class="ideas-grid">
-                        <div class="ideas-box">
-                           <a href="#">
-                              <div class="ideas-img">
-                                 <img src="https://blog.clickandboat.com/en/wp-content/uploads/2024/07/Zlatni-Rat-Brac-scaled.jpg" alt="img" class="img-fluid">
-                              </div>
-                              <div class="ideas-content">
-                                 <h5>Beach Exploration</h5>
-                                 <p>1 day</p>
-                              </div>
-                           </a>
-                        </div>
-                        <div class="ideas-box">
-                           <a href="#">
-                              <div class="ideas-img">
-                                 <img src="https://blog.clickandboat.com/en/wp-content/uploads/2024/07/ante-hamersmit-WbAeWi64_YU-unsplash-scaled.jpg" alt="img" class="img-fluid">
-                              </div>
-                              <div class="ideas-content">
-                                 <h5>Bay and Coastal Charm</h5>
-                                 <p>1 day</p>
-                              </div>
-                           </a>
-                        </div>
-                        <div class="ideas-box">
-                           <a href="#">
-                              <div class="ideas-img">
-                                 <img src="https://blog.clickandboat.com/en/wp-content/uploads/2024/07/flor-vignaroli-3mTJUQ7mUDk-unsplash-scaled.jpg" alt="img" class="img-fluid">
-                              </div>
-                              <div class="ideas-content">
-                                 <h5>Coastal Gems Near Split</h5>
-                                 <p>1 day</p>
-                              </div>
-                           </a>
-                        </div>
-                     </div>
                   </div>
                </div>
                <div class="boat-card-content-sec">
@@ -422,7 +341,7 @@
                         </li>
                      </ul>
                      <div class="equip-button-sec">
-                        <a href="#" class="btn btn-primary">View all equipment (+7)</a>
+                        <a href="#" class="equip_btn">View all equipment</a>
                      </div>
                   </div>
                </div>
@@ -438,7 +357,48 @@
                         </li>
                      </ul>
                      <div class="equip-button-sec">
-                        <a href="#" class="btn btn-primary">View all equipment (+7)</a>
+                        <a href="#" class="btn btn-primary">View all services</a>
+                     </div>
+                  </div>
+               </div>
+               <div class="boat-card-content-sec">
+                  <div class="ideas-sec">
+                     <h3>Itinerary ideas</h3>
+                     <p>Here are a few itineraries people often do around Split</p>
+                     <div class="ideas-grid">
+                        <div class="ideas-box">
+                           <a href="#">
+                              <div class="ideas-img">
+                                 <img src="https://blog.clickandboat.com/en/wp-content/uploads/2024/07/Zlatni-Rat-Brac-scaled.jpg" alt="img" class="img-fluid">
+                              </div>
+                              <div class="ideas-content">
+                                 <h5>Beach Exploration</h5>
+                                 <p>1 day</p>
+                              </div>
+                           </a>
+                        </div>
+                        <div class="ideas-box">
+                           <a href="#">
+                              <div class="ideas-img">
+                                 <img src="https://blog.clickandboat.com/en/wp-content/uploads/2024/07/ante-hamersmit-WbAeWi64_YU-unsplash-scaled.jpg" alt="img" class="img-fluid">
+                              </div>
+                              <div class="ideas-content">
+                                 <h5>Bay and Coastal Charm</h5>
+                                 <p>1 day</p>
+                              </div>
+                           </a>
+                        </div>
+                        <div class="ideas-box">
+                           <a href="#">
+                              <div class="ideas-img">
+                                 <img src="https://blog.clickandboat.com/en/wp-content/uploads/2024/07/flor-vignaroli-3mTJUQ7mUDk-unsplash-scaled.jpg" alt="img" class="img-fluid">
+                              </div>
+                              <div class="ideas-content">
+                                 <h5>Coastal Gems Near Split</h5>
+                                 <p>1 day</p>
+                              </div>
+                           </a>
+                        </div>
                      </div>
                   </div>
                </div>
@@ -476,25 +436,22 @@
                </div>
             </div>
             <div class="col-md-4 boat-right-sec">
-               <div class="card p-3 shadow-sm">
+               <div class="p-3 shadow-sm card">
                   <div class="d-flex flex-column">
                      <h3>Add dates for prices</h3>
                   </div>
                   <!-- Rating -->
-                  <div class="d-flex align-items-center mb-3">
-                     <span class="text-success font-weight-bold mr-2">5.0</span>
-                     <span class="badge badge-secondary">(55)</span>
+                  <div class="mb-3 text-center see_price_btn">
+                  <a href="javascript:;" id="see-price"> See the price list</a>
                   </div>
                   <!-- Form for dates -->
                   <form action="{{ route('checkout') }}" method="POST">
                      @csrf
                      <div class="form-group">
-                        <label for="checkin-date">Check-in</label>
-                        <input type="date" id="checkin-date" name="checkin_date" class="form-control">
+                        <input type="date" id="checkin-date" name="checkin_date" class="form-control" placeholder="Check-in">
                      </div>
                      <div class="form-group">
-                        <label for="checkout-date">Check-out</label>
-                        <input type="date" id="checkout-date" class="form-control" name="checkout_date">
+                        <input type="date" id="checkout-date" class="form-control" name="checkout_date" placeholder="Check-out">
                         <input type="hidden" id="days-val" value="" name="days_val">
                      </div>
                      <div class="show-Price d-none" id="show-Price-sec">
@@ -504,8 +461,8 @@
                         <p>Total: <span id="charter-total"></span></p>
                      </div>
                      <div class="d-flex flex-column">
-                        <button class="btn btn-primary mb-2">Check availability</button>
-                        <span class="d-block mb-2 text-center font-weight-bold">or</span>
+                        <button class="mb-2 btn btn-primary">Check availability</button>
+                        <span class="mb-2 text-center d-block font-weight-bold">or</span>
                         <button class="btn btn-success">Book</button>
                      </div>
                   </form>
@@ -550,7 +507,7 @@
 <div class="offcanvas-right" id="price-list">
    <span class="close-btn" id="closeMenu">&times;</span>
    <h3 class="p-4">Offcanvas Sidebar</h3>
-   <ul class="list-unstyled p-4">
+   <ul class="p-4 list-unstyled">
       <li><a href="#" class="text-white">Home</a></li>
       <li><a href="#" class="text-white">About</a></li>
       <li><a href="#" class="text-white">Services</a></li>
