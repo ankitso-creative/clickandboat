@@ -46,8 +46,8 @@
                        </li>
                        <li class="nav-item">
                             <select class="select-language" id="language">
-                                {{!! selectOption('languages','name','code',session()->get('lang'),array('status' , '1')) !!}}
-                            <select>
+                                {!! selectOption('languages','name','code',session()->get('lang'),array('status' , '1')) !!}
+                            </select>
                        </li>
                        <!-- <li><a class="nav-link gbp_btn" href="#">GBP: £</a></li> -->
                        <li class="nav-item dropdown">

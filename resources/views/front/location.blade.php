@@ -336,6 +336,8 @@
                     </div>
                 </div>
                 <div class="location_pagination">
+                    {{ $results->links('pagination::default') }}
+
                     <div class="pagination">
                         <a href="#">&laquo;</a>
                         <a href="#">1</a>

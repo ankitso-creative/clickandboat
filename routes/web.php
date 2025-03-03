@@ -139,6 +139,7 @@ Route::middleware('Setlang')->group(function(){
     Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
     Route::get('/ourfleet', [PagesController::class, 'ourFleet'])->name('ourfleet');
     Route::get('/location', [PagesController::class, 'location'])->name('location');
+    Route::get('/boat-rental/search', [PagesController::class, 'search'])->name('search');
     Route::get('/privacy-policy', [PagesController::class, 'PrivacyPolicy'])->name('privacy-policy');
     Route::get('/terms-condition', [PagesController::class, 'terms'])->name('terms-condition');
     Route::get('/blogs', [PagesController::class, 'blog'])->name('blogs');
