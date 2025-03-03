@@ -14,7 +14,7 @@
     <div class="no-booking-yet">
         <p>You haven't made a booking yet, <a href="#">search for a boat</a>.</p>
     </div>
-    <div class="booking_btns">
+    <div class="pt-3 booking_btns">
         <a class="upcoming_btn" href="">Upcoming</a>
         <a class="past_btn" href="">Past</a>
     </div>

@@ -1,61 +1,52 @@
 @extends('layouts.customer.common')
 
 @section('meta')
-    <title>Dashboard - {{ config('app.name') }}</title>    
+<title>Dashboard - {{ config('app.name') }}</title>
 @endsection
 
 @section('css')
-    
+
 @endsection
 
-@section('js')    
-    
+@section('js')
+
 @endsection
 
 @section('content')
-            <div class="col-lg-9 main-dashboard">
-                <div class="page-title">
-                    <h1>Save your favorite products</h1>
-                </div>
-                <div class="card-section fav_section">
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="fav_inner_box">
-                                <div class="card fav_box">
-                                    <img src="https://clickandboat.so-creative-dev.org/storage/listing/cover_images/54/blog-img.jpg" alt="card">
-                                </div>
-                                <div class="card-body">
-                                    <h5>ktm - Motorboat 2020</h5>
-                                </div>
-                                <a href="#">Book Now</a>
-                                <button class="fav-remove-btn"><i class="far fa-times-circle"></i></button>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="fav_inner_box">
-                                <div class="card fav_box">
-                                    <img src="https://clickandboat.so-creative-dev.org/storage/listing/cover_images/54/blog-img.jpg" alt="card">
-                                </div>
-                                <div class="card-body">
-                                    <h5>ktm - Motorboat 2020</h5>
-                                </div>
-                                <a href="#">Book Now</a>
-                                <button class="fav-remove-btn"><i class="far fa-times-circle"></i></button>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="fav_inner_box">
-                                <div class="card fav_box">
-                                    <img src="https://clickandboat.so-creative-dev.org/storage/listing/cover_images/54/blog-img.jpg" alt="card">
-                                </div>
-                                <div class="card-body">
-                                    <h5>ktm - Motorboat 2020</h5>
-                                </div>
-                                <a href="#">Book Now</a>
-                                <button class="fav-remove-btn"><i class="far fa-times-circle"></i></button>
+<div class="col-lg-9 main-dashboard">
+    <div class="page-title">
+        <h1>Save your favorite products</h1>
+    </div>
+    <div class="fav_section">
+        <div class="row">
+        <?php
+                        for ($i= 0; $i < 6; $i++) {                                                                                                                                                                                                                                                                                        
+                        ?>
+            <div class="col-sm-12 col-md-6 col-lg-4">
+                <div class="location_inner_box">
+                    <img src="{{ asset('app-assets/site_assets/img/locatoinimg-one.jpg') }}">
+                    <div class="wishlist_icon">
+                        <i class="fa-regular fa-heart"></i>
+                    </div>
+                    <div class="location_inner_main_box">
+                        <div class="location_inner_text">
+                            <h3>Skiathos Port</h3>
+                            <p class="location_pera">Motorboat Sting 485 sport 30 (2023)</p>
+                            <p class="people_pera">4 people · 30 hp · 5 m</p>
+                            <h5 class="location_price">From <span class="price_style">€27</span> / day</h5>
+                            <div class="location_facility">
+                                <ul>
+                                    <li>With Skipper</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <?php
+                        }
+                        ?>
+        </div>
+    </div>
+</div>
 @endsection
