@@ -23,5 +23,9 @@ class PageService{
     {
         return $this->repository->allListingData();
     }
+    public function searchListing($request)
+    {
+        return $this->repository->searchListing($request);
+    }
 }
 ?>

@@ -23,7 +23,7 @@
         }
         public function allListingData()
         {
-            $listing = Listing::where('status','1')->with(['price'])->get();
+            $listing = Listing::where('status', '1')->with(['price'])->paginate(1);
             return $listing;
         }
         public function getBookingPrice($request)
@@ -46,5 +46,17 @@
                     'error' => 'Product not found',
                 ]);
             }
+        }
+        public function searchListing($request)
+        {
+            $listing = Listing::where('status', '1')
+            ->when($request->has('type'), function ($query) use ($request) {
+                $type = $request->type; 
+                return $query->whereIn('type', $type); 
+            })
+            ->with(['price'])
+            ->paginate(1);
+
+            return $listing;
         }
     }

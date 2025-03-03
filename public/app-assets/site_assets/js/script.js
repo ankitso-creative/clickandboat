@@ -380,6 +380,11 @@ $(document).ready(function() {
 		var val = $(this).val();
 		window.location.href = baseUrl + '/setlang/' +val;
 	});	
+	
+	
+	$(document).on('change','input[name="type[]"]', function() {
+		$('#search-filter-fom').submit();
+    });
 });
 
 

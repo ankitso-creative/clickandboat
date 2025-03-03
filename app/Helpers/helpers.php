@@ -102,4 +102,12 @@
         
         return $html;
     }
+    function checkCheckbox($array,$value)
+    {
+        if(in_array($value,$array)):
+            return 'checked';
+        else:
+            return false;
+        endif;
+    }
 ?>
