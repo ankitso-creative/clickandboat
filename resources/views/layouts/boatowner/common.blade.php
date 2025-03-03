@@ -66,6 +66,7 @@
         </header>
        	<section class="main-dashboard-container container-fluid p-0">
             <div class="row account-overview">
+                @if($active !='listing')
                 <div class="col-lg-3">
                     <aside class="sidebar">
                         <div class="user">
@@ -86,6 +87,7 @@
                         </ul>
                     </aside>
                 </div>
+                @endif
                 @yield('content')
             </div>
         </section>
