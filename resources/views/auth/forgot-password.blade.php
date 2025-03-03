@@ -10,29 +10,21 @@
     
 @endsection
 @section('content')
-    <div class="section-title-page area-bg area-bg_dark area-bg_op_60">
-        <div class="area-bg__inner">
-            <div class="container text-center">
-                <h1 class="b-title-page">Forgot Password</h1>
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item"><a href="blog.html">Pages</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Forgot Password</li>
-                    </ol>
-                </nav>
-                <!-- end .breadcrumb-->
-
-            </div>
-        </div>
-    </div>
+<style>
+    .header{
+        display: none !important;
+    }
+    .footer{
+        display: none !important;
+    }
+</style>
     <!-- end .b-title-page-->   
-    <div class="l-main-content">
+    <div class="l-main-content login_section">
         <div class="container">
             <div class="row">
-                <div class="col-md-6 mx-auto">
+                <div class="mx-auto col-md-12">
                     <section class="section-form-contacts">
-                        <h2 class="ui-title-inner text-center">Forgot Password</h2>
+                        <h2 class="text-center ui-title-inner">Forgot Password</h2>
                         <p class="text-center">Nulla pariatur excepteur sint occaecat cupidatat no proident culpa qui officia des mollit anim id est lab orum ut perspiciatis unde omnis iste natuser sit volupta tem accusantium sed ipsum laudantium.</p>
                         <div id="success"></div>
                         <form action="{{ route('password.email') }}" method="POST">
@@ -45,11 +37,11 @@
                             </div>
                          
                             @if(session('status'))
-                                <div class="text-success mb-4">{{ session('status') }}</div>
+                                <div class="mb-4 text-success">{{ session('status') }}</div>
                             @endif
                         
-                            <div class="form-group text-center">
-                                <button class="btn btn-primary" type="submit">Send Password Reset Link</button>
+                            <div class="text-center form-group">
+                                <button class="btn-forgot" type="submit">Send Password Reset Link</button>
                             </div>
                         </form>
                     </section>

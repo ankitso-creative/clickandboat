@@ -10,6 +10,7 @@
 
 @endsection
 @section('content')
+<!-- Blog banner Section-->
 <section class="blog_banner">
     <div class="blog_banner_text">
         <h5>Destination Information</h5>
@@ -19,6 +20,8 @@
         <a href="">View Post</a>
     </div>
 </section>
+<!-- /Blog banner Section-->
+ <!-- Destination Info Section-->
 <section class="destination_info_section">
     <div class="container">
         <div class="row">
@@ -35,6 +38,8 @@
         </div>
     </div>
 </section>
+ <!-- /Destination Info Section-->
+ <!-- Destination banner Section-->
 <section class="destination_banner_img">
     <div class="conatiner">
         <div class="text-center col-md-12">
@@ -42,6 +47,8 @@
         </div>
     </div>
 </section>
+ <!-- /Destination banner Section-->
+ <!-- Blog Section-->
 <section class="blog_section">
     <div class="container">
     <?php
@@ -70,6 +77,8 @@
                         }
                         ?>
     </div>
+<!-- /Blog Section-->    
+ <!-- Pagination Section-->    
     <div class="location_pagination">
                     <div class="pagination">
                         <a href="#">&laquo;</a>
@@ -83,5 +92,5 @@
                     </div>
                 </div>
 </section>
-
+ <!-- /Pagination Section-->
 @endsection

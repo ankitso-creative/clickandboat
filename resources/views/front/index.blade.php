@@ -363,7 +363,7 @@
 </section>
 <!-- /Home page slider Section -->
 <!-- unique slider Section -->
-<section class="unique_slider">
+<!-- <section class="unique_slider">
     <h2>WHAT MAKES US UNIQUE</h2>
     <div class="row">
         <div class="unique_sliders col-md-12">
@@ -409,7 +409,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 <!-- /unique slider Section -->
 <!-- next trip Section -->
 <section class="next_trip_section">
