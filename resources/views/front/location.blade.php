@@ -18,6 +18,8 @@
         </h1>
     </div>
 </section>
+<!-- /Banner Section -->
+<!-- Location Filter Section -->
 <section class="location_filter_section">
     <div class="container-fluid">
         <div class="row">
@@ -351,6 +353,7 @@
         </div>
     </div>
 </section>
+<!-- /Location Filter Section -->
 
 
 
