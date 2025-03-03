@@ -21,6 +21,11 @@
             $listing = Listing::with(['price'])->where('id',$listingID)->first();
             return $listing;
         }
+        public function allListingData()
+        {
+            $listing = Listing::where('status','1')->with(['price'])->get();
+            return $listing;
+        }
         public function getBookingPrice($request)
         {
             $result = bookingPrice($request);

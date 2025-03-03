@@ -78,7 +78,8 @@ class PagesController extends Controller
     }
     public function location()
     {
-        return view('front.location');
+        $results =  $this->service->allListingData();
+        return view('front.location',compact('results'));
     }
     public function ourFleet()
     {

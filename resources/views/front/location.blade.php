@@ -304,37 +304,35 @@
                         <h2>+100 motorboats available</h2>
                     </div>
                     <div class="row">
-                        <?php
-                        for ($i= 0; $i < 18; $i++) {                                                                                                                                                                                                                                                                                        
-                        ?>
-                        <div class="col-sm-12 col-md-6 col-lg-4">
-                            <div class="location_inner_box">
-                                <img src="{{ asset('app-assets/site_assets/img/locatoinimg-one.jpg') }}">
-                                <div class="wishlist_icon">
-                                    <i class="fa-regular fa-heart"></i>
-                                </div>
-                                <div class="location_inner_main_box">
-                                    <div class="location_inner_text">
-                                        <h3>Skiathos Port</h3>
-                                        <p class="location_pera">Motorboat Sting 485 sport 30 (2023)</p>
-                                        <p class="people_pera">4 people · 30 hp · 5 m</p>
-                                        <h5 class="location_price">From <span class="price_style">€27</span> / day</h5>
-                                        <div class="location_facility">
-                                            <ul>
-                                                <li>With Skipper</li>
-                                            </ul>
+                        @if($results)
+                            @foreach ($results as $result)                                                                                                                                                                                                                                                                                  
+                                <div class="col-sm-12 col-md-6 col-lg-4">
+                                    <div class="location_inner_box">
+                                        <img src="{{  $result->getFirstMediaUrl('cover_images') }}">
+                                        <div class="wishlist_icon">
+                                            <i class="fa-regular fa-heart"></i>
+                                        </div> 
+                                        <div class="location_inner_main_box">
+                                            <div class="location_inner_text">
+                                                <h3>{{ $result->city }}</h3>
+                                                <p class="location_pera">{{ $result->type }} {{ $result->manufacturer }} {{ $result->model }} sport 30 (2023)</p>
+                                                <p class="people_pera">{{ $result->capacity }} people · 30 hp · 5 m</p>
+                                                <h5 class="location_price">From <span class="price_style">€27</span> / day</h5>
+                                                <div class="location_facility">
+                                                    <ul>
+                                                        <li>With Skipper</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="location_review_box">
+                                                <span>Flexible cancellation</span>
+                                                <span><i class="fa-solid fa-star"></i> NEW</span>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="location_review_box">
-                                        <span>Flexible cancellation</span>
-                                        <span><i class="fa-solid fa-star"></i> NEW</span>
-                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <?php
-                        }
-                        ?>
+                            @endforeach
+                        @endif
                     </div>
                 </div>
                 <div class="location_pagination">
