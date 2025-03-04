@@ -50,13 +50,22 @@
         public function searchListing($request)
         {
             $listing = Listing::where('status', '1')
-            ->when($request->has('type'), function ($query) use ($request) {
+            ->when($request->has('type') && !empty($request->type), function ($query) use ($request) {
                 $type = $request->type; 
                 return $query->whereIn('type', $type); 
             })
+            ->when($request->has('location') && !empty($request->location), function ($query) use ($request) {
+                $location = explode(',', $request->location); 
+                if (count($location) > 0) {
+                    return $query->where('city', $location[0]); 
+                }
+            })
+            ->when($request->has('rental_type') && !empty($request->rental_type), function ($query) use ($request) {
+                $rental_type = $request->rental_type; 
+                return $query->where('skipper', $rental_type); 
+            })
             ->with(['price'])
-            ->paginate(1);
-
+            ->paginate(9);
             return $listing;
         }
     }

@@ -65,14 +65,14 @@ class UserRegisterController extends Controller
     public function registerYourBoat()
     {
         if (Auth::check()) {
-            return redirect()->route('customer.dashboard');  // Redirect to dashboard if user is already logged in
+            return redirect()->route('customer.dashboard');
         }
         return view('front.register_your_boat');
     }
     public function register(Request $request)
     {
         if (Auth::check()) {
-            return redirect()->route('customer.dashboard');  // Redirect to dashboard if user is already logged in
+            return redirect()->route('customer.dashboard');
         }
         $messages = [
             'fname.required' => 'Please enter your first name.',

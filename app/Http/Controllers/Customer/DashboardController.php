@@ -12,8 +12,9 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        $userData = auth()->user()->load(['profile','media']);
         $active = 'dashboard';
-        return view('customer.dashboard',compact('active'));
+        return view('customer.dashboard',compact('active','userData'));
     }
 
     /**

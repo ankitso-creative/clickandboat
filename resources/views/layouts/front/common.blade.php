@@ -134,11 +134,12 @@
     <!-- MAIN SCRIPTS-->
     <!-- ++++++++++++-->
     <script src="{{ asset('app-assets/site_assets/js/bundle.min.js') }}"></script>
-    <script src="{{ asset('app-assets/site_assets/js/bootstrap.mim.js') }}"></script>
-    <script src="{{ asset('app-assets/site_assets/js/popper.mim.js') }}"></script>
+    <script src="{{ asset('app-assets/site_assets/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('app-assets/site_assets/js/popper.min.js') }}"></script>
     {{-- <script src="{{ asset('app-assets/site_assets/js/map.js') }}"></script> --}}
     <script src="{{ asset('app-assets/site_assets/js/slick.min.js') }}"></script>
     <script src="{{ asset('app-assets/site_assets/js/script.js') }}"></script>
+    
    @yield('js')
 
 </body>
