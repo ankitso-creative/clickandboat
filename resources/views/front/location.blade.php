@@ -24,6 +24,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-3">
+                <form action="/action_page.php">
                 <div class="location_leftside_box">
                     <div class="location_options">
                         <ul>
@@ -70,7 +71,6 @@
                         </ul>
                     </div>
                 </div>
-                <form action="/action_page.php">
                     <div class="location_checkbox_one">
                         <div class="input-group">
                             <input type="checkbox" id="Halfday" name="Halfday" value="Halfday">
@@ -337,17 +337,6 @@
                 </div>
                 <div class="location_pagination">
                     {{ $results->links('pagination::default') }}
-
-                    <div class="pagination">
-                        <a href="#">&laquo;</a>
-                        <a href="#">1</a>
-                        <a class="active" href="#">2</a>
-                        <a href="#">3</a>
-                        <a href="#">4</a>
-                        <a href="#">5</a>
-                        <a href="#">6</a>
-                        <a href="#">&raquo;</a>
-                    </div>
                 </div>
             </div>
         </div>
