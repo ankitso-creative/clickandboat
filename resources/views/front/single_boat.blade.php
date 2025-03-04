@@ -357,8 +357,18 @@
                         </li>
                      </ul>
                      <div class="equip-button-sec">
-                        <a href="#" class="btn btn-primary">View all services</a>
+                        <a href="#" class="equip_btn">View all services</a>
                      </div>
+                  </div>
+               </div>
+               <div class="boat-card-content-sec">
+                  <div class="calendar-sec">
+                     <h3>Calendar</h3>
+                     <p>Add dates for prices</p>
+                     <div class="calendar-btn-sec">
+                        <a href="javascript:;" id="see-price"> See the price list</a>
+                     </div>
+                     <div id="inline-datepicker"></div>
                   </div>
                </div>
                <div class="boat-card-content-sec">
@@ -402,16 +412,7 @@
                      </div>
                   </div>
                </div>
-               <div class="boat-card-content-sec">
-                  <div class="calendar-sec">
-                     <h3>Calendar</h3>
-                     <div id="inline-datepicker"></div>
-                     <p>Add dates for prices</p>
-                     <div class="calendar-btn-sec">
-                        <a href="javascript:;" id="see-price"> See the price list</a>
-                     </div>
-                  </div>
-               </div>
+               
                <div class="boat-card-content-sec">
                   <div class="location-sec">
                      <h3>Location</h3>
