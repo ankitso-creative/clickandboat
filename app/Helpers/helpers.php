@@ -104,8 +104,24 @@
     }
     function checkCheckbox($array,$value)
     {
-        if(in_array($value,$array)):
-            return 'checked';
+        if(!empty($array)):
+            if(in_array($value,$array)):
+                return 'checked';
+            else:
+                return false;
+            endif;
+        else:
+            return false;
+        endif;
+    }
+    function checkselect($selected,$value)
+    {
+        if(!empty($selected)):
+            if($value==$selected):
+                return 'selected';
+            else:
+                return false;
+            endif;
         else:
             return false;
         endif;

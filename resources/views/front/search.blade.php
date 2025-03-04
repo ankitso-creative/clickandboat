@@ -7,7 +7,47 @@
 
 @endsection
 @section('js')
-
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAli6rCJivgzTbWznnkqFtT_btPww6WBYs&libraries=places"></script>
+    <script>
+        $(document).ready(function () {
+            google.maps.event.addDomListener(window, 'load', initialize);
+        });
+        function initialize() 
+        {
+            var input = document.getElementById('location');
+            var autocomplete = new google.maps.places.Autocomplete(input);
+            autocomplete.addListener('place_changed', function() {
+                var place = autocomplete.getPlace();
+                if (!place.geometry || !place.address_components) {
+                    console.log("Place details not found");
+                    return;
+                }
+                var city = '';
+                var country = '';
+                var state = '';
+                for (var i = 0; i < place.address_components.length; i++) {
+                    var component = place.address_components[i];
+                    if (component.types.includes('locality')) {
+                        city = component.long_name;
+                    }
+                    if (component.types.includes('administrative_area_level_1')) {
+                        state = component.long_name;
+                    }
+                    if (component.types.includes('country')) {
+                        country = component.long_name;
+                    }
+                }
+                if (city && country && state) {
+                    input.value = city + ', ' + state + ', '+ country;
+                }
+                if(city==state)
+                {
+                    input.value = city + ', ' + country;
+                }
+                $('#search-filter-fom').submit();
+            });
+        }
+    </script>
 @endsection
 @section('content')
     <!-- Banner Section -->
@@ -24,52 +64,53 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-12 col-md-6 col-lg-3">
-                    <div class="location_leftside_box">
-                        <div class="location_options">
-                            <ul>
-                                <li>
-                                    <a href="#">
+                    <form action="{{ route('search') }}" method="get" id="search-filter-fom">
+                        <div class="location_leftside_box">
+                            <div class="location_options">
+                                <ul>
+                                    <li>
                                         <div class="where_box">
                                             <div class="icon_box">
                                                 <i class="fa-solid fa-location-dot"></i>
                                             </div>
                                             <div class="where_box_text">
                                                 <h5>Where</h5>
-                                                <input type="search" id="gsearch" name="gsearch" placeholder="City ofdeparture">
+                                                <input type="search" value="{{ request()->query('location') ?? '' }}" id="location" name="location" placeholder="City ofdeparture">
                                             </div>
                                         </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="where_box">
-                                            <div class="icon_box">
-                                                <i class="fa-solid fa-calendar-days"></i>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="where_box">
+                                                <div class="icon_box">
+                                                    <i class="fa-solid fa-calendar-days"></i>
+                                                </div>
+                                                <div class="where_box_text">
+                                                    <h5>Dates</h5>
+                                                    <input type="date" id="calender" name="calender" />
+                                                </div>
                                             </div>
-                                            <div class="where_box_text">
-                                                <h5>Dates</h5>
-                                                <input type="date" id="calender" name="calender" />
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
+                                        </a>
+                                    </li>
+                                    <li>
                                         <div class="where_box">
                                             <div class="icon_box">
                                                 <i class="fa-solid fa-person-skiing-nordic"></i>
                                             </div>
                                             <div class="where_box_text">
                                                 <h5>Rental Type</h5>
-                                                <p>With or without a skipper</p>
+                                                <select name="rental_type" id="rental_type">
+                                                    <option  value="">With Or Without Skipper</option>
+                                                    <option {{ checkselect(request()->query('rental_type'), 'with skipper') }} value="with skipper">With Skipper</option>
+                                                    <option {{ checkselect(request()->query('rental_type'), 'without skipper') }} value="without skipper">Without Skipper</option>
+                                                </select>
                                             </div>
                                         </div>
-                                    </a>
-                                </li>
-                            </ul>
+                                        
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    <form action="{{ route('search') }}" method="get" id="search-filter-fom">
                         <div class="location_checkbox_one">
                             <div class="input-group">
                                 <input type="checkbox" id="Halfday" name="Halfday" value="Halfday">
@@ -95,7 +136,7 @@
                                 <label for="Sailboat">Sailboat</label>
                             </div>
                             <div class="input-group">
-                                <input type="checkbox" id="Motorboat" name="type[]" checked value="Motorboat" {{ checkCheckbox(request()->query('type'),'Motorboat') }}>
+                                <input type="checkbox" id="Motorboat" name="type[]" value="Motorboat" {{ checkCheckbox(request()->query('type'),'Motorboat') }}>
                                 <label for="Motorboat">Motorboat</label>
                             </div>
                             <div class="input-group">
@@ -300,14 +341,14 @@
                 <div class="col-sm-12 col-md-6 col-lg-9">
                     <div class="location_rightside_box">
                         <div class="location_main_heading">
-                            <h2>+100 motorboats available</h2>
+                            <h2>{{ count($results) }} boats available</h2>
                         </div>
                         <div class="row">
                             @if($results)
                                 @foreach ($results as $result)                                                                                                                                                                                                                                                                                  
                                     <div class="col-sm-12 col-md-6 col-lg-4">
                                         <div class="location_inner_box">
-                                            <img src="{{  $result->getFirstMediaUrl('cover_images') }}">
+                                            <img src="{{ $result->getFirstMediaUrl('cover_images') ? $result->getFirstMediaUrl('cover_images') : 'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png' }}">
                                             <div class="wishlist_icon">
                                                 <i class="fa-regular fa-heart"></i>
                                             </div> 
@@ -319,7 +360,7 @@
                                                     <h5 class="location_price">From <span class="price_style">€27</span> / day</h5>
                                                     <div class="location_facility">
                                                         <ul>
-                                                            <li>With Skipper</li>
+                                                            <li>{{ $result->skipper }}</li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -336,17 +377,6 @@
                     </div>
                     <div class="location_pagination">
                         {{ $results->appends(request()->all())->links('pagination::default') }}
-
-                        <div class="pagination">
-                            <a href="#">&laquo;</a>
-                            <a href="#">1</a>
-                            <a class="active" href="#">2</a>
-                            <a href="#">3</a>
-                            <a href="#">4</a>
-                            <a href="#">5</a>
-                            <a href="#">6</a>
-                            <a href="#">&raquo;</a>
-                        </div>
                     </div>
                 </div>
             </div>

@@ -103,7 +103,7 @@ class PagesController extends Controller
     }
     public function search(Request $request)
     {
-        $request = $request->all();
+        //$request = $request->all();
         $results = $this->service->searchListing($request);
         return view('front.search',compact('results'));
     }

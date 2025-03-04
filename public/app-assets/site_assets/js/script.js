@@ -382,7 +382,7 @@ $(document).ready(function() {
 	});	
 	
 	
-	$(document).on('change','input[name="type[]"]', function() {
+	$(document).on('change','input[name="type[]"], #rental_type', function() {
 		$('#search-filter-fom').submit();
     });
 });

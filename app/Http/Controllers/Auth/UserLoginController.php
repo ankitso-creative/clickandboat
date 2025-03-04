@@ -17,13 +17,10 @@ class UserLoginController extends Controller
     }
     public function login(Request $request)
     {
-        //dd('sdfds');
         $request->validate([
             'email' => 'required|email',
             'password' => 'required',
         ]);
-
-        // Check if the user is an admin
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) 
         {
@@ -44,7 +41,7 @@ class UserLoginController extends Controller
     }
     public function logout()
     {
-        Auth::logout();  // Logout the user
+        Auth::logout(); 
         return redirect()->route('login');  
     }
 }
