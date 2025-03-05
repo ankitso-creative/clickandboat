@@ -748,6 +748,26 @@ h1, h2, h3, h4, h5, h6 {
 .boat_type_sec {
     padding: 0px 35px;
 }
+.boat_type_section_slider .slick-prev::before {
+    content: url(../img/slider-left-icon.png) !important;
+}
+.boat_type_section_slider .slick-next::before {
+    content: url(../img/slider-right-icon.png) !important;
+}
+.boat_type_section_slider .slick-prev,
+.boat_type_section_slider .slick-next {
+    width: 40px !important;
+    height: 40px !important;
+    z-index: 1 !important;
+}
+.boat_type_section_slider .slick-prev {
+    top: 44%;
+    left: 22px;
+}
+.boat_type_section_slider .slick-next {
+    top: 44%;
+    right: 53px;
+}
 /*--------------------------------------------------------------
 # home page location section
 --------------------------------------------------------------*/
@@ -760,8 +780,8 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0 15px;
 }
 .home_page_slider_box:hover {
-    cursor: url('../img/Untitled-1-removebg-preview.png'), auto;
-}
+    /* cursor: url(../img/cursor.cur), auto; */
+  }
 .home_page_slider_box img {
     width: 100%;
 }
@@ -838,6 +858,26 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
     padding: 0 15px;
 }
+.home_page_slider .slick-prev::before {
+    content: url(../img/slider-left-icon.png) !important;
+}
+.home_page_slider .slick-next::before {
+    content: url(../img/slider-right-icon.png) !important;
+}
+.home_page_slider .slick-prev,
+.home_page_slider .slick-next {
+    width: 40px !important;
+    height: 40px !important;
+    z-index: 1 !important;
+}
+.home_page_slider .slick-prev {
+    top: 50%;
+    left: 7%;
+}
+.home_page_slider .slick-next {
+    top: 50%;
+    right: 130px;
+}
 /*--------------------------------------------------------------
 # Follow sailer section
 --------------------------------------------------------------*/
@@ -888,6 +928,21 @@ h1, h2, h3, h4, h5, h6 {
     display: inline-block;
     padding-top: 7px;
     font-family: 'Montserrat' !important;
+}
+.follow_rating {
+    display: flex;
+}
+.follow_rating ul {
+    list-style: none;
+    padding-left: 15px;
+    margin-top: -3px;
+}
+.follow_rating ul li {
+    display: inline-block;
+}
+.follow_rating ul li i {
+    color: #f8a126;
+    font-size: 12px;
 }
 /*--------------------------------------------------------------
 # Unique slider section
@@ -1015,6 +1070,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 .trip_date_text {
     padding-top: 15px;
+}
+.next_trip_box img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
 }
 /*--------------------------------------------------------------
 # Signup form
@@ -1621,19 +1681,21 @@ h1, h2, h3, h4, h5, h6 {
     background: #f9a126;
     border: 1px solid #f9a126;
     color: #fff;
-    padding: 8px 41px;
+    padding: 8px 60px;
     border-radius: 15px;
     outline: none;
     margin-top: 30px;
     cursor: pointer;
 }
-.password_section label{
+.password_section label {
     font-size: 15px;
+    color: #000;
 }
-.main-dashboard-container  h2{
-    font-size: 28px;
+.main-dashboard-container  h2 {
+    font-size: 44px;
     color: #000;
     text-transform: uppercase;
+    padding-bottom: 10px;
 }
 .setting_section label {
     padding-top: 9px;
@@ -1728,8 +1790,8 @@ button.delete_acc_btn {
     vertical-align: middle;
 }
 .boat_type_section .content-button button {
-    width: 120px;
-    height: 120px;
+    width: 152px;
+    height: 152px;
     border-radius: 8px;
     background-color: #fff;
     border: 2px solid #f9a126;
@@ -1746,6 +1808,85 @@ button.delete_acc_btn {
 }
 .photo_sec_pera {
     padding-top: 10px;
+}
+.listing_banner{
+    background-image: url(../img/Onboarding-banner.jpg);
+    width: 100%;
+    height: 470px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+.listing_banner_text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+}
+.listing_banner_text h1 {
+    font-size: 64px;
+    color: #fff;
+    text-transform: uppercase;
+    padding-top: 10px;
+}
+.listing_banner_text p {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 500;
+}
+.boatowner_listing_section {
+    padding: 15px 25px;
+}
+.photos_box_text {
+    text-align: center;
+    padding-bottom: 20px;
+}
+.photo-section {
+    margin-top: 40px;
+}
+.boatowner_listing_images img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 7px;
+}
+.boatowner_listing_images .col-md-4 {
+    padding-bottom: 30px;
+}
+.boat_listing_save_btn {
+    text-align: right;
+}
+.boat_listing_save_btn a {
+    color: #f9a126;
+    font-size: 15px;
+    text-decoration: underline;
+    font-family: 'Montserrat' !important;
+}
+.boatowner_listing_videos img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+.boatowner_listing_videos video{
+    border-radius: 7px;
+}
+.boat_listing_images_video_save_btn a {
+    background: #f9a126;
+    border: 1px solid #f9a126;
+    color: #fff;
+    padding: 8px 60px;
+    border-radius: 15px;
+    outline: none;
+    margin-top: 30px;
+    cursor: pointer;
+    display: inline-block;
+    margin-bottom: 40px;
+}
+.boat_listing_images_video_save_btn{
+    text-align: center;
 }
 /*--------------------------------------------------------------
 # Location Page
@@ -3042,6 +3183,9 @@ section.about_zigzag_section {
     background: #f9a126;
     margin-top: 60px;
 }
+.help_contact_img img {
+    width: 100%;
+}
 .help_contact_text {
     text-align: center;
     padding: 0 85px;
@@ -3133,23 +3277,20 @@ section.about_zigzag_section {
     padding-top: 15px;
     display: block;
     color: #f9a126;
+    text-decoration: underline;
+    font-family: 'Montserrat' !important;
 }
 .photos_box_text .photo_sub_heading {
     color: #000;
-    font-size: 20px;
+    font-size: 15px;
     font-weight: 500;
+    text-transform: uppercase;
+}
+.photos_box_text .photo_sub_heading a{
+    color: #f9a126;
 }
 .boatowner_listing_images {
     margin-top: 40px;
-}
-.boatowner_listing_images img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 15px;
-}
-.boatowner_listing_images .col-md-4 {
-    padding-bottom: 30px;
 }
 /*--------------------------------------------------------------
 # Single boat page
@@ -3283,6 +3424,7 @@ section.about_zigzag_section {
 .boat-content-sec .col-md-8 {
     padding-left: 0px;
     padding-right: 88px;
+    padding-top: 30px;
 }
 .boat-card-content-sec {
     border-bottom: 1px solid #ebebeb;
@@ -3457,12 +3599,13 @@ section.about_zigzag_section {
     gap: 1rem;
     margin: 20px 0px;
 }
-.features-menus li{
+.features-menus li {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
     width: calc(50% - .5rem);
+    color: #000;
 }
 .features-menus li strong{
     margin-left: 10px;
@@ -4013,6 +4156,145 @@ section.about_zigzag_section {
     color: #f8a126;
     font-size: 15px;
     text-transform: uppercase;
+    text-decoration: underline;
+}
+.delete_dates {
+    font-size: 15px;
+    color: #adb5bd;
+    text-transform: uppercase;
+    text-decoration: underline;
+    display: inline-block;
+    margin-top: 20px;
+}
+.ideas-sec {
+    display: flex;
+}
+.idea_Sec_img img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 25px;
+}
+.idea_sec_text h3 {
+    margin: 0;
+}
+.offered_rating {
+    list-style: none;
+    padding-top: 15px;
+}
+.offered_rating li {
+    display: inline-block;
+    padding: 0 30px 0 0;
+}
+.about_heading {
+    font-weight: 600;
+    padding-top: 20px;
+}
+.read_more-btn {
+    font-size: 15px;
+    color: #f8a126;
+    text-transform: uppercase;
+    display: block;
+    margin-top: 15px;
+    text-decoration: underline;
+    margin-bottom: 15px;
+}
+.contact_owner_btn {
+    background: #f8a126;
+    padding: 15px 15px;
+    display: inline-block;
+    border-radius: 15px;
+    color: #fff;
+    text-transform: uppercase;
+    margin-top: 15px;
+}
+.offere_language p {
+    padding-bottom: 5px;
+}
+.offere_language i {
+    padding-right: 10px;
+}
+.location-sec p {
+    padding-bottom: 20px;
+}
+.features-menus li a {
+    color: #000;
+}
+.sidebar_form {
+    width: 96%;
+    margin: 0px auto;
+    border: 1px solid #ebebeb;
+    border-radius: 5px;
+}
+.sidebar_form input {
+    border: 0px;
+    border-radius: 0px;
+    text-align: center;
+    background: none !important;
+    height: 50px;
+}
+.sidebar_form .form-group {
+    margin-bottom: 0px;
+}
+.check_ava_btn {
+    background: #f8a126;
+    border: 1px solid #f8a126;
+    padding: 10px 0px;
+    border-radius: 3px;
+    color: #fff;
+    margin-top: 16px;
+    width: 97%;
+    margin: 10px auto 0;
+}
+.book_btn {
+    background: #f8a126;
+    border: 1px solid #f8a126;
+    padding: 10px 0px;
+    border-radius: 3px;
+    color: #fff;
+    margin-top: 16px;
+    width: 97%;
+    margin: 10px auto 0;
+}
+.form_text p {
+    font-size: 14px;
+}
+.boat-right-sec .card {
+    padding-bottom: 25px !important;
+    padding-top: 25px !important;
+}
+.features-menu {
+    list-style: none;
+}
+.features-menu li {
+    padding: 7px 0px;
+    color: #000;
+}
+.features-menu li a {
+    color: #000;
+    text-decoration: underline;
+}
+.single_boat_faq .card-header {
+    background: none;
+    padding: 0px;
+    border-radius: 15px;
+}
+.single_boat_faq .card {
+    box-shadow: none;
+    border: 1px solid #ebebeb!important;
+    margin-bottom: 15px;
+    border-radius: 15px;
+    background: #e4e4e4;
+}
+.boat-card-content-secs {
+    width: 100%;
+}
+.single_boat_faq_section .collapsible-link::before {
+    color: #000;
+}
+.similar_boat_section {
+    width: 100%;
 }
 /*--------------------------------------------------------------
 # Footer
@@ -4123,10 +4405,44 @@ section.about_zigzag_section {
     .blog_banner {
         height: 821px;
     }
-    .blog_banner_text {
+.blog_banner_text {
         position: absolute;
         top: 30%;
     }
-
-
+ .home_banner_section {
+        height: 960px;
+    }
+.featured_board_boxes img {
+        height: 500px;
+    }
+.boat_type_section_slider .boat_type_box img {
+        height: 617px;
+    }
+.boat_by_location {
+        height: 630px;
+    }
+.next_trip_box img {
+        height: 440px;
+    }
+ .next_trip_box img {
+        height: 440px;
+    }
+.about_slider_box {
+    padding: 65px 100px;
+}
+.about_insurance_text {
+    padding: 0 45px;
+}
+.location_page_banner {
+    height: 422px;
+}
+.help_banner_section {
+    height: 820px;
+}
+.more_resource_section  .more_resource_box {
+    padding: 40px 75px;
+}
+.help_contact_text {
+    padding: 0 210px;
+}
 }
