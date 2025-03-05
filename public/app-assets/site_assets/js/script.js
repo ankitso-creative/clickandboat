@@ -100,9 +100,10 @@ $(document).ready(function(){
 				//infinite: true,
 				  slidesToShow: 2,
 				slidesToScroll: 1,
-				autoplay: true,
+				autoplay: false,
 				draggable: true,
 				loop: true,
+				arrow: true,
 				 autoplaySpeed: 3000,
 				 responsive: [
 				{
@@ -134,12 +135,13 @@ $(document).ready(function(){
 	$('.location_slider').slick({
 			slidesToShow: 2,           
 			slidesToScroll: 1,
+			centerMode: true,
 			autoplay: true,
 			autoplaySpeed: 0,         
 			speed: 10000,               
 			cssEase: 'linear',        
 			infinite: true,
-			arrows: false,            
+			arrows: true,            
 			pauseOnHover: false,      
 			pauseOnFocus: false,
 			variableWidth: true,

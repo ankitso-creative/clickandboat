@@ -126,7 +126,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="label-default">Last Name<span class="required"> *</span></label>
+                                    <label class="label-default">Surname<span class="required"> *</span></label>
                                     <input type="text" name="last_name"
                                         value="{{ $userData->profile->last_name ?? '' }}" class="form-control">
                                     @error('last_name')<span class="required">{{ $message }}</span>@enderror

@@ -260,7 +260,13 @@
                             <img src="{{ asset('app-assets/site_assets/img/testimonial-img.png') }}">
                         </div>
                         <div class="custmer_text">
-                            <h5>Thomas</h5>
+                            <div class="follow_rating">
+                                <h5>Thomas</h5>
+                                <ul>
+                                    <li><i class="fa-solid fa-star"></i></li>
+                                    <li><i class="fa-solid fa-star"></i></li>
+                                </ul>
+                            </div>
                             <p>Jan 2025 Rent a boat in RANIERI Soverato in Port d'Alcúdia</p>
                         </div>
                     </div>
@@ -276,7 +282,16 @@
                             <img src="{{ asset('app-assets/site_assets/img/testimonial-img.png') }}">
                         </div>
                         <div class="custmer_text">
-                            <h5>Thomas</h5>
+                            <div class="follow_rating">
+                                <h5>Thomas</h5>
+                                <ul>
+                                    <li><i class="fa-solid fa-star"></i></li>
+                                    <li><i class="fa-solid fa-star"></i></li>
+                                    <li><i class="fa-solid fa-star"></i></li>
+                                    <li><i class="fa-solid fa-star"></i></li>
+                                    <li><i class="fa-solid fa-star"></i></li>
+                                </ul>
+                            </div>
                             <p>Jan 2025 Rent a boat in RANIERI Soverato in Port d'Alcúdia</p>
                         </div>
                     </div>
@@ -292,7 +307,14 @@
                             <img src="{{ asset('app-assets/site_assets/img/testimonial-img.png') }}">
                         </div>
                         <div class="custmer_text">
-                            <h5>Thomas</h5>
+                            <div class="follow_rating">
+                                <h5>Thomas</h5>
+                                <ul>
+                                    <li><i class="fa-solid fa-star"></i></li>
+                                    <li><i class="fa-solid fa-star"></i></li>
+                                    <li><i class="fa-solid fa-star"></i></li>
+                                </ul>
+                            </div>
                             <p>Jan 2025 Rent a boat in RANIERI Soverato in Port d'Alcúdia</p>
                         </div>
                     </div>
@@ -308,7 +330,15 @@
                             <img src="{{ asset('app-assets/site_assets/img/testimonial-img.png') }}">
                         </div>
                         <div class="custmer_text">
-                            <h5>Thomas</h5>
+                            <div class="follow_rating">
+                                <h5>Thomas</h5>
+                                <ul>
+                                    <li><i class="fa-solid fa-star"></i></li>
+                                    <li><i class="fa-solid fa-star"></i></li>
+                                    <li><i class="fa-solid fa-star"></i></li>
+                                    <li><i class="fa-solid fa-star"></i></li>
+                                </ul>
+                            </div>
                             <p>Jan 2025 Rent a boat in RANIERI Soverato in Port d'Alcúdia</p>
                         </div>
                     </div>

@@ -9,191 +9,245 @@
 
 @endsection
 @section('content')
-    <div class="col-lg-9 main-dashboard">
-        <div class="page-title">
-            <h1>Add Your Listing</h1>
-        </div>
-        @if($errors->any())
-            <div style="color: red;">
-                <ul>
-                    @foreach($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-        <div class="row">
-            <section id="tabs">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12 ">
-                            <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
-                                <div class="tab-pane fade show active" id="general" role="tabpanel" aria-labelledby="nav-general-tab">
-                                    <form action="{{ route('boatowner.listing-store') }}" method="POST" enctype="multipart/form-data"> 
-                                        @csrf
-                                        <div class="row">
-                                            <div class="col-lg-4">
-                                                <label>Type:<span class="required"> * </span></label>
-                                                <select name="type" class="form-control" required>
-                                                    <option value="Motorboat">Motorboat</option>
-                                                    <option value="Sailboat">Sailboat</option>
-                                                    <option value="RIB">RIB</option>
-                                                    <option value="Catamaran">Catamaran</option>
-                                                    <option value="Houseboat">Houseboat</option>
-                                                    <option value="Jet ski">Jet ski</option>
-                                                    <option value="Gulet">Gule </option>
-                                                    <option value="Boat without licence">Boat without licence</option>
-                                                    <option value="Yacht">Yacht</option>
-                                                </select>
-                                                @error('type')<span class="required">{{ $message }}</span>@enderror
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <label>Harbour:<span class="required"> * </span></label>
-                                                <input type="text" name="harbour" value="{{ old('harbour') }}" class="form-control" required>
-                                                @error('harbour')<span class="required">{{ $message }}</span>@enderror
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <label>City:<span class="required"> * </span></label>
-                                                <input type="text" name="city" class="form-control" required value="{{ old('city') }}">
-                                                @error('city')<span class="required">{{ $message }}</span>@enderror
-                                            </div>
-                                            <div class="clearfix"></div>
-                                            <div class="col-lg-4">
-                                                <label>Are you a professional?:<span class="required"> * </span></label>
-                                                <select name="professional" class="form-control" required>
-                                                    <option value="No">No</option>
-                                                    <option value="Yes">Yes</option>
-                                                </select>
-                                                @error('professional')<span class="required">{{ $message }}</span>@enderror
-                                            </div>	
-                                            <div class="col-lg-4">
-                                                <label>Manufacturer:<span class="required"> * </span></label>
-                                                <input type="text" name="manufacturer" class="form-control" required value="{{ old('manufacturer') }}">
-                                                @error('manufacturer')<span class="required">{{ $message }}</span>@enderror
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <label>Model:<span class="required"> * </span></label>
-                                                <input type="text" name="model" class="form-control" required value="{{ old('model') }}">
-                                                @error('model')<span class="required">{{ $message }}</span>@enderror
-                                            </div>
-                                            <div class="clearfix"></div>
-                                            <div class="col-lg-4">
-                                                <label>Is your boat rented with a skipper?:<span class="required"> * </span></label>
-                                                <select name="skipper" class="form-control" required>
-                                                    <option value="with skipper">With Skipper </option>
-                                                    <option value="without skipper">Without Skipper</option>
-                                                    <option value="with Or without skipper">With Or Without Skipper</option>
-                                                </select>
-                                                @error('skipper')<span class="required">{{ $message }}</span>@enderror
-                                            </div>
-                                            
-                                            <div class="col-lg-4">
-                                                <label>Capacity:<span class="required"> * </span></label>
-                                                <input type="text" name="capacity" class="form-control"  value="{{ old('capacity') }}">
-                                                @error('capacity')<span class="required">{{ $message }}</span>@enderror
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <label>Length (m)<span class="required"> * </span></label>
-                                                <input type="text" name="length" class="form-control" value="{{ old('length') }}">
-                                            </div>
-                                            <div class="clearfix"></div>
-                                            <div class="col-lg-12">
-                                                <h4 class="bold ">Company</h4>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                            <div class="col-lg-4">
-                                                <label>Company's name<span class="required"> * </span></label>
-                                                <input type="text" name="company_name" class="form-control" required value="{{ old('company_name') }}">
-                                                @error('company_name')<span class="required">{{ $message }}</span>@enderror
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <label>Website<span class="required">  </span></label>
-                                                <input type="text" name="website" class="form-control" value="{{ old('website') }}">
-                                            </div> 
-                                            <div class="clearfix"></div>
-                                            <div class="col-lg-12">
-                                                <h4 class="bold ">Description</h4>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                            <div class="col-lg-6">
-                                                <label>Boat name:<span class="required"> * </span></label>
-                                                <input type="text" name="boat_name" class="form-control" required value="{{ old('boat_name') }}">
-                                                @error('boat_name')<span class="required">{{ $message }}</span>@enderror
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <label>Title:<span class="required"> </span></label>
-                                                <input type="text" name="title" class="form-control" value="{{ old('title') }}">
-                                            </div>
-                                            <div class="clearfix"></div>
-                                            <div class="col-lg-12">
-                                                <label>Description:<span class="required"> </span></label>
-                                                <textarea type="text" name="description" class="form-control"></textarea>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                            <div class="col-lg-12">
-                                                <h4 class="bold ">Technical</h4>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                            <div class="col-lg-3">
-                                                <label>Onboard capacity:<span class="required"> </span></label>
-                                                <input type="text" name="onboard_capacity" class="form-control" value="{{ old('onboard_capacity') }}">
-                                            </div>
-                                            <div class="col-lg-3">
-                                                <label>Number of cabins:<span class="required"> </span></label>
-                                                <input type="text" name="cabins" class="form-control" value="{{ old('cabins') }}">
-                                            </div>
-                                            <div class="col-lg-3">
-                                                <label>Number of berths:<span class="required"> </span></label>
-                                                <input type="text" name="berths" class="form-control" value="{{ old('berths') }}">
-                                            </div>
-                                            <div class="col-lg-3">
-                                                <label>Number of bathrooms:<span class="required"> </span></label>
-                                                <input type="text" name="bathrooms" class="form-control" value="{{ old('bathrooms') }}">
-                                            </div>
-                                            <div class="clearfix"></div>
-                                            <div class="col-lg-3">
-                                                <label>Year of construction:<span class="required"> </span></label>
-                                                <input type="text" name="construction_year" class="form-control" value="{{ old('construction_year') }}">
-                                            </div>
-                                            <div class="col-lg-3">
-                                                <label>Fuel(L/h):<span class="required"> </span></label>
-                                                <input type="text" name="fuel" class="form-control" value="{{ old('fuel') }}">
-                                            </div>
-                                            <div class="col-lg-3">
-                                                <label>Renovated:<span class="required"> </span></label>
-                                                <input type="text" name="renovated" class="form-control" value="{{ old('renovated') }}">
-                                            </div>
-                                            <div class="col-lg-3">
-                                                <label>speed (kn):<span class="required"> </span></label>
-                                                <input type="text" name="speed" class="form-control" value="{{ old('speed') }}">
-                                            </div>
-                                            <div class="clearfix"></div>
-                                            
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <div class="alert d-none">
-                                                    <button class="close" data-close="alert"></button>
-                                                    <span class="message"></span>
-                                                </div>
-                                            </div>
-                                            <div class="actions btn-set">
-                                                <button type="button" onclick="window.location = '';" class="btn btn default">
-                                                    <i class="fa fa-angle-left"></i> Back
-                                                </button>	
-                                                <input type="hidden" name="s" value="general">
-                                                <button type="submit" class="btn btn-success mt-ladda-btn ladda-button btn-outline" data-style="contract" data-spinner-color="#333">
-                                                    <i class="fa fa-check"></i> Save
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </form>
+<div class="listing_banner">
+    <div class="listing_banner_text">
+        <h1>Ahoy there Captain!</h1>
+        <p>Your yacht will soon be visible to the largest community of sailors interested in peer-to-peer yacht
+            charters. Welcome to Booker Boat</p>
+    </div>
+</div>
+<div class="col-lg-12 main-dashboard boatowner_listing_section">
+    <div class="container">
+        <div class="text-center boat_type_section">
+            <h2>Your boat</h2>
+            <h3>Type</h3>
+            <div class="line-entry">
+                <div class="col-1-1 entry full-width">
+                    <div class="col-1-1 value kind-boat">
+                        <div class="content-button" data-typeid="Motorboat" data-context="productcreate">
+                            <button aria-label="Motorboat">
+                                <div class="boatsIconColor">
+                                    <img src="{{ asset('app-assets/site_assets/img/Motorboat-V1.png') }}">
                                 </div>
-                            </div>
+                                Motorboat
+                            </button>
+                        </div>
+                        <div class="content-button" data-typeid="Sailboat" data-context="productcreate">
+                            <button aria-label="Sailboat">
+                                <div class="boatsIconColor">
+                                    <img src="{{ asset('app-assets/site_assets/img/Sailboat-V1.png') }}">
+                                </div>
+                                Sailboat
+                            </button>
+                        </div>
+                        <div class="content-button" data-typeid="RIB" data-context="productcreate">
+                            <button aria-label="RIB">
+                                <div class="boatsIconColor">
+                                    <img src="{{ asset('app-assets/site_assets/img/RIB-V1.png') }}">
+                                </div>
+                                RIB
+                            </button>
+                        </div>
+                        <div class="content-button" data-typeid="Catamaran" data-context="productcreate">
+                            <button aria-label="Catamaran">
+                                <div class="boatsIconColor">
+                                    <img src="{{ asset('app-assets/site_assets/img/Catamaran-V1.png') }}">
+                                </div>
+                                Catamaran
+                            </button>
+                        </div>
+                        <div class="content-button" data-typeid="Jet Ski" data-context="productcreate">
+                            <button aria-label="Jet ski">
+                                <div class="boatsIconColor">
+                                    <img src="{{ asset('app-assets/site_assets/img/Jet-ski-V1.png') }}">
+                                </div>
+                                Jet ski
+                            </button>
+                        </div>
+                        <div class="content-button" data-typeid="Gulet" data-context="productcreate">
+                            <button aria-label="Gulet">
+                                <div class="boatsIconColor">
+                                    <img src="{{ asset('app-assets/site_assets/img/Gulet-V1.png') }}">
+                                </div>
+                                Gulet
+                            </button>
+                        </div>
+                        <div class="content-button" data-typeid="Without license" data-context="productcreate">
+                            <button aria-label="Boat without licence ">
+                                <div class="boatsIconColor">
+                                    <img src="{{ asset('app-assets/site_assets/img/Boat-without-licence-V1.png') }}">
+                                </div>
+                                Boat without licence
+                            </button>
+                        </div>
+                        <div class="content-button" data-typeid="Yacht" data-context="productcreate">
+                            <button aria-label="Yacht">
+                                <div class="boatsIconColor">
+                                    <img src="{{ asset('app-assets/site_assets/img/Yacht-V1.png') }}">
+                                </div>
+                                Yacht
+                            </button>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </div>
+        <div class="form-section">
+            <form class="password-form" action="" method="Post">
+                <div class="row password_section">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="label-default">City</label>
+                            <input type="text" name="city" value="" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Harbour</label>
+                            <select class="form-control" id="exampleFormControlSelect1">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Are you a professional?</label>
+                            <select class="form-control" id="exampleFormControlSelect1">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="label-default">Manufacturer</label>
+                            <input type="text" name="city" value="" class="form-control" placeholder="Manufacturer">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="label-default">Model</label>
+                            <input type="text" name="city" value="" class="form-control" placeholder="Model">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Is your boat rented with a skipper?</label>
+                            <select class="form-control" id="exampleFormControlSelect1">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="label-default">Capacity (authorised)</label>
+                            <input type="text" name="city" value="" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group length_input">
+                            <label class="label-default">Length (m)</label>
+                            <input type="text" name="city" value="" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">How did you find out about Click&Boat?</label>
+                            <select class="form-control" id="exampleFormControlSelect1">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="text-center form-group">
+                            <button class="save_btn">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="photo-section">
+            <div class="text-center phot_heading">
+                <h1>Photos</h1>
+            </div>
+            <div class="photos_box_text">
+                <p class="photo_sub_heading">Drag and drop or <a href="#"> click here</a> to upload your photos</p>
+                <p>For the cover, choose a photo that shows the whole boat. Then add more photos of the details and the
+                    interior.</p>
+            </div>
+            <p class="photo_sec_pera">Drag the photos to change the order they appear in</p>
+        </div>
+        <div class="card-section">
+            <div class="image_des">
+                <img src="{{ asset('app-assets/site_assets/img/camera.png') }}">
+                <p class="image_des_main_heading">Post your photos here</p>
+                <p>Minimum size: 400x400px</p>
+                <p>Format: jpeg, png, gif</p>
+                <a href="">Download from your device</a>
+            </div>
+        </div>
+        <div class="boatowner_listing_images">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="{{ asset('app-assets/site_assets/img/feature-img-2.jpg') }}">
+                </div>
+                <div class="col-md-4">
+                    <img src="{{ asset('app-assets/site_assets/img/feature-img-2.jpg') }}">
+                </div>
+                <div class="col-md-4">
+                    <img src="{{ asset('app-assets/site_assets/img/feature-img-2.jpg') }}">
+                </div>
+            </div>
+            <div class="boat_listing_save_btn">
+                <a href="#">Add More</a>
+            </div>
+        </div>
+        <div class="pt-4 boatowner_listing_videos">
+            <div class="row">
+                <div class="col-md-4">
+                    <video width="100%" height="240" controls>
+                        <source src="movie.mp4" type="video/mp4">
+                        <source src="movie.ogg" type="video/ogg">
+                    </video>
+                </div>
+                <div class="col-md-4">
+                    <video width="100%" height="240" controls>
+                        <source src="movie.mp4" type="video/mp4">
+                        <source src="movie.ogg" type="video/ogg">
+                    </video>
+                </div>
+                <div class="col-md-4">
+                    <video width="100%" height="240" controls>
+                        <source src="movie.mp4" type="video/mp4">
+                        <source src="movie.ogg" type="video/ogg">
+                    </video>
+                </div>
+            </div>
+            <div class="pt-4 boat_listing_save_btn">
+                <a href="#">Add More</a>
+            </div>
+        </div>
+        <div class="boat_listing_images_video_save_btn">
+            <a href="">Save</a>
         </div>
     </div>
+</div>
+</div>
 @endsection
