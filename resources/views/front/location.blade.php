@@ -11,6 +11,7 @@
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAli6rCJivgzTbWznnkqFtT_btPww6WBYs&libraries=places"></script>
     <script>
+        /* Price range  Slider*/
         const rangevalue = document.querySelector(".slider-container .price-slider");
         const rangeInputvalue = document.querySelectorAll(".range-input input");
         let priceGap = 50;
@@ -73,6 +74,74 @@
                         priceInputvalue[1].value = maxVal;
                         rangevalue.style.left = `${(minVal / rangeInputvalue[0].max) * 100}%`;
                         rangevalue.style.right = `${100 - (maxVal / rangeInputvalue[1].max) * 100}%`;
+                    }
+                });
+            }
+        }
+        /* Length range  Slider*/
+        const lengthvalue = document.querySelector(".slider-container-length .length-slider");
+        const lengthInputvalue = document.querySelectorAll(".boat-input input");
+        let lengthGap = 10;
+        const priceInputvalues =  document.querySelectorAll(".length-input input");
+        alert(priceInputvalues);
+        for (let i = 0; i < priceInputvalues.length; i++) 
+        {
+            priceInputvalues[i].addEventListener("input", e => {
+                let minp = parseInt(priceInputvalues[0].value);
+                let maxp = parseInt(priceInputvalues[1].value);
+                let diff = maxp - minp
+                if (minp < 0) {
+                    alert("minimum length cannot be less than 0");
+                    priceInputvalues[0].value = 0;
+                    minp = 0;
+                }
+                if (maxp > {{ maxPriceValue() }}) {
+                    alert("maximum length cannot be greater than 10000");
+                    priceInputvalues[1].value = {{ maxPriceValue() }};
+                    maxp = {{ maxPriceValue() }};
+                }
+                if (minp > maxp - lengthGap) {
+                    priceInputvalues[0].value = maxp - lengthGap;
+                    minp = maxp - lengthGap;
+
+                    if (minp < 0) {
+                        priceInputvalues[0].value = 0;
+                        minp = 0;
+                    }
+                }
+                if (diff >= lengthGap && maxp <= lengthInputvalue[1].max) {
+                    if (e.target.className === "min-length") {
+                        lengthInputvalue[0].value = minp;
+                        let value1 = lengthInputvalue[0].max;
+                        lengthvalue.style.left = `${(minp / value1) * 100}%`;
+                    }
+                    else {
+                        lengthInputvalue[1].value = maxp;
+                        let value2 = lengthInputvalue[1].max;
+                        lengthvalue.style.right = 
+                            `${100 - (maxp / value2) * 100}%`;
+                    }
+                }
+            });
+
+            for (let i = 0; i < lengthInputvalue.length; i++) {
+                lengthInputvalue[i].addEventListener("input", e => {
+                    let minVal = parseInt(lengthInputvalue[0].value);
+                    let maxVal = parseInt(lengthInputvalue[1].value);
+                    let diff = maxVal - minVal
+                    if (diff < lengthGap) {
+                        if (e.target.className === "min-boat-range") {
+                            lengthInputvalue[0].value = maxVal - lengthGap;
+                        }
+                        else {
+                            lengthInputvalue[1].value = minVal + lengthGap;
+                        }
+                    }
+                    else {
+                        priceInputvalues[0].value = minVal;
+                        priceInputvalues[1].value = maxVal;
+                        lengthvalue.style.left = `${(minVal / lengthInputvalue[0].max) * 100}%`;
+                        lengthvalue.style.right = `${100 - (maxVal / lengthInputvalue[1].max) * 100}%`;
                     }
                 });
             }
@@ -272,7 +341,27 @@
                         </div>
                         <div class="location_checkbox_two">
                             <h5>Boat length</h5>
-
+                            <div class="custom-wrapper">
+                                <div class="boat-input">
+                                    <input type="range" class="min-boat-range" min="0" max="200" value="0" step="10">
+                                    <input type="range" class="max-boat-range" min="0" max="200" value="200" step="10">
+                                </div>
+                                <div class="price-input-container">
+                                    <div class="slider-container-length">
+                                        <div class="length-slider">
+                                        </div>
+                                    </div>
+                                    <div class="length-input">
+                                        <div class="price-field">
+                                            <input type="number" class="min-length-input" value="0">
+                                        </div>
+                                        <div class="price-field">
+                                            <input type="number" class="max-length-input" value="200">
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                            </div>
                         </div>
                         <div class="location_checkbox_two">
                             <h5>Price per day</h5>
