@@ -23,7 +23,7 @@
         }
         public function allListingData()
         {
-            $listing = Listing::where('status', '1')->with(['price'])->paginate(1);
+            $listing = Listing::where('status', '1')->with(['price'])->paginate(9);
             return $listing;
         }
         public function getBookingPrice($request)
