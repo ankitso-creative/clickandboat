@@ -11,6 +11,156 @@
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAli6rCJivgzTbWznnkqFtT_btPww6WBYs&libraries=places"></script>
     <script>
+        /* Price range Slider */
+        const rangevalue = document.querySelector(".slider-container .price-slider");
+        const rangeInputvalue = document.querySelectorAll(".range-input input");
+        let priceGap = 50;
+        const priceInputvalue = document.querySelectorAll(".price-input input");
+
+        const form = document.getElementById("priceForm"); // Get the form element
+
+        let timeout; // Timeout variable for debounce effect
+
+        // Function to submit the form
+        const submitForm = () => {
+            $('#search-filter-fom').submit(); // Trigger the form submission using jQuery
+        };
+
+        for (let i = 0; i < priceInputvalue.length; i++) {
+            priceInputvalue[i].addEventListener("input", e => {
+                let minp = parseInt(priceInputvalue[0].value);
+                let maxp = parseInt(priceInputvalue[1].value);
+                let diff = maxp - minp;
+
+                if (minp < 0) {
+                    alert("Minimum price cannot be less than 0");
+                    priceInputvalue[0].value = 0;
+                    minp = 0;
+                }
+                if (maxp > {{ maxPriceValue() }}) {
+                    alert("Maximum price cannot be greater than 10000");
+                    priceInputvalue[1].value = {{ maxPriceValue() }};
+                    maxp = {{ maxPriceValue() }};
+                }
+                if (minp > maxp - priceGap) {
+                    priceInputvalue[0].value = maxp - priceGap;
+                    minp = maxp - priceGap;
+
+                    if (minp < 0) {
+                        priceInputvalue[0].value = 0;
+                        minp = 0;
+                    }
+                }
+                if (diff >= priceGap && maxp <= rangeInputvalue[1].max) {
+                    if (e.target.className === "min-input") {
+                        rangeInputvalue[0].value = minp;
+                        let value1 = rangeInputvalue[0].max;
+                        rangevalue.style.left = `${(minp / value1) * 100}%`;
+                    } else {
+                        rangeInputvalue[1].value = maxp;
+                        let value2 = rangeInputvalue[1].max;
+                        rangevalue.style.right = `${100 - (maxp / value2) * 100}%`;
+                    }
+                }
+                clearTimeout(timeout);
+                timeout = setTimeout(submitForm, 1000); 
+            });
+
+            for (let i = 0; i < rangeInputvalue.length; i++) {
+                rangeInputvalue[i].addEventListener("input", e => {
+                    let minVal = parseInt(rangeInputvalue[0].value);
+                    let maxVal = parseInt(rangeInputvalue[1].value);
+                    let diff = maxVal - minVal;
+
+                    if (diff < priceGap) {
+                        if (e.target.className === "min-range") {
+                            rangeInputvalue[0].value = maxVal - priceGap;
+                        } else {
+                            rangeInputvalue[1].value = minVal + priceGap;
+                        }
+                    } else {
+                        priceInputvalue[0].value = minVal;
+                        priceInputvalue[1].value = maxVal;
+                        rangevalue.style.left = `${(minVal / rangeInputvalue[0].max) * 100}%`;
+                        rangevalue.style.right = `${100 - (maxVal / rangeInputvalue[1].max) * 100}%`;
+                    }
+
+                    clearTimeout(timeout);
+                    timeout = setTimeout(submitForm, 1000); 
+                });
+            }
+        }
+        /* Length range  Slider*/
+        const lengthvalue = document.querySelector(".slider-container-length .length-slider");
+        const lengthInputvalue = document.querySelectorAll(".boat-input input");
+        let lengthGap = 10;
+        const priceInputvalues =  document.querySelectorAll(".length-input input");
+        for (let i = 0; i < priceInputvalues.length; i++) 
+        {
+            priceInputvalues[i].addEventListener("input", e => {
+                let minp = parseInt(priceInputvalues[0].value);
+                let maxp = parseInt(priceInputvalues[1].value);
+                let diff = maxp - minp
+                if (minp < 0) {
+                    alert("minimum length cannot be less than 0");
+                    priceInputvalues[0].value = 0;
+                    minp = 0;
+                }
+                if (maxp > {{ maxPriceValue() }}) {
+                    alert("maximum length cannot be greater than 10000");
+                    priceInputvalues[1].value = {{ maxPriceValue() }};
+                    maxp = {{ maxPriceValue() }};
+                }
+                if (minp > maxp - lengthGap) {
+                    priceInputvalues[0].value = maxp - lengthGap;
+                    minp = maxp - lengthGap;
+
+                    if (minp < 0) {
+                        priceInputvalues[0].value = 0;
+                        minp = 0;
+                    }
+                }
+                if (diff >= lengthGap && maxp <= lengthInputvalue[1].max) {
+                    if (e.target.className === "min-length") {
+                        lengthInputvalue[0].value = minp;
+                        let value1 = lengthInputvalue[0].max;
+                        lengthvalue.style.left = `${(minp / value1) * 100}%`;
+                    }
+                    else {
+                        lengthInputvalue[1].value = maxp;
+                        let value2 = lengthInputvalue[1].max;
+                        lengthvalue.style.right = 
+                            `${100 - (maxp / value2) * 100}%`;
+                    }
+                }
+                clearTimeout(timeout);
+                timeout = setTimeout(submitForm, 1000);
+            });
+
+            for (let i = 0; i < lengthInputvalue.length; i++) {
+                lengthInputvalue[i].addEventListener("input", e => {
+                    let minVal = parseInt(lengthInputvalue[0].value);
+                    let maxVal = parseInt(lengthInputvalue[1].value);
+                    let diff = maxVal - minVal
+                    if (diff < lengthGap) {
+                        if (e.target.className === "min-boat-range") {
+                            lengthInputvalue[0].value = maxVal - lengthGap;
+                        }
+                        else {
+                            lengthInputvalue[1].value = minVal + lengthGap;
+                        }
+                    }
+                    else {
+                        priceInputvalues[0].value = minVal;
+                        priceInputvalues[1].value = maxVal;
+                        lengthvalue.style.left = `${(minVal / lengthInputvalue[0].max) * 100}%`;
+                        lengthvalue.style.right = `${100 - (maxVal / lengthInputvalue[1].max) * 100}%`;
+                    }
+                    clearTimeout(timeout);
+                    timeout = setTimeout(submitForm, 1000); 
+                });
+            }
+        }
         flatpickr(".datePicker", {
             inline: false,          
             dateFormat: "d-m-Y", 
@@ -213,36 +363,50 @@
                             <h5>Price per day</h5>
                         </div>
                         <div class="location_checkbox_two">
-                            <div class="row">
-                                <div class="number_list">
-                                    <label>Number of peoples</label>
-                                    <div class="number_list_filter">
-                                        <div class="number_counter">
-                                            <a href="#"><i class="fa-solid fa-minus"></i></a>
-                                            <input type="number" id="quantity" name="quantity" min="1" max="5">
-                                            <a href="#"><i class="fa-solid fa-plus"></i></a>
-                                        </div>
-                                    </div>
+                            <h5>Boat length</h5>
+                            <div class="custom-wrapper">
+                                <div class="boat-input">
+                                    <input type="range" class="min-boat-range" min="0" max="200" value="{{ request()->query('min-length') }}" step="10">
+                                    <input type="range" class="max-boat-range" min="0" max="200" value="{{ request()->query('max-length') }}" step="10">
                                 </div>
-                                <div class="number_list">
-                                    <label>Number of cabins</label>
-                                    <div class="number_list_filter">
-                                        <div class="number_counter">
-                                            <a href="#"><i class="fa-solid fa-minus"></i></a>
-                                            <input type="number" id="quantity" name="quantity" min="1" max="5">
-                                            <a href="#"><i class="fa-solid fa-plus"></i></a>
+                                <div class="price-input-container">
+                                    <div class="slider-container-length">
+                                        <div class="length-slider">
                                         </div>
                                     </div>
+                                    <div class="length-input">
+                                        <div class="price-field">
+                                            <input type="number" name="min-length" class="min-length-input" value="{{ request()->query('min-length') }}">
+                                        </div>
+                                        <div class="price-field">
+                                            <input type="number" name="max-length" class="max-length-input" value="{{ request()->query('max-length') }}">
+                                        </div>
+                                    </div>
+                                   
                                 </div>
-                                <div class="number_list">
-                                    <label>Number of berths</label>
-                                    <div class="number_list_filter">
-                                        <div class="number_counter">
-                                            <a href="#"><i class="fa-solid fa-minus"></i></a>
-                                            <input type="number" id="quantity" name="quantity" min="1" max="5">
-                                            <a href="#"><i class="fa-solid fa-plus"></i></a>
+                            </div>
+                        </div>
+                        <div class="location_checkbox_two">
+                            <h5>Price per day</h5>
+                            <div class="custom-wrapper">
+                                <div class="range-input">
+                                    <input type="range" class="min-range" min="0" max="{{ maxPriceValue() }}" value="{{ request()->query('min_price') }}" step="50">
+                                    <input type="range" class="max-range" min="0" max="{{ maxPriceValue() }}" value="{{ request()->query('max_price') }}" step="50">
+                                </div>
+                                <div class="price-input-container">
+                                    <div class="slider-container">
+                                        <div class="price-slider">
                                         </div>
                                     </div>
+                                    <div class="price-input">
+                                        <div class="price-field">
+                                            <input type="number" name="min_price" class="min-input" value="{{ request()->query('min_price') }}">
+                                        </div>
+                                        <div class="price-field">
+                                            <input type="number" name="max_price" class="max-input" value="{{ request()->query('max_price') }}">
+                                        </div>
+                                    </div>
+                                   
                                 </div>
                             </div>
                         </div>
@@ -362,7 +526,7 @@
                                                     <h3>{{ $result->city }}</h3>
                                                     <p class="location_pera">{{ $result->type }} {{ $result->manufacturer }} {{ $result->model }} sport 30 (2023)</p>
                                                     <p class="people_pera">{{ $result->capacity }} people · 30 hp · 5 m</p>
-                                                    <h5 class="location_price">From <span class="price_style">€27</span> / day</h5>
+                                                    <h5 class="location_price">From <span class="price_style">€{{ $result->price->price ?? '' }}</span> / day</h5>
                                                     <div class="location_facility">
                                                         <ul>
                                                             <li>{{ $result->skipper }}</li>
