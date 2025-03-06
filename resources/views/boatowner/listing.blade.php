@@ -9,6 +9,9 @@
 
 @endsection
 @section('content')
+<div class="col-md-3">
+
+</div>
     <div class="col-lg-9 main-dashboard">
         <div class="row">
             <div class="col-md-12">

@@ -1447,7 +1447,7 @@ h1, h2, h3, h4, h5, h6 {
 .main-dashboard {
     min-height: calc(100vh - 4rem);
     background: #fff;
-    padding: 50px 25px;
+    padding: 45px 51px 0 25px;
 }
 .main-dashboard-container .sidebar ul .active a {
     color: #fff;
@@ -1716,6 +1716,9 @@ button.delete_acc_btn {
 .no-booking-yet a {
     color: #f9a126;
 }
+.no-booking-yet a:hover{
+    text-decoration: underline;
+}
 .upcoming_btn {
     background: #f9a126;
     padding: 12px 28px;
@@ -1725,6 +1728,12 @@ button.delete_acc_btn {
     text-transform: uppercase;
     font-size: 15px;
     margin-right: 25px;
+    border: 1px solid #f9a126;
+}
+.upcoming_btn:hover{
+    background: none;
+    border: 1px solid #f9a126;
+    color: #f9a126;
 }
 .past_btn{
     background: #f9a126;
@@ -1734,6 +1743,93 @@ button.delete_acc_btn {
     border-radius: 11px;
     text-transform: uppercase;
     font-size: 15px;
+    border: 1px solid #f9a126;
+}
+.past_btn:hover{
+    background: none;
+    border: 1px solid #f9a126;
+    color: #f9a126;
+}
+.td-actions {
+    display: flex;
+}
+.td-actions button {
+    background: #f9a126 !important;
+    padding: 6px 15px;
+    border: 1px solid #f9a126;
+}
+.td-actions button:hover{
+    background: none !important;
+    border: 1px solid #f9a126;
+    color: #f9a126;
+}
+.side_bar .nav-tabs {
+    border-bottom: 1px solid #323131;
+}
+.listing_progress_bar {
+    margin: 24px 0 0 30px;
+    border-top: 1px solid #fff;
+}
+.listing_progress_bar p {
+    font-size: 15px;
+    color: #fff;
+    text-transform: uppercase;
+    padding-top: 30px;
+}
+.calender_btn {
+    background: #f8a126;
+    padding: 16px 50px;
+    color: #fff;
+    border-radius: 5px;
+    border: 1px solid #f9a126;
+    text-transform: uppercase;
+}
+.calender_btn:hover{
+    background: none !important;
+    border: 1px solid #f9a126;
+    color: #f9a126;
+}
+.pre_list_btn {
+    background: #f8a126;
+    padding: 16px 35px;
+    color: #fff;
+    border-radius: 5px;
+    text-transform: uppercase;
+    border: 1px solid #f9a126;
+}
+.pre_list_btn:hover{
+    background: none !important;
+    border: 1px solid #f9a126;
+    color: #f9a126;
+}
+.pre_list_btn :hover{
+    background: none !important;
+    border: 1px solid #f9a126;
+    color: #f9a126;
+}
+.listing_sub_btn {
+    background: #f9a126;
+    border: 1px solid #f9a126;
+    color: #fff;
+    padding: 9px 60px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+.listing_sub_btn:hover{
+    background: none !important;
+    border: 1px solid #f9a126;
+    color: #f9a126;
+}
+.btn-set {
+    margin: 0px auto;
+    margin-top: 30px;
+}
+.text-center.actions.btn-set {
+    margin: 0px auto;
+    margin-top: 30px;
+}
+.side_bar.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link i {
+    padding: 0 8px 0 0;
 }
 /*--------------------------------------------------------------
 # Boatowner listing Page
@@ -4297,6 +4393,320 @@ section.about_zigzag_section {
     width: 100%;
 }
 /*--------------------------------------------------------------
+# Boatowner listing
+--------------------------------------------------------------*/
+#listing-section .list_edit_card {
+    border-radius: 15px;
+    border: 1px solid #ebebeb;
+}
+.side_bar div#nav-tab {
+    display: block;
+}
+.side_bar.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    background-color: #323131 !important;
+    border-color: #323131;
+    color: #fff;
+    padding: 15px 8px !important;
+    border-radius: 11px;
+    text-align: left;
+    border: none;
+    text-transform: uppercase;
+    background-image: none !important;
+}
+.side_bar.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link {
+    text-align: left;
+    color: #6d6d6d;
+    text-transform: uppercase;
+    padding: 15px 8px;
+    position: relative;
+}
+.sidebar_box_pera {
+    margin: 0 0 0 30px;
+}
+.sidebar_box_pera h3 {
+    font-size: 28px;
+    text-align: center;
+    color: #fff;
+    padding-top: 25px;
+    text-transform: uppercase;
+}
+.sidebar_box_pera p{
+    color: #fff;
+    text-align: center;
+}
+.sidebar_box_pera span {
+    color: #f8a126;
+}
+.side_bar .nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover {
+    border-color: #323131;
+}
+.side_bar.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link span{
+    position: absolute;
+    right:0px;
+}
+.active_inactive_btn .componentsBox {
+    padding: 50px;
+    border-bottom: 1px solid #e5e5e5;
+}
+.active_inactive_btn .title h2 {
+    font-size: 30px;
+    color: #6f7d34;
+    font-weight: 700;
+    line-height: 1.2em;
+    margin: 0 0 35px;
+}
+.active_inactive_btn .componentsBox .content {
+    margin-bottom: 20px;
+}
+.active_inactive_btn .m5 {
+    margin: 0 5px;
+}
+
+.active_inactive_btn  .switch {
+     display: inline-block;
+}
+.active_inactive_btn  .switch input {
+     display: none;
+}
+.active_inactive_btn .switch small {
+    display: inline-block;
+    width: 80px;
+    height: 25px;
+    background: #222222;
+    border-radius: 30px;
+    position: relative;
+    cursor: pointer;
+}
+.active_inactive_btn .switch small:after {
+    content: "Inactive";
+    position: absolute;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    width: 100%;
+    left: 0px;
+    text-align: right;
+    padding: 2px 9px;
+    box-sizing: border-box;
+    line-height: 21px;
+}
+.active_inactive_btn .switch small:before {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: #fff;
+    border-radius: 50%;
+    top: 5px;
+    left: 3px;
+    transition: .3s;
+    box-shadow: -3px 0 3px rgba(0,0,0,0.1);
+}
+.active_inactive_btn .switch input:checked ~ small {
+     background: #f8a126;
+     transition: .3s;
+}
+.active_inactive_btn .switch input:checked ~ small:before {
+     transform: translate(59px, 0px);
+     transition: .3s;
+}
+.active_inactive_btn .switch input:checked ~ small:after {
+     content: "Active";
+     text-align: left;
+}
+.active_inactive_btn .switchSmall {
+     display: inline-block;
+}
+.list-group-flush{
+    list-style: none;
+}
+.active_inactive_btn {
+    margin: 10px 0px 0px 15px;
+}
+.edit_profile_sec .form-control {
+    padding: 10px 3px 10px 20px;
+}
+.equipment_sec label {
+    padding: 3px 11px 0px 6px !important;
+}
+.list_edit_card a:hover{
+    color: #e4d183;
+}
+.profile_save_btn {
+    text-align: right;
+}
+.action_buttons {
+    padding-top: 56px;
+}
+.remove_newf_row {
+    background: #f8a126;
+    color: #fff;
+}
+.remove_newf_row:hover{
+    background: #e2b71c;
+}
+.your_listing_section {
+    background-color: #fff;
+    border-radius: 1rem;
+    padding: 30px 10px;
+    margin-bottom: 1.5rem;
+    border: 1px solid #ebebeb;
+    margin-right: 0px;
+    margin-left: 0px;
+}
+.your_listing_section .card {
+    border: 1px solid #ebebeb;
+    padding: 0 0 20px 0px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+.your_listing_section .card-body {
+    padding: 20px 0 0px 0px;
+    text-align: center;
+}
+.your_listing_section .list-group-flush {
+    text-align: center;
+}
+.your_listing_section .list-group-item {
+    border: 0px solid rgba(0, 0, 0, 0.125);
+}
+.your_listing_section img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+}
+.add_listing_btn {
+    text-align: right;
+}
+.add_listing_btn a {
+    background: #f8a126;
+    color: #fff;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 1px solid #f8a126;
+    border-radius: 15px;
+}
+.add_listing_btn a:hover{
+    background: none;
+    border: 1px solid #f8a126;
+    color: #f8a126;
+}
+.your_listing_search input {
+    height: 45px;
+    background: #f4f4f4;
+    border: 1px solid #ebebeb;
+    margin-bottom: 15px;
+}
+.has-search-right {
+    position: relative;
+}
+
+.has-search-right .form-control {
+    padding-right: 2.375rem;
+}
+
+.has-search-right .form-control-feedback {
+    position: absolute;
+    top: 2px;
+    right: 0;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    color: #aaa;
+}
+.your_listing_search .form-control:focus {
+    border-color: none;
+    box-shadow: none;
+    border:1px solid #ebebeb;
+}
+.your_listing_section h5 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    padding: 0 15px;
+}
+#uploade-cover-image img {
+    width: 40%;
+    height: 200px;
+    object-fit: cover;
+}
+.uploaded_img img{
+    width: 100% !important;
+    height: 200px;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+.uploaded_img {
+    padding: 0 15px 0 30px;
+}
+.remove-btn {
+    border: 0px solid #30a8d5;
+    cursor: pointer;
+     position: absolute;
+    right: 5px;
+    top: 7px;
+    background: none;
+}
+.remove-btn i {
+    font-size: 30px;
+    background: #30a8d5;
+    border-radius: 50%;
+    color: #fff;
+}
+.remove-btn i:hover{
+    background: #e2b71c;
+}
+.remove-btn:focus {
+    outline: 0px dotted;
+    outline: 0px auto -webkit-focus-ring-color;
+}
+.cover_img_sec input#file-input {
+    padding: 15px 20px;
+}
+.dropzone {
+    border: 0px !important;
+    min-height: 60px !important;
+    background: #f4f4f4 !important;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+.dropzone .dz-message {
+    margin: 0 !important;
+}
+.uploaded_img .col-md-4.image-container {
+    padding: 15px 15px 0px 0px;
+    position: relative;
+}
+.equipment_Sec label {
+    padding: 15px 15px 0px 0px !important;
+}
+.main-dashboard .tab-pane label {
+    padding: 15px 0 0px 0px;
+}
+.your_listing_section a {
+    color: #f8a126;
+}
+.main-dashboard .add_newf_row {
+    margin-left: -14px;
+    background: #f8a126 !important;
+    color: #fff;
+    padding: 12px 15px;
+}
+.listing_edit_btns {
+    margin-bottom: 20px;
+}
+.remove_newf_row {
+    background: #f8a126 !important;
+    color: #fff;
+}
+.side_bar {
+    padding: 30px 0px 0px 28px !important;
+}
+/*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
 .footer {
@@ -4392,6 +4802,7 @@ section.about_zigzag_section {
     text-align: center;
     padding-top: 30px;
 }
+
 /*--------------------------------------------------------------
 # Media Query
 --------------------------------------------------------------*/

@@ -106,6 +106,11 @@
 </script>
 @endsection @section('content')
 <section class="single_boat_banner"></section>
+<nav aria-label="Page breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active" aria-current="page">Yacht hire > Hire a boat in Greece with or without a licence  > Skiathos</li>
+    </ol>
+</nav>
 <!-- end .b-title-page-->
 <div class="l-main-content">
     <section class="boat-title">

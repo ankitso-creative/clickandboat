@@ -357,7 +357,8 @@
         <div class="row location_slider">
             <div class="location_slide">
                 <div class="home_page_slider_box">
-                    <img src="{{ asset('app-assets/site_assets/img/location-slider-1.jpg') }}">
+                    <img src="{{ asset('app-assets/site_assets/img/location-slider-1.jpg') }}" class="image">
+                    <div class="cursor"></div>
                     <div class="home_page_box_text">
                         <h3>LUXURY boats</h3>
                         <h2>Es vedre</h2>
@@ -368,7 +369,8 @@
             </div>
             <div class="location_slide">
                 <div class="home_page_slider_box">
-                    <img src="{{ asset('app-assets/site_assets/img/location-slider-1.jpg') }}">
+                    <img src="{{ asset('app-assets/site_assets/img/location-slider-1.jpg') }}" class="image">
+                    <div class="cursor"></div>
                     <div class="home_page_box_text">
                         <h3>LUXURY boats</h3>
                         <h2>Es vedre</h2>
@@ -379,7 +381,8 @@
             </div>
             <div class="location_slide">
                 <div class="home_page_slider_box">
-                    <img src="{{ asset('app-assets/site_assets/img/location-slider-1.jpg') }}">
+                    <img src="{{ asset('app-assets/site_assets/img/location-slider-1.jpg') }}" class="image">
+                    <div class="cursor"></div>
                     <div class="home_page_box_text">
                         <h3>LUXURY boats</h3>
                         <h2>Es vedre</h2>
