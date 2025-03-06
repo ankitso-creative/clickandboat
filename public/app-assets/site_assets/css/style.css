@@ -2681,6 +2681,24 @@ button.delete_acc_btn {
     text-decoration: underline;
     padding-top: 10px;
 }
+.price-input {
+    display: flex;
+    padding-bottom: 30px;
+}
+.price-input input {
+    width: 88%;
+    padding: 0 9px;
+    border-radius: 15px;
+    border: 1px solid #ebebeb;
+}
+.range-input input {
+    margin: 0 3px;
+}
+.max-range,
+.min-range {
+    accent-color: #f9a126;
+}
+
 /*--------------------------------------------------------------
 # Blog page
 --------------------------------------------------------------*/
