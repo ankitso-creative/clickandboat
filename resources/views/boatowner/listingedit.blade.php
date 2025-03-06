@@ -22,18 +22,29 @@
 <!-- BEGIN PAGE LEVEL SCRIPTS -->
 <script src="{{ asset('app-assets/pages/scripts/ui-sweetalert.min.js') }}" type="text/javascript"></script>
 <script type="text/javascript">
-$(document).ready(function() {
-    $('#see-price').click(function() {
-        if ($('#price-list').hasClass('open')) {
+
+   
+    $(document).ready(function() {
+        $('#see-price').click(function(){
+            if($('#price-list').hasClass('open'))
+            {
+                $('#price-list').removeClass('open');
+            }
+            else
+            {
+                $('#price-list').addClass('open');
+            }
+        });
+        $('#closeMenu').click(function(){
             $('#price-list').removeClass('open');
-        } else {
-            $('#price-list').addClass('open');
-        }
+        });
     });
+    
+  
     $('#closeMenu').click(function() {
         $('#price-list').removeClass('open');
     });
-});
+
 
 flatpickr(".from_date", {
     inline: false,
