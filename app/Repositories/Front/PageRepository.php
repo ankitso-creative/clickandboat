@@ -64,8 +64,21 @@
                 $rental_type = $request->rental_type; 
                 return $query->where('skipper', $rental_type); 
             })
+            ->when($request->has('min_price') && !empty($request->min_price), function ($query) use ($request) {
+                $min_price = $request->min_price;
+                return $query->whereHas('price', function($query) use ($min_price) {
+                    $query->where('price', '>=', $min_price);
+                });
+            })
+            ->when($request->has('max_price') && !empty($request->max_price), function ($query) use ($request) {
+                $max_price = $request->max_price;
+                return $query->whereHas('price', function($query) use ($max_price) {
+                    $query->where('price', '<=', $max_price);
+                });
+            })
             ->with(['price'])
             ->paginate(9);
+           
             return $listing;
         }
     }

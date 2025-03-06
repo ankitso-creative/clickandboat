@@ -77,13 +77,13 @@
                     }
                 });
             }
+            
         }
         /* Length range  Slider*/
         const lengthvalue = document.querySelector(".slider-container-length .length-slider");
         const lengthInputvalue = document.querySelectorAll(".boat-input input");
         let lengthGap = 10;
         const priceInputvalues =  document.querySelectorAll(".length-input input");
-        alert(priceInputvalues);
         for (let i = 0; i < priceInputvalues.length; i++) 
         {
             priceInputvalues[i].addEventListener("input", e => {
@@ -145,6 +145,7 @@
                     }
                 });
             }
+            
         }
         flatpickr(".datePicker", {
             inline: false,          
@@ -537,7 +538,7 @@
                                                     <h3>{{ $result->city }}</h3>
                                                     <p class="location_pera">{{ $result->type }} {{ $result->manufacturer }} {{ $result->model }} sport 30 (2023)</p>
                                                     <p class="people_pera">{{ $result->capacity }} people · 30 hp · 5 m</p>
-                                                    <h5 class="location_price">From <span class="price_style">€27</span> / day</h5>
+                                                    <h5 class="location_price">From <span class="price_style">€{{ $result->price->price ?? '' }}</span> / day</h5>
                                                     <div class="location_facility">
                                                         <ul>
                                                             <li>{{ $result->skipper }}</li>
