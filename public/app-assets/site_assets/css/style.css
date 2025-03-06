@@ -2681,24 +2681,43 @@ button.delete_acc_btn {
     text-decoration: underline;
     padding-top: 10px;
 }
-.price-input {
+.price-input,
+.length-input {
     display: flex;
     padding-bottom: 30px;
 }
-.price-input input {
+.price-input input,
+.length-input input {
     width: 88%;
     padding: 0 9px;
     border-radius: 15px;
     border: 1px solid #ebebeb;
 }
-.range-input input {
+.range-input input,
+.length-input input {
     margin: 0 3px;
 }
 .max-range,
-.min-range {
+.min-range,
+.min-boat-range,
+.max-boat-range {
     accent-color: #f9a126;
 }
-
+.equipment_sec label {
+    display: block;
+}
+.form-group input:checked + label:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 2px;
+    left: 9px;
+    width: 6px;
+    height: 14px;
+    border: solid #0079bf;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
 /*--------------------------------------------------------------
 # Blog page
 --------------------------------------------------------------*/
@@ -4724,6 +4743,23 @@ section.about_zigzag_section {
 .side_bar {
     padding: 30px 0px 0px 28px !important;
 }
+.main-dashboard h4 {
+    font-size: 28px;
+    color: #000;
+    text-transform: uppercase;
+}
+.equipment_sec p {
+    font-size: 18px;
+    color: #000;
+    font-weight: 600;
+    padding-top: 30px;
+    text-transform: uppercase;
+    padding-bottom: 10px;
+}
+.equipment_sec label {
+    padding: 3px 11px 0px 6px !important;
+}
+
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/

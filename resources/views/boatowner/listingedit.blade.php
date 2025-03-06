@@ -22,28 +22,23 @@
 <!-- BEGIN PAGE LEVEL SCRIPTS -->
 <script src="{{ asset('app-assets/pages/scripts/ui-sweetalert.min.js') }}" type="text/javascript"></script>
 <script type="text/javascript">
-
-   
-    $(document).ready(function() {
-        $('#see-price').click(function(){
-            if($('#price-list').hasClass('open'))
-            {
-                $('#price-list').removeClass('open');
-            }
-            else
-            {
-                $('#price-list').addClass('open');
-            }
-        });
-        $('#closeMenu').click(function(){
+$(document).ready(function() {
+    $('#see-price').click(function() {
+        if ($('#price-list').hasClass('open')) {
             $('#price-list').removeClass('open');
-        });
+        } else {
+            $('#price-list').addClass('open');
+        }
     });
-    
-  
     $('#closeMenu').click(function() {
         $('#price-list').removeClass('open');
     });
+});
+
+
+$('#closeMenu').click(function() {
+    $('#price-list').removeClass('open');
+});
 
 
 flatpickr(".from_date", {
@@ -125,83 +120,85 @@ flatpickr(".datePicker", {
                 {{-- <form action="{{ route('boatowner.listing-settings', $listing->id) }}" method="POST"
                 enctype="multipart/form-data"> --}}
                 <div class="text-center boat_type_section">
-            <h2>Your boat</h2>
-            <h3>Type</h3>
-            <div class="line-entry">
-                <div class="col-1-1 entry full-width">
-                    <div class="col-1-1 value kind-boat">
-                        <div class="content-button" data-typeid="Motorboat" data-context="productcreate">
-                            <button aria-label="Motorboat">
-                                <div class="boatsIconColor">
-                                    <img src="http://127.0.0.1:8000/app-assets/site_assets/img/Motorboat-V1.png">
+                    <h2>Your boat</h2>
+                    <h3>Type</h3>
+                    <div class="line-entry">
+                        <div class="col-1-1 entry full-width">
+                            <div class="col-1-1 value kind-boat">
+                                <div class="content-button" data-typeid="Motorboat" data-context="productcreate">
+                                    <button aria-label="Motorboat">
+                                        <div class="boatsIconColor">
+                                            <img
+                                                src="http://127.0.0.1:8000/app-assets/site_assets/img/Motorboat-V1.png">
+                                        </div>
+                                        Motorboat
+                                    </button>
                                 </div>
-                                Motorboat
-                            </button>
-                        </div>
-                        <div class="content-button" data-typeid="Sailboat" data-context="productcreate">
-                            <button aria-label="Sailboat">
-                                <div class="boatsIconColor">
-                                    <img src="http://127.0.0.1:8000/app-assets/site_assets/img/Sailboat-V1.png">
+                                <div class="content-button" data-typeid="Sailboat" data-context="productcreate">
+                                    <button aria-label="Sailboat">
+                                        <div class="boatsIconColor">
+                                            <img src="http://127.0.0.1:8000/app-assets/site_assets/img/Sailboat-V1.png">
+                                        </div>
+                                        Sailboat
+                                    </button>
                                 </div>
-                                Sailboat
-                            </button>
-                        </div>
-                        <div class="content-button" data-typeid="RIB" data-context="productcreate">
-                            <button aria-label="RIB">
-                                <div class="boatsIconColor">
-                                    <img src="http://127.0.0.1:8000/app-assets/site_assets/img/RIB-V1.png">
+                                <div class="content-button" data-typeid="RIB" data-context="productcreate">
+                                    <button aria-label="RIB">
+                                        <div class="boatsIconColor">
+                                            <img src="http://127.0.0.1:8000/app-assets/site_assets/img/RIB-V1.png">
+                                        </div>
+                                        RIB
+                                    </button>
                                 </div>
-                                RIB
-                            </button>
-                        </div>
-                        <div class="content-button" data-typeid="Catamaran" data-context="productcreate">
-                            <button aria-label="Catamaran">
-                                <div class="boatsIconColor">
-                                    <img src="http://127.0.0.1:8000/app-assets/site_assets/img/Catamaran-V1.png">
+                                <div class="content-button" data-typeid="Catamaran" data-context="productcreate">
+                                    <button aria-label="Catamaran">
+                                        <div class="boatsIconColor">
+                                            <img
+                                                src="http://127.0.0.1:8000/app-assets/site_assets/img/Catamaran-V1.png">
+                                        </div>
+                                        Catamaran
+                                    </button>
                                 </div>
-                                Catamaran
-                            </button>
-                        </div>
-                        <div class="content-button" data-typeid="Jet Ski" data-context="productcreate">
-                            <button aria-label="Jet ski">
-                                <div class="boatsIconColor">
-                                    <img src="http://127.0.0.1:8000/app-assets/site_assets/img/Jet-ski-V1.png">
+                                <div class="content-button" data-typeid="Jet Ski" data-context="productcreate">
+                                    <button aria-label="Jet ski">
+                                        <div class="boatsIconColor">
+                                            <img src="http://127.0.0.1:8000/app-assets/site_assets/img/Jet-ski-V1.png">
+                                        </div>
+                                        Jet ski
+                                    </button>
                                 </div>
-                                Jet ski
-                            </button>
-                        </div>
-                        <div class="content-button" data-typeid="Gulet" data-context="productcreate">
-                            <button aria-label="Gulet">
-                                <div class="boatsIconColor">
-                                    <img src="http://127.0.0.1:8000/app-assets/site_assets/img/Gulet-V1.png">
+                                <div class="content-button" data-typeid="Gulet" data-context="productcreate">
+                                    <button aria-label="Gulet">
+                                        <div class="boatsIconColor">
+                                            <img src="http://127.0.0.1:8000/app-assets/site_assets/img/Gulet-V1.png">
+                                        </div>
+                                        Gulet
+                                    </button>
                                 </div>
-                                Gulet
-                            </button>
-                        </div>
-                        <div class="content-button" data-typeid="Without license" data-context="productcreate">
-                            <button aria-label="Boat without licence ">
-                                <div class="boatsIconColor">
-                                    <img
-                                        src="http://127.0.0.1:8000/app-assets/site_assets/img/Boat-without-licence-V1.png">
+                                <div class="content-button" data-typeid="Without license" data-context="productcreate">
+                                    <button aria-label="Boat without licence ">
+                                        <div class="boatsIconColor">
+                                            <img
+                                                src="http://127.0.0.1:8000/app-assets/site_assets/img/Boat-without-licence-V1.png">
+                                        </div>
+                                        Boat without licence
+                                    </button>
                                 </div>
-                                Boat without licence
-                            </button>
-                        </div>
-                        <div class="content-button" data-typeid="Yacht" data-context="productcreate">
-                            <button aria-label="Yacht">
-                                <div class="boatsIconColor">
-                                    <img src="http://127.0.0.1:8000/app-assets/site_assets/img/Yacht-V1.png">
+                                <div class="content-button" data-typeid="Yacht" data-context="productcreate">
+                                    <button aria-label="Yacht">
+                                        <div class="boatsIconColor">
+                                            <img src="http://127.0.0.1:8000/app-assets/site_assets/img/Yacht-V1.png">
+                                        </div>
+                                        Yacht
+                                    </button>
                                 </div>
-                                Yacht
-                            </button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
                 <form method="POST">
                     <div class="row">
-                    <div class="col-lg-4">
+                        <div class="col-lg-4">
                             <label>City:<span class="required"> * </span></label>
                             <input type="text" name="city" class="form-control" required
                                 value="{{ old('city', $listing->city) }}">
@@ -255,7 +252,7 @@ flatpickr(".datePicker", {
                             <input type="hidden" name="s" value="general">
                             <button type="submit" class="listing_sub_btn mt-ladda-btn ladda-button btn-outline"
                                 data-style="contract" data-spinner-color="#333">
-                                     Save
+                                Save
                             </button>
                         </div>
                     </div>
@@ -287,6 +284,61 @@ flatpickr(".datePicker", {
                         <div id="imageDropzone" class="dropzone">
                             <div class="dz-message">
                                 Drag & Drop or Click to Upload Image
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="photo-section">
+                            <div class="text-center phot_heading">
+                                <h1>Photos</h1>
+                            </div>
+                            <div class="photos_box_text">
+                                <p class="photo_sub_heading">Drag and drop or <a href="#"> click here</a> to upload your
+                                    photos</p>
+                                <p>For the cover, choose a photo that shows the whole boat. Then add more photos of the
+                                    details and the
+                                    interior.</p>
+                            </div>
+                            <p class="photo_sec_pera">Drag the photos to change the order they appear in</p>
+                        </div>
+                        <div class="card-section">
+                            <div class="image_des">
+                                <img src="{{ asset('app-assets/site_assets/img/camera.png') }}">
+                                <p class="image_des_main_heading">Post your photos here</p>
+                                <p>Minimum size: 400x400px</p>
+                                <p>Format: jpeg, png, gif</p>
+                                <a href="">Download from your device</a>
+                            </div>
+                        </div>
+                        <div class="boatowner_listing_images">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <img src="{{ asset('app-assets/site_assets/img/feature-img-2.jpg') }}">
+                                </div>
+                                <div class="col-md-4">
+                                    <img src="{{ asset('app-assets/site_assets/img/feature-img-2.jpg') }}">
+                                </div>
+                                <div class="col-md-4">
+                                    <img src="{{ asset('app-assets/site_assets/img/feature-img-2.jpg') }}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="boat_listing_images_video_save_btn">
+                            <a href="">Save</a>
+                        </div>
+                        <div class="photo-section">
+                            <div class="text-center phot_heading">
+                                <h1>Boat plan</h1>
+                            </div>
+                            <p class="photo_sec_pera">Add boat design plan so renters can project themselves.</p>
+                        </div>
+                        <div class="card-section">
+                            <div class="image_des">
+                                <img src="{{ asset('app-assets/site_assets/img/camera.png') }}">
+                                <p class="image_des_main_heading">Drag the boat design plan here</p>
+                                <p>Minimum size: 400x400px</p>
+                                <p>Format: jpeg, png, gif</p>
+                                <a href="">Download from your device</a>
                             </div>
                         </div>
                     </div>
@@ -599,10 +651,7 @@ flatpickr(".datePicker", {
                         <div class="col-sm-12">
                             <h4 class="bold ">Equipment</h4>
                         </div>
-                        <div class="col-sm-12">
-                            <p class="bold">Outdoor Equipment :</p>
-                        </div>
-                        @php
+@php
                         $outdoor_equipment = [];
                         if(isset($listing->equipment->outdoor_equipment) &&
                         !empty($listing->equipment->outdoor_equipment)):
@@ -635,7 +684,8 @@ flatpickr(".datePicker", {
                         $water_sports = json_decode($listing->equipment->water_sports);
                         endif;
                         @endphp
-                        <div class="col-sm-12">
+                        <div class="col-lg-4">
+                            <p class="bold">Outdoor Equipment :</p>
                             <div class="mt-checkbox-inline outdoor_equipment">
                                 <label class="mt-checkbox">
                                     <input type="checkbox" id="inlineCheckbox21"
@@ -681,10 +731,8 @@ flatpickr(".datePicker", {
                                 </label>
                             </div>
                         </div>
-                        <div class="col-sm-12">
+                        <div class="col-lg-4">
                             <p class="bold">Extra Comfrot : </p>
-                        </div>
-                        <div class="col-sm-12">
                             <div class="mt-checkbox-inline extra_comfrot">
                                 <label class="mt-checkbox">
                                     <input type="checkbox" id="inlineCheckbox28"
@@ -756,11 +804,8 @@ flatpickr(".datePicker", {
                                 </label>
                             </div>
                         </div>
-
-                        <div class="col-sm-12">
-                            <p class="bold">Navigation equipment : </p>
-                        </div>
-                        <div class="col-sm-12">
+                        <div class="col-lg-4">
+                        <p class="bold">Navigation equipment : </p>
                             <div class="mt-checkbox-inline navigation_equipment">
                                 <label class="mt-checkbox">
                                     <input type="checkbox" id="inlineCheckbox40" value="dinghy"
@@ -824,11 +869,8 @@ flatpickr(".datePicker", {
                                 </label>
                             </div>
                         </div>
-
-                        <div class="col-sm-12">
-                            <p class="bold">Kitchen :</p>
-                        </div>
-                        <div class="col-sm-12">
+                        <div class="col-md-4">
+                        <p class="bold">Kitchen :</p>
                             <div class="mt-checkbox-inline kitchen">
                                 <label class="mt-checkbox">
                                     <input type="checkbox" id="inlineCheckbox50" @if(in_array('fridge',$kitchen))
@@ -873,11 +915,8 @@ flatpickr(".datePicker", {
                                 </label>
                             </div>
                         </div>
-
-                        <div class="col-sm-12">
-                            <p class="bold">Leisure Activities :</p>
-                        </div>
-                        <div class="col-sm-12">
+                        <div class="col-lg-4">
+                        <p class="bold">Leisure Activities :</p>
                             <div class="mt-checkbox-inline leisure_activities">
                                 <label class="mt-checkbox">
                                     <input type="checkbox" id="inlineCheckbox58"
@@ -942,10 +981,8 @@ flatpickr(".datePicker", {
                                 </label>
                             </div>
                         </div>
-                        <div class="col-sm-12">
-                            <p class="bold">Onboard Energy:</p>
-                        </div>
-                        <div class="col-sm-12">
+                        <div class="col-lg-4">
+                        <p class="bold">Onboard Energy:</p>
                             <div class="mt-checkbox-inline onboard_energy">
                                 <label class="mt-checkbox">
                                     <input type="checkbox" id="inlineCheckbox68"
@@ -967,10 +1004,8 @@ flatpickr(".datePicker", {
                                 </label>
                             </div>
                         </div>
-                        <div class="col-sm-12">
-                            <p class="bold">Water Sports :</p>
-                        </div>
-                        <div class="col-sm-12">
+                        <div class="col-lg-4">
+                        <p class="bold">Water Sports :</p>
                             <div class="mt-checkbox-inline water_sports">
                                 <label class="mt-checkbox">
                                     <input type="checkbox" id="inlineCheckbox71"
