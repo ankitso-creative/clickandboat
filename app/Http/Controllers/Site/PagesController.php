@@ -101,6 +101,10 @@ class PagesController extends Controller
     {
         return view('front.help');
     }
+    public function requestSubmit()
+    {
+        return view('front.request-submit');
+    }
     public function search(Request $request)
     {
         //$request = $request->all();
