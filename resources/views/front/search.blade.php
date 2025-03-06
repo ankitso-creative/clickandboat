@@ -4,11 +4,18 @@
 <title>Locations</title>
 @endsection
 @section('css')
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css"/>
 @endsection
 @section('js')
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAli6rCJivgzTbWznnkqFtT_btPww6WBYs&libraries=places"></script>
     <script>
+        flatpickr(".datePicker", {
+            inline: false,          
+            dateFormat: "d-m-Y", 
+            minDate: "today",   
+        });
         $(document).ready(function () {
             google.maps.event.addDomListener(window, 'load', initialize);
         });
@@ -80,17 +87,15 @@
                                         </div>
                                     </li>
                                     <li>
-                                        <a href="#">
-                                            <div class="where_box">
-                                                <div class="icon_box">
-                                                    <i class="fa-solid fa-calendar-days"></i>
-                                                </div>
-                                                <div class="where_box_text">
-                                                    <h5>Dates</h5>
-                                                    <input type="date" id="calender" name="calender" />
-                                                </div>
+                                        <div class="where_box">
+                                            <div class="icon_box">
+                                                <i class="fa-solid fa-calendar-days"></i>
                                             </div>
-                                        </a>
+                                            <div class="where_box_text">
+                                                <h5>Dates</h5>
+                                                <input type="text" id="calender" name="calender" class="datePicker"/>
+                                            </div>
+                                        </div>
                                     </li>
                                     <li>
                                         <div class="where_box">

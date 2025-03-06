@@ -126,4 +126,9 @@
             return false;
         endif;
     }
+    function maxPriceValue()
+    {
+        $maxPrice = DB::table('prices')->max('price');
+        return $maxPrice;
+    }
 ?>

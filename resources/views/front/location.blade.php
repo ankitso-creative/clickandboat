@@ -4,11 +4,84 @@
 <title>Locations</title>
 @endsection
 @section('css')
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css"/>
 @endsection
 @section('js')
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAli6rCJivgzTbWznnkqFtT_btPww6WBYs&libraries=places"></script>
     <script>
+        const rangevalue = document.querySelector(".slider-container .price-slider");
+        const rangeInputvalue = document.querySelectorAll(".range-input input");
+        let priceGap = 50;
+        const priceInputvalue =  document.querySelectorAll(".price-input input");
+        for (let i = 0; i < priceInputvalue.length; i++) 
+        {
+            priceInputvalue[i].addEventListener("input", e => {
+                let minp = parseInt(priceInputvalue[0].value);
+                let maxp = parseInt(priceInputvalue[1].value);
+                let diff = maxp - minp
+                if (minp < 0) {
+                    alert("minimum price cannot be less than 0");
+                    priceInputvalue[0].value = 0;
+                    minp = 0;
+                }
+                if (maxp > {{ maxPriceValue() }}) {
+                    alert("maximum price cannot be greater than 10000");
+                    priceInputvalue[1].value = {{ maxPriceValue() }};
+                    maxp = {{ maxPriceValue() }};
+                }
+                if (minp > maxp - priceGap) {
+                    priceInputvalue[0].value = maxp - priceGap;
+                    minp = maxp - priceGap;
+
+                    if (minp < 0) {
+                        priceInputvalue[0].value = 0;
+                        minp = 0;
+                    }
+                }
+                if (diff >= priceGap && maxp <= rangeInputvalue[1].max) {
+                    if (e.target.className === "min-input") {
+                        rangeInputvalue[0].value = minp;
+                        let value1 = rangeInputvalue[0].max;
+                        rangevalue.style.left = `${(minp / value1) * 100}%`;
+                    }
+                    else {
+                        rangeInputvalue[1].value = maxp;
+                        let value2 = rangeInputvalue[1].max;
+                        rangevalue.style.right = 
+                            `${100 - (maxp / value2) * 100}%`;
+                    }
+                }
+            });
+
+            for (let i = 0; i < rangeInputvalue.length; i++) {
+                rangeInputvalue[i].addEventListener("input", e => {
+                    let minVal = parseInt(rangeInputvalue[0].value);
+                    let maxVal = parseInt(rangeInputvalue[1].value);
+                    let diff = maxVal - minVal
+                    if (diff < priceGap) {
+                        if (e.target.className === "min-range") {
+                            rangeInputvalue[0].value = maxVal - priceGap;
+                        }
+                        else {
+                            rangeInputvalue[1].value = minVal + priceGap;
+                        }
+                    }
+                    else {
+                        priceInputvalue[0].value = minVal;
+                        priceInputvalue[1].value = maxVal;
+                        rangevalue.style.left = `${(minVal / rangeInputvalue[0].max) * 100}%`;
+                        rangevalue.style.right = `${100 - (maxVal / rangeInputvalue[1].max) * 100}%`;
+                    }
+                });
+            }
+        }
+        flatpickr(".datePicker", {
+            inline: false,          
+            dateFormat: "d-m-Y", 
+            minDate: "today",   
+        });
         $(document).ready(function () {
             google.maps.event.addDomListener(window, 'load', initialize);
         });
@@ -63,7 +136,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-12 col-md-6 col-lg-3">
-                    <form action="/action_page.php">
+                    <form action="#" method="get">
                         <div class="location_leftside_box">
                             <div class="location_options">
                                 <ul>
@@ -79,30 +152,30 @@
                                         </div>
                                     </li>
                                     <li>
-                                        <a href="#">
-                                            <div class="where_box">
-                                                <div class="icon_box">
-                                                    <i class="fa-solid fa-calendar-days"></i>
-                                                </div>
-                                                <div class="where_box_text">
-                                                    <h5>Dates</h5>
-                                                    <input type="date" id="calender" name="calender" />
-                                                </div>
+                                        <div class="where_box">
+                                            <div class="icon_box">
+                                                <i class="fa-solid fa-calendar-days"></i>
                                             </div>
-                                        </a>
+                                            <div class="where_box_text">
+                                                <h5>Dates</h5>
+                                                <input type="date" id="calender" name="calender" class="datePicker"/>
+                                            </div>
+                                        </div>
                                     </li>
                                     <li>
-                                        <a href="#">
-                                            <div class="where_box">
-                                                <div class="icon_box">
-                                                    <i class="fa-solid fa-person-skiing-nordic"></i>
-                                                </div>
-                                                <div class="where_box_text">
-                                                    <h5>Rental Type</h5>
-                                                    <p>With or without a skipper</p>
-                                                </div>
+                                        <div class="where_box">
+                                            <div class="icon_box">
+                                                <i class="fa-solid fa-person-skiing-nordic"></i>
                                             </div>
-                                        </a>
+                                            <div class="where_box_text">
+                                                <h5>Rental Type</h5>
+                                                <select name="rental_type" id="rental_type">
+                                                    <option value="">With Or Without Skipper</option>
+                                                    <option {{ checkselect(request()->query('rental_type'), 'with skipper') }} value="with skipper">With Skipper</option>
+                                                    <option {{ checkselect(request()->query('rental_type'), 'without skipper') }} value="without skipper">Without Skipper</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                     </li>
                                 </ul>
                             </div>
@@ -128,39 +201,39 @@
                                 <label for="All"> All</label>
                             </div>
                             <div class="input-group">
-                                <input type="checkbox" id="Sailboat" name="Sailboat" value="Sailboat">
+                                <input type="checkbox" id="Sailboat" name="type[]" value="Sailboat" {{ checkCheckbox(request()->query('type'),'Sailboat') }}>
                                 <label for="Sailboat">Sailboat</label>
                             </div>
                             <div class="input-group">
-                                <input type="checkbox" id="Catamaran" name="Catamaran" value="Catamaran">
+                                <input type="checkbox" id="Motorboat" name="type[]" value="Motorboat" {{ checkCheckbox(request()->query('type'),'Motorboat') }}>
+                                <label for="Motorboat">Motorboat</label>
+                            </div>
+                            <div class="input-group">
+                                <input type="checkbox" id="Catamaran" name="type[]" value="Catamaran" {{ checkCheckbox(request()->query('type'),'Catamaran') }}>
                                 <label for="Catamaran"> Catamaran</label>
                             </div>
                             <div class="input-group">
-                                <input type="checkbox" id="Sailingyacht" name="Sailingyacht" value="Sailingyacht">
+                                <input type="checkbox" id="Sailingyacht" name="type[]" value="Sailingyacht" {{ checkCheckbox(request()->query('type'),'Sailingyacht') }}>
                                 <label for="Sailingyacht"> Sailing yacht</label>
                             </div>
                             <div class="input-group">
-                                <input type="checkbox" id="Fishingboat" name="Fishingboat" value="Fishingboat">
+                                <input type="checkbox" id="Fishingboat" name="type[]" value="Fishingboat" {{ checkCheckbox(request()->query('type'),'Fishingboat') }}>
                                 <label for="Fishingboat"> Fishing boat</label>
                             </div>
                             <div class="input-group">
-                                <input type="checkbox" id="Monohull" name="Monohull" value="Monohull">
+                                <input type="checkbox" id="Monohull" name="type[]" value="Monohull" {{ checkCheckbox(request()->query('type'),'Monohull') }}>
                                 <label for="Monohull"> Monohull</label>
                             </div>
                             <div class="input-group">
-                                <input type="checkbox" id="Jetskis" name="Jetskis" value="Jetskis">
+                                <input type="checkbox" id="Jetskis" name="type[]" value="Jetskis" {{ checkCheckbox(request()->query('type'),'Jetskis') }}>
                                 <label for="Jetskis"> Jet skis</label>
                             </div>
                             <div class="input-group">
-                                <input type="checkbox" id="Motorboat" name="Motorboat" value="Motorboat">
-                                <label for="Motorboat"> Motor boat</label>
-                            </div>
-                            <div class="input-group">
-                                <input type="checkbox" id="Rib" name="Rib" value="Rib">
+                                <input type="checkbox" id="Rib" name="type[]" value="Rib" {{ checkCheckbox(request()->query('type'),'Rib') }}>
                                 <label for="Rib"> Rib</label>
                             </div>
                             <div class="input-group">
-                                <input type="checkbox" id="Yacht" name="Yacht" value="Yacht">
+                                <input type="checkbox" id="Yacht" name="type[]" value="Yacht" {{ checkCheckbox(request()->query('type'),'Yacht') }}>
                                 <label for="Yacht"> Yacht</label>
                             </div>
                         </div>
@@ -199,9 +272,31 @@
                         </div>
                         <div class="location_checkbox_two">
                             <h5>Boat length</h5>
+
                         </div>
                         <div class="location_checkbox_two">
                             <h5>Price per day</h5>
+                            <div class="custom-wrapper">
+                                <div class="range-input">
+                                    <input type="range" class="min-range" min="0" max="{{ maxPriceValue() }}" value="0" step="50">
+                                    <input type="range" class="max-range" min="0" max="{{ maxPriceValue() }}" value="{{ maxPriceValue() }}" step="50">
+                                </div>
+                                <div class="price-input-container">
+                                    <div class="slider-container">
+                                        <div class="price-slider">
+                                        </div>
+                                    </div>
+                                    <div class="price-input">
+                                        <div class="price-field">
+                                            <input type="number" class="min-input" value="0">
+                                        </div>
+                                        <div class="price-field">
+                                            <input type="number" class="max-input" value="{{ maxPriceValue() }}">
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                            </div>
                         </div>
                         <div class="location_checkbox_two">
                             <div class="row">
@@ -337,14 +432,14 @@
                 <div class="col-sm-12 col-md-6 col-lg-9">
                     <div class="location_rightside_box">
                         <div class="location_main_heading">
-                            <h2>+100 motorboats available</h2>
+                            <h2>{{ count($results)}} boats available</h2>
                         </div>
                         <div class="row">
                             @if($results)
                                 @foreach ($results as $result)                                                                                                                                                                                                                                                                                  
                                     <div class="col-sm-12 col-md-6 col-lg-4">
                                         <div class="location_inner_box">
-                                            <img src="{{  $result->getFirstMediaUrl('cover_images') }}">
+                                            <img src="{{ $result->getFirstMediaUrl('cover_images') ? $result->getFirstMediaUrl('cover_images') : 'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png' }}">
                                             <div class="wishlist_icon">
                                                 <i class="fa-regular fa-heart"></i>
                                             </div> 
@@ -356,7 +451,7 @@
                                                     <h5 class="location_price">From <span class="price_style">€27</span> / day</h5>
                                                     <div class="location_facility">
                                                         <ul>
-                                                            <li>With Skipper</li>
+                                                            <li>{{ $result->skipper }}</li>
                                                         </ul>
                                                     </div>
                                                 </div>
