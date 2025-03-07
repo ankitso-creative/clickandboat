@@ -141,13 +141,13 @@
             {
                 $listing->equipment()->UpdateOrCreate(['listing_id' => $listing->id],[
                     'listing_id' => $listing->id,
-                    'outdoor_equipment'  => isset($request['outdoor_equipment']) ? implode(',',$request['outdoor_equipment']) : '',
-                    'extra_comfrot' => isset($request['extra_comfrot']) ? implode(',',$request['extra_comfrot']) : '',
-                    'navigation_equipment'  => isset($request['navigation_equipment']) ? implode(',',$request['navigation_equipment']) : '',
-                    'kitchen'  => isset($request['kitchen']) ? implode(',',$request['kitchen']) : '',
-                    'leisure_activities'  => isset($request['leisure_activities']) ? implode(',',$request['leisure_activities']) : '',
-                    'onboard_energy'  => isset($request['onboard_energy']) ? implode(',',$request['onboard_energy']) : '',
-                    'water_sports' => isset($request['water_sports']) ? implode(',',$request['water_sports']) : '',
+                    'outdoor_equipment'  => isset($request['outdoor_equipment']) ? json_encode($request['outdoor_equipment']) : '',
+                    'extra_comfrot' => isset($request['extra_comfrot']) ? json_encode($request['extra_comfrot']) : '',
+                    'navigation_equipment'  => isset($request['navigation_equipment']) ? json_encode($request['navigation_equipment']) : '',
+                    'kitchen'  => isset($request['kitchen']) ? json_encode($request['kitchen']) : '',
+                    'leisure_activities'  => isset($request['leisure_activities']) ? json_encode($request['leisure_activities']) : '',
+                    'onboard_energy'  => isset($request['onboard_energy']) ? json_encode($request['onboard_energy']) : '',
+                    'water_sports' => isset($request['water_sports']) ? json_encode($request['water_sports']) : '',
                 ]);
                 return response()->json([
                     'success' => 'success',

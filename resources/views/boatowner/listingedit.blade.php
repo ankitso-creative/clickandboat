@@ -1057,8 +1057,7 @@ flatpickr(".datePicker", {
                                 <i class="fa fa-angle-left"></i> Back
                             </button> -->
                             <input type="hidden" name="s" value="equipment">
-                            <button type="submit" class="listing_sub_btn mt-ladda-btn ladda-button btn-outline"
-                                data-style="contract" data-spinner-color="#333">
+                            <button type="submit" class="listing_sub_btn mt-ladda-btn ladda-button btn-outline" data-style="contract" data-spinner-color="#333">
                                 <i class="fa fa-check"></i> Save
                             </button>
                         </div>
@@ -1482,7 +1481,6 @@ $(document).ready(function() {
             dateFormat: "d-m-Y",
             minDate: "today",
         });
-
     });
     $(document).on('click', '.remove_newf_row', function(e) {
         $(this).parents('.single_calender_container').remove();

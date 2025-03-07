@@ -358,16 +358,10 @@
                         </div>
                         <div class="location_checkbox_two">
                             <h5>Boat length</h5>
-                        </div>
-                        <div class="location_checkbox_two">
-                            <h5>Price per day</h5>
-                        </div>
-                        <div class="location_checkbox_two">
-                            <h5>Boat length</h5>
                             <div class="custom-wrapper">
                                 <div class="boat-input">
-                                    <input type="range" class="min-boat-range" min="0" max="200" value="{{ request()->query('min-length') }}" step="10">
-                                    <input type="range" class="max-boat-range" min="0" max="200" value="{{ request()->query('max-length') }}" step="10">
+                                    <input type="range" class="min-boat-range" min="0" max="200" value="{{ request()->query('min-length') ?? 0 }}" step="10">
+                                    <input type="range" class="max-boat-range" min="0" max="200" value="{{ request()->query('max-length') ?? 200 }}" step="10">
                                 </div>
                                 <div class="price-input-container">
                                     <div class="slider-container-length">
@@ -376,10 +370,10 @@
                                     </div>
                                     <div class="length-input">
                                         <div class="price-field">
-                                            <input type="number" name="min-length" class="min-length-input" value="{{ request()->query('min-length') }}">
+                                            <input type="number" name="min-length" class="min-length-input" value="{{ request()->query('min-length') ?? 0}}">
                                         </div>
                                         <div class="price-field">
-                                            <input type="number" name="max-length" class="max-length-input" value="{{ request()->query('max-length') }}">
+                                            <input type="number" name="max-length" class="max-length-input" value="{{ request()->query('max-length') ?? 200}}">
                                         </div>
                                     </div>
                                    
@@ -390,8 +384,8 @@
                             <h5>Price per day</h5>
                             <div class="custom-wrapper">
                                 <div class="range-input">
-                                    <input type="range" class="min-range" min="0" max="{{ maxPriceValue() }}" value="{{ request()->query('min_price') }}" step="50">
-                                    <input type="range" class="max-range" min="0" max="{{ maxPriceValue() }}" value="{{ request()->query('max_price') }}" step="50">
+                                    <input type="range" class="min-range" min="0" max="{{ maxPriceValue() }}" value="{{ request()->query('min_price') ?? 0 }}" step="50">
+                                    <input type="range" class="max-range" min="0" max="{{ maxPriceValue() }}" value="{{ request()->query('max_price') ?? maxPriceValue() }}" step="50">
                                 </div>
                                 <div class="price-input-container">
                                     <div class="slider-container">
@@ -400,10 +394,10 @@
                                     </div>
                                     <div class="price-input">
                                         <div class="price-field">
-                                            <input type="number" name="min_price" class="min-input" value="{{ request()->query('min_price') }}">
+                                            <input type="number" name="min_price" class="min-input" value="{{ request()->query('min_price') ?? 0 }}">
                                         </div>
                                         <div class="price-field">
-                                            <input type="number" name="max_price" class="max-input" value="{{ request()->query('max_price') }}">
+                                            <input type="number" name="max_price" class="max-input" value="{{ request()->query('max_price') ?? maxPriceValue() }}">
                                         </div>
                                     </div>
                                    
