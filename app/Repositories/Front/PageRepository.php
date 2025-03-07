@@ -76,7 +76,19 @@
                     $query->where('price', '<=', $max_price);
                 });
             })
-            ->with(['price'])
+            ->when($request->has('equipment') && !empty($request->equipment), function ($query) use ($request) {
+                $equipment = $request->equipment;
+                return $query->whereHas('equipment', function($query) use ($equipment) {
+                    $query->whereRaw('JSON_CONTAINS(outdoor_equipment, ?)', [json_encode([$equipment])])
+                        ->orWhereRaw('JSON_CONTAINS(extra_comfrot, ?)', [json_encode([$equipment])])
+                        ->orWhereRaw('JSON_CONTAINS(navigation_equipment, ?)', [json_encode([$equipment])])
+                        ->orWhereRaw('JSON_CONTAINS(kitchen, ?)', [json_encode([$equipment])])
+                        ->orWhereRaw('JSON_CONTAINS(leisure_activities	, ?)', [json_encode([$equipment])])
+                        ->orWhereRaw('JSON_CONTAINS(onboard_energy	, ?)', [json_encode([$equipment])])
+                        ->orWhereRaw('JSON_CONTAINS(water_sports	, ?)', [json_encode([$equipment])]);
+                });
+            })
+            ->with(['price','equipment'])
             ->paginate(9);
            
             return $listing;
