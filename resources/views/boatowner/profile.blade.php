@@ -39,24 +39,59 @@
     @endif
     <ul class="nav nav-tabs" id="details-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="profile-tab" data-toggle="tab" data-target="#profile" type="button" role="tab" aria-controls="personal-detail" aria-selected="true">Profile Photo</button>
+            <button class="nav-link active" id="profile-tab" data-toggle="tab" data-target="#profile" type="button"
+                role="tab" aria-controls="personal-detail" aria-selected="true">Verifications </button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="personal" data-toggle="tab" data-target="#personal-detail" type="button" role="tab" aria-controls="personal-detail" aria-selected="true">Information</button>
+            <button class="nav-link" id="personal" data-toggle="tab" data-target="#personal-detail" type="button"
+                role="tab" aria-controls="personal-detail" aria-selected="true">Information</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="password-tab" data-toggle="tab" data-target="#password" type="button" role="tab" aria-controls="password" aria-selected="false">Password</button>
+            <button class="nav-link" id="experience-tab" data-toggle="tab" data-target="#experience" type="button"
+                role="tab" aria-controls="experience" aria-selected="false">Boating experience level </button>
         </li>
-        {{-- <li class="nav-item" role="presentation">
-            <button class="nav-link" id="delete-tab" data-toggle="tab" data-target="#delete" type="button" role="tab" aria-controls="delete" aria-selected="false">Deactivate</button>
-        </li> --}}
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="password-tab" data-toggle="tab" data-target="#password" type="button"
+                role="tab" aria-controls="password" aria-selected="false">Password</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="delete-tab" data-toggle="tab" data-target="#delete" type="button" role="tab"
+                aria-controls="delete" aria-selected="false">Setting</button>
+        </li>
     </ul>
     <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <div class="verification_box_section">
+                <h2>Verification of your profile</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="verification_box">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <h3>Your email<br> address</h3>
+                            <p>Item checked</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <a href="#">
+                        <div class="verification_box">
+                            <i class="fa-solid fa-circle-xmark"></i>
+                            <h3>Your<br> Sailing CV</h3>
+                            <p class="item-checked">Item checked</p>
+                        </div>
+                        <div class="complete_cv">
+                            <p>Complete my nautical CV</p>
+                        </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade show" id="personal-detail" role="tabpanel" aria-labelledby="personal">
             <div class="card-section">
                 <div class="card-sec-title">
-                    <h2>Change Your Profile Photo</h2>
+                    <h2>Personal Information</h2>
                 </div>
+                <div class="card-section">
                 <div class="card-content">
                     <div class="line-entry change-avatar">
                         @php 
@@ -74,23 +109,17 @@
                             <h6>Change your photo</h6>
                             <p>Minimum size: 260px x 260px</p>
                             <input type="file" name="file" class="inputfile" id="file-input" accept="image/*">
-                            <label for="file-input" id="fileSelectButton" class="btn btn-primary">Select an image</label>
+                            <label for="file-input" id="fileSelectButton" class="select_img_btn">Select an image</label>
                         </div>
                         <div class="clear"></div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="tab-pane fade show" id="personal-detail" role="tabpanel" aria-labelledby="personal">
-            <div class="card-section">
-                <div class="card-sec-title">
-                    <h2>Personal Information</h2>
-                </div>
                 <div class="card-content">
                     <form class="personal-details-form" action="{{ route('boatowner.profile.update') }}" method="post">
                         @csrf
                         @method('PUT')
-                        <div class="row">
+                        <div class="pt-3 row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="label-default">First Name<span class="required"> *</span></label>
@@ -115,15 +144,6 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="label-default">Phone<span class="required"> *</span></label>
-                                    <input type="tel" name="phone" value="{{ $userData->profile->phone ?? '' }}" class="form-control">
-                                    @error('phone')<span class="required">{{ $message }}</span>@enderror
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
                                     <label class="label-default">Gender<span class="required"> *</span></label>
                                     <select name="gender" class="form-control">
                                         <option @if(isset($userData->profile->gender) && $userData->profile->gender == 'Male') selected @endif value="male">Male</option>
@@ -132,14 +152,34 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                        </div>
+                        <div class="row">
+                        <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="label-default">Date of birth</label>
-                                    <input type="text" name="dob" value="{{ $userData->profile->dob ?? '' }}" class="form-control  date-picker" autocomplete="off">
+                                    <input type="text" name="dob" value="{{ $userData->profile->dob ?? '' }}" class="form-control date-picker" autocomplete="off">
+                                </div>
+                        </div>
+                        <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="label-default">Language spoken<span class="required"></span></label>
+                                    <select name="gender" class="form-control">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
+                        <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="label-default">Telephone<span class="required"> *</span></label>
+                                    <input type="tel" name="phone" value="{{ $userData->profile->phone ?? '' }}" class="form-control">
+                                    @error('phone')<span class="required">{{ $message }}</span>@enderror
+                                </div>
+                            </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="label-default">Address<span class="required"> *</span></label>
@@ -147,14 +187,15 @@
                                     @error('address')<span class="required">{{ $message }}</span>@enderror
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="label-default">Address Two</label>
-                                    <input type="text" name="address_line_two" value="{{ $userData->profile->address_line_two ?? '' }}" class="form-control">
-                                </div>
-                            </div>
                         </div>
                         <div class="row">
+                        <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="label-default">Postal Code<span class="required"> *</span></label>
+                                    <input type="text" name="postcode" value="{{ $userData->profile->postcode ?? '' }}" class="form-control">
+                                    @error('postcode')<span class="required">{{ $message }}</span>@enderror
+                                </div>
+                            </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="label-default">City<span class="required"> *</span></label>
@@ -162,39 +203,121 @@
                                     @error('city')<span class="required">{{ $message }}</span>@enderror
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="label-default">State<span class="required"> *</span></label>
-                                    <input type="text" name="state" value="{{ $userData->profile->state ?? '' }}" class="form-control">
-                                    @error('state')<span class="required">{{ $message }}</span>@enderror
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="label-default">Country</label>
-                                    <select name="country" class="form-control">
-                                        {!! $options !!}
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="label-default">Postal Code<span class="required"> *</span></label>
-                                    <input type="text" name="postcode" value="{{ $userData->profile->postcode ?? '' }}" class="form-control">
-                                    @error('postcode')<span class="required">{{ $message }}</span>@enderror
-                                </div>
-                            </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="form-group">
-                                    <button class="btn btn-primary">Save</button>
+                                <div class="text-center form-group">
+                                    <button class="save_btn">Save</button>
                                 </div>
                             </div>
                         </div>
                     </form>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="experience" role="tabpanel" aria-labelledby="experience-tab">
+            <div class="card-section">
+                <div class="card-sec-title">
+                    <h2>Your nautical level</h2>
+                </div>
+                <div class="card-content">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Example select</label>
+                                <select class="form-control" id="exampleFormControlSelect1">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Example select</label>
+                                <select class="form-control" id="exampleFormControlSelect1">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pt-3 row nautical_row">
+                        <div class="col-md-4">
+                            <h3>Your boat licence</h3>
+                            <div class="input-group">
+                                <input type="checkbox" id="coastal" name="coastal" value="coastal">
+                                <label for="coastal"> Coastal license</label>
+                            </div>
+                            <div class="input-group">
+                                <input type="checkbox" id="offshore" name="offshore" value="offshore">
+                                <label for="offshore"> Offshore license</label>
+                            </div>
+                            <div class="input-group">
+                                <input type="checkbox" id="inland" name="inland" value="inland">
+                                <label for="inland"> Inland license</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <h3>Other</h3>
+                            <div class="input-group">
+                                <input type="checkbox" id="radio" name="radio" value="radio">
+                                <label for="radio"> Radio operator's certificate</label>
+                            </div>
+                            <div class="input-group">
+                                <input type="checkbox" id="professional" name="professional" value="professional">
+                                <label for="professional"> Professional skipper licence</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <h3>Sailing experience</h3>
+                            <div class="input-group">
+                                <input type="checkbox" id="chartered" name="chartered" value="chartered">
+                                <label for="chartered"> I've chartered a boat before</label>
+                            </div>
+                            <div class="input-group">
+                                <input type="checkbox" id="owner" name="owner" value="owner">
+                                <label for="owner"> I'm an owner</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pt-3 row">
+                        <div class="col-md-6">
+                            <div class="natutical_message_box">
+                                <div class="form-group">
+                                    <label for="exampleFormControlTextarea1">Description</label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"
+                                        placeholder="Provide full details about yourself and your experience."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="natutical_text_box">
+                                <h5>Briefly describe yourself</h5>
+                                <p>Your age, your hobbies, your job, your region</p>
+                                <h5>Are you more of a motorboat or a sailboat type of person?</h5>
+                                <p>Explain what you like about sailing (fishing, water skiing, regattas, etc.)</p>
+                                <h5>How long have you been sailing for?</h5>
+                                <p>Briefly explain your sailing background and your various experiences as a renter or
+                                    owner, crew member or skipper</p>
+                                <h5>Others</h5>
+                                <p>Your fears, your projects (regattas, crossings, travels, buying, maintenance, etc.)
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="text-center form-group">
+                                <button class="save_btn">Save</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -229,8 +352,8 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="form-group">
-                                    <button class="btn btn-primary">Save</button>
+                                <div class="text-center form-group">
+                                    <button class="save_btn">Save</button>
                                 </div>
                             </div>
                         </div>
@@ -241,14 +364,26 @@
         <div class="tab-pane fade" id="delete" role="tabpanel" aria-labelledby="delete-tab">
             <div class="card-section">
                 <div class="card-sec-title">
-                    <h2>Delete my account</h2>
+                    <h2>Setting</h2>
+                </div>
+                <div class="setting_section">
+                    <div class="input-group">
+                        <input type="checkbox" id="water-based" name="waterbased" value="waterbased">
+                        <label for="water-based">Receive a text when you have a new message</label><br>
+                    </div>
+                </div>
+                <div class="text-center form-group">
+                    <button class="save_btn">Save</button>
                 </div>
                 <div class="card-content">
                     <form class="deactivate-form" action="" method="">
+                        <div class="card-sec-title">
+                            <p>Delete My Account</p>
+                        </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="form-group text-center">
-                                    <button class="btn btn-primary">Deactivate Account</button>
+                                <div class="form-group">
+                                    <button class="delete_acc_btn">Delete</button>
                                 </div>
                             </div>
                         </div>
