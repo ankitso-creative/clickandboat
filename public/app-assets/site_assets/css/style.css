@@ -386,7 +386,7 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 10px;
     margin: 0 7px;
     border: 1px solid #fff;
-    padding: 5px 12px 2px 12px !important;
+    padding: 4px 7px 1px 7px !important;
     text-shadow: none;
 }
 .navbar-nav li .gbp_btn{
@@ -413,7 +413,7 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 10px;
     margin: 0 7px;
     border: 1px solid #fff;
-    padding: 3px 12px 5px 12px !important;
+    padding: 2px 7px 3px 7px !important;
     text-shadow: none;
     color: #fff;
     cursor: pointer;
@@ -685,13 +685,13 @@ h1, h2, h3, h4, h5, h6 {
 .estimate_btn {
     text-align: center;
 }
-.find_boat_btn a,
-.estimate_btn a {
+.find_boat_btn a, .estimate_btn a {
     background: #f9a126;
     display: inline-block;
     color: #fff;
     border-radius: 15px;
     border: 1px solid #f8a126;
+    text-transform: uppercase;
 }
 .find_boat_btn a:hover,
 .estimate_btn a:hover {
@@ -1616,12 +1616,18 @@ h1, h2, h3, h4, h5, h6 {
     background: #000;
     color: #fff;
     text-align: center;
+    border: 1px solid #000;
     width: 63%;
     border-radius: 10px;
     margin: 0px auto;
     position: absolute;
     bottom: -10px;
     right: 18%;
+}
+.complete_cv:hover{
+    background:none;
+    border: 1px solid #000;
+    color: #000;
 }
 .complete_cv p{
     font-size: 15px;
@@ -1687,13 +1693,18 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 30px;
     cursor: pointer;
 }
+.save_btn:hover{
+    background:none;
+    border: 1px solid #f9a126;
+    color: #f9a126;
+}
 .password_section label {
     font-size: 15px;
     color: #000;
 }
 .main-dashboard-container  h2 {
-    font-size: 44px;
-    color: #000;
+    font-size: 28px;
+    color: #323131;
     text-transform: uppercase;
     padding-bottom: 10px;
 }
@@ -1705,13 +1716,19 @@ h1, h2, h3, h4, h5, h6 {
     display: block;
     text-align: center;
 }
-button.delete_acc_btn {
+.delete_acc_btn {
     background: none;
     border: 1px solid #000;
     padding: 8px 30px;
     border-radius: 15px;
     font-size: 15px;
     text-transform: uppercase;
+    margin-top: 10px;
+    cursor: pointer;
+}
+.delete_acc_btn:hover {
+    background:#000;
+    color: #fff;
 }
 .no-booking-yet a {
     color: #f9a126;
@@ -1830,6 +1847,9 @@ button.delete_acc_btn {
 }
 .side_bar.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link i {
     padding: 0 8px 0 0;
+}
+.item-checked {
+    color: #000;
 }
 /*--------------------------------------------------------------
 # Boatowner listing Page
@@ -2681,43 +2701,113 @@ button.delete_acc_btn {
     text-decoration: underline;
     padding-top: 10px;
 }
+.header h2 {
+    font-size: 30px;
+    color: #01940b;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+/*--------------------------------------------------------------
+# Range slider
+--------------------------------------------------------------*/
+.price-input-container {
+    width: 100%;
+}
+
+.price-input .price-field {
+    display: flex;
+    margin-bottom: 22px;
+}
+
+.price-field span {
+    margin-right: 10px;
+    margin-top: 6px;
+    font-size: 17px;
+}
+
+.price-field input {
+    flex: 1;
+    height: 35px;
+    font-size: 15px;
+    font-family: "DM Sans", sans-serif;
+    border-radius: 9px;
+    text-align: center;
+    border: 0px;
+    background: #e4e4e4;
+    width: 100%;
+}
+
 .price-input,
 .length-input {
-    display: flex;
-    padding-bottom: 30px;
+    width: 100%;
+    font-size: 19px;
+    color: #555;
 }
-.price-input input,
-.length-input input {
-    width: 88%;
-    padding: 0 9px;
-    border-radius: 15px;
-    border: 1px solid #ebebeb;
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.slider-container,
+.slider-container-length {
+    width: 100%;
+}
+.slider-container,
+.slider-container-length {
+    height: 6px;
+    position: relative;
+    background: #e4e4e4;
+    border-radius: 5px;
+    margin-bottom: 25px;
+}
+.slider-container .price-slider,
+.slider-container-length .length-slider {
+    height: 100%;
+    left: 0;
+    right: 0;
+    position: absolute;
+    border-radius: 5px;
+    background: #f9a126;
+}
+.slider-container-length .length-slider {
+    height: 100%;
+    left: 0;
+    right: 0;
+    position: absolute;
+    border-radius: 5px;
+    background: #f9a126;
+}
+.range-input,
+.boat-input {
+    position: relative;
 }
 .range-input input,
-.length-input input {
-    margin: 0 3px;
-}
-.max-range,
-.min-range,
-.min-boat-range,
-.max-boat-range {
-    accent-color: #f9a126;
-}
-.equipment_sec label {
-    display: block;
-}
-.form-group input:checked + label:after {
-    content: '';
-    display: block;
+.boat-input input {
     position: absolute;
-    top: 2px;
-    left: 9px;
-    width: 6px;
-    height: 14px;
-    border: solid #0079bf;
-    border-width: 0 2px 2px 0;
-    transform: rotate(45deg);
-  }
+    width: 100%;
+    height: 5px;
+    background: none;
+    top: 0px;
+    pointer-events: none;
+    cursor: pointer;
+    -webkit-appearance: none;
+    z-index: 999;
+}
+.range-input input[type="range"]::-webkit-slider-thumb,
+.boat-input input[type="range"]::-webkit-slider-thumb  {
+    height: 18px;
+    width: 18px;
+    border-radius: 70%;
+    background: #555;
+    pointer-events: auto;
+    -webkit-appearance: none;
+    z-index: 999;
+}
+.max-length-input {
+    margin-top: 20px;
+}
 /*--------------------------------------------------------------
 # Blog page
 --------------------------------------------------------------*/
@@ -3424,6 +3514,34 @@ section.about_zigzag_section {
 }
 .boatowner_listing_images {
     margin-top: 40px;
+}
+.nautical_row input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: #e0e0e0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    cursor: pointer;
+    position: relative;
+}
+
+.nautical_row input[type="checkbox"]:checked {
+    background-color: #4CAF50;
+    border: 1px solid #4CAF50;
+}
+
+.nautical_row input[type="checkbox"]:checked::after {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 1px;
+    width: 6px;
+    height: 12px;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+    background-color: #4CAF50;
 }
 /*--------------------------------------------------------------
 # Single boat page
@@ -4439,7 +4557,7 @@ section.about_zigzag_section {
 .side_bar div#nav-tab {
     display: block;
 }
-.side_bar.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+/* .side_bar.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
     background-color: #323131 !important;
     border-color: #323131;
     color: #fff;
@@ -4449,7 +4567,7 @@ section.about_zigzag_section {
     border: none;
     text-transform: uppercase;
     background-image: none !important;
-}
+} */
 .side_bar.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link {
     text-align: left;
     color: #6d6d6d;
@@ -4722,7 +4840,7 @@ section.about_zigzag_section {
     padding: 15px 15px 0px 0px !important;
 }
 .main-dashboard .tab-pane label {
-    padding: 15px 0 0px 0px;
+    padding: 3px 0 0px 0px;
 }
 .your_listing_section a {
     color: #f8a126;
@@ -4759,6 +4877,111 @@ section.about_zigzag_section {
 .equipment_sec label {
     padding: 3px 11px 0px 6px !important;
 }
+.equipment_sec label {
+    display: block;
+}
+.form-group input:checked + label:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 2px;
+    left: 9px;
+    width: 6px;
+    height: 14px;
+    border: solid #0079bf;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+  /*--------------------------------------------------------------
+# Qequest submit page
+--------------------------------------------------------------*/
+.request_banner_section {
+    background-image: url(../img/Submit-A-Request-banner.jpg);
+    width: 100%;
+    height: 460px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+.request_banner_text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+}
+.request_banner_text h5 {
+    font-size: 15px;
+    color: #fff;
+    font-family: 'Montserrat' !important;
+    font-weight: 500 !important;
+    text-transform: uppercase;
+    padding-bottom: 10px;
+}
+.request_banner_text h1 {
+    color: #fff;
+    font-size: 64px;
+    text-transform: uppercase;
+    line-height: 65px;
+}
+.request_banner_text p {
+    color: #fff;
+}
+.request_banner_section #search-wrapper {
+    display: flex;
+    border: 1px solid #fff;
+    align-items: stretch;
+    border-radius: 10px;
+    background-color: transparent;
+    overflow: hidden;
+    max-width: 545px;
+    height: 50px;
+    margin: 0px auto;
+    margin-top: 20px;
+    margin-bottom: 12px;
+}
+.request_banner_section  #search {
+    border: none;
+    width: 427px;
+    font-size: 15px;
+    background: transparent;
+    color: #fff;
+}
+.request_banner_section  #search:focus{
+    outline: none;
+}
+.request_banner_section  .search-icon{
+    margin: 10px;
+    color:rgba(0, 0, 0, 0.564);
+ }
+ .request_banner_section  #search-button {
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    background-color: #f9a126;
+    padding: 0px 22px;
+    text-transform: uppercase;
+    outline: none;
+}
+.request_banner_section  #search-wrapper i {
+    color: #fff;
+    padding-top: 7px;
+}
+.request_banner_section  #search-wrapper ::placeholder{
+    color: #fff;
+}
+.request_banner_section .help_text_style {
+    font-weight: 500;
+}
+.request_submit_form_section .container {
+    max-width: 900px;
+    margin: 70px auto;
+    background: #ededed;
+    border-radius: 15px;
+    padding: 20px 30px;
+}
+
 
 /*--------------------------------------------------------------
 # Footer

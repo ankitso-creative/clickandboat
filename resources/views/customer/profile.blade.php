@@ -75,14 +75,16 @@
                         </div>
                     </div>
                     <div class="col-md-6">
+                        <a href="">
                         <div class="verification_box">
                             <i class="fa-solid fa-circle-xmark"></i>
                             <h3>Your<br> Sailing CV</h3>
-                            <p>Item checked</p>
+                            <p class="item-checked">Item checked</p>
                         </div>
                         <div class="complete_cv">
                             <p>Complete my nautical CV</p>
                         </div>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -143,16 +145,6 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="label-default">Phone<span class="required"> *</span></label>
-                                    <input type="tel" name="phone" value="{{ $userData->profile->phone ?? '' }}"
-                                        class="form-control">
-                                    @error('phone')<span class="required">{{ $message }}</span>@enderror
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
                                     <label class="label-default">Gender<span class="required"> *</span></label>
                                     <select name="gender" class="form-control">
                                         <option @if(isset($userData->profile->gender) && $userData->profile->gender ==
@@ -164,15 +156,38 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                        </div>
+                        <div class="row">
+                        <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="label-default">Date of birth</label>
                                     <input type="text" name="dob" value="{{ $userData->profile->dob ?? '' }}"
                                         class="form-control date-picker" autocomplete="off">
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="label-default">Language spoken<span class="required"> *</span></label>
+                                    <select name="gender" class="form-control">
+                                        <option @if(isset($userData->profile->gender) && $userData->profile->gender ==
+                                            'Male') selected @endif value="male">Male</option>
+                                        <option @if(isset($userData->profile->gender) && $userData->profile->gender ==
+                                            'Female') selected @endif value="Female">Female</option>
+                                        <option @if(isset($userData->profile->gender) && $userData->profile->gender ==
+                                            'Others') selected @endif value="Others">Others</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                         <div class="row">
+                        <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="label-default">Telephone<span class="required"> *</span></label>
+                                    <input type="tel" name="phone" value="{{ $userData->profile->phone ?? '' }}"
+                                        class="form-control">
+                                    @error('phone')<span class="required">{{ $message }}</span>@enderror
+                                </div>
+                            </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="label-default">Address<span class="required"> *</span></label>
@@ -181,15 +196,16 @@
                                     @error('address')<span class="required">{{ $message }}</span>@enderror
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="label-default">Address Two</label>
-                                    <input type="text" name="address_line_two"
-                                        value="{{ $userData->profile->address_line_two ?? '' }}" class="form-control">
-                                </div>
-                            </div>
                         </div>
                         <div class="row">
+                        <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="label-default">Postal Code<span class="required"> *</span></label>
+                                    <input type="text" name="postcode" value="{{ $userData->profile->postcode ?? '' }}"
+                                        class="form-control">
+                                    @error('postcode')<span class="required">{{ $message }}</span>@enderror
+                                </div>
+                            </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="label-default">City<span class="required"> *</span></label>
@@ -198,33 +214,8 @@
                                     @error('city')<span class="required">{{ $message }}</span>@enderror
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="label-default">State<span class="required"> *</span></label>
-                                    <input type="text" name="state" value="{{ $userData->profile->state ?? '' }}"
-                                        class="form-control">
-                                    @error('state')<span class="required">{{ $message }}</span>@enderror
-                                </div>
-                            </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="label-default">Country</label>
-                                    <select name="country" class="form-control">
-                                        {!! $options !!}
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="label-default">Postal Code<span class="required"> *</span></label>
-                                    <input type="text" name="postcode" value="{{ $userData->profile->postcode ?? '' }}"
-                                        class="form-control">
-                                    @error('postcode')<span class="required">{{ $message }}</span>@enderror
-                                </div>
-                            </div>
-                        </div>
+
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="text-center form-group">
