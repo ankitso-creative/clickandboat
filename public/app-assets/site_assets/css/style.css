@@ -4917,7 +4917,7 @@ section.about_zigzag_section {
 }
 .main-dashboard h4 {
     font-size: 28px;
-    color: #000;
+    color: #323131;
     text-transform: uppercase;
 }
 .equipment_sec p {
@@ -4946,7 +4946,15 @@ section.about_zigzag_section {
     border-width: 0 2px 2px 0;
     transform: rotate(45deg);
   }
-  /*--------------------------------------------------------------
+  .des_text {
+    padding: 0 15px;
+    margin: 35px 0px;
+    width: 63%;
+}
+.dashboard_listing_edit label {
+    margin-top: 15px;
+}
+/*--------------------------------------------------------------
 # Qequest submit page
 --------------------------------------------------------------*/
 .request_banner_section {
@@ -5050,6 +5058,66 @@ section.about_zigzag_section {
     background: none;
     border: 1px solid #f9a126;
     color: #f9a126;
+}
+.your_boats_type .radio-with-Icon {
+    display: block;
+  }
+  .your_boats_type .radio-with-Icon p.radioOption-Item {
+    display: inline-block;
+    width: 160px;
+    height: 152px;
+    box-sizing: border-box;
+    margin: 25px 15px;
+    border: none;
+}
+.your_boats_type .radio-with-Icon p.radioOption-Item label {
+    display: block;
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid #f9a126;
+    color: #a5adb6;
+    cursor: pointer;
+    opacity: .8;
+    transition: none;
+    font-size: 13px;
+    padding-top: 25px;
+    text-align: center;
+    margin: 0 !important;
+}
+  .your_boats_type .radio-with-Icon p.radioOption-Item label::after, div.radio-with-Icon p.radioOption-Item label:after, div.radio-with-Icon p.radioOption-Item label::before, div.radio-with-Icon p.radioOption-Item label:before {
+    opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    margin: 0 !important;
+  }
+  .your_boats_type .radio-with-Icon p.radioOption-Item label i.fa {
+    display: block;
+    font-size: 50px;
+  }
+  .your_boats_type .radio-with-Icon p.radioOption-Item input[type="radio"] {
+    opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+  .your_boats_type .radio-with-Icon p.radioOption-Item input[type="radio"]:active ~ label {
+    opacity: 1;
+  }
+  .your_boats_type .radio-with-Icon p.radioOption-Item input[type="radio"]:checked ~ label {
+    opacity: 1;
+    border: none;
+    background-color: #f9a126;
+    color: #fff;
+  }
+  .your_boats_type .radio-with-Icon p.radioOption-Item input[type="radio"]:hover, div.radio-with-Icon p.radioOption-Item input[type="radio"]:focus, div.radio-with-Icon p.radioOption-Item input[type="radio"]:active {
+    margin: 0 !important;
+  }
+  .your_boats_type .radio-with-Icon p.radioOption-Item input[type="radio"] + label:before, div.radio-with-Icon p.radioOption-Item input[type="radio"] + label:after {
+    margin: 0 !important;
+  }
+  .your_boats_type {
+    margin-bottom: 50px;
 }
 /*--------------------------------------------------------------
 # Footer
