@@ -9,9 +9,26 @@
 
 @endsection
 @section('content')
-<div class="col-md-3">
-
-</div>
+    <div class="col-lg-3">
+        <aside class="sidebar">
+            <div class="user">
+            <div class="user-avatar">
+                <a href="#">
+                <img src="{{ userImage() }}" alt="dejodo">
+                </a>
+            </div>
+            <h3>{{ userName() }}</h3>
+            </div>
+            <ul>
+                <li class="{{ $active=='dashboard' ? 'active':'' }}"><a href="{{ route('boatowner.dashboard') }}"><i class="fas fa-th"></i> Dashboard</a></li>
+                <li class="{{ $active=='profile' ? 'active':'' }}"><a href="{{ route('boatowner.profile') }}"><i class="fas fa-user-circle"></i> Profile</a></li>
+                <li class="{{ $active=='listing' ? 'active':'' }}"><a href="{{ route('boatowner.listing') }}"><i class="fas fa-heart"></i> Listing</a></li>
+                <li class="{{ $active=='customers' ? 'active':'' }}"><a href="{{ route('boatowner.customers') }}"><i class="fas fa-heart"></i> Customers</a></li>
+                <li class="{{ $active=='booking' ? 'active':'' }}"><a href="{{ route('boatowner.booking.index') }}"><i class="fas fa-clipboard-list"></i> Bookings</a></li>
+                <li><a href="{{ route('logout') }}"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </aside>
+    </div>
     <div class="col-lg-9 main-dashboard">
         <div class="row">
             <div class="col-md-12">
