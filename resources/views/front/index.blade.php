@@ -1,6 +1,51 @@
 @extends('layouts.front.common')
 @section('meta')
 <title>Manage Users</title>
+<style>
+
+    /* Image container */
+    .slick-active .image-box {
+        position: relative;
+        display: inline-block;
+        cursor: none; /* Hide default cursor */
+    }
+
+    /* .slick-active .image {
+        display: block;
+        width: 600px;
+        height: auto;
+        border-radius: 0px;
+    } */
+    /* Custom cursor */
+    .slick-active .image-box:hover .image{
+            border: 10px solid rgba(255, 255, 0, 0.8);
+    }
+    .slick-active .cursor {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 80px;
+        height: 80px;
+        background: rgba(255, 255, 0, 0.8);
+        color: black;
+        font-size: 20px;
+        font-weight: bold;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        transition: transform 0.15s ease-out;
+        opacity: 0;
+        z-index: 999;
+    }
+
+    /* Cursor appears on hover */
+    .slick-active .cursor.active {
+        opacity: 1;
+    }
+</style>
 @endsection
 @section('css')
 
@@ -18,7 +63,7 @@
 </section>
 <div class="banner_form">
     <div class="container-fluid">
-        <form>
+        <form action="{{ route('search') }}" method="get">
             <div class="row">
                 <div class="col">
                     <label>{{ __('home.search-area')}}</label>
@@ -62,7 +107,7 @@
                     </div>
                 </div>
                 <div class="col">
-                    <button class="search_btn">{{ __('home.search')}}</button>
+                    <button type="submit" class="search_btn">{{ __('home.search')}}</button>
                 </div>
             </div>
         </form>
@@ -356,7 +401,7 @@
     <div class="home_page_slider_Sec">
         <div class="row location_slider">
             <div class="location_slide">
-                <div class="home_page_slider_box">
+                <div class="home_page_slider_box image-box">
                     <img src="{{ asset('app-assets/site_assets/img/location-slider-1.jpg') }}" class="image">
                     <div class="cursor"></div>
                     <div class="home_page_box_text">
@@ -368,7 +413,7 @@
                 </div>
             </div>
             <div class="location_slide">
-                <div class="home_page_slider_box">
+                <div class="home_page_slider_box image-box">
                     <img src="{{ asset('app-assets/site_assets/img/location-slider-1.jpg') }}" class="image">
                     <div class="cursor"></div>
                     <div class="home_page_box_text">
@@ -380,7 +425,7 @@
                 </div>
             </div>
             <div class="location_slide">
-                <div class="home_page_slider_box">
+                <div class="home_page_slider_box image-box">
                     <img src="{{ asset('app-assets/site_assets/img/location-slider-1.jpg') }}" class="image">
                     <div class="cursor"></div>
                     <div class="home_page_box_text">
@@ -498,7 +543,28 @@
         </div>
     </div>
 </section>
+<script>
+    $(document).ready(function() {
+        const cursor = $('.cursor');
 
+        // Mousemove event to update cursor position
+        $(document).mousemove(function(event) {
+            cursor.css({
+                left: event.clientX + 'px',
+                top: event.clientY + 'px'
+            });
+        });
+
+        // Hover events for the container to activate cursor text
+        $('.image-box').mouseenter(function() {
+            cursor.addClass('active').text('View');
+        });
+
+        $('.image-box').mouseleave(function() {
+            cursor.removeClass('active').text('');
+        });
+    });
+</script>
 <!-- /next trip Section -->
 
 @endsection
