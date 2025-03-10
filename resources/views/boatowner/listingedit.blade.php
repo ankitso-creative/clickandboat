@@ -122,11 +122,11 @@ flatpickr(".datePicker", {
             <div class="tab-pane fade show active" id="general" role="tabpanel" aria-labelledby="nav-general-tab">
                 {{-- <form action="{{ route('boatowner.listing-settings', $listing->id) }}" method="POST"
                 enctype="multipart/form-data"> --}}
+                <form method="POST">
                 <div class="text-center boat_type_section">
                     <h2>Your boat</h2>
                     <h3>Type</h3>
                     <div class="your_boats_type">
-                        <form method="POST">
                             <div class="radio-with-Icon">
                                 <p class="radioOption-Item">
                                     <input type="radio" name="BannerTypes" id="BannerType1" value="true"
@@ -196,7 +196,6 @@ flatpickr(".datePicker", {
                             </div>
                     </div>
                 </div>
-
                 <div class="row">
                     <div class="col-lg-4">
                         <label>City:<span class="required"> * </span></label>
@@ -239,7 +238,6 @@ flatpickr(".datePicker", {
                         @error('model')<span class="required">{{ $message }}</span>@enderror
                     </div>
                     <div class="clearfix"></div>
-
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
