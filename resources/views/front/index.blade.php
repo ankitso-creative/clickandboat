@@ -4,7 +4,7 @@
 <style>
 
     /* Image container */
-    .slick-active .image-box {
+    .slick-current .image-box {
         position: relative;
         display: inline-block;
         cursor: none; /* Hide default cursor */
@@ -17,10 +17,10 @@
         border-radius: 0px;
     } */
     /* Custom cursor */
-    .slick-active .image-box:hover .image{
+    .slick-current .image-box:hover .image{
             border: 10px solid rgba(255, 255, 0, 0.8);
     }
-    .slick-active .cursor {
+    .slick-current .cursor {
         position: absolute;
         top: 0;
         left: 0;
@@ -42,7 +42,7 @@
     }
 
     /* Cursor appears on hover */
-    .slick-active .cursor.active {
+    .slick-current .cursor.active {
         opacity: 1;
     }
 </style>
