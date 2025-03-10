@@ -17,171 +17,168 @@
     </div>
 </div>
 <div class="col-lg-12 main-dashboard boatowner_listing_section">
+    <form action="">
     <div class="container">
         <div class="text-center boat_type_section">
             <h2>Your boat</h2>
             <h3>Type</h3>
-            <div class="line-entry">
-                <div class="col-1-1 entry full-width">
-                    <div class="col-1-1 value kind-boat">
-                        <div class="content-button" data-typeid="Motorboat" data-context="productcreate">
-                            <button aria-label="Motorboat">
-                                <div class="boatsIconColor">
-                                    <img src="{{ asset('app-assets/site_assets/img/Motorboat-V1.png') }}">
-                                </div>
+            <div class="your_boats_type">
+                    <div class="radio-with-Icon">
+                        <p class="radioOption-Item">
+                            <input type="radio" name="BannerTypes" id="BannerType1" value="true"
+                                class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false">
+                            <label for="BannerType1">
+                                <img src="{{ asset('app-assets/site_assets/img/Motorboat-V1.png') }}">
                                 Motorboat
-                            </button>
-                        </div>
-                        <div class="content-button" data-typeid="Sailboat" data-context="productcreate">
-                            <button aria-label="Sailboat">
-                                <div class="boatsIconColor">
-                                    <img src="{{ asset('app-assets/site_assets/img/Sailboat-V1.png') }}">
-                                </div>
+                            </label>
+                        </p>
+                        <p class="radioOption-Item">
+                            <input type="radio" name="BannerTypes" id="BannerType2" value="true"
+                                class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false">
+                            <label for="BannerType2">
+                                <img src="http://127.0.0.1:8000/app-assets/site_assets/img/Sailboat-V1.png">
                                 Sailboat
-                            </button>
-                        </div>
-                        <div class="content-button" data-typeid="RIB" data-context="productcreate">
-                            <button aria-label="RIB">
-                                <div class="boatsIconColor">
-                                    <img src="{{ asset('app-assets/site_assets/img/RIB-V1.png') }}">
-                                </div>
+                            </label>
+                        </p>
+                        <p class="radioOption-Item">
+                            <input type="radio" name="BannerTypes" id="BannerType3" value="true"
+                                class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false">
+                            <label for="BannerType3">
+                                <img src="http://127.0.0.1:8000/app-assets/site_assets/img/RIB-V1.png">
                                 RIB
-                            </button>
-                        </div>
-                        <div class="content-button" data-typeid="Catamaran" data-context="productcreate">
-                            <button aria-label="Catamaran">
-                                <div class="boatsIconColor">
-                                    <img src="{{ asset('app-assets/site_assets/img/Catamaran-V1.png') }}">
-                                </div>
+                            </label>
+                        </p>
+                        <p class="radioOption-Item">
+                            <input type="radio" name="BannerTypes" id="BannerType4" value="true"
+                                class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false">
+                            <label for="BannerType4">
+                                <img src="http://127.0.0.1:8000/app-assets/site_assets/img/Catamaran-V1.png">
                                 Catamaran
-                            </button>
-                        </div>
-                        <div class="content-button" data-typeid="Jet Ski" data-context="productcreate">
-                            <button aria-label="Jet ski">
-                                <div class="boatsIconColor">
-                                    <img src="{{ asset('app-assets/site_assets/img/Jet-ski-V1.png') }}">
-                                </div>
+                            </label>
+                        </p>
+                        <p class="radioOption-Item">
+                            <input type="radio" name="BannerTypes" id="BannerType5" value="true"
+                                class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false">
+                            <label for="BannerType5">
+                                <img src="http://127.0.0.1:8000/app-assets/site_assets/img/Jet-ski-V1.png">
                                 Jet ski
-                            </button>
-                        </div>
-                        <div class="content-button" data-typeid="Gulet" data-context="productcreate">
-                            <button aria-label="Gulet">
-                                <div class="boatsIconColor">
-                                    <img src="{{ asset('app-assets/site_assets/img/Gulet-V1.png') }}">
-                                </div>
+                            </label>
+                        </p>
+                        <p class="radioOption-Item">
+                            <input type="radio" name="BannerTypes" id="BannerType6" value="true"
+                                class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false">
+                            <label for="BannerType6">
+                                <img src="http://127.0.0.1:8000/app-assets/site_assets/img/Gulet-V1.png">
                                 Gulet
-                            </button>
-                        </div>
-                        <div class="content-button" data-typeid="Without license" data-context="productcreate">
-                            <button aria-label="Boat without licence ">
-                                <div class="boatsIconColor">
-                                    <img src="{{ asset('app-assets/site_assets/img/Boat-without-licence-V1.png') }}">
-                                </div>
+                            </label>
+                        </p>
+                        <p class="radioOption-Item">
+                            <input type="radio" name="BannerTypes" id="BannerType7" value="true"
+                                class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false">
+                            <label for="BannerType7">
+                                <img src="http://127.0.0.1:8000/app-assets/site_assets/img/Boat-without-licence-V1.png">
                                 Boat without licence
-                            </button>
-                        </div>
-                        <div class="content-button" data-typeid="Yacht" data-context="productcreate">
-                            <button aria-label="Yacht">
-                                <div class="boatsIconColor">
-                                    <img src="{{ asset('app-assets/site_assets/img/Yacht-V1.png') }}">
-                                </div>
+                            </label>
+                        </p>
+                        <p class="radioOption-Item">
+                            <input type="radio" name="BannerTypes" id="BannerType8" value="true"
+                                class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false">
+                            <label for="Bannerform8">
+                                <img src="http://127.0.0.1:8000/app-assets/site_assets/img/Yacht-V1.png">
                                 Yacht
-                            </button>
-                        </div>
+                            </label>
+                        </p>
                     </div>
-                </div>
             </div>
         </div>
         <div class="form-section">
-            <form class="password-form" action="" method="Post">
-                <div class="row password_section">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="label-default">City</label>
-                            <input type="text" name="city" value="" class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="exampleFormControlSelect1">Harbour</label>
-                            <select class="form-control" id="exampleFormControlSelect1">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label for="exampleFormControlSelect1">Are you a professional?</label>
-                            <select class="form-control" id="exampleFormControlSelect1">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="label-default">Manufacturer</label>
-                            <input type="text" name="city" value="" class="form-control" placeholder="Manufacturer">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="label-default">Model</label>
-                            <input type="text" name="city" value="" class="form-control" placeholder="Model">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="exampleFormControlSelect1">Is your boat rented with a skipper?</label>
-                            <select class="form-control" id="exampleFormControlSelect1">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="label-default">Capacity (authorised)</label>
-                            <input type="text" name="city" value="" class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group length_input">
-                            <label class="label-default">Length (m)</label>
-                            <input type="text" name="city" value="" class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="exampleFormControlSelect1">How did you find out about Click&Boat?</label>
-                            <select class="form-control" id="exampleFormControlSelect1">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
-                        </div>
+            <div class="row password_section">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="label-default">City</label>
+                        <input type="text" name="city" value="" class="form-control">
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="text-center form-group">
-                            <button class="save_btn">Save</button>
-                        </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Harbour</label>
+                        <select class="form-control" id="exampleFormControlSelect1">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
                     </div>
                 </div>
-            </form>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Are you a professional?</label>
+                        <select class="form-control" id="exampleFormControlSelect1">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="label-default">Manufacturer</label>
+                        <input type="text" name="city" value="" class="form-control" placeholder="Manufacturer">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="label-default">Model</label>
+                        <input type="text" name="city" value="" class="form-control" placeholder="Model">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Is your boat rented with a skipper?</label>
+                        <select class="form-control" id="exampleFormControlSelect1">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="label-default">Capacity (authorised)</label>
+                        <input type="text" name="city" value="" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group length_input">
+                        <label class="label-default">Length (m)</label>
+                        <input type="text" name="city" value="" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">How did you find out about Click&Boat?</label>
+                        <select class="form-control" id="exampleFormControlSelect1">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="text-center form-group">
+                        <button class="save_btn">Save</button>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="photo-section">
             <div class="text-center phot_heading">
@@ -288,7 +285,6 @@
         <div class="boat_listing_images_video_save_btn">
             <a href="">Save</a>
         </div>
+        </form>
     </div>
-</div>
-</div>
 @endsection

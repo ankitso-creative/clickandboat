@@ -71,7 +71,7 @@ flatpickr(".datePicker", {
     <span> {{ session('error') }} </span>
 </div>
 @endif
-<div class="row account-overview">
+<div class="row account-overview dashboard_listing_edit">
     <div class="col-md-3">
         <div class="sidebar_box_pera">
             <h3>Ahoy there <span class="">Captain!</span> </h3>
@@ -85,6 +85,9 @@ flatpickr(".datePicker", {
             <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
                 <a class="nav-item nav-link active" id="nav-general-tab" data-toggle="tab" href="#general" role="tab"
                     aria-controls="nav-home" aria-selected="true"><i class="fa-solid fa-gear"></i> General <span><i
+                            class="fa-solid fa-check-double"></i></span></a>
+                <a class="nav-item nav-link" id="nav-description-tab" data-toggle="tab" href="#description" role="tab"
+                    aria-controls="nav-home" aria-selected="true"><i class="fa-solid fa-gear"></i> Description <span><i
                             class="fa-solid fa-check-double"></i></span></a>
                 <a class="nav-item nav-link" id="nav-image-tab" data-toggle="tab" href="#image" role="tab"
                     aria-controls="nav-profile" aria-selected="false"><i class="fa-solid fa-image"></i> Images<span><i
@@ -122,139 +125,220 @@ flatpickr(".datePicker", {
                 <div class="text-center boat_type_section">
                     <h2>Your boat</h2>
                     <h3>Type</h3>
-                    <div class="line-entry">
-                        <div class="col-1-1 entry full-width">
-                            <div class="col-1-1 value kind-boat">
-                                <div class="content-button" data-typeid="Motorboat" data-context="productcreate">
-                                    <button aria-label="Motorboat">
-                                        <div class="boatsIconColor">
-                                            <img
-                                                src="http://127.0.0.1:8000/app-assets/site_assets/img/Motorboat-V1.png">
-                                        </div>
+                    <div class="your_boats_type">
+                        <form method="POST">
+                            <div class="radio-with-Icon">
+                                <p class="radioOption-Item">
+                                    <input type="radio" name="BannerTypes" id="BannerType1" value="true"
+                                        class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false">
+                                    <label for="BannerType1">
+                                        <img src="{{ asset('app-assets/site_assets/img/Motorboat-V1.png') }}">
                                         Motorboat
-                                    </button>
-                                </div>
-                                <div class="content-button" data-typeid="Sailboat" data-context="productcreate">
-                                    <button aria-label="Sailboat">
-                                        <div class="boatsIconColor">
-                                            <img src="http://127.0.0.1:8000/app-assets/site_assets/img/Sailboat-V1.png">
-                                        </div>
+                                    </label>
+                                </p>
+                                <p class="radioOption-Item">
+                                    <input type="radio" name="BannerTypes" id="BannerType2" value="true"
+                                        class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false">
+                                    <label for="BannerType2">
+                                        <img src="http://127.0.0.1:8000/app-assets/site_assets/img/Sailboat-V1.png">
                                         Sailboat
-                                    </button>
-                                </div>
-                                <div class="content-button" data-typeid="RIB" data-context="productcreate">
-                                    <button aria-label="RIB">
-                                        <div class="boatsIconColor">
-                                            <img src="http://127.0.0.1:8000/app-assets/site_assets/img/RIB-V1.png">
-                                        </div>
+                                    </label>
+                                </p>
+                                <p class="radioOption-Item">
+                                    <input type="radio" name="BannerTypes" id="BannerType3" value="true"
+                                        class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false">
+                                    <label for="BannerType3">
+                                        <img src="http://127.0.0.1:8000/app-assets/site_assets/img/RIB-V1.png">
                                         RIB
-                                    </button>
-                                </div>
-                                <div class="content-button" data-typeid="Catamaran" data-context="productcreate">
-                                    <button aria-label="Catamaran">
-                                        <div class="boatsIconColor">
-                                            <img
-                                                src="http://127.0.0.1:8000/app-assets/site_assets/img/Catamaran-V1.png">
-                                        </div>
+                                    </label>
+                                </p>
+                                <p class="radioOption-Item">
+                                    <input type="radio" name="BannerTypes" id="BannerType4" value="true"
+                                        class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false">
+                                    <label for="BannerType4">
+                                        <img src="http://127.0.0.1:8000/app-assets/site_assets/img/Catamaran-V1.png">
                                         Catamaran
-                                    </button>
-                                </div>
-                                <div class="content-button" data-typeid="Jet Ski" data-context="productcreate">
-                                    <button aria-label="Jet ski">
-                                        <div class="boatsIconColor">
-                                            <img src="http://127.0.0.1:8000/app-assets/site_assets/img/Jet-ski-V1.png">
-                                        </div>
+                                    </label>
+                                </p>
+                                <p class="radioOption-Item">
+                                    <input type="radio" name="BannerTypes" id="BannerType5" value="true"
+                                        class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false">
+                                    <label for="BannerType5">
+                                        <img src="http://127.0.0.1:8000/app-assets/site_assets/img/Jet-ski-V1.png">
                                         Jet ski
-                                    </button>
-                                </div>
-                                <div class="content-button" data-typeid="Gulet" data-context="productcreate">
-                                    <button aria-label="Gulet">
-                                        <div class="boatsIconColor">
-                                            <img src="http://127.0.0.1:8000/app-assets/site_assets/img/Gulet-V1.png">
-                                        </div>
+                                    </label>
+                                </p>
+                                <p class="radioOption-Item">
+                                    <input type="radio" name="BannerTypes" id="BannerType6" value="true"
+                                        class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false">
+                                    <label for="BannerType6">
+                                        <img src="http://127.0.0.1:8000/app-assets/site_assets/img/Gulet-V1.png">
                                         Gulet
-                                    </button>
-                                </div>
-                                <div class="content-button" data-typeid="Without license" data-context="productcreate">
-                                    <button aria-label="Boat without licence ">
-                                        <div class="boatsIconColor">
-                                            <img
-                                                src="http://127.0.0.1:8000/app-assets/site_assets/img/Boat-without-licence-V1.png">
-                                        </div>
+                                    </label>
+                                </p>
+                                <p class="radioOption-Item">
+                                    <input type="radio" name="BannerTypes" id="BannerType7" value="true"
+                                        class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false">
+                                    <label for="BannerType7">
+                                        <img
+                                            src="http://127.0.0.1:8000/app-assets/site_assets/img/Boat-without-licence-V1.png">
                                         Boat without licence
-                                    </button>
-                                </div>
-                                <div class="content-button" data-typeid="Yacht" data-context="productcreate">
-                                    <button aria-label="Yacht">
-                                        <div class="boatsIconColor">
-                                            <img src="http://127.0.0.1:8000/app-assets/site_assets/img/Yacht-V1.png">
-                                        </div>
+                                    </label>
+                                </p>
+                                <p class="radioOption-Item">
+                                    <input type="radio" name="BannerTypes" id="BannerType8" value="true"
+                                        class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false">
+                                    <label for="BannerType8">
+                                        <img src="http://127.0.0.1:8000/app-assets/site_assets/img/Yacht-V1.png">
                                         Yacht
-                                    </button>
-                                </div>
+                                    </label>
+                                </p>
                             </div>
-                        </div>
                     </div>
                 </div>
-                <form method="POST">
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <label>City:<span class="required"> * </span></label>
-                            <input type="text" name="city" class="form-control" required
-                                value="{{ old('city', $listing->city) }}">
-                            @error('city')<span class="required">{{ $message }}</span>@enderror
-                        </div>
-                        <div class="col-lg-4">
-                            <label>Harbour:<span class="required"> * </span></label>
-                            <input type="text" name="harbour" value="{{ old('harbour', $listing->harbour) }}"
-                                class="form-control" required>
-                            @error('harbour')<span class="required">{{ $message }}</span>@enderror
-                        </div>
-                        <div class="clearfix"></div>
-                        <div class="col-lg-4">
-                            <label>Are you a professional?:<span class="required"> * </span></label>
-                            <select name="professional" class="form-control" required>
-                                <option @if($listing->professional=='No') {{ 'selected' }} @endif value="No">No</option>
-                                <option @if($listing->professional=='Yes') {{ 'selected' }} @endif value="Yes">Yes
-                                </option>
-                            </select>
-                            @error('professional')<span class="required">{{ $message }}</span>@enderror
-                        </div>
-                        <div class="col-lg-4">
-                            <label>Manufacturer:<span class="required"> * </span></label>
-                            <input type="text" name="manufacturer" class="form-control" required
-                                value="{{ old('manufacturer', $listing->manufacturer) }}">
-                            @error('manufacturer')<span class="required">{{ $message }}</span>@enderror
-                        </div>
-                        <div class="col-lg-4">
-                            <label>Model:<span class="required"> * </span></label>
-                            <input type="text" name="model" class="form-control" required
-                                value="{{ old('model', $listing->model) }}">
-                            @error('model')<span class="required">{{ $message }}</span>@enderror
-                        </div>
-                        <div class="col-lg-4">
-                            <label>Boat name<span class="required"> * </span></label>
-                            <input type="text" name="model" class="form-control" required
-                                value="{{ old('model', $listing->model) }}">
-                            @error('model')<span class="required">{{ $message }}</span>@enderror
-                        </div>
-                        <div class="clearfix"></div>
 
+                <div class="row">
+                    <div class="col-lg-4">
+                        <label>City:<span class="required"> * </span></label>
+                        <input type="text" name="city" class="form-control" required
+                            value="{{ old('city', $listing->city) }}">
+                        @error('city')<span class="required">{{ $message }}</span>@enderror
+                    </div>
+                    <div class="col-lg-4">
+                        <label>Harbour:<span class="required"> * </span></label>
+                        <input type="text" name="harbour" value="{{ old('harbour', $listing->harbour) }}"
+                            class="form-control" required>
+                        @error('harbour')<span class="required">{{ $message }}</span>@enderror
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-lg-4">
+                        <label>Are you a professional?:<span class="required"> * </span></label>
+                        <select name="professional" class="form-control" required>
+                            <option @if($listing->professional=='No') {{ 'selected' }} @endif value="No">No</option>
+                            <option @if($listing->professional=='Yes') {{ 'selected' }} @endif value="Yes">Yes
+                            </option>
+                        </select>
+                        @error('professional')<span class="required">{{ $message }}</span>@enderror
+                    </div>
+                    <div class="col-lg-4">
+                        <label>Manufacturer:<span class="required"> * </span></label>
+                        <input type="text" name="manufacturer" class="form-control" required
+                            value="{{ old('manufacturer', $listing->manufacturer) }}">
+                        @error('manufacturer')<span class="required">{{ $message }}</span>@enderror
+                    </div>
+                    <div class="col-lg-4">
+                        <label>Model:<span class="required"> * </span></label>
+                        <input type="text" name="model" class="form-control" required
+                            value="{{ old('model', $listing->model) }}">
+                        @error('model')<span class="required">{{ $message }}</span>@enderror
+                    </div>
+                    <div class="col-lg-4">
+                        <label>Boat name<span class="required"> * </span></label>
+                        <input type="text" name="model" class="form-control" required
+                            value="{{ old('model', $listing->model) }}">
+                        @error('model')<span class="required">{{ $message }}</span>@enderror
+                    </div>
+                    <div class="clearfix"></div>
+
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="alert d-none">
+                            <button class="close" data-close="alert"></button>
+                            <span class="message"></span>
+                        </div>
+                    </div>
+                    <div class="text-center actions btn-set">
+                        <input type="hidden" name="s" value="general">
+                        <button type="submit" class="listing_sub_btn mt-ladda-btn ladda-button btn-outline"
+                            data-style="contract" data-spinner-color="#333">
+                            Save
+                        </button>
+                    </div>
+                </div>
+                </form>
+            </div>
+            <div class="tab-pane fade" id="description" role="tabpanel" aria-labelledby="nav-description-tab">
+                <div class="col-sm-12">
+                    <h4 class="bold ">Title</h4>
+                </div>
+                <form>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" name="title" value="" class="form-control"
+                                placeholder="E.g.: 2012  honda">
+                        </div>
+                    </div>
+                    <div class="pt-4 col-sm-12">
+                        <h4 class="bold ">Description</h4>
                     </div>
                     <div class="row">
+                        <div class="col-md-6">
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="8"></textarea>
+                        </div>
+                        <div class="col-md-6">
+                            <p>Write about your yacht
+                                Number of berths, equipment, safety features.
+                                The history of the yacht, your use of this yacht (family outings, regattas).
+                                About your area!
+                                Things to see in your area (best restaurants, places to moor, a pretty cove, a place not
+                                to
+                                be missed).
+                                Some ideas on things to do with your yacht (tell us about the best places to visit from
+                                your
+                                yacht's harbour of departure).
+                                About you!
+                                Why did you buy this yacht?
+                                In which harbour is it located?
+                                A short anecdote.</p>
+                        </div>
+                    </div>
+                    <div class="pt-4 col-sm-12">
+                        <h4 class="bold ">Technical</h4>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <label>Onboard capacity<span class="required"> </span></label>
+                            <input type="text" name="capacity" class="form-control" required="">
+                        </div>
+                        <div class="col-lg-6">
+                            <label>Number of cabins<span class="required"></span></label>
+                            <input type="text" name="cabins" class="form-control" required="">
+                        </div>
+                        <div class="col-lg-6">
+                            <label>Number of berths<span class="required"></span></label>
+                            <input type="text" name="berths" class="form-control" required="">
+                        </div>
+                        <div class="col-lg-6">
+                            <label>Number of bathrooms<span class="required"></span></label>
+                            <input type="text" name="bathrooms" class="form-control" required="">
+                        </div>
+                        <p class="des_text">Add one by one the sleeping areas of the boat and specify their composition.
+                            For example, for 2 cabins, indicate: "1 cabin with 1 double bed" and "1 cabin with 2 single
+                            beds."</p>
+                        <div class="col-lg-6">
+                            <label>Length (m)<span class="required"></span></label>
+                            <input type="text" name="Length" class="form-control" required="">
+                        </div>
+                        <div class="col-lg-6">
+                            <label>Year of construction<span class="required"></span></label>
+                            <input type="text" name="construction" class="form-control" required="">
+                        </div>
+                        <div class="col-lg-6">
+                            <label>Fuel (L/h)<span class="required"></span></label>
+                            <input type="text" name="Fuel" class="form-control" required="">
+                        </div>
+                        <div class="col-lg-6">
+                            <label>Renovated<span class="required"></span></label>
+                            <input type="text" name="renovated" class="form-control" required="">
+                        </div>
                         <div class="col-lg-12">
-                            <div class="alert d-none">
-                                <button class="close" data-close="alert"></button>
-                                <span class="message"></span>
-                            </div>
+                            <label>Speed (Kn)<span class="required"></span></label>
+                            <input type="text" name="speed" class="form-control" required="">
                         </div>
-                        <div class="text-center actions btn-set">
-                            <input type="hidden" name="s" value="general">
-                            <button type="submit" class="listing_sub_btn mt-ladda-btn ladda-button btn-outline"
-                                data-style="contract" data-spinner-color="#333">
-                                Save
-                            </button>
-                        </div>
+                    </div>
+                    <div class="boat_listing_images_video_save_btn">
+                        <a href="">Save</a>
                     </div>
                 </form>
             </div>
