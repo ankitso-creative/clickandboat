@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('professional');
             $table->string('manufacturer');
             $table->string('model');
-            $table->string('skipper');
-            $table->string('capacity');
+            $table->string('skipper')->nullable();
+            $table->string('capacity')->nullable();
             $table->string('length')->nullable();
             $table->string('company_name');
             $table->string('website')->nullable();
