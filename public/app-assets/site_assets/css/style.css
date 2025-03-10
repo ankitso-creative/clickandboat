@@ -1474,7 +1474,6 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 28px;
     color: #000;
     text-transform: uppercase;
-    padding-bottom: 30px;
 }
 .main-dashboard .dashboard_box_one {
     border: 1px solid #ebebeb;
@@ -1851,6 +1850,45 @@ h1, h2, h3, h4, h5, h6 {
 .item-checked {
     color: #000;
 }
+#imageDropzone {
+    margin-top: 30px;
+}
+.boatowner_listing_images .camera_icon_img {
+    width: auto;
+    height: auto;
+}
+.listing_img_box_hide {
+    text-align: center;
+    height: 240px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border: 1px solid #ebebeb;
+    border-radius: 15px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.remove_btn {
+    border: 0px solid #f9a126;
+    cursor: pointer;
+    position: absolute;
+    right: 5px;
+    top: -7px;
+    background: none;
+    outline: none;
+}
+.remove_btn:focus{
+    outline: none;
+}
+.remove_btn i {
+    font-size: 30px;
+    background: #f9a126;
+    border-radius: 50%;
+    color: #fff;
+}
+.listing_img_box_hide {
+    display: none;
+}
 /*--------------------------------------------------------------
 # Boatowner listing Page
 --------------------------------------------------------------*/
@@ -1956,15 +1994,40 @@ h1, h2, h3, h4, h5, h6 {
     padding: 15px 25px;
 }
 .photos_box_text {
-    text-align: center;
     padding-bottom: 20px;
+    text-align: center;
+}
+.listing_add_image {
+    padding: 0;
+}
+.listing_add_image div#imageDropzone {
+    background: none !important;
+    border: 1px solid #ced4da!important;
+}
+.listing_add_image a{
+    color: #f9a126;
+    text-decoration: underline;
+}
+.boatowner_listing_video_box_hide {
+    text-align: center;
+    height: 240px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border: 1px solid #ebebeb;
+    border-radius: 15px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.boatowner_listing_video_box_hide i {
+    font-size: 30px;
 }
 .photo-section {
     margin-top: 40px;
 }
 .boatowner_listing_images img {
     width: 100%;
-    height: 250px;
+    height: 240px;
     object-fit: cover;
     border-radius: 7px;
 }
@@ -2003,6 +2066,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 .boat_listing_images_video_save_btn{
     text-align: center;
+}
+#uploaded-images .uploaded_img img {
+    width: 100% !important;
+    height: 200px;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+.boatowner_listing_video_box_hide{
+    display: none;
 }
 /*--------------------------------------------------------------
 # Location Page
@@ -2745,8 +2817,8 @@ h1, h2, h3, h4, h5, h6 {
     color: #555;
 }
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
+.price-input-container input::-webkit-outer-spin-button,
+.price-input-container input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
@@ -3515,34 +3587,13 @@ section.about_zigzag_section {
 .boatowner_listing_images {
     margin-top: 40px;
 }
-.nautical_row input[type="checkbox"] {
-    width: 20px;
-    height: 20px;
-    appearance: none;
-    -webkit-appearance: none;
-    background-color: #e0e0e0;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    cursor: pointer;
-    position: relative;
+.files input {
+    padding: 120px 0px 85px 35%;
+    text-align: center !important;
+    margin: 0;
+    width: 100% !important;
 }
 
-.nautical_row input[type="checkbox"]:checked {
-    background-color: #4CAF50;
-    border: 1px solid #4CAF50;
-}
-
-.nautical_row input[type="checkbox"]:checked::after {
-    content: "";
-    position: absolute;
-    left: 5px;
-    top: 1px;
-    width: 6px;
-    height: 12px;
-    border-width: 0 3px 3px 0;
-    transform: rotate(45deg);
-    background-color: #4CAF50;
-}
 /*--------------------------------------------------------------
 # Single boat page
 --------------------------------------------------------------*/
@@ -4789,17 +4840,18 @@ section.about_zigzag_section {
     height: 200px;
     object-fit: cover;
 }
-.uploaded_img img{
+.uploaded_img img {
     width: 100% !important;
     height: 200px;
     object-fit: cover;
     margin-bottom: 15px;
+    border-radius: 15px;
 }
 .uploaded_img {
     padding: 0 15px 0 30px;
 }
 .remove-btn {
-    border: 0px solid #30a8d5;
+    border: 0px solid #f9a126;
     cursor: pointer;
      position: absolute;
     right: 5px;
@@ -4808,7 +4860,7 @@ section.about_zigzag_section {
 }
 .remove-btn i {
     font-size: 30px;
-    background: #30a8d5;
+    background: #f9a126;
     border-radius: 50%;
     color: #fff;
 }
@@ -4828,6 +4880,8 @@ section.about_zigzag_section {
     background: #f4f4f4 !important;
     border-radius: 5px;
     margin-bottom: 15px;
+    text-align: center;
+    padding: 30px 0px;
 }
 .dropzone .dz-message {
     margin: 0 !important;
@@ -4981,8 +5035,22 @@ section.about_zigzag_section {
     border-radius: 15px;
     padding: 20px 30px;
 }
-
-
+.request_text {
+    margin-left: 18px;
+}
+.request_save_btn button {
+    background: #f9a126;
+    border: 1px solid #f9a126;
+    color: #fff;
+    padding: 9px 60px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+.request_save_btn button:hover{
+    background: none;
+    border: 1px solid #f9a126;
+    color: #f9a126;
+}
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/

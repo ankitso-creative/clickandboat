@@ -194,50 +194,91 @@
             </div>
             <p class="photo_sec_pera">Drag the photos to change the order they appear in</p>
         </div>
-        <div class="card-section">
-            <div class="image_des">
-                <img src="{{ asset('app-assets/site_assets/img/camera.png') }}">
-                <p class="image_des_main_heading">Post your photos here</p>
-                <p>Minimum size: 400x400px</p>
-                <p>Format: jpeg, png, gif</p>
-                <a href="">Download from your device</a>
+        <div class="col-sm-12 listing_add_image">
+            <div id="imageDropzone" class="dropzone">
+                <div class="dz-message">
+                    <img src="{{ asset('app-assets/site_assets/img/camera.png') }}">
+                    <p class="image_des_main_heading">Post your photos here</p>
+                    <p>Minimum size: 400x400px</p>
+                    <p>Format: jpeg, png, gif</p>
+                    <p><a href="">Download from your device</a></p>
+                </div>
             </div>
         </div>
         <div class="boatowner_listing_images">
             <div class="row">
                 <div class="col-md-4">
-                    <img src="{{ asset('app-assets/site_assets/img/feature-img-2.jpg') }}">
+                    <div class="listing_img_box">
+                        <img src="{{ asset('app-assets/site_assets/img/boat-type-1.jpg') }}">
+                        <button class="remove_btn"><i class="far fa-times-circle"></i></button>
+                    </div>
+                    <div class="listing_img_box_hide">
+                        <img class="camera_icon_img" src="{{ asset('app-assets/site_assets/img/camera.png') }}">
+                        <p>Photo no. 1</p>
+                    </div>
                 </div>
                 <div class="col-md-4">
-                    <img src="{{ asset('app-assets/site_assets/img/feature-img-2.jpg') }}">
+                    <div class="listing_img_box">
+                        <img src="{{ asset('app-assets/site_assets/img/boat-type-1.jpg') }}">
+                        <button class="remove_btn"><i class="far fa-times-circle"></i></button>
+                    </div>
+                    <div class="listing_img_box_hide">
+                        <img class="camera_icon_img" src="{{ asset('app-assets/site_assets/img/camera.png') }}">
+                        <p>Photo no. 2</p>
+                    </div>
                 </div>
                 <div class="col-md-4">
-                    <img src="{{ asset('app-assets/site_assets/img/feature-img-2.jpg') }}">
+                    <div class="listing_img_box">
+                        <img src="{{ asset('app-assets/site_assets/img/boat-type-1.jpg') }}">
+                        <button class="remove_btn"><i class="far fa-times-circle"></i></button>
+                    </div>
+                    <div class="listing_img_box_hide">
+                        <img class="camera_icon_img" src="{{ asset('app-assets/site_assets/img/camera.png') }}">
+                        <p>Photo no. 3</p>
+                    </div>
                 </div>
             </div>
-            <div class="boat_listing_save_btn">
+            <div class="pt-4 boat_listing_save_btn">
                 <a href="#">Add More</a>
             </div>
         </div>
         <div class="pt-4 boatowner_listing_videos">
             <div class="row">
                 <div class="col-md-4">
-                    <video width="100%" height="240" controls>
-                        <source src="movie.mp4" type="video/mp4">
-                        <source src="movie.ogg" type="video/ogg">
-                    </video>
+                    <div class="boatowner_listing_video_box">
+                        <video width="100%" height="240" controls>
+                            <source src="movie.mp4" type="video/mp4">
+                            <source src="movie.ogg" type="video/ogg">
+                        </video>
+                    </div>
+                    <div class="boatowner_listing_video_box_hide">
+                        <i class="fa-solid fa-video"></i>
+                        <p>Video no. 3</p>
+                    </div>
                 </div>
                 <div class="col-md-4">
-                    <video width="100%" height="240" controls>
-                        <source src="movie.mp4" type="video/mp4">
-                        <source src="movie.ogg" type="video/ogg">
-                    </video>
+                    <div class="boatowner_listing_video_box">
+                        <video width="100%" height="240" controls>
+                            <source src="movie.mp4" type="video/mp4">
+                            <source src="movie.ogg" type="video/ogg">
+                        </video>
+                    </div>
+                    <div class="boatowner_listing_video_box_hide">
+                        <i class="fa-solid fa-video"></i>
+                        <p>Video no. 3</p>
+                    </div>
                 </div>
                 <div class="col-md-4">
-                    <video width="100%" height="240" controls>
-                        <source src="movie.mp4" type="video/mp4">
-                        <source src="movie.ogg" type="video/ogg">
-                    </video>
+                    <div class="boatowner_listing_video_box">
+                        <video width="100%" height="240" controls>
+                            <source src="movie.mp4" type="video/mp4">
+                            <source src="movie.ogg" type="video/ogg">
+                        </video>
+                    </div>
+                    <div class="boatowner_listing_video_box_hide">
+                        <i class="fa-solid fa-video"></i>
+                        <p>Video no. 3</p>
+                    </div>
                 </div>
             </div>
             <div class="pt-4 boat_listing_save_btn">
