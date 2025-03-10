@@ -278,20 +278,7 @@ flatpickr(".datePicker", {
                     </div>
                     <div class="clearfix"></div>
                     <div class="col-sm-12">
-                        <h4 class="bold ">Gallery</h4>
-                    </div>
-                    <div class="col-sm-12">
-                        <div id="imageDropzone" class="dropzone">
-                            <div class="dz-message">
-                                Drag & Drop or Click to Upload Image
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
                         <div class="photo-section">
-                            <div class="text-center phot_heading">
-                                <h1>Photos</h1>
-                            </div>
                             <div class="photos_box_text">
                                 <p class="photo_sub_heading">Drag and drop or <a href="#"> click here</a> to upload your
                                     photos</p>
@@ -301,25 +288,53 @@ flatpickr(".datePicker", {
                             </div>
                             <p class="photo_sec_pera">Drag the photos to change the order they appear in</p>
                         </div>
-                        <div class="card-section">
-                            <div class="image_des">
+                    </div>
+                    <div class="col-sm-12">
+                        <div id="imageDropzone" class="dropzone">
+                            <div class="dz-message">
                                 <img src="{{ asset('app-assets/site_assets/img/camera.png') }}">
                                 <p class="image_des_main_heading">Post your photos here</p>
                                 <p>Minimum size: 400x400px</p>
                                 <p>Format: jpeg, png, gif</p>
-                                <a href="">Download from your device</a>
+                                <p>Download from your device</p>
                             </div>
                         </div>
+                    </div>
+                    <div class="col-md-12">
                         <div class="boatowner_listing_images">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <img src="{{ asset('app-assets/site_assets/img/feature-img-2.jpg') }}">
+                                    <div class="listing_img_box">
+                                        <img src="{{ asset('app-assets/site_assets/img/boat-type-1.jpg') }}">
+                                        <button class="remove_btn"><i class="far fa-times-circle"></i></button>
+                                    </div>
+                                    <div class="listing_img_box_hide">
+                                        <img class="camera_icon_img"
+                                            src="{{ asset('app-assets/site_assets/img/camera.png') }}">
+                                        <p>Photo no. 1</p>
+                                    </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <img src="{{ asset('app-assets/site_assets/img/feature-img-2.jpg') }}">
+                                    <div class="listing_img_box">
+                                        <img src="{{ asset('app-assets/site_assets/img/boat-type-1.jpg') }}">
+                                        <button class="remove_btn"><i class="far fa-times-circle"></i></button>
+                                    </div>
+                                    <div class="listing_img_box_hide">
+                                        <img class="camera_icon_img"
+                                            src="{{ asset('app-assets/site_assets/img/camera.png') }}">
+                                        <p>Photo no. 2</p>
+                                    </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <img src="{{ asset('app-assets/site_assets/img/feature-img-2.jpg') }}">
+                                    <div class="listing_img_box">
+                                        <img src="{{ asset('app-assets/site_assets/img/boat-type-1.jpg') }}">
+                                        <button class="remove_btn"><i class="far fa-times-circle"></i></button>
+                                    </div>
+                                    <div class="listing_img_box_hide">
+                                        <img class="camera_icon_img"
+                                            src="{{ asset('app-assets/site_assets/img/camera.png') }}">
+                                        <p>Photo no. 3</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -332,13 +347,15 @@ flatpickr(".datePicker", {
                             </div>
                             <p class="photo_sec_pera">Add boat design plan so renters can project themselves.</p>
                         </div>
-                        <div class="card-section">
-                            <div class="image_des">
-                                <img src="{{ asset('app-assets/site_assets/img/camera.png') }}">
-                                <p class="image_des_main_heading">Drag the boat design plan here</p>
-                                <p>Minimum size: 400x400px</p>
-                                <p>Format: jpeg, png, gif</p>
-                                <a href="">Download from your device</a>
+                        <div class="col-sm-12">
+                            <div id="imageDropzone" class="dropzone">
+                                <div class="dz-message">
+                                    <img src="{{ asset('app-assets/site_assets/img/camera.png') }}">
+                                    <p class="image_des_main_heading">Post your photos here</p>
+                                    <p>Minimum size: 400x400px</p>
+                                    <p>Format: jpeg, png, gif</p>
+                                    <p>Download from your device</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -651,7 +668,7 @@ flatpickr(".datePicker", {
                         <div class="col-sm-12">
                             <h4 class="bold ">Equipment</h4>
                         </div>
-@php
+                        @php
                         $outdoor_equipment = [];
                         if(isset($listing->equipment->outdoor_equipment) &&
                         !empty($listing->equipment->outdoor_equipment)):
@@ -805,7 +822,7 @@ flatpickr(".datePicker", {
                             </div>
                         </div>
                         <div class="col-lg-4">
-                        <p class="bold">Navigation equipment : </p>
+                            <p class="bold">Navigation equipment : </p>
                             <div class="mt-checkbox-inline navigation_equipment">
                                 <label class="mt-checkbox">
                                     <input type="checkbox" id="inlineCheckbox40" value="dinghy"
@@ -870,7 +887,7 @@ flatpickr(".datePicker", {
                             </div>
                         </div>
                         <div class="col-md-4">
-                        <p class="bold">Kitchen :</p>
+                            <p class="bold">Kitchen :</p>
                             <div class="mt-checkbox-inline kitchen">
                                 <label class="mt-checkbox">
                                     <input type="checkbox" id="inlineCheckbox50" @if(in_array('fridge',$kitchen))
@@ -916,7 +933,7 @@ flatpickr(".datePicker", {
                             </div>
                         </div>
                         <div class="col-lg-4">
-                        <p class="bold">Leisure Activities :</p>
+                            <p class="bold">Leisure Activities :</p>
                             <div class="mt-checkbox-inline leisure_activities">
                                 <label class="mt-checkbox">
                                     <input type="checkbox" id="inlineCheckbox58"
@@ -982,7 +999,7 @@ flatpickr(".datePicker", {
                             </div>
                         </div>
                         <div class="col-lg-4">
-                        <p class="bold">Onboard Energy:</p>
+                            <p class="bold">Onboard Energy:</p>
                             <div class="mt-checkbox-inline onboard_energy">
                                 <label class="mt-checkbox">
                                     <input type="checkbox" id="inlineCheckbox68"
@@ -1005,7 +1022,7 @@ flatpickr(".datePicker", {
                             </div>
                         </div>
                         <div class="col-lg-4">
-                        <p class="bold">Water Sports :</p>
+                            <p class="bold">Water Sports :</p>
                             <div class="mt-checkbox-inline water_sports">
                                 <label class="mt-checkbox">
                                     <input type="checkbox" id="inlineCheckbox71"
@@ -1057,7 +1074,8 @@ flatpickr(".datePicker", {
                                 <i class="fa fa-angle-left"></i> Back
                             </button> -->
                             <input type="hidden" name="s" value="equipment">
-                            <button type="submit" class="listing_sub_btn mt-ladda-btn ladda-button btn-outline" data-style="contract" data-spinner-color="#333">
+                            <button type="submit" class="listing_sub_btn mt-ladda-btn ladda-button btn-outline"
+                                data-style="contract" data-spinner-color="#333">
                                 <i class="fa fa-check"></i> Save
                             </button>
                         </div>
@@ -1160,7 +1178,7 @@ flatpickr(".datePicker", {
                         </div>
                         <!-- Early-bird Discount -->
                         <div class="col-sm-12">
-                            <h4 class="bold ">Early-bird discount</h4>
+                            <h4 class="pt-4 bold">Early-bird discount</h4>
                         </div>
                         @php
                         $early_booking = '';
@@ -1242,7 +1260,7 @@ flatpickr(".datePicker", {
                         </div>
                         <!-- Last-minute Booking -->
                         <div class="col-sm-12">
-                            <h4 class="bold ">Last minute booking</h4>
+                            <h4 class="pt-4 bold ">Last minute booking</h4>
                         </div>
                         @php
                         $last_minute_booking = '';
@@ -1330,7 +1348,7 @@ flatpickr(".datePicker", {
                         </div>
                         <!-- Length-of-stay discounts -->
                         <div class="col-sm-12">
-                            <h4 class="bold ">Length of stay discounts</h4>
+                            <h4 class="pt-4 bold ">Length of stay discounts</h4>
                         </div>
                         @php
                         $length_stay_dis = '';
@@ -1380,7 +1398,7 @@ flatpickr(".datePicker", {
                         </div>
                         <!-- Custom discounts -->
                         <div class="col-sm-12">
-                            <h4 class="bold ">Custom discounts</h4>
+                            <h4 class="pt-4 bold ">Custom discounts</h4>
                         </div>
                         @php
                         $custom_discounts = '';
