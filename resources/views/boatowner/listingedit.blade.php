@@ -83,33 +83,15 @@ flatpickr(".datePicker", {
         </div>
         <nav class="sidebar side_bar">
             <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                <a class="nav-item nav-link active" id="nav-general-tab" data-toggle="tab" href="#general" role="tab"
-                    aria-controls="nav-home" aria-selected="true"><i class="fa-solid fa-gear"></i> General <span><i
-                            class="fa-solid fa-check-double"></i></span></a>
-                <a class="nav-item nav-link" id="nav-description-tab" data-toggle="tab" href="#description" role="tab"
-                    aria-controls="nav-home" aria-selected="true"><i class="fa-solid fa-gear"></i> Description <span><i
-                            class="fa-solid fa-check-double"></i></span></a>
-                <a class="nav-item nav-link" id="nav-image-tab" data-toggle="tab" href="#image" role="tab"
-                    aria-controls="nav-profile" aria-selected="false"><i class="fa-solid fa-image"></i> Images<span><i
-                            class="fa-solid fa-check-double"></i></span></a>
-                <a class="nav-item nav-link" id="nav-price-tab" data-toggle="tab" href="#price" role="tab"
-                    aria-controls="nav-contact" aria-selected="false"><i class="fa-solid fa-dollar-sign"></i>
-                    Price<span><i class="fa-solid fa-check-double"></i></span></a>
-                <a class="nav-item nav-link" id="nav-booking-tab" data-toggle="tab" href="#booking" role="tab"
-                    aria-controls="nav-about" aria-selected="false"><i class="fa-solid fa-calendar-days"></i>
-                    Booking<span><i class="fa-solid fa-check-double"></i></span></a>
-                <a class="nav-item nav-link" id="nav-calender-tab" data-toggle="tab" href="#calender" role="tab"
-                    aria-controls="nav-about" aria-selected="false"><i class="fa-regular fa-calendar"></i>
-                    Calender<span><i class="fa-solid fa-check-double"></i></span></a>
-                <a class="nav-item nav-link" id="nav-equipment-tab" data-toggle="tab" href="#equipment" role="tab"
-                    aria-controls="nav-about" aria-selected="false"><i class="fa-solid fa-screwdriver-wrench"></i>
-                    Equipment<span><i class="fa-solid fa-check-double"></i></span></a>
-                <a class="nav-item nav-link" id="nav-other-tab" data-toggle="tab" href="#other" role="tab"
-                    aria-controls="nav-about" aria-selected="false"><i class="fa-regular fa-calendar"></i> Other<span><i
-                            class="fa-solid fa-check-double"></i></span></a>
-                <a class="nav-item nav-link" id="nav-discounts-tab" data-toggle="tab" href="#discounts" role="tab"
-                    aria-controls="nav-about" aria-selected="false"><i class="fa-solid fa-tags"></i>
-                    Discounts<span><i class="fa-solid fa-check-double"></i></span></a>
+                <a class="nav-item nav-link active" id="nav-general-tab" data-toggle="tab" href="#general" role="tab" aria-controls="nav-home" aria-selected="true"><i class="fa-solid fa-gear"></i> General <span><i class="fa-solid fa-check-double"></i></span></a>
+                <a class="nav-item nav-link" id="nav-description-tab" data-toggle="tab" href="#description" role="tab" aria-controls="nav-home" aria-selected="true"><i class="fa-solid fa-gear"></i> Description <span><i class="fa-solid fa-check-double"></i></span></a>
+                <a class="nav-item nav-link" id="nav-image-tab" data-toggle="tab" href="#image" role="tab" aria-controls="nav-profile" aria-selected="false"><i class="fa-solid fa-image"></i> Images<span><i class="fa-solid fa-check-double"></i></span></a>
+                <a class="nav-item nav-link" id="nav-price-tab" data-toggle="tab" href="#price" role="tab" aria-controls="nav-contact" aria-selected="false"><i class="fa-solid fa-dollar-sign"></i>Price<span><i class="fa-solid fa-check-double"></i></span></a>
+                <a class="nav-item nav-link" id="nav-booking-tab" data-toggle="tab" href="#booking" role="tab" aria-controls="nav-about" aria-selected="false"><i class="fa-solid fa-calendar-days"></i> Booking<span><i class="fa-solid fa-check-double"></i></span></a>
+                <a class="nav-item nav-link" id="nav-calender-tab" data-toggle="tab" href="#calender" role="tab" aria-controls="nav-about" aria-selected="false"><i class="fa-regular fa-calendar"></i>Calender<span><i class="fa-solid fa-check-double"></i></span></a>
+                <a class="nav-item nav-link" id="nav-equipment-tab" data-toggle="tab" href="#equipment" role="tab" aria-controls="nav-about" aria-selected="false"><i class="fa-solid fa-screwdriver-wrench"></i> Equipment<span><i class="fa-solid fa-check-double"></i></span></a>
+                <a class="nav-item nav-link" id="nav-other-tab" data-toggle="tab" href="#other" role="tab" aria-controls="nav-about" aria-selected="false"><i class="fa-regular fa-calendar"></i> Other<span><i class="fa-solid fa-check-double"></i></span></a>
+                <a class="nav-item nav-link" id="nav-discounts-tab" data-toggle="tab" href="#discounts" role="tab" aria-controls="nav-about" aria-selected="false"><i class="fa-solid fa-tags"></i>Discounts<span><i class="fa-solid fa-check-double"></i></span></a>
             </div>
         </nav>
     </div>
