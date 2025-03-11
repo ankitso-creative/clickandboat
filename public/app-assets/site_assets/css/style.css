@@ -497,6 +497,7 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 15px;
     width: 250px;
     height: 45px;
+    color: #fff;
 }
 .has-search .form-control-feedback {
     position: absolute;
@@ -555,6 +556,7 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 15px;
     border-radius: 0px 15px 15px 0px;
     border-left: 0px;
+    color: #fff;
 }
 .datepicker.date.input-group {
     width: 182px;
@@ -779,9 +781,6 @@ h1, h2, h3, h4, h5, h6 {
     transition: 0.3s;
     margin: 0 15px;
 }
-.home_page_slider_box:hover {
-    /* cursor: url(../img/cursor.cur), auto; */
-  }
 .home_page_slider_box img {
     width: 100%;
 }
@@ -1447,7 +1446,7 @@ h1, h2, h3, h4, h5, h6 {
 .main-dashboard {
     min-height: calc(100vh - 4rem);
     background: #fff;
-    padding: 45px 51px 0 25px;
+    padding: 45px 51px 0px 25px;
 }
 .main-dashboard-container .sidebar ul .active a {
     color: #fff;
@@ -1558,6 +1557,7 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 500;
     cursor: pointer;
     margin: 0 40px 0 0;
+    color: #000;
 }
 .nav-tabs {
     border-bottom: 1px solid #f9a126;
@@ -1565,13 +1565,14 @@ h1, h2, h3, h4, h5, h6 {
 .nav-tabs .nav-item {
     margin-bottom: 0px;
 }
-.main-dashboard-container .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+.cus_profile .nav-link.active {
     background-color: #f9a126 !important;
     border-color: none !important;
-    color: #fff;
+    color: #fff !important;
     padding: 2px 9px !important;
     border-radius: 11px;
 }
+
 .verification_box_section {
     border: 1px solid #ebebeb;
     padding: 26px 30px;
@@ -1784,7 +1785,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .listing_progress_bar {
     margin: 24px 0 0 30px;
-    border-top: 1px solid #fff;
+    border-top: 1px solid #6d6d6d;
 }
 .listing_progress_bar p {
     font-size: 15px;
@@ -1794,11 +1795,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 .calender_btn {
     background: #f8a126;
-    padding: 16px 50px;
+    padding: 13px 50px;
     color: #fff;
-    border-radius: 5px;
+    border-radius: 15px;
     border: 1px solid #f9a126;
     text-transform: uppercase;
+    margin-right: 10px;
 }
 .calender_btn:hover{
     background: none !important;
@@ -1807,9 +1809,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 .pre_list_btn {
     background: #f8a126;
-    padding: 16px 35px;
+    padding: 13px 35px;
     color: #fff;
-    border-radius: 5px;
+    border-radius: 15px;
     text-transform: uppercase;
     border: 1px solid #f9a126;
 }
@@ -1830,6 +1832,8 @@ h1, h2, h3, h4, h5, h6 {
     padding: 9px 60px;
     border-radius: 15px;
     cursor: pointer;
+    margin-bottom: 40px;
+    text-transform: uppercase;
 }
 .listing_sub_btn:hover{
     background: none !important;
@@ -2056,13 +2060,19 @@ h1, h2, h3, h4, h5, h6 {
     background: #f9a126;
     border: 1px solid #f9a126;
     color: #fff;
-    padding: 8px 60px;
+    padding: 9px 60px;
     border-radius: 15px;
     outline: none;
     margin-top: 30px;
     cursor: pointer;
     display: inline-block;
     margin-bottom: 40px;
+    text-transform: uppercase;
+}
+.boat_listing_images_video_save_btn a:hover{
+    background: none !important;
+    border: 1px solid #f9a126;
+    color: #f9a126;
 }
 .boat_listing_images_video_save_btn{
     text-align: center;
@@ -2414,7 +2424,7 @@ h1, h2, h3, h4, h5, h6 {
     color: #6b7381;
   }
   .btn-toggle.active {
-    background-color: #29b5a8;
+    background-color: #f9a126;
   }
   .btn-toggle.btn-lg {
     margin: 0 5rem;
@@ -4608,6 +4618,9 @@ section.about_zigzag_section {
 .side_bar div#nav-tab {
     display: block;
 }
+.your_listing_section .card {
+    width: 100% !important;
+}
 /* .side_bar.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
     background-color: #323131 !important;
     border-color: #323131;
@@ -4621,7 +4634,7 @@ section.about_zigzag_section {
 } */
 .side_bar.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link {
     text-align: left;
-    color: #6d6d6d;
+    color: #fff;
     text-transform: uppercase;
     padding: 15px 8px;
     position: relative;
@@ -4633,7 +4646,7 @@ section.about_zigzag_section {
     font-size: 28px;
     text-align: center;
     color: #fff;
-    padding-top: 25px;
+    padding-top: 35px;
     text-transform: uppercase;
 }
 .sidebar_box_pera p{
@@ -4787,10 +4800,11 @@ section.about_zigzag_section {
 .add_listing_btn a {
     background: #f8a126;
     color: #fff;
-    padding: 10px 15px;
-    font-size: 16px;
+    padding: 9px 30px;
+    font-size: 15px;
     border: 1px solid #f8a126;
     border-radius: 15px;
+    box-shadow: none !important;
 }
 .add_listing_btn a:hover{
     background: none;
@@ -4954,6 +4968,64 @@ section.about_zigzag_section {
 .dashboard_listing_edit label {
     margin-top: 15px;
 }
+.side_bar .nav-link.active i {
+    color: #fff;
+}
+.side_bar.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link i {
+    color: #6d6d6d;
+}
+.email_box {
+    width: 100%;
+    display: flex;
+    margin: 0 auto;
+    position: relative;
+    top: 50%;
+    justify-content: space-between;
+    margin-bottom: 60px;
+    margin-top: 15px;
+}
+.email_box .emailpick {
+    padding: 0px 40px 1px 0px;
+    font-size: 15px;
+    position: absolute;
+    width: 100%;
+    border: none;
+    height: 40px;
+    outline: none;
+    background: #37393c;
+    background-image: none;
+    border-bottom: 1px solid #fff;
+    color: #fff;
+}
+.email_box Button {
+    cursor: pointer;
+    padding: 8px 16px 8px 16px;
+    font-size: 25px;
+    z-index: 1;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    background: none;
+}
+.email_box .iconwa{
+     position:relative;
+     top:14px;
+     left:10px;
+     z-index:1;
+   }
+.email_box .email_sub_btn{
+    color:white;
+
+   }
+.email_box .email_sub_btn {
+    color: white;
+    position: absolute;
+    right: -12px;
+    top: -10px;
+}
+.email_box ::placeholder{
+    color: #fff;
+}
 /*--------------------------------------------------------------
 # Qequest submit page
 --------------------------------------------------------------*/
@@ -5042,6 +5114,7 @@ section.about_zigzag_section {
     background: #ededed;
     border-radius: 15px;
     padding: 20px 30px;
+    border: 1px solid #c1c1c1;
 }
 .request_text {
     margin-left: 18px;
@@ -5053,6 +5126,7 @@ section.about_zigzag_section {
     padding: 9px 60px;
     border-radius: 15px;
     cursor: pointer;
+    margin-top: 30px;
 }
 .request_save_btn button:hover{
     background: none;
@@ -5118,6 +5192,86 @@ section.about_zigzag_section {
   }
   .your_boats_type {
     margin-bottom: 50px;
+}
+.request_submit_form_section input,
+.request_submit_form_section select {
+    border: 1px solid #000;
+    background: none;
+}
+.request_submit_form_section textarea {
+    border: 1px solid #000;
+    height: 332px;
+    background:none;
+}
+.file_uploaded_section {
+    border-radius: 10px;
+    text-align: center;
+    border: 1px solid #000;
+    position: relative;
+}
+.attachment_box {
+    margin-top: 30px;
+}
+.attachment_box p {
+    text-transform: uppercase;
+    font-weight: 600;
+    padding-bottom: 10px;
+}
+.checking_box label {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 15px;
+}
+#myfile {
+    width: 100%;
+    height: 115px;
+    opacity: 0;
+}
+.side_bar .nav-link.active {
+    background: none;
+    border: 0px solid #000;
+    color: #fff;
+}
+.side_bar a#nav-general-tab:focus-visible {
+    outline: 0px #000;
+}
+.request_file_upload {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.home_page_slider_box{
+    position: relative;
+    transition:all 0.4s ease;
+    overflow: hidden;
+}
+.home_page_slider_box:before, .home_page_slider_box:after {
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    z-index: 2;
+    inset: -12px;
+    transition: translate .25s cubic-bezier(.4,0,.2,1);
+    opacity: 0;
+}
+.home_page_slider_box:before {
+    translate: 0;
+    border-top: 12px solid #f9a126;
+    border-left: 12px solid #f9a126;
+}
+.home_page_slider_box:after {
+    translate: 0;
+    border-right: 12px solid #f9a126;
+    border-bottom: 12px solid #f9a126;
+}
+.home_page_slider_box:hover:before {
+    translate: 12px 12px 0;
+    opacity: 1;
+}
+.home_page_slider_box:hover:after{
+    translate: -12px -12px 0;
+    opacity: 1;
 }
 /*--------------------------------------------------------------
 # Footer
@@ -5268,5 +5422,11 @@ section.about_zigzag_section {
 }
 .help_contact_text {
     padding: 0 210px;
+}
+.your_listing_section img {
+    height: 330px;
+}
+.account-overview {
+    padding-top: 13px;
 }
 }

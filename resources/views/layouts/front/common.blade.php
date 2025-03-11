@@ -11,12 +11,12 @@
     <meta content="telephone=no" name="format-detection">
     <meta name="HandheldFriendly" content="true">
     @yield('meta')
-    <link rel="stylesheet" href="{{ asset('app-assets/site_assets/css/bootstrap.min.css') }}">   
-    <link rel="stylesheet" href="{{ asset('app-assets/site_assets/css/mdbootstrap.css') }}">   
-    <link rel="stylesheet" href="{{ asset('app-assets/site_assets/css/slick-theme.css') }}">   
-    <link rel="stylesheet" href="{{ asset('app-assets/site_assets/css/slick.css') }}">   
-    <link rel="stylesheet" href="{{ asset('app-assets/site_assets/css/style.css') }}"> 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"  />  
+    <link rel="stylesheet" href="{{ asset('app-assets/site_assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('app-assets/site_assets/css/mdbootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('app-assets/site_assets/css/slick-theme.css') }}">
+    <link rel="stylesheet" href="{{ asset('app-assets/site_assets/css/slick.css') }}">
+    <link rel="stylesheet" href="{{ asset('app-assets/site_assets/css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <script src="{{ asset('app-assets/site_assets/js/jquery.js') }}"></script>
 
@@ -26,42 +26,47 @@
 <body class="page">
     <input type="hidden" value="{{ url('/') }}" id="baseUrl">
     <header class="header header-slider">
-            <div class="header_main">
+        <div class="header_main">
             <nav class="navbar navbar-expand-lg navbar-light" id="nav-bar">
                 <a class="navbar-brand" href="#"><img src="{{ whiteLogoURL() }}"></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav">
-                      <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle about_menu" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            About Us
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle about_menu" href="#" id="navbarDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                About Us
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
                             </div>
-                       </li>
-                       <li class="nav-item">
-                            <select class="select-language" id="language">
-                                {!! selectOption('languages','name','code',session()->get('lang'),array('status' , '1')) !!}
-                            </select>
-                       </li>
-                       <!-- <li><a class="nav-link gbp_btn" href="#">GBP: £</a></li> -->
-                       <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle about_menu" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            GBP: £
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                            </div>
-                       </li>
+                        </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('boatlogin') }}">Register your boat  </a>
+                            <select class="select-language" id="language">
+                                {!! selectOption('languages','name','code',session()->get('lang'),array('status' , '1'))
+                                !!}
+                            </select>
+                        </li>
+                        <!-- <li><a class="nav-link gbp_btn" href="#">GBP: £</a></li> -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle about_menu" href="#" id="navbarDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                GBP: £
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('boatlogin') }}">Register your boat </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('userlogin') }}">Sign Up</a>
@@ -74,8 +79,8 @@
                         </li>
                     </ul>
                 </div>
-                </nav>
-            </div>
+            </nav>
+        </div>
     </header>
     @yield('content')
     <footer class="footer">
@@ -84,6 +89,13 @@
                 <div class="col-sm-12 col-md-6 col-lg-3">
                     <div class="footer_newsletter">
                         <h3>Stay In The Know</h3>
+                        <form>
+                            <div class='email_box'>
+                                <input class="emailpick" type="email" placeholder="Email Address" />
+                                <Button class="email_sub_btn"><img
+                                        src="{{ asset('app-assets/site_assets/img/sub-icon.png') }}"></Button>
+                            </div>
+                        </form>
                         <p>We Will Be Delighted To Assist</p>
                         <a href="#">Contact Us <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
@@ -139,8 +151,8 @@
     {{-- <script src="{{ asset('app-assets/site_assets/js/map.js') }}"></script> --}}
     <script src="{{ asset('app-assets/site_assets/js/slick.min.js') }}"></script>
     <script src="{{ asset('app-assets/site_assets/js/script.js') }}"></script>
-    
-   @yield('js')
+
+    @yield('js')
 
 </body>
 

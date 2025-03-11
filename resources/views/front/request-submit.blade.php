@@ -58,7 +58,8 @@
                     <div class="attachment_box">
                         <p>Attachments(optional)</p>
                         <div class="file_uploaded_section">
-                            <input type="file" id="myfile" name="myfile">
+                            <input type="file" id="myfile" class="">
+                            <div class="request_file_upload"><p>Add file or drop files here</p></div>
                         </div>
                     </div>
                     <div class="request_save_btn">

@@ -87,7 +87,7 @@ flatpickr(".datePicker", {
                     aria-controls="nav-home" aria-selected="true"><i class="fa-solid fa-gear"></i> General <span><i
                             class="fa-solid fa-check-double"></i></span></a>
                 <a class="nav-item nav-link" id="nav-description-tab" data-toggle="tab" href="#description" role="tab"
-                    aria-controls="nav-home" aria-selected="true"><i class="fa-solid fa-gear"></i> Description <span><i
+                    aria-controls="nav-home" aria-selected="true"><i class="fa-solid fa-pen"></i> Description <span><i
                             class="fa-solid fa-check-double"></i></span></a>
                 <a class="nav-item nav-link" id="nav-image-tab" data-toggle="tab" href="#image" role="tab"
                     aria-controls="nav-profile" aria-selected="false"><i class="fa-solid fa-image"></i> Images<span><i
@@ -527,7 +527,7 @@ flatpickr(".datePicker", {
                             <input type="hidden" name="s" value="price">
                             <button type="submit" class="listing_sub_btn mt-ladda-btn ladda-button btn-outline "
                                 data-style="contract" data-spinner-color="#333">
-                                <i class="fa fa-check"></i> Save
+                               Save
                             </button>
                         </div>
                     </div>
@@ -625,7 +625,7 @@ flatpickr(".datePicker", {
                             <input type="hidden" name="s" value="booking">
                             <button type="submit" class="listing_sub_btn mt-ladda-btn ladda-button btn-outline"
                                 data-style="contract" data-spinner-color="#333">
-                                <i class="fa fa-check"></i> Save
+                                 Save
                             </button>
                         </div>
                     </div>
@@ -738,7 +738,7 @@ flatpickr(".datePicker", {
                             <input type="hidden" name="s" value="calendar">
                             <button type="submit" class="listing_sub_btn mt-ladda-btn ladda-button btn-outline"
                                 data-style="contract" data-spinner-color="#333">
-                                <i class="fa fa-check"></i> Save
+                                 Save
                             </button>
                         </div>
                     </div>
@@ -1158,7 +1158,7 @@ flatpickr(".datePicker", {
                             <input type="hidden" name="s" value="equipment">
                             <button type="submit" class="listing_sub_btn mt-ladda-btn ladda-button btn-outline"
                                 data-style="contract" data-spinner-color="#333">
-                                <i class="fa fa-check"></i> Save
+                                Save
                             </button>
                         </div>
                     </div>
@@ -1240,7 +1240,7 @@ flatpickr(".datePicker", {
                             <input type="hidden" name="s" value="other">
                             <button type="submit" class="listing_sub_btn mt-ladda-btn ladda-button btn-outline"
                                 data-style="contract" data-spinner-color="#333">
-                                <i class="fa fa-check"></i> Save
+                                 Save
                             </button>
                         </div>
                     </div>
@@ -1531,7 +1531,7 @@ flatpickr(".datePicker", {
                             <input type="hidden" name="s" value="discount">
                             <button type="submit" class="listing_sub_btn mt-ladda-btn ladda-button btn-outline"
                                 data-style="contract" data-spinner-color="#333">
-                                <i class="fa fa-check"></i> Save
+                                 Save
                             </button>
                         </div>
                     </div>

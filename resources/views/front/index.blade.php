@@ -2,34 +2,23 @@
 @section('meta')
 <title>Manage Users</title>
 <style>
-
-    /* Image container */
-    .slick-current .image-box {
+   .image-box {
         position: relative;
         display: inline-block;
-        cursor: none; /* Hide default cursor */
+        cursor: none;
     }
-
-    /* .slick-active .image {
-        display: block;
-        width: 600px;
-        height: auto;
-        border-radius: 0px;
-    } */
-    /* Custom cursor */
-    .slick-current .image-box:hover .image{
-            border: 10px solid rgba(255, 255, 0, 0.8);
+    .image-box:hover img{
+        box-shadow: inset 0 0 0 15px #53a7ea;
     }
-    .slick-current .cursor {
+     .cursor {
         position: absolute;
         top: 0;
         left: 0;
         width: 80px;
         height: 80px;
-        background: rgba(255, 255, 0, 0.8);
         color: black;
-        font-size: 20px;
-        font-weight: bold;
+        font-size: 60px;
+        font-weight: 800;
         border-radius: 50%;
         display: flex;
         justify-content: center;
@@ -39,10 +28,10 @@
         transition: transform 0.15s ease-out;
         opacity: 0;
         z-index: 999;
+        text-transform: uppercase;
+        color: #f9a126;
     }
-
-    /* Cursor appears on hover */
-    .slick-current .cursor.active {
+    .cursor.active {
         opacity: 1;
     }
 </style>
@@ -545,25 +534,35 @@
 </section>
 <script>
     $(document).ready(function() {
-        const cursor = $('.cursor');
-
-        // Mousemove event to update cursor position
-        $(document).mousemove(function(event) {
-            cursor.css({
-                left: event.clientX + 'px',
-                top: event.clientY + 'px'
-            });
-        });
-
-        // Hover events for the container to activate cursor text
-        $('.image-box').mouseenter(function() {
-            cursor.addClass('active').text('View');
-        });
-
-        $('.image-box').mouseleave(function() {
-            cursor.removeClass('active').text('');
+    const cursor = $('.cursor');
+    // Mousemove event to update cursor position
+    $(document).mousemove(function(event) {
+        cursor.css({
+            left: event.clientX + 'px',
+            top: event.clientY + 'px'
         });
     });
+    // Hover event for location_slide to activate cursor
+    $(".location_slide").each(function () {
+            let $this = $(this);
+
+            // Add active class when the slide is active
+            $this.hover(
+                function () {
+                    $this.find(".cursor").addClass("active");
+                    $this.find(".cursor").text("Explore");
+                },
+                function () {
+                    $this.find(".cursor").text("");
+                    $this.find(".cursor").removeClass("active");
+                }
+            );
+        });
+
+    $('.image-box').mouseleave(function() {
+        cursor.removeClass('active').text('');
+    });
+});
 </script>
 <!-- /next trip Section -->
 

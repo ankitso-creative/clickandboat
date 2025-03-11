@@ -40,7 +40,7 @@
         </ul>
     </div>
     @endif
-    <ul class="nav nav-tabs" id="details-tabs" role="tablist">
+    <ul class="nav nav-tabs cus_profile" id="details-tabs" role="tablist">
         <li class="nav-item" role="presentation">
             <button class="nav-link active" id="profile-tab" data-toggle="tab" data-target="#profile" type="button"
                 role="tab" aria-controls="personal-detail" aria-selected="true">Verifications </button>
