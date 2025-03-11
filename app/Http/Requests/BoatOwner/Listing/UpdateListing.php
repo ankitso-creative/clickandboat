@@ -28,10 +28,22 @@ class UpdateListing extends FormRequest
                 'city' => ['required'],
                 'manufacturer' => ['required'],
                 'model' => ['required'],
-                'capacity' => ['required'],
-                'company_name' => ['required'],
                 'boat_name' => ['required'],
+            ];
+        elseif($request['s']=='descriptions'):
+            return [
+                //'capacity' => ['required'],
+                'title' => ['required'],
+                'description' => ['required'],
+                'onboard_capacity' => ['required'],
+                'cabins' => ['required'],
+                'berths' => ['required'],
+                'bathrooms' => ['required'],
                 'length' => ['required'],
+                'construction_year' => ['required'],
+                'fuel' => ['required'],
+                'renovated' => ['required'],
+                'speed' => ['required'],
             ];
         elseif($request['s']=='price'):
             return [

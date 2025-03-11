@@ -61,26 +61,50 @@
                 $listing->professional = $request['professional'];
                 $listing->manufacturer = $request['manufacturer'];
                 $listing->model = $request['model'];
-                $listing->skipper = $request['skipper'];
-                $listing->capacity = $request['capacity'];
-                $listing->length = $request['length'];
-                $listing->company_name = $request['company_name'];
-                $listing->website = $request['website'];
                 $listing->boat_name = $request['boat_name'];
+               // $listing->skipper = $request['skipper'];
+               // $listing->capacity = $request['capacity'];
+               // $listing->length = $request['length'];
+               // $listing->company_name = $request['company_name'];
+               // $listing->website = $request['website'];
+               // $listing->title = $request['title'];
+               // $listing->description = $request['description'];
+               // $listing->onboard_capacity = $request['onboard_capacity'];
+               // $listing->cabins = $request['cabins'];
+               // $listing->berths = $request['berths'];
+               // $listing->bathrooms = $request['bathrooms'];
+                //$listing->construction_year = $request['construction_year'];
+               // $listing->fuel = $request['fuel'];
+               // $listing->renovated = $request['renovated'];
+               // $listing->speed = $request['speed'];
+                if($listing->update()):
+                    return response()->json([
+                        'success' => 'success',
+                        'message' => 'Your general settings updated successfully',
+                    ]); 
+                endif;
+            }
+            elseif($request['s']=='descriptions')
+            {
+                // $listing->skipper = $request['skipper'];
+                // $listing->capacity = $request['capacity'];
+                // $listing->company_name = $request['company_name'];
+                // $listing->website = $request['website'];
+                $listing->construction_year = $request['construction_year'];
+                $listing->length = $request['length'];
                 $listing->title = $request['title'];
                 $listing->description = $request['description'];
                 $listing->onboard_capacity = $request['onboard_capacity'];
                 $listing->cabins = $request['cabins'];
                 $listing->berths = $request['berths'];
                 $listing->bathrooms = $request['bathrooms'];
-                $listing->construction_year = $request['construction_year'];
                 $listing->fuel = $request['fuel'];
                 $listing->renovated = $request['renovated'];
                 $listing->speed = $request['speed'];
                 if($listing->update()):
                     return response()->json([
                         'success' => 'success',
-                        'message' => 'Your general settings updated successfully',
+                        'message' => 'Your descriptions updated successfully',
                     ]); 
                 endif;
             }
@@ -197,6 +221,18 @@
         {
             $listing = Listing::find($id);
             $media = $listing->addMediaFromRequest('file')->toMediaCollection('listing_gallery','listing'); 
+            return response()->json([
+                'message' => 'Image uploaded successfully',
+                'data' => [
+                    'id' => $media->id,
+                    'url' => $media->getUrl()  // URL of the uploaded image
+                ]
+            ]);
+        }
+        public function uploadPlanImage($request,$id)
+        {
+            $listing = Listing::find($id);
+            $media = $listing->addMediaFromRequest('file')->toMediaCollection('listing_plan','listing'); 
             return response()->json([
                 'message' => 'Image uploaded successfully',
                 'data' => [
