@@ -97,6 +97,13 @@
                 <div class="col-sm-12 col-md-6 col-lg-3">
                     <div class="footer_newsletter">
                         <h3>Stay In The Know</h3>
+                        <form>
+                            <div class='email_box'>
+                                <input class="emailpick" type="email" placeholder="Email Address" />
+                                <Button class="email_sub_btn"><img
+                                        src="{{ asset('app-assets/site_assets/img/sub-icon.png') }}"></Button>
+                            </div>
+                        </form>
                         <p>We Will Be Delighted To Assist</p>
                         <a href="#">Contact Us <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
