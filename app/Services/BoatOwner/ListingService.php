@@ -27,6 +27,10 @@ class ListingService{
     {
         return $this->repository->uploadImage($request,$id);
     }
+    public function uploadPlanImage($request,$id)
+    {
+        return $this->repository->uploadPlanImage($request,$id);
+    }
     public function removeImage($request)
     {
         return $this->repository->removeImage($request);

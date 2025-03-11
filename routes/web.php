@@ -84,6 +84,7 @@ Route::middleware('Setlang')->group(function(){
         Route::post('listing-settings/{id}',[BoatOwnerListingController::class, 'update'])->name('listing-settings');
         Route::post('listing/cover_image/{id}', [BoatOwnerListingController::class, 'uploadCoverImage'])->name('uploadcoverimage');
         Route::post('listing/upload/{id}', [BoatOwnerListingController::class, 'uploadImage'])->name('uploadgallery');
+        Route::post('listing/uploadPlanImage/{id}', [BoatOwnerListingController::class, 'uploadPlanImage'])->name('uploadplanimage');
         Route::delete('listing/remove', [BoatOwnerListingController::class, 'removeImage'])->name('removegallery'); 
         Route::get('customers', [CustomerController::class, 'index'])->name('customers'); 
         Route::resource('booking', BoatOwnerBookingController::class);

@@ -85,6 +85,11 @@ class ListingController extends Controller
         $request = $request->all();
         return $this->service->uploadImage($request,$id);
     }
+    public function uploadPlanImage(UploadImageRequest $request, $id)
+    {
+        $request = $request->all();
+        return $this->service->uploadPlanImage($request,$id);
+    }
     public function removeImage(Request $request)
     {
         $request = $request->all();
