@@ -83,33 +83,16 @@ flatpickr(".datePicker", {
         </div>
         <nav class="sidebar side_bar">
             <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                <a class="nav-item nav-link active" id="nav-general-tab" data-toggle="tab" href="#general" role="tab"
-                    aria-controls="nav-home" aria-selected="true"><i class="fa-solid fa-gear"></i> General <span><i
-                            class="fa-solid fa-check-double"></i></span></a>
-                <a class="nav-item nav-link" id="nav-description-tab" data-toggle="tab" href="#description" role="tab"
-                    aria-controls="nav-home" aria-selected="true"><i class="fa-solid fa-pen"></i> Description <span><i
-                            class="fa-solid fa-check-double"></i></span></a>
-                <a class="nav-item nav-link" id="nav-image-tab" data-toggle="tab" href="#image" role="tab"
-                    aria-controls="nav-profile" aria-selected="false"><i class="fa-solid fa-image"></i> Images<span><i
-                            class="fa-solid fa-check-double"></i></span></a>
-                <a class="nav-item nav-link" id="nav-price-tab" data-toggle="tab" href="#price" role="tab"
-                    aria-controls="nav-contact" aria-selected="false"><i class="fa-solid fa-dollar-sign"></i>
-                    Price<span><i class="fa-solid fa-check-double"></i></span></a>
-                <a class="nav-item nav-link" id="nav-booking-tab" data-toggle="tab" href="#booking" role="tab"
-                    aria-controls="nav-about" aria-selected="false"><i class="fa-solid fa-calendar-days"></i>
-                    Booking<span><i class="fa-solid fa-check-double"></i></span></a>
-                <a class="nav-item nav-link" id="nav-calender-tab" data-toggle="tab" href="#calender" role="tab"
-                    aria-controls="nav-about" aria-selected="false"><i class="fa-regular fa-calendar"></i>
-                    Calender<span><i class="fa-solid fa-check-double"></i></span></a>
-                <a class="nav-item nav-link" id="nav-equipment-tab" data-toggle="tab" href="#equipment" role="tab"
-                    aria-controls="nav-about" aria-selected="false"><i class="fa-solid fa-screwdriver-wrench"></i>
-                    Equipment<span><i class="fa-solid fa-check-double"></i></span></a>
-                <a class="nav-item nav-link" id="nav-other-tab" data-toggle="tab" href="#other" role="tab"
-                    aria-controls="nav-about" aria-selected="false"><i class="fa-regular fa-calendar"></i> Other<span><i
-                            class="fa-solid fa-check-double"></i></span></a>
-                <a class="nav-item nav-link" id="nav-discounts-tab" data-toggle="tab" href="#discounts" role="tab"
-                    aria-controls="nav-about" aria-selected="false"><i class="fa-solid fa-tags"></i>
-                    Discounts<span><i class="fa-solid fa-check-double"></i></span></a>
+                <a class="nav-item nav-link active" id="nav-general-tab" data-toggle="tab" href="#general" role="tab" aria-controls="nav-home" aria-selected="true"><i class="fa-solid fa-gear"></i> General <span><i class="fa-solid fa-check-double"></i></span></a>
+                <a class="nav-item nav-link" id="nav-description-tab" data-toggle="tab" href="#description" role="tab" aria-controls="nav-home" aria-selected="true"><i class="fa-solid fa-gear"></i> Description <span><i class="fa-solid fa-check-double"></i></span></a>
+                <a class="nav-item nav-link" id="nav-image-tab" data-toggle="tab" href="#image" role="tab" aria-controls="nav-profile" aria-selected="false"><i class="fa-solid fa-image"></i> Images<span><i class="fa-solid fa-check-double"></i></span></a>
+                <a class="nav-item nav-link" id="nav-price-tab" data-toggle="tab" href="#price" role="tab" aria-controls="nav-contact" aria-selected="false"><i class="fa-solid fa-dollar-sign"></i>Price<span><i class="fa-solid fa-check-double"></i></span></a>
+                <a class="nav-item nav-link" id="nav-booking-tab" data-toggle="tab" href="#booking" role="tab" aria-controls="nav-about" aria-selected="false"><i class="fa-solid fa-calendar-days"></i> Booking<span><i class="fa-solid fa-check-double"></i></span></a>
+                <a class="nav-item nav-link" id="nav-calender-tab" data-toggle="tab" href="#calender" role="tab" aria-controls="nav-about" aria-selected="false"><i class="fa-regular fa-calendar"></i>Calender<span><i class="fa-solid fa-check-double"></i></span></a>
+                <a class="nav-item nav-link" id="nav-equipment-tab" data-toggle="tab" href="#equipment" role="tab" aria-controls="nav-about" aria-selected="false"><i class="fa-solid fa-screwdriver-wrench"></i> Equipment<span><i class="fa-solid fa-check-double"></i></span></a>
+                <a class="nav-item nav-link" id="nav-other-tab" data-toggle="tab" href="#other" role="tab" aria-controls="nav-about" aria-selected="false"><i class="fa-regular fa-calendar"></i> Other<span><i class="fa-solid fa-check-double"></i></span></a>
+                <a class="nav-item nav-link" id="nav-discounts-tab" data-toggle="tab" href="#discounts" role="tab" aria-controls="nav-about" aria-selected="false"><i class="fa-solid fa-tags"></i>Discounts<span><i class="fa-solid fa-check-double"></i></span></a>
+
             </div>
         </nav>
     </div>
@@ -123,148 +106,132 @@ flatpickr(".datePicker", {
                 {{-- <form action="{{ route('boatowner.listing-settings', $listing->id) }}" method="POST"
                 enctype="multipart/form-data"> --}}
                 <form method="POST">
-                <div class="text-center boat_type_section">
-                    <h2>Your boat</h2>
-                    <h3>Type</h3>
-                    <div class="your_boats_type">
+                    <div class="text-center boat_type_section">
+                        <h2>Your boat</h2>
+                        <h3>Type</h3>
+                        @php
+                        //dd($listing);
+                        @endphp
+                        <div class="your_boats_type">
                             <div class="radio-with-Icon">
                                 <p class="radioOption-Item">
-                                    <input type="radio" name="BannerTypes" id="BannerType1" value="true"
-                                        class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false">
+                                    <input type="radio" {{ checkradio($listing->type,'Motorboat') }} name="type" id="BannerType1" value="Motorboat" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false">
                                     <label for="BannerType1">
-                                        <img src="{{ asset('app-assets/site_assets/img/Motorboat-V1.png') }}">
-                                        Motorboat
+                                        <img src="{{ asset('app-assets/site_assets/img/Motorboat-V1.png') }}">Motorboat
                                     </label>
                                 </p>
                                 <p class="radioOption-Item">
-                                    <input type="radio" name="BannerTypes" id="BannerType2" value="true"
-                                        class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false">
+                                    <input type="radio" {{ checkradio($listing->type,'Sailboat') }} name="type" id="BannerType2" value="Sailboat" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false">
                                     <label for="BannerType2">
-                                        <img src="http://127.0.0.1:8000/app-assets/site_assets/img/Sailboat-V1.png">
-                                        Sailboat
+                                        <img src="http://127.0.0.1:8000/app-assets/site_assets/img/Sailboat-V1.png"> Sailboat
                                     </label>
                                 </p>
                                 <p class="radioOption-Item">
-                                    <input type="radio" name="BannerTypes" id="BannerType3" value="true"
-                                        class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false">
+                                    <input type="radio" {{ checkradio($listing->type,'RIB') }} name="type" id="BannerType3" value="RIB" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false">
                                     <label for="BannerType3">
-                                        <img src="http://127.0.0.1:8000/app-assets/site_assets/img/RIB-V1.png">
-                                        RIB
+                                        <img src="http://127.0.0.1:8000/app-assets/site_assets/img/RIB-V1.png"> RIB
                                     </label>
                                 </p>
                                 <p class="radioOption-Item">
-                                    <input type="radio" name="BannerTypes" id="BannerType4" value="true"
-                                        class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false">
+                                    <input type="radio" {{ checkradio($listing->type,'Catamaran') }} name="type" id="BannerType4" value="Catamaran" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false">
                                     <label for="BannerType4">
-                                        <img src="http://127.0.0.1:8000/app-assets/site_assets/img/Catamaran-V1.png">
-                                        Catamaran
+                                        <img src="http://127.0.0.1:8000/app-assets/site_assets/img/Catamaran-V1.png">Catamaran
                                     </label>
                                 </p>
                                 <p class="radioOption-Item">
-                                    <input type="radio" name="BannerTypes" id="BannerType5" value="true"
-                                        class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false">
+                                    <input type="radio" {{ checkradio($listing->type,'Houseboat') }} name="type" id="BannerType5" value="Houseboat" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false">
                                     <label for="BannerType5">
-                                        <img src="http://127.0.0.1:8000/app-assets/site_assets/img/Jet-ski-V1.png">
-                                        Jet ski
+                                        <img src="http://127.0.0.1:8000/app-assets/site_assets/img/Jet-ski-V1.png">Jet ski
                                     </label>
                                 </p>
                                 <p class="radioOption-Item">
-                                    <input type="radio" name="BannerTypes" id="BannerType6" value="true"
-                                        class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false">
+                                    <input type="radio" {{ checkradio($listing->type,'Jet ski') }} name="type" id="BannerType6" value="Jet ski" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false">
                                     <label for="BannerType6">
-                                        <img src="http://127.0.0.1:8000/app-assets/site_assets/img/Gulet-V1.png">
-                                        Gulet
+                                        <img src="http://127.0.0.1:8000/app-assets/site_assets/img/Gulet-V1.png">Gulet
                                     </label>
                                 </p>
                                 <p class="radioOption-Item">
-                                    <input type="radio" name="BannerTypes" id="BannerType7" value="true"
-                                        class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false">
+                                    <input type="radio" {{ checkradio($listing->type,'Gulet') }} name="type" id="BannerType7" value="Gulet" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false">
                                     <label for="BannerType7">
-                                        <img
-                                            src="http://127.0.0.1:8000/app-assets/site_assets/img/Boat-without-licence-V1.png">
-                                        Boat without licence
+                                        <img src="http://127.0.0.1:8000/app-assets/site_assets/img/Boat-without-licence-V1.png"> Boat without licence
                                     </label>
                                 </p>
                                 <p class="radioOption-Item">
-                                    <input type="radio" name="BannerTypes" id="BannerType8" value="true"
-                                        class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false">
+                                    <input type="radio" {{ checkradio($listing->type,'Yacht') }} name="type" id="BannerType8" value="Yacht" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false">
                                     <label for="BannerType8">
-                                        <img src="http://127.0.0.1:8000/app-assets/site_assets/img/Yacht-V1.png">
-                                        Yacht
+                                        <img src="http://127.0.0.1:8000/app-assets/site_assets/img/Yacht-V1.png"> Yacht
                                     </label>
                                 </p>
                             </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-4">
-                        <label>City:<span class="required"> * </span></label>
-                        <input type="text" name="city" class="form-control" required
-                            value="{{ old('city', $listing->city) }}">
-                        @error('city')<span class="required">{{ $message }}</span>@enderror
-                    </div>
-                    <div class="col-lg-4">
-                        <label>Harbour:<span class="required"> * </span></label>
-                        <input type="text" name="harbour" value="{{ old('harbour', $listing->harbour) }}"
-                            class="form-control" required>
-                        @error('harbour')<span class="required">{{ $message }}</span>@enderror
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="col-lg-4">
-                        <label>Are you a professional?:<span class="required"> * </span></label>
-                        <select name="professional" class="form-control" required>
-                            <option @if($listing->professional=='No') {{ 'selected' }} @endif value="No">No</option>
-                            <option @if($listing->professional=='Yes') {{ 'selected' }} @endif value="Yes">Yes
-                            </option>
-                        </select>
-                        @error('professional')<span class="required">{{ $message }}</span>@enderror
-                    </div>
-                    <div class="col-lg-4">
-                        <label>Manufacturer:<span class="required"> * </span></label>
-                        <input type="text" name="manufacturer" class="form-control" required
-                            value="{{ old('manufacturer', $listing->manufacturer) }}">
-                        @error('manufacturer')<span class="required">{{ $message }}</span>@enderror
-                    </div>
-                    <div class="col-lg-4">
-                        <label>Model:<span class="required"> * </span></label>
-                        <input type="text" name="model" class="form-control" required
-                            value="{{ old('model', $listing->model) }}">
-                        @error('model')<span class="required">{{ $message }}</span>@enderror
-                    </div>
-                    <div class="col-lg-4">
-                        <label>Boat name<span class="required"> * </span></label>
-                        <input type="text" name="model" class="form-control" required
-                            value="{{ old('model', $listing->model) }}">
-                        @error('model')<span class="required">{{ $message }}</span>@enderror
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="alert d-none">
-                            <button class="close" data-close="alert"></button>
-                            <span class="message"></span>
                         </div>
                     </div>
-                    <div class="text-center actions btn-set">
-                        <input type="hidden" name="s" value="general">
-                        <button type="submit" class="listing_sub_btn mt-ladda-btn ladda-button btn-outline"
-                            data-style="contract" data-spinner-color="#333">
-                            Save
-                        </button>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <label>City:<span class="required"> * </span></label>
+                            <input type="text" name="city" class="form-control" required value="{{ old('city', $listing->city) }}">
+                            @error('city')<span class="required">{{ $message }}</span>@enderror
+                        </div>
+                        <div class="col-lg-4">
+                            <label>Harbour:<span class="required"> * </span></label>
+                            <input type="text" name="harbour" value="{{ old('harbour', $listing->harbour) }}"
+                                class="form-control" required>
+                            @error('harbour')<span class="required">{{ $message }}</span>@enderror
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="col-lg-4">
+                            <label>Are you a professional?:<span class="required"> * </span></label>
+                            <select name="professional" class="form-control" required>
+                                <option @if($listing->professional=='No') {{ 'selected' }} @endif value="No">No</option>
+                                <option @if($listing->professional=='Yes') {{ 'selected' }} @endif value="Yes">Yes
+                                </option>
+                            </select>
+                            @error('professional')<span class="required">{{ $message }}</span>@enderror
+                        </div>
+                        <div class="col-lg-4">
+                            <label>Manufacturer:<span class="required"> * </span></label>
+                            <input type="text" name="manufacturer" class="form-control" required
+                                value="{{ old('manufacturer', $listing->manufacturer) }}">
+                            @error('manufacturer')<span class="required">{{ $message }}</span>@enderror
+                        </div>
+                        <div class="col-lg-4">
+                            <label>Model:<span class="required"> * </span></label>
+                            <input type="text" name="model" class="form-control" required
+                                value="{{ old('model', $listing->model) }}">
+                            @error('model')<span class="required">{{ $message }}</span>@enderror
+                        </div>
+                        <div class="col-lg-4">
+                            <label>Boat name<span class="required"> * </span></label>
+                            <input type="text" name="boat_name" class="form-control" required
+                                value="{{ old('boat_name', $listing->boat_name) }}">
+                            @error('boat_name')<span class="required">{{ $message }}</span>@enderror
+                        </div>
+                        <div class="clearfix"></div>
                     </div>
-                </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="alert d-none">
+                                <button class="close" data-close="alert"></button>
+                                <span class="message"></span>
+                            </div>
+                        </div>
+                        <div class="text-center actions btn-set">
+                            <input type="hidden" name="s" value="general">
+                            <button type="submit" class="listing_sub_btn mt-ladda-btn ladda-button btn-outline" data-style="contract" data-spinner-color="#333">
+                                Save
+                            </button>
+                        </div>
+                    </div>
                 </form>
             </div>
             <div class="tab-pane fade" id="description" role="tabpanel" aria-labelledby="nav-description-tab">
                 <div class="col-sm-12">
                     <h4 class="bold ">Title</h4>
                 </div>
-                <form>
+                <form method="POST">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <input type="text" name="title" value="" class="form-control"
-                                placeholder="E.g.: 2012  honda">
+                            <input type="text" name="title" value="" class="form-control" required placeholder="E.g.: 2012  honda" value="{{ old('title', $listing->title) }}">
+                            @error('title')<span class="required">{{ $message }}</span>@enderror
                         </div>
                     </div>
                     <div class="pt-4 col-sm-12">
@@ -272,23 +239,19 @@ flatpickr(".datePicker", {
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="8"></textarea>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="8" name="description">{{ $listing->description }}</textarea>
+                            @error('description')<span class="required">{{ $message }}</span>@enderror
                         </div>
                         <div class="col-md-6">
-                            <p>Write about your yacht
-                                Number of berths, equipment, safety features.
-                                The history of the yacht, your use of this yacht (family outings, regattas).
+                            <p>Write about your yacht Number of berths, equipment, safety features. The history of the yacht, your use of this yacht (family outings, regattas).
                                 About your area!
                                 Things to see in your area (best restaurants, places to moor, a pretty cove, a place not
-                                to
-                                be missed).
-                                Some ideas on things to do with your yacht (tell us about the best places to visit from
-                                your
-                                yacht's harbour of departure).
+                                to be missed).Some ideas on things to do with your yacht (tell us about the best places to visit from your yacht's harbour of departure).
                                 About you!
                                 Why did you buy this yacht?
                                 In which harbour is it located?
-                                A short anecdote.</p>
+                                A short anecdote.
+                            </p>
                         </div>
                     </div>
                     <div class="pt-4 col-sm-12">
@@ -297,46 +260,64 @@ flatpickr(".datePicker", {
                     <div class="row">
                         <div class="col-lg-6">
                             <label>Onboard capacity<span class="required"> </span></label>
-                            <input type="text" name="capacity" class="form-control" required="">
+                            <input type="text" name="onboard_capacity" class="form-control" required value="{{ old('onboard_capacity', $listing->onboard_capacity) }}">
+                            @error('onboard_capacity')<span class="required">{{ $message }}</span>@enderror
                         </div>
                         <div class="col-lg-6">
                             <label>Number of cabins<span class="required"></span></label>
-                            <input type="text" name="cabins" class="form-control" required="">
+                            <input type="text" name="cabins" class="form-control" required value="{{ old('cabins', $listing->cabins) }}">
+                            @error('cabins')<span class="required">{{ $message }}</span>@enderror
                         </div>
                         <div class="col-lg-6">
                             <label>Number of berths<span class="required"></span></label>
-                            <input type="text" name="berths" class="form-control" required="">
+                            <input type="text" name="berths" class="form-control" required value="{{ old('berths', $listing->berths) }}">
+                            @error('berths')<span class="required">{{ $message }}</span>@enderror
                         </div>
                         <div class="col-lg-6">
                             <label>Number of bathrooms<span class="required"></span></label>
-                            <input type="text" name="bathrooms" class="form-control" required="">
+                            <input type="text" name="bathrooms" class="form-control" required value="{{ old('bathrooms', $listing->bathrooms) }}">
+                            @error('bathrooms')<span class="required">{{ $message }}</span>@enderror
                         </div>
-                        <p class="des_text">Add one by one the sleeping areas of the boat and specify their composition.
+                        {{-- <p class="des_text">Add one by one the sleeping areas of the boat and specify their composition.
                             For example, for 2 cabins, indicate: "1 cabin with 1 double bed" and "1 cabin with 2 single
-                            beds."</p>
+                            beds."</p> --}}
                         <div class="col-lg-6">
                             <label>Length (m)<span class="required"></span></label>
-                            <input type="text" name="Length" class="form-control" required="">
+                            <input type="text" name="length" class="form-control" required value="{{ old('boat_name', $listing->length) }}">
+                            @error('length')<span class="required">{{ $message }}</span>@enderror
                         </div>
                         <div class="col-lg-6">
                             <label>Year of construction<span class="required"></span></label>
-                            <input type="text" name="construction" class="form-control" required="">
+                            <input type="text" name="construction_year" class="form-control" required value="{{ old('construction_year', $listing->construction_year) }}">
+                            @error('construction_year')<span class="required">{{ $message }}</span>@enderror
                         </div>
                         <div class="col-lg-6">
                             <label>Fuel (L/h)<span class="required"></span></label>
-                            <input type="text" name="Fuel" class="form-control" required="">
+                            <input type="text" name="fuel" class="form-control" required value="{{ old('fuel', $listing->fuel) }}">
+                            @error('fuel')<span class="required">{{ $message }}</span>@enderror
                         </div>
                         <div class="col-lg-6">
                             <label>Renovated<span class="required"></span></label>
-                            <input type="text" name="renovated" class="form-control" required="">
+                            <input type="text" name="renovated" class="form-control" required value="{{ old('renovated', $listing->renovated) }}">
+                            @error('renovated')<span class="required">{{ $message }}</span>@enderror
                         </div>
                         <div class="col-lg-12">
                             <label>Speed (Kn)<span class="required"></span></label>
-                            <input type="text" name="speed" class="form-control" required="">
+                            <input type="text" name="speed" class="form-control" required value="{{ old('speed', $listing->speed) }}">
+                            @error('speed')<span class="required">{{ $message }}</span>@enderror
                         </div>
                     </div>
                     <div class="boat_listing_images_video_save_btn">
-                        <a href="">Save</a>
+                        <div class="col-lg-12">
+                            <div class="alert d-none">
+                                <button class="close" data-close="alert"></button>
+                                <span class="message"></span>
+                            </div>
+                        </div>
+                        <input type="hidden" name="s" value="descriptions">
+                        <button type="submit" class="listing_sub_btn mt-ladda-btn ladda-button btn-outline" data-style="contract" data-spinner-color="#333">
+                            Save
+                        </button>
                     </div>
                 </form>
             </div>
@@ -383,41 +364,52 @@ flatpickr(".datePicker", {
                         </div>
                     </div>
                     <div class="col-md-12">
-                        <div class="boatowner_listing_images">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="listing_img_box">
-                                        <img src="{{ asset('app-assets/site_assets/img/boat-type-1.jpg') }}">
-                                        <button class="remove_btn"><i class="far fa-times-circle"></i></button>
+
+                        @php
+                        $images = $listing->getMedia('listing_gallery');
+                        $count = 0;
+                        @endphp
+                        <div class="col-md-12 uploaded_img">
+                            <div class="row" id="uploaded-images">
+                                @if(count($images))
+                                    @foreach($images as $image) 
+                                        @php  $count++ @endphp
+                                        <div class="col-md-4 image-container" data-id="{{ $image->id }}">
+                                            <img src="{{ $image->getUrl() }}" class="uploaded-image img-responsive pic-bordered">
+                                            <button class="remove-btn" onclick="removeImageGallery({{ $image->id }}, this)"><i class="far fa-times-circle"></i></button>
+                                        </div>
+                                    @endforeach
+                                    @for($i=$count+1; $i <= 3;$i++)
+                                        <div class="col-md-4" id="empty-img-{{ $i }}">
+                                            <div class="listing_img_box">
+                                                <img class="camera_icon_img" src="{{ asset('app-assets/site_assets/img/camera.png') }}">
+                                                <p>Photo no. {{ $i }}</p>
+                                            </div>
+                                        </div>
+                                    @endfor
+                                @else
+                                    <div class="col-md-4" id="empty-img-1">
+                                        <div class="listing_img_box">
+                                            <img class="camera_icon_img"
+                                                src="{{ asset('app-assets/site_assets/img/camera.png') }}">
+                                            <p>Photo no. 1</p>
+                                        </div>
                                     </div>
-                                    <div class="listing_img_box_hide">
-                                        <img class="camera_icon_img"
-                                            src="{{ asset('app-assets/site_assets/img/camera.png') }}">
-                                        <p>Photo no. 1</p>
+                                    <div class="col-md-4" id="empty-img-2">
+                                        <div class="listing_img_box">
+                                            <img class="camera_icon_img"
+                                                src="{{ asset('app-assets/site_assets/img/camera.png') }}">
+                                            <p>Photo no. 2</p>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="listing_img_box">
-                                        <img src="{{ asset('app-assets/site_assets/img/boat-type-1.jpg') }}">
-                                        <button class="remove_btn"><i class="far fa-times-circle"></i></button>
+                                    <div class="col-md-4" id="empty-img-3">
+                                        <div class="listing_img_box">
+                                            <img class="camera_icon_img"
+                                                src="{{ asset('app-assets/site_assets/img/camera.png') }}">
+                                            <p>Photo no. 3</p>
+                                        </div>
                                     </div>
-                                    <div class="listing_img_box_hide">
-                                        <img class="camera_icon_img"
-                                            src="{{ asset('app-assets/site_assets/img/camera.png') }}">
-                                        <p>Photo no. 2</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="listing_img_box">
-                                        <img src="{{ asset('app-assets/site_assets/img/boat-type-1.jpg') }}">
-                                        <button class="remove_btn"><i class="far fa-times-circle"></i></button>
-                                    </div>
-                                    <div class="listing_img_box_hide">
-                                        <img class="camera_icon_img"
-                                            src="{{ asset('app-assets/site_assets/img/camera.png') }}">
-                                        <p>Photo no. 3</p>
-                                    </div>
-                                </div>
+                                @endif
                             </div>
                         </div>
                         <div class="boat_listing_images_video_save_btn">
@@ -430,7 +422,7 @@ flatpickr(".datePicker", {
                             <p class="photo_sec_pera">Add boat design plan so renters can project themselves.</p>
                         </div>
                         <div class="col-sm-12">
-                            <div id="imageDropzone" class="dropzone">
+                            <div id="imageDropzone-plan" class="dropzone">
                                 <div class="dz-message">
                                     <img src="{{ asset('app-assets/site_assets/img/camera.png') }}">
                                     <p class="image_des_main_heading">Post your photos here</p>
@@ -442,18 +434,18 @@ flatpickr(".datePicker", {
                         </div>
                     </div>
                     @php
-                    $images = $listing->getMedia('listing_gallery');
+                    $plans = $listing->getMedia('listing_plan');
                     @endphp
                     <div class="col-md-12 uploaded_img">
-                        <div class="row" id="uploaded-images">
-                            @if($images)
-                            @foreach($images as $image)
-                            <div class="col-md-4 image-container" data-id="{{ $image->id }}">
-                                <img src="{{ $image->getUrl() }}" class="uploaded-image img-responsive pic-bordered">
-                                <button class="remove-btn" onclick="removeImageGallery({{ $image->id }}, this)"><i
-                                        class="far fa-times-circle"></i></button>
-                            </div>
-                            @endforeach
+                        <div class="row" id="uploaded-images-plan">
+                            @if($plans)
+                                @foreach($plans as $plan)
+                                    <div class="col-md-4 image-container" data-id="{{ $plan->id }}">
+                                        <img src="{{ $plan->getUrl() }}" class="uploaded-image img-responsive pic-bordered">
+                                        <button class="remove-btn" onclick="removeImageGallery({{ $plan->id }}, this)"><i
+                                                class="far fa-times-circle"></i></button>
+                                    </div>
+                                @endforeach
                             @endif
                         </div>
                     </div>
@@ -1626,6 +1618,18 @@ $(document).ready(function() {
     })
 });
 // Disable autoDiscover to manually initialize Dropzone
+let imageCount = 0;
+// Function to update the image count display
+function updateImageCount() {
+    imageCount = document.querySelectorAll('#uploaded-images .image-container').length;
+    if (imageCount >= 1 && imageCount <= 3) {
+        const divToRemove = document.getElementById('empty-img-'+imageCount); // Replace 'someDivId' with the actual ID of the div
+        if (divToRemove) {
+            divToRemove.remove(); // Remove the div from the DOM
+        }
+    }
+}
+
 Dropzone.autoDiscover = false;
 const imageDropzone = new Dropzone("#imageDropzone", {
     url: "{{ route('boatowner.uploadgallery',$listing->id) }}", // URL to handle file upload
@@ -1655,9 +1659,9 @@ const imageDropzone = new Dropzone("#imageDropzone", {
         removeButton.onclick = function() {
             removeImage(response.data.id, imageContainer, file);
         };
-
         imageContainer.appendChild(removeButton);
         document.getElementById('uploaded-images').appendChild(imageContainer);
+        updateImageCount()
     },
     error: function(file, response) {
         const errorMessage = response || 'An error occurred during upload';
@@ -1678,6 +1682,57 @@ const imageDropzone = new Dropzone("#imageDropzone", {
         }, 10000); // Adjust the delay time as needed
     }
 });
+const imageDropzonetwo = new Dropzone("#imageDropzone-plan", {
+    url: "{{ route('boatowner.uploadplanimage',$listing->id) }}", // URL to handle file upload
+    paramName: 'file', // The name that will be used to send the file
+    maxFilesize: 2, // Max file size in MB
+    acceptedFiles: 'image/*', // Only allow image files
+    dictDefaultMessage: 'Drag & Drop or Click to Upload Image',
+    headers: {
+        'X-CSRF-TOKEN': '{{ csrf_token() }}' // CSRF token for security
+    },
+    success: function(file, response) {
+        console.log('File uploaded successfully', response);
+        // Display the uploaded image and the remove button
+        const imageContainer = document.createElement('div');
+        imageContainer.classList.add('image-container');
+        imageContainer.classList.add('col-md-4');
+        imageContainer.setAttribute('data-id', response.data.id);
+
+        const image = document.createElement('img');
+        image.src = response.data.url; // URL of the uploaded image
+        image.classList.add('uploaded-image-plan');
+        imageContainer.appendChild(image);
+
+        const removeButton = document.createElement('button');
+        removeButton.innerHTML = '<i class="far fa-times-circle"></i>';
+        removeButton.classList.add('remove-btn');
+        removeButton.onclick = function() {
+            removeImage(response.data.id, imageContainer, file);
+        };
+        imageContainer.appendChild(removeButton);
+        document.getElementById('uploaded-images-plan').appendChild(imageContainer);
+    },
+    error: function(file, response) {
+        const errorMessage = response || 'An error occurred during upload';
+        // Display error message in the preview box (customize this part as needed)
+        const errorElement = document.createElement('div');
+        errorElement.classList.add('dz-error-message');
+        errorElement.innerHTML = `<span>${errorMessage}</span>`;
+
+        // Find the preview element and append the error message
+        const previewElement = file.previewElement;
+        previewElement.classList.add('dz-error'); // Add error styling to preview
+        previewElement.appendChild(errorElement); // Append the error message to preview
+        console.log('Error uploading file', response);
+
+        // Remove the file preview after a short delay (optional)
+        setTimeout(() => {
+            imageDropzonetwo.removeFile(file);
+        }, 10000); // Adjust the delay time as needed
+    }
+});
+
 // Function to remove the image from both front-end and back-end
 function removeImage(imageId, imageContainer, dropzoneFile) {
     // Send AJAX request to remove the image from the database
@@ -1694,12 +1749,12 @@ function removeImage(imageId, imageContainer, dropzoneFile) {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                // Remove the image from the front-end
                 imageContainer.remove();
                 if (dropzoneFile) {
                     imageDropzone.removeFile(dropzoneFile);
+                    imageDropzonetwo.removeFile(dropzoneFile);
                 }
-
+                updateImageCount();
             } else {
 
             }

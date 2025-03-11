@@ -114,6 +114,18 @@
             return false;
         endif;
     }
+    function checkradio($selected,$value)
+    {
+        if(!empty($selected)):
+            if($value==$selected):
+                return 'checked';
+            else:
+                return false;
+            endif;
+        else:
+            return false;
+        endif;
+    }
     function checkselect($selected,$value)
     {
         if(!empty($selected)):
