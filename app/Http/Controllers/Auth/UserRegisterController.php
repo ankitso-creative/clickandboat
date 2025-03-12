@@ -10,6 +10,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class UserRegisterController extends Controller
 {
@@ -50,12 +51,13 @@ class UserRegisterController extends Controller
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
+        Session::put('email-user', $request->email);
         $emailExists = User::where('email', $request->email)->exists();
         if($emailExists):
             return redirect()->route('login');
         else:
-            if($request->email == 'boatowner'):
-                return redirect()->route('register_your_boat'); 
+            if($request->role == 'boatowner'):
+                return redirect()->route('register-your-boat'); 
             else:
                 return redirect()->route('register'); 
             endif;
@@ -109,11 +111,13 @@ class UserRegisterController extends Controller
         if($user->role == RolesEnum::BOATOWNER->value)
         {
             event(new UserRegistered($user));
+            Session::forget('email-user');
             return redirect()->route('register-your-boat')->with('success', 'Registration successful! Please wait for admin approval.');
         }
         else
         {
             Auth::login($user);
+            Session::forget('email-user');
             return redirect()->route('customer.dashboard')->with('success', 'Registration successful!');
         }
     }

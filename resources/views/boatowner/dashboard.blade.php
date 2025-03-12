@@ -18,6 +18,7 @@
                 <h1>Ahoy there Captain!</h1>
             </div>
             <div class="card-section user-dashboard_section">
+                @if(!$userData->getFirstMediaUrl('profile_image'))
                     <div class="dashboard_box_one">
                         <div class="row">
                             <div class="col-md-9">
@@ -38,6 +39,7 @@
                             </div>
                         </div>
                     </div>
+                @endif
                 <div class="dashboard_box_two">
                     <div class="row">
                         <div class="col-md-9">

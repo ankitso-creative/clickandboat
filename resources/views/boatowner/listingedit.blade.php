@@ -3,7 +3,9 @@
 <title>Dashboard - {{ config('app.name') }}</title>
 @endsection
 @section('css')
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.6/dist/flatpickr.min.css">
+<link rel="stylesheet" href="{{ asset('app-assets/site_assets/css/monthSelect.css') }}">
+
 <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
 <link href="{{ asset('app-assets/global/plugins/bootstrap-sweetalert/sweetalert.css') }}" rel="stylesheet"
     type="text/css" />
@@ -12,7 +14,9 @@
 <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
 @endsection
 @section('js')
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.6/dist/flatpickr.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.6/dist/plugins/monthSelect/index.js"></script>
+
 <script src="{{ asset('app-assets/global/plugins/bootstrap-sweetalert/sweetalert.min.js') }}" type="text/javascript">
 </script>
 <script src="{{ asset('app-assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js') }}"
@@ -55,6 +59,17 @@ flatpickr(".datePicker", {
     inline: false,
     dateFormat: "d-m-Y",
     minDate: "today",
+});
+flatpickr(".month-picker", {
+    plugins: [
+        new monthSelectPlugin({
+            shorthand: true,  // Show short month names (e.g., Jan, Feb)
+            dateFormat: "F",  // Store the value as "YYYY-MM"
+            altFormat: "F",  // Display format as "Full Month Name Year" (e.g., March 2025)
+            theme: "dark"  // Use dark theme (optional)
+        })
+    ],
+    
 });
 </script>
 @endsection
@@ -502,6 +517,49 @@ flatpickr(".datePicker", {
                             <label>1 week price:<span class="required"> </span></label>
                             <input type="text" name="one_week_price" value="{{ $listing->price->one_week ?? '' }}"
                                 class="form-control">
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="pt-4 col-sm-12">
+                            <h4 class="bold ">Season Prices Options</h4>
+                        </div>
+                        <div class="col-sm-4">
+                            <label>Low month from:<span class="required"> </span></label>
+                            <input type="text" name="season_price[1][from]" value="{{ $listing->seasonPrice[0]->from ?? '' }}" class="month-picker form-control">
+                        </div>
+                        <div class="col-sm-4">
+                            <label>Low month to:<span class="required"> </span></label>
+                            <input type="text" name="season_price[1][to]" value="{{ $listing->seasonPrice[0]->to ?? '' }}" class="month-picker form-control">
+                        </div>
+                        <div class="col-sm-4">
+                            <label>Low price:<span class="required"> </span></label>
+                            <input type="text" name="season_price[1][price]" value="{{ $listing->seasonPrice[0]->price ?? '' }}" class="form-control">
+                            <input type="hidden" name="season_price[1][name]" value="low_season">
+                        </div>
+                        <div class="col-sm-4">
+                            <label>Mid month from:<span class="required"> </span></label>
+                            <input type="text" name="season_price[2][from]" value="{{ $listing->seasonPrice[1]->from ?? '' }}" class="month-picker form-control">
+                        </div>
+                        <div class="col-sm-4">
+                            <label>Mid month to:<span class="required"> </span></label>
+                            <input type="text" name="season_price[2][to]" value="{{ $listing->seasonPrice[1]->to ?? '' }}" class="month-picker form-control">
+                        </div>
+                        <div class="col-sm-4">
+                            <label>Mid price:<span class="required"> </span></label>
+                            <input type="text" name="season_price[2][price]" value="{{ $listing->seasonPrice[1]->price ?? '' }}"class="form-control">
+                            <input type="hidden" name="season_price[2][name]" value="mid_season">
+                        </div>
+                        <div class="col-sm-4">
+                            <label>High month from:<span class="required"> </span></label>
+                            <input type="text" name="season_price[3][from]" value="{{ $listing->seasonPrice[2]->from ?? '' }}" class="month-picker form-control">
+                        </div>
+                        <div class="col-sm-4">
+                            <label>High month to:<span class="required"> </span></label>
+                            <input type="text" name="season_price[3][to]" value="{{ $listing->seasonPrice[2]->to ?? '' }}" class="month-picker form-control">
+                        </div>
+                        <div class="col-sm-4">
+                            <label>High price:<span class="required"> </span></label>
+                            <input type="text" name="season_price[3][price]" value="{{ $listing->seasonPrice[2]->price ?? '' }}" class="form-control">
+                            <input type="hidden" name="season_price[3][name]" value="high_season">
                         </div>
                     </div>
                     <div class="row ">

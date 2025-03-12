@@ -24,11 +24,13 @@ class UpdateListing extends FormRequest
         $request = $this->all();
         if($request['s']=='general'):
             return [
+                'type' => ['required'],
                 'harbour' => ['required'],
                 'city' => ['required'],
                 'manufacturer' => ['required'],
                 'model' => ['required'],
                 'boat_name' => ['required'],
+                'file' => 'nullable|image|max:2048',
             ];
         elseif($request['s']=='descriptions'):
             return [
