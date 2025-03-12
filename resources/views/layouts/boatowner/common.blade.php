@@ -57,6 +57,7 @@
             						<li><a href="{{ route('boatowner.listing') }}">Listing</a></li>
             						<li><a href="{{ route('boatowner.booking.index') }}">Bookings</a></li>
             						<li><a href="{{ route('logout') }}">Logout</a></li>
+                                    <li><a class="nav-link" href="#"><i class="fa-solid fa-user"></i></a></li>
             					</ul>
             				</div>
             			</div>
