@@ -66,19 +66,11 @@
                             <h3>{{ userName() }}</h3>
                         </div>
                         <ul>
-                            <li class="{{ $active=='dashboard' ? 'active':'' }}"><a
-                                    href="{{ route('customer.dashboard') }}"><i class="fas fa-th"></i> Dashboard</a>
-                            </li>
-                            <li class="{{ $active=='profile' ? 'active':'' }}"><a
-                                    href="{{ route('customer.profile') }}"><i class="fas fa-user-circle"></i>
-                                    Profile</a></li>
-                            <li class="{{ $active=='booking' ? 'active':'' }}"><a
-                                    href="{{ route('customer.booking.index') }}"><i class="fas fa-clipboard-list"></i>
-                                    Bookings</a></li>
-                            <li class="{{ $active=='favourite' ? 'active':'' }}"><a
-                                    href="{{ route('customer.favourite')}}"><i class="fas fa-heart"></i> Favourites</a>
-                            </li>
-                            <li><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                            <li class="{{ $active=='dashboard' ? 'active':'' }}"><a href="{{ route('customer.dashboard') }}"><i class="fas fa-th"></i> Dashboard</a></li>
+                            <li class="{{ $active=='profile' ? 'active':'' }}"><a href="{{ route('customer.profile') }}"><i class="fas fa-user-circle"></i> Profile</a></li>
+                            <li class="{{ $active=='booking' ? 'active':'' }}"><a href="{{ route('customer.booking.index') }}"><i class="fas fa-clipboard-list"></i> Bookings</a></li>
+                            <li class="{{ $active=='favourite' ? 'active':'' }}"><a href="{{ route('customer.favourite')}}"><i class="fas fa-heart"></i> Favourites</a></li>
+                            <li><a href="{{ route('logout') }}"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
                         </ul>
                     </aside>
                 </div>
