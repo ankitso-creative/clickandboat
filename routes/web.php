@@ -148,6 +148,7 @@ Route::middleware('Setlang')->group(function(){
     Route::get('/privacy-policy', [PagesController::class, 'PrivacyPolicy'])->name('privacy-policy');
     Route::get('/terms-condition', [PagesController::class, 'terms'])->name('terms-condition');
     Route::get('/blogs', [PagesController::class, 'blog'])->name('blogs');
+    Route::get('/blog', [PagesController::class, 'singleBlog'])->name('blog');
 
     Route::get('single/{slug}', [PagesController::class, 'single'])->name('single');
     Route::match(['get', 'post'],'checkout', [PagesController::class, 'checkout'])->name('checkout');
