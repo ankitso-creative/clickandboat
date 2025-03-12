@@ -158,13 +158,6 @@
                             </div>
                         </div> --}}
                     </div>
-                    {{-- <div class="row">
-                        <div class="col-md-12">
-                            <div class="text-center form-group">
-                                <button class="save_btn">Save</button>
-                            </div>
-                        </div>
-                    </div> --}}
                 </div>
                 <div class="photo-section">
                     <div class="text-center phot_heading">
