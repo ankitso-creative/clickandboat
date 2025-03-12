@@ -109,14 +109,14 @@ $(document).ready(function(){
 				{
 				  breakpoint: 1000,
 				  settings: {
-					slidesToShow: 3,
+					slidesToShow: 2,
 					slidesToScroll: 1
 				  }
 				},
 				{
 				  breakpoint: 770,
 				  settings: {
-					slidesToShow: 2,
+					slidesToShow: 1,
 					slidesToScroll: 1
 				  }
 				},
@@ -136,15 +136,38 @@ $(document).ready(function(){
 			slidesToShow: 2,           
 			slidesToScroll: 1,
 			centerMode: true,
-			autoplay: false,
+			autoplay: true,
 			autoplaySpeed: 0,         
-			speed: 5000,               
+			speed: 10000,               
 			cssEase: 'linear',        
 			infinite: true,
 			arrows: true,            
 			pauseOnHover: false,      
 			pauseOnFocus: false,
 			variableWidth: true,
+			responsive: [
+				{
+				  breakpoint: 1000,
+				  settings: {
+					slidesToShow: 2,
+					slidesToScroll: 1
+				  }
+				},
+				{
+				  breakpoint: 770,
+				  settings: {
+					slidesToShow: 1,
+					slidesToScroll: 1
+				  }
+				},
+				{
+				  breakpoint: 480,
+				  settings: {
+					slidesToShow: 1,
+					slidesToScroll: 1
+				  }
+				}
+			  ]
 			
 			});
 }

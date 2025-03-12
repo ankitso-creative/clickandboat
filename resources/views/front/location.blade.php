@@ -228,7 +228,7 @@
                                             </div>
                                             <div class="where_box_text">
                                                 <h5>Dates</h5>
-                                                <input type="date" id="calender" name="calender" class="datePicker"/>
+                                                <input type="date" id="calender" name="calender" class="datePicker" placeholder="Add your dates"/>
                                             </div>
                                         </div>
                                     </li>

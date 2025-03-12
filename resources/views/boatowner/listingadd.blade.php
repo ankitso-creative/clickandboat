@@ -17,7 +17,7 @@
     </div>
 </div>
 <div class="col-lg-12 main-dashboard boatowner_listing_section">
-    <form action="">
+<form action="">
     <div class="container">
         <div class="text-center boat_type_section">
             <h2>Your boat</h2>

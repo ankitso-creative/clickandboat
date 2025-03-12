@@ -342,6 +342,9 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'GT America Trial Cn Bd';
     font-weight:700 !important;
 }
+.form-control:focus {
+    box-shadow: none;
+}
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
@@ -417,6 +420,7 @@ h1, h2, h3, h4, h5, h6 {
     text-shadow: none;
     color: #fff;
     cursor: pointer;
+    outline: none;
 }
 #language:hover{
     border:1px solid #f8a126;
@@ -424,6 +428,179 @@ h1, h2, h3, h4, h5, h6 {
 #language option {
     background: #fff;
     color: #f8a126;
+}
+/*--------------------------------------------------------------
+# Mobile menu
+--------------------------------------------------------------*/
+.nav-mobile {
+    background: #fff;
+    color: #FFF;
+    padding: 0;
+    margin: 0;
+    cursor: auto;  
+    font-size: 18px;
+    list-style-type: none;
+    box-shadow: 0 5px 5px -5px #333;
+    &:after { content: ""; display: table; clear: both; }
+    svg {
+      height: 45px;
+      width: 65px;
+      padding: 9px;
+      path { fill: #f8a126; }
+      &.icon-close { 
+        display: none; 
+        padding: 15px;
+      }
+    }
+    li {
+      width: 100%;
+      height: 45px;
+      line-height: 46px;
+      text-align: center;
+      float: left;
+      a {
+        display: block;
+        color: #fff;
+        width: 100%;
+        height: 100%;     
+        text-decoration: none;  
+        font-size: 20px;     
+      }      
+    }
+    .menu-button {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      cursor: pointer;
+      display: block;
+      &:after {
+        opacity: 0;
+        top: 45px;
+        content: "";
+        width: 100vw;
+        display: block;
+        position: fixed;
+        height: 100vh;
+        background: rgba(0,0,0,0.5);      
+        content: "";
+        pointer-events: none;
+        transition: opacity 0.2s cubic-bezier(0,0,0.3,1);  
+        transition-delay: 0.1s;      
+      }
+    }  
+    #menu-toggle {
+      display: none;
+      &.active ~ .menu-button,
+      &:checked ~ .menu-button {
+        .icon-close { display: block; }
+        .icon-open { display: none; }
+        &:after {
+          opacity: 1;
+          pointer-events: auto;
+          transition: opacity 0.3s cubic-bezier(0,0,0.3,1);        
+        }
+      }   
+      &.active ~ .menu-sidebar, 
+      &:checked ~ .menu-sidebar {
+        transform: translateX(0);
+        transition: transform 0.3s cubic-bezier(0,0,0.3,1);
+        z-index: 11;
+        opacity: 1;
+      }    
+    }
+    .menu-container {
+      width: 65px;
+      float: left;
+      cursor: pointer;
+      position: absolute;
+      .menu-sidebar { 
+        box-shadow: 5px 0 5px -5px #333;
+        display: block;
+        width: 100%;
+        bottom: 0;
+        background: #f9a126;
+        color: #333;
+        position: fixed;
+        transform: translateX(-405px);
+        transition: transform 0.3s cubic-bezier(0,0,0.3,1);   
+        top: 45px;
+        z-index: 2;
+        list-style-type: none;
+        padding: 0;
+        max-width: 100%;
+        opacity: 0;
+        .arrow {
+          position: absolute;
+          line-height: 50px;
+          font-size: 32px;
+          color: #555;
+          top: 0;
+          z-index: 0;
+          &.left { left: 25px; }
+          &.right { right: 25px; }
+          color: #fff;
+        }      
+        li {
+          height: 55px;
+          line-height: 55px;
+          font-size: 16px; 
+          text-align: left;
+          position: relative;
+          border-bottom: 1px solid #ced4da;
+          padding-left: 20px;
+          &:hover { background: #eee; }                              
+          .menu-sub {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 0;
+            overflow: hidden;
+            background: white;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0,0,0.3,1);
+            border-left: 1px solid #ccc;  
+            list-style-type: none;
+            padding: 0;
+            margin: 0;    
+            z-index: 2;
+            max-width: 400px;
+            li { overflow: hidden; }
+            .menu-sub-title { padding-left: 50px; }
+           }
+          .submenu-label {
+            cursor: pointer;
+            width: 100%;
+            height: 100%;
+            display: block;
+            color: #fff;
+            font-size: 20px;
+          }
+          .submenu-toggle {
+            display: none; 
+            &.active ~ .menu-sub,
+            &:checked ~ .menu-sub {
+              width: 65vw;
+              visibility: visible;
+              z-index: 1;
+              transition: width 0.35s cubic-bezier(0,0,0.3,1);
+            }
+          }               
+        }       
+      }
+    }
+  }
+  .nav-mobile{
+    display: none;
+  }
+.nav-mobile img {
+    width: 45%;
+    float: right;
+    position: absolute;
+    top: 11px;
 }
 /*--------------------------------------------------------------
 # Home Banner
@@ -444,6 +621,7 @@ h1, h2, h3, h4, h5, h6 {
     bottom: -4%;
     left: 50%;
     transform: translate(-50%, -50%);
+    width: 100%;
 }
 .banner_text h1 {
     font-size: 76px;
@@ -585,8 +763,8 @@ h1, h2, h3, h4, h5, h6 {
     left: -6px;
 }
 .boat_select select option {
-    background: #f8a126;
-    color: #fff;
+    background: #fff;
+    color: #f8a126;
     padding-left: 0px !important;
 }
 .boat_select select option:hover{
@@ -1020,7 +1198,7 @@ h1, h2, h3, h4, h5, h6 {
 # Next trip section
 --------------------------------------------------------------*/
 .next_trip_section {
-    margin-top: 100px;
+    margin-top: 60px;
     margin-bottom: 85px;
 }
 .next_trip_section h2{
@@ -1145,6 +1323,7 @@ h1, h2, h3, h4, h5, h6 {
     cursor: pointer;
     transition: 0.3s;
     text-transform: uppercase;
+    outline: none;
 }
 .singup_welcome_section button:hover{
     background:none;
@@ -1261,6 +1440,7 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Montserrat' !important;
     width: 100%;
     display: block;
+    outline: none;
 }
 .login_section .login_btn:hover{
     background:none;
@@ -1281,6 +1461,7 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
     display: inline-block;
     margin-top: 10px;
+    outline: none;
 }
 .login_section .btn-forgot:hover{
     background:none;
@@ -1861,7 +2042,7 @@ h1, h2, h3, h4, h5, h6 {
     width: auto;
     height: auto;
 }
-.listing_img_box_hide {
+.listing_img_box {
     text-align: center;
     height: 240px;
     display: flex;
@@ -1871,6 +2052,10 @@ h1, h2, h3, h4, h5, h6 {
     border: 1px solid #ebebeb;
     border-radius: 15px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.listing_img_box .camera_icon_img{
+    width: auto;
+    height: auto;
 }
 .remove_btn {
     border: 0px solid #f9a126;
@@ -1962,7 +2147,7 @@ h1, h2, h3, h4, h5, h6 {
     fill: #677785;
     display: block;
     margin: 0 auto;
-    padding-bottom: 10px;
+    padding-bottom: 0px;
 }
 .photo_sec_pera {
     padding-top: 10px;
@@ -2114,7 +2299,7 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 28px;
     color: #000;
     text-transform: uppercase;
-    padding-bottom: 40px;
+    padding-bottom: 15px;
 }
 .location_filter_section .container-fluid {
     margin: 30px auto 0;
@@ -2140,6 +2325,10 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 15px;
     font-weight: 500;
     padding: 0 0 5px 0px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
 }
 .location_inner_box .location_price {
     font-size: 15px;
@@ -2200,7 +2389,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 .where_box {
     display: flex;
-    padding: 11px 20px;
+    padding: 7px 20px;
+}
+.location_options i {
+    position: relative;
+    top: 15px;
 }
 .where_box i {
     color: #677785;
@@ -2237,7 +2430,8 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Montserrat' !important;
     color: #8a98a6;
   }
-  .location_checkbox_one label {
+  .location_checkbox_one label,
+  .location_checkbox_two label {
     font-size: 17px;
     color: #343a40;
     position: relative;
@@ -2252,31 +2446,65 @@ h1, h2, h3, h4, h5, h6 {
     border-bottom: 1px solid #ebebeb;
 }
 .location_checkbox_one input[type="checkbox"] {
-    width: 1.25rem;
-    height: 1.25rem;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 24px;
+    height: 24px;
     cursor: pointer;
-    position: relative;
-    margin: .125rem;
+    margin: 0 10px 0 0px;
     background-color: transparent;
-    border: .125rem solid #ebebeb;
-    border-radius: .25rem;
-
+    border: 2px solid #ebebeb;
+    border-radius: 6px;
+    display: inline-block;
+    position: relative;
 }
+.location_checkbox_one input[type="checkbox"]:checked::before {
+    content: "✔";
+    font-size: 18px;
+    color: #fff;
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background: #f9a126;
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    padding: 0 5px;
+}
+
 .location_checkbox_two {
     padding-left: 5px;
     padding-top: 20px;
     border-bottom: 1px solid #ebebeb;
 }
 .location_checkbox_two input[type="checkbox"] {
-    width: 1.25rem;
-    height: 1.25rem;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 24px;
+    height: 24px;
     cursor: pointer;
-    position: relative;
-    margin: .125rem;
+    margin: 0 10px 0 0px;
     background-color: transparent;
-    border: .125rem solid #ebebeb;
-    border-radius: .25rem;
+    border: 2px solid #ebebeb;
+    border-radius: 6px;
+    display: inline-block;
+    position: relative;
 
+}
+.location_checkbox_two input[type="checkbox"]:checked::before {
+    content: "✔";
+    font-size: 18px;
+    color: #fff;
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background: #f9a126;
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    padding: 0 5px;
 }
 .location_checkbox_two label {
     font-size: 17px;
@@ -2790,6 +3018,23 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: center;
     padding: 20px;
 }
+.where_box_text select {
+    border: none;
+    outline: none;
+    color: #343a40;
+}
+.pac-logo:after{
+    display: none;
+}
+.pac-container.pac-logo {
+    width: 300px !important;
+    left: 30px !important;
+}
+.pac-item {
+    padding: 5px 8px !important;
+    border-top: 0px solid #e6e6e6 !important;
+}
+
 /*--------------------------------------------------------------
 # Range slider
 --------------------------------------------------------------*/
@@ -2810,23 +3055,47 @@ h1, h2, h3, h4, h5, h6 {
 
 .price-field input {
     flex: 1;
-    height: 35px;
+    height: 45px;
     font-size: 15px;
     font-family: "DM Sans", sans-serif;
     border-radius: 9px;
     text-align: center;
-    border: 0px;
-    background: #e4e4e4;
+    background: none;
     width: 100%;
+    outline: none;
+    border: 1px solid #ced4da;
 }
-
-.price-input,
-.length-input {
+.length-input .price-field:after  {
+    content: "";
+    position: absolute;
+    background: #83888a;
+    height: 2px;
+    width: 5px;
+    top: 50%;
+    left: 49%;
+}
+.price-input .price-field:after {
+    content: "";
+    position: absolute;
+    background: #83888a;
+    height: 2px;
+    width: 5px;
+    top: 35%;
+    left: 49%;
+}
+.price-input, .length-input {
     width: 100%;
     font-size: 19px;
     color: #555;
+    display: flex;
+    position: relative;
 }
-
+.length-input {
+    margin-bottom: 25px;
+}
+.price-field {
+    padding: 0 8px;
+}
 .price-input-container input::-webkit-outer-spin-button,
 .price-input-container input::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -2887,9 +3156,6 @@ h1, h2, h3, h4, h5, h6 {
     -webkit-appearance: none;
     z-index: 999;
 }
-.max-length-input {
-    margin-top: 20px;
-}
 /*--------------------------------------------------------------
 # Blog page
 --------------------------------------------------------------*/
@@ -2940,6 +3206,12 @@ h1, h2, h3, h4, h5, h6 {
     text-transform: uppercase;
     font-size: 15px;
     margin-top: 20px;
+    border: 1px solid #f9a126;
+}
+.blog_banner_text a:hover{
+    background:none;
+    border: 1px solid #f9a126;
+    color: #f9a126;
 }
 .destination_info_text {
     text-align: center;
@@ -2950,7 +3222,7 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 500;
 }
 .destination_info_section {
-    margin-top: 90px;
+    margin-top: 70px;
 }
 .destination_info_section h2 {
     font-size: 44px;
@@ -2981,6 +3253,12 @@ h1, h2, h3, h4, h5, h6 {
     text-transform: uppercase;
     font-size: 15px;
     margin-top: 10px;
+    border: 1px solid #f9a126;
+}
+.destination_info_section a:hover{
+    background:none;
+    border: 1px solid #f9a126;
+    color: #f9a126;
 }
 .destination_banner_img {
     margin-top: 40px;
@@ -2999,6 +3277,7 @@ h1, h2, h3, h4, h5, h6 {
     color: #000;
     text-transform: uppercase;
     padding-top: 10px;
+    line-height: 45px;
 }
 .blog_text_box {
     padding-left: 50px;
@@ -3012,6 +3291,12 @@ h1, h2, h3, h4, h5, h6 {
     text-transform: uppercase;
     font-size: 15px;
     margin-top: 40px;
+    border: 1px solid #f9a126;
+}
+.blog_text_box a:hover{
+    background:none;
+    border: 1px solid #f9a126;
+    color: #f9a126;
 }
 .blog_text_box .blog_des_pera {
     padding-top: 10px;
@@ -3019,12 +3304,24 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 500;
 }
 .blog_section .row{
-    border-top: 2px solid #bcbcbc;
+    border-top: 1px solid #bcbcbc;
     padding-top: 35px;
     padding-bottom: 35px;
 }
 .blog_section .col-sm-12.col-md-6.col-lg-6 {
     padding: 0;
+}
+.blog_img img {
+    width: 100%;
+    height: 100%;
+}
+.destination_banner_img img {
+    width: 100%;
+    height: auto;
+}
+.destination_banner_img .conatiner {
+    max-width: 1015px;
+    margin: 0px auto;
 }
 /*--------------------------------------------------------------
 # About page
@@ -3098,6 +3395,12 @@ h1, h2, h3, h4, h5, h6 {
     text-transform: uppercase;
     font-size: 15px;
     margin-top: 40px;
+    border: 1px solid #f9a126;
+}
+.about_find_boat a:hover{
+    background:none;
+    border: 1px solid #f9a126;
+    color: #f9a126;
 }
 .about_slider {
     padding: 20px 0px;
@@ -3108,7 +3411,7 @@ h1, h2, h3, h4, h5, h6 {
     background: #f2f2f2;
     border-radius: 15px;
     text-align: center;
-    padding: 20px 15px;
+    padding: 20px 30px;
     cursor: pointer;
     transition: 0.3s;
     border: 1px solid #ebebeb;
@@ -3175,6 +3478,10 @@ section.about_zigzag_section {
 .about_zigzag_section p{
     color: #000;
     font-size: 15px;
+}
+.about_sec_img img {
+    width: 100%;
+    height: auto;
 }
 /*--------------------------------------------------------------
 # Single blog page
@@ -3356,6 +3663,7 @@ section.about_zigzag_section {
 }
 .help_banner_section  #search-wrapper i {
     color: #fff;
+    padding: 6px 0px;
 }
 .help_banner_section  #search-wrapper ::placeholder{
     color: #fff;
@@ -3466,6 +3774,7 @@ section.about_zigzag_section {
     cursor: pointer;
     transition: 0.3s;
     border: 1px solid #ebebeb;
+    height: 260px;
 }
 .more_resource_section  .more_resource_box:hover {
     background: #f9a126;
@@ -3505,7 +3814,7 @@ section.about_zigzag_section {
 }
 .help_contact_text a {
     background: #fff;
-    padding: 12px 25px;
+    padding: 12px 40px;
     display: inline-block;
     border-radius: 15px;
     color: #f9a126;
@@ -4445,6 +4754,7 @@ section.about_zigzag_section {
     color: #f8a126;
     padding-top: 15px;
     display: block;
+    text-decoration: underline;
 }
 .equipment-sec h3 {
     font-size: 28px;
@@ -4458,6 +4768,12 @@ section.about_zigzag_section {
     border-radius: 15px;
     color: #fff;
     text-transform: uppercase;
+    border: 1px solid #f9a126;
+}
+.equip-button-sec a:hover{
+    background:none;
+    border: 1px solid #f9a126;
+    color: #f9a126;
 }
 .boat-content-sec h3 {
     color: #000;
@@ -4476,7 +4792,8 @@ section.about_zigzag_section {
     text-transform: uppercase;
     text-decoration: underline;
     display: inline-block;
-    margin-top: 20px;
+    margin-top: 40px;
+    padding-bottom: 20px;
 }
 .ideas-sec {
     display: flex;
@@ -4514,12 +4831,18 @@ section.about_zigzag_section {
 }
 .contact_owner_btn {
     background: #f8a126;
-    padding: 15px 15px;
+    padding: 13px 15px;
     display: inline-block;
     border-radius: 15px;
     color: #fff;
     text-transform: uppercase;
     margin-top: 15px;
+    border: 1px solid #f9a126;
+}
+.contact_owner_btn:hover{
+    background:none;
+    border: 1px solid #f9a126;
+    color: #f9a126;
 }
 .offere_language p {
     padding-bottom: 5px;
@@ -4538,6 +4861,7 @@ section.about_zigzag_section {
     margin: 0px auto;
     border: 1px solid #ebebeb;
     border-radius: 5px;
+    position: relative;
 }
 .sidebar_form input {
     border: 0px;
@@ -4560,17 +4884,24 @@ section.about_zigzag_section {
     margin: 10px auto 0;
 }
 .book_btn {
-    background: #f8a126;
-    border: 1px solid #f8a126;
+    background: #f9a126;
+    border: 1px solid #f9a126;
     padding: 10px 0px;
     border-radius: 3px;
     color: #fff;
     margin-top: 16px;
     width: 97%;
     margin: 10px auto 0;
+    box-shadow: none;
+}
+.book_btn:hover{
+    background: none;
+    border: 1px solid #f9a126;
+    color: #f9a126;
 }
 .form_text p {
     font-size: 14px;
+    padding: 0 0 10px 0;
 }
 .boat-right-sec .card {
     padding-bottom: 25px !important;
@@ -4607,6 +4938,42 @@ section.about_zigzag_section {
 }
 .similar_boat_section {
     width: 100%;
+}
+.breadcrumb-item.active {
+    padding-top: 10px;
+}
+.dates_heading {
+    padding-left: 10px;
+}
+.sidebar_form:after {
+    content: "";
+    position: absolute;
+    background: url('../img/next.png') no-repeat center center;
+    background-size: contain;
+    width: 20px; /* Adjust as needed */
+    height: 20px; /* Adjust as needed */
+    left: 50%;
+    top: 32%;
+    transform: translateX(-50%);
+}
+.view_more_boats {
+    text-align: center;
+}
+.view_more_boats a {
+    background: #f8a126;
+    padding: 13px 15px;
+    display: inline-block;
+    border-radius: 15px;
+    color: #fff;
+    text-transform: uppercase;
+    margin-top: 15px;
+    margin-bottom: 50px;
+    border: 1px solid #f9a126;
+}
+.view_more_boats a:hover{
+    background:none;
+    border: 1px solid #f9a126;
+    color: #f9a126;
 }
 /*--------------------------------------------------------------
 # Boatowner listing
@@ -4824,7 +5191,6 @@ section.about_zigzag_section {
 .has-search-right .form-control {
     padding-right: 2.375rem;
 }
-
 .has-search-right .form-control-feedback {
     position: absolute;
     top: 2px;
@@ -4855,21 +5221,24 @@ section.about_zigzag_section {
     object-fit: cover;
 }
 .uploaded_img img {
-    width: 100% !important;
-    height: 200px;
+    width: 100%;
+    height: 240px;
     object-fit: cover;
     margin-bottom: 15px;
     border-radius: 15px;
 }
 .uploaded_img {
-    padding: 0 15px 0 30px;
+    padding: 30px 15px 0 30px;
+}
+.uploaded_img .col-md-4 {
+    padding: 0 10px;
 }
 .remove-btn {
     border: 0px solid #f9a126;
     cursor: pointer;
-     position: absolute;
+    position: absolute;
     right: 5px;
-    top: 7px;
+    top: -5px;
     background: none;
 }
 .remove-btn i {
@@ -4901,7 +5270,6 @@ section.about_zigzag_section {
     margin: 0 !important;
 }
 .uploaded_img .col-md-4.image-container {
-    padding: 15px 15px 0px 0px;
     position: relative;
 }
 .equipment_Sec label {
@@ -5138,8 +5506,8 @@ section.about_zigzag_section {
   }
   .your_boats_type .radio-with-Icon p.radioOption-Item {
     display: inline-block;
-    width: 160px;
-    height: 152px;
+    width: 162px;
+    height: 145px;
     box-sizing: border-box;
     margin: 25px 15px;
     border: none;
@@ -5156,7 +5524,7 @@ section.about_zigzag_section {
     opacity: .8;
     transition: none;
     font-size: 13px;
-    padding-top: 25px;
+    padding-top: 40px;
     text-align: center;
     margin: 0 !important;
 }
@@ -5181,9 +5549,10 @@ section.about_zigzag_section {
   .your_boats_type .radio-with-Icon p.radioOption-Item input[type="radio"]:checked ~ label {
     opacity: 1;
     border: none;
-    background-color: #f9a126;
     color: #fff;
-  }
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    color: #f9a126;
+}
   .your_boats_type .radio-with-Icon p.radioOption-Item input[type="radio"]:hover, div.radio-with-Icon p.radioOption-Item input[type="radio"]:focus, div.radio-with-Icon p.radioOption-Item input[type="radio"]:active {
     margin: 0 !important;
   }
@@ -5374,10 +5743,355 @@ section.about_zigzag_section {
 # Media Query
 --------------------------------------------------------------*/
 @media (min-width: 320px) and (max-width: 767px){
-
-
-
-
+    .header-slider {
+        display: none;
+    }
+    .nav-mobile{
+        display: block;
+    }
+    .vc_row {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+    .banner_text h1 {
+        font-size: 30px;
+    }
+    .home_banner_section {
+        height: 340px;
+        background-position: center;
+    }
+    .banner_text {
+        bottom: -15%;
+    }
+    .banner_form {
+        top: 0;
+        height: auto;
+        background:#fff;
+    }
+    .has-search .form-control {
+        width: 340px;
+    }
+    .boat_select select {
+        width: 344px;
+    }
+    .search_btn {
+        margin-top: 25px;
+        width: 100%;
+    }
+    .featured_boats_section {
+        margin-top: 40px;
+    }
+    .featured_boat_heading h2 {
+        font-size: 30px;
+    }
+    .featured_boats_section .col-sm-12.col-md-6.col-lg-4 {
+        padding: 0;
+    }
+    .featured_board_boxes h3 {
+        font-size: 30px;
+    }
+    .boat_reanter_owner_section h2 {
+        font-size: 30px;
+    }
+    .boat_reanter_owner_section {
+        margin-top: 30px;
+    }
+    .boat_renter_box .boat_renter_text {
+        height: auto;
+    }
+    .boat_reanter_owner_section .boat_renter_box.box-one {
+        padding-right: 0px;
+    }
+    .boat_reanter_owner_section .boat_renter_box.box-two {
+        padding-left: 0px;
+        margin-top: 45px;
+    }
+    .boat_type_section_slider h2 {
+        font-size: 30px;
+    }
+    .boat_by_location {
+        height: 1020px;
+    }
+    .boat_by_location .row {
+        left: 54%;
+        width: 390px;
+        top: 54%;
+    }
+    .boat_by_location_section h2 {
+        font-size: 30px;
+    }
+    .boat_by_location_box h3 {
+        font-size: 25px;
+    }
+    .follow_sailer_section h2 {
+        font-size: 30px;
+    }
+    .follow_sailer_box {
+        height: auto;
+    }
+    .home_page_slider {
+        overflow: hidden;
+    }
+    .next_trip_section h2 {
+        font-size: 30px;
+    }
+    .next_trip_text h3 {
+        font-size: 25px;
+    }
+    .footer_menu {
+        padding-left: 0;
+    }
+    .cal_mail_box {
+        padding-left: 0px;
+    }
+    .footer_social_links {
+        float: left;
+    }
+    .next_trip_box {
+        margin-bottom: 30px;
+    }
+    .banner_form label {
+        color: #000;
+    }
+    .has-search .form-control {
+        background: #fff;
+        border: 1px solid #ebebeb;
+        color: #000;
+    }
+    .has-search .form-control-feedback {
+        color: #343a40;
+        border-right: 1px solid #ebebeb;
+    }
+    .has-search ::placeholder {
+        color: #343a40;
+      }
+    .navbar-brand {
+        width: 50%;
+    }
+    .datepicker input#fecha1 {
+        background: #fff;
+    }
+    .datepicker .input-group-text {
+        background: #fff;
+    }
+    .datepicker i,
+    .boat_select i {
+        color: #343a40;
+    }
+    .boat_select select {
+        background: #fff;
+        border: 1px solid #ebebeb;
+    }
+    .boat_select span {
+        border-right: 1px solid #ebebeb;
+    }
+    .datepicker.date.input-group {
+        width: 157px;
+    }
+    .about_banner_section {
+        height: 400px;
+    }
+    .about_banner_text h1 {
+        font-size: 30px;
+    }
+    .about_text_block h2 {
+        font-size: 30px;
+    }
+    .about_text_block .about_small_text {
+        padding-top: 5px;
+    }
+    .about_text_block h3 {
+        font-size: 30px;
+    }
+    .about_slider_box {
+        padding: 60px 15px;
+    }
+    .about_slider {
+        margin-top: 30px;
+        margin-bottom: 25px;
+    }
+    .about_slider .slick-prev {
+        left: 40%;
+    }
+    .about_zigzag_section,
+    .about_slider,
+    .boat_by_location_section,
+    .help_contact_section,
+    .login_sign_up_form {
+        overflow: hidden;
+    }
+    .about_sec_img img {
+        margin-bottom: 15px;
+    }
+    .about_zigzag_section .row:nth-child(2) {
+        flex-direction: column-reverse;
+    }
+    .about_zigzag_section h2 {
+        font-size: 30px;
+    }
+    .about_insurance_text {
+        padding: 40px 30px;
+    }
+    .blog_banner_text h1 {
+        font-size: 30px;
+        line-height: 32px;
+        padding: 0 15px;
+    }
+    ..blog_banner {
+        height: 485px;
+    }
+    .blog_banner_text {
+        top: 33%;
+    }
+    .destination_info_section {
+        margin-top: 40px;
+    }
+    .destination_info_section h2 {
+        font-size: 30px;
+    }
+    .destination_banner_img img {
+        height: auto;
+    }
+    .blog_section {
+        margin-top: 37px;
+    }
+    .blog_text_box h2 {
+        font-size: 30px;
+    }
+    .blog_text_box {
+        padding: 25px 25px 0px 25px;
+        text-align: center;
+    }
+    .footer {
+        text-align: center;
+    }
+    .footer_social_links {
+        float: none;
+    }
+    .footer .container-fluid h5 {
+        padding-bottom: 0px;
+        padding-top: 30px;
+    }
+    .footer .container-fluid .email_box_sec {
+        padding-top: 0;
+    }
+    .footer_newsletter {
+        padding-bottom: 20px;
+    }
+    .email_box {
+        width: 85%;
+    }
+    .location_banner_text h1 {
+        font-size: 30px;
+    }
+    .location_banner_text h1 br{
+        display: none;
+    }
+    .location_rightside_box {
+        padding-top: 30px;
+    }
+    .location_main_heading h2 {
+        padding-bottom: 15px;
+        text-align: center;
+    }
+    .location_filter_section {
+        margin-bottom: 0;
+    }
+    .help_banner_text h1 {
+        font-size: 30px;
+        line-height: 45px;
+    }
+    .location_filter_section .container-fluid {
+        padding: 0 15px;
+    }
+    .help_banner_text {
+        width: 90%;
+    }
+    .help_banner_text h5 {
+        padding-bottom: 0px;
+    }
+    .knowlwdge_heaidng h2 {
+        font-size: 30px;
+    }
+    .knowledge_section button {
+        font-size: 20px;
+        padding: 0px 20px;
+    }
+    .faq_section .faq_heading h2 {
+        font-size: 30px;
+    }
+    .faq_section button {
+        font-size: 20px;
+        padding: 0px 20px;
+    }
+    .more_resource_section h2 {
+        font-size: 30px;
+    }
+    .more_resource_section  .more_resource_box {
+        margin-bottom: 20px;
+    }
+    .more_resource_section .col-sm-12.col-md-6.col-lg-3 {
+        padding: 0px;
+    }
+    .help_contact_section .row {
+        flex-direction: column-reverse;
+    }
+    .help_contact_text h2 {
+        font-size: 30px;
+    }
+    .help_contact_text {
+        text-align: center;
+        padding: 40px 25px;
+    }
+    .login_section .container {
+        padding: 0px 25px;
+    }
+    .section-form-contacts {
+        padding: 0 15px;
+    }
+    .sing_upform_logo img {
+        width: 80%;
+    }
+    .login_sign_up_form .container {
+        padding: 0 25px;
+    }
+    .singup_welcome_section {
+        padding: 0 15px;
+    }
+    .form_signup_other_option a {
+        margin-bottom: 10px;
+    }
+    .form_or_text:before {
+        width: 134px;
+    }
+    .form_or_text:after {
+        width: 134px;
+    }
+    .boat_type_sec {
+        padding: 0px 15px;
+    }
+    .boat_type_text {
+        left: 37%;
+    }
+    .location_inner_box img {
+        height: 265px;
+    }
+    .request_banner_text h1 {
+        font-size: 30px;
+    }
+    .request_banner_text {
+        width: 90%;
+    }
+    .request_banner_section {
+        height: 400px;
+    }
+    .request_submit_form_section .container {
+        margin: 40px auto;
+    }
+    .request_submit_form_section {
+        margin: 0 15px;
+    }
+    
 }
 @media (min-width: 1920px) and (max-width: 2500px){
     .blog_banner {
@@ -5429,4 +6143,14 @@ section.about_zigzag_section {
 .account-overview {
     padding-top: 13px;
 }
+.uploaded_img img {
+    height: 300px;
+}
+.listing_img_box {
+    height: 300px;
+}
+.about_banner_section {
+    height: 690px;
+}
+
 }

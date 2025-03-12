@@ -188,32 +188,28 @@
                 <img src="{{ asset('app-assets/site_assets/img/watch-icon.png') }}">
                 <h3>Customer Care
                     opening hours</h3>
-                <p>Sed tempor aliquet fermentum. Nulla in nibh risus. Nam eget commodo ligula. Vestibulum a quam
-                    sagittis,</p>
+                <p>Our agents are available from Monday to Friday from 9 am to 6 pm</p>
             </div>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-3">
             <div class="more_resource_box">
                 <img src="{{ asset('app-assets/site_assets/img/boat-icon-03.png') }}">
                 <h3>Check our blog</h3>
-                <p>Sed tempor aliquet fermentum. Nulla in nibh risus. Nam eget commodo ligula. Vestibulum a quam
-                    sagittis,</p>
+                <p>Visit our blog to get inspiration for your next trip!</p>
             </div>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-3">
             <div class="more_resource_box">
                 <img src="{{ asset('app-assets/site_assets/img/insta-icon.png') }}">
                 <h3>Follow Us on instagram</h3>
-                <p>Sed tempor aliquet fermentum. Nulla in nibh risus. Nam eget commodo ligula. Vestibulum a quam
-                    sagittis,</p>
+                <p>To keep more than 40.000 boats in your pocket or handle your bookings directly from the harbor!</p>
             </div>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-3">
             <div class="more_resource_box">
                 <img src="{{ asset('app-assets/site_assets/img/facebook-icon.png') }}">
                 <h3> Follow our facebook</h3>
-                <p>Sed tempor aliquet fermentum. Nulla in nibh risus. Nam eget commodo ligula. Vestibulum a quam
-                    sagittis,</p>
+                <p>To keep more than 40.000 boats in your pocket or handle your bookings directly from the harbor!</p>
             </div>
         </div>
     </div>

@@ -7,9 +7,6 @@
         display: inline-block;
         cursor: none;
     }
-    .image-box:hover img{
-        box-shadow: inset 0 0 0 15px #53a7ea;
-    }
      .cursor {
         position: absolute;
         top: 0;
