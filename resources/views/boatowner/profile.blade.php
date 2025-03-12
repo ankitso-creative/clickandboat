@@ -239,11 +239,11 @@
                                 <div class="form-group">
                                     <label for="exampleFormControlSelect1">Example select</label>
                                     <select class="form-control" id="exampleFormControlSelect1" name="level">
-                                        <option {{ checkselect($userData->exprience->level,'Never sailed') }} value="Never sailed">Never sailed</option>
-                                        <option {{ checkselect($userData->exprience->level,'Beginner') }} value="Beginner">Beginner</option>
-                                        <option {{ checkselect($userData->exprience->level,'Intermediate') }} value="Intermediate">Intermediate</option>
-                                        <option {{ checkselect($userData->exprience->level,'Very Good') }} value="Very Good">Very Good</option>
-                                        <option {{ checkselect($userData->exprience->level,'Pro') }} value="Pro">Pro</option>
+                                        <option {{ checkselect(optional($userData->exprience)->level,'Never sailed') }} value="Never sailed">Never sailed</option>
+                                        <option {{ checkselect(optional($userData->exprience)->level,'Beginner') }} value="Beginner">Beginner</option>
+                                        <option {{ checkselect(optional($userData->exprience)->level,'Intermediate') }} value="Intermediate">Intermediate</option>
+                                        <option {{ checkselect(optional($userData->exprience)->level,'Very Good') }} value="Very Good">Very Good</option>
+                                        <option {{ checkselect(optional($userData->exprience)->level,'Pro') }} value="Pro">Pro</option>
                                     </select>
                                 </div>
                             </div>
@@ -251,9 +251,9 @@
                                 <div class="form-group">
                                     <label for="exampleFormControlSelect1">Example select</label>
                                     <select class="form-control" id="exampleFormControlSelect1" name="prefer">
-                                        <option {{ checkselect($userData->exprience->prefer,'Sailboat') }} value="Sailboat">Sailboat</option>
-                                        <option {{ checkselect($userData->exprience->prefer,'Motorboat') }} value="Motorboat">Motorboat</option>
-                                        <option {{ checkselect($userData->exprience->prefer,'Both') }} value="Both">Both</option>
+                                        <option {{ checkselect(optional($userData->exprience)->prefer,'Sailboat') }} value="Sailboat">Sailboat</option>
+                                        <option {{ checkselect(optional($userData->exprience)->prefer,'Motorboat') }} value="Motorboat">Motorboat</option>
+                                        <option {{ checkselect(optional($userData->exprience)->prefer,'Both') }} value="Both">Both</option>
                                     </select>
                                 </div>
                             </div>
@@ -262,9 +262,9 @@
                             <div class="col-md-4">
                                 <h3>Your boat licence</h3>
                                 @php
-                                    $boat_licence = json_decode($userData->exprience->boat_licence);
-                                    $other = json_decode($userData->exprience->other);
-                                    $sailing_experience = json_decode($userData->exprience->sailing_experience);
+                                    $boat_licence = json_decode(optional($userData->exprience)->boat_licence);
+                                    $other = json_decode(optional($userData->exprience)->other);
+                                    $sailing_experience = json_decode(optional($userData->exprience)->sailing_experience);
                                 @endphp
                                 <div class="input-group">
                                     <input type="checkbox" id="coastal" name="boat_licence[]" value="coastal" {{ checkCheckbox($boat_licence,'coastal') }}>
@@ -307,7 +307,7 @@
                                 <div class="natutical_message_box">
                                     <div class="form-group">
                                         <label for="exampleFormControlTextarea1">Description</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" placeholder="Provide full details about yourself and your experience." name="description">{{ $userData->exprience->description }}</textarea>
+                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" placeholder="Provide full details about yourself and your experience." name="description">{{ optional($userData->exprience)->description }}</textarea>
                                     </div>
                                 </div>
                             </div>
