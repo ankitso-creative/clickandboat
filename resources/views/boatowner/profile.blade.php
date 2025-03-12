@@ -37,7 +37,7 @@
             </ul>
         </div>
     @endif
-    <ul class="nav nav-tabs" id="details-tabs">
+    <ul class="nav nav-tabs pro_tabs" id="details-tabs">
         <li class="nav-item" role="presentation">
             <a class="nav-link active" href="#profile">Verifications </a>
         </li>
