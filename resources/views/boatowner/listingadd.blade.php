@@ -10,13 +10,11 @@
 
 @endsection
 @section('content')
-
     <div class="listing_banner">
         <div class="listing_banner_text">
             <h1>Ahoy there Captain!</h1>
             <p>Your yacht will soon be visible to the largest community of sailors interested in peer-to-peer yacht
                 charters. Welcome to Booker Boat</p>
-
         </div>
     </div>
     <div class="col-lg-12 main-dashboard boatowner_listing_section">
