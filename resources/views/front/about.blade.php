@@ -108,7 +108,7 @@
     <div class="row align-items-center">
         <div class="col-sm-12 col-md-6 col-lg-6">
             <div class="about_insurance_text">
-                <h2>Insurance</h2>
+                <h2>Cummunity</h2>
                 <p>Aenean purus dolor, lobortis in sem eu, aliquam sollicitudin erat. Duis commodo non ante sit amet tristique. Quisque sit amet commodo lectus, et laoreet erat. Etiam bibendum enim augue, in fringilla nibh vestibulum a. Cras sit amet interdum ex. Integer nibh tortor, iaculis eget suscipit placerat, rutrum et augue. Suspendisse fermentum sed nibh et mollis. Ut ut ultrices enim. Duis quis porta sapien, sit amet elementum augue.</p>
             </div>
         </div>
