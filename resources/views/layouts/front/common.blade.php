@@ -83,8 +83,8 @@
         </div>
     </header>
     <ul class="nav-mobile">
-    <li><img src="{{ logoURL() }}"></li>
-    <li class="menu-container">
+        <li><img src="{{ logoURL() }}"></li>
+        <li class="menu-container">
             <input id="menu-toggle" type="checkbox">
             <label for="menu-toggle" class="menu-button">
                 <svg class="icon-open" viewBox="0 0 24 24">
@@ -102,7 +102,7 @@
                 <li><a href="#"><i class="fa-solid fa-user"></i></a></li>
                 <li>
                     <input type="checkbox" id="sub-one" class="submenu-toggle">
-                    <label class="submenu-label" for="sub-one">Category</label>
+                    <label class="submenu-label" for="sub-one">About</label>
                     <div class="arrow right">&#8250;</div>
                     <ul class="menu-sub">
                         <li class="menu-sub-title">
@@ -115,7 +115,7 @@
                         <li><a href="#">Sub-item</a></li>
                     </ul>
                 </li>
-                <li>
+                <!-- <li>
                     <input type="checkbox" id="sub-two" class="submenu-toggle">
                     <label class="submenu-label" for="sub-two">Category</label>
                     <div class="arrow right">&#8250;</div>
@@ -129,10 +129,9 @@
                         <li><a href="#">Sub-item</a></li>
                         <li><a href="#">Sub-item</a></li>
                     </ul>
-                </li>
+                </li> -->
             </ul>
         </li>
-        
     </ul>
     @yield('content')
     <footer class="footer">
