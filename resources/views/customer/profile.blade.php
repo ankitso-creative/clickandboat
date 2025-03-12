@@ -55,32 +55,6 @@
         </li>
     </ul>
     <div class="">
-        <div class="tab-pane" id="profile">
-            <div class="verification_box_section">
-                <h2>Verification of your profile</h2>
-                <div class="row">
-                    <div class="col-md-6 mx-auto">
-                        <div class="verification_box">
-                            <i class="fa-solid fa-circle-check"></i>
-                            <h3>Your email<br> address</h3>
-                            <p>Item checked</p>
-                        </div>
-                    </div>
-                    {{-- <div class="col-md-6">
-                        <a href="">
-                        <div class="verification_box">
-                            <i class="fa-solid fa-circle-xmark"></i>
-                            <h3>Your<br> Sailing CV</h3>
-                            <p class="item-checked">Item checked</p>
-                        </div>
-                        <div class="complete_cv">
-                            <p>Complete my nautical CV</p>
-                        </div>
-                        </a>
-                    </div> --}}
-                </div>
-            </div>
-        </div>
         <div class="tab-pane" id="personal-detail" >
             <div class="card-section">
                 <div class="card-sec-title">
@@ -371,15 +345,6 @@
             <div class="card-section">
                 <div class="card-sec-title">
                     <h2>Setting</h2>
-                </div>
-                <div class="setting_section">
-                    <div class="input-group">
-                        <input type="checkbox" id="water-based" name="waterbased" value="waterbased">
-                        <label for="water-based">Receive a text when you have a new message</label><br>
-                    </div>
-                </div>
-                <div class="text-center form-group">
-                    <button class="save_btn">Save</button>
                 </div>
                 <div class="card-content">
                     <form class="deactivate-form" action="" method="">

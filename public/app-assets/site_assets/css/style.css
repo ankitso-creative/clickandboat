@@ -345,6 +345,9 @@ h1, h2, h3, h4, h5, h6 {
 .form-control:focus {
     box-shadow: none;
 }
+button:focus {
+    outline: 0px auto -webkit-focus-ring-color;
+}
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
@@ -1727,7 +1730,7 @@ h1, h2, h3, h4, h5, h6 {
 .dashboard-logo img {
     max-width: 87%;
 }
-#details-tabs li button {
+#details-tabs li a {
     border: none;
     background: #fff;
     outline: none;

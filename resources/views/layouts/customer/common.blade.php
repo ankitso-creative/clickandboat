@@ -12,12 +12,12 @@
     <meta name="HandheldFriendly" content="true">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     @yield('meta')
-    <link rel="stylesheet" href="{{ asset('app-assets/site_assets/css/bootstrap.min.css') }}">   
-    <link rel="stylesheet" href="{{ asset('app-assets/site_assets/css/mdbootstrap.css') }}">   
-    <link rel="stylesheet" href="{{ asset('app-assets/site_assets/css/slick-theme.css') }}">   
-    <link rel="stylesheet" href="{{ asset('app-assets/site_assets/css/slick.css') }}">   
-    <link rel="stylesheet" href="{{ asset('app-assets/site_assets/css/style.css') }}"> 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"  />  
+    <link rel="stylesheet" href="{{ asset('app-assets/site_assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('app-assets/site_assets/css/mdbootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('app-assets/site_assets/css/slick-theme.css') }}">
+    <link rel="stylesheet" href="{{ asset('app-assets/site_assets/css/slick.css') }}">
+    <link rel="stylesheet" href="{{ asset('app-assets/site_assets/css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <script src="{{ asset('app-assets/site_assets/js/jquery.js') }}"></script>
 
@@ -31,82 +31,39 @@
     <div class="l-theme animated-css" data-header="sticky" data-header-top="200" data-canvas="container">
         <header class="p-3 header-dashboard">
             <div class="container-fluid">
-            	<div class="row">
-            		<div class="my-auto col-lg-3">
-            			<a href="#" class="dashboard-logo">
-            				<img src="{{ logoURL() }}" class="img-fluid" alt="logo">
-            			</a>
-            		</div>
-            		<div class="my-auto col-lg-9">
-            			<div class="menus-customer">
-            				<div class="currency-menus">
-            					{{-- <form class="" action="" method="">
-            						<div class="form-group">
-            							<select class="form-control">
-            								<option value="English">English</option>
-            								<option value="French">French</option>
-            							</select>
-            							<select class="form-control">
-            								<option value="USD">USD</option>
-            								<option value="EURO">EURO</option>
-            							</select>
-            						</div>
-            					</form> --}}
-            				</div>
-            				<div class="menus-header">
-            					<ul class="list-unstyled">
-            						<!-- <li><a href="{{ route('customer.booking.index') }}">Bookings</a></li>
-            						<li><a href="{{ route('logout') }}">Logout</a></li> -->
-                                    <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle about_menu" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        About Us
-                                        </a>
-                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="#">Action</a>
-                                        <a class="dropdown-item" href="#">Another action</a>
-                                        <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
+                <div class="row">
+                    <div class="my-auto col-lg-3">
+                        <a href="#" class="dashboard-logo">
+                            <img src="{{ logoURL() }}" class="img-fluid" alt="logo">
+                        </a>
+                    </div>
+                    <div class="my-auto col-lg-9">
+                        <div class="menus-customer">
+                            <div class="menus-header">
+                                <ul class="list-unstyled">
+                                    <li><a href="{{ route('customer.booking.index') }}">Bookings</a></li>
+                                    <li><a href="{{ route('logout') }}">Logout</a></li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#"><i class="fa-solid fa-user"></i></a>
                                     </li>
-                            <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle about_menu" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    English
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="setlang/es">Spanish</a>
-                                    <a class="dropdown-item" href="setlang/en">English</a>
-                                    
-                                    </div>
-                            </li>
-                            <li class="nav-item">
-                            <a class="nav-link" href="{{ route('boatlogin') }}">Register your boat  </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('userlogin') }}">Sign Up</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link">Help</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link"><i class="fa-solid fa-user"></i></a>
-                        </li>
-            					</ul>
-            				</div>
-            			</div>
-            		</div>
-            	</div>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </header>
-       	<section class="p-0 main-dashboard-container container-fluid">
+        <section class="p-0 main-dashboard-container container-fluid">
             <div class="row account-overview">
                 <div class="col-lg-3">
                     <aside class="sidebar">
                         <div class="user">
-                          <div class="user-avatar">
-                            <a href="#">
-                              <img src="{{ userImage() }}" alt="dejodo">
-                            </a>
-                          </div>
-                          <h3>{{ userName() }}</h3>
+                            <div class="user-avatar">
+                                <a href="#">
+                                    <img src="{{ userImage() }}" alt="dejodo">
+                                </a>
+                            </div>
+                            <h3>{{ userName() }}</h3>
                         </div>
                         <ul>
                             <li class="{{ $active=='dashboard' ? 'active':'' }}"><a href="{{ route('customer.dashboard') }}"><i class="fas fa-th"></i> Dashboard</a></li>
@@ -121,62 +78,62 @@
             </div>
         </section>
         <footer class="footer">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-12 col-md-6 col-lg-3">
-                    <div class="footer_newsletter">
-                        <h3>Stay In The Know</h3>
-                        <form>
-                            <div class='email_box'>
-                                <input class="emailpick" type="email" placeholder="Email Address" />
-                                <Button class="email_sub_btn"><img
-                                        src="{{ asset('app-assets/site_assets/img/sub-icon.png') }}"></Button>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-3">
+                        <div class="footer_newsletter">
+                            <h3>Stay In The Know</h3>
+                            <form>
+                                <div class='email_box'>
+                                    <input class="emailpick" type="email" placeholder="Email Address" />
+                                    <Button class="email_sub_btn"><img
+                                            src="{{ asset('app-assets/site_assets/img/sub-icon.png') }}"></Button>
+                                </div>
+                            </form>
+                            <p>We Will Be Delighted To Assist</p>
+                            <a href="#">Contact Us <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-md-6 col-lg-3">
+                        <div class="footer_menu">
+                            <h5>About Boat Daze</h5>
+                            <ul>
+                                <li><a href="#">Home</a></li>
+                                <li><a href="#">Locations</a></li>
+                                <li><a href="#">Our Fleet</a></li>
+                                <li><a href="#">Contact </a></li>
+                                <li><a href="#">Blog</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-md-6 col-lg-3">
+                        <div class="cal_mail_box">
+                            <div class="call_box_sec">
+                                <h5>Call Us</h5>
+                                <p><a href="tel:+1 755 302 8549">+1 755 302 8549</a></p>
                             </div>
-                        </form>
-                        <p>We Will Be Delighted To Assist</p>
-                        <a href="#">Contact Us <i class="fa-solid fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                <div class="col-md-12 col-md-6 col-lg-3">
-                    <div class="footer_menu">
-                        <h5>About Boat Daze</h5>
-                        <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Locations</a></li>
-                            <li><a href="#">Our Fleet</a></li>
-                            <li><a href="#">Contact </a></li>
-                            <li><a href="#">Blog</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-12 col-md-6 col-lg-3">
-                    <div class="cal_mail_box">
-                        <div class="call_box_sec">
-                            <h5>Call Us</h5>
-                            <p><a href="tel:+1 755 302 8549">+1 755 302 8549</a></p>
-                        </div>
-                        <div class="email_box_sec">
-                            <h5>Email Us</h5>
-                            <p><a href="mailto:support@domain.com">support@domain.com</a></p>
+                            <div class="email_box_sec">
+                                <h5>Email Us</h5>
+                                <p><a href="mailto:support@domain.com">support@domain.com</a></p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-12 col-md-6 col-lg-3">
-                    <div class="footer_social_links">
-                        <h5>Follow Us</h5>
-                        <ul>
-                            <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
-                            <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
-                            <li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
-                        </ul>
+                    <div class="col-md-12 col-md-6 col-lg-3">
+                        <div class="footer_social_links">
+                            <h5>Follow Us</h5>
+                            <ul>
+                                <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+                                <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                                <li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="copyright">
-            <p>© Boat Daze | All rights reserved</p>
-        </div>
-    </footer>
+            <div class="copyright">
+                <p>© Boat Daze | All rights reserved</p>
+            </div>
+        </footer>
         <!-- .footer-->
     </div>
     <!-- end layout-theme-->
