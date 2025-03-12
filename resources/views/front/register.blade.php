@@ -44,7 +44,7 @@
                         <form class="text-center ui-form" action="{{ route('do_register') }}" method="post">
                             @csrf
                             <div class="form-group">
-                                <input class="form-control" id="user-email" type="email" name="email" placeholder="Email" />
+                                <input class="form-control" id="user-email" type="email" name="email" placeholder="Email" value="{{ Session::get('email-user') , '' }}" />
                                 @error('email')
                                     <span class="danger">{{ $message }}</span>
                                 @enderror

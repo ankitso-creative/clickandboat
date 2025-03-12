@@ -46,7 +46,7 @@
                         <form class="text-center b-form-contacts ui-form" id="contactForm" action="{{ route('user_login') }}" method="post">
                             @csrf
                             <div class="text-left form-group">
-                                <input class="form-control" id="user-email" type="email" name="email" placeholder="Email" />
+                                <input class="form-control" id="user-email" type="email" name="email" placeholder="Email" value="{{ Session::get('email-user') , '' }}" />
                                 @error('email')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\BoatOwner;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BoatOwner\Profile\ProfileRequest;
 use App\Http\Requests\BoatOwner\Profile\PasswordRequest;
+use App\Http\Requests\BoatOwner\Profile\ExperienceRequest;
 use App\Http\Requests\BoatOwner\Profile\UploadImageRequest;
 use App\Models\Country;
 use Illuminate\Http\Request;
@@ -19,7 +20,7 @@ class ProfileController extends Controller
     }
     public function index()
     {
-        $userData = auth()->user()->load(['profile','media']);
+        $userData = auth()->user()->load(['profile','media','exprience']);
         $options = selectOption('countries','name','id');
         if(isset($userData->profile->country)):
             $options = selectOption('countries','name','id',$userData->profile->country);
@@ -36,6 +37,15 @@ class ProfileController extends Controller
     {
         $request = $request->all();
         return $this->service->passwordUpdate($request);
+    }
+    public function experienceUpdate(ExperienceRequest $request)
+    {
+        $request = $request->all();
+        return $this->service->experienceUpdate($request);
+    }
+    public function accountDelete(Request $request)
+    {
+        return $this->service->accountDelete($request);
     }
     public function uploadImage(UploadImageRequest $request)
     {

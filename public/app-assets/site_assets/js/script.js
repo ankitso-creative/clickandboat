@@ -387,6 +387,10 @@ $(document).ready(function() {
 	$(document).on('change','input[name="type[]"], #rental_type', function() {
 		$('#search-filter-fom').submit();
     });
+	$(document).on('click','#details-tabs li a', function() {
+		$('#details-tabs li a').removeClass('active')
+		$(this).addClass('active')
+    });
 });
 
 

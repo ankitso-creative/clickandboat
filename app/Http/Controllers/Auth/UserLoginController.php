@@ -24,6 +24,7 @@ class UserLoginController extends Controller
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) 
         {
+            Session::forget('email-user');
             $user = Auth::user();
             if ($user->status != 1) 
             {
