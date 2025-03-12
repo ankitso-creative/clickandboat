@@ -18,7 +18,7 @@
                 'dob' => $request['dob'],
                 'phone' => $request['phone'],
                 'address' => $request['address'],
-                'address_line_two' => $request['address_line_two'],
+                
                 'city' => $request['city'],
                 'state' => $request['state'],
                 'country' => $request['country'],
