@@ -15,6 +15,14 @@ class ProfileService{
     {
         return $this->repository->passwordUpdate($request);
     }
+    public function experienceUpdate($request)
+    {
+        return $this->repository->experienceUpdate($request);
+    }
+    public function accountDelete($request)
+    {
+        return $this->repository->accountDelete($request);
+    }
     public function uploadImage($request)
     {
         return $this->repository->uploadImage($request);

@@ -36,6 +36,21 @@
                 return redirect()->route('boatowner.profile')->with('error', 'Your password not updated.');
             endif;
         }
+        public function experienceUpdate($request)
+        {
+            $user = Auth::user();
+            $userId = auth()->id();
+            $user->exprience()->UpdateOrCreate(['user_id' => $userId],[
+                'user_id' => $userId,
+                'level' => $request['level'],
+                'prefer' => $request['prefer'],
+                'boat_licence' => isset($request['boat_licence']) ? json_encode($request['boat_licence']) : '', 
+                'other' => isset($request['other']) ? json_encode($request['other']) : '',  
+                'sailing_experience' => isset($request['sailing_experience']) ? json_encode($request['sailing_experience']) : '',
+                'description' => $request['description'],
+            ]);
+            return redirect()->route('boatowner.profile')->with('success', 'Profile information updated successfully!'); 
+        }
         public function uploadImage($request)
         {
             $user = Auth::user();
@@ -49,6 +64,17 @@
                 'success' => 'success',
                 'imageUrl' => $media->getUrl(),
             ]);
+        }
+        public function accountDelete($request)
+        {
+            $user = Auth::user();
+            $user->deleted = $request['delete'];
+            if($user->update()):
+                Auth::guard("web")->logout(); 
+                return redirect()->route('login')->with('success', 'Your account deleted successfully.');
+            else:
+                return redirect()->route('boatowner.profile')->with('error', 'Please try again.');
+            endif;
         }
     }
 

@@ -77,6 +77,10 @@ class User extends Authenticatable implements HasMedia
     {
         return $this->hasOne(UserDetail::class);
     }
+    public function exprience() 
+    {
+        return $this->hasOne(UserExprience::class);
+    }
     public function listing()
     {
         return $this->hasMany(Listing::class);

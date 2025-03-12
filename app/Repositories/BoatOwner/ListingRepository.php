@@ -14,7 +14,7 @@
         public function editListing($id)
         {
             $userId = auth()->id();
-            $results = Listing::with(['media'])->where('id',$id)->where('user_id',$userId)->first();
+            $results = Listing::with(['media','seasonPrice'])->where('id',$id)->where('user_id',$userId)->first();
             if(!$results):
                 return false;
             endif;
@@ -24,30 +24,46 @@
         {
             $listing = new Listing();
             $listing->user_id = auth()->id();
+
             $listing->type = $request['type'];
             $listing->harbour = $request['harbour'];
             $listing->city = $request['city'];
             $listing->professional = $request['professional'];
             $listing->manufacturer = $request['manufacturer'];
             $listing->model = $request['model'];
-            $listing->skipper = $request['skipper'];
-            $listing->capacity = $request['capacity'];
-            $listing->length = $request['length'];
-            $listing->company_name = $request['company_name'];
-            $listing->website = $request['website'];
-            $listing->boat_name = $request['boat_name'];
-            $listing->title = $request['title'];
-            $listing->description = $request['description'];
-            $listing->onboard_capacity = $request['onboard_capacity'];
-            $listing->cabins = $request['cabins'];
-            $listing->berths = $request['berths'];
-            $listing->bathrooms = $request['bathrooms'];
-            $listing->construction_year = $request['construction_year'];
-            $listing->fuel = $request['fuel'];
-            $listing->renovated = $request['renovated'];
-            $listing->speed = $request['speed'];
+            $listing->boat_name = $request['boat_name'];  
+
+            // $listing->skipper = $request['skipper'];
+            // $listing->capacity = $request['capacity'];
+            // $listing->length = $request['length'];
+            // $listing->company_name = $request['company_name'];
+            // $listing->website = $request['website'];
+           
+            // $listing->title = $request['title'];
+            // $listing->description = $request['description'];
+            // $listing->onboard_capacity = $request['onboard_capacity'];
+            // $listing->cabins = $request['cabins'];
+            // $listing->berths = $request['berths'];
+            // $listing->bathrooms = $request['bathrooms'];
+            // $listing->construction_year = $request['construction_year'];
+            // $listing->fuel = $request['fuel'];
+            // $listing->renovated = $request['renovated'];
+            // $listing->speed = $request['speed'];
             if($listing->save()):
-                return redirect()->route('boatowner.listing.edit',$listing->id)->with('success', 'Your general details added successfully!'); 
+                $files = $request['files'];
+                if($files) {
+                    foreach ($files as $file)
+                    {
+                        $listing->addMedia($file)->toMediaCollection('listing_gallery', 'listing'); 
+                    }
+                }
+                return response()->json([
+                    'message' => 'Image uploaded successfully',
+                    'data' => [
+                        'redirect_url' => route('boatowner.listing.edit',$listing->id)  
+                    ]
+                ]);
+                die();
             endif;
         }
         public function updateListing($request, $id)
@@ -121,6 +137,18 @@
                     'six_day'  => $request['six_day_price'],
                     'one_week' => $request['one_week_price'],
                 ]);
+                $seasonPrices = $request['season_price'];
+                if($seasonPrices):
+                    foreach($seasonPrices as $seasonPrice):
+                        $listing->seasonPrice()->UpdateOrCreate(['listing_id' => $listing->id, 'name' => $seasonPrice['name']],[
+                            'listing_id' => $listing->id,
+                            'name' => $seasonPrice['name'],
+                            'from'  => $seasonPrice['from'],
+                            'to'  => $seasonPrice['to'],
+                            'price'  => $seasonPrice['price'],
+                        ]);
+                    endforeach;
+                endif;
                 return response()->json([
                     'success' => 'success',
                     'message' => 'Your prices updated successfully',

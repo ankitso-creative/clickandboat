@@ -74,6 +74,8 @@ Route::middleware('Setlang')->group(function(){
         Route::get('profile', [BoatOwnerProfileController::class, 'index'])->name('profile');
         Route::put('update', [BoatOwnerProfileController::class, 'update'])->name('profile.update');
         Route::put('password-update', [BoatOwnerProfileController::class, 'passwordUpdate'])->name('password.update');
+        Route::put('experience-update', [BoatOwnerProfileController::class, 'experienceUpdate'])->name('experience.update');
+        Route::put('account-delete', [BoatOwnerProfileController::class, 'accountDelete'])->name('account.delete');
         Route::post('/upload-image', [BoatOwnerProfileController::class, 'uploadImage'])->name('profile.image');
         Route::get('listing',[BoatOwnerListingController::class, 'index'])->name('listing');
         Route::get('listing-add',[BoatOwnerListingController::class, 'create'])->name('listing-add');
@@ -84,6 +86,7 @@ Route::middleware('Setlang')->group(function(){
         Route::post('listing-settings/{id}',[BoatOwnerListingController::class, 'update'])->name('listing-settings');
         Route::post('listing/cover_image/{id}', [BoatOwnerListingController::class, 'uploadCoverImage'])->name('uploadcoverimage');
         Route::post('listing/upload/{id}', [BoatOwnerListingController::class, 'uploadImage'])->name('uploadgallery');
+        Route::post('listing/addgalleryImage', [BoatOwnerListingController::class, 'addgalleryImage'])->name('addgallery');
         Route::post('listing/uploadPlanImage/{id}', [BoatOwnerListingController::class, 'uploadPlanImage'])->name('uploadplanimage');
         Route::delete('listing/remove', [BoatOwnerListingController::class, 'removeImage'])->name('removegallery'); 
         Route::get('customers', [CustomerController::class, 'index'])->name('customers'); 
