@@ -9,7 +9,46 @@
 @section('js')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.1.0/js/datepicker.min.js" type="text/javascript"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.1.0/js/i18n/datepicker.en.min.js" type="text/javascript"></script>
-
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAli6rCJivgzTbWznnkqFtT_btPww6WBYs&libraries=places"></script>
+<script>
+    $(document).ready(function () {
+            google.maps.event.addDomListener(window, 'load', initialize);
+        });
+        function initialize() 
+        {
+            var input = document.getElementById('location');
+            var autocomplete = new google.maps.places.Autocomplete(input);
+            autocomplete.addListener('place_changed', function() {
+                var place = autocomplete.getPlace();
+                if (!place.geometry || !place.address_components) {
+                    console.log("Place details not found");
+                    return;
+                }
+                var city = '';
+                var country = '';
+                var state = '';
+                for (var i = 0; i < place.address_components.length; i++) {
+                    var component = place.address_components[i];
+                    if (component.types.includes('locality')) {
+                        city = component.long_name;
+                    }
+                    if (component.types.includes('administrative_area_level_1')) {
+                        state = component.long_name;
+                    }
+                    if (component.types.includes('country')) {
+                        country = component.long_name;
+                    }
+                }
+                if (city && country && state) {
+                    input.value = city + ', ' + state + ', '+ country;
+                }
+                if(city==state)
+                {
+                    input.value = city + ', ' + country;
+                }
+            });
+        }
+</script>
 @endsection
 @section('content')
 <div class="col-lg-9 main-dashboard">
@@ -34,7 +73,7 @@
                 @foreach($errors->all() as $error)
                     <li>{{ $error }}</li>
                 @endforeach
-            </ul>
+            </ul> 
         </div>
     @endif
     <ul class="nav nav-tabs pro_tabs" id="details-tabs">
@@ -184,7 +223,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="label-default">City<span class="required"> *</span></label>
-                                    <input type="text" name="city" value="{{ $userData->profile->city ?? '' }}" class="form-control">
+                                    <input type="text" name="city" id="location" value="{{ $userData->profile->city ?? '' }}" class="form-control">
                                     @error('city')<span class="required">{{ $message }}</span>@enderror
                                 </div>
                             </div>

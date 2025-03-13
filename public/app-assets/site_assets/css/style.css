@@ -1055,6 +1055,35 @@ button:focus {
     top: 50%;
     right: 130px;
 }
+.image-box {
+    position: relative;
+    display: inline-block;
+    cursor: none;
+}
+ .cursor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80px;
+    height: 80px;
+    color: black;
+    font-size: 60px;
+    font-weight: 800;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    transition: transform 0.15s ease-out;
+    opacity: 0;
+    z-index: 999;
+    text-transform: uppercase;
+    color: #f9a126;
+}
+.cursor.active {
+    opacity: 1;
+}
 /*--------------------------------------------------------------
 # Follow sailer section
 --------------------------------------------------------------*/
@@ -2355,7 +2384,7 @@ button:focus {
     padding: 0 10px;
     border-radius: 15px;
     font-size: 13px;
-    color: #000;
+    color: #343a40;
 }
 .location_inner_text {
     padding: 15px 13px;
@@ -2368,7 +2397,7 @@ button:focus {
 .location_review_box span:last-child {
     float: right;
     text-transform: uppercase;
-    font-weight: 600;
+    font-weight: 500;
 }
 .location_review_box span {
     font-size: 15px;
@@ -2403,6 +2432,7 @@ button:focus {
     position: relative;
     top: 4px;
     margin-right: 2px;
+    fill: #343a40;
 }
 .location_options i {
     position: relative;
@@ -4989,6 +5019,44 @@ section.about_zigzag_section {
     border: 1px solid #f9a126;
     color: #f9a126;
 }
+.offcanvas-right {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 350px;
+    height: 100%;
+    background-color: #f8a126;
+    color: #fff;
+    z-index: 1050;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+}
+.offcanvas-right.open {
+    transform: translateX(0);
+}
+.offcanvas-right .close-btn {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-size: 1.5rem;
+    color: #fff;
+    cursor: pointer;
+}
+#price-list h3 {
+text-align: center;
+}
+.price_block {
+border-top: 1px solid #fff;
+margin-bottom: 25px;
+padding-top: 25px;
+}
+.price_block .price_block_date {
+font-size: 20px;
+font-weight: 600;
+}
+.price_block .price_block_price {
+font-size: 15px;
+}
 /*--------------------------------------------------------------
 # Boatowner listing
 --------------------------------------------------------------*/
@@ -5019,6 +5087,7 @@ section.about_zigzag_section {
     text-transform: uppercase;
     padding: 15px 8px;
     position: relative;
+    outline: none;
 }
 .sidebar_box_pera {
     margin: 0 0 0 30px;
@@ -5039,6 +5108,8 @@ section.about_zigzag_section {
 }
 .side_bar .nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover {
     border-color: #323131;
+    border: 0px solid #323131;
+    outline: none;
 }
 .side_bar.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link span{
     position: absolute;
@@ -5351,7 +5422,7 @@ section.about_zigzag_section {
     margin-top: 15px;
 }
 .side_bar .nav-link.active i {
-    color: #fff;
+    color: #f9a126;
 }
 .side_bar.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link i {
     color: #6d6d6d;
@@ -5407,6 +5478,13 @@ section.about_zigzag_section {
 }
 .email_box ::placeholder{
     color: #fff;
+}
+.flatpickr-day.today {
+    border-color: #f9a126 !important;
+}
+.flatpickr-day.today:hover, .flatpickr-day.today:focus {
+    border-color: #f9a126 !important;
+    background: #f9a126 !important;
 }
 /*--------------------------------------------------------------
 # Qequest submit page
@@ -5613,7 +5691,7 @@ section.about_zigzag_section {
 .side_bar .nav-link.active {
     background: none;
     border: 0px solid #000;
-    color: #fff;
+    color: #f9a126;
 }
 .side_bar a#nav-general-tab:focus-visible {
     outline: 0px #000;
@@ -5787,7 +5865,7 @@ section.about_zigzag_section {
         background:#fff;
     }
     .has-search .form-control {
-        width: 340px;
+        width: 355px;
     }
     .boat_select select {
         width: 344px;
@@ -6142,6 +6220,49 @@ section.about_zigzag_section {
         right: 100px;
         font-size: 15px;
     }
+    .about_sec_heading {
+        padding-top: 30px !important;
+        padding-bottom: 20px;
+    }
+    .single_boat_banner {
+        height: 125px;
+    }
+    .boat-title h1 {
+        font-size: 30px;
+        padding-top: 10px;
+    }
+    .rating-menus li {
+        padding: 0 5px 0 0;
+        font-size: 13px;
+    }
+    .breadcrumb {
+        margin-bottom: 0px;
+    }
+    .boat-content-sec .col-md-8 {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .share-menu {   
+        justify-content: center;
+        margin-top: 10px;
+    }
+    .features-menus {
+        display: block;
+    }
+    .features-menus li {
+        padding-bottom: 15px;
+    }
+    .boat-card-content-sec,
+    .single_boat_faq_section {
+        padding: 0 15px;
+    }
+    .boat-content-sec h3 {
+        font-size: 25px;
+    }
+    .location-sec {
+        padding-top: 30px;
+    }
+  
     
 }
 @media (min-width: 1920px) and (max-width: 2500px){
@@ -6203,5 +6324,10 @@ section.about_zigzag_section {
 .about_banner_section {
     height: 690px;
 }
-
+.single_boat_banner {
+    height: 350px;
+}
+.location_inner_box img {
+    height: 320px;
+}
 }

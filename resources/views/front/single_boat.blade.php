@@ -721,6 +721,7 @@
     </section>
 </div>
 
+
 <div class="offcanvas-right" id="price-list">
     <span class="close-btn" id="closeMenu">&times;</span>
     <h3 class="p-4">Price list</h3>

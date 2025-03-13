@@ -62,7 +62,9 @@
                     <label>{{ __('home.search-area')}}</label>
                     <div class="form-group has-search">
                         <span class="fa fa-search form-control-feedback"></span>
+
                         <input type="text" class="form-control" name="location" placeholder="Ibiza, Croatia, Sardinia...">
+
                     </div>
                 </div>
                 <div class="col">
@@ -91,11 +93,18 @@
                     <label>{{ __('home.boat-type')}}</label>
                     <div class="boat_select">
                         <span><i class="fa-solid fa-sailboat"></i></span>
-                        <select name="type[]" id="type">
-                            <option value="Sailboat">Sailboat</option>
-                            <option value="saab">Saab</option>
-                            <option value="opel">Opel</option>
-                            <option value="audi">Audi</option>
+
+                        <select name="cars" id="cars">
+                            <option value="">Sailboat, motorboat,...</option>
+                            <option value="saab">Sailboat</option>
+                            <option value="opel">Motorboat</option>
+                            <option value="audi">Catamaran</option>
+                            <option value="audi">Sailing yacht</option>
+                            <option value="audi">Fishing boat</option>
+                            <option value="audi">Monohull</option>
+                            <option value="audi">Jet skis</option>
+                            <option value="audi">Rib</option>
+                            <option value="audi">Yacht</option>
                         </select>
                     </div>
                 </div>
