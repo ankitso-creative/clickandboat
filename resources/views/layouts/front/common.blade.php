@@ -60,9 +60,9 @@
                                 GBP: £
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <a class="dropdown-item" href="#">Something else here</a>
+                                <a class="dropdown-item" href="#">1</a>
+                                <a class="dropdown-item" href="#">2</a>
+                                <a class="dropdown-item" href="#">3</a>
                             </div>
                         </li>
                         <li class="nav-item">
@@ -83,6 +83,12 @@
         </div>
     </header>
     <ul class="nav-mobile">
+        <li class="nav-item">
+            <select class="select-language" id="language">
+                {!! selectOption('languages','name','code',session()->get('lang'),array('status' , '1'))
+                !!}
+            </select>
+        </li>
         <li><img src="{{ logoURL() }}"></li>
         <li class="menu-container">
             <input id="menu-toggle" type="checkbox">
