@@ -106,10 +106,10 @@
                     priceInputvalues[0].value = 0;
                     minp = 0;
                 }
-                if (maxp > {{ maxPriceValue() }}) {
+                if (maxp > {{ maxLengthValue() }}) {
                     alert("maximum length cannot be greater than 10000");
-                    priceInputvalues[1].value = {{ maxPriceValue() }};
-                    maxp = {{ maxPriceValue() }};
+                    priceInputvalues[1].value = {{ maxLengthValue() }};
+                    maxp = {{ maxLengthValue() }};
                 }
                 if (minp > maxp - lengthGap) {
                     priceInputvalues[0].value = maxp - lengthGap;
@@ -268,15 +268,15 @@
                         </div>
                         <div class="location_checkbox_one">
                             <div class="input-group">
-                                <input type="checkbox" id="Halfday" name="Halfday" value="Halfday">
+                                <input type="checkbox" id="Halfday" name="halfday" value="1" {{ singleCheckbox(request()->query('halfday'),'1') }}>
                                 <label for="Halfday"> Half day</label>
                             </div>
                             <div class="input-group">
-                                <input type="checkbox" id="Fullday" name="Fullday" value="Fullday">
+                                <input type="checkbox" id="Fullday" name="fullday" value="1" {{ singleCheckbox(request()->query('fullday'),'1') }}>
                                 <label for="Fullday">Full day</label>
                             </div>
                             <div class="input-group">
-                                <input type="checkbox" id="Overnightstay" name="Overnightstay" value="Overnightstay">
+                                <input type="checkbox" id="Overnightstay" name="overnightstay" value="1" {{ singleCheckbox(request()->query('overnightstay'),'1') }}>
                                 <label for="Overnightstay"> Overnight stay</label>
                             </div>
                         </div>
@@ -360,8 +360,8 @@
                             <h5>Boat length</h5>
                             <div class="custom-wrapper">
                                 <div class="boat-input">
-                                    <input type="range" class="min-boat-range" min="0" max="200" value="{{ request()->query('min-length') ?? 0 }}" step="10">
-                                    <input type="range" class="max-boat-range" min="0" max="200" value="{{ request()->query('max-length') ?? 200 }}" step="10">
+                                    <input type="range" class="min-boat-range" min="0" max="{{ maxLengthValue() }}" value="{{ request()->query('min-length') ?? 0 }}" step="10">
+                                    <input type="range" class="max-boat-range" min="0" max="{{ maxLengthValue() }}" value="{{ request()->query('max-length') ?? maxLengthValue() }}" step="10">
                                 </div>
                                 <div class="price-input-container">
                                     <div class="slider-container-length">
@@ -373,7 +373,7 @@
                                             <input type="number" name="min-length" class="min-length-input" value="{{ request()->query('min-length') ?? 0}}">
                                         </div>
                                         <div class="price-field">
-                                            <input type="number" name="max-length" class="max-length-input" value="{{ request()->query('max-length') ?? 200}}">
+                                            <input type="number" name="max-length" class="max-length-input" value="{{ request()->query('max-length') ?? maxLengthValue() }}">
                                         </div>
                                     </div>
                                    
@@ -510,29 +510,31 @@
                             @if($results)
                                 @foreach ($results as $result)                                                                                                                                                                                                                                                                                  
                                     <div class="col-sm-12 col-md-6 col-lg-4">
-                                        <div class="location_inner_box">
-                                            <img src="{{ $result->getFirstMediaUrl('cover_images') ? $result->getFirstMediaUrl('cover_images') : 'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png' }}">
-                                            <div class="wishlist_icon">
-                                                <i class="fa-regular fa-heart"></i>
-                                            </div> 
-                                            <div class="location_inner_main_box">
-                                                <div class="location_inner_text">
-                                                    <h3>{{ $result->city }}</h3>
-                                                    <p class="location_pera">{{ $result->type }} {{ $result->manufacturer }} {{ $result->model }} sport 30 (2023)</p>
-                                                    <p class="people_pera">{{ $result->capacity }} people · 30 hp · 5 m</p>
-                                                    <h5 class="location_price">From <span class="price_style">€{{ $result->price->price ?? '' }}</span> / day</h5>
-                                                    <div class="location_facility">
-                                                        <ul>
-                                                            <li>{{ $result->skipper }}</li>
-                                                        </ul>
+                                        <a href="{{ route('singleboat', ['city' => $result->city, 'type' => $result->type, 'slug' => $result->slug]) }}">
+                                            <div class="location_inner_box">
+                                                <img src="{{ $result->getFirstMediaUrl('cover_images') ? $result->getFirstMediaUrl('cover_images') : 'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png' }}">
+                                                <div class="wishlist_icon">
+                                                    <i class="fa-regular fa-heart"></i>
+                                                </div> 
+                                                <div class="location_inner_main_box">
+                                                    <div class="location_inner_text">
+                                                        <h3>{{ $result->city }}</h3>
+                                                        <p class="location_pera">{{ $result->type }} {{ $result->manufacturer }} {{ $result->model }} sport 30 (2023)</p>
+                                                        <p class="people_pera">{{ $result->capacity }} people · 30 hp · 5 m</p>
+                                                        <h5 class="location_price">From <span class="price_style">€{{ $result->price->price ?? '' }}</span> / day</h5>
+                                                        <div class="location_facility">
+                                                            <ul>
+                                                                <li>{{ $result->skipper }}</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="location_review_box">
+                                                        <span>Flexible cancellation</span>
+                                                        <span><i class="fa-solid fa-star"></i> NEW</span>
                                                     </div>
                                                 </div>
-                                                <div class="location_review_box">
-                                                    <span>Flexible cancellation</span>
-                                                    <span><i class="fa-solid fa-star"></i> NEW</span>
-                                                </div>
                                             </div>
-                                        </div>
+                                        </a>
                                     </div>
                                 @endforeach
                             @endif

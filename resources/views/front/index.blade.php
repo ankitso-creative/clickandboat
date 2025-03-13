@@ -1,6 +1,6 @@
 @extends('layouts.front.common')
 @section('meta')
-<title>Manage Users</title>
+<title>Home</title>
 <style>
    .image-box {
         position: relative;
@@ -34,10 +34,17 @@
 </style>
 @endsection
 @section('css')
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.6/dist/flatpickr.min.css">
 @endsection
 @section('js')
-
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.6/dist/flatpickr.min.js"></script>
+    <script>
+        flatpickr(".datePicker-search", {
+            inline: false,
+            dateFormat: "d-m-Y",
+            minDate: "today",
+        });
+    </script>
 @endsection
 @section('content')
 <!-- Banner Section -->
@@ -55,7 +62,7 @@
                     <label>{{ __('home.search-area')}}</label>
                     <div class="form-group has-search">
                         <span class="fa fa-search form-control-feedback"></span>
-                        <input type="text" class="form-control" placeholder="Ibiza, Croatia, Sardinia...">
+                        <input type="text" class="form-control" name="location" placeholder="Ibiza, Croatia, Sardinia...">
                     </div>
                 </div>
                 <div class="col">
@@ -65,7 +72,7 @@
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fa-solid fa-calendar-days"></i></span>
                             </div>
-                            <input type="text" placeholder="DD/MM/YYYY" class="form-control" id="fecha1">
+                            <input type="text" placeholder="DD/MM/YYYY" name="startdate" class="form-control datePicker-search" id="fecha1">
                         </div>
                     </div>
                 </div>
@@ -76,7 +83,7 @@
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fa-solid fa-calendar-days"></i></span>
                             </div>
-                            <input type="text" placeholder="DD/MM/YYYY" class="form-control" id="fecha1">
+                            <input type="text" placeholder="DD/MM/YYYY" name="enddate" class="form-control datePicker-search" id="fecha1">
                         </div>
                     </div>
                 </div>
@@ -84,8 +91,8 @@
                     <label>{{ __('home.boat-type')}}</label>
                     <div class="boat_select">
                         <span><i class="fa-solid fa-sailboat"></i></span>
-                        <select name="cars" id="cars">
-                            <option value="">Sailboat, motorboat,...</option>
+                        <select name="type[]" id="type">
+                            <option value="Sailboat">Sailboat</option>
                             <option value="saab">Saab</option>
                             <option value="opel">Opel</option>
                             <option value="audi">Audi</option>

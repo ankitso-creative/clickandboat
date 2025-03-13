@@ -38,6 +38,15 @@ class PagesController extends Controller
         }
         return view('front.single_boat',compact('listing'));
     }
+    public function locationListing($city)//test_boat
+    {
+        $results = $this->service->locationListing($city);
+        if(!$results)
+        {
+            return redirect()->route('home');
+        }
+        return view('front.location',compact('results'));
+    }
     public function getBookingPrice(Request $request)
     {
         $request = $request->all();

@@ -129,6 +129,7 @@
                 $listing->price()->UpdateOrCreate(['listing_id' => $listing->id],[
                     'listing_id' => $listing->id,
                     'price'  => $request['price'],
+                    'over_night_price' => $request['over_night_price'],
                     'one_half_day' => $request['one_half_day_price'],
                     'two_day'  => $request['two_day_price'],
                     'three_day'  => $request['three_day_price'],

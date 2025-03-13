@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('listing_id')->constrained()->onDelete('cascade');
             $table->string('price');
+            $table->string('over_night_price')->nullable();
             $table->string('one_half_day')->nullable();
             $table->string('two_day')->nullable();
             $table->string('three_day')->nullable();
