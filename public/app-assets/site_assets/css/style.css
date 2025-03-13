@@ -457,7 +457,6 @@ button:focus {
     }
     li {
       width: 100%;
-      height: 45px;
       line-height: 46px;
       text-align: center;
       float: left;
@@ -2335,6 +2334,7 @@ button:focus {
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
+    color: #000;
 }
 .location_inner_box .location_price {
     font-size: 15px;
@@ -2355,6 +2355,7 @@ button:focus {
     padding: 0 10px;
     border-radius: 15px;
     font-size: 13px;
+    color: #000;
 }
 .location_inner_text {
     padding: 15px 13px;
@@ -2371,6 +2372,7 @@ button:focus {
 }
 .location_review_box span {
     font-size: 15px;
+    color: #000;
 }
 .location_review_box i{
     color:#f9a126;
@@ -2396,6 +2398,11 @@ button:focus {
 .where_box {
     display: flex;
     padding: 7px 20px;
+}
+.location_facility svg {
+    position: relative;
+    top: 4px;
+    margin-right: 2px;
 }
 .location_options i {
     position: relative;
@@ -3548,6 +3555,7 @@ section.about_zigzag_section {
 .inner_blog_text_section img {
     margin-top: 50px;
     margin-bottom: 50px;
+    width: 100%;
 }
 .inner_blog_text_section .container {
     max-width: 1015px;
@@ -5752,8 +5760,12 @@ section.about_zigzag_section {
     .header-slider {
         display: none;
     }
-    .nav-mobile{
+    .nav-mobile {
         display: block;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 999;
     }
     .vc_row {
         margin-left: 0 !important;
@@ -5843,6 +5855,21 @@ section.about_zigzag_section {
     }
     .next_trip_text h3 {
         font-size: 25px;
+        text-align: center;
+    }
+    .next_trip_text p {
+        text-align: center;
+    }
+    .comment-form-cookies-consent {
+        display: flex;
+    }
+    .comment-form-cookies-consent input {
+        position: relative;
+        top: -32px;
+        margin-right: 10px;
+    }
+    .menu-sidebar i {
+        padding-top: 20px;
     }
     .footer_menu {
         padding-left: 0;
@@ -6076,8 +6103,8 @@ section.about_zigzag_section {
     .boat_type_sec {
         padding: 0px 15px;
     }
-    .boat_type_text {
-        left: 37%;
+    .boat_type_box h3 {
+        font-size: 30px;
     }
     .location_inner_box img {
         height: 265px;
@@ -6096,6 +6123,24 @@ section.about_zigzag_section {
     }
     .request_submit_form_section {
         margin: 0 15px;
+    }
+    .blog_inner_text_box h1 {
+        font-size: 28px;
+        line-height: 40px;
+        padding: 0 15px;
+    }
+    .single_blog_trip {
+        margin-top: 50px;
+        margin-bottom: 30px;
+    }
+    .single_blog_trip .col-sm-12.col-md-6.col-lg-4 {
+        padding: 0px;
+    }
+    #language {
+        padding: 2px 0px 3px 0px !important;
+        position: relative;
+        right: 100px;
+        font-size: 15px;
     }
     
 }
