@@ -9,6 +9,7 @@ class Price extends Model
     protected $fillable = [
         'listing_id',
         'price',
+        'over_night_price',
         'one_half_day',
         'two_day',
         'three_day',

@@ -42,38 +42,45 @@
         $startDate = Carbon::parse($request['checkindate']);
         $endDate = Carbon::parse($request['checkoutdate']);
         $days = $startDate->diffInDays($endDate);
-        if($price) 
+        if($days >= 1)
         {
-            $priceArray = $price->toArray();
-            if($priceArray['one_half_day'] && $days == 1):
-                $total_price = $priceArray['one_half_day'] * $days;
-            elseif($priceArray['two_day'] && $days == 2):
-                $total_price = $priceArray['two_day'] * $days;
-            elseif($priceArray['three_day'] && $days == 3):
-                $total_price = $priceArray['three_day']  * $days;
-            elseif($priceArray['four_day'] && $days == 41):
-                $total_price = $priceArray['four_day']  * $days;
-            elseif($priceArray['five_day'] && $days == 5):
-                $total_price = $priceArray['five_day'] * $days;
-            elseif($priceArray['six_day'] && $days == 6):
-                $total_price = $priceArray['six_day'] * $days;
-            elseif($priceArray['one_week'] && $days <= 7):
-                $total_price = $priceArray['one_week'] * $days;
-            else:
-                $total_price = $priceArray['price'] * $days;
-            endif;
-            $servive_fee = 0;
-            $totalAmount = $total_price + $servive_fee;
-            $result = [
-                'price' => $total_price,
-                'days' => $days,
-                'servive_fee' => $servive_fee,
-                'totalAmount' => $totalAmount,
-            ];
-        } 
-        else 
+            if($price) 
+            {
+                $priceArray = $price->toArray();
+                if($priceArray['one_half_day'] && $days == 1):
+                    $total_price = $priceArray['one_half_day'] * $days;
+                elseif($priceArray['two_day'] && $days == 2):
+                    $total_price = $priceArray['two_day'] * $days;
+                elseif($priceArray['three_day'] && $days == 3):
+                    $total_price = $priceArray['three_day']  * $days;
+                elseif($priceArray['four_day'] && $days == 41):
+                    $total_price = $priceArray['four_day']  * $days;
+                elseif($priceArray['five_day'] && $days == 5):
+                    $total_price = $priceArray['five_day'] * $days;
+                elseif($priceArray['six_day'] && $days == 6):
+                    $total_price = $priceArray['six_day'] * $days;
+                elseif($priceArray['one_week'] && $days <= 7):
+                    $total_price = $priceArray['one_week'] * $days;
+                else:
+                    $total_price = $priceArray['price'] * $days;
+                endif;
+                $servive_fee = 0;
+                $totalAmount = $total_price + $servive_fee;
+                $result = [
+                    'price' => $total_price,
+                    'days' => $days,
+                    'servive_fee' => $servive_fee,
+                    'totalAmount' => $totalAmount,
+                ];
+            } 
+            else 
+            {
+                $result['error'] = 'Product not found';
+            }
+        }
+        else
         {
-            $result['error'] = 'Product not found';
+            $result['error'] = '';
         }
         return $result;
     }
@@ -114,6 +121,18 @@
             return false;
         endif;
     }
+    function singleCheckbox($selected,$value)
+    {
+        if(!empty($selected)):
+            if($value==$selected):
+                return 'checked';
+            else:
+                return false;
+            endif;
+        else:
+            return false;
+        endif;
+    }
     function checkradio($selected,$value)
     {
         if(!empty($selected)):
@@ -142,5 +161,10 @@
     {
         $maxPrice = DB::table('prices')->max('price');
         return $maxPrice;
+    }
+    function maxLengthValue()
+    {
+        $maxPrice = DB::table('listings')->max('length');
+       return $maxPrice;
     }
 ?>
