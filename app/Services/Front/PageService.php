@@ -11,6 +11,10 @@ class PageService{
     {
         return $this->repository->singleBoat($slug);
     }
+    public function singleBoatDetails($city,$type,$slug)
+    {
+        return $this->repository->singleBoatDetails($city,$type,$slug);
+    }
     public function getBookingPrice($request)
     {
         return $this->repository->getBookingPrice($request);
