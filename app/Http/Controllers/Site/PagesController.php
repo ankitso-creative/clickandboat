@@ -29,6 +29,15 @@ class PagesController extends Controller
         }
         return view('front.single_boat',compact('listing'));
     }
+    public function singleBoat($city,$type,$slug)//test_boat
+    {
+        $listing = $this->service->singleBoatDetails($city,$type,$slug);
+        if(!$listing)
+        {
+            return redirect()->route('home');
+        }
+        return view('front.single_boat',compact('listing'));
+    }
     public function getBookingPrice(Request $request)
     {
         $request = $request->all();

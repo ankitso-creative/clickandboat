@@ -15,6 +15,14 @@
             endif;
             return $listing;
         }
+        public function singleBoatDetails($city,$type,$slug)
+        {
+            $listing = Listing::with(['price'])->where('slug',$slug)->where('city',$city)->where('type',$type)->where('status','1')->first();
+            if($listing):
+                Session::put('listingID', $listing->id);
+            endif;
+            return $listing;
+        }
         public function getListingData()
         {
             $listingID = Session::get('listingID');
