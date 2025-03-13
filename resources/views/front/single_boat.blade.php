@@ -725,9 +725,9 @@
         position: fixed;
         top: 0;
         right: 0;
-        width: 250px;
+        width: 350px;
         height: 100%;
-        background-color: #343a40;
+        background-color: #f8a126;
         color: #fff;
         z-index: 1050;
         transform: translateX(100%);
@@ -744,15 +744,20 @@
         color: #fff;
         cursor: pointer;
     }
+    #price-list h3 {
+    text-align: center;
+}
+.price_block {
+    border-top: 1px solid #fff;
+    margin-bottom: 25px;
+    padding-top: 25px;
+}
+.price_block .price_block_date {
+    font-size: 20px;
+    font-weight: 600;
+}
+.price_block .price_block_price {
+    font-size: 15px;
+}
 </style>
-<div class="offcanvas-right" id="price-list">
-    <span class="close-btn" id="closeMenu">&times;</span>
-    <h3 class="p-4">Offcanvas Sidebar</h3>
-    <ul class="p-4 list-unstyled">
-        <li><a href="#" class="text-white">Home</a></li>
-        <li><a href="#" class="text-white">About</a></li>
-        <li><a href="#" class="text-white">Services</a></li>
-        <li><a href="#" class="text-white">Contact</a></li>
-    </ul>
-</div>
 @endsection

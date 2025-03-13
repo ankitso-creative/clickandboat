@@ -35,11 +35,11 @@
   }
   
   .flatpickr-monthSelect-theme-dark {
-    background: #3f4458;
+    background: #fff;
   }
   
   .flatpickr-monthSelect-theme-dark .flatpickr-current-month input.cur-year {
-    color: #fff;
+    color: #f9a126;
   }
   
   .flatpickr-monthSelect-theme-dark .flatpickr-months .flatpickr-prev-month,
@@ -49,7 +49,7 @@
   }
   
   .flatpickr-monthSelect-theme-dark .flatpickr-monthSelect-month {
-    color: rgba(0, 0, 0, 0.95);
+    color: #000;
   }
   
   .flatpickr-monthSelect-month.today {
@@ -69,8 +69,10 @@
   .flatpickr-monthSelect-theme-dark .flatpickr-monthSelect-month.inRange,
   .flatpickr-monthSelect-theme-dark .flatpickr-monthSelect-month:hover,
   .flatpickr-monthSelect-theme-dark .flatpickr-monthSelect-month:focus {
-    background: #646c8c;
-    border-color: #646c8c;
+    background: #f9a126;
+    border-color: #f9a126;
+    color: #fff;
+
   }
   
   .flatpickr-monthSelect-month.today:hover,
@@ -109,10 +111,10 @@
   .flatpickr-monthSelect-theme-dark .flatpickr-monthSelect-month.selected,
   .flatpickr-monthSelect-theme-dark .flatpickr-monthSelect-month.startRange,
   .flatpickr-monthSelect-theme-dark .flatpickr-monthSelect-month.endRange {
-    background: #80cbc4;
+    background: #f9a126;
     -webkit-box-shadow: none;
     box-shadow: none;
-    color: #000;
-    border-color: #80cbc4;
+    color: #fff;
+    border-color: #f9a126;
   }
   
