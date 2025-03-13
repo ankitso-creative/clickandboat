@@ -23,6 +23,11 @@
             endif;
             return $listing;
         }
+        public function locationListing($city)
+        {
+            $listing =  $listing = Listing::where('status', '1')->where('city', $city)->with(['price'])->paginate(9);
+            return $listing;
+        }
         public function getListingData()
         {
             $listingID = Session::get('listingID');
@@ -94,6 +99,21 @@
                         ->orWhereRaw('JSON_CONTAINS(leisure_activities	, ?)', [json_encode([$equipment])])
                         ->orWhereRaw('JSON_CONTAINS(onboard_energy	, ?)', [json_encode([$equipment])])
                         ->orWhereRaw('JSON_CONTAINS(water_sports	, ?)', [json_encode([$equipment])]);
+                });
+            })
+            ->when($request->has('halfday') && !empty($request->halfday), function ($query) use ($request) {
+                return $query->whereHas('price', function ($query) {
+                    $query->whereNotNull('one_half_day');
+                });
+            })
+            ->when($request->has('fullday') && !empty($request->fullday), function ($query) use ($request) {
+                return $query->whereHas('price', function ($query) {
+                    $query->whereNotNull('one_half_day'); // Assuming this is the column name for full day
+                });
+            })
+            ->when($request->has('overnightstay') && !empty($request->overnightstay), function ($query) use ($request) {
+                return $query->whereHas('price', function ($query) {
+                    $query->whereNotNull('over_night_price');
                 });
             })
             ->with(['price','equipment'])

@@ -484,6 +484,10 @@ flatpickr(".month-picker", {
                             <h4 class="bold ">Advance Price Options</h4>
                         </div>
                         <div class="col-sm-3">
+                            <label>Overnight stay price:<span class="required"> </span></label>
+                            <input type="text" name="over_night_price" value="{{ $listing->price->over_night_price ?? '' }}" class="form-control">
+                        </div>
+                        <div class="col-sm-3">
                             <label>1 half day price:<span class="required"> </span></label>
                             <input type="text" name="one_half_day_price"
                                 value="{{ $listing->price->one_half_day ?? '' }}" class="form-control">
@@ -504,17 +508,17 @@ flatpickr(".month-picker", {
                                 class="form-control">
                         </div>
                         <div class="clear"></div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-3">
                             <label>5 days price:<span class="required"> </span></label>
                             <input type="text" name="five_day_price" value="{{ $listing->price->five_day ?? '' }}"
                                 class="form-control">
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-3">
                             <label>6 days price:<span class="required"> </span></label>
                             <input type="text" name="six_day_price" value="{{ $listing->price->six_day ?? '' }}"
                                 class="form-control">
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-3">
                             <label>1 week price:<span class="required"> </span></label>
                             <input type="text" name="one_week_price" value="{{ $listing->price->one_week ?? '' }}"
                                 class="form-control">

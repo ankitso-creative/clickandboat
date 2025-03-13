@@ -152,6 +152,7 @@ Route::middleware('Setlang')->group(function(){
 
     Route::get('single/{slug}', [PagesController::class, 'single'])->name('single');
     Route::get('boat-rental/{city}/{type}/{slug}', [PagesController::class, 'singleBoat'])->name('singleboat');
+    Route::get('boat-rental/{city}', [PagesController::class, 'locationListing'])->name('locationlisting');
     Route::match(['get', 'post'],'checkout', [PagesController::class, 'checkout'])->name('checkout');
     Route::get('getbookingprice', [PagesController::class, 'getBookingPrice'])->name('getbookingprice');
 

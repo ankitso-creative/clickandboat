@@ -720,39 +720,83 @@
         </div>
     </section>
 </div>
-<style>
-    .offcanvas-right {
-        position: fixed;
-        top: 0;
-        right: 0;
-        width: 250px;
-        height: 100%;
-        background-color: #343a40;
-        color: #fff;
-        z-index: 1050;
-        transform: translateX(100%);
-        transition: transform 0.3s ease-in-out;
-    }
-    .offcanvas-right.open {
-        transform: translateX(0);
-    }
-    .offcanvas-right .close-btn {
-        position: absolute;
-        top: 15px;
-        left: 15px;
-        font-size: 1.5rem;
-        color: #fff;
-        cursor: pointer;
-    }
-</style>
+
 <div class="offcanvas-right" id="price-list">
     <span class="close-btn" id="closeMenu">&times;</span>
-    <h3 class="p-4">Offcanvas Sidebar</h3>
+    <h3 class="p-4">Price list</h3>
     <ul class="p-4 list-unstyled">
-        <li><a href="#" class="text-white">Home</a></li>
-        <li><a href="#" class="text-white">About</a></li>
-        <li><a href="#" class="text-white">Services</a></li>
-        <li><a href="#" class="text-white">Contact</a></li>
+        @if($listing->price->price)
+            <li>
+                <div class="price_block">
+                    <p class="price_block_date">Price </p>
+                    <p class="price_block_price">{{ $listing->price->price }}</p>
+                </div>
+            </li>
+        @endif
+        @if($listing->price->over_night_price)
+            <li>
+                <div class="price_block">
+                    <p class="price_block_date">Over Night Price </p>
+                    <p class="price_block_price">{{ $listing->price->over_night_price }}</p>
+                </div>
+            </li>
+        @endif
+        @if($listing->price->one_half_day)
+            <li>
+                <div class="price_block">
+                    <p class="price_block_date">One/Half Day Price</p>
+                    <p class="price_block_price">{{ $listing->price->one_half_day }}</p>
+                </div>
+            </li>
+        @endif
+        @if($listing->price->two_day)
+            <li>
+                <div class="price_block">
+                    <p class="price_block_date">Two Day Price </p>
+                    <p class="price_block_price">{{ $listing->price->two_day }}</p>
+                </div>
+            </li>
+        @endif
+        @if($listing->price->three_day)
+            <li>
+                <div class="price_block">
+                    <p class="price_block_date">Three Day Price </p>
+                    <p class="price_block_price">{{ $listing->price->three_day }}</p>
+                </div>
+            </li>
+        @endif
+        @if($listing->price->four_day)
+            <li>
+                <div class="price_block">
+                    <p class="price_block_date">Four Day Price </p>
+                    <p class="price_block_price">{{ $listing->price->four_day }}</p>
+                </div>
+            </li>
+        @endif
+        @if($listing->price->five_day)
+            <li>
+                <div class="price_block">
+                    <p class="price_block_date">Five Day Price </p>
+                    <p class="price_block_price">{{ $listing->price->five_day }}</p>
+                </div>
+            </li>
+        @endif
+        @if($listing->price->six_day)
+            <li>
+                <div class="price_block">
+                    <p class="price_block_date">Six Day Price </p>
+                    <p class="price_block_price">{{ $listing->price->six_day }}</p>
+                </div>
+            </li>
+        @endif
+        @if($listing->price->one_week)
+            <li>
+                <div class="price_block">
+                    <p class="price_block_date">One Week Price </p>
+                    <p class="price_block_price">{{ $listing->price->one_week }}</p>
+                </div>
+            </li>
+        @endif
     </ul>
 </div>
 @endsection

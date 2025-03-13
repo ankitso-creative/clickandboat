@@ -407,7 +407,7 @@ $(document).ready(function() {
 	});	
 	
 	
-	$(document).on('change','input[name="type[]"], #rental_type', function() {
+	$(document).on('change','input[name="type[]"], #rental_type, #Halfday, #Fullday, #Overnightstay', function() {
 		$('#search-filter-fom').submit();
     });
 	$(document).on('click','#details-tabs li a', function() {
