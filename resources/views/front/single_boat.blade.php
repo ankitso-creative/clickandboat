@@ -389,7 +389,9 @@
                             <p><i class="fa-solid fa-language"></i> Language spoken: <span class="offered_language_style">English</span></p>
                             <p><i class="fa-regular fa-clock"></i> Response time: within a few hours</p>
                         </div>
+                        <div class="contact_own_btn">
                         <a href="#" class="contact_owner_btn">Contact Owner</a>
+                        </div>
                     </div>
                     <div class="boat-card-content-sec">
                         <div class="location-sec">
