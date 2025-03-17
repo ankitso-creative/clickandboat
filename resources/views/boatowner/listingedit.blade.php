@@ -239,17 +239,17 @@ flatpickr(".month-picker", {
                 </form>
             </div>
             <div class="tab-pane fade" id="description" role="tabpanel" aria-labelledby="nav-description-tab">
-                <div class="col-sm-12">
+                <div class="p-0 col-sm-12">
                     <h4 class="bold ">Title</h4>
                 </div>
                 <form method="POST">
-                    <div class="col-md-6">
+                    <div class="p-0 col-md-6">
                         <div class="form-group">
                             <input type="text" name="title" value="" class="form-control" required placeholder="E.g.: 2012  honda" value="{{ old('title', $listing->title) }}">
                             @error('title')<span class="required">{{ $message }}</span>@enderror
                         </div>
                     </div>
-                    <div class="pt-4 col-sm-12">
+                    <div class="p-0 pt-4 col-sm-12">
                         <h4 class="bold ">Description</h4>
                     </div>
                     <div class="row">
@@ -269,7 +269,7 @@ flatpickr(".month-picker", {
                             </p>
                         </div>
                     </div>
-                    <div class="pt-4 col-sm-12">
+                    <div class="p-0 pt-4 col-sm-12">
                         <h4 class="bold ">Technical</h4>
                     </div>
                     <div class="row">

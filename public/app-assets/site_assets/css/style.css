@@ -2049,6 +2049,7 @@ button:focus {
     cursor: pointer;
     margin-bottom: 40px;
     text-transform: uppercase;
+    margin-top: 40px;
 }
 .listing_sub_btn:hover{
     background: none !important;
@@ -5108,7 +5109,7 @@ font-size: 15px;
 }
 .side_bar .nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover {
     border-color: #323131;
-    border: 0px solid #323131;
+    border: 1px solid #323131;
     outline: none;
 }
 .side_bar.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link span{
@@ -5201,7 +5202,8 @@ font-size: 15px;
     padding: 3px 11px 0px 6px !important;
 }
 .list_edit_card a:hover{
-    color: #e4d183;
+    color: #f9a126;
+    text-decoration: underline;
 }
 .profile_save_btn {
     text-align: right;
@@ -5862,7 +5864,8 @@ font-size: 15px;
     .banner_form {
         top: 0;
         height: auto;
-        background:#fff;
+        background: #fff;
+        padding: 20px 0px 0 5px;
     }
     .has-search .form-control {
         width: 355px;
@@ -6261,6 +6264,27 @@ font-size: 15px;
     }
     .location-sec {
         padding-top: 30px;
+    }
+    .login_section h2,
+    .signup_form h2,
+    .singup_welcome_section h2 {
+        font-size: 25px;
+    }
+    .home_page_box_text p {
+        width: 39%;
+        margin: 0px auto;
+    }
+    .home_page_slider .slick-next {
+        right: 60px;
+    }
+    .next_trip_section .col-sm-12.col-md-6.col-lg-4 {
+        padding: 0px;
+    }
+    .next_trip_section {
+        margin-bottom: 30px;
+    }
+    .number_list {
+        margin: 0 25px 0 10px;
     }
   
     
