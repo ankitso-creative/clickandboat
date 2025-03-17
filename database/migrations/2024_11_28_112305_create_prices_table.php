@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('prices', function (Blueprint $table) {
             $table->id();
             $table->foreignId('listing_id')->constrained()->onDelete('cascade');
-            $table->foreignId('season_price_id')->constrained()->onDelete('cascade');
+            $table->foreignId('season_price_id')->constrained()->onDelete('cascade')->nullable();
             $table->string('price');
             $table->string('over_night_price')->nullable();
             $table->string('one_half_day')->nullable();
