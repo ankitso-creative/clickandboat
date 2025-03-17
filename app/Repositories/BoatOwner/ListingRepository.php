@@ -129,25 +129,39 @@
                 $listing->price()->UpdateOrCreate(['listing_id' => $listing->id],[
                     'listing_id' => $listing->id,
                     'price'  => $request['price'],
-                    'over_night_price' => $request['over_night_price'],
-                    'one_half_day' => $request['one_half_day_price'],
-                    'two_day'  => $request['two_day_price'],
-                    'three_day'  => $request['three_day_price'],
-                    'four_day'  => $request['four_day_price'],
-                    'five_day'  => $request['five_day_price'],
-                    'six_day'  => $request['six_day_price'],
-                    'one_week' => $request['one_week_price'],
+                   
                 ]);
                 $seasonPrices = $request['season_price'];
                 if($seasonPrices):
                     foreach($seasonPrices as $seasonPrice):
-                        $listing->seasonPrice()->UpdateOrCreate(['listing_id' => $listing->id, 'name' => $seasonPrice['name']],[
-                            'listing_id' => $listing->id,
-                            'name' => $seasonPrice['name'],
-                            'from'  => $seasonPrice['from'],
-                            'to'  => $seasonPrice['to'],
-                            'price'  => $seasonPrice['price'],
-                        ]);
+                        if($seasonPrice['from'] && $seasonPrice['to'] && $seasonPrice['price'] )
+                        {
+                            $seasonPriceModel = $listing->seasonPrice()->UpdateOrCreate(['listing_id' => $listing->id, 'name' => $seasonPrice['name']],[
+                                'listing_id' => $listing->id,
+                                'name' => $seasonPrice['name'],
+                                'from'  => $seasonPrice['from'],
+                                'to'  => $seasonPrice['to'],
+                                'price'  => $seasonPrice['price'],
+                            ]);
+                        }
+                        if($seasonPriceModel->id)
+                        {
+                            $array = [
+                                'listing_id' => $listing->id,
+                                'season_price_id' =>  $seasonPriceModel->id,
+                                'over_night_price' => $seasonPrice['over_night_price'],
+                                'one_half_day' => $seasonPrice['one_half_day_price'],
+                                'two_day'  => $seasonPrice['two_day_price'],
+                                'three_day'  => $seasonPrice['three_day_price'],
+                                'four_day'  => $seasonPrice['four_day_price'],
+                                'five_day'  => $seasonPrice['five_day_price'],
+                                'six_day'  => $seasonPrice['six_day_price'],
+                                'one_week' => $seasonPrice['one_week_price'],
+                            ];
+                            $listing->price()->UpdateOrCreate(['listing_id' => $listing->id,'season_price_id' =>  $seasonPriceModel->id],
+                                $array
+                            );
+                        }
                     endforeach;
                 endif;
                 return response()->json([

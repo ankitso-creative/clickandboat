@@ -5,6 +5,7 @@ namespace App\Models\Admin;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Admin\Price;
+use App\Models\FavoriteItem;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Support\Str;
@@ -68,6 +69,10 @@ class Listing extends Model implements HasMedia
     public function seasonPrice() 
     {
         return $this->hasMany(SeasonPrice::class);
+    }
+    public function favoriteitems() 
+    {
+        return $this->hasMany(FavoriteItem::class);
     }
     public static function boot()
     {

@@ -9,6 +9,7 @@ class Price extends Model
     protected $fillable = [
         'listing_id',
         'price',
+        'season_price_id',
         'over_night_price',
         'one_half_day',
         'two_day',
@@ -21,5 +22,9 @@ class Price extends Model
     public function listing() 
     {
         return $this->belongsTo(Listing::class);
+    }
+    public function season() 
+    {
+        return $this->belongsTo(SeasonPrice::class);
     }
 }

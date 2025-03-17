@@ -471,101 +471,186 @@ flatpickr(".month-picker", {
                     <div class="row">
                         <div class="col-sm-12">
                             <h4 class="bold ">Price</h4>
+                            @php 
+                                $lowseason = $listing->price()->where('season_price_id', optional($listing->seasonPrice[0] ?? null)->id)->first();
+                                $midSeason = $listing->price()->where('season_price_id', optional($listing->seasonPrice[1] ?? null)->id)->first();
+                                $highSeason = $listing->price()->where('season_price_id', optional($listing->seasonPrice[2] ?? null)->id)->first();
+                            @endphp
                         </div>
-                        <div class="clearfix"></div>
                         <div class="col-sm-4">
-                            <label>Price:<span class="required"> * </span></label>
-                            <input type="text" name="price" class="form-control" required
-                                value="{{ $listing->price->price ?? '' }}">
+                            <label>Price:<span class="required"> </span></label>
+                            <input type="text" name="price" value="{{ optional($listing->price)->price }}" class="form-control">
                             @error('price')<span class="required">{{ $message }}</span>@enderror
                         </div>
-                        <div class="clear"></div>
+                        <div class="clearfix"></div>
                         <div class="pt-4 col-sm-12">
-                            <h4 class="bold ">Advance Price Options</h4>
+                            <h4 class="bold ">Low Season Prices</h4>
+                        </div>
+                        <div class="col-sm-4">
+                            <label>Month from:<span class="required"> </span></label>
+                            <input type="text" name="season_price[1][from]" value="{{ optional($listing->seasonPrice[0] ?? null)->from ?? '' }}" class="month-picker form-control">
+                        </div>
+                        <div class="col-sm-4">
+                            <label>Month to:<span class="required"> </span></label>
+                            <input type="text" name="season_price[1][to]" value="{{ optional($listing->seasonPrice[0] ?? null)->to ?? '' }}" class="month-picker form-control">
+                        </div>
+                        <div class="col-sm-4">
+                            <label>Price:<span class="required"> </span></label>
+                            <input type="text" name="season_price[1][price]" value="{{ optional($listing->seasonPrice[0] ?? null)->price ?? '' }}" class="form-control">
+                            <input type="hidden" name="season_price[1][name]" value="low_season">
                         </div>
                         <div class="col-sm-3">
                             <label>Overnight stay price:<span class="required"> </span></label>
-                            <input type="text" name="over_night_price" value="{{ $listing->price->over_night_price ?? '' }}" class="form-control">
+                            <input type="text" name="season_price[1][over_night_price]" value="{{ $lowseason->over_night_price ?? '' }}" class="form-control">
                         </div>
                         <div class="col-sm-3">
                             <label>1 half day price:<span class="required"> </span></label>
-                            <input type="text" name="one_half_day_price"
-                                value="{{ $listing->price->one_half_day ?? '' }}" class="form-control">
+                            <input type="text" name="season_price[1][one_half_day_price]" value="{{ $lowseason->one_half_day ?? '' }}" class="form-control">
                         </div>
                         <div class="col-sm-3">
                             <label>2 days price:<span class="required"> </span></label>
-                            <input type="text" name="two_day_price" value="{{ $listing->price->two_day ?? '' }}"
+                            <input type="text" name="season_price[1][two_day_price]" value="{{ $lowseason->two_day ?? '' }}"
                                 class="form-control">
                         </div>
                         <div class="col-sm-3">
                             <label>3 days price:<span class="required"> </span></label>
-                            <input type="text" name="three_day_price" value="{{ $listing->price->three_day ?? '' }}"
+                            <input type="text" name="season_price[1][three_day_price]" value="{{ $lowseason->three_day ?? '' }}"
                                 class="form-control">
                         </div>
                         <div class="col-sm-3">
                             <label>4 days price:<span class="required"> </span></label>
-                            <input type="text" name="four_day_price" value="{{ $listing->price->four_day ?? '' }}"
+                            <input type="text" name="season_price[1][four_day_price]" value="{{ $lowseason->four_day ?? '' }}"
                                 class="form-control">
                         </div>
                         <div class="clear"></div>
                         <div class="col-sm-3">
                             <label>5 days price:<span class="required"> </span></label>
-                            <input type="text" name="five_day_price" value="{{ $listing->price->five_day ?? '' }}"
+                            <input type="text" name="season_price[1][five_day_price]" value="{{ $lowseason->five_day ?? '' }}"
                                 class="form-control">
                         </div>
                         <div class="col-sm-3">
                             <label>6 days price:<span class="required"> </span></label>
-                            <input type="text" name="six_day_price" value="{{ $listing->price->six_day ?? '' }}"
+                            <input type="text" name="season_price[1][six_day_price]" value="{{ $lowseason->six_day ?? '' }}"
                                 class="form-control">
                         </div>
                         <div class="col-sm-3">
                             <label>1 week price:<span class="required"> </span></label>
-                            <input type="text" name="one_week_price" value="{{ $listing->price->one_week ?? '' }}"
+                            <input type="text" name="season_price[1][one_week_price]" value="{{ $lowseason->one_week ?? '' }}"
                                 class="form-control">
                         </div>
                         <div class="clearfix"></div>
                         <div class="pt-4 col-sm-12">
-                            <h4 class="bold ">Season Prices Options</h4>
+                            <h4 class="bold ">Mid Season Prices</h4>
                         </div>
                         <div class="col-sm-4">
-                            <label>Low month from:<span class="required"> </span></label>
-                            <input type="text" name="season_price[1][from]" value="{{ $listing->seasonPrice[0]->from ?? '' }}" class="month-picker form-control">
+                            <label>Month from:<span class="required"> </span></label>
+                            <input type="text" name="season_price[2][from]" value="{{ optional($listing->seasonPrice[1] ?? null)->from ?? '' }}" class="month-picker form-control">
                         </div>
                         <div class="col-sm-4">
-                            <label>Low month to:<span class="required"> </span></label>
-                            <input type="text" name="season_price[1][to]" value="{{ $listing->seasonPrice[0]->to ?? '' }}" class="month-picker form-control">
+                            <label>Month to:<span class="required"> </span></label>
+                            <input type="text" name="season_price[2][to]" value="{{ optional($listing->seasonPrice[1] ?? null)->to ?? '' }}" class="month-picker form-control">
                         </div>
                         <div class="col-sm-4">
-                            <label>Low price:<span class="required"> </span></label>
-                            <input type="text" name="season_price[1][price]" value="{{ $listing->seasonPrice[0]->price ?? '' }}" class="form-control">
-                            <input type="hidden" name="season_price[1][name]" value="low_season">
-                        </div>
-                        <div class="col-sm-4">
-                            <label>Mid month from:<span class="required"> </span></label>
-                            <input type="text" name="season_price[2][from]" value="{{ $listing->seasonPrice[1]->from ?? '' }}" class="month-picker form-control">
-                        </div>
-                        <div class="col-sm-4">
-                            <label>Mid month to:<span class="required"> </span></label>
-                            <input type="text" name="season_price[2][to]" value="{{ $listing->seasonPrice[1]->to ?? '' }}" class="month-picker form-control">
-                        </div>
-                        <div class="col-sm-4">
-                            <label>Mid price:<span class="required"> </span></label>
-                            <input type="text" name="season_price[2][price]" value="{{ $listing->seasonPrice[1]->price ?? '' }}"class="form-control">
+                            <label>Price:<span class="required"> </span></label>
+                            <input type="text" name="season_price[2][price]" value="{{ optional($listing->seasonPrice[1] ?? null)->price ?? '' }}" class="form-control">
                             <input type="hidden" name="season_price[2][name]" value="mid_season">
                         </div>
-                        <div class="col-sm-4">
-                            <label>High month from:<span class="required"> </span></label>
-                            <input type="text" name="season_price[3][from]" value="{{ $listing->seasonPrice[2]->from ?? '' }}" class="month-picker form-control">
+                        <div class="col-sm-3">
+                            <label>Overnight stay price:<span class="required"> </span></label>
+                            <input type="text" name="season_price[2][over_night_price]" value="{{ $midSeason->over_night_price ?? '' }}" class="form-control">
+                        </div>
+                        <div class="col-sm-3">
+                            <label>1 half day price:<span class="required"> </span></label>
+                            <input type="text" name="season_price[2][one_half_day_price]" value="{{ $midSeason->one_half_day ?? '' }}" class="form-control">
+                        </div>
+                        <div class="col-sm-3">
+                            <label>2 days price:<span class="required"> </span></label>
+                            <input type="text" name="season_price[2][two_day_price]" value="{{ $midSeason->two_day ?? '' }}"
+                                class="form-control">
+                        </div>
+                        <div class="col-sm-3">
+                            <label>3 days price:<span class="required"> </span></label>
+                            <input type="text" name="season_price[2][three_day_price]" value="{{ $midSeason->three_day ?? '' }}"
+                                class="form-control">
+                        </div>
+                        <div class="col-sm-3">
+                            <label>4 days price:<span class="required"> </span></label>
+                            <input type="text" name="season_price[2][four_day_price]" value="{{ $midSeason->four_day ?? '' }}"
+                                class="form-control">
+                        </div>
+                        <div class="clear"></div>
+                        <div class="col-sm-3">
+                            <label>5 days price:<span class="required"> </span></label>
+                            <input type="text" name="season_price[2][five_day_price]" value="{{ $midSeason->five_day ?? '' }}"
+                                class="form-control">
+                        </div>
+                        <div class="col-sm-3">
+                            <label>6 days price:<span class="required"> </span></label>
+                            <input type="text" name="season_price[2][six_day_price]" value="{{ $midSeason->six_day ?? '' }}"
+                                class="form-control">
+                        </div>
+                        <div class="col-sm-3">
+                            <label>1 week price:<span class="required"> </span></label>
+                            <input type="text" name="season_price[2][one_week_price]" value="{{ $midSeason->one_week ?? '' }}"
+                                class="form-control">
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="pt-4 col-sm-12">
+                            <h4 class="bold ">High Season Prices</h4>
                         </div>
                         <div class="col-sm-4">
-                            <label>High month to:<span class="required"> </span></label>
-                            <input type="text" name="season_price[3][to]" value="{{ $listing->seasonPrice[2]->to ?? '' }}" class="month-picker form-control">
+                            <label>Month from:<span class="required"> </span></label>
+                            <input type="text" name="season_price[3][from]" value="{{ optional($listing->seasonPrice[2] ?? null)->from ?? '' }}" class="month-picker form-control">
                         </div>
                         <div class="col-sm-4">
-                            <label>High price:<span class="required"> </span></label>
-                            <input type="text" name="season_price[3][price]" value="{{ $listing->seasonPrice[2]->price ?? '' }}" class="form-control">
+                            <label>Month to:<span class="required"> </span></label>
+                            <input type="text" name="season_price[3][to]" value="{{ optional($listing->seasonPrice[2] ?? null)->to ?? '' }}" class="month-picker form-control">
+                        </div>
+                        <div class="col-sm-4">
+                            <label>Price:<span class="required"> </span></label>
+                            <input type="text" name="season_price[3][price]" value="{{ optional($listing->seasonPrice[2] ?? null)->price ?? '' }}" class="form-control">
                             <input type="hidden" name="season_price[3][name]" value="high_season">
                         </div>
+                        <div class="col-sm-3">
+                            <label>Overnight stay price:<span class="required"> </span></label>
+                            <input type="text" name="season_price[3][over_night_price]" value="{{ $highSeason->over_night_price ?? '' }}" class="form-control">
+                        </div>
+                        <div class="col-sm-3">
+                            <label>1 half day price:<span class="required"> </span></label>
+                            <input type="text" name="season_price[3][one_half_day_price]" value="{{ $highSeason->one_half_day ?? '' }}" class="form-control">
+                        </div>
+                        <div class="col-sm-3">
+                            <label>2 days price:<span class="required"> </span></label>
+                            <input type="text" name="season_price[3][two_day_price]" value="{{ $highSeason->two_day ?? '' }}"
+                                class="form-control">
+                        </div>
+                        <div class="col-sm-3">
+                            <label>3 days price:<span class="required"> </span></label>
+                            <input type="text" name="season_price[3][three_day_price]" value="{{ $highSeason->three_day ?? '' }}"
+                                class="form-control">
+                        </div>
+                        <div class="col-sm-3">
+                            <label>4 days price:<span class="required"> </span></label>
+                            <input type="text" name="season_price[3][four_day_price]" value="{{ $highSeason->four_day ?? '' }}"
+                                class="form-control">
+                        </div>
+                        <div class="clear"></div>
+                        <div class="col-sm-3">
+                            <label>5 days price:<span class="required"> </span></label>
+                            <input type="text" name="season_price[3][five_day_price]" value="{{ $highSeason->five_day ?? '' }}"
+                                class="form-control">
+                        </div>
+                        <div class="col-sm-3">
+                            <label>6 days price:<span class="required"> </span></label>
+                            <input type="text" name="season_price[3][six_day_price]" value="{{ $highSeason->six_day ?? '' }}"
+                                class="form-control">
+                        </div>
+                        <div class="col-sm-3">
+                            <label>1 week price:<span class="required"> </span></label>
+                            <input type="text" name="season_price[3][one_week_price]" value="{{ $highSeason->one_week ?? '' }}"
+                                class="form-control">
+                        </div>
+                        <div class="clearfix"></div>
                     </div>
                     <div class="row ">
                         <div class="col-lg-12">
@@ -579,8 +664,7 @@ flatpickr(".month-picker", {
                                 <i class="fa fa-angle-left"></i> Back
                             </button> -->
                             <input type="hidden" name="s" value="price">
-                            <button type="submit" class="listing_sub_btn mt-ladda-btn ladda-button btn-outline "
-                                data-style="contract" data-spinner-color="#333">
+                            <button type="submit" class="listing_sub_btn mt-ladda-btn ladda-button btn-outline " data-style="contract" data-spinner-color="#333">
                                Save
                             </button>
                         </div>
@@ -1595,270 +1679,270 @@ flatpickr(".month-picker", {
     </div>
 </div>
 <script>
-$(document).ready(function() {
-    $('.timepicker').timepicker({
-        timeFormat: 'H:i',
-        minuteStep: 30,
-        defaultTime: '12:00 AM'
+    $(document).ready(function() {
+        $('.timepicker').timepicker({
+            timeFormat: 'H:i',
+            minuteStep: 30,
+            defaultTime: '12:00 AM'
 
-    });
-});
-$(document).ready(function() {
-    setTimeout(function() {
-        $('.alert').addClass('d-none');
-    }, 5000);
-    $(document).on('click', '.add_newf_row', function(e) {
-        var remove_btn_html =
-            '<button type="button" class="btn btn-danger btn-sm remove_newf_row" > remove </button>';
-        var html = '<div class="single_calender_container row" style="">';
-        html += $('.single_calender_container:first').html();
-        html += '</div>';
-        $('.fac_container').append(html);
-        var total_container = $('.single_calender_container').length;
-        $('.single_calender_container:last').find('.action_buttons').html(remove_btn_html);
-        $('.single_calender_container:last').find('.from_date').attr('name', 'calendar[' +
-            total_container + '][from_date]');
-        $('.single_calender_container:last').find('.from_to').attr('name', 'calendar[' +
-            total_container + '][from_to]');
-        $('.single_calender_container:last').find('.reason').attr('name', 'calendar[' +
-            total_container + '][reason]');
-        $('.single_calender_container:last').find('.from_date').val('');
-        $('.single_calender_container:last').find('.from_to').val('');
-        $('.single_calender_container:last').find('.reason').val('');
-        flatpickr(".from_date", {
-            inline: false,
-            dateFormat: "d-m-Y",
-            minDate: "today",
-        });
-        flatpickr(".from_to", {
-            inline: false,
-            dateFormat: "d-m-Y",
-            minDate: "today",
         });
     });
-    $(document).on('click', '.remove_newf_row', function(e) {
-        $(this).parents('.single_calender_container').remove();
-    });
-    $(document).on('submit', 'form', function(e) {
-        e.preventDefault();
-        var formData = $(this).serialize();
-        $.ajax({
-            url: "{{ route('boatowner.listing-settings',$listing->id) }}", // URL for the image upload endpoint
-            type: 'POST',
-            data: formData,
-            dataType: 'json',
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            success: function(response) {
-                if (response.success) {
-                    $('.alert').removeClass('alert-danger');
-                    $('.alert').removeClass('d-none');
-                    $('.alert').addClass('alert-success');
-                    $('.message').html(response.message);
-                    setTimeout(function() {
-                        $('.alert').addClass('d-none');
-                    }, 5000);
-                } else {
+    $(document).ready(function() {
+        setTimeout(function() {
+            $('.alert').addClass('d-none');
+        }, 5000);
+        $(document).on('click', '.add_newf_row', function(e) {
+            var remove_btn_html =
+                '<button type="button" class="btn btn-danger btn-sm remove_newf_row" > remove </button>';
+            var html = '<div class="single_calender_container row" style="">';
+            html += $('.single_calender_container:first').html();
+            html += '</div>';
+            $('.fac_container').append(html);
+            var total_container = $('.single_calender_container').length;
+            $('.single_calender_container:last').find('.action_buttons').html(remove_btn_html);
+            $('.single_calender_container:last').find('.from_date').attr('name', 'calendar[' +
+                total_container + '][from_date]');
+            $('.single_calender_container:last').find('.from_to').attr('name', 'calendar[' +
+                total_container + '][from_to]');
+            $('.single_calender_container:last').find('.reason').attr('name', 'calendar[' +
+                total_container + '][reason]');
+            $('.single_calender_container:last').find('.from_date').val('');
+            $('.single_calender_container:last').find('.from_to').val('');
+            $('.single_calender_container:last').find('.reason').val('');
+            flatpickr(".from_date", {
+                inline: false,
+                dateFormat: "d-m-Y",
+                minDate: "today",
+            });
+            flatpickr(".from_to", {
+                inline: false,
+                dateFormat: "d-m-Y",
+                minDate: "today",
+            });
+        });
+        $(document).on('click', '.remove_newf_row', function(e) {
+            $(this).parents('.single_calender_container').remove();
+        });
+        $(document).on('submit', 'form', function(e) {
+            e.preventDefault();
+            var formData = $(this).serialize();
+            $.ajax({
+                url: "{{ route('boatowner.listing-settings',$listing->id) }}", // URL for the image upload endpoint
+                type: 'POST',
+                data: formData,
+                dataType: 'json',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(response) {
+                    if (response.success) {
+                        $('.alert').removeClass('alert-danger');
+                        $('.alert').removeClass('d-none');
+                        $('.alert').addClass('alert-success');
+                        $('.message').html(response.message);
+                        setTimeout(function() {
+                            $('.alert').addClass('d-none');
+                        }, 5000);
+                    } else {
+                        $('.alert').removeClass('d-none');
+                        $('.alert').addClass('alert-danger');
+                        $('.message').html(response.message);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    var errors = xhr.responseJSON.errors;
+                    var errorMessage = '';
+                    for (var field in errors) {
+                        errorMessage += errors[field] + '<br>'; // Show validation errors
+                    }
                     $('.alert').removeClass('d-none');
                     $('.alert').addClass('alert-danger');
-                    $('.message').html(response.message);
-                }
-            },
-            error: function(xhr, status, error) {
-                var errors = xhr.responseJSON.errors;
-                var errorMessage = '';
-                for (var field in errors) {
-                    errorMessage += errors[field] + '<br>'; // Show validation errors
-                }
-                $('.alert').removeClass('d-none');
-                $('.alert').addClass('alert-danger');
-                $('.message').html(errorMessage);
+                    $('.message').html(errorMessage);
 
+                }
+            });
+        })
+    });
+    // Disable autoDiscover to manually initialize Dropzone
+    let imageCount = 0;
+    // Function to update the image count display
+    function updateImageCount() {
+        imageCount = document.querySelectorAll('#uploaded-images .image-container').length;
+        if (imageCount >= 1 && imageCount <= 3) {
+            const divToRemove = document.getElementById('empty-img-'+imageCount); // Replace 'someDivId' with the actual ID of the div
+            if (divToRemove) {
+                divToRemove.remove(); // Remove the div from the DOM
             }
-        });
-    })
-});
-// Disable autoDiscover to manually initialize Dropzone
-let imageCount = 0;
-// Function to update the image count display
-function updateImageCount() {
-    imageCount = document.querySelectorAll('#uploaded-images .image-container').length;
-    if (imageCount >= 1 && imageCount <= 3) {
-        const divToRemove = document.getElementById('empty-img-'+imageCount); // Replace 'someDivId' with the actual ID of the div
-        if (divToRemove) {
-            divToRemove.remove(); // Remove the div from the DOM
         }
     }
-}
 
-Dropzone.autoDiscover = false;
-const imageDropzone = new Dropzone("#imageDropzone", {
-    url: "{{ route('boatowner.uploadgallery',$listing->id) }}", // URL to handle file upload
-    paramName: 'file', // The name that will be used to send the file
-    maxFilesize: 2, // Max file size in MB
-    acceptedFiles: 'image/*', // Only allow image files
-    dictDefaultMessage: 'Drag & Drop or Click to Upload Image',
-    headers: {
-        'X-CSRF-TOKEN': '{{ csrf_token() }}' // CSRF token for security
-    },
-    success: function(file, response) {
-        console.log('File uploaded successfully', response);
-        // Display the uploaded image and the remove button
-        const imageContainer = document.createElement('div');
-        imageContainer.classList.add('image-container');
-        imageContainer.classList.add('col-md-4');
-        imageContainer.setAttribute('data-id', response.data.id);
+    Dropzone.autoDiscover = false;
+    const imageDropzone = new Dropzone("#imageDropzone", {
+        url: "{{ route('boatowner.uploadgallery',$listing->id) }}", // URL to handle file upload
+        paramName: 'file', // The name that will be used to send the file
+        maxFilesize: 2, // Max file size in MB
+        acceptedFiles: 'image/*', // Only allow image files
+        dictDefaultMessage: 'Drag & Drop or Click to Upload Image',
+        headers: {
+            'X-CSRF-TOKEN': '{{ csrf_token() }}' // CSRF token for security
+        },
+        success: function(file, response) {
+            console.log('File uploaded successfully', response);
+            // Display the uploaded image and the remove button
+            const imageContainer = document.createElement('div');
+            imageContainer.classList.add('image-container');
+            imageContainer.classList.add('col-md-4');
+            imageContainer.setAttribute('data-id', response.data.id);
 
-        const image = document.createElement('img');
-        image.src = response.data.url; // URL of the uploaded image
-        image.classList.add('uploaded-image');
-        imageContainer.appendChild(image);
+            const image = document.createElement('img');
+            image.src = response.data.url; // URL of the uploaded image
+            image.classList.add('uploaded-image');
+            imageContainer.appendChild(image);
 
-        const removeButton = document.createElement('button');
-        removeButton.innerHTML = '<i class="far fa-times-circle"></i>';
-        removeButton.classList.add('remove-btn');
-        removeButton.onclick = function() {
-            removeImage(response.data.id, imageContainer, file);
-        };
-        imageContainer.appendChild(removeButton);
-        document.getElementById('uploaded-images').appendChild(imageContainer);
-        updateImageCount()
-    },
-    error: function(file, response) {
-        const errorMessage = response || 'An error occurred during upload';
-        // Display error message in the preview box (customize this part as needed)
-        const errorElement = document.createElement('div');
-        errorElement.classList.add('dz-error-message');
-        errorElement.innerHTML = `<span>${errorMessage}</span>`;
+            const removeButton = document.createElement('button');
+            removeButton.innerHTML = '<i class="far fa-times-circle"></i>';
+            removeButton.classList.add('remove-btn');
+            removeButton.onclick = function() {
+                removeImage(response.data.id, imageContainer, file);
+            };
+            imageContainer.appendChild(removeButton);
+            document.getElementById('uploaded-images').appendChild(imageContainer);
+            updateImageCount()
+        },
+        error: function(file, response) {
+            const errorMessage = response || 'An error occurred during upload';
+            // Display error message in the preview box (customize this part as needed)
+            const errorElement = document.createElement('div');
+            errorElement.classList.add('dz-error-message');
+            errorElement.innerHTML = `<span>${errorMessage}</span>`;
 
-        // Find the preview element and append the error message
-        const previewElement = file.previewElement;
-        previewElement.classList.add('dz-error'); // Add error styling to preview
-        previewElement.appendChild(errorElement); // Append the error message to preview
-        console.log('Error uploading file', response);
+            // Find the preview element and append the error message
+            const previewElement = file.previewElement;
+            previewElement.classList.add('dz-error'); // Add error styling to preview
+            previewElement.appendChild(errorElement); // Append the error message to preview
+            console.log('Error uploading file', response);
 
-        // Remove the file preview after a short delay (optional)
-        setTimeout(() => {
-            imageDropzone.removeFile(file);
-        }, 10000); // Adjust the delay time as needed
-    }
-});
-const imageDropzonetwo = new Dropzone("#imageDropzone-plan", {
-    url: "{{ route('boatowner.uploadplanimage',$listing->id) }}", // URL to handle file upload
-    paramName: 'file', // The name that will be used to send the file
-    maxFilesize: 2, // Max file size in MB
-    acceptedFiles: 'image/*', // Only allow image files
-    dictDefaultMessage: 'Drag & Drop or Click to Upload Image',
-    headers: {
-        'X-CSRF-TOKEN': '{{ csrf_token() }}' // CSRF token for security
-    },
-    success: function(file, response) {
-        console.log('File uploaded successfully', response);
-        // Display the uploaded image and the remove button
-        const imageContainer = document.createElement('div');
-        imageContainer.classList.add('image-container');
-        imageContainer.classList.add('col-md-4');
-        imageContainer.setAttribute('data-id', response.data.id);
+            // Remove the file preview after a short delay (optional)
+            setTimeout(() => {
+                imageDropzone.removeFile(file);
+            }, 10000); // Adjust the delay time as needed
+        }
+    });
+    const imageDropzonetwo = new Dropzone("#imageDropzone-plan", {
+        url: "{{ route('boatowner.uploadplanimage',$listing->id) }}", // URL to handle file upload
+        paramName: 'file', // The name that will be used to send the file
+        maxFilesize: 2, // Max file size in MB
+        acceptedFiles: 'image/*', // Only allow image files
+        dictDefaultMessage: 'Drag & Drop or Click to Upload Image',
+        headers: {
+            'X-CSRF-TOKEN': '{{ csrf_token() }}' // CSRF token for security
+        },
+        success: function(file, response) {
+            console.log('File uploaded successfully', response);
+            // Display the uploaded image and the remove button
+            const imageContainer = document.createElement('div');
+            imageContainer.classList.add('image-container');
+            imageContainer.classList.add('col-md-4');
+            imageContainer.setAttribute('data-id', response.data.id);
 
-        const image = document.createElement('img');
-        image.src = response.data.url; // URL of the uploaded image
-        image.classList.add('uploaded-image-plan');
-        imageContainer.appendChild(image);
+            const image = document.createElement('img');
+            image.src = response.data.url; // URL of the uploaded image
+            image.classList.add('uploaded-image-plan');
+            imageContainer.appendChild(image);
 
-        const removeButton = document.createElement('button');
-        removeButton.innerHTML = '<i class="far fa-times-circle"></i>';
-        removeButton.classList.add('remove-btn');
-        removeButton.onclick = function() {
-            removeImage(response.data.id, imageContainer, file);
-        };
-        imageContainer.appendChild(removeButton);
-        document.getElementById('uploaded-images-plan').appendChild(imageContainer);
-    },
-    error: function(file, response) {
-        const errorMessage = response || 'An error occurred during upload';
-        // Display error message in the preview box (customize this part as needed)
-        const errorElement = document.createElement('div');
-        errorElement.classList.add('dz-error-message');
-        errorElement.innerHTML = `<span>${errorMessage}</span>`;
+            const removeButton = document.createElement('button');
+            removeButton.innerHTML = '<i class="far fa-times-circle"></i>';
+            removeButton.classList.add('remove-btn');
+            removeButton.onclick = function() {
+                removeImage(response.data.id, imageContainer, file);
+            };
+            imageContainer.appendChild(removeButton);
+            document.getElementById('uploaded-images-plan').appendChild(imageContainer);
+        },
+        error: function(file, response) {
+            const errorMessage = response || 'An error occurred during upload';
+            // Display error message in the preview box (customize this part as needed)
+            const errorElement = document.createElement('div');
+            errorElement.classList.add('dz-error-message');
+            errorElement.innerHTML = `<span>${errorMessage}</span>`;
 
-        // Find the preview element and append the error message
-        const previewElement = file.previewElement;
-        previewElement.classList.add('dz-error'); // Add error styling to preview
-        previewElement.appendChild(errorElement); // Append the error message to preview
-        console.log('Error uploading file', response);
+            // Find the preview element and append the error message
+            const previewElement = file.previewElement;
+            previewElement.classList.add('dz-error'); // Add error styling to preview
+            previewElement.appendChild(errorElement); // Append the error message to preview
+            console.log('Error uploading file', response);
 
-        // Remove the file preview after a short delay (optional)
-        setTimeout(() => {
-            imageDropzonetwo.removeFile(file);
-        }, 10000); // Adjust the delay time as needed
-    }
-});
+            // Remove the file preview after a short delay (optional)
+            setTimeout(() => {
+                imageDropzonetwo.removeFile(file);
+            }, 10000); // Adjust the delay time as needed
+        }
+    });
 
-// Function to remove the image from both front-end and back-end
-function removeImage(imageId, imageContainer, dropzoneFile) {
-    // Send AJAX request to remove the image from the database
-    fetch("{{ route('boatowner.removegallery') }}", {
-            method: 'DELETE',
-            headers: {
-                'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                id: imageId
+    // Function to remove the image from both front-end and back-end
+    function removeImage(imageId, imageContainer, dropzoneFile) {
+        // Send AJAX request to remove the image from the database
+        fetch("{{ route('boatowner.removegallery') }}", {
+                method: 'DELETE',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    id: imageId
+                })
             })
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                imageContainer.remove();
-                if (dropzoneFile) {
-                    imageDropzone.removeFile(dropzoneFile);
-                    imageDropzonetwo.removeFile(dropzoneFile);
-                }
-                updateImageCount();
-            } else {
-
-            }
-        })
-        .catch(error => {
-
-        });
-}
-$(document).ready(function() {
-    $('#file-input').on('change', function(e) {
-        e.preventDefault();
-        var formData = new FormData();
-        formData.append('image', $('#file-input')[0].files[0]);
-        formData.append('_token', $('meta[name="csrf-token"]').attr('content'));
-        $.ajax({
-            url: "{{ route('boatowner.uploadcoverimage',$listing->id) }}", // URL for the image upload endpoint
-            type: 'POST',
-            data: formData,
-            contentType: false,
-            processData: false,
-            success: function(response) {
-                if (response.success) {
-                    var html =
-                        '<label>Cover Image:<span class="required"> * </span></label><img src="' +
-                        response.imageUrl + '" class="img-responsive pic-bordered" >';
-                    $('#uploade-cover-image').html(html)
-                    $('#statusMessage').text("Image uploaded successfully!").css('color',
-                        'green');
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    imageContainer.remove();
+                    if (dropzoneFile) {
+                        imageDropzone.removeFile(dropzoneFile);
+                        imageDropzonetwo.removeFile(dropzoneFile);
+                    }
+                    updateImageCount();
                 } else {
-                    $('#statusMessage').text("Image upload failed!").css('color', 'red');
+
                 }
-            },
-            error: function(xhr, status, error) {
-                $('#statusMessage').text('An error occurred while uploading the image.')
-                    .css('color', 'red');
-            }
+            })
+            .catch(error => {
+
+            });
+    }
+    $(document).ready(function() {
+        $('#file-input').on('change', function(e) {
+            e.preventDefault();
+            var formData = new FormData();
+            formData.append('image', $('#file-input')[0].files[0]);
+            formData.append('_token', $('meta[name="csrf-token"]').attr('content'));
+            $.ajax({
+                url: "{{ route('boatowner.uploadcoverimage',$listing->id) }}", // URL for the image upload endpoint
+                type: 'POST',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function(response) {
+                    if (response.success) {
+                        var html =
+                            '<label>Cover Image:<span class="required"> * </span></label><img src="' +
+                            response.imageUrl + '" class="img-responsive pic-bordered" >';
+                        $('#uploade-cover-image').html(html)
+                        $('#statusMessage').text("Image uploaded successfully!").css('color',
+                            'green');
+                    } else {
+                        $('#statusMessage').text("Image upload failed!").css('color', 'red');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    $('#statusMessage').text('An error occurred while uploading the image.')
+                        .css('color', 'red');
+                }
+            });
         });
     });
-});
 
-function removeImageGallery(imageId, buttonElement) {
-    swal({
+    function removeImageGallery(imageId, buttonElement) {
+        swal({
             title: "Are you sure?",
             text: "You will not be able to recover this!",
             type: "warning", // 'type' is valid in SweetAlert1
@@ -1900,6 +1984,6 @@ function removeImageGallery(imageId, buttonElement) {
                 swal("Cancelled", "The image was not removed.", "error");
             }
         });
-}
+    }
 </script>
 @endsection
