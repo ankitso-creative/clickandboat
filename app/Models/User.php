@@ -85,4 +85,8 @@ class User extends Authenticatable implements HasMedia
     {
         return $this->hasMany(Listing::class);
     }
+    public function favoriteitems() 
+    {
+        return $this->hasMany(FavoriteItem::class);
+    }
 }

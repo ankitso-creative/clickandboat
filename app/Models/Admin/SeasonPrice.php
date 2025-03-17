@@ -17,4 +17,8 @@ class SeasonPrice extends Model
     {
         return $this->belongsTo(Listing::class);
     }
+    public function price() 
+    {
+        return $this->hasOne(Price::class);
+    }
 }

@@ -158,6 +158,7 @@ Route::middleware('Setlang')->group(function(){
 
     Route::prefix('ajax')->name('ajax.')->middleware('ajax')->group(function () {
         Route::get('getregisterboatform', [AjaxController::class, 'getRegisterBoatForm'])->name('getregisterboatform');
+        Route::post('favorited-item', [AjaxController::class, 'favorited'])->name('favorite');
     });
 });
 
