@@ -58,7 +58,7 @@
     <div class="container-fluid">
         <form action="{{ route('search') }}" method="get">
             <div class="row">
-                <div class="col">
+                <div class="col location_col">
                     <label>{{ __('home.search-area')}}</label>
                     <div class="form-group has-search">
                         <span class="fa fa-search form-control-feedback"></span>
@@ -67,7 +67,7 @@
 
                     </div>
                 </div>
-                <div class="col">
+                <div class="col date_col">
                     <label>{{ __('home.starting-date')}}</label>
                     <div class="mb-4 form-group">
                         <div class="datepicker date input-group">
@@ -78,7 +78,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col">
+                <div class="col date_col">
                     <label>{{ __('home.ending-date')}}</label>
                     <div class="mb-4 form-group">
                         <div class="datepicker date input-group">
@@ -89,7 +89,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col">
+                <div class="col location_col">
                     <label>{{ __('home.boat-type')}}</label>
                     <div class="boat_select">
                         <span><i class="fa-solid fa-sailboat"></i></span>
