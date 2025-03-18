@@ -1610,11 +1610,6 @@ button:focus {
 }
 .main-dashboard-container .sidebar {
     color: #fff;
-    padding: 60px 20px;
-    text-align: center;
-}
-.main-dashboard-container .sidebar {
-    color: #fff;
     padding: 60px 35px;
     text-align: center;
 }
@@ -2426,6 +2421,9 @@ button:focus {
     color: #f9a126;
     font-size: 25px;
 }
+.wishlist_icon i {
+    color: #f9a126;
+}
 .location_leftside_box {
     border: 1px solid #ebebeb;
     border-radius: 15px;
@@ -3016,12 +3014,12 @@ button:focus {
 .pagination a.active {
     background-color: #f9a126;
     color: white;
-    border-radius: 50%;
+    border-radius: 15px;
 }
   
 .location_pagination a:hover:not(.active) {
     background-color: #fff;
-    border-radius: 50%;
+    border-radius: 15px;
     color: #f9a126;
     border: 1px solid #f9a126;
 }
@@ -3076,8 +3074,7 @@ button:focus {
     display: none;
 }
 .pac-container.pac-logo {
-    width: 300px !important;
-    left: 30px !important;
+    width: 410px !important;
 }
 .pac-item {
     padding: 5px 8px !important;
@@ -3953,7 +3950,8 @@ section.about_zigzag_section {
     border: .125rem solid #ebebeb;
     border-radius: .25rem;
 } */
-#experience label {
+#experience label,
+.setting_section label {
     font-size: 15px;
     color: #000;
     position: relative;
@@ -3967,7 +3965,8 @@ section.about_zigzag_section {
     border-bottom: 1px solid #ebebeb;
     display: flex;
 }
-#experience input[type="checkbox"] {
+#experience input[type="checkbox"],
+.setting_section input[type="checkbox"]  {
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -3981,7 +3980,8 @@ section.about_zigzag_section {
     display: inline-block;
     position: relative;
 }
-#experience input[type="checkbox"]:checked::before {
+#experience input[type="checkbox"]:checked::before,
+.setting_section input[type="checkbox"]:checked::before {
     content: "✔";
     font-size: 18px;
     color: #fff;
@@ -6030,6 +6030,9 @@ font-size: 15px;
     border-color: red;
     margin-top: 15px;
 }
+.alert.alert-success {
+    margin-top: 20px;
+}
 /*--------------------------------------------------------------
 # Media Query
 --------------------------------------------------------------*/
@@ -6535,6 +6538,9 @@ font-size: 15px;
     }
     .checking_box label {
         padding: 0 10px;
+        bottom: 20px;
+        top: auto;
+        left: 0;
     }
     .checking_box input {
         position: relative;
@@ -6553,9 +6559,6 @@ font-size: 15px;
         width: 100%;
         flex-basis: auto;
         max-width: 100%;
-    }
-    .boat_by_location .col-sm-12.col-md-6.col-lg-4 {
-        padding: 0px;
     }
     .custom-wrapper {
         padding: 0 10px 0 0px;
@@ -6629,7 +6632,71 @@ font-size: 15px;
         justify-content: center;
         padding-top: 8px;
     }
-    
+    .checking_box input[type="checkbox"] {
+        width: 50px;
+    }
+    .main-dashboard-container {
+        overflow: hidden;
+    }
+    .main-dashboard-container .deactivate-form {
+        text-align: center;
+    }
+    .your_listing_section {
+        padding: 18px 4px 0px 0px;
+    }
+    .side_bar {
+        padding: 30px 40px 6px 28px !important;
+    }
+    .listing_edit_btns {
+        padding: 0 28px;
+        text-align: center;
+    }
+    .calender_btn {
+        padding: 13px 35px;
+    }
+    .pre_list_btn {
+        padding: 13px 24px;
+    }
+    .boat_type_section {
+        margin-top: 15px;
+    }
+    .boat_type_section h3:before {
+        right: 63%;
+        width: 115px;
+    }
+    .boat_type_section h3:after {
+            left: 63%;
+            width: 115px;
+    }
+    .sidebar_box_pera h3 {
+        padding-top: 70px;
+    }
+    .sidebar_box_pera {
+        margin: 0px 30px 0 30px;
+    }
+    .your_boats_type .radio-with-Icon p.radioOption-Item {
+        width: 147px;
+    }
+    .your_boats_type .radio-with-Icon p.radioOption-Item label {
+        font-size: 11px;
+    }
+    .des__pera_text {
+        padding-top: 25px;
+        text-align: center;
+    }
+    .uploaded_img {
+        padding: 30px 5px 0 5px;
+    }
+    .photo_sec_pera {
+        text-align: center;
+    }
+    #uploade-cover-image img {
+        width: 100%;
+        height: 230px;
+        margin-top: 20px;
+    }
+
+
 }
 @media (min-width: 767px) and (max-width: 1023px) {
 
