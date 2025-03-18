@@ -671,7 +671,7 @@ button:focus {
     position: relative;
     top: -127px;
     height: 108px;
-    padding: 15px 0;
+    padding: 15px 0px 0px 32px;
 }
 .has-search .form-control {
     padding-left: 41px;
@@ -786,7 +786,7 @@ button:focus {
     padding-bottom: 35px;
 }
 .featured_boats_section {
-    margin-top: -25px;
+    margin-top: -40px;
     padding: 0 20px;
 }
 .featured_board_boxes img {
@@ -848,7 +848,7 @@ button:focus {
 .boat_reanter_owner_section .container-fluid {
     max-width: 1335px;
     margin: 0px auto;
-    padding: 0 30px;
+    padding: 0 30px 0 50px;
 }
 .boat_renter_text p {
     font-size: 15px;
@@ -2294,8 +2294,9 @@ button:focus {
     border: 1px solid #f9a126;
     color: #f9a126;
 }
-.boat_listing_images_video_save_btn{
+.boat_listing_images_video_save_btn {
     text-align: center;
+    margin-bottom: 40px;
 }
 #uploaded-images .uploaded_img img {
     width: 100% !important;
@@ -3205,16 +3206,17 @@ button:focus {
 /*--------------------------------------------------------------
 # Blog page
 --------------------------------------------------------------*/
-.blog_banner{
+.blog_banner {
     background-image: url(../img/blog-banner.jpg);
     width: 100%;
-    height: 543px;
+    height: 510px;
     background-repeat: no-repeat;
     background-size: cover;
+    position: relative;
 }
 .blog_banner_text {
     position: absolute;
-    top: 46%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 100%;
@@ -4114,7 +4116,7 @@ section.about_zigzag_section {
     top: 6px;
 }
 .boat-title .rating-menus li svg path {
-    fill: #e2b71c;
+    fill: #f9a126;
 }
 .share-menu {
     list-style: none;
@@ -4340,6 +4342,15 @@ section.about_zigzag_section {
 }
 .equip-menus li svg {
     margin-right: 10px;
+}
+.equip-menus li i {
+    margin-right: 10px;
+}
+.equip-menus li i {
+    margin-right: 10px;
+    margin-left: 4px;
+    color: #f8a126;
+    font-size: 18px;
 }
 .equip-button-sec {
     margin-bottom: 20px;
@@ -4875,7 +4886,7 @@ section.about_zigzag_section {
     text-transform: uppercase;
 }
 .boat-card-content-sec svg path {
-    fill: #f8a126;
+    fill: #f9a126;
 }
 .boat-description-sec h3 {
     color: #000;
@@ -4899,7 +4910,7 @@ section.about_zigzag_section {
 }
 .equip-button-sec a {
     background: #f8a126;
-    padding: 15px 15px;
+    padding: 12px 15px;
     display: inline-block;
     border-radius: 15px;
     color: #fff;
@@ -4948,6 +4959,13 @@ section.about_zigzag_section {
     list-style: none;
     padding-top: 15px;
 }
+.offered_rating i {
+    color: #f8a126;
+    font-size: 20px;
+}
+.offere_language i {
+    font-size: 20px;
+}
 .offered_rating li {
     display: inline-block;
     padding: 0 30px 0 0;
@@ -4967,7 +4985,7 @@ section.about_zigzag_section {
 }
 .contact_owner_btn {
     background: #f8a126;
-    padding: 13px 15px;
+    padding: 12px 15px;
     display: inline-block;
     border-radius: 15px;
     color: #fff;
@@ -5058,6 +5076,7 @@ section.about_zigzag_section {
     background: none;
     padding: 0px;
     border-radius: 15px;
+    border: 1px solid #acacac !important;
 }
 .single_boat_faq .card {
     box-shadow: none;
@@ -5149,6 +5168,11 @@ font-weight: 600;
 .price_block .price_block_price {
 font-size: 15px;
 }
+.keyinfo-icon i {
+    font-size: 26px;
+    color: #f9a126;
+}
+
 /*--------------------------------------------------------------
 # Boatowner listing
 --------------------------------------------------------------*/
@@ -6065,6 +6089,7 @@ font-size: 15px;
         top: 15px;
         height: auto;
         background: #fff;
+        padding: 0;
     }
     .search_btn {
         margin-top: 25px;
@@ -6504,9 +6529,6 @@ font-size: 15px;
     .keyinfo-sec {
         margin-top: 25px;
     }
-    .calendar-sec {
-        display: none;
-    }
     .similar_boat_section {
         padding: 0 15px;
     }
@@ -6695,6 +6717,12 @@ font-size: 15px;
         height: 230px;
         margin-top: 20px;
     }
+    .listing_banner_text h1 {
+        font-size: 30px;
+    }
+    .listing_banner_text p {
+        padding: 0 30px;
+    }
 
 
 }
@@ -6706,6 +6734,12 @@ font-size: 15px;
     .home_banner_section {
         height: 630px;
     }
+    .blog_inner_banner {
+        height: 440px;
+    }
+    .request_banner_section {
+        height: 440px;
+    }
 
 }
 @media (min-width: 1400px) and (max-width: 1499px) {
@@ -6714,6 +6748,27 @@ font-size: 15px;
     }
     .boat_by_location {
         height: 450px;
+    }
+    .about_banner_section {
+        height: 490px;
+    }
+    .featured_board_boxes img {
+        height: 345px;
+    }
+    .boat_type_section_slider .boat_type_box img {
+        height: 430px;
+    }
+    .blog_banner {
+        height: 580px;
+    }
+    .blog_inner_banner {
+        height: 490px;
+    }
+    .request_banner_section {
+        height: 490px;
+    }
+    .listing_banner {
+        height: 500px;
     }
 
 }
@@ -6724,19 +6779,50 @@ font-size: 15px;
     .boat_by_location {
         height: 470px;
     }
+    .boat_type_section_slider .boat_type_box img {
+        height: 450px;
+    }
+    .about_banner_section {
+        height: 510px;
+    }
+    .blog_banner {
+        height: 600px;
+    }
+    .blog_inner_banner {
+        height: 515px;
+    }
+    .request_banner_section {
+        height: 510px;
+    }
+    .listing_banner {
+        height: 520px;
+    }
 
 }
 @media (min-width: 1600px) and (max-width: 1899px) {
-
+    .home_banner_section {
+        height: 704px;
+    }
+    .boat_by_location {
+        height: 470px;
+    }
+    .boat_type_section_slider .boat_type_box img {
+        height: 450px;
+    }
+    .about_banner_section {
+        height: 510px;
+    }
+    .blog_banner {
+        height: 600px;
+    }
+    .blog_inner_banner {
+        height: 515px;
+    }
 
 }
 @media (min-width: 1900px) and (max-width: 2500px){
     .blog_banner {
         height: 821px;
-    }
-.blog_banner_text {
-        position: absolute;
-        top: 30%;
     }
  .home_banner_section {
         height: 960px;
@@ -6795,5 +6881,14 @@ font-size: 15px;
 }
 .location_inner_box img {
     height: 320px;
+}
+.blog_inner_banner {
+    height: 690px;
+}
+.request_banner_section {
+    height: 690px;
+}
+.listing_banner {
+    height: 695px;
 }
 }
