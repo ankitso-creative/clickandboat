@@ -348,6 +348,9 @@ h1, h2, h3, h4, h5, h6 {
 button:focus {
     outline: 0px auto -webkit-focus-ring-color;
 }
+.form-control:focus {
+    border-color: #bfc7d1;
+}
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
@@ -1791,7 +1794,7 @@ button:focus {
 }
 
 .verification_box_section {
-    border: 1px solid #ebebeb;
+    border: 1px solid #bfc7d1;
     padding: 26px 30px;
     margin-top: 30px;
     border-radius: 15px;
@@ -1851,7 +1854,7 @@ button:focus {
     text-transform: uppercase;
 }
 .main-dashboard-container .card-section {
-    border: 1px solid #ebebeb;
+    border: 1px solid #cacaca;
     padding: 26px 30px;
     margin-top: 30px;
     border-radius: 15px;
@@ -1920,7 +1923,7 @@ button:focus {
     color: #000;
 }
 .main-dashboard-container  h2 {
-    font-size: 28px;
+    font-size: 18px;
     color: #323131;
     text-transform: uppercase;
     padding-bottom: 10px;
@@ -3931,7 +3934,7 @@ section.about_zigzag_section {
     font-weight: 600 !important;
     padding-bottom: 15px;
 }
-#experience label {
+/* #experience label {
     font-size: 14px;
     color: #343a40;
     position: relative;
@@ -3949,7 +3952,48 @@ section.about_zigzag_section {
     background-color: #ced4da;
     border: .125rem solid #ebebeb;
     border-radius: .25rem;
+} */
+#experience label {
+    font-size: 15px;
+    color: #000;
+    position: relative;
+    top: -3px;
+    left: 7px;
+    font-family: 'Montserrat';
+    font-weight: 400;
 }
+  .checking_box {
+    padding-top: 20px;
+    border-bottom: 1px solid #ebebeb;
+    display: flex;
+}
+#experience input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    margin: 0 10px 0 0px;
+    background-color: #ced4da;
+    border: 2px solid #ced4da;
+    border-radius: 6px;
+    display: inline-block;
+    position: relative;
+}
+#experience input[type="checkbox"]:checked::before {
+    content: "✔";
+    font-size: 18px;
+    color: #fff;
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background: #f9a126;
+    width: 20px;
+    height: 20px;
+    border-radius: 6px;
+    padding: 0 4px;
+  }
 .nautical_row .input-group {
     padding-bottom: 10px;
 }
@@ -5242,9 +5286,9 @@ font-size: 15px;
 .active_inactive_btn {
     margin: 10px 0px 0px 15px;
 }
-.edit_profile_sec .form-control {
+/* .edit_profile_sec .form-control {
     padding: 10px 3px 10px 20px;
-}
+} */
 .equipment_sec label {
     padding: 3px 11px 0px 6px !important;
 }
@@ -5469,6 +5513,8 @@ font-size: 15px;
 }
 .dashboard_listing_edit label {
     margin-top: 15px;
+    font-size: 14px;
+    margin-bottom: 5px;
 }
 .side_bar .nav-link.active i {
     color: #f9a126;
@@ -5550,18 +5596,19 @@ font-size: 15px;
   border-bottom: 1px solid #ebebeb;
 }
 .equipment_sec input[type="checkbox"] {
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  width: 24px;
-  height: 24px;
-  cursor: pointer;
-  margin: 0 10px 0 0px;
-  background-color: transparent;
-  border: 2px solid #ebebeb;
-  border-radius: 6px;
-  display: inline-block;
-  position: relative;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    margin: 0 10px 0 0px;
+    background-color: transparent;
+    border: 2px solid #ebebeb;
+    border-radius: 6px;
+    display: inline-block;
+    position: relative;
+    top: 7px;
 }
 .equipment_sec input[type="checkbox"]:checked::before {
   content: "✔";
@@ -5575,6 +5622,11 @@ font-size: 15px;
   height: 24px;
   border-radius: 6px;
   padding: 0 5px;
+}
+.dashboard_listing_edit h4 {
+    margin-bottom: 0px;
+    margin-top: 20px;
+    font-size: 18px;
 }
 /*--------------------------------------------------------------
 # Qequest submit page
@@ -5868,6 +5920,13 @@ font-size: 15px;
     border-radius: 6px;
     padding: 0 5px;
   }
+  .main-dashboard input, .main-dashboard select, .main-dashboard textarea {
+    border: 1px solid #bfc7d1;
+}
+.form-control:disabled, .form-control[readonly] {
+    background-color: #fff;
+
+}
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
@@ -5967,11 +6026,10 @@ font-size: 15px;
 .dashboard-logo:focus-visible {
     outline: none;
 }
-.menus-customer {
-    justify-content: center;
-    padding-top: 8px;
+.alert-danger {
+    border-color: red;
+    margin-top: 15px;
 }
-
 /*--------------------------------------------------------------
 # Media Query
 --------------------------------------------------------------*/
@@ -6566,6 +6624,10 @@ font-size: 15px;
     }
     .main-dashboard-container .card-section {
         padding: 26px 15px;
+    }
+    .menus-customer {
+        justify-content: center;
+        padding-top: 8px;
     }
     
 }

@@ -94,7 +94,7 @@ flatpickr(".month-picker", {
                 charters. Welcome to Booker Boat</p>
         </div>
         <div class="listing_progress_bar">
-            <p>Progress</p>
+            <!-- <p>Progress</p> -->
         </div>
         <nav class="sidebar side_bar">
             <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
@@ -252,7 +252,7 @@ flatpickr(".month-picker", {
                     <div class="p-0 pt-4 col-sm-12">
                         <h4 class="bold ">Description</h4>
                     </div>
-                    <div class="row">
+                    <div class="pt-4 row">
                         <div class="col-md-6">
                             <textarea class="form-control" id="exampleFormControlTextarea1" rows="8" name="description">{{ $listing->description }}</textarea>
                             @error('description')<span class="required">{{ $message }}</span>@enderror
@@ -487,11 +487,11 @@ flatpickr(".month-picker", {
                             <h4 class="bold ">Low Season Prices</h4>
                         </div>
                         <div class="col-sm-4">
-                            <label>Month from:<span class="required"> </span></label>
+                            <label>Starting Month:<span class="required"> </span></label>
                             <input type="text" name="season_price[1][from]" value="{{ optional($listing->seasonPrice[0] ?? null)->from ?? '' }}" class="month-picker form-control">
                         </div>
                         <div class="col-sm-4">
-                            <label>Month to:<span class="required"> </span></label>
+                            <label>Ending Month:<span class="required"> </span></label>
                             <input type="text" name="season_price[1][to]" value="{{ optional($listing->seasonPrice[0] ?? null)->to ?? '' }}" class="month-picker form-control">
                         </div>
                         <div class="col-sm-4">
@@ -543,11 +543,11 @@ flatpickr(".month-picker", {
                             <h4 class="bold ">Mid Season Prices</h4>
                         </div>
                         <div class="col-sm-4">
-                            <label>Month from:<span class="required"> </span></label>
+                            <label>Starting Month:<span class="required"> </span></label>
                             <input type="text" name="season_price[2][from]" value="{{ optional($listing->seasonPrice[1] ?? null)->from ?? '' }}" class="month-picker form-control">
                         </div>
                         <div class="col-sm-4">
-                            <label>Month to:<span class="required"> </span></label>
+                            <label>Ending Month:<span class="required"> </span></label>
                             <input type="text" name="season_price[2][to]" value="{{ optional($listing->seasonPrice[1] ?? null)->to ?? '' }}" class="month-picker form-control">
                         </div>
                         <div class="col-sm-4">
@@ -599,11 +599,11 @@ flatpickr(".month-picker", {
                             <h4 class="bold ">High Season Prices</h4>
                         </div>
                         <div class="col-sm-4">
-                            <label>Month from:<span class="required"> </span></label>
+                            <label>Starting Month:<span class="required"> </span></label>
                             <input type="text" name="season_price[3][from]" value="{{ optional($listing->seasonPrice[2] ?? null)->from ?? '' }}" class="month-picker form-control">
                         </div>
                         <div class="col-sm-4">
-                            <label>Month to:<span class="required"> </span></label>
+                            <label>Ending Month:<span class="required"> </span></label>
                             <input type="text" name="season_price[3][to]" value="{{ optional($listing->seasonPrice[2] ?? null)->to ?? '' }}" class="month-picker form-control">
                         </div>
                         <div class="col-sm-4">
