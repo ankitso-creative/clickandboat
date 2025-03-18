@@ -30,7 +30,8 @@ class ProfileController extends Controller
     public function favourite()
     {
         $active = 'favourite';
-        return view('customer.favourite',compact('active'));
+        $results = $this->service->favouriteItems();
+        return view('customer.favourite',compact('active','results'));
     }
     public function update(ProfileRequest $request)
     {

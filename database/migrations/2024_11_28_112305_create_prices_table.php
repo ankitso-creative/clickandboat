@@ -15,15 +15,15 @@ return new class extends Migration
             $table->id();
             $table->foreignId('listing_id')->constrained()->onDelete('cascade');
             $table->foreignId('season_price_id')->constrained()->onDelete('cascade')->nullable();
-            $table->string('price');
-            $table->string('over_night_price')->nullable();
-            $table->string('one_half_day')->nullable();
-            $table->string('two_day')->nullable();
-            $table->string('three_day')->nullable();
-            $table->string('four_day')->nullable();
-            $table->string('five_day')->nullable();
-            $table->string('six_day')->nullable();
-            $table->string('one_week')->nullable();
+            $table->float('price');
+            $table->float('over_night_price')->nullable();
+            $table->float('one_half_day')->nullable();
+            $table->float('two_day')->nullable();
+            $table->float('three_day')->nullable();
+            $table->float('four_day')->nullable();
+            $table->float('five_day')->nullable(); 
+            $table->float('six_day')->nullable();
+            $table->float('one_week')->nullable();
             $table->timestamps();
         });
     }

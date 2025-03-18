@@ -562,7 +562,7 @@
                             <h2>{{ count($results) }} boats available</h2>
                         </div>
                         <div class="row">
-                            @if($results)
+                            @if(count($results))
                                 @foreach ($results as $result) 
                                     @php
                                         $heart_html = '<div class="wishlist_icon not-login-user"><i class="fa-regular fa-heart"></i></div>';
@@ -613,6 +613,10 @@
                                         </div>
                                     </div>
                                 @endforeach
+                            @else
+                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                    <p>Oops! No results found. Please try a different search or filter.</p>
+                                </div>
                             @endif
                         </div>
                     </div>

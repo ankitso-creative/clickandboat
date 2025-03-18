@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('model');
             $table->string('skipper')->nullable();
             $table->string('capacity')->nullable();
-            $table->string('length')->nullable();
+            $table->float('length')->nullable();
             $table->string('company_name');
             $table->string('website')->nullable();
             $table->string('boat_name');
