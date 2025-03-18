@@ -3,6 +3,7 @@
     use App\Models\User;
     use Illuminate\Support\Facades\Hash;
     use Illuminate\Support\Facades\Auth;
+    use App\Models\FavoriteItem;
     class ProfileRepository{
         public function updateProfile($request)
         {
@@ -51,6 +52,12 @@
                
                
             ]);
+        }
+        public function favouriteItems()
+        {
+            $userId = auth()->id();
+            $items = FavoriteItem::where('user_id', $userId)->with(['listing'])->get();
+            return $items;
         }
     }
 

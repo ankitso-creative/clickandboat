@@ -19,5 +19,9 @@ class ProfileService{
     {
         return $this->repository->uploadImage($request);
     }
+    public function favouriteItems()
+    {
+        return $this->repository->favouriteItems();
+    }
 }
 ?>

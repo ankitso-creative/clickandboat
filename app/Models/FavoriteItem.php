@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Admin\Listing;
 use Illuminate\Database\Eloquent\Model;
 
 class FavoriteItem extends Model
@@ -16,7 +17,7 @@ class FavoriteItem extends Model
     }
     public function listing() 
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Listing::class);
     }
    
 }

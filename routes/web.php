@@ -161,6 +161,3 @@ Route::middleware('Setlang')->group(function(){
         Route::post('favorited-item', [AjaxController::class, 'favorited'])->name('favorite');
     });
 });
-
-
-

@@ -132,7 +132,6 @@
                     <label>{{ __('home.boat-type')}}</label>
                     <div class="boat_select">
                         <span><i class="fa-solid fa-sailboat"></i></span>
-
                         <select name="cars" id="cars">
                             <option value="">Sailboat, motorboat,...</option>
                             <option value="saab">Sailboat</option>
