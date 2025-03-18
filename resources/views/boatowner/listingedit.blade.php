@@ -281,7 +281,7 @@
                     <h4 class="bold ">Title</h4>
                 </div>
                 <form method="POST">
-                    <div class="p-0 col-md-6">
+                    <div class="pt-3 pl-0 col-md-6">
                         <div class="form-group">
                             <input type="text" name="title" value="" class="form-control" required placeholder="E.g.: 2012  honda" value="{{ old('title', $listing->title) }}">
                             @error('title')<span class="required">{{ $message }}</span>@enderror
@@ -296,7 +296,7 @@
                             @error('description')<span class="required">{{ $message }}</span>@enderror
                         </div>
                         <div class="col-md-6">
-                            <p>Write about your yacht Number of berths, equipment, safety features. The history of the yacht, your use of this yacht (family outings, regattas).
+                            <p class="des__pera_text">Write about your yacht Number of berths, equipment, safety features. The history of the yacht, your use of this yacht (family outings, regattas).
                                 About your area!
                                 Things to see in your area (best restaurants, places to moor, a pretty cove, a place not
                                 to be missed).Some ideas on things to do with your yacht (tell us about the best places to visit from your yacht's harbour of departure).
@@ -474,7 +474,7 @@
                             </div>
                             <p class="photo_sec_pera">Add boat design plan so renters can project themselves.</p>
                         </div>
-                        <div class="col-sm-12">
+                        <div class="pt-3 col-sm-12">
                             <div id="imageDropzone-plan" class="dropzone">
                                 <div class="dz-message">
                                     <img src="{{ asset('app-assets/site_assets/img/camera.png') }}">
