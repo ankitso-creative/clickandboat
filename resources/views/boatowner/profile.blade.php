@@ -416,7 +416,7 @@
                 </div>
             </div>
         </div>
-        <div class="tab-pane" id="delete">
+        <div class="mb-5 tab-pane" id="delete">
             <div class="card-section">
                 <div class="card-sec-title">
                     <h2>Setting</h2>
