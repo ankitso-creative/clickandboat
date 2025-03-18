@@ -131,7 +131,7 @@
                                     d="M14.6666 6.66666C14.6666 4.99999 10.6666 2.66666 7.99998 2.66666C5.33331 2.66666 1.33331 4.99999 1.33331 6.66666C1.33331 7.56633 1.6247 8.466 2.20748 9.36568C4.13831 8.89966 6.06915 8.66666 7.99998 8.66666C9.89884 8.66666 11.7977 8.89201 13.6965 9.34271C14.3433 8.12733 14.6666 7.23531 14.6666 6.66666ZM7.99998 9.99999C9.77776 9.99999 11.5555 10.2222 13.3333 10.6667C12.2222 12.4444 10.4444 13.3333 7.99998 13.3333C5.55554 13.3333 3.77776 12.4444 2.66665 10.6667C4.44442 10.2222 6.2222 9.99999 7.99998 9.99999ZM7.99998 6.66666C8.55226 6.66666 8.99998 6.21894 8.99998 5.66666C8.99998 5.11437 8.55226 4.66666 7.99998 4.66666C7.44769 4.66666 6.99998 5.11437 6.99998 5.66666C6.99998 6.21894 7.44769 6.66666 7.99998 6.66666Z"
                                 ></path>
                             </svg>
-                            With or without a skipper
+                            {{ $listing->skipper }}
                         </li>
                         <li>
                             <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
@@ -188,21 +188,32 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    @php $gallery_images = $listing->getMedia('listing_gallery'); $image = $listing->getFirstMediaUrl('cover_images'); if(!$image) { $image =
-                    'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'; } $profileImage = $listing->user->getFirstMediaUrl('profile_image'); @endphp
+                    @php 
+                        $gallery_images = $listing->getMedia('listing_gallery'); 
+                        $image = $listing->getFirstMediaUrl('cover_images'); 
+                        if(!$image) 
+                        { 
+                            $image ='https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'; 
+                        } 
+                        $profileImage = $listing->user->getFirstMediaUrl('profile_image'); 
+                    @endphp
                     <div class="banner-first-image">
-                        <a href="#"><img src="{{ asset('app-assets/site_assets/img/feature-img-1.jpg') }}" alt="Image" class="img-fluid" /></a>
+                        <a href="#"><img src="{{ $image }}" alt="Image" class="img-fluid" /></a>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="banner-grid-image">
-                        @if(count($gallery_images)) @foreach ($gallery_images as $gallery_image) @if ($loop->iteration >= 1 && $loop->iteration <= 4)
-                        <a href="#"><img src="{{ $gallery_image->getUrl() }}" alt="Image" class="img-fluid" /></a>
-                        @endif @endforeach @else
-                        <a href="#"><img src="{{ asset('app-assets/site_assets/img/feature-img-3.jpg') }}" alt="Image" class="img-fluid" /></a>
-                        <a href="#"><img src="{{ asset('app-assets/site_assets/img/feature-img-3.jpg') }}" alt="Image" class="img-fluid" /></a>
-                        <a href="#"><img src="{{ asset('app-assets/site_assets/img/feature-img-3.jpg') }}" alt="Image" class="img-fluid" /></a>
-                        <a href="#"><img src="{{ asset('app-assets/site_assets/img/feature-img-3.jpg') }}" alt="Image" class="img-fluid" /></a>
+                        @if(count($gallery_images)) 
+                            @foreach ($gallery_images as $gallery_image) 
+                                @if ($loop->iteration >= 1 && $loop->iteration <= 4)
+                                    <a href="#"><img src="{{ $gallery_image->getUrl() }}" alt="Image" class="img-fluid" /></a>
+                                @endif 
+                            @endforeach 
+                        @else
+                            <a href="#"><img src="{{ asset('app-assets/site_assets/img/feature-img-3.jpg') }}" alt="Image" class="img-fluid" /></a>
+                            <a href="#"><img src="{{ asset('app-assets/site_assets/img/feature-img-3.jpg') }}" alt="Image" class="img-fluid" /></a>
+                            <a href="#"><img src="{{ asset('app-assets/site_assets/img/feature-img-3.jpg') }}" alt="Image" class="img-fluid" /></a>
+                            <a href="#"><img src="{{ asset('app-assets/site_assets/img/feature-img-3.jpg') }}" alt="Image" class="img-fluid" /></a>
                         @endif {{--
                         <div class="view-more-photos">
                             <a href="#"> View the photos (+10)</a>
@@ -728,7 +739,7 @@
     <span class="close-btn" id="closeMenu">&times;</span>
     <h3 class="p-4">Price list</h3>
     <ul class="p-4 list-unstyled">
-        @if($listing->price->price)
+        @if(optional($listing->price ?? null)->price)
             <li>
                 <div class="price_block">
                     <p class="price_block_date">Price </p>
@@ -736,7 +747,7 @@
                 </div>
             </li>
         @endif
-        @if($listing->price->over_night_price)
+        @if(optional($listing->price ?? null)->over_night_price)
             <li>
                 <div class="price_block">
                     <p class="price_block_date">Over Night Price </p>
@@ -744,7 +755,7 @@
                 </div>
             </li>
         @endif
-        @if($listing->price->one_half_day)
+        @if(optional($listing->price ?? null)->one_half_day)
             <li>
                 <div class="price_block">
                     <p class="price_block_date">One/Half Day Price</p>
@@ -752,7 +763,7 @@
                 </div>
             </li>
         @endif
-        @if($listing->price->two_day)
+        @if(optional($listing->price ?? null)->two_day)
             <li>
                 <div class="price_block">
                     <p class="price_block_date">Two Day Price </p>
@@ -760,7 +771,7 @@
                 </div>
             </li>
         @endif
-        @if($listing->price->three_day)
+        @if(optional($listing->price ?? null)->three_day)
             <li>
                 <div class="price_block">
                     <p class="price_block_date">Three Day Price </p>
@@ -768,7 +779,7 @@
                 </div>
             </li>
         @endif
-        @if($listing->price->four_day)
+        @if(optional($listing->price ?? null)->four_day)
             <li>
                 <div class="price_block">
                     <p class="price_block_date">Four Day Price </p>
@@ -776,7 +787,7 @@
                 </div>
             </li>
         @endif
-        @if($listing->price->five_day)
+        @if(optional($listing->price ?? null)->five_day)
             <li>
                 <div class="price_block">
                     <p class="price_block_date">Five Day Price </p>
@@ -784,7 +795,7 @@
                 </div>
             </li>
         @endif
-        @if($listing->price->six_day)
+        @if(optional($listing->price ?? null)->six_day)
             <li>
                 <div class="price_block">
                     <p class="price_block_date">Six Day Price </p>
@@ -792,7 +803,7 @@
                 </div>
             </li>
         @endif
-        @if($listing->price->one_week)
+        @if(optional($listing->price ?? null)->one_week)
             <li>
                 <div class="price_block">
                     <p class="price_block_date">One Week Price </p>
