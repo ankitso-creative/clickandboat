@@ -300,32 +300,32 @@
             <div class="row">
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <div class="boat_by_location_box">
-                        <h3>marina santa eulalia</h3>
+                        <h3>Sailing boat</h3>
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <div class="boat_by_location_box">
-                        <h3>puerto sant antoni</h3>
+                        <h3>Motorboat </h3>
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <div class="boat_by_location_box">
-                        <h3>marina ibiza</h3>
+                        <h3>Italy</h3>
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <div class="boat_by_location_box">
-                        <h3>marina botafoch</h3>
+                        <h3>Dubai</h3>
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <div class="boat_by_location_box">
-                        <h3>ibiza magna</h3>
+                        <h3>Croatia</h3>
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <div class="boat_by_location_box">
-                        <h3>club nautico</h3>
+                        <h3>Greece</h3>
                     </div>
                 </div>
             </div>
