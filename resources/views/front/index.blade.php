@@ -38,12 +38,51 @@
 @endsection
 @section('js')
     <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.6/dist/flatpickr.min.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAli6rCJivgzTbWznnkqFtT_btPww6WBYs&libraries=places"></script>
     <script>
         flatpickr(".datePicker-search", {
             inline: false,
             dateFormat: "d-m-Y",
             minDate: "today",
         });
+        $(document).ready(function () {
+            google.maps.event.addDomListener(window, 'load', initialize);
+        });
+        function initialize() 
+        {
+            var input = document.getElementById('location-search');
+            var autocomplete = new google.maps.places.Autocomplete(input);
+            autocomplete.addListener('place_changed', function() {
+                var place = autocomplete.getPlace();
+                if (!place.geometry || !place.address_components) {
+                    console.log("Place details not found");
+                    return;
+                }
+                var city = '';
+                var country = '';
+                var state = '';
+                for (var i = 0; i < place.address_components.length; i++) {
+                    var component = place.address_components[i];
+                    if (component.types.includes('locality')) {
+                        city = component.long_name;
+                    }
+                    if (component.types.includes('administrative_area_level_1')) {
+                        state = component.long_name;
+                    }
+                    if (component.types.includes('country')) {
+                        country = component.long_name;
+                    }
+                }
+                if (city && country && state) {
+                    input.value = city + ', ' + state + ', '+ country;
+                }
+                if(city==state)
+                {
+                    input.value = city + ', ' + country;
+                }
+                $('#search-filter-fom').submit();
+            });
+        }
     </script>
 @endsection
 @section('content')
@@ -63,7 +102,7 @@
                     <div class="form-group has-search">
                         <span class="fa fa-search form-control-feedback"></span>
 
-                        <input type="text" class="form-control" name="location" placeholder="Ibiza, Croatia, Sardinia...">
+                        <input type="text" class="form-control" name="location" id="location-search" placeholder="Ibiza, Croatia, Sardinia...">
 
                     </div>
                 </div>

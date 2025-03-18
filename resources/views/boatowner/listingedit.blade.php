@@ -19,59 +19,97 @@
 
 <script src="{{ asset('app-assets/global/plugins/bootstrap-sweetalert/sweetalert.min.js') }}" type="text/javascript">
 </script>
-<script src="{{ asset('app-assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js') }}"
-    type="text/javascript"></script>
+<script src="{{ asset('app-assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js') }}" type="text/javascript"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAli6rCJivgzTbWznnkqFtT_btPww6WBYs&libraries=places"></script>
 <!-- END PAGE LEVEL PLUGINS -->
 
 <!-- BEGIN PAGE LEVEL SCRIPTS -->
-<script src="{{ asset('app-assets/pages/scripts/ui-sweetalert.min.js') }}" type="text/javascript"></script>
-<script type="text/javascript">
-$(document).ready(function() {
-    $('#see-price').click(function() {
-        if ($('#price-list').hasClass('open')) {
+    <script src="{{ asset('app-assets/pages/scripts/ui-sweetalert.min.js') }}" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#see-price').click(function() {
+                if ($('#price-list').hasClass('open')) {
+                    $('#price-list').removeClass('open');
+                } else {
+                    $('#price-list').addClass('open');
+                }
+            });
+            $('#closeMenu').click(function() {
+                $('#price-list').removeClass('open');
+            });
+        });
+
+
+        $('#closeMenu').click(function() {
             $('#price-list').removeClass('open');
-        } else {
-            $('#price-list').addClass('open');
+        });
+
+
+        flatpickr(".from_date", {
+            inline: false,
+            dateFormat: "d-m-Y",
+            minDate: "today",
+        });
+        flatpickr(".from_to", {
+            inline: false,
+            dateFormat: "d-m-Y",
+            minDate: "today",
+        });
+        flatpickr(".datePicker", {
+            inline: false,
+            dateFormat: "d-m-Y",
+            minDate: "today",
+        });
+        flatpickr(".month-picker", {
+            plugins: [
+                new monthSelectPlugin({
+                    shorthand: true,  // Show short month names (e.g., Jan, Feb)
+                    dateFormat: "F",  // Store the value as "YYYY-MM"
+                    altFormat: "F",  // Display format as "Full Month Name Year" (e.g., March 2025)
+                    theme: "dark"  // Use dark theme (optional)
+                })
+            ],
+            
+        });
+        $(document).ready(function () {
+            google.maps.event.addDomListener(window, 'load', initialize);
+        });
+        function initialize() 
+        {
+            var input = document.getElementById('location-edit');
+            var autocomplete = new google.maps.places.Autocomplete(input);
+            autocomplete.addListener('place_changed', function() {
+                var place = autocomplete.getPlace();
+                if (!place.geometry || !place.address_components) {
+                    console.log("Place details not found");
+                    return;
+                }
+                var city = '';
+                var country = '';
+                var state = '';
+                for (var i = 0; i < place.address_components.length; i++) {
+                    var component = place.address_components[i];
+                    if (component.types.includes('locality')) {
+                        city = component.long_name;
+                    }
+                    if (component.types.includes('administrative_area_level_1')) {
+                        state = component.long_name;
+                    }
+                    if (component.types.includes('country')) {
+                        country = component.long_name;
+                    }
+                }
+                if (city && country && state) {
+                    input.value = city + ', ' + state + ', '+ country;
+                }
+                if(city==state)
+                {
+                    input.value = city + ', ' + country;
+                }
+                $('#search-filter-fom').submit();
+            });
         }
-    });
-    $('#closeMenu').click(function() {
-        $('#price-list').removeClass('open');
-    });
-});
-
-
-$('#closeMenu').click(function() {
-    $('#price-list').removeClass('open');
-});
-
-
-flatpickr(".from_date", {
-    inline: false,
-    dateFormat: "d-m-Y",
-    minDate: "today",
-});
-flatpickr(".from_to", {
-    inline: false,
-    dateFormat: "d-m-Y",
-    minDate: "today",
-});
-flatpickr(".datePicker", {
-    inline: false,
-    dateFormat: "d-m-Y",
-    minDate: "today",
-});
-flatpickr(".month-picker", {
-    plugins: [
-        new monthSelectPlugin({
-            shorthand: true,  // Show short month names (e.g., Jan, Feb)
-            dateFormat: "F",  // Store the value as "YYYY-MM"
-            altFormat: "F",  // Display format as "Full Month Name Year" (e.g., March 2025)
-            theme: "dark"  // Use dark theme (optional)
-        })
-    ],
-    
-});
-</script>
+    </script>
 @endsection
 @section('content')
 @if(session('success'))
@@ -183,7 +221,7 @@ flatpickr(".month-picker", {
                     <div class="row">
                         <div class="col-lg-4">
                             <label>City:<span class="required"> * </span></label>
-                            <input type="text" name="city" class="form-control" required value="{{ old('city', $listing->city) }}">
+                            <input type="text" name="city" id="location-edit" class="form-control" required value="{{ old('city', $listing->city) }}">
                             @error('city')<span class="required">{{ $message }}</span>@enderror
                         </div>
                         <div class="col-lg-4">
