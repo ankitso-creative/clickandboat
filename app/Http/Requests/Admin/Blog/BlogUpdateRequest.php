@@ -23,7 +23,8 @@ class BlogUpdateRequest extends FormRequest
     {
         return [
             'title' => ['required'],
-            'description' => ['required'],
+            'description' => ['required'], 
+            'banner_image' => ['file', 'mimes:jpeg,jpg', 'max:2048'],
         ];
     }
 }

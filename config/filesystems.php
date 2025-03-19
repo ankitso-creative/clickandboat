@@ -65,6 +65,13 @@ return [
             'visibility' => 'public',
             'throw' => false,
         ],
+        'blog_images' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/blog_images'),
+            'url' => env('APP_URL').'/storage/blog_images',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
         'website_logo' => [
             'driver' => 'local',
             'root' => storage_path('app/public/website_logo'),

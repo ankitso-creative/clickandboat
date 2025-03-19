@@ -15,6 +15,10 @@ class PageService{
     {
         return $this->repository->singleBoatDetails($city,$type,$slug);
     }
+    public function locationCategry($type)
+    {
+        return $this->repository->locationCategry($type);
+    }
     public function locationListing($city)
     {
         return $this->repository->locationListing($city);

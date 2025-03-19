@@ -27,43 +27,82 @@
        return `${day}-${month}-${year}`;
     }
     flatpickr("#inline-datepicker", {
-       mode: "range",
-       inline: true,
-       dateFormat: "Y-m-d",
-       multipleMonth: true,
-       showMonths: 2,
-       monthSelectorType: "static",
-       minDate: "today",
-       onChange: function(selectedDates, dateStr, instance) {
-          if(selectedDates.length === 2) {
-             const checkIn = formatDate(selectedDates[0]);
-             const checkOut = formatDate(selectedDates[1]);
-             document.getElementById('checkin-date').value = checkIn;
-             document.getElementById('checkout-date').value = checkOut;
-             $.ajax({
-             url: '{{ route('getbookingprice') }}',
-             type: 'GET',
-             data: {checkindate: checkIn, checkoutdate: checkOut, id: {{ $listing->id }}},
-             success: function(response) {
-                if (response.status) {
-                   $('#show-Price-sec').removeClass('d-none');
-                   $('#days-val').val(response.days);
-                   $('#total-days').html(response.days);
-                   $('#charter-pice').html(response.price);
-                   $('#charter-fee').html(response.servive_fee);
-                   $('#charter-total').html(response.totalAmount);
-                }
-                else
-                {
-                   $('#price_display').html('<p>Price not available.</p>');
-                }
-             },
-             error: function() {
-                   $('#price_display').html('<p>Error fetching price.</p>');
-             }
-          });
-          }
-       }
+        mode: "range",
+        inline: true,
+        dateFormat: "Y-m-d",
+        multipleMonth: true,
+        showMonths: 2,
+        monthSelectorType: "static",
+        minDate: "today",
+        onChange: function(selectedDates, dateStr, instance) {
+            if(selectedDates.length === 2) {
+                const checkIn = formatDate(selectedDates[0]);
+                const checkOut = formatDate(selectedDates[1]);
+                document.getElementById('checkin-date').value = checkIn;
+                document.getElementById('checkout-date').value = checkOut;
+                $.ajax({
+                    url: '{{ route('getbookingprice') }}',
+                    type: 'GET',
+                    data: {checkindate: checkIn, checkoutdate: checkOut, id: {{ $listing->id }}},
+                    success: function(response) {
+                        if(response.status) {
+                        $('#show-Price-sec').removeClass('d-none');
+                        $('#days-val').val(response.days);
+                        $('#total-days').html(response.days);
+                        $('#charter-pice').html(response.price);
+                        $('#charter-fee').html(response.servive_fee);
+                        $('#charter-total').html(response.totalAmount);
+                        }
+                        else
+                        {
+                        $('#price_display').html('<p>Price not available.</p>');
+                        }
+                    },
+                    error: function() {
+                        $('#price_display').html('<p>Error fetching price.</p>');
+                    }
+                });
+            }
+        }
+    });
+    flatpickr("#inline-datepicker-mobile", {
+        mode: "range",
+        inline: true,
+        dateFormat: "Y-m-d",
+        multipleMonth: true,
+        showMonths: 1,
+        monthSelectorType: "static",
+        minDate: "today",
+        onChange: function(selectedDates, dateStr, instance) {
+            if(selectedDates.length === 2) {
+                const checkIn = formatDate(selectedDates[0]);
+                const checkOut = formatDate(selectedDates[1]);
+                document.getElementById('checkin-date').value = checkIn;
+                document.getElementById('checkout-date').value = checkOut;
+                $.ajax({
+                    url: '{{ route('getbookingprice') }}',
+                    type: 'GET',
+                    data: {checkindate: checkIn, checkoutdate: checkOut, id: {{ $listing->id }}},
+                    success: function(response) {
+                        if(response.status) {
+                        $('#show-Price-sec').removeClass('d-none');
+                        $('#days-val').val(response.days);
+                        $('#total-days').html(response.days);
+                        $('#charter-pice').html(response.price);
+                        $('#charter-fee').html(response.servive_fee);
+                        $('#charter-total').html(response.totalAmount);
+                        }
+                        else
+                        {
+                        $('#price_display').html('<p>Price not available.</p>');
+                        }
+                    },
+                    error: function() {
+                        $('#price_display').html('<p>Error fetching price.</p>');
+                    }
+                });
+            }
+        }
     });
     flatpickr("#checkin-date", {
        inline: false,
@@ -363,6 +402,7 @@
                                 <a href="javascript:;" id="see-price"> See the price list</a>
                             </div>
                             <div id="inline-datepicker"></div>
+                            <div id="inline-datepicker-mobile"></div>
                             <a href="#" class="delete_dates">Delete the dates</a>
                         </div>
                     </div>

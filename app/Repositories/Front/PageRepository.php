@@ -23,9 +23,14 @@
             endif;
             return $listing;
         }
+        public function locationCategry($type)
+        {
+            $listing = Listing::where('status', '1')->where('type',$type)->with(['price'])->paginate(9);
+            return $listing;
+        }
         public function locationListing($city)
         {
-            $listing =  $listing = Listing::where('status', '1')->where('city', $city)->with(['price'])->paginate(9);
+            $listing =  Listing::where('status', '1')->where('city', $city)->with(['price'])->paginate(9);
             return $listing;
         }
         public function getListingData()
