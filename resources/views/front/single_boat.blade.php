@@ -401,8 +401,12 @@
                             <div class="calendar-btn-sec">
                                 <a href="javascript:;" id="see-price"> See the price list</a>
                             </div>
-                            <div id="inline-datepicker"></div>
-                            <div id="inline-datepicker-mobile"></div>
+                            <div class="datepicker-desktop">
+                                <div id="inline-datepicker"></div>
+                            </div>
+                            <div class="datepicker-mobile">
+                                <div id="inline-datepicker-mobile"></div>
+                            </div>
                             <a href="#" class="delete_dates">Delete the dates</a>
                         </div>
                     </div>
