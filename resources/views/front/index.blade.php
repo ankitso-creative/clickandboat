@@ -2,88 +2,90 @@
 @section('meta')
 <title>Home</title>
 <style>
-   .image-box {
-        position: relative;
-        display: inline-block;
-        cursor: none;
-    }
-     .cursor {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 80px;
-        height: 80px;
-        color: black;
-        font-size: 60px;
-        font-weight: 800;
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transform: translate(-50%, -50%);
-        pointer-events: none;
-        transition: transform 0.15s ease-out;
-        opacity: 0;
-        z-index: 999;
-        text-transform: uppercase;
-        color: #f9a126;
-    }
-    .cursor.active {
-        opacity: 1;
-    }
+.image-box {
+    position: relative;
+    display: inline-block;
+    cursor: none;
+}
+
+.cursor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80px;
+    height: 80px;
+    color: black;
+    font-size: 60px;
+    font-weight: 800;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    transition: transform 0.15s ease-out;
+    opacity: 0;
+    z-index: 999;
+    text-transform: uppercase;
+    color: #f9a126;
+}
+
+.cursor.active {
+    opacity: 1;
+}
 </style>
 @endsection
 @section('css')
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.6/dist/flatpickr.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.6/dist/flatpickr.min.css">
 @endsection
 @section('js')
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.6/dist/flatpickr.min.js"></script>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAli6rCJivgzTbWznnkqFtT_btPww6WBYs&libraries=places"></script>
-    <script>
-        flatpickr(".datePicker-search", {
-            inline: false,
-            dateFormat: "d-m-Y",
-            minDate: "today",
-        });
-        $(document).ready(function () {
-            google.maps.event.addDomListener(window, 'load', initialize);
-        });
-        function initialize() 
-        {
-            var input = document.getElementById('location-search');
-            var autocomplete = new google.maps.places.Autocomplete(input);
-            autocomplete.addListener('place_changed', function() {
-                var place = autocomplete.getPlace();
-                if (!place.geometry || !place.address_components) {
-                    console.log("Place details not found");
-                    return;
-                }
-                var city = '';
-                var country = '';
-                var state = '';
-                for (var i = 0; i < place.address_components.length; i++) {
-                    var component = place.address_components[i];
-                    if (component.types.includes('locality')) {
-                        city = component.long_name;
-                    }
-                    if (component.types.includes('administrative_area_level_1')) {
-                        state = component.long_name;
-                    }
-                    if (component.types.includes('country')) {
-                        country = component.long_name;
-                    }
-                }
-                if (city && country && state) {
-                    input.value = city + ', ' + state + ', '+ country;
-                }
-                if(city==state)
-                {
-                    input.value = city + ', ' + country;
-                }
-                $('#search-filter-fom').submit();
-            });
+<script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.6/dist/flatpickr.min.js"></script>
+<script type="text/javascript"
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAli6rCJivgzTbWznnkqFtT_btPww6WBYs&libraries=places"></script>
+<script>
+flatpickr(".datePicker-search", {
+    inline: false,
+    dateFormat: "d-m-Y",
+    minDate: "today",
+});
+$(document).ready(function() {
+    google.maps.event.addDomListener(window, 'load', initialize);
+});
+
+function initialize() {
+    var input = document.getElementById('location-search');
+    var autocomplete = new google.maps.places.Autocomplete(input);
+    autocomplete.addListener('place_changed', function() {
+        var place = autocomplete.getPlace();
+        if (!place.geometry || !place.address_components) {
+            console.log("Place details not found");
+            return;
         }
-    </script>
+        var city = '';
+        var country = '';
+        var state = '';
+        for (var i = 0; i < place.address_components.length; i++) {
+            var component = place.address_components[i];
+            if (component.types.includes('locality')) {
+                city = component.long_name;
+            }
+            if (component.types.includes('administrative_area_level_1')) {
+                state = component.long_name;
+            }
+            if (component.types.includes('country')) {
+                country = component.long_name;
+            }
+        }
+        if (city && country && state) {
+            input.value = city + ', ' + state + ', ' + country;
+        }
+        if (city == state) {
+            input.value = city + ', ' + country;
+        }
+        $('#search-filter-fom').submit();
+    });
+}
+</script>
 @endsection
 @section('content')
 <!-- Banner Section -->
@@ -102,7 +104,8 @@
                     <div class="form-group has-search">
                         <span class="fa fa-search form-control-feedback"></span>
 
-                        <input type="text" class="form-control" name="location" id="location-search" placeholder="Ibiza, Croatia, Sardinia...">
+                        <input type="text" class="form-control" name="location" id="location-search"
+                            placeholder="Ibiza, Croatia, Sardinia...">
 
                     </div>
                 </div>
@@ -113,7 +116,8 @@
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fa-solid fa-calendar-days"></i></span>
                             </div>
-                            <input type="text" placeholder="DD/MM/YYYY" name="startdate" class="form-control datePicker-search" id="fecha1">
+                            <input type="text" placeholder="DD/MM/YYYY" name="startdate"
+                                class="form-control datePicker-search" id="fecha1">
                         </div>
                     </div>
                 </div>
@@ -124,7 +128,8 @@
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fa-solid fa-calendar-days"></i></span>
                             </div>
-                            <input type="text" placeholder="DD/MM/YYYY" name="enddate" class="form-control datePicker-search" id="fecha1">
+                            <input type="text" placeholder="DD/MM/YYYY" name="enddate"
+                                class="form-control datePicker-search" id="fecha1">
                         </div>
                     </div>
                 </div>
@@ -264,28 +269,94 @@
         <h2>Boat Types</h2>
         <div class="row boat_type_slider">
             <div class="col-sm-12 col-md-6 col-lg-6">
-                <div class="boat_type_box">
-                    <img src="{{ asset('app-assets/site_assets/img/boat-type-1.jpg') }}" alt="boat-img">
-                    <div class="boat_type_text">
-                        <h3>Motorboat</h3>
+                <a href="#">
+                    <div class="boat_type_box">
+                        <img src="{{ asset('app-assets/site_assets/img/boat-type-1.jpg') }}" alt="boat-img">
+                        <div class="boat_type_text">
+                            <h3>Motorboat</h3>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-6">
-                <div class="boat_type_box">
-                    <img src="{{ asset('app-assets/site_assets/img/boat-type-2.jpg') }}" alt="boat-img">
-                    <div class="boat_type_text">
-                        <h3>RIBS</h3>
+                <a href="#">
+                    <div class="boat_type_box">
+                        <img src="{{ asset('app-assets/site_assets/img/boat-type-2.jpg') }}" alt="boat-img">
+                        <div class="boat_type_text">
+                            <h3>RIBS</h3>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-6">
-                <div class="boat_type_box">
-                    <img src="{{ asset('app-assets/site_assets/img/boat-type-2.jpg') }}" alt="boat-img">
-                    <div class="boat_type_text">
-                        <h3>RIBS</h3>
+                <a href="#">
+                    <div class="boat_type_box">
+                        <img src="{{ asset('app-assets/site_assets/img/boat-type-2.jpg') }}" alt="boat-img">
+                        <div class="boat_type_text">
+                            <h3>Sailboat</h3>
+                        </div>
                     </div>
-                </div>
+                </a>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-6">
+                <a href="#">
+                    <div class="boat_type_box">
+                        <img src="{{ asset('app-assets/site_assets/img/boat-type-1.jpg') }}" alt="boat-img">
+                        <div class="boat_type_text">
+                            <h3>Catamaran</h3>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-6">
+                <a href="#">
+                    <div class="boat_type_box">
+                        <img src="{{ asset('app-assets/site_assets/img/boat-type-2.jpg') }}" alt="boat-img">
+                        <div class="boat_type_text">
+                            <h3>Sailing yacht</h3>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-6">
+                <a href="#">
+                    <div class="boat_type_box">
+                        <img src="{{ asset('app-assets/site_assets/img/boat-type-1.jpg') }}" alt="boat-img">
+                        <div class="boat_type_text">
+                            <h3>Fishing boat</h3>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-6">
+                <a href="#">
+                    <div class="boat_type_box">
+                        <img src="{{ asset('app-assets/site_assets/img/boat-type-2.jpg') }}" alt="boat-img">
+                        <div class="boat_type_text">
+                            <h3>Monohull</h3>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-6">
+                <a href="#">
+                    <div class="boat_type_box">
+                        <img src="{{ asset('app-assets/site_assets/img/boat-type-1.jpg') }}" alt="boat-img">
+                        <div class="boat_type_text">
+                            <h3>Jet skis</h3>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-6">
+                <a href="#">
+                    <div class="boat_type_box">
+                        <img src="{{ asset('app-assets/site_assets/img/boat-type-2.jpg') }}" alt="boat-img">
+                        <div class="boat_type_text">
+                            <h3>Yacht</h3>
+                        </div>
+                    </div>
+                </a>
             </div>
         </div>
     </div>
@@ -298,34 +369,46 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-12 col-md-6 col-lg-4">
-                    <div class="boat_by_location_box">
-                        <h3>Sailing boat</h3>
-                    </div>
+                    <a href="#">
+                        <div class="boat_by_location_box">
+                            <h3>Ibiza</h3>
+                        </div>
+                    </a>
                 </div>
                 <div class="col-sm-12 col-md-6 col-lg-4">
-                    <div class="boat_by_location_box">
-                        <h3>Motorboat </h3>
-                    </div>
+                    <a href="#">
+                        <div class="boat_by_location_box">
+                            <h3>Guadeloupe </h3>
+                        </div>
+                    </a>
                 </div>
                 <div class="col-sm-12 col-md-6 col-lg-4">
-                    <div class="boat_by_location_box">
-                        <h3>Italy</h3>
-                    </div>
+                    <a href="#">
+                        <div class="boat_by_location_box">
+                            <h3>Italy</h3>
+                        </div>
+                    </a>
                 </div>
                 <div class="col-sm-12 col-md-6 col-lg-4">
-                    <div class="boat_by_location_box">
-                        <h3>Dubai</h3>
-                    </div>
+                    <a href="#">
+                        <div class="boat_by_location_box">
+                            <h3>Dubai</h3>
+                        </div>
+                    </a>
                 </div>
                 <div class="col-sm-12 col-md-6 col-lg-4">
-                    <div class="boat_by_location_box">
-                        <h3>Croatia</h3>
-                    </div>
+                    <a href="#">
+                        <div class="boat_by_location_box">
+                            <h3>Croatia</h3>
+                        </div>
+                    </a>
                 </div>
                 <div class="col-sm-12 col-md-6 col-lg-4">
-                    <div class="boat_by_location_box">
-                        <h3>Greece</h3>
-                    </div>
+                    <a href="#">
+                        <div class="boat_by_location_box">
+                            <h3>Greece</h3>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -584,7 +667,7 @@
     </div>
 </section>
 <script>
-    $(document).ready(function() {
+$(document).ready(function() {
     const cursor = $('.cursor');
     // Mousemove event to update cursor position
     $(document).mousemove(function(event) {
@@ -594,21 +677,21 @@
         });
     });
     // Hover event for location_slide to activate cursor
-    $(".location_slide").each(function () {
-            let $this = $(this);
+    $(".location_slide").each(function() {
+        let $this = $(this);
 
-            // Add active class when the slide is active
-            $this.hover(
-                function () {
-                    $this.find(".cursor").addClass("active");
-                    $this.find(".cursor").text("Explore");
-                },
-                function () {
-                    $this.find(".cursor").text("");
-                    $this.find(".cursor").removeClass("active");
-                }
-            );
-        });
+        // Add active class when the slide is active
+        $this.hover(
+            function() {
+                $this.find(".cursor").addClass("active");
+                $this.find(".cursor").text("Explore");
+            },
+            function() {
+                $this.find(".cursor").text("");
+                $this.find(".cursor").removeClass("active");
+            }
+        );
+    });
 
     $('.image-box').mouseleave(function() {
         cursor.removeClass('active').text('');

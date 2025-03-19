@@ -3191,7 +3191,7 @@ button:focus {
     pointer-events: none;
     cursor: pointer;
     -webkit-appearance: none;
-    z-index: 999;
+    z-index: 11;
 }
 .range-input input[type="range"]::-webkit-slider-thumb,
 .boat-input input[type="range"]::-webkit-slider-thumb  {
@@ -3978,7 +3978,7 @@ section.about_zigzag_section {
     margin: 0 10px 0 0px;
     background-color: #ced4da;
     border: 2px solid #ced4da;
-    border-radius: 6px;
+    border-radius: 0px;
     display: inline-block;
     position: relative;
 }
@@ -3993,7 +3993,7 @@ section.about_zigzag_section {
     background: #f9a126;
     width: 20px;
     height: 20px;
-    border-radius: 6px;
+    border-radius: 0px;
     padding: 0 4px;
   }
 .nautical_row .input-group {
@@ -5627,9 +5627,9 @@ font-size: 15px;
     height: 24px;
     cursor: pointer;
     margin: 0 10px 0 0px;
-    background-color: transparent;
-    border: 2px solid #ebebeb;
-    border-radius: 6px;
+    background-color: #ced4da;
+    border: 2px solid #ced4da;
+    border-radius: 0px;
     display: inline-block;
     position: relative;
     top: 7px;
@@ -5644,7 +5644,7 @@ font-size: 15px;
   background: #f9a126;
   width: 24px;
   height: 24px;
-  border-radius: 6px;
+  border-radius: 0px;
   padding: 0 5px;
 }
 .dashboard_listing_edit h4 {
@@ -5843,6 +5843,7 @@ font-size: 15px;
     text-transform: uppercase;
     font-weight: 600;
     padding-bottom: 10px;
+    color: #575757;
 }
 .checking_box label {
     font-weight: 600;
@@ -5927,7 +5928,7 @@ font-size: 15px;
     margin: 0 10px 0 0px;
     background-color: transparent;
     border: 2px solid #f9a126;
-    border-radius: 6px;
+    border-radius: 0px;
     display: inline-block;
     position: relative;
 }
@@ -5939,9 +5940,9 @@ font-size: 15px;
     top: -2px;
     left: -2px;
     background: #f9a126;
-    width: 24px;
-    height: 24px;
-    border-radius: 6px;
+    width: 20px;
+    height: 20px;
+    border-radius: 0px;
     padding: 0 5px;
   }
   .main-dashboard input, .main-dashboard select, .main-dashboard textarea {
@@ -6066,7 +6067,7 @@ font-size: 15px;
     }
     .nav-mobile {
         display: block;
-        position: absolute;
+        position: fixed;
         top: 0;
         width: 100%;
         z-index: 999;
@@ -6096,7 +6097,7 @@ font-size: 15px;
         width: 100%;
     }
     .featured_boats_section {
-        margin-top: 40px;
+        margin-top: 60px;
     }
     .featured_boat_heading h2 {
         font-size: 30px;
@@ -6276,11 +6277,8 @@ font-size: 15px;
         line-height: 32px;
         padding: 0 15px;
     }
-    ..blog_banner {
+    .blog_banner {
         height: 485px;
-    }
-    .blog_banner_text {
-        top: 33%;
     }
     .destination_info_section {
         margin-top: 40px;
@@ -6722,6 +6720,16 @@ font-size: 15px;
     }
     .listing_banner_text p {
         padding: 0 30px;
+    }
+    .comment-form-cookies-consent label {
+        top: -16px;
+    }
+    .comment-form-cookies-consent input[type="checkbox"] {
+        width: 35px;
+        height: 22px;
+    }
+    .single_blog_comment_section {
+        padding: 50px 0px;
     }
 
 
