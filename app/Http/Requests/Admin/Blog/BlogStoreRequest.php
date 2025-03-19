@@ -24,6 +24,7 @@ class BlogStoreRequest extends FormRequest
         return [
             'title' => ['required'],
             'description' => ['required'],
+            'banner_image' => ['required', 'file', 'mimes:jpeg,jpg', 'max:2048'],
         ];
     }
 }

@@ -3,9 +3,11 @@
 namespace App\Models\Admin;
 
 use Illuminate\Database\Eloquent\Model;
-
-class Blog extends Model
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia; 
+class Blog extends Model implements HasMedia
 {
+    use InteractsWithMedia;
     protected $fillable = [
         'title',
         'description',

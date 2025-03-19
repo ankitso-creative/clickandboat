@@ -30,6 +30,18 @@
 										<input type="text" name="title" value="{{ $result->title }}" class="form-control"/> 
                                         @error('title')<span class="required">{{ $message }}</span>@enderror
 									</div>
+									<div class="col-sm-4">
+										<label>Banner Image:<span class="required"> </span></label>
+										<input type="file" name="banner_image" value="" class="form-control"/> 
+                                        @error('banner_image')<span class="required">{{ $message }}</span>@enderror
+									</div>
+									<?php 
+									//dd($result->getFirstMediaUrl('blog_image'));
+									?>
+									<div class="col-sm-4">
+										<label>Banner Image:<span class="required"> </span></label>
+										<img src="{{ $result->getFirstMediaUrl('blog_image') }}" class="img-responsive">
+									</div>
 									<div class="col-sm-12">
 										<label>Description:<span class="required"> * </span></label>
 										<textarea name="description" id="summernote" class="form-control">{{ $result->description }}</textarea>

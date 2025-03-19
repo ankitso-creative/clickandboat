@@ -134,15 +134,15 @@
                         <span><i class="fa-solid fa-sailboat"></i></span>
                         <select name="cars" id="cars">
                             <option value="">Sailboat, motorboat,...</option>
-                            <option value="saab">Sailboat</option>
-                            <option value="opel">Motorboat</option>
-                            <option value="audi">Catamaran</option>
-                            <option value="audi">Sailing yacht</option>
-                            <option value="audi">Fishing boat</option>
-                            <option value="audi">Monohull</option>
-                            <option value="audi">Jet skis</option>
-                            <option value="audi">Rib</option>
-                            <option value="audi">Yacht</option>
+                            <option value="Motorboat">Motorboat</option>
+                            <option value="Sailboat">Sailboat</option>
+                            <option value="RIB">RIB</option>
+                            <option value="Catamaran">Catamaran</option>
+                            <option value="Houseboat">Houseboat</option>
+                            <option value="Jet ski">Jet ski</option>
+                            <option value="Gulet">Gule </option>
+                            <option value="Boat without licence">Boat without licence</option>
+                            <option value="Yacht">Yacht</option>
                         </select>
                     </div>
                 </div>

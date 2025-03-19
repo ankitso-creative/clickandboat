@@ -13,6 +13,7 @@ class BlogRepository
         $blog->title = $request['title'];
         $blog->description = $request['description'];
         if($blog->save()):
+            self::uploadImage($request['banner_image'],$blog->id);
             return true;
         else:
             return false;
@@ -20,7 +21,7 @@ class BlogRepository
     }
     public function blogEdit($id)
     {
-        return Blog::find($id);
+        return Blog::with('media')->find($id);
     }
     public function blogUpdate($request,$id)
     {
@@ -28,6 +29,9 @@ class BlogRepository
        $blog->title = $request['title'];
        $blog->description = $request['description'];
         if($blog->update()):
+            if(isset($request['banner_image']) && $request['banner_image']) {
+                self::uploadImage($request['banner_image'],$blog->id);
+            }
             return true;
         else:
             return false;
@@ -58,5 +62,15 @@ class BlogRepository
         $blog->update();
         return $blog;
     }
-
+    public function uploadImage($request,$id)
+    {
+        $blog = Blog::find($id);
+        if ($blog->hasMedia('blog_image')) {
+            $blog->getMedia('blog_image')->each(function ($media) {
+                $media->delete();  
+            });
+        }
+        $media = $blog->addMediaFromRequest('banner_image')->toMediaCollection('blog_image','blog_images'); 
+        return $media;
+    }
 }
