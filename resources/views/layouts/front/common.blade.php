@@ -89,7 +89,7 @@
                 !!}
             </select>
         </li>
-        <li><img src="{{ logoURL() }}"></li>
+        <li><a href="{{ route('home') }}"><img src="{{ logoURL() }}"></a></li>
         <li class="menu-container">
             <input id="menu-toggle" type="checkbox">
             <label for="menu-toggle" class="menu-button">
