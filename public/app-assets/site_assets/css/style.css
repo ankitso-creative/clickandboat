@@ -6058,6 +6058,9 @@ font-size: 15px;
 .alert.alert-success {
     margin-top: 20px;
 }
+#inline-datepicker-mobile {
+    display: none;
+}
 /*--------------------------------------------------------------
 # Media Query
 --------------------------------------------------------------*/
