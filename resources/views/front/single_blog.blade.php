@@ -127,6 +127,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes"> 
                             <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label>
                         </p>
@@ -136,6 +137,7 @@
                                     <button class="close" data-close="alert"></button>
                                     <span class="message"></span>
                                 </div>
+
                             </div>
                         </div>
                         <button type="submit" class="post_comment_btn">Post Comment</button>
