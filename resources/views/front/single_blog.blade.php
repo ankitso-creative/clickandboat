@@ -76,21 +76,21 @@
     <div class="container-fluid">
         <div class="row">
             @if($relatedBlogs)
-                @foreach($relatedBlogs as $relatedBlog)
-                    <div class="col-sm-12 col-md-6 col-lg-4">
-                        <div class="next_trip_box">
-                            <img src="{{ asset('app-assets/site_assets/img/blog-img-1.jpg') }}">
-                            <div class="next_trip_text">
-                                <h3>{{ $relatedBlog->title }}</h3>
-                                <p>{{ substr(strip_tags($relatedBlog->description),0,170) }}...</p>
-                                <div class="trip_date_text">
-                                    <span><a href="{{ route('single-blog',$relatedBlog->slug) }}">View Post</a></span>
-                                    <span>{{ \Carbon\Carbon::parse($relatedBlog->created_at)->format('F d, Y') }}</span>
-                                </div>
-                            </div>
+            @foreach($relatedBlogs as $relatedBlog)
+            <div class="col-sm-12 col-md-6 col-lg-4">
+                <div class="next_trip_box">
+                    <img src="{{ asset('app-assets/site_assets/img/blog-img-1.jpg') }}">
+                    <div class="next_trip_text">
+                        <h3>{{ $relatedBlog->title }}</h3>
+                        <p>{{ substr(strip_tags($relatedBlog->description),0,170) }}...</p>
+                        <div class="trip_date_text">
+                            <span><a href="{{ route('single-blog',$relatedBlog->slug) }}">View Post</a></span>
+                            <span>{{ \Carbon\Carbon::parse($relatedBlog->created_at)->format('F d, Y') }}</span>
                         </div>
                     </div>
-                @endforeach
+                </div>
+            </div>
+            @endforeach
             @endif
         </div>
     </div>
@@ -99,6 +99,55 @@
 <!-- Single blog form Section -->
 <section class="single_blog_comment_section">
     <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="comment_section">
+                    <h5 class="comment_sec_title">0 comments</h5>
+                    <ol class="comment-list">
+                        <li>
+                            <div class="comment_section_image_text">
+                                <div class="comment_sec_img">
+                                    <img
+                                        src="https://secure.gravatar.com/avatar/932c8ea1b10749d281aff4113d5feb42?s=60&d=mm&r=g">
+                                </div>
+                                <div class="comment_sec_text">
+                                    <h5 class="author_name">Abhishek</h5>
+                                    <a href=""><time>20 March 2025 at 5 h 24 min</time></a>
+                                    <p class="awaiting_content">Your comment is awaiting moderation.</p>
+                                </div>
+                            </div>
+                            <div class="comment_content">
+                                <p class="cus_comment_reply">Great</p>
+                            </div>
+                            <div class="commet_reply">
+                                <a href="" class="comment_reply_btn">Reply</a>
+                            </div>
+                            <ol class="comment-list comment_reply_sec">
+                                <li>
+                                    <div class="comment_section_image_text">
+                                        <div class="comment_sec_img">
+                                            <img
+                                                src="https://secure.gravatar.com/avatar/932c8ea1b10749d281aff4113d5feb42?s=60&d=mm&r=g">
+                                        </div>
+                                        <div class="comment_sec_text">
+                                            <h5 class="author_name">Abhishek</h5>
+                                            <a href=""><time>20 March 2025 at 5 h 24 min</time></a>
+                                            <p class="awaiting_content">Your comment is awaiting moderation.</p>
+                                        </div>
+                                    </div>
+                                    <div class="comment_content">
+                                        <p class="cus_comment_reply">Great</p>
+                                    </div>
+                                    <div class="commet_reply">
+                                        <a href="" class="comment_reply_btn">Reply</a>
+                                    </div>
+                                </li>
+                            </ol>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-12">
                 <h3>Leave a Reply</h3>
@@ -112,8 +161,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Name*</label>
-                                <input type="text" class="form-control" id="name"
-                                    aria-describedby="name">
+                                <input type="text" class="form-control" id="name" aria-describedby="name">
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -126,12 +174,14 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Website</label>
-                                <input type="text" class="form-control" id="website"
-                                    aria-describedby="website">
+                                <input type="text" class="form-control" id="website" aria-describedby="website">
                             </div>
                         </div>
                     </div>
-                    <p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes"> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
+                    <p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent"
+                            name="wp-comment-cookies-consent" type="checkbox" value="yes"> <label
+                            for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the
+                            next time I comment.</label></p>
                     <button type="submit" class="post_comment_btn">Post Comment</button>
                 </form>
             </div>
