@@ -35,9 +35,6 @@
 										<input type="file" name="banner_image" value="" class="form-control"/> 
                                         @error('banner_image')<span class="required">{{ $message }}</span>@enderror
 									</div>
-									<?php 
-									//dd($result->getFirstMediaUrl('blog_image'));
-									?>
 									<div class="col-sm-4">
 										<label>Banner Image:<span class="required"> </span></label>
 										<img src="{{ $result->getFirstMediaUrl('blog_image') }}" class="img-responsive">

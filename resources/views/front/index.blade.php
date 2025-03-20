@@ -369,42 +369,42 @@ function initialize() {
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-12 col-md-6 col-lg-4">
-                    <a href="#">
+                    <a href="{{ route('locationlisting','Ibiza') }}">
                         <div class="boat_by_location_box">
                             <h3>Ibiza</h3>
                         </div>
                     </a>
                 </div>
                 <div class="col-sm-12 col-md-6 col-lg-4">
-                    <a href="#">
+                    <a href="{{ route('locationlisting','Guadeloupe') }}">
                         <div class="boat_by_location_box">
                             <h3>Guadeloupe </h3>
                         </div>
                     </a>
                 </div>
                 <div class="col-sm-12 col-md-6 col-lg-4">
-                    <a href="#">
+                    <a href="{{ route('locationlisting','Italy') }}">
                         <div class="boat_by_location_box">
                             <h3>Italy</h3>
                         </div>
                     </a>
                 </div>
                 <div class="col-sm-12 col-md-6 col-lg-4">
-                    <a href="#">
+                    <a href="{{ route('locationlisting','Dubai') }}">
                         <div class="boat_by_location_box">
                             <h3>Dubai</h3>
                         </div>
                     </a>
                 </div>
                 <div class="col-sm-12 col-md-6 col-lg-4">
-                    <a href="#">
+                    <a href="{{ route('locationlisting','Croatia') }}">
                         <div class="boat_by_location_box">
                             <h3>Croatia</h3>
                         </div>
                     </a>
                 </div>
                 <div class="col-sm-12 col-md-6 col-lg-4">
-                    <a href="#">
+                    <a href="{{ route('locationlisting','Greece') }}">
                         <div class="boat_by_location_box">
                             <h3>Greece</h3>
                         </div>
@@ -618,51 +618,23 @@ function initialize() {
         for your next trip</h2>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-12 col-md-6 col-lg-4">
-                <div class="next_trip_box">
-                    <img src="{{ asset('app-assets/site_assets/img/blog-img-1.jpg') }}">
-                    <div class="next_trip_text">
-                        <h3>Sailing events to look out for in 2025</h3>
-                        <p>Every year, the boating world surprises and delights sailing fans around the world with
-                            events, races and regattas. We’ve put together a short list of sailing events we’ll be
-                            looking…</p>
-                        <div class="trip_date_text">
-                            <span><a href="">View Post</a></span>
-                            <span>January 11, 2025</span>
+            @if($blogs)
+                @foreach($blogs as $blog)
+                    <div class="col-sm-12 col-md-6 col-lg-4">
+                        <div class="next_trip_box">
+                            <img src="{{ asset('app-assets/site_assets/img/blog-img-1.jpg') }}">
+                            <div class="next_trip_text">
+                                <h3>{{ $blog->title }}</h3>
+                                <p>{{ substr(strip_tags($blog->description),0,170) }}...</p>
+                                <div class="trip_date_text">
+                                    <span><a href="{{ route('single-blog',$blog->slug) }}">View Post</a></span>
+                                    <span>{{ \Carbon\Carbon::parse($blog->created_at)->format('F d, Y') }}</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-6 col-lg-4">
-                <div class="next_trip_box">
-                    <img src="{{ asset('app-assets/site_assets/img/blog-img-2.jpg') }}">
-                    <div class="next_trip_text">
-                        <h3>Sailing events to look out for in 2025</h3>
-                        <p>Every year, the boating world surprises and delights sailing fans around the world with
-                            events, races and regattas. We’ve put together a short list of sailing events we’ll be
-                            looking…</p>
-                        <div class="trip_date_text">
-                            <span><a href="">View Post</a></span>
-                            <span>January 11, 2025</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-6 col-lg-4">
-                <div class="next_trip_box">
-                    <img src="{{ asset('app-assets/site_assets/img/blog-img-3.jpg') }}">
-                    <div class="next_trip_text">
-                        <h3>Sailing events to look out for in 2025</h3>
-                        <p>Every year, the boating world surprises and delights sailing fans around the world with
-                            events, races and regattas. We’ve put together a short list of sailing events we’ll be
-                            looking…</p>
-                        <div class="trip_date_text">
-                            <span><a href="">View Post</a></span>
-                            <span>January 11, 2025</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                @endforeach
+            @endif
         </div>
     </div>
 </section>

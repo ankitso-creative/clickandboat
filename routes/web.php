@@ -43,7 +43,7 @@ Route::middleware('Setlang')->group(function(){
         Route::put('profile/update', [AdminLoginController::class, 'update'])->name('update');
         Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
         Route::resource('users', UsersController::class);
-        Route::post('change_status', [UsersController::class, 'changeStatus'])->name('change-status');
+        Route::post('user_change_status', [UsersController::class, 'changeStatus'])->name('userchange');
         Route::get('boatowner', [UsersController::class, 'index'])->name('boatowner');
         Route::get('customer', [UsersController::class, 'customers'])->name('customer');
         Route::get('listing',[ListingController::class, 'index'])->name('listing');
@@ -148,7 +148,8 @@ Route::middleware('Setlang')->group(function(){
     Route::get('/privacy-policy', [PagesController::class, 'PrivacyPolicy'])->name('privacy-policy');
     Route::get('/terms-condition', [PagesController::class, 'terms'])->name('terms-condition');
     Route::get('/blogs', [PagesController::class, 'blog'])->name('blogs');
-    Route::get('/blog', [PagesController::class, 'singleBlog'])->name('blog');
+    //Route::get('/blog', [PagesController::class, 'singleBlog'])->name('blog');
+    Route::get('/blog/{slug}', [PagesController::class, 'singleBlog'])->name('single-blog');
 
     Route::get('single/{slug}', [PagesController::class, 'single'])->name('single');
     Route::get('boat-rental/{city}/{type}/{slug}', [PagesController::class, 'singleBoat'])->name('singleboat');

@@ -11,6 +11,10 @@ class PageService{
     {
         return $this->repository->singleBoat($slug);
     }
+    public function blogs()
+    {
+        return $this->repository->blogs();
+    }
     public function singleBoatDetails($city,$type,$slug)
     {
         return $this->repository->singleBoatDetails($city,$type,$slug);
@@ -38,6 +42,14 @@ class PageService{
     public function searchListing($request)
     {
         return $this->repository->searchListing($request);
+    }
+    public function singleBlog($slug)
+    {
+        return $this->repository->singleBlog($slug);
+    }
+    public function relatedBlog($id)
+    {
+        return $this->repository->relatedBlog($id);
     }
 }
 ?>

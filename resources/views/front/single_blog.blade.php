@@ -10,8 +10,9 @@
 <section class="blog_inner_banner">
     <div class="blog_inner_text_box">
         <p class="blog_text">Inspiration</p>
-        <h1>A New Year’s Eve Yacht Party:<br>
-            Celebrate in Style</h1>
+        {{-- <h1>A New Year’s Eve Yacht Party:<br>
+            Celebrate in Style</h1> --}}
+        <h1>{{ $result->title }}</h1>
         <p class="blog_pera">7 December 2024 / 4 minute read / May</p>
         <ul class="blog_banner_social_media">
             <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
@@ -29,7 +30,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <p>Sed venenatis, massa a malesuada placerat, augue mi dapibus felis, ac ultrices sapien purus euismod
+                {{-- <p>Sed venenatis, massa a malesuada placerat, augue mi dapibus felis, ac ultrices sapien purus euismod
                     purus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vehicula, arcu non lacinia
                     volutpat, lorem lectus suscipit leo, id imperdiet risus risus sed risus. Proin rutrum vehicula nibh
                     a interdum. Aliquam vel elementum turpis. Praesent orci ante, pharetra et velit sit amet, faucibus
@@ -62,7 +63,8 @@
                     viverra est. Integer faucibus lacinia sem, ut posuere orci feugiat ut. Etiam eu quam risus. Cras et
                     ligula purus. In et massa sapien. Ut convallis lectus nisi. Duis massa lacus, aliquam at viverra a,
                     venenatis id magna. Quisque fermentum vestibulum neque a iaculis. Aliquam erat volutpat. Aenean nec
-                    nulla sit amet ex tincidunt fringilla non sit amet tellus.</p>
+                    nulla sit amet ex tincidunt fringilla non sit amet tellus.</p> --}}
+                {!! $result->description !!}
             </div>
         </div>
     </div>
@@ -73,51 +75,23 @@
     <h2>You May Also Like</h2>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-12 col-md-6 col-lg-4">
-                <div class="next_trip_box">
-                    <img src="{{ asset('app-assets/site_assets/img/blog-img-1.jpg') }}">
-                    <div class="next_trip_text">
-                        <h3>Sailing events to look out for in 2025</h3>
-                        <p>Every year, the boating world surprises and delights sailing fans around the world with
-                            events, races and regattas. We’ve put together a short list of sailing events we’ll be
-                            looking…</p>
-                        <div class="trip_date_text">
-                            <span><a href="">View Post</a></span>
-                            <span>January 11, 2025</span>
+            @if($relatedBlogs)
+                @foreach($relatedBlogs as $relatedBlog)
+                    <div class="col-sm-12 col-md-6 col-lg-4">
+                        <div class="next_trip_box">
+                            <img src="{{ asset('app-assets/site_assets/img/blog-img-1.jpg') }}">
+                            <div class="next_trip_text">
+                                <h3>{{ $relatedBlog->title }}</h3>
+                                <p>{{ substr(strip_tags($relatedBlog->description),0,170) }}...</p>
+                                <div class="trip_date_text">
+                                    <span><a href="{{ route('single-blog',$relatedBlog->slug) }}">View Post</a></span>
+                                    <span>{{ \Carbon\Carbon::parse($relatedBlog->created_at)->format('F d, Y') }}</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-6 col-lg-4">
-                <div class="next_trip_box">
-                    <img src="{{ asset('app-assets/site_assets/img/blog-img-2.jpg') }}">
-                    <div class="next_trip_text">
-                        <h3>Sailing events to look out for in 2025</h3>
-                        <p>Every year, the boating world surprises and delights sailing fans around the world with
-                            events, races and regattas. We’ve put together a short list of sailing events we’ll be
-                            looking…</p>
-                        <div class="trip_date_text">
-                            <span><a href="">View Post</a></span>
-                            <span>January 11, 2025</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-6 col-lg-4">
-                <div class="next_trip_box">
-                    <img src="{{ asset('app-assets/site_assets/img/blog-img-3.jpg') }}">
-                    <div class="next_trip_text">
-                        <h3>Sailing events to look out for in 2025</h3>
-                        <p>Every year, the boating world surprises and delights sailing fans around the world with
-                            events, races and regattas. We’ve put together a short list of sailing events we’ll be
-                            looking…</p>
-                        <div class="trip_date_text">
-                            <span><a href="">View Post</a></span>
-                            <span>January 11, 2025</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                @endforeach
+            @endif
         </div>
     </div>
 </section>
