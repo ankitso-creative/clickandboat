@@ -1,6 +1,8 @@
 <?php
 namespace App\Repositories\Admin\Blog;
 use App\Models\Admin\Blog;
+use App\Models\Admin\BlogComment;
+
 class BlogRepository
 {
     public function allBlogs()
@@ -22,6 +24,10 @@ class BlogRepository
     public function blogEdit($id)
     {
         return Blog::with('media')->find($id);
+    }
+    public function blogComments($blogId)
+    {
+        return BlogComment::where('blog_id',$blogId)->get();
     }
     public function blogUpdate($request,$id)
     {
@@ -58,6 +64,14 @@ class BlogRepository
     {
         $id = $request['id'];
         $blog = Blog::where('id',$id)->first();
+        $blog->status = $request['value'];
+        $blog->update();
+        return $blog;
+    }
+    public function commentStatus($request)
+    {
+        $id = $request['id'];
+        $blog = BlogComment::where('id',$id)->first();
         $blog->status = $request['value'];
         $blog->update();
         return $blog;

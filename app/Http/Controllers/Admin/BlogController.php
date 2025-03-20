@@ -92,4 +92,14 @@ class BlogController extends Controller
     {
        return $this->service->changeStatus($request);
     }
+    public function commentStatus(Request $request)
+    {
+       return $this->service->commentStatus($request);
+    }
+    public function blogComments($blogId)
+    {
+        $active = 'blog';
+        $results = $this->service->blogComments($blogId);
+        return view('admin.blog.comments',compact('active','results'));
+    }
 }

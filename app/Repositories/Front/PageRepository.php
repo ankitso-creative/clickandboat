@@ -42,7 +42,9 @@ use App\Models\Admin\Listing;
         }
         public function singleBlog($slug)
         {
-            $blog =  Blog::where('status', '1')->where('slug', $slug)->first();
+            $blog =  Blog::where('status', '1')->where('slug', $slug)->with(['comments' => function($query) {
+                $query->where('status', '1'); 
+            }])->first();
             return $blog;
         }
         public function relatedBlog($id)

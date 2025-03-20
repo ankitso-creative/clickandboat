@@ -13,6 +13,10 @@ class AjaxService{
     {
         return $this->repository->favorited($request);
     }
+    public function storePostComment($request)
+    {
+        return $this->repository->storePostComment($request);
+    }
     
 }
 ?>

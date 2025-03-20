@@ -622,7 +622,7 @@ function initialize() {
                 @foreach($blogs as $blog)
                     <div class="col-sm-12 col-md-6 col-lg-4">
                         <div class="next_trip_box">
-                            <img src="{{ asset('app-assets/site_assets/img/blog-img-1.jpg') }}">
+                            <img src="{{ $blog->getFirstMediaUrl('blog_image') }}">
                             <div class="next_trip_text">
                                 <h3>{{ $blog->title }}</h3>
                                 <p>{{ substr(strip_tags($blog->description),0,170) }}...</p>
