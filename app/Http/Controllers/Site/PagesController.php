@@ -18,7 +18,8 @@ class PagesController extends Controller
     }
     public function index()
     {
-        return view('front.index');
+        $blogs = $this->service->blogs();
+        return view('front.index',compact('blogs'));
     }
     public function single($slug)//test_boat
     {
@@ -116,10 +117,14 @@ class PagesController extends Controller
     {
         return view('front.blog');
     }
-    public function singleBlog()
+    public function singleBlog($slug)
     {
-        return view('front.single_blog');
+        $result = $this->service->singleBlog($slug);
+        $relatedBlogs = $this->service->relatedBlog($result->id);
+        
+        return view('front.single_blog',compact('result','relatedBlogs'));
     }
+   
     public function help()
     {
         return view('front.help');

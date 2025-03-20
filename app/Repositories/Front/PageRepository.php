@@ -1,6 +1,8 @@
 <?php
     namespace App\Repositories\Front;
-    use App\Models\Admin\Listing;
+
+use App\Models\Admin\Blog;
+use App\Models\Admin\Listing;
     use App\Models\Admin\Price;
     use Carbon\Carbon;
     use Illuminate\Support\Facades\Session;
@@ -14,6 +16,11 @@
                 Session::put('listingID', $listing->id);
             endif;
             return $listing;
+        }
+        public function blogs()
+        {
+            $blogs = Blog::where('status','1')->orderBy('created_at', 'desc')->limit(3)->get();
+            return $blogs;
         }
         public function singleBoatDetails($city,$type,$slug)
         {
@@ -32,6 +39,16 @@
         {
             $listing =  Listing::where('status', '1')->where('city', $city)->with(['price'])->paginate(9);
             return $listing;
+        }
+        public function singleBlog($slug)
+        {
+            $blog =  Blog::where('status', '1')->where('slug', $slug)->first();
+            return $blog;
+        }
+        public function relatedBlog($id)
+        {
+            $relatedBlogs =  Blog::where('status', '1')->where('id','!=', $id)->inRandomOrder()->limit(3)->get();
+            return $relatedBlogs;
         }
         public function getListingData()
         {
