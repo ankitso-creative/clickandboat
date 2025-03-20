@@ -618,7 +618,7 @@ function initialize() {
         for your next trip</h2>
     <div class="container-fluid">
         <div class="row">
-            @if($blogs)
+            @if(count($blogs))
                 @foreach($blogs as $blog)
                     <div class="col-sm-12 col-md-6 col-lg-4">
                         <div class="next_trip_box">
