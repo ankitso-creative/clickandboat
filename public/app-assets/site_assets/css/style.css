@@ -3602,7 +3602,7 @@ section.about_zigzag_section {
 .inner_blog_text_section img {
     margin-top: 50px;
     margin-bottom: 50px;
-    width: 100%;
+    width: 100% !important;
 }
 .inner_blog_text_section .container {
     max-width: 1015px;
@@ -3678,7 +3678,7 @@ section.about_zigzag_section {
     display: inline-block;
     position: relative;
 }
-  .comment-form-cookies-consent input[type="checkbox"]:checked::before {
+.comment-form-cookies-consent input[type="checkbox"]:checked::before {
     content: "✔";
     font-size: 18px;
     color: #fff;
@@ -3690,7 +3690,8 @@ section.about_zigzag_section {
     height: 20px;
     border-radius: 6px;
     padding: 0 4px;
-  }
+    line-height: 21px;
+}
 /*--------------------------------------------------------------
 # Help page
 --------------------------------------------------------------*/
@@ -6146,8 +6147,11 @@ font-size: 15px;
     border-radius: 15px;
 }
 .comment_sec_title {
-    font-size: 28px;
+    font-size: 15px;
     padding-bottom: 20px;
+}
+.website_field input{
+    border: none;
 }
 /*--------------------------------------------------------------
 # Media Query
@@ -6610,6 +6614,7 @@ font-size: 15px;
     }
     .boat-content-sec h3 {
         text-align: center;
+        padding-top: 20px;
     }
     .boat-description-sec {
         padding-top: 30px;
@@ -6831,6 +6836,10 @@ font-size: 15px;
     .datepicker-mobile {
         display: block;
     }
+    .sidebar_form input {
+        margin-bottom: 25px;
+    }
+
 
 
 }

@@ -56,8 +56,41 @@
     <script src="{{ asset('app-assets/global/plugins/jquery.min.js') }}" type="text/javascript"></script>
     @yield('css')
 </head>
+<style>
+    body {
+    background-color: #37393c;
+}
+.page-header.navbar {
+    background-color: #37393c;
+}
+.page-sidebar, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover {
+    background-color: #37393c;
+}
+.page-sidebar .page-sidebar-menu>li.active.open>a, .page-sidebar .page-sidebar-menu>li.active>a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu>li.active.open>a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu>li.active>a {
+    background: #f9a126;
+    border-top-color: transparent;
+    color: #fff;
+}
+.page-sidebar .page-sidebar-menu>li.active.open+li>a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu>li.active.open+li>a {
+    border-top-color: #fff;
+}
+.page-sidebar .page-sidebar-menu>li>a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu>li>a {
+    color: #fff;
+}
+.page-sidebar .page-sidebar-menu>li>a>i, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu>li>a>i {
+    color: #fff;
+}
+.page-sidebar-closed-hide-logo .bg-green {
+    background: #f9a126!important;
+}
+.portlet.box.green>.portlet-title, .portlet.green, .portlet>.portlet-body.green {
+    background-color: #37393c;
+}
+.page-footer-inner a {
+    color: #f9a126;
+}
+</style>
 <!-- END HEAD -->
-
 <body class="page-header-fixed page-sidebar-closed-hide-logo">
     <div class="page-wrapper">
         <!-- BEGIN HEADER -->
@@ -136,7 +169,7 @@
             <!-- BEGIN SIDEBAR -->
             <div class="page-sidebar-wrapper">
                 <div class="page-sidebar navbar-collapse collapse">
-                    <ul class="page-sidebar-menu  page-header-fixed page-sidebar-menu-hover-submenu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" style="padding-top: 20px">
+                    <ul class="page-sidebar-menu page-header-fixed page-sidebar-menu-hover-submenu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" style="padding-top: 20px">
                         <!-- END SIDEBAR TOGGLER BUTTON -->
                         <li class="nav-item start {{ $active == 'dashboard' ? 'active open' : '' }}">
                             <a href="{{ route('admin.dashboard') }}" class="nav-link">
@@ -153,12 +186,12 @@
                                 <span class="arrow"></span>
                             </a>
                             <ul class="sub-menu">
-                                <li class="nav-item  ">
+                                <li class="nav-item ">
                                     <a href="{{ route('admin.boatowner') }}" class="nav-link ">
                                         <span class="title">Boat Owner</span>
                                     </a>
                                 </li>
-                                <li class="nav-item  ">
+                                <li class="nav-item ">
                                     <a href="{{ route('admin.customer') }}" class="nav-link ">
                                         <span class="title">Customer</span>
                                     </a>
@@ -196,12 +229,12 @@
                                 <span class="arrow"></span>
                             </a>
                             <ul class="sub-menu">
-                                <li class="nav-item  ">
+                                <li class="nav-item ">
                                     <a href="{{ route('admin.settings.index') }}" class="nav-link ">
                                         <span class="title">General Settings</span>
                                     </a>
                                 </li>
-                                <li class="nav-item  ">
+                                <li class="nav-item ">
                                     <a href="{{ route('admin.languages') }}" class="nav-link ">
                                         <span class="title">Language Settings</span>
                                     </a>

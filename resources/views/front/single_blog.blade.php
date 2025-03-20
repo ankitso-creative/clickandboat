@@ -172,7 +172,7 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <div class="form-group">
+                            <div class="form-group website_field">
                                 <label for="exampleInputEmail1">Website</label>
                                 <input type="text" class="form-control" id="website" aria-describedby="website">
                             </div>

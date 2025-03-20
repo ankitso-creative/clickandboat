@@ -30,10 +30,38 @@
         <!-- END THEME LAYOUT STYLES -->
         <link rel="shortcut icon" href="favicon.ico" /> </head>
     <!-- END HEAD -->
+<style>
+.login {
+          background-color: #37393c!important;
+          }
+.login .content .form-actions .btn {
+    padding: 12px 30px!important;
+    background: #f9a126;
+    border: 1px solid #f9a126;
+    border-radius: 15px !important;
+}
+.login .content .form-actions .btn:hover{
+    background: none;
+    color: #f9a126;
+    border: 1px solid #f9a126;
+}
+.login .content .form-control {
+    background-color: #fff;
+    height: 43px;
+    color: #8290a3;
+    border: 1px solid #dde3ec;
+}
+.login .content {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+</style>
 
     <body class=" login">
         <div class="content">
-			<div class="col-md-12 logo_img text-center">
+			<div class="text-center col-md-12 logo_img">
                 <img src="{{ logoURL() }}" width="100%" style="margin: 20px 0;">
 			</div>
 			<div class="clearfix"></div>
@@ -49,7 +77,7 @@
                     <label class="control-label visible-ie8 visible-ie9">Email</label>
                     <input class="form-control form-control-solid placeholder-no-fix" type="text" value="admin@gmail.com" placeholder="Username" name="email" >
                     @error('email')
-                        <p class="invalid-feedback font-red-mint text-center" style="display:block!important;font-weight:normal;" role="alert">
+                        <p class="text-center invalid-feedback font-red-mint" style="display:block!important;font-weight:normal;" role="alert">
                             {{ $message }}
                         </p>
                     @enderror
@@ -58,13 +86,13 @@
                     <label class="control-label visible-ie8 visible-ie9"></label>
                     <input class="form-control form-control-solid placeholder-no-fix" value="Admin@123" type="password" placeholder="Password" name="password" /> 
                     @error('password')
-                    <p class="invalid-feedback font-red-mint text-center" style="display:block!important;font-weight:normal;" role="alert">
+                    <p class="text-center invalid-feedback font-red-mint" style="display:block!important;font-weight:normal;" role="alert">
                         {{ $message }}
                     </p>
                     @enderror
                 </div>
-                <div class="form-actions text-center">
-                    <button type="submit" class="btn green uppercase">Login</button>
+                <div class="text-center form-actions">
+                    <button type="submit" class="uppercase btn green">Login</button>
                 </div>
             </form>
             <!-- END LOGIN FORM -->
