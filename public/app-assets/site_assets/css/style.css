@@ -3982,7 +3982,7 @@ section.about_zigzag_section {
     display: inline-block;
     position: relative;
 }
-#experience input[type="checkbox"]:checked::before,
+#experience input[type="checkbox"]:checked::before, 
 .setting_section input[type="checkbox"]:checked::before {
     content: "✔";
     font-size: 18px;
@@ -3994,8 +3994,9 @@ section.about_zigzag_section {
     width: 20px;
     height: 20px;
     border-radius: 0px;
-    padding: 0 4px;
-  }
+    padding: 0px 4px;
+    line-height: 22px;
+}
 .nautical_row .input-group {
     padding-bottom: 10px;
 }
@@ -5362,6 +5363,7 @@ font-size: 15px;
     width: 100%;
     height: 230px;
     object-fit: cover;
+    border-radius: 15px 15px 0 0;
 }
 .add_listing_btn {
     text-align: right;
@@ -5981,6 +5983,9 @@ font-size: 15px;
     font-weight: 600;
     text-transform: uppercase;
 }
+.footer_newsletter a:hover{
+    text-decoration: underline;
+}
 .footer_newsletter p {
     font-size: 20px;
     color: #fff;
@@ -6006,11 +6011,18 @@ font-size: 15px;
     font-family: 'Montserrat' !important;
     font-weight: 400;
 }
+.footer_menu ul li a:hover{
+    color: #f9a126;
+}
 .footer .container-fluid .call_box_sec a, .footer .container-fluid .email_box_sec a {
     color: #fff;
     font-size: 15px;
     font-weight: 400 !important;
     font-family: 'Montserrat' !important;
+}
+.footer .container-fluid .call_box_sec a:hover, 
+.footer .container-fluid .email_box_sec a:hover{
+    color: #f9a126;
 }
 .footer .container-fluid .email_box_sec {
     padding-top: 36px;
@@ -6029,6 +6041,10 @@ font-size: 15px;
     line-height: 30px;
     border-radius: 50%;
     text-align: center;
+}
+.footer_social_links ul li a i:hover{
+    background: #f9a126;
+    color: #fff;
 }
 .footer_social_links ul li {
     display: inline-block;
@@ -6059,6 +6075,13 @@ font-size: 15px;
     margin-top: 20px;
 }
 #inline-datepicker-mobile {
+    display: none;
+}
+.bootstrap-timepicker-widget table td input {
+    border: 1px solid #f9a126;
+    outline: none;
+}
+.datepicker-mobile {
     display: none;
 }
 /*--------------------------------------------------------------
@@ -6733,6 +6756,15 @@ font-size: 15px;
     }
     .single_blog_comment_section {
         padding: 50px 0px;
+    }
+    .pac-container.pac-logo {
+        width: 280px!important;
+    }
+    .datepicker-desktop {
+        display: none;
+    }
+    .datepicker-mobile {
+        display: block;
     }
 
 
