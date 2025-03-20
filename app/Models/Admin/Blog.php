@@ -27,4 +27,8 @@ class Blog extends Model implements HasMedia
             $blog->slug = $slug;
         });
     }
+    public function comments() 
+    {
+        return $this->hasMany(BlogComment::class);
+    }
 }

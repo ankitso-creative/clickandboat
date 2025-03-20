@@ -414,6 +414,45 @@ $(document).ready(function() {
 		$('#details-tabs li a').removeClass('active')
 		$(this).addClass('active')
     });
+	$(document).on('submit','#blog-comment', function(e) 
+	{
+		e.preventDefault();
+		var baseUrl = $('#baseUrl').val();
+		var formData = $(this).serialize();
+		alert(formData);
+		$.ajax({
+			url: baseUrl + '/ajax/post-comment',  // Make sure this endpoint is correct
+			type: 'POST',
+			data: formData,
+			dataType: 'json',
+			success: function(response) {
+				if (response.success) 
+				{
+					$('.alert').removeClass('alert-danger');
+					$('.alert').removeClass('d-none');
+					$('.alert').addClass(response.alert_class);
+					$('.alert .message').html(response.message);
+					setTimeout(function () {
+						$('.alert').addClass('d-none');
+					}, 4000);
+				} 
+				else 
+				{
+					$('.alert').removeClass('alert-success');
+					$('.alert').removeClass('d-none');
+					$('.alert').addClass(response.alert_class);
+					$('.alert .message').html(response.message);
+					setTimeout(function () {
+						$('.alert').addClass('d-none');
+					}, 4000);
+				}
+			},
+			error: function(xhr, status, error) {
+				console.log('Error:', error);  // Log the error for debugging
+				$('#message').html('An error occurred while posting the comment.').css('color', 'red');
+			}
+		});
+	});
 });
 
 

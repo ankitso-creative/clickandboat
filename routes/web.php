@@ -56,6 +56,8 @@ Route::middleware('Setlang')->group(function(){
         Route::post('listing/change_status', [ListingController::class, 'changeStatus'])->name('listing.change-status');
         Route::resource('bookings', AdminBookingController::class);  
         Route::resource('blog',BlogController::class);
+        Route::get('blog/blogcomments/{id}', [BlogController::class, 'blogComments'])->name('blog.blogcomments');
+        Route::post('commentstatus', [BlogController::class, 'commentStatus'])->name('commentstatus');
         Route::post('change_status', [BlogController::class, 'changeStatus'])->name('changestatus');
         Route::get('settings', [SettingController::class, 'index'])->name('settings.index');  
         Route::post('setting_update', [SettingController::class, 'storeUpdate'])->name('setting_update');  
@@ -161,5 +163,6 @@ Route::middleware('Setlang')->group(function(){
     Route::prefix('ajax')->name('ajax.')->middleware('ajax')->group(function () {
         Route::get('getregisterboatform', [AjaxController::class, 'getRegisterBoatForm'])->name('getregisterboatform');
         Route::post('favorited-item', [AjaxController::class, 'favorited'])->name('favorite');
+        Route::post('post-comment', [AjaxController::class, 'storePostComment'])->name('post-comment');
     });
 });
