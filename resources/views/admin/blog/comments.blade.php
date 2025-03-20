@@ -32,9 +32,9 @@
                 {{-- @include('admin.blog.post.components.filters') --}}
             </div>
             <!-- BEGIN PAGE TITLE-->
-            <h1 class="page-title">Manage Blogs
+            <h1 class="page-title">Manage Blog Comments
                 <span style="float: right;">
-                    <a href="{{ route('admin.blog.create')}}" class="btn green"><i class="fa fa-plus"></i> &nbsp;New</a>
+                    <a href="{{ route('admin.blog.create')}}" class="btn green"><i class="fa fa-plus"></i> &nbsp;New Blog</a>
                 </span>
             </h1>
             @if(session('success'))
@@ -53,7 +53,7 @@
             <div class="portlet box green">
                 <div class="portlet-title">
                     <div class="caption">
-                    <i class="fa fa-file-text-o"></i> Manage Blogs</div>
+                    <i class="fa fa-file-text-o"></i> Manage Blog Comments</div>
                     <span style="float: right; margin-top: 3px;">
                         
                     </span>
@@ -65,9 +65,10 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Name</th>
-                                    <th>Created At</th>
+                                    <th>Email</th>
+                                    <th>Comment</th>
                                     <th>Active</th>
-                                    <th>Action</th>
+                                    {{-- <th>Action</th> --}}
                                 </tr>
                             </thead>
                             <tbody>
@@ -75,20 +76,20 @@
                                     @foreach ($results as $result)
                                         @php
                                             $checked = '';
-                                            if($result->status == 1):
+                                            if($result->status):
                                                 $checked = 'checked';
                                             endif;
                                         @endphp 
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $result->title }}</td>
-                                            <td>{{ $result->created_at }}</td>
-                                            <td><input  {{ $checked }} value="{{ $result->id }}" type="checkbox" data-size="mini" class="make-switch change_status" data-on-color="success" data-off-color="danger"></td>
-                                            <td>
-                                                <a href="{{ route('admin.blog.edit', $result->id) }}" class="btn btn-circle btn-icon-only btn-default tooltips" title = "Edit" href="javascript:;"> <i class="icon-note"></i></a>
-                                                <a href="{{ route('admin.blog.blogcomments', $result->id) }}" class="btn btn-circle btn-icon-only btn-default tooltips" title = "Comments" href="javascript:;"> <i class="icon-note"></i></a>
+                                            <td>{{ $result->name }}</td>
+                                            <td>{{ $result->email }}</td>
+                                            <td>{{ $result->message }}</td>
+                                            <td><input {{ $checked }} value="{{ $result->id }}" type="checkbox" data-size="mini" class="make-switch change_status" data-on-color="success" data-off-color="danger"></td>
+                                            {{-- <td>
+                                                <a href="{{ route('admin.blog.edit', $result->id) }}" class="btn btn-circle btn-icon-only btn-default tooltips" title = "Edit" href="javascript:;"> <i class="icon-eyes"></i></a>
                                                 <a href="{{ route('admin.blog.destroy', $result->id) }}" class="btn btn-circle btn-icon-only btn-default tooltips delete_row" title = "Delete" href="javascript:;"> <i class="icon-trash"></i></a>
-                                            </td>
+                                            </td> --}}
                                         </tr> 
                                     @endforeach
                                 @else
@@ -115,7 +116,7 @@
                 value = 1;
             }
             $.ajax({
-                url: "{{ route('admin.changestatus') }}",
+                url: "{{ route('admin.commentstatus') }}",
                 type: 'POST',
                 data: { value: value, id: id},
                 dataType: 'json',

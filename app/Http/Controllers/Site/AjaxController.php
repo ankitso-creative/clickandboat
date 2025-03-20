@@ -21,4 +21,8 @@ class AjaxController extends Controller
     {
        return $this->service->favorited($request);
     }
+    public function storePostComment(Request $request)
+    {
+        return $this->service->storePostComment($request);
+    }
 }

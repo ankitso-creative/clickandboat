@@ -22,6 +22,10 @@ class BlogService{
     {
         return $this->repostiry->blogEdit($id);
     }
+    public function blogComments($blogId)
+    {
+        return $this->repostiry->blogComments($blogId);
+    }
     public function blogUpdate($request,$id)
     {
         return $this->repostiry->blogUpdate($request,$id);
@@ -33,5 +37,9 @@ class BlogService{
     public function changeStatus($id)
     {
         return $this->repostiry->changeStatus($id);
+    }
+    public function commentStatus($id)
+    {
+        return $this->repostiry->commentStatus($id);
     }
 }
