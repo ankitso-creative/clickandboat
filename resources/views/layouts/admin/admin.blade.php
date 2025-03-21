@@ -100,7 +100,7 @@
                 <!-- BEGIN LOGO -->
                 <div class="page-logo">
                     <a href="#">
-                        <img src="{{ logoURL() }}" alt="logo" class="logo-default" width="120px" style="padding:0px;" /> 
+                        <img src="{{ whiteLogoURL() }}" alt="logo" class="logo-default" width="120px" style="padding:0px;" /> 
                     </a>
                     <div class="menu-toggler sidebar-toggler">
                         <span></span>
