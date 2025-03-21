@@ -1,1 +1,79 @@
-gdfgfdgd
+.page-sidebar .page-sidebar-menu>li.open>a, .page-sidebar .page-sidebar-menu>li:hover>a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu>li.open>a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu>li:hover>a {
+    background: #f9a126 !important;
+    color: #fff !important;
+}
+.page-sidebar .page-sidebar-menu>li>a>i, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu>li>a>i {
+    color: #fff !important;
+}
+.page-sidebar-menu-hover-submenu li:hover>.sub-menu {
+    background: #f9a126 !important;
+}
+.page-sidebar .page-sidebar-menu .sub-menu>li>a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu>li>a {
+    color: #fff !important;
+}
+.page-footer .page-footer-inner {
+    color: #fff !important;
+}
+.dropdown.dropdown-quick-sidebar-toggler i {
+    color: #fff !important;
+}
+.dropdown.dropdown-quick-sidebar-toggler:hover{
+    background:#f9a126 !important;
+}
+.dropdown .nav>li>a:focus, .nav>li>a:hover {
+    background-color: #f9a126;
+}
+.page-header.navbar .top-menu .navbar-nav>li.dropdown .dropdown-toggle:hover, .page-header.navbar .top-menu .navbar-nav>li.dropdown.open .dropdown-toggle {
+    background-color: #f9a126;
+}
+.page-header.navbar .top-menu .navbar-nav>li.dropdown-language>.dropdown-toggle>.langname, .page-header.navbar .top-menu .navbar-nav>li.dropdown-user>.dropdown-toggle>.username, .page-header.navbar .top-menu .navbar-nav>li.dropdown-user>.dropdown-toggle>i {
+    color: #fff;
+}
+.page-header.navbar .top-menu .navbar-nav>li.dropdown .dropdown-toggle:hover>i, .page-header.navbar .top-menu .navbar-nav>li.dropdown.open .dropdown-toggle>i {
+    color: #fff;
+}
+.page-header.navbar .menu-toggler.sidebar-toggler {
+    position: relative;
+    top: 20px;
+}
+.page-header.navbar .menu-toggler>span, .page-header.navbar .menu-toggler>span:after, .page-header.navbar .menu-toggler>span:before, .page-header.navbar .menu-toggler>span:hover, .page-header.navbar .menu-toggler>span:hover:after, .page-header.navbar .menu-toggler>span:hover:before {
+    background: #fff;
+}
+.page-header.navbar .page-logo .logo-default {
+    width: 150px;
+}
+.page-content .btn.green:not(.btn-outline) {
+    color: #FFF;
+    background-color: #f9a126;
+    border-color: #f9a126;
+}
+.page-content .btn.green:hover {
+    background-color: #fff !important;
+    color: #f9a126 !important;
+    border: 1px solid #f9a126 !important;
+}
+.portlet.box.green {
+    border: 1px solid #f9a126;
+}
+.portlet-body th {
+    color: #f9a126;
+}
+.bootstrap-switch-handle-on.bootstrap-switch-success {
+    background: #f9a126 !important;
+}
+.bootstrap-switch-handle-off.bootstrap-switch-danger {
+    background: #37393c !important;
+}
+.page-title {
+    color: #000;
+    font-weight: 500;
+}
+.mt-ladda-btn.ladda-button.btn-outline {
+    background: #f9a126;
+    border: 1px solid #f9a126;
+}
+.mt-ladda-btn.ladda-button.btn-outline:hover{
+    background: none;
+    color: #f9a126;
+    border: 1px solid #f9a126;
+}
