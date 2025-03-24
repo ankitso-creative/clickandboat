@@ -1299,7 +1299,7 @@ button:focus {
 # Signup form
 --------------------------------------------------------------*/
 .login_sign_up_form{
-    background-image: url(../img/REGISTER-PAGE--SIGN-UP.jpg);
+    background-image: url(../img/register-page--sign-up.jpg);
     width: 100%;
     height: 100vh;
     background-repeat: no-repeat;
@@ -1431,7 +1431,7 @@ button:focus {
 # Login form
 --------------------------------------------------------------*/
 .login_section{
-    background-image: url(../img/REGISTER-PAGE--SIGN-UP.jpg);
+    background-image: url(../img/register-page--sign-up.jpg);
     width: 100%;
     height: 100vh;
     background-repeat: no-repeat;
@@ -1524,7 +1524,7 @@ button:focus {
 # Sign Up Form
 --------------------------------------------------------------*/
 .sign_up_form_section {
-    background-image: url(../img/REGISTER-PAGE--SIGN-UP.jpg);
+    background-image: url(../img/register-page--sign-up.jpg);
     width: 100%;
     height: 100vh;
     background-repeat: no-repeat;
@@ -2075,6 +2075,8 @@ button:focus {
 }
 .side_bar.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link i {
     padding: 0 8px 0 0;
+    color: #6d6d6d;
+    width: 35px;
 }
 .item-checked {
     color: #000;
@@ -3384,7 +3386,7 @@ button:focus {
 # About page
 --------------------------------------------------------------*/
 .about_banner_section {
-    background-image: url(../img/About-Us-banner.jpg);
+    background-image: url(../img/about-us-banner.jpg);
     width: 100%;
     height: 465px;
     background-repeat: no-repeat;
@@ -3544,7 +3546,7 @@ section.about_zigzag_section {
 # Single blog page
 --------------------------------------------------------------*/
 .blog_inner_banner {
-    background-image: url(../img/Blog-Inner-banner.jpg);
+    background-image: url(../img/blog-inner-banner.jpg);
     width: 100%;
     height: 465px;
     background-repeat: no-repeat;
@@ -4066,7 +4068,7 @@ section.about_zigzag_section {
 # Single boat page
 --------------------------------------------------------------*/
 .single_boat_banner{
-    background-image: url(../img/Single-Boat-Page-banner.jpg);
+    background-image: url(../img/single-boat-page-banner.jpg);
     width: 100%;
     height: 230px;
     background-repeat: no-repeat;
@@ -4921,7 +4923,7 @@ section.about_zigzag_section {
 }
 .equip-button-sec a {
     background: #f8a126;
-    padding: 12px 15px;
+    padding: 10px 15px;
     display: inline-block;
     border-radius: 15px;
     color: #fff;
@@ -4996,7 +4998,7 @@ section.about_zigzag_section {
 }
 .contact_owner_btn {
     background: #f8a126;
-    padding: 12px 15px;
+    padding: 10px 15px;
     display: inline-block;
     border-radius: 15px;
     color: #fff;
@@ -5197,17 +5199,9 @@ font-size: 15px;
 .your_listing_section .card {
     width: 100% !important;
 }
-/* .side_bar.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
-    background-color: #323131 !important;
-    border-color: #323131;
-    color: #fff;
-    padding: 15px 8px !important;
-    border-radius: 11px;
-    text-align: left;
-    border: none;
-    text-transform: uppercase;
-    background-image: none !important;
-} */
+#nav-price-tab i {
+    margin-right: 4px !important;
+}
 .side_bar.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link {
     text-align: left;
     color: #fff;
@@ -5555,9 +5549,6 @@ font-size: 15px;
 .side_bar .nav-link.active i {
     color: #f9a126;
 }
-.side_bar.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link i {
-    color: #6d6d6d;
-}
 .email_box {
     width: 100%;
     display: flex;
@@ -5668,7 +5659,7 @@ font-size: 15px;
 # Qequest submit page
 --------------------------------------------------------------*/
 .request_banner_section {
-    background-image: url(../img/Submit-A-Request-banner.jpg);
+    background-image: url(../img/submit-a-request-banner.jpg);
     width: 100%;
     height: 460px;
     background-repeat: no-repeat;
@@ -6154,6 +6145,7 @@ font-size: 15px;
 .website_field input{
     border: none;
 }
+
 /*--------------------------------------------------------------
 # Media Query
 --------------------------------------------------------------*/
@@ -6742,7 +6734,7 @@ font-size: 15px;
         font-size: 25px;
     }
     .main-dashboard-container .card-section {
-        padding: 26px 15px;
+        padding: 26px 11px;
     }
     .menus-customer {
         justify-content: center;
@@ -6842,6 +6834,21 @@ font-size: 15px;
     .idea_sec_text h3 {
         text-align: left;
         padding-top: 0;
+    }
+    #experience input[type="checkbox"], .setting_section input[type="checkbox"] {
+        margin: 0 0px 0 0px;
+    }
+    #experience label, .setting_section label {
+        font-size: 13px;
+    }
+    .natutical_message_box textarea {
+        height: 200px;
+    }
+    .dashboard-logo img {
+        padding-bottom: 10px;
+    }
+    .single_calender_container .flatpickr-input {
+        margin: 0 0 10px 0px;
     }
 
 

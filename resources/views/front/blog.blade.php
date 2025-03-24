@@ -43,7 +43,7 @@
 <section class="destination_banner_img">
     <div class="conatiner">
         <div class="text-center col-md-12">
-            <img src="{{ asset('app-assets/site_assets/img/Blog-01.jpg') }}">
+            <img src="{{ asset('app-assets/site_assets/img/blog-01.jpg') }}">
         </div>
     </div>
 </section>
@@ -57,7 +57,7 @@
         <div class="row align-items-center">
             <div class="col-sm-12 col-md-6 col-lg-6">
                 <div class="blog_img">
-                    <img src="{{ asset('app-assets/site_assets/img/Blog-02.jpg') }}">
+                    <img src="{{ asset('app-assets/site_assets/img/blog-02.jpg') }}">
                 </div>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-6">
