@@ -14,7 +14,9 @@
         "laravel/socialite": "^5.18",
         "laravel/tinker": "^2.9",
         "livewire/livewire": "^3.0",
-        "spatie/laravel-medialibrary": "^11.10"
+        "seyyedam7/laravel-html-parser": "^2.2",
+        "spatie/laravel-medialibrary": "^11.10",
+        "stichoza/google-translate-php": "^5.2"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
