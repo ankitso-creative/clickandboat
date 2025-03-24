@@ -457,7 +457,7 @@
                         </div>
                         <ul class="offered_rating">
                             <li><i class="fa-solid fa-star"></i> 4.8 (31 reviews)</li>
-                            <li><i class="fa-solid fa-certificate"></i> Verified profile</li>
+                            <li><i class="fa-solid fa-square-check"></i> Verified profile</li>
                         </ul>
                         <p class="about_heading">About me</p>
                         <p>Donec hendrerit magna in ligula semper, in varius nisl semper. Fusce pellentesque turpis vitae est dictum, at fringilla velit lobortis. Mauris sed consectetur purus, eget posuere leo.</p>
