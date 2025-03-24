@@ -3,146 +3,181 @@
 @endsection @section('css')
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
 @endsection @section('js')
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-       $('#see-price').click(function(){
-          if($('#price-list').hasClass('open'))
-          {
-             $('#price-list').removeClass('open');
-          }
-          else
-          {
-             $('#price-list').addClass('open');
-          }
-       });
-       $('#closeMenu').click(function(){
-          $('#price-list').removeClass('open');
-       });
-    });
-    function formatDate(date) {
-       const day = ("0" + date.getDate()).slice(-2);
-       const month = ("0" + (date.getMonth() + 1)).slice(-2);
-       const year = date.getFullYear();
-       return `${day}-${month}-${year}`;
-    }
-    flatpickr("#inline-datepicker", {
-        mode: "range",
-        inline: true,
-        dateFormat: "Y-m-d",
-        multipleMonth: true,
-        showMonths: 2,
-        monthSelectorType: "static",
-        minDate: "today",
-        onChange: function(selectedDates, dateStr, instance) {
-            if(selectedDates.length === 2) {
-                const checkIn = formatDate(selectedDates[0]);
-                const checkOut = formatDate(selectedDates[1]);
-                document.getElementById('checkin-date').value = checkIn;
-                document.getElementById('checkout-date').value = checkOut;
-                $.ajax({
-                    url: '{{ route('getbookingprice') }}',
-                    type: 'GET',
-                    data: {checkindate: checkIn, checkoutdate: checkOut, id: {{ $listing->id }}},
-                    success: function(response) {
-                        if(response.status) {
-                        $('#show-Price-sec').removeClass('d-none');
-                        $('#days-val').val(response.days);
-                        $('#total-days').html(response.days);
-                        $('#charter-pice').html(response.price);
-                        $('#charter-fee').html(response.servive_fee);
-                        $('#charter-total').html(response.totalAmount);
-                        }
-                        else
-                        {
-                        $('#price_display').html('<p>Price not available.</p>');
-                        }
-                    },
-                    error: function() {
-                        $('#price_display').html('<p>Error fetching price.</p>');
-                    }
-                });
-            }
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAli6rCJivgzTbWznnkqFtT_btPww6WBYs&callback=initMap" async defer></script>
+    <script type="text/javascript">
+        let map;
+        let marker;
+        function initMap() 
+        {
+            map = new google.maps.Map(document.getElementById("map"),{
+                zoom: 12
+            });
+            marker = new google.maps.Marker({
+                map: map,
+                title: "City Location"
+            });
+            fetchCityCoordinates("{{ $listing->city }}"); 
         }
-    });
-    flatpickr("#inline-datepicker-mobile", {
-        mode: "range",
-        inline: true,
-        dateFormat: "Y-m-d",
-        multipleMonth: true,
-        showMonths: 1,
-        monthSelectorType: "static",
-        minDate: "today",
-        onChange: function(selectedDates, dateStr, instance) {
-            if(selectedDates.length === 2) {
-                const checkIn = formatDate(selectedDates[0]);
-                const checkOut = formatDate(selectedDates[1]);
-                document.getElementById('checkin-date').value = checkIn;
-                document.getElementById('checkout-date').value = checkOut;
-                $.ajax({
-                    url: '{{ route('getbookingprice') }}',
-                    type: 'GET',
-                    data: {checkindate: checkIn, checkoutdate: checkOut, id: {{ $listing->id }}},
-                    success: function(response) {
-                        if(response.status) {
-                        $('#show-Price-sec').removeClass('d-none');
-                        $('#days-val').val(response.days);
-                        $('#total-days').html(response.days);
-                        $('#charter-pice').html(response.price);
-                        $('#charter-fee').html(response.servive_fee);
-                        $('#charter-total').html(response.totalAmount);
-                        }
-                        else
-                        {
-                        $('#price_display').html('<p>Price not available.</p>');
-                        }
-                    },
-                    error: function() {
-                        $('#price_display').html('<p>Error fetching price.</p>');
-                    }
-                });
-            }
+        function fetchCityCoordinates(cityName) 
+        {
+            const geocoder = new google.maps.Geocoder();
+            geocoder.geocode({ address: cityName }, function(results, status) 
+            {
+                if (status === google.maps.GeocoderStatus.OK) 
+                {
+                    const cityLocation = results[0].geometry.location;
+                    const lat = cityLocation.lat();
+                    const lng = cityLocation.lng();
+                    map.setCenter(cityLocation);
+                    marker.setPosition(cityLocation);
+                    marker.setTitle(cityName);
+                } 
+                else
+                {
+                    alert("City not found: " + status);
+                }
+            });
         }
-    });
-    flatpickr("#checkin-date", {
-       inline: false,
-       dateFormat: "d-m-Y",
-       minDate: "today",
-    });
-    flatpickr("#checkout-date", {
-       inline: false,
-       dateFormat: "d-m-Y",
-       minDate: "today",
-    });
-    $(document).ready(function() {
-       $(document).on('change','#checkin-date, #checkout-date',function(){
-          var checkindate = $('#checkin-date').val();
-          var checkoutdate = $('#checkout-date').val();
-          $.ajax({
-             url: '{{ route('getbookingprice') }}',
-             type: 'GET',
-             data: {checkindate: checkindate, checkoutdate: checkoutdate, id: {{ $listing->id }}},
-             success: function(response) {
-                if (response.status) {
-                   $('#show-Price-sec').removeClass('d-none');
-                   $('#days-val').val(response.days);
-                   $('#total-days').html(response.days);
-                   $('#charter-pice').html(response.price);
-                   $('#charter-fee').html(response.servive_fee);
-                   $('#charter-total').html(response.totalAmount);
+        $(document).ready(function() 
+        {
+            $('#see-price').click(function(){
+                if($('#price-list').hasClass('open'))
+                {
+                    $('#price-list').removeClass('open');
                 }
                 else
                 {
-                   $('#price_display').html('<p>Price not available.</p>');
+                    $('#price-list').addClass('open');
                 }
-             },
-             error: function() {
-                $('#price_display').html('<p>Error fetching price.</p>');
-             }
-          });
-       })
-    });
-</script>
+            });
+            $('#closeMenu').click(function(){
+                $('#price-list').removeClass('open');
+            });
+        });
+        function formatDate(date) {
+        const day = ("0" + date.getDate()).slice(-2);
+        const month = ("0" + (date.getMonth() + 1)).slice(-2);
+        const year = date.getFullYear();
+        return `${day}-${month}-${year}`;
+        }
+        flatpickr("#inline-datepicker", {
+            mode: "range",
+            inline: true,
+            dateFormat: "Y-m-d",
+            multipleMonth: true,
+            showMonths: 2,
+            monthSelectorType: "static",
+            minDate: "today",
+            onChange: function(selectedDates, dateStr, instance) {
+                if(selectedDates.length === 2) {
+                    const checkIn = formatDate(selectedDates[0]);
+                    const checkOut = formatDate(selectedDates[1]);
+                    document.getElementById('checkin-date').value = checkIn;
+                    document.getElementById('checkout-date').value = checkOut;
+                    $.ajax({
+                        url: '{{ route('getbookingprice') }}',
+                        type: 'GET',
+                        data: {checkindate: checkIn, checkoutdate: checkOut, id: {{ $listing->id }}},
+                        success: function(response) {
+                            if(response.status) {
+                            $('#show-Price-sec').removeClass('d-none');
+                            $('#days-val').val(response.days);
+                            $('#total-days').html(response.days);
+                            $('#charter-pice').html(response.price);
+                            $('#charter-fee').html(response.servive_fee);
+                            $('#charter-total').html(response.totalAmount);
+                            }
+                            else
+                            {
+                            $('#price_display').html('<p>Price not available.</p>');
+                            }
+                        },
+                        error: function() {
+                            $('#price_display').html('<p>Error fetching price.</p>');
+                        }
+                    });
+                }
+            }
+        });
+        flatpickr("#inline-datepicker-mobile", {
+            mode: "range",
+            inline: true,
+            dateFormat: "Y-m-d",
+            multipleMonth: true,
+            showMonths: 1,
+            monthSelectorType: "static",
+            minDate: "today",
+            onChange: function(selectedDates, dateStr, instance) {
+                if(selectedDates.length === 2) {
+                    const checkIn = formatDate(selectedDates[0]);
+                    const checkOut = formatDate(selectedDates[1]);
+                    document.getElementById('checkin-date').value = checkIn;
+                    document.getElementById('checkout-date').value = checkOut;
+                    $.ajax({
+                        url: '{{ route('getbookingprice') }}',
+                        type: 'GET',
+                        data: {checkindate: checkIn, checkoutdate: checkOut, id: {{ $listing->id }}},
+                        success: function(response) {
+                            if(response.status) {
+                            $('#show-Price-sec').removeClass('d-none');
+                            $('#days-val').val(response.days);
+                            $('#total-days').html(response.days);
+                            $('#charter-pice').html(response.price);
+                            $('#charter-fee').html(response.servive_fee);
+                            $('#charter-total').html(response.totalAmount);
+                            }
+                            else
+                            {
+                            $('#price_display').html('<p>Price not available.</p>');
+                            }
+                        },
+                        error: function() {
+                            $('#price_display').html('<p>Error fetching price.</p>');
+                        }
+                    });
+                }
+            }
+        });
+        flatpickr("#checkin-date", {
+        inline: false,
+        dateFormat: "d-m-Y",
+        minDate: "today",
+        });
+        flatpickr("#checkout-date", {
+        inline: false,
+        dateFormat: "d-m-Y",
+        minDate: "today",
+        });
+        $(document).ready(function() {
+        $(document).on('change','#checkin-date, #checkout-date',function(){
+            var checkindate = $('#checkin-date').val();
+            var checkoutdate = $('#checkout-date').val();
+            $.ajax({
+                url: '{{ route('getbookingprice') }}',
+                type: 'GET',
+                data: {checkindate: checkindate, checkoutdate: checkoutdate, id: {{ $listing->id }}},
+                success: function(response) {
+                    if (response.status) {
+                    $('#show-Price-sec').removeClass('d-none');
+                    $('#days-val').val(response.days);
+                    $('#total-days').html(response.days);
+                    $('#charter-pice').html(response.price);
+                    $('#charter-fee').html(response.servive_fee);
+                    $('#charter-total').html(response.totalAmount);
+                    }
+                    else
+                    {
+                    $('#price_display').html('<p>Price not available.</p>');
+                    }
+                },
+                error: function() {
+                    $('#price_display').html('<p>Error fetching price.</p>');
+                }
+            });
+        })
+        });
+    </script>
 @endsection @section('content')
 <section class="single_boat_banner"></section>
 <nav aria-label="Page breadcrumb">
@@ -439,15 +474,7 @@
                         <div class="location-sec">
                             <h3>Location</h3>
                             <p>Location of the motorboat: Zudika, Split</p>
-                            <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13338.35727383584!2d14.329785351918753!3d45.34791993976719!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4764a624dc47ed21%3A0xc911e7af2219a546!2sPla%C5%BEa%20Preluk!5e0!3m2!1sen!2sin!4v1733393685853!5m2!1sen!2sin"
-                                width="100%"
-                                height="350"
-                                style="border: 0;"
-                                allowfullscreen=""
-                                loading="lazy"
-                                referrerpolicy="no-referrer-when-downgrade"
-                            ></iframe>
+                            <div id="map"></div>
                         </div>
                     </div>
                     <div class="boat-card-content-sec">
@@ -764,8 +791,11 @@
         </div>
     </section>
 </div>
-
-
+<?php 
+    $lowseason = $listing->price()->where('season_price_id', optional($listing->seasonPrice[0] ?? null)->id)->first();
+    $midSeason = $listing->price()->where('season_price_id', optional($listing->seasonPrice[1] ?? null)->id)->first();
+    $highSeason = $listing->price()->where('season_price_id', optional($listing->seasonPrice[2] ?? null)->id)->first();     
+?>
 <div class="offcanvas-right" id="price-list">
     <span class="close-btn" id="closeMenu">&times;</span>
     <h3 class="p-4">Price list</h3>
@@ -778,67 +808,30 @@
                 </div>
             </li>
         @endif
-        @if(optional($listing->price ?? null)->over_night_price)
+        @if($lowseason && isset($listing->seasonPrice[0]))
             <li>
                 <div class="price_block">
-                    <p class="price_block_date">Over Night Price </p>
-                    <p class="price_block_price">{{ $listing->price->over_night_price }}</p>
+                    <p class="price_block_date">Low Season Price </p>
+                    <p class="price_block_date">{{ optional($listing->seasonPrice[0] ?? null)->from ?? '' }} - {{ optional($listing->seasonPrice[0] ?? null)->to ?? '' }} </p>
+                    <p class="price_block_price">{{ minMaxPrice($lowseason,$listing->seasonPrice[0]->price) }}</p>
                 </div>
             </li>
         @endif
-        @if(optional($listing->price ?? null)->one_half_day)
+        @if($midSeason && isset($listing->seasonPrice[1]))
             <li>
                 <div class="price_block">
-                    <p class="price_block_date">One/Half Day Price</p>
-                    <p class="price_block_price">{{ $listing->price->one_half_day }}</p>
+                    <p class="price_block_date">Mid Season Price</p>
+                    <p class="price_block_date">{{ optional($listing->seasonPrice[1] ?? null)->from ?? '' }} - {{ optional($listing->seasonPrice[1] ?? null)->to ?? '' }} </p>
+                    <p class="price_block_price">{{ minMaxPrice($midSeason,$listing->seasonPrice[1]->price) }}</p>
                 </div>
             </li>
         @endif
-        @if(optional($listing->price ?? null)->two_day)
+        @if($highSeason && isset($listing->seasonPrice[2]))
             <li>
                 <div class="price_block">
-                    <p class="price_block_date">Two Day Price </p>
-                    <p class="price_block_price">{{ $listing->price->two_day }}</p>
-                </div>
-            </li>
-        @endif
-        @if(optional($listing->price ?? null)->three_day)
-            <li>
-                <div class="price_block">
-                    <p class="price_block_date">Three Day Price </p>
-                    <p class="price_block_price">{{ $listing->price->three_day }}</p>
-                </div>
-            </li>
-        @endif
-        @if(optional($listing->price ?? null)->four_day)
-            <li>
-                <div class="price_block">
-                    <p class="price_block_date">Four Day Price </p>
-                    <p class="price_block_price">{{ $listing->price->four_day }}</p>
-                </div>
-            </li>
-        @endif
-        @if(optional($listing->price ?? null)->five_day)
-            <li>
-                <div class="price_block">
-                    <p class="price_block_date">Five Day Price </p>
-                    <p class="price_block_price">{{ $listing->price->five_day }}</p>
-                </div>
-            </li>
-        @endif
-        @if(optional($listing->price ?? null)->six_day)
-            <li>
-                <div class="price_block">
-                    <p class="price_block_date">Six Day Price </p>
-                    <p class="price_block_price">{{ $listing->price->six_day }}</p>
-                </div>
-            </li>
-        @endif
-        @if(optional($listing->price ?? null)->one_week)
-            <li>
-                <div class="price_block">
-                    <p class="price_block_date">One Week Price </p>
-                    <p class="price_block_price">{{ $listing->price->one_week }}</p>
+                    <p class="price_block_date">High Season Price </p>
+                    <p class="price_block_date">{{ optional($listing->seasonPrice[2] ?? null)->from ?? '' }} - {{ optional($listing->seasonPrice[2] ?? null)->to ?? '' }} </p>
+                    <p class="price_block_price">{{ minMaxPrice($highSeason,$listing->seasonPrice[2]->price) }}</p>
                 </div>
             </li>
         @endif
