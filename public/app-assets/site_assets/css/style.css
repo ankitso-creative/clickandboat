@@ -1631,6 +1631,7 @@ button:focus {
     width: 120px;
     height: 120px;
     border-radius: 50%;
+    object-fit: cover;
 }
 .main-dashboard-container .sidebar .user h3 {
     font-size: 1.4em;
@@ -6577,13 +6578,11 @@ font-size: 15px;
     }
     .features-menus li {
         padding-bottom: 15px;
+        width: calc(100% - .5rem);
     }
     .boat-card-content-sec,
     .single_boat_faq_section {
         padding: 0 15px;
-    }
-    .boat-content-sec h3 {
-        font-size: 25px;
     }
     .location-sec {
         padding-top: 30px;
@@ -6619,6 +6618,7 @@ font-size: 15px;
     .boat-description-sec {
         padding-top: 30px;
         text-align: center;
+        font-size: 25px;
     }
     .keyinfo-sec {
         margin-top: 25px;
@@ -6838,6 +6838,10 @@ font-size: 15px;
     }
     .sidebar_form input {
         margin-bottom: 25px;
+    }
+    .idea_sec_text h3 {
+        text-align: left;
+        padding-top: 0;
     }
 
 
