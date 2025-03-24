@@ -115,27 +115,9 @@
                             <label class="submenu-label" for="sub-one">Back</label>
                             <div class="arrow left">&#8249;</div>
                         </li>
-                        <li><a href="#">Sub-item</a></li>
-                        <li><a href="#">Sub-item</a></li>
-                        <li><a href="#">Sub-item</a></li>
-                        <li><a href="#">Sub-item</a></li>
+                        <li><a href="{{ route('about-us') }}">About Us</a></li>
                     </ul>
                 </li>
-                <!-- <li>
-                    <input type="checkbox" id="sub-two" class="submenu-toggle">
-                    <label class="submenu-label" for="sub-two">Category</label>
-                    <div class="arrow right">&#8250;</div>
-                    <ul class="menu-sub">
-                        <li class="menu-sub-title">
-                            <label class="submenu-label" for="sub-two">Back</label>
-                            <div class="arrow left">&#8249;</div>
-                        </li>
-                        <li><a href="#">Sub-item</a></li>
-                        <li><a href="#">Sub-item</a></li>
-                        <li><a href="#">Sub-item</a></li>
-                        <li><a href="#">Sub-item</a></li>
-                    </ul>
-                </li> -->
             </ul>
         </li>
     </ul>
