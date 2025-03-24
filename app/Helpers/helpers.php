@@ -167,4 +167,40 @@
         $maxPrice = DB::table('listings')->max('length');
        return $maxPrice;
     }
+    function minMaxPrice($season,$price='')
+    {
+        unset($season->id);
+        unset($season->listing_id);
+        unset($season->season_price_id);
+        unset($season->price);
+        unset($season->created_at);
+        unset($season->updated_at);
+        $season = $season ? $season->toArray() : [];
+        if($price)
+        {
+            $price = array($price);
+        }
+        if(is_array($season) && is_array($price))
+        {
+            $season = array_merge($season,$price);
+        }
+        $min = min($season);
+        $max = max($season);
+        if($min && $max)
+        {
+            return $min .' - '. $max;
+        }
+        else
+        {
+            if($min)
+            {
+                return $min ;
+            }
+            else
+            {
+                return $max ;
+            }
+        }
+       
+    }
 ?>

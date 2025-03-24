@@ -63,14 +63,14 @@
         flatpickr(".month-picker", {
             plugins: [
                 new monthSelectPlugin({
-                    shorthand: true,  // Show short month names (e.g., Jan, Feb)
-                    dateFormat: "F",  // Store the value as "YYYY-MM"
-                    altFormat: "F",  // Display format as "Full Month Name Year" (e.g., March 2025)
-                    theme: "dark"  // Use dark theme (optional)
+                    shorthand: true,  
+                    dateFormat: "F",  
+                    altFormat: "F",  
+                    theme: "dark"
                 })
             ],
-            
         });
+        
         $(document).ready(function () {
             google.maps.event.addDomListener(window, 'load', initialize);
         });
