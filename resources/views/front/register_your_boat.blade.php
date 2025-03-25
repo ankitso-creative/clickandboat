@@ -62,7 +62,7 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <input class="form-control" type="tel" id="phone" name="phone" placeholder="Telephone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required>
+                                <input class="form-control" type="tel" id="phone" name="phone" placeholder="Telephone"  required>
                             </div>
                             <div class="form-group">
                                 <input class="form-control" id="user-password" type="password" name="password" placeholder="Password" />

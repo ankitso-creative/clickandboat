@@ -6169,6 +6169,11 @@ font-size: 15px;
 .main-dashboard-container .required {
     color: #db3131;
 }
+.section-form-contacts button.close {
+    background: none;
+    border: none;
+    padding: 0;
+}
 /*--------------------------------------------------------------
 # Media Query
 --------------------------------------------------------------*/
