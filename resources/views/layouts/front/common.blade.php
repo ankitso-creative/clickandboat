@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{{ asset('app-assets/site_assets/css/mdbootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('app-assets/site_assets/css/slick-theme.css') }}">
     <link rel="stylesheet" href="{{ asset('app-assets/site_assets/css/slick.css') }}">
-    <link rel="stylesheet" href="{{ asset('app-assets/site_assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('app-assets/site_assets/css/style.css') }}?ver=<?=time()?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <script src="{{ asset('app-assets/site_assets/js/jquery.js') }}"></script>
@@ -49,8 +49,7 @@
                         </li>
                         <li class="nav-item">
                             <select class="select-language" id="language">
-                                {!! selectOption('languages','name','code',session()->get('lang'),array('status' , '1'))
-                                !!}
+                                {!! selectOption('languages','name','code',session()->get('lang'),array('status' , '1')) !!}
                             </select>
                         </li>
                         <!-- <li><a class="nav-link gbp_btn" href="#">GBP: £</a></li> -->
