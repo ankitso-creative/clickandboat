@@ -50,6 +50,14 @@ class ListingController extends Controller
     {
         //
     }
+    public function preview(string $id)
+    {
+        $listing = $this->service->editListing($id);
+        if(!$listing):
+            return redirect()->route('boatowner.listing');
+        endif;
+        return view('boatowner.listingpreview',compact('listing'));
+    }
 
     /**
      * Show the form for editing the specified resource.
