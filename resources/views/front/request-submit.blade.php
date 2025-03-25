@@ -14,6 +14,7 @@
     <div class="request_banner_text">
         <h5>Help Center Booker Boat > Submit a request</h5>
         <h1>Submit a request</h1>
+        <form>
         <div id="search-wrapper">
             <i class="search-icon fas fa-search"></i>
             <input type="text" id="search" placeholder="Search...">
@@ -57,9 +58,18 @@
                         exercise your rights, please consult our Privacy Policy.</p>
                     <div class="attachment_box">
                         <p>Attachments(optional)</p>
-                        <div class="file_uploaded_section">
+                        <!-- <div class="file_uploaded_section">
                             <input type="file" id="myfile" class="">
                             <div class="request_file_upload"><p>Add file or drop files here</p></div>
+                        </div> -->
+                    </div>
+                    <div class="p-0 col-sm-12">
+                        <div id="imageDropzone" class="dropzone">
+                            <div class="dz-message">
+                                <div class="request_file_upload">
+                                <p>Add file or drop files here</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="request_save_btn">

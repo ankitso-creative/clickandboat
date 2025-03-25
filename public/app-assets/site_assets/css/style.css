@@ -5720,10 +5720,11 @@ font-size: 15px;
 }
 .request_banner_section  #search {
     border: none;
-    width: 427px;
+    width: 425px;
     font-size: 15px;
     background: transparent;
     color: #fff;
+    padding-right: 20px;
 }
 .request_banner_section  #search:focus{
     outline: none;
@@ -5775,6 +5776,11 @@ font-size: 15px;
     background: none;
     border: 1px solid #f9a126;
     color: #f9a126;
+}
+.request_submit_form_section #imageDropzone {
+    height: 140px;
+    border: 1px solid #000 !important;
+    background: none !important;
 }
 .your_boats_type .radio-with-Icon {
     display: block;
@@ -5856,7 +5862,8 @@ font-size: 15px;
 .attachment_box {
     margin-top: 30px;
 }
-.attachment_box p {
+.attachment_box p,
+.request_file_upload p {
     text-transform: uppercase;
     font-weight: 600;
     padding-bottom: 10px;
@@ -6159,7 +6166,9 @@ font-size: 15px;
 .website_field input{
     border: none;
 }
-
+.main-dashboard-container .required {
+    color: #db3131;
+}
 /*--------------------------------------------------------------
 # Media Query
 --------------------------------------------------------------*/
