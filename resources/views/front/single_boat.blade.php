@@ -81,12 +81,12 @@
                         data: {checkindate: checkIn, checkoutdate: checkOut, id: {{ $listing->id }}},
                         success: function(response) {
                             if(response.status) {
-                            $('#show-Price-sec').removeClass('d-none');
-                            $('#days-val').val(response.days);
-                            $('#total-days').html(response.days);
-                            $('#charter-pice').html(response.price);
-                            $('#charter-fee').html(response.servive_fee);
-                            $('#charter-total').html(response.totalAmount);
+                            $('#show-Price-sec,#show-Price-sec-2').removeClass('d-none');
+                            $('#days-val, #days-val-2').val(response.days);
+                            $('#total-days, #total-days-2').html(response.days);
+                            $('#charter-pice, #charter-pice-2').html(response.price);
+                            $('#charter-fee, #charter-fee-2').html(response.servive_fee);
+                            $('#charter-total, #charter-total-2').html(response.totalAmount);
                             }
                             else
                             {
@@ -308,7 +308,7 @@
                                 <h3>{{ $listing->type }} owned by {{ $listing->user->name }}</h3>
                                 <ul class="specification-menus">
                                     <li>{{ $listing->capacity }} people</li>
-                                    <li>{{ $listing->otherListingSetting->horsepower ?? '' }} horsepower</li>
+                                    <li>{{ optional($listing->otherListingSetting)->horsepower ?? '' }} horsepower</li>
                                     <li>{{ $listing->length }} meters</li>
                                 </ul>
                             </div>
@@ -348,7 +348,7 @@
                     <div class="boat-card-content-sec">
                         <div class="boat-description-sec">
                             <h3>Description of {{ $listing->user->name }}'s {{ $listing->type }}</h3>
-                            <p class="boat_des_heading">{{ $listing->type }} {{ $listing->boat_name }} Open 705 {{ $listing->otherListingSetting->horsepower }}hp</p>
+                            <p class="boat_des_heading">{{ $listing->type }} {{ $listing->boat_name }} Open 705 {{ optional($listing->otherListingSetting)->horsepower }}hp</p>
                             <h6>{{ $listing->title }}</h6>
                             <p>
                                 {{ $listing->description }}
@@ -435,6 +435,12 @@
                             <div class="datepicker-desktop">
                                 <div id="inline-datepicker"></div>
                             </div>
+                            <div class="show-Price d-none" id="show-Price-sec-2">
+                                <p>Days: <span id="total-days-2"></span></p>
+                                <p>Charter Price: <span id="charter-pice-2"></span></p>
+                                <p>Service Fee: <span id="charter-fee-2"></span></p>
+                                <p>Total: <span id="charter-total-2"></span></p>
+                            </div>
                             <div class="datepicker-mobile">
                                 <div id="inline-datepicker-mobile"></div>
                             </div>
@@ -467,7 +473,7 @@
                             <li><i class="fa-solid fa-square-check"></i> Verified profile</li>
                         </ul>
                         <p class="about_heading">About me</p>
-                        <p>{{ $listing->user->exprience->description }}</p>
+                        <p>{{ optional($listing->user->exprience)->description }}</p>
                         <a href="#" class="read_more-btn">Read More</a>
                         <div class="offere_language">
                             <p><i class="fa-solid fa-language"></i> Language spoken: <span class="offered_language_style">English</span></p>
