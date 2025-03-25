@@ -106,16 +106,24 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <a href="#">
-                        <div class="verification_box">
-                            <i class="fa-solid fa-circle-xmark"></i>
-                            <h3>Your<br> Sailing CV</h3>
-                            <p class="item-checked">Item checked</p>
-                        </div>
-                        <div class="complete_cv">
-                            <p>Complete my nautical CV</p>
-                        </div>
-                        </a>
+                        @if($exists)
+                            <div class="verification_box">
+                                <i class="fa-solid fa-circle-check"></i>
+                                <h3>Your<br> Sailing CV</h3>
+                                <p>Item checked</p>
+                            </div>
+                        @else
+                            <a href="#experience">
+                                <div class="verification_box">
+                                    <i class="fa-solid fa-circle-xmark"></i>
+                                    <h3>Your<br> Sailing CV</h3>
+                                    <p class="item-checked">Item checked</p>
+                                </div>
+                                <div class="complete_cv">
+                                    <p>Complete my nautical CV</p>
+                                </div>
+                            </a>
+                        @endif
                     </div>
                 </div>
             </div>

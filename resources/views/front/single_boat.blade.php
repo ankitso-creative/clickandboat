@@ -348,21 +348,17 @@
                     <div class="boat-card-content-sec">
                         <div class="boat-description-sec">
                             <h3>Description of {{ $listing->user->name }}'s {{ $listing->type }}</h3>
-                            <p class="boat_des_heading">Motorboat Nordkapp Open 705 200hp</p>
-                            <p>
-                                Mauris nisl dolor, consectetur ut maximus sit amet, molestie non ipsum. Etiam imperdiet varius urna sollicitudin convallis. Maecenas orci erat, consequat ac aliquam pellentesque, porttitor in tortor. Donec
-                                pretium vehicula dolor sed placerat. Duis id dui blandit ligula malesuada sollicitudin vel et eros. Maecenas mollis, velit ac consectetur consequat, lorem risus gravida orci, tristique bibendum massa elit in
-                                nisl. Proin auctor diam eget diam auctor, non consequat lectus sodales. Donec consequat posuere iaculis.
-                            </p>
-                            <a href="">Read More</a>
+                            <p class="boat_des_heading">{{ $listing->type }} {{ $listing->boat_name }} Open 705 {{ $listing->otherListingSetting->horsepower }}hp</p>
                             <h6>{{ $listing->title }}</h6>
-                            <p>{{ $listing->description }}</p>
-                            {{-- <a href="#" class="read_more_desc">Read More</a> --}}
+                            <p>
+                                {{ $listing->description }}
+                            </p>
+                            {{-- <a href="">Read More</a> --}}
                         </div>
                     </div>
                     <div class="boat-card-content-sec">
                         <div class="equipment-sec">
-                            <h3>Equipment available on the motorboat</h3>
+                            <h3>Equipment available on the {{ $listing->type }}</h3>
                             <ul class="equip-menus">
                                 <li>
                                     <svg width="28" height="28" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
@@ -447,12 +443,23 @@
                     </div>
                     <div class="boat-card-content-sec">
                         <div class="ideas-sec">
+                            @php 
+                                $image = $listing->user->getFirstMediaUrl('profile_image');
+                                if(!$image):
+                                    $image = 'https://static1.clickandboat.com/v1/o/img/mask~dddc60cc1d.png';
+                                endif;
+                                $join_date = \Carbon\Carbon::parse($listing->user->created_at)->format('F Y');
+                                $textP = '';
+                                if($listing->professional === 'Yes'):
+                                    $textP = '<span> Professional owner</span>';
+                                endif;
+                            @endphp
                             <div class="idea_Sec_img">
-                                <img src="{{ asset('app-assets/site_assets/img/feature-img-2.jpg') }}" />
+                                <img src="{{ $image }}" />
                             </div>
                             <div class="idea_sec_text">
-                                <h3>Itinerary ideas</h3>
-                                <p>Joined in July 2022 <span> Professional owner</span></p>
+                                <h3>{{ $listing->user->name }}</h3>
+                                <p>Joined in {{ $join_date }} {!!  $textP !!}</p>
                             </div>
                         </div>
                         <ul class="offered_rating">
@@ -460,7 +467,7 @@
                             <li><i class="fa-solid fa-square-check"></i> Verified profile</li>
                         </ul>
                         <p class="about_heading">About me</p>
-                        <p>Donec hendrerit magna in ligula semper, in varius nisl semper. Fusce pellentesque turpis vitae est dictum, at fringilla velit lobortis. Mauris sed consectetur purus, eget posuere leo.</p>
+                        <p>{{ $listing->user->exprience->description }}</p>
                         <a href="#" class="read_more-btn">Read More</a>
                         <div class="offere_language">
                             <p><i class="fa-solid fa-language"></i> Language spoken: <span class="offered_language_style">English</span></p>
@@ -473,7 +480,7 @@
                     <div class="boat-card-content-sec">
                         <div class="location-sec">
                             <h3>Location</h3>
-                            <p>Location of the motorboat: Zudika, Split</p>
+                            <p>Location of the motorboat: {{ $listing->city }}</p>
                             <div id="map"></div>
                         </div>
                     </div>
@@ -488,7 +495,7 @@
                                 <li>Engine power: <strong>150hp</strong></li>
                                 <li>Length: <strong>{{ $listing->length }} </strong></li>
                                 <li>Year: <strong>{{ $listing->construction_year }}</strong></li>
-                                <li>Onboard capacity: <strong>{{ $listing->capacity }} people</strong></li>
+                                <li>Onboard capacity: <strong>{{ $listing->onboard_capacity }} people</strong></li>
                                 <li>Number of cabins: <strong>{{ $listing->cabins }}</strong></li>
                                 <li>Number of berths: <strong>{{ $listing->berths }}</strong></li>
                             </ul>
@@ -552,14 +559,14 @@
                             <div class="col-sm-12 col-md-4 col-lg-4">
                                 <ul class="features-menu">
                                     <li><strong>Check-in & check-out</strong></li>
-                                    <li>Check-in: <strong>09:00</strong></li>
-                                    <li>Check-out: <strong>18:00</strong></li>
+                                    <li>Check-in: <strong>{{ optional($listing->booking)->check_in }}</strong></li>
+                                    <li>Check-out: <strong>{{ optional($listing->booking)->check_out }}</strong></li>
                                 </ul>
                             </div>
                             <div class="col-sm-12 col-md-4 col-lg-4">
                                 <ul class="features-menu">
                                     <li><strong>Rules for the boat</strong></li>
-                                    <li>Fuel included in price: <strong>No</strong></li>
+                                    <li>Fuel included in price: <strong>{{ optional($listing->booking)->fuel_cost }}</strong></li>
                                     <li>Boat licence required: <strong>Yes (if hired without a skipper)</strong></li>
                                     <li>Minimum rental age: <strong>18 years old</strong></li>
                                 </ul>
