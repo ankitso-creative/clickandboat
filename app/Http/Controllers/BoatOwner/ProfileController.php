@@ -8,6 +8,7 @@ use App\Http\Requests\BoatOwner\Profile\PasswordRequest;
 use App\Http\Requests\BoatOwner\Profile\ExperienceRequest;
 use App\Http\Requests\BoatOwner\Profile\UploadImageRequest;
 use App\Models\Country;
+use App\Models\UserExprience;
 use Illuminate\Http\Request;
 use App\Services\BoatOwner\ProfileService;
 use Auth;
@@ -26,7 +27,8 @@ class ProfileController extends Controller
             $options = selectOption('countries','name','id',$userData->profile->country);
         endif;
         $active = 'profile';
-        return view('boatowner.profile',compact('active','options','userData'));
+        $exists = UserExprience::where('user_id', $userData->id)->exists();
+        return view('boatowner.profile',compact('active','options','userData','exists'));
     }
     public function update(ProfileRequest $request)
     {
