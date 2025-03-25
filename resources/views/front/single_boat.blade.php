@@ -702,6 +702,91 @@
                         </div>
                     </div>
                 </div>
+                <!-- <div class="pt-5 similar_boat_section oat-card-content-secs">
+                    <div class="text-center">
+                        <h3>Check availability of similar boats</h3>
+                    </div>
+                    <div class="pt-4 row">
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <div class="location_inner_box">
+                                <img src="{{ asset('app-assets/site_assets/img/feature-img-2.jpg') }}" />
+                                <div class="wishlist_icon">
+                                    <i class="fa-regular fa-heart"></i>
+                                </div>
+                                <div class="location_inner_main_box">
+                                    <div class="location_inner_text">
+                                        <h3>test</h3>
+                                        <p class="location_pera">sport 30 (2023)</p>
+                                        <p class="people_pera">people · 30 hp · 5 m</p>
+                                        <h5 class="location_price">From <span class="price_style">€27</span> / day</h5>
+                                        <div class="location_facility">
+                                            <ul>
+                                                <li>With Skipper</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="location_review_box">
+                                        <span>Flexible cancellation</span>
+                                        <span><i class="fa-solid fa-star"></i> NEW</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <div class="location_inner_box">
+                                <img src="{{ asset('app-assets/site_assets/img/feature-img-2.jpg') }}" />
+                                <div class="wishlist_icon">
+                                    <i class="fa-regular fa-heart"></i>
+                                </div>
+                                <div class="location_inner_main_box">
+                                    <div class="location_inner_text">
+                                        <h3>test</h3>
+                                        <p class="location_pera">sport 30 (2023)</p>
+                                        <p class="people_pera">people · 30 hp · 5 m</p>
+                                        <h5 class="location_price">From <span class="price_style">€27</span> / day</h5>
+                                        <div class="location_facility">
+                                            <ul>
+                                                <li>With Skipper</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="location_review_box">
+                                        <span>Flexible cancellation</span>
+                                        <span><i class="fa-solid fa-star"></i> NEW</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <div class="location_inner_box">
+                                <img src="{{ asset('app-assets/site_assets/img/feature-img-2.jpg') }}" />
+                                <div class="wishlist_icon">
+                                    <i class="fa-regular fa-heart"></i>
+                                </div>
+                                <div class="location_inner_main_box">
+                                    <div class="location_inner_text">
+                                        <h3>test</h3>
+                                        <p class="location_pera">sport 30 (2023)</p>
+                                        <p class="people_pera">people · 30 hp · 5 m</p>
+                                        <h5 class="location_price">From <span class="price_style">€27</span> / day</h5>
+                                        <div class="location_facility">
+                                            <ul>
+                                                <li>With Skipper</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="location_review_box">
+                                        <span>Flexible cancellation</span>
+                                        <span><i class="fa-solid fa-star"></i> NEW</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="view_more_boats">
+                            <a href="">View More Boats</a>
+                        </div>
+                </div> -->
             </div>
         </div>
     </section>
