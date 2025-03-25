@@ -81,6 +81,7 @@ Route::middleware('Setlang')->group(function(){
         Route::post('/upload-image', [BoatOwnerProfileController::class, 'uploadImage'])->name('profile.image');
         Route::get('listing',[BoatOwnerListingController::class, 'index'])->name('listing');
         Route::get('listing-add',[BoatOwnerListingController::class, 'create'])->name('listing-add');
+        Route::get('listing-preview/{id}',[BoatOwnerListingController::class, 'preview'])->name('preview');
         Route::post('listing-store',[BoatOwnerListingController::class, 'store'])->name('listing-store');
         Route::post('listing-search',[BoatOwnerListingController::class, 'search'])->name('listing-search');
         Route::post('change-status',[BoatOwnerListingController::class, 'changeStatus'])->name('change-status');
