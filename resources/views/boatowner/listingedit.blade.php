@@ -176,43 +176,43 @@
                                 <p class="radioOption-Item">
                                     <input type="radio" {{ checkradio($listing->type,'Sailboat') }} name="type" id="BannerType2" value="Sailboat" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false">
                                     <label for="BannerType2">
-                                        <img src="http://127.0.0.1:8000/app-assets/site_assets/img/sailboat-v1.png"> Sailboat
+                                        <img src="{{ asset('app-assets/site_assets/img/sailboat-v1.png') }}"> Sailboat
                                     </label>
                                 </p>
                                 <p class="radioOption-Item">
                                     <input type="radio" {{ checkradio($listing->type,'RIB') }} name="type" id="BannerType3" value="RIB" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false">
                                     <label for="BannerType3">
-                                        <img src="http://127.0.0.1:8000/app-assets/site_assets/img/rib-v1.png"> RIB
+                                        <img src="{{ asset('app-assets/site_assets/img/rib-v1.png') }}"> RIB
                                     </label>
                                 </p>
                                 <p class="radioOption-Item">
                                     <input type="radio" {{ checkradio($listing->type,'Catamaran') }} name="type" id="BannerType4" value="Catamaran" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false">
                                     <label for="BannerType4">
-                                        <img src="http://127.0.0.1:8000/app-assets/site_assets/img/catamaran-V1.png">Catamaran
+                                        <img src="{{ asset('app-assets/site_assets/img/catamaran-V1.png') }}">Catamaran
                                     </label>
                                 </p>
                                 <p class="radioOption-Item">
                                     <input type="radio" {{ checkradio($listing->type,'Houseboat') }} name="type" id="BannerType5" value="Houseboat" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false">
                                     <label for="BannerType5">
-                                        <img src="http://127.0.0.1:8000/app-assets/site_assets/img/jet-ski-v1.png">Jet ski
+                                        <img src="{{ asset('app-assets/site_assets/img/jet-ski-v1.png') }}">Jet ski
                                     </label>
                                 </p>
                                 <p class="radioOption-Item">
                                     <input type="radio" {{ checkradio($listing->type,'Jet ski') }} name="type" id="BannerType6" value="Jet ski" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false">
                                     <label for="BannerType6">
-                                        <img src="http://127.0.0.1:8000/app-assets/site_assets/img/gulet-v1.png">Gulet
+                                        <img src="{{ asset('app-assets/site_assets/img//gulet-v1.png') }}">Gulet
                                     </label>
                                 </p>
                                 <p class="radioOption-Item">
                                     <input type="radio" {{ checkradio($listing->type,'Gulet') }} name="type" id="BannerType7" value="Gulet" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false">
                                     <label for="BannerType7">
-                                        <img src="http://127.0.0.1:8000/app-assets/site_assets/img/boat-without-licence-v1.png"> Boat without licence
+                                        <img src="{{ asset('app-assets/site_assets/img/boat-without-licence-v1.png') }}"> Boat without licence
                                     </label>
                                 </p>
                                 <p class="radioOption-Item">
                                     <input type="radio" {{ checkradio($listing->type,'Yacht') }} name="type" id="BannerType8" value="Yacht" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false">
                                     <label for="BannerType8">
-                                        <img src="http://127.0.0.1:8000/app-assets/site_assets/img/yacht-v1.png"> Yacht
+                                        <img src="{{ asset('app-assets/site_assets/img/yacht-v1.png') }}"> Yacht
                                     </label>
                                 </p>
                             </div>
