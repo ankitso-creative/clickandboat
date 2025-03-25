@@ -4114,7 +4114,7 @@ section.about_zigzag_section {
     padding: 0px;
     list-style: none;
     display: inline-flex;
-    margin: 0px auto;
+    margin: 15px auto 0;
 }
 .rating-menus li {
     padding: 0 15px 0 0;
@@ -4200,7 +4200,7 @@ section.about_zigzag_section {
 }
 .boat-card-content-sec {
     border-bottom: 1px solid #ebebeb;
-    padding: 1rem 0;
+    padding: 20px 0;
 }
 .specification-box {
     display: flex;
@@ -4908,6 +4908,7 @@ section.about_zigzag_section {
 }
 .boat_des_heading {
     font-weight: 600 !important;
+    padding: 5px 0 15px 0px;
 }
 .boat-description-sec a {
     text-transform: uppercase;
@@ -4978,6 +4979,13 @@ section.about_zigzag_section {
 }
 .offere_language i {
     font-size: 20px;
+    color: #6c757d;
+}
+.features-menu i {
+    color: #f9a126;
+}
+.single_boat_faq button {
+    padding: 10px 10px;
 }
 .offered_rating li {
     display: inline-block;
@@ -5100,6 +5108,7 @@ section.about_zigzag_section {
 }
 .boat-card-content-secs {
     width: 100%;
+    margin-bottom: 50px;
 }
 .single_boat_faq_section .collapsible-link::before {
     color: #000;
@@ -5129,7 +5138,7 @@ section.about_zigzag_section {
 }
 .view_more_boats a {
     background: #f8a126;
-    padding: 13px 15px;
+    padding: 10px 15px;
     display: inline-block;
     border-radius: 15px;
     color: #fff;
@@ -5185,7 +5194,12 @@ font-size: 15px;
     font-size: 26px;
     color: #f9a126;
 }
-
+#map {
+    display: block;
+    z-index: 999;
+    width: 670px;
+    height: 350px;
+}
 /*--------------------------------------------------------------
 # Boatowner listing
 --------------------------------------------------------------*/
@@ -6849,6 +6863,12 @@ font-size: 15px;
     }
     .single_calender_container .flatpickr-input {
         margin: 0 0 10px 0px;
+    }
+    #map {
+        width: 100%;
+    }
+    .location-sec p {
+        text-align: center;
     }
 
 
