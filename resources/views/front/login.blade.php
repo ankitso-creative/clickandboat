@@ -22,7 +22,7 @@
     <div class="l-main-content login_section">
         <div class="container">
         <div class="sing_upform_logo">
-                <img src="{{ asset('app-assets/site_assets/img/booker-boat-logo-v1-white.png') }}">
+                <a href="{{ route('home') }}"><img src="{{ asset('app-assets/site_assets/img/booker-boat-logo-v1-white.png') }}"></a>
             </div>
             <div class="row">
                 <div class="mx-auto col-md-12">

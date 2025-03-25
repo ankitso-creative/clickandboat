@@ -22,7 +22,7 @@
     <div class="l-main-content sign_up_form_section">
         <div class="container">
         <div class="sing_upform_logo">
-                <img src="{{ asset('app-assets/site_assets/img/Booker-Boat-Logo-V1-white.png') }}">
+                <a href="{{ route('home') }}"><img src="{{ asset('app-assets/site_assets/img/Booker-Boat-Logo-V1-white.png') }}"></a>
             </div>
             <div class="row">
                 <div class="mx-auto col-md-12">
@@ -62,7 +62,7 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <input class="form-control" type="tel" id="phone" name="phone" placeholder="Telephone"  required>
+                                <input class="form-control" type="tel" id="phone" name="phone" placeholder="Telephone" required>
                             </div>
                             <div class="form-group">
                                 <input class="form-control" id="user-password" type="password" name="password" placeholder="Password" />
