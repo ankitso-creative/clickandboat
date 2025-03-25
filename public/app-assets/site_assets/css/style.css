@@ -379,6 +379,7 @@ button:focus {
 }
 .navbar-nav li a i {
     font-size: 23px;
+    margin-top: -4px;
 }
 .navbar-nav li a {
     text-transform: uppercase;
