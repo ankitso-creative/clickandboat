@@ -389,6 +389,7 @@ button:focus {
     text-shadow: 4px 3px 5px black,
     0 0 2em black,
     0 0 1.2em black;
+    padding: 4px 0;
 }
 .navbar-nav .dropdown a {
     background: #0000006b;
@@ -2038,6 +2039,20 @@ button:focus {
     border-radius: 15px;
     text-transform: uppercase;
     border: 1px solid #f9a126;
+}
+.listing_edit_btns #nav-calender-tab {
+    background: #f8a126;
+    padding: 13px 35px;
+    color: #fff;
+    border-radius: 15px;
+    text-transform: uppercase;
+    border: 1px solid #f9a126;
+    display: inline;
+}
+.listing_edit_btns #nav-calender-tab:hover{
+    background: none !important;
+    border: 1px solid #f9a126;
+    color: #f9a126;
 }
 .pre_list_btn:hover{
     background: none !important;
