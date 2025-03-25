@@ -425,7 +425,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="boat-card-content-sec">
+                    <div class="bende-card-content-sec">
                         <div class="calendar-sec">
                             <h3>Calendar</h3>
                             <p>Add dates for prices</p>
@@ -502,7 +502,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 boat-right-sec">
+                <div class="col-md-4 boat-right-sec" id="calender_sec_form">
                     <div class="p-2 shadow-sm card">
                         <div class="text-center d-flex flex-column">
                             <h3>Add dates for prices</h3>
@@ -576,7 +576,7 @@
                                     <li><strong>Cancellation policy</strong></li>
                                     <li>99% refund up to 7 days before arrival, excluding expenses.</li>
                                     <li>Enter your travel dates to see the cancellation policy for this trip.</li>
-                                    <li><i class="fa-regular fa-calendar"></i> <a href="#">Enter dates</a></li>
+                                    <li><i class="fa-regular fa-calendar"></i> <a href="#calender_sec_form">Enter dates</a></li>
                                 </ul>
                             </div>
                         </div>

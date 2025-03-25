@@ -134,16 +134,6 @@
                                 @error('harbour')<span class="required">{{ $message }}</span>@enderror
                             </div>
                         </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="exampleFormControlSelect1">Are you a professional?</label>
-                                <select name="professional" class="form-control" required>
-                                    <option value="No">No</option>
-                                    <option value="Yes">Yes</option>
-                                </select>
-                                @error('professional')<span class="required">{{ $message }}</span>@enderror
-                            </div>
-                        </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="label-default">Manufacturer</label>
@@ -157,6 +147,28 @@
                             @error('model')<span class="required">{{ $message }}</span>@enderror
                         </div>
                         <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Is your boat rented with a skipper?</label>
+                                <select name="skippers" class="form-control" required>
+                                    <option value="withoutskipper">Without a skipper</option>
+                                    <option value="withskipper">With a skipper</option>
+                                    <option value="withorwthout">With or without</option>
+                                </select>
+                                @error('professional')<span class="required">{{ $message }}</span>@enderror
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Are you a professional?</label>
+                                <select name="professional" class="form-control" required>
+                                    <option value="No">No</option>
+                                    <option value="Yes">Yes</option>
+                                </select>
+                                @error('professional')<span class="required">{{ $message }}</span>@enderror
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
                             <label>Boat name:<span class="required"> * </span></label>
                             <input type="text" name="boat_name" class="form-control" required value="{{ old('boat_name') }}">
                             @error('boat_name')<span class="required">{{ $message }}</span>@enderror
