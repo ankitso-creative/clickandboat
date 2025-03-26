@@ -34,13 +34,24 @@
 										<input type="file" name="banner_image" value="" class="form-control"/> 
                                         @error('banner_image')<span class="required">{{ $message }}</span>@enderror
 									</div>
+
 									<div class="col-sm-12">
 										<label>Description:<span class="required"> * </span></label>
 										<textarea  name="description" id="summernote" class="form-control"> </textarea>
                                         @error('description')<span class="required">{{ $message }}</span>@enderror
 									</div>
+									<div class="col-sm-12">
+										<label>Select Language:<span class="required"> * </span></label>
+										@if(count($languages))
+											@foreach ($languages as $language)
+												<label class="mt-checkbox">
+													<input type="radio" {{ singleCheckbox($language->code,'en') }} id="inlineCheckbox{{ $loop->iteration }}" value="{{ $language->code }}" name="language"> {{ $language->name }}
+													<span></span>
+												</label>
+											@endforeach
+										@endif
+									</div>
 								</div>
-								
 								<div class="actions btn-set text-right">
 									<button type="button" onclick="window.location = '';"class="btn btn default">
 										<i class="fa fa-angle-left"></i> Back
@@ -50,7 +61,6 @@
 										<i class="fa fa-check"></i> Save
 									</button>
 								</div>
-								
 							</div>
 						</div>
 					</form>

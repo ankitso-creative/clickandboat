@@ -44,6 +44,17 @@
 										<textarea name="description" id="summernote" class="form-control">{{ $result->description }}</textarea>
                                         @error('description')<span class="required">{{ $message }}</span>@enderror
 									</div>
+									<div class="col-sm-12">
+										<label>Select Language:<span class="required"> * </span></label>
+										@if(count($languages))
+											@foreach ($languages as $language)
+												<label class="mt-checkbox">
+													<input type="radio" {{ singleCheckbox($language->code, $result->language) }} id="inlineCheckbox{{ $loop->iteration }}" value="{{ $language->code }}" name="language"> {{ $language->name }}
+													<span></span>
+												</label>
+											@endforeach
+										@endif
+									</div>
 									<div class="clearfix"></div>
 								</div>
 								<div class="actions btn-set text-right">

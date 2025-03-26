@@ -283,7 +283,8 @@
                 <form method="POST">
                     <div class="pt-3 pl-0 col-md-6">
                         <div class="form-group">
-                            <input type="text" name="title" value="" class="form-control" required placeholder="E.g.: 2012  honda" value="{{ old('title', $listing->title) }}">
+                            <label></label>
+                            <input type="text" name="title" class="form-control" value="{{ old('title', $listing->title) }}"  placeholder="E.g.: 2012  honda">
                             @error('title')<span class="required">{{ $message }}</span>@enderror
                         </div>
                     </div>

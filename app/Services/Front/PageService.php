@@ -51,5 +51,9 @@ class PageService{
     {
         return $this->repository->relatedBlog($id);
     }
+    public function submitRequest($request)
+    {
+        return $this->repository->submitRequest($request);
+    }
 }
 ?>

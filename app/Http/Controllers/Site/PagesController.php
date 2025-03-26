@@ -21,6 +21,10 @@ class PagesController extends Controller
         $blogs = $this->service->blogs();
         return view('front.index',compact('blogs'));
     }
+    public function thankYou()
+    {
+        return view('front.thankyou');
+    }
     public function single($slug)//test_boat
     {
         $listing = $this->service->singleBoat($slug);
@@ -138,5 +142,11 @@ class PagesController extends Controller
         //$request = $request->all();
         $results = $this->service->searchListing($request);
         return view('front.search',compact('results'));
+    }
+    public function submitRequest(Request $request)
+    {
+        $request = $request->all();
+        return $this->service->submitRequest($request);
+         
     }
 }

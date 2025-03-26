@@ -28,15 +28,32 @@
     <div class="page-content-wrapper">
         <!-- BEGIN CONTENT BODY -->
         <div class="page-content">
-            <div class="row col-md-12">
-                {{-- @include('admin.blog.post.components.filters') --}}
-            </div>
             <!-- BEGIN PAGE TITLE-->
             <h1 class="page-title">Manage Blogs
                 <span style="float: right;">
                     <a href="{{ route('admin.blog.create')}}" class="btn green"><i class="fa fa-plus"></i> &nbsp;New</a>
                 </span>
             </h1>
+            <div class="row" style="margin-bottom: 20px">
+                {{-- @include('admin.blog.post.components.filters') --}}
+                <form>
+                    <div class="col-sm-4">
+                        <label>Blog Name:</label>
+                        <input type="text" name="name" value="" class="form-control"/>
+                    </div>
+                    <div class="col-sm-4">
+                        <label>language:</label>
+                        <select name="language" class="form-control">
+                            <option value="">Select Language</option>
+                            {!! $languages !!}
+                        </select>
+                    </div>
+                    <div class="col-sm-4" style="margin-top: 25px">
+                        <button type="submit" class="btn green">Submit</button>
+                        <a href="{{ route('admin.blog.index') }}" class="btn red">Reset</a>
+                    </div>
+                </form>
+            </div>
             @if(session('success'))
                 <div class="alert alert-success" style="display: block;">
                     <button class="close" data-close="alert"></button>
@@ -49,7 +66,7 @@
                     <span> {{ session('error') }} </span>
                 </div>
             @endif
-            <div class="clear"></div>
+            <div class="clearfix"></div>
             <div class="portlet box green">
                 <div class="portlet-title">
                     <div class="caption">

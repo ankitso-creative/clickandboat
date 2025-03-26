@@ -120,6 +120,7 @@ Route::middleware('Setlang')->group(function(){
     Route::post('forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
     Route::get('reset-password/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
     Route::post('reset-password', [ResetPasswordController::class, 'reset'])->name('password.update');
+    
 
     Route::get('login/facebook', [SocialAuthController::class, 'redirectToFacebook'])->name('facebooklogin');
     Route::get('login/facebook/callback', [SocialAuthController::class, 'handleFacebookCallback']);
@@ -139,8 +140,9 @@ Route::middleware('Setlang')->group(function(){
         Auth::logout(); 
         return redirect('login'); 
     });
-
+    Route::post('submit-request', [PagesController::class, 'submitRequest'])->name('submit-request');
     Route::get('/', [PagesController::class, 'index'])->name('home');
+    Route::get('thankyou', [PagesController::class, 'thankYou'])->name('thankyou');
     Route::get('/about-us', [PagesController::class, 'aboutUs'])->name('about-us');
     Route::get('/help', [PagesController::class, 'help'])->name('help');
     Route::get('/contact', [PagesController::class, 'contact'])->name('contact');

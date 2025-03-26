@@ -1,8 +1,9 @@
 <?php
     namespace App\Repositories\Front;
 
+use App\Events\Front\RequestSubmitted;
 use App\Models\Admin\Blog;
-use App\Models\Admin\Listing;
+    use App\Models\Admin\Listing;
     use App\Models\Admin\Price;
     use Carbon\Carbon;
     use Illuminate\Support\Facades\Session;
@@ -144,5 +145,24 @@ use App\Models\Admin\Listing;
             ->paginate(9);
            
             return $listing;
+        }
+        public function submitRequest($request)
+        {
+            $data = [
+                'email' => $request['email'],
+                'label' => $request['label'],
+                'subjact' => $request['subjact'],
+                'message' => $request['message'],
+            ];
+            $file = '';
+            if(isset($request['files'][0])):
+                $file = $request['files'][0]; 
+            endif;
+            event(new RequestSubmitted($data, $file));
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Your request is submitted successfully.',
+                'redirect_url' => route('thankyou'),
+            ]);
         }
     }
