@@ -36,7 +36,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav">
-                        <li class="nav-item dropdown">
+                        <!-- <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle about_menu" href="#" id="navbarDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 About Us
@@ -46,6 +46,11 @@
                                 <a class="dropdown-item" href="#">Another action</a>
                                 <a class="dropdown-item" href="#">Something else here</a>
                             </div>
+                        </li> -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link about_menu" href="{{ route('about-us') }}">
+                                About Us
+                            </a>
                         </li>
                         <li class="nav-item">
                             <select class="select-language" id="language">
