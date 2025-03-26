@@ -12,8 +12,8 @@ class Blog extends Model implements HasMedia
     protected $fillable = [
         'title',
         'description',
+        'language',
         'read_minutes',
-        
     ];
     public static function boot()
     {

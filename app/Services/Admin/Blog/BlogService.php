@@ -10,9 +10,9 @@ class BlogService{
     {
         $this->repostiry = new BlogRepository();
     }
-    public function allBlogs()
+    public function allBlogs($request)
     {
-        return $this->repostiry->allBlogs();
+        return $this->repostiry->allBlogs($request);
     }
     public function store($request)
     {

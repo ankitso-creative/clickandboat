@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\Admin\Blog\BlogStoreRequest;
 use App\Http\Requests\Admin\Blog\BlogUpdateRequest;
+use App\Models\Admin\Language;
 use App\Services\Admin\Blog\BlogService;
 class BlogController extends Controller
 {
@@ -17,11 +18,13 @@ class BlogController extends Controller
     {
         $this->service = new BlogService;
     }
-    public function index()
+    public function index(Request $request)
     {
-        $results = $this->service->allBlogs();
+        //$request =  $request->all();
+        $results = $this->service->allBlogs($request);
+        $languages = selectOption('languages','name','code','',array('status','1'));
         $active = 'blog';
-        return view('admin.blog.index',compact('active','results'));
+        return view('admin.blog.index',compact('active','results','languages'));
     }
 
     /**
@@ -29,8 +32,9 @@ class BlogController extends Controller
      */
     public function create()
     {
+        $languages = Language::where('status','1')->get();
         $active = 'blog';
-        return view('admin.blog.add',compact('active'));
+        return view('admin.blog.add',compact('active','languages'));
     }
 
     /**
@@ -62,8 +66,9 @@ class BlogController extends Controller
     public function edit(string $id)
     {
         $active = 'blog';
+        $languages = Language::where('status','1')->get();
         $result = $this->service->blogEdit($id);
-        return view('admin.blog.edit',compact('active','result'));
+        return view('admin.blog.edit',compact('active','result','languages'));
     }
 
     /**

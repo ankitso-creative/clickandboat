@@ -5,15 +5,26 @@ use App\Models\Admin\BlogComment;
 
 class BlogRepository
 {
-    public function allBlogs()
+    public function allBlogs($request)
     {
-        return Blog::all();
+        $blog = Blog::when($request->has('name') && !empty($request->name), function ($query) use ($request) {
+            $name = $request->name; 
+            return $query->where('title', $name); 
+        })
+        ->when($request->has('language') && !empty($request->language), function ($query) use ($request) {
+            $language = $request->language; 
+            return $query->where('language', $language); 
+        })
+        ->paginate(9);
+
+        return $blog;
     }
     public function store($request)
     {
         $blog = new Blog();
         $blog->title = $request['title'];
         $blog->description = $request['description'];
+        $blog->language = $request['language'];
         if($blog->save()):
             self::uploadImage($request['banner_image'],$blog->id);
             return true;
@@ -31,9 +42,10 @@ class BlogRepository
     }
     public function blogUpdate($request,$id)
     {
-       $blog = Blog::find($id);
-       $blog->title = $request['title'];
-       $blog->description = $request['description'];
+        $blog = Blog::find($id);
+        $blog->title = $request['title'];
+        $blog->description = $request['description'];
+        $blog->language = $request['language'];
         if($blog->update()):
             if(isset($request['banner_image']) && $request['banner_image']) {
                 self::uploadImage($request['banner_image'],$blog->id);
