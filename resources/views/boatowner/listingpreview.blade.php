@@ -351,7 +351,7 @@
                             <p class="boat_des_heading">{{ $listing->type }} {{ $listing->boat_name }} Open 705 {{ optional($listing->otherListingSetting)->horsepower }}hp</p>
                             <h6>{{ $listing->title }}</h6>
                             <p>
-                                {{ $listing->description }}
+                                 {{ optional($listing->description[0])->description }} 
                             </p>
                             {{-- <a href="">Read More</a> --}}
                         </div>

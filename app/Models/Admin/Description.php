@@ -11,4 +11,8 @@ class Description extends Model
         'description',
         'language',
     ];
+    public function listing() 
+    {
+        return $this->belongsTo(Listing::class);
+    }
 }

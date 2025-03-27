@@ -28,7 +28,6 @@ class Listing extends Model implements HasMedia
         'website',
         'boat_name',
         'title',
-        'description',
         'onboard_capacity',
         'cabins',
         'berths',

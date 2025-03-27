@@ -1,10 +1,18 @@
 <?php
     namespace App\Repositories\BoatOwner;
+
+    use App\Models\Admin\Language;
     use App\Models\Admin\Listing;
     use Illuminate\Support\Facades\Storage;
     use Spatie\MediaLibrary\MediaCollections\Models\Media;
-
+    use App\Repositories\Translator\TranslatorRepository;
     class ListingRepository{
+
+        protected $translate ;
+        public function __construct()
+        {
+            $this->translate = new TranslatorRepository();
+        }
         public function allListing()
         {
             $userId = auth()->id();
@@ -13,8 +21,18 @@
         }
         public function editListing($id)
         {
+            $value = Session('lang');
+            if(!$value):
+                $value = 'en';
+            endif;
             $userId = auth()->id();
-            $results = Listing::with(['media','seasonPrice'])->where('id',$id)->where('user_id',$userId)->first();
+            $results = Listing::with(['media', 'seasonPrice', 'description' => function($query) use ($value) {
+                $query->where('language', $value)->first(); 
+            }])
+            ->where('id', $id)
+            ->where('user_id', $userId)
+            ->first();
+            
             if(!$results):
                 return false;
             endif;
@@ -110,7 +128,6 @@
                 $listing->construction_year = $request['construction_year'];
                 $listing->length = $request['length'];
                 $listing->title = $request['title'];
-                $listing->description = $request['description'];
                 $listing->onboard_capacity = $request['onboard_capacity'];
                 $listing->cabins = $request['cabins'];
                 $listing->berths = $request['berths'];
@@ -119,6 +136,25 @@
                 $listing->renovated = $request['renovated'];
                 $listing->speed = $request['speed'];
                 if($listing->update()):
+                    $listing->description()->UpdateOrCreate(['listing_id' => $listing->id, 'language'  => $request['language']],[
+                        'listing_id' => $listing->id,
+                        'description'  => $request['description'],
+                        'language'  => $request['language'],
+                    ]);
+                    Session(['lang'=> $request['language']]);
+
+                    $languages = Language::where('code','<>',$request['language'])->get();
+                    if($languages){
+                        foreach($languages as $language){
+                            $description = $this->translate->translateContent($request['description'],$language->code);
+                            $listing->description()->UpdateOrCreate(['listing_id' => $listing->id, 'language'  => $language->code],[
+                                'listing_id' => $listing->id,
+                                'description'  => $description,
+                                'language'  => $language->code,
+                            
+                            ]);
+                        }
+                    }
                     return response()->json([
                         'success' => 'success',
                         'message' => 'Your descriptions updated successfully',

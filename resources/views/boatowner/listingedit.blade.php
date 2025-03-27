@@ -290,10 +290,16 @@
                     </div>
                     <div class="p-0 pt-4 col-sm-12">
                         <h5 class="bold ">Language</h5>
+                        @php
+                            $value = Session('lang');
+                            if(!$value):
+                                $value = 'en';
+                            endif;
+                        @endphp
                         @if(count($languages))
                             @foreach ($languages as $language)
                                 <label class="mt-checkbox">
-                                    <input type="radio" {{ singleCheckbox($language->code,'en') }} id="inlineCheckbox{{ $loop->iteration }}" value="{{ $language->code }}" name="language"> {{ $language->name }}
+                                    <input type="radio" {{ singleCheckbox($language->code, $value) }} id="inlineCheckbox{{ $loop->iteration }}" value="{{ $language->code }}" name="language"> {{ $language->name }}
                                     <span></span>
                                 </label>
                             @endforeach
@@ -302,9 +308,12 @@
                     <div class="p-0 pt-4 col-sm-12">
                         <h4 class="bold ">Description</h4>
                     </div>
+                    <?php 
+                    //dd($listing->description[0]->description);
+                    ?>
                     <div class="pt-4 row">
                         <div class="col-md-6">
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="8" name="description">{{ $listing->description }}</textarea>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="8" name="description">{{ $listing->description[0]->description }}</textarea>
                             @error('description')<span class="required">{{ $message }}</span>@enderror
                         </div>
                         <div class="col-md-6">
