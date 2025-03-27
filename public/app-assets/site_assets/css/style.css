@@ -367,7 +367,7 @@ button:focus {
     margin-left: auto;
 }
 #nav-bar img {
-    width: 70%;
+    width: 60%;
 }
 .navbar-nav li a {
     text-transform: uppercase;
@@ -1762,7 +1762,7 @@ button:focus {
     float: right;
 }
 .dashboard-logo img {
-    max-width: 87%;
+    max-width: 40%;
 }
 #details-tabs li a {
     border: none;
@@ -6958,6 +6958,11 @@ font-size: 15px;
     }
     .location-sec p {
         text-align: center;
+    }
+    .nav-mobile img {
+        width: 24%;
+        top: 6px;
+        right: 8px;
     }
 
 

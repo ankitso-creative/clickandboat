@@ -20,8 +20,9 @@
 .dropdown.dropdown-quick-sidebar-toggler:hover{
     background:#f9a126 !important;
 }
-.dropdown .nav>li>a:focus, .nav>li>a:hover {
+.tabbable .dropdown .nav>li>a:focus, .nav>li>a:hover {
     background-color: #f9a126;
+    color: #fff;
 }
 .page-header.navbar .top-menu .navbar-nav>li.dropdown .dropdown-toggle:hover, .page-header.navbar .top-menu .navbar-nav>li.dropdown.open .dropdown-toggle {
     background-color: #f9a126;
@@ -85,4 +86,25 @@
 }
 .sub_reset {
     padding-top: 19px;
+}
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+    background-color: #f9a126 !important;
+}
+.tabbable.tabbable-tabdrop a {
+    color: #000;
+}
+.page-content h4 {
+    padding-top: 15px;
+}
+.portlet img {
+    width: 142px;
+}
+@media (min-width: 320px) and (max-width: 767px){
+.page-header.navbar .top-menu .navbar-nav>li.dropdown-user .dropdown-toggle {
+    background-color: #f9a126;
+    padding: 13px 12px;
+}
+.page-header.navbar .menu-toggler.responsive-toggler {
+    margin-top: 29px;
+}
 }

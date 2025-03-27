@@ -313,7 +313,7 @@
                     ?>
                     <div class="pt-4 row">
                         <div class="col-md-6">
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="8" name="description">{{ $listing->description[0]->description }}</textarea>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="8" name="description">{{ optional($listing->description[0] ?? null)->description }}</textarea>
                             @error('description')<span class="required">{{ $message }}</span>@enderror
                         </div>
                         <div class="col-md-6">
@@ -1726,10 +1726,10 @@
                                 <i class="fa fa-angle-left"></i> Back
                             </button> -->
                             <input type="hidden" name="s" value="discount">
-                            <button type="submit" class="listing_sub_btn mt-ladda-btn ladda-button btn-outline"
+                            <!-- <button type="submit" class="listing_sub_btn mt-ladda-btn ladda-button btn-outline"
                                 data-style="contract" data-spinner-color="#333">
                                  Save
-                            </button>
+                            </button> -->
                         </div>
                     </div>
                 </form>
