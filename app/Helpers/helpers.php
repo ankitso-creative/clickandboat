@@ -9,6 +9,18 @@
         
         return preg_replace('/-+/', $symbol, strtolower($string)); // Replaces multiple hyphens with single one.
     }
+    function phoneWebsite()
+    {
+        $setting = Setting::where('meta_key','phone')->first();
+        $meta_value = $setting->meta_value;
+        return $meta_value;
+    }
+    function emailWebsite()
+    {
+        $setting = Setting::where('meta_key','email')->first();
+        $meta_value = $setting->meta_value;
+        return $meta_value;
+    }
     function logoURL()
     {
         $setting = Setting::first();

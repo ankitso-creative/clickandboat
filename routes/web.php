@@ -149,6 +149,7 @@ Route::middleware('Setlang')->group(function(){
     Route::get('/request-submit', [PagesController::class, 'requestSubmit'])->name('request-submit');
     Route::get('/ourfleet', [PagesController::class, 'ourFleet'])->name('ourfleet');
     Route::get('/location', [PagesController::class, 'location'])->name('location');
+    Route::get('/single_location', [PagesController::class, 'singleLocation'])->name('single_location');
     Route::get('/boat-rental/search', [PagesController::class, 'search'])->name('search');
     Route::get('/privacy-policy', [PagesController::class, 'PrivacyPolicy'])->name('privacy-policy');
     Route::get('/terms-condition', [PagesController::class, 'terms'])->name('terms-condition');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\BoatOwner;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BoatOwner\Listing\UpdateListing;
 use App\Http\Requests\BoatOwner\Listing\UploadImageRequest;
+use App\Models\Admin\Language;
 use App\Services\BoatOwner\ListingService;
 use Illuminate\Http\Request;
 
@@ -64,12 +65,13 @@ class ListingController extends Controller
      */
     public function edit($id)
     {
+        $languages = Language::where('status','1')->get();
         $active = 'listing';
         $listing = $this->service->editListing($id);
         if(!$listing):
             return redirect()->route('boatowner.listing');
         endif;
-        return view('boatowner.listingedit',compact('active','listing'));
+        return view('boatowner.listingedit',compact('active','listing','languages'));
     }
 
     /**

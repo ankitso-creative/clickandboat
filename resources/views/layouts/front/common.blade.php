@@ -89,8 +89,7 @@
     <ul class="nav-mobile">
         <li class="nav-item">
             <select class="select-language" id="language">
-                {!! selectOption('languages','name','code',session()->get('lang'),array('status' , '1'))
-                !!}
+                {!! selectOption('languages','name','code',session()->get('lang'),array('status' , '1')) !!}
             </select>
         </li>
         <li><a href="{{ route('home') }}"><img src="{{ logoURL() }}"></a></li>
@@ -160,11 +159,11 @@
                     <div class="cal_mail_box">
                         <div class="call_box_sec">
                             <h5>Call Us</h5>
-                            <p><a href="tel:+1 755 302 8549">+1 755 302 8549</a></p>
+                            <p><a href="tel:{{ phoneWebsite() }}">{{ phoneWebsite() }}</a></p>
                         </div>
                         <div class="email_box_sec">
                             <h5>Email Us</h5>
-                            <p><a href="mailto:support@domain.com">support@domain.com</a></p>
+                            <p><a href="mailto:{{ emailWebsite() }}">{{ emailWebsite() }}</a></p>
                         </div>
                     </div>
                 </div>
