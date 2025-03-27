@@ -71,6 +71,7 @@
             $listing = Listing::where('id', $id)->with(['price','booking','otherListingSetting','equipment','discount','calendar'])->first();
             if($request['s']=='general')
             {
+
                 $listing->type = $request['type'];
                 $listing->harbour = $request['harbour'];
                 $listing->city = $request['city'];

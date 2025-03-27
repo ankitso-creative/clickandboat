@@ -66,6 +66,10 @@ class Listing extends Model implements HasMedia
     {
         return $this->hasMany(Calendar::class);
     }
+    public function description()
+    {
+        return $this->hasMany(Description::class);
+    }
     public function seasonPrice() 
     {
         return $this->hasMany(SeasonPrice::class);

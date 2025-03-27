@@ -289,6 +289,17 @@
                         </div>
                     </div>
                     <div class="p-0 pt-4 col-sm-12">
+                        <h5 class="bold ">Language</h5>
+                        @if(count($languages))
+                            @foreach ($languages as $language)
+                                <label class="mt-checkbox">
+                                    <input type="radio" {{ singleCheckbox($language->code,'en') }} id="inlineCheckbox{{ $loop->iteration }}" value="{{ $language->code }}" name="language"> {{ $language->name }}
+                                    <span></span>
+                                </label>
+                            @endforeach
+                        @endif
+                    </div>
+                    <div class="p-0 pt-4 col-sm-12">
                         <h4 class="bold ">Description</h4>
                     </div>
                     <div class="pt-4 row">
