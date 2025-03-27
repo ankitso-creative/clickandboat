@@ -77,3 +77,6 @@
     color: #f9a126;
     border: 1px solid #f9a126;
 }
+.page-header.navbar .page-logo .logo-default {
+    margin: 9px 0 0 !important;
+}
