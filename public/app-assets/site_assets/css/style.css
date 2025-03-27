@@ -1252,6 +1252,8 @@ button:focus {
 }
 .next_trip_section .container-fluid {
     padding: 0px 30px;
+    max-width: 1270px;
+    margin: 0px auto;
 }
 .next_trip_text h3 {
     font-size: 28px;
@@ -3834,7 +3836,10 @@ section.about_zigzag_section {
 }
 .knowledge_section button {
     font-size: 28px;
-    padding: 0px 15px;
+    padding: 0px 30px 0 15px;
+}
+.knowledge_section button:hover{
+   text-decoration: none;
 }
 .faq_section .faq_heading h2 {
     font-size: 64px;
@@ -6185,6 +6190,65 @@ font-size: 15px;
     border: none;
     padding: 0;
 }
+.thank_you_section {
+    background-image: url(../img/location-banner.jpg);
+    width: 100%;
+    height: 285px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+.thank_you_section_text {
+    position: absolute;
+    top: 56%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+}
+.thank_you_section_text h1 {
+    font-size: 44px;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+}
+.thanks_page_text {
+    padding: 115px 0px;
+}
+.thanks_page_text h2 {
+    font-size: 28px;
+    color: #000;
+    text-transform: uppercase;
+}
+.thanks_page_text i{
+    font-size: 70px;
+    color: #000;
+}
+.thank_section_text {
+    max-width: 500px;
+    margin: 0px auto;
+}
+.thanks_page_text a {
+    background: #f9a126;
+    display: inline-block;
+    color: #fff;
+    border-radius: 15px;
+    border: 1px solid #f8a126;
+    text-transform: uppercase;
+    padding: 10px 22px;
+    margin-top: 20px;
+}
+.knowledge_section ul {
+    margin-left: 20px;
+    padding-top: 10px;
+}
+.knowledge_section ul li {
+    padding: 3px 0px;
+}
+.knowledge_section ul ::marker {
+    font-size: 20px;
+    color: #f9a126;
+  }
 /*--------------------------------------------------------------
 # Media Query
 --------------------------------------------------------------*/
@@ -6482,7 +6546,6 @@ font-size: 15px;
     }
     .knowledge_section button {
         font-size: 20px;
-        padding: 0px 20px;
     }
     .faq_section .faq_heading h2 {
         font-size: 30px;
@@ -6982,8 +7045,8 @@ font-size: 15px;
     .boat_type_section_slider .boat_type_box img {
         height: 450px;
     }
-    .about_banner_section {
-        height: 510px;
+    .next_trip_box img {
+        height: 300px;
     }
     .blog_banner {
         height: 600px;
@@ -6995,10 +7058,10 @@ font-size: 15px;
 }
 @media (min-width: 1900px) and (max-width: 2500px){
     .blog_banner {
-        height: 821px;
+        height: 765px;
     }
  .home_banner_section {
-        height: 960px;
+        height: 900px;
     }
 .featured_board_boxes img {
         height: 500px;
@@ -7047,7 +7110,7 @@ font-size: 15px;
     height: 300px;
 }
 .about_banner_section {
-    height: 690px;
+    height: 635px;
 }
 .single_boat_banner {
     height: 350px;
@@ -7056,12 +7119,18 @@ font-size: 15px;
     height: 320px;
 }
 .blog_inner_banner {
-    height: 690px;
+    height: 670px;
 }
 .request_banner_section {
     height: 690px;
 }
 .listing_banner {
     height: 695px;
+}
+.banner_text {
+    bottom: 8%;
+}
+.banner_form {
+    top: -195px;
 }
 }
