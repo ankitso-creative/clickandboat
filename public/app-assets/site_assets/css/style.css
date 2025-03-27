@@ -360,14 +360,14 @@ button:focus {
     position: absolute;
     top: 0;
     width: 100%;
-    padding: 15px 19px;
+    padding: 7px 19px;
     z-index: 999;
 }
 .navbar-nav {
     margin-left: auto;
 }
 #nav-bar img {
-    width: 95%;
+    width: 70%;
 }
 .navbar-nav li a {
     text-transform: uppercase;
@@ -1574,7 +1574,7 @@ button:focus {
 .sign_up_form_section ::placeholder { 
     color: #000;
   }
-  .sign_up_form_section  .form-control:focus {
+.sign_up_form_section  .form-control:focus {
     color: #495057;
     background-color: #fff;
     outline: 0;
@@ -6249,6 +6249,7 @@ font-size: 15px;
     font-size: 20px;
     color: #f9a126;
   }
+  
 /*--------------------------------------------------------------
 # Media Query
 --------------------------------------------------------------*/

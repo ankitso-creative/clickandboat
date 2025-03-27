@@ -48,7 +48,7 @@
                             {!! $languages !!}
                         </select>
                     </div>
-                    <div class="col-sm-4" style="margin-top: 25px">
+                    <div class="col-sm-4 sub_reset" style="margin-top: 25px">
                         <button type="submit" class="btn green">Submit</button>
                         <a href="{{ route('admin.blog.index') }}" class="btn red">Reset</a>
                     </div>

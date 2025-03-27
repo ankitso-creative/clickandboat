@@ -40,7 +40,7 @@
     background: #fff;
 }
 .page-header.navbar .page-logo .logo-default {
-    width: 150px;
+    width: 130px;
 }
 .page-content .btn.green:not(.btn-outline) {
     color: #FFF;
@@ -76,4 +76,13 @@
     background: none;
     color: #f9a126;
     border: 1px solid #f9a126;
+}
+.page-header.navbar .page-logo .logo-default {
+    margin: 9px 0 0 !important;
+}
+.page-container label {
+    padding-top: 20px !important;
+}
+.sub_reset {
+    padding-top: 19px;
 }
