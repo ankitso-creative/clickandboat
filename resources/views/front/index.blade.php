@@ -2,37 +2,39 @@
 @section('meta')
 <title>Home</title>
 <style>
-.image-box {
-    position: relative;
-    display: inline-block;
-    cursor: none;
+.custom-div {
+  position: relative;
+  display: inline-block;
+  /* background-color: #d9d9d9; */
+  /* width: calc(100vw / 3 - 2px);
+  height: 100vh; */
+  padding: 0;
+  margin: -2px;
+  overflow: visible;
+  outline: 1px white solid;
+  cursor: none;
 }
-
-.cursor {
+.custom-div .text {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 80px;
-    height: 80px;
-    color: black;
+    white-space: nowrap;
+    background-color: transparent;
     font-size: 60px;
     font-weight: 800;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transform: translate(-50%, -50%);
+    display: none;
     pointer-events: none;
-    transition: transform 0.15s ease-out;
-    opacity: 0;
-    z-index: 999;
     text-transform: uppercase;
     color: #f9a126;
+    font-family: 'GT America Trial Cn Bd';
 }
 
-.cursor.active {
-    opacity: 1;
+.text {
+  z-index: 5;
 }
+
+.custom-div:nth-child(odd) {
+  /* background-color: #d9d9d9; */
+}
+
 </style>
 @endsection
 @section('css')
@@ -167,7 +169,7 @@ function initialize() {
         </div>
         <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-4">
-                <div class="featured_board_boxes">
+                <div class="featured_board_boxes custom-div" onmousemove="moveText(event)" onmouseout="hideText(event)">
                     <a href="#">
                         <img src="{{ asset('app-assets/site_assets/img/feature-img-1.jpg') }}" alt="featured-img">
                         <div class="featured_box_text">
@@ -175,11 +177,12 @@ function initialize() {
                             <h3>Cranchi 43</h3>
                         </div>
                     </a>
+                    <span class="text">View</span>
                 </div>
                 <p class="featured_price">11 Guests | Price from €1690</p>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-4">
-                <div class="featured_board_boxes">
+                <div class="featured_board_boxes custom-div" onmousemove="moveText(event)" onmouseout="hideText(event)">
                     <a href="#">
                         <img src="{{ asset('app-assets/site_assets/img/feature-img-2.jpg') }}" alt="featured-img">
                         <div class="featured_box_text">
@@ -187,11 +190,12 @@ function initialize() {
                             <h3>Chaparral 250</h3>
                         </div>
                     </a>
+                    <span class="text">View</span>
                 </div>
                 <p class="featured_price">11 Guests | Price from €1690</p>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-4">
-                <div class="featured_board_boxes">
+                <div class="featured_board_boxes custom-div" onmousemove="moveText(event)" onmouseout="hideText(event)">
                     <a href="#">
                         <img src="{{ asset('app-assets/site_assets/img/feature-img-3.jpg') }}" alt="featured-img">
                         <div class="featured_box_text">
@@ -199,6 +203,7 @@ function initialize() {
                             <h3>Maiora 99</h3>
                         </div>
                     </a>
+                    <span class="text">View</span>
                 </div>
                 <p class="featured_price">11 Guests | Price from €1690</p>
             </div>
@@ -270,91 +275,100 @@ function initialize() {
         <div class="row boat_type_slider">
             <div class="col-sm-12 col-md-6 col-lg-6">
                 <a href="#">
-                    <div class="boat_type_box">
+                    <div class="boat_type_box custom-div" onmousemove="moveText(event)" onmouseout="hideText(event)">
                         <img src="{{ asset('app-assets/site_assets/img/boat-type-1.jpg') }}" alt="boat-img">
                         <div class="boat_type_text">
                             <h3>Motorboat</h3>
                         </div>
+                        <span class="text">View</span>
                     </div>
                 </a>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-6">
                 <a href="#">
-                    <div class="boat_type_box">
+                    <div class="boat_type_box custom-div" onmousemove="moveText(event)" onmouseout="hideText(event)">
                         <img src="{{ asset('app-assets/site_assets/img/boat-type-2.jpg') }}" alt="boat-img">
                         <div class="boat_type_text">
                             <h3>RIBS</h3>
                         </div>
+                        <span class="text">View</span>
                     </div>
                 </a>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-6">
                 <a href="#">
-                    <div class="boat_type_box">
+                    <div class="boat_type_box custom-div" onmousemove="moveText(event)" onmouseout="hideText(event)">
                         <img src="{{ asset('app-assets/site_assets/img/boat-type-2.jpg') }}" alt="boat-img">
                         <div class="boat_type_text">
                             <h3>Sailboat</h3>
                         </div>
+                        <span class="text">View</span>
                     </div>
                 </a>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-6">
                 <a href="#">
-                    <div class="boat_type_box">
+                    <div class="boat_type_box custom-div" onmousemove="moveText(event)" onmouseout="hideText(event)">
                         <img src="{{ asset('app-assets/site_assets/img/boat-type-1.jpg') }}" alt="boat-img">
                         <div class="boat_type_text">
                             <h3>Catamaran</h3>
                         </div>
+                        <span class="text">View</span>
                     </div>
                 </a>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-6">
                 <a href="#">
-                    <div class="boat_type_box">
+                    <div class="boat_type_box custom-div" onmousemove="moveText(event)" onmouseout="hideText(event)">
                         <img src="{{ asset('app-assets/site_assets/img/boat-type-2.jpg') }}" alt="boat-img">
                         <div class="boat_type_text">
                             <h3>Sailing yacht</h3>
                         </div>
+                        <span class="text">View</span>
                     </div>
                 </a>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-6">
                 <a href="#">
-                    <div class="boat_type_box">
+                    <div class="boat_type_box custom-div" onmousemove="moveText(event)" onmouseout="hideText(event)">
                         <img src="{{ asset('app-assets/site_assets/img/boat-type-1.jpg') }}" alt="boat-img">
                         <div class="boat_type_text">
                             <h3>Fishing boat</h3>
                         </div>
+                        <span class="text">View</span>
                     </div>
                 </a>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-6">
                 <a href="#">
-                    <div class="boat_type_box">
+                    <div class="boat_type_box custom-div" onmousemove="moveText(event)" onmouseout="hideText(event)">
                         <img src="{{ asset('app-assets/site_assets/img/boat-type-2.jpg') }}" alt="boat-img">
                         <div class="boat_type_text">
                             <h3>Monohull</h3>
                         </div>
+                        <span class="text">View</span>
                     </div>
                 </a>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-6">
                 <a href="#">
-                    <div class="boat_type_box">
+                    <div class="boat_type_box custom-div" onmousemove="moveText(event)" onmouseout="hideText(event)">
                         <img src="{{ asset('app-assets/site_assets/img/boat-type-1.jpg') }}" alt="boat-img">
                         <div class="boat_type_text">
                             <h3>Jet skis</h3>
                         </div>
+                        <span class="text">View</span>
                     </div>
                 </a>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-6">
                 <a href="#">
-                    <div class="boat_type_box">
+                    <div class="boat_type_box custom-div" onmousemove="moveText(event)" onmouseout="hideText(event)">
                         <img src="{{ asset('app-assets/site_assets/img/boat-type-2.jpg') }}" alt="boat-img">
                         <div class="boat_type_text">
                             <h3>Yacht</h3>
                         </div>
+                        <span class="text">View</span>
                     </div>
                 </a>
             </div>
@@ -542,39 +556,39 @@ function initialize() {
     <div class="home_page_slider_Sec">
         <div class="row location_slider">
             <div class="location_slide">
-                <div class="home_page_slider_box image-box">
+                <div class="home_page_slider_box custom-div" onmousemove="moveText(event)" onmouseout="hideText(event)">
                     <img src="{{ asset('app-assets/site_assets/img/location-slider-1.jpg') }}" class="image">
-                    <div class="cursor"></div>
                     <div class="home_page_box_text">
                         <h3>LUXURY boats</h3>
                         <h2>Es vedre</h2>
                         <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed
                             odio tortor, hendrerit ut arcu vitae, efficitur convallis eros.</p>
                     </div>
+                    <span class="text">Explore</span>
                 </div>
             </div>
             <div class="location_slide">
-                <div class="home_page_slider_box image-box">
+                <div class="home_page_slider_box custom-div" onmousemove="moveText(event)" onmouseout="hideText(event)">
                     <img src="{{ asset('app-assets/site_assets/img/location-slider-1.jpg') }}" class="image">
-                    <div class="cursor"></div>
                     <div class="home_page_box_text">
                         <h3>LUXURY boats</h3>
                         <h2>Es vedre</h2>
                         <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed
                             odio tortor, hendrerit ut arcu vitae, efficitur convallis eros.</p>
                     </div>
+                    <span class="text">Explore</span>
                 </div>
             </div>
             <div class="location_slide">
-                <div class="home_page_slider_box image-box">
+                <div class="home_page_slider_box custom-div" onmousemove="moveText(event)" onmouseout="hideText(event)">
                     <img src="{{ asset('app-assets/site_assets/img/location-slider-1.jpg') }}" class="image">
-                    <div class="cursor"></div>
                     <div class="home_page_box_text">
                         <h3>LUXURY boats</h3>
                         <h2>Es vedre</h2>
                         <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed
                             odio tortor, hendrerit ut arcu vitae, efficitur convallis eros.</p>
                     </div>
+                    <span class="text">Explore</span>
                 </div>
             </div>
         </div>
@@ -656,7 +670,7 @@ function initialize() {
         </div>
     </div>
 </section>
-<script>
+<!-- <script>
 $(document).ready(function() {
     const cursor = $('.cursor');
     // Mousemove event to update cursor position
@@ -687,6 +701,27 @@ $(document).ready(function() {
         cursor.removeClass('active').text('');
     });
 });
+</script> -->
+<script>
+function moveText(event) {
+    var div = event.currentTarget;
+    var text = div.querySelector(".text");
+
+    var offsetX =
+        event.clientX - div.getBoundingClientRect().left - text.offsetWidth / 2;
+    var offsetY =
+        event.clientY - div.getBoundingClientRect().top - text.offsetHeight / 2;
+
+    text.style.left = offsetX + "px";
+    text.style.top = offsetY + "px";
+    text.style.display = "block";
+    }
+
+    function hideText(event) {
+    var text = event.currentTarget.querySelector(".text");
+    text.style.display = "none";
+    }
+
 </script>
 <!-- /next trip Section -->
 
