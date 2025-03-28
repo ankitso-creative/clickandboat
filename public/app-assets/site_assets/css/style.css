@@ -434,6 +434,7 @@ button:focus {
     text-transform: uppercase;
     font-size: 14px;
     height: 32px;
+    font-weight: 300;
 }
 #language:hover{
     border:1px solid #f8a126;
@@ -858,7 +859,7 @@ button:focus {
 
 }
 .boat_type_box:hover {
-    cursor: url('http://127.0.0.1:8000/app-assets/site_assets/img/view-svg.svg'), auto; 
+    cursor: url('../img/view.png'), auto; 
   }
 /*--------------------------------------------------------------
 # Boat renter owner section
@@ -6426,6 +6427,58 @@ font-size: 15px;
     color: rgb(57 57 57 / 45%);
 }
 /*--------------------------------------------------------------
+# Our Story
+--------------------------------------------------------------*/
+.ourstory_banner_section {
+    background-image: url(../img/about-us-banner.jpg);
+    width: 100%;
+    height: 465px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+.ourstory_banner_text {
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+}
+.ourstory_banner_text h1 {
+    font-size: 64px;
+    color: #fff;
+    text-transform: uppercase;
+    padding-top: 10px;
+}
+.ourstory_banner_text p {
+    color: #fff;
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+.ourstory_content_section {
+    padding: 65px 0px;
+}
+.ourstory_content_block h2 {
+    font-size: 64px;
+    color: #000;
+    text-transform: uppercase;
+}
+.ourstory_content_block .ourstory_content_text {
+    font-size: 15px;
+    color: #f8a126;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding-top: 30px;
+}
+.ourstory_content_section h3 {
+    font-size: 44px;
+    color: #000;
+    text-transform: uppercase;
+    padding-top: 20px;
+}
+/*--------------------------------------------------------------
 # Media Query
 --------------------------------------------------------------*/
 @media (min-width: 320px) and (max-width: 767px){
@@ -7163,7 +7216,21 @@ font-size: 15px;
 .city_banner_text h1 {
     font-size: 30px;
 }
-
+.ourstory_sec_img img {
+    width: 100%;
+}
+.ourstory_banner_text h1 {
+    font-size: 30px;
+}
+.ourstory_content_block h2 {
+    font-size: 30px;
+}
+.ourstory_content_section h3 {
+    font-size: 30px;
+}
+.ourstory_content_section {
+    padding: 40px 0px;
+}
 }
 @media (min-width: 767px) and (max-width: 1023px) {
 
