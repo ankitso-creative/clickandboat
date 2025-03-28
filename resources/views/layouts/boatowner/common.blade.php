@@ -117,8 +117,7 @@
                             <li><a href="{{ route('home') }}">Home</a></li>
                             <li><a href="{{ route('about-us') }}">About Us</a></li>
                             <li><a href="{{ route('location') }}">Locations</a></li>
-                            <li><a href="{{ route('ourfleet') }}">Our Fleet</a></li>
-                            <li><a href="{{ route('contact') }}">Contact </a></li>
+                           
                             <li><a href="{{ route('blogs') }}">Blog</a></li>
                         </ul>
                     </div>
