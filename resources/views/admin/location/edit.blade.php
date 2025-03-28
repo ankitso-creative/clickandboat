@@ -4,6 +4,14 @@
     <title>Manage Blogs</title>
 @endsection
 @section('css')
+<style>
+	.mt-checkbok-label{
+		margin-top: 15px;
+	}
+	.mt-checkbok-label label {
+    padding-top: 0px !important;
+}
+</style>
 <link href="{{ asset('app-assets/global/plugins/bootstrap-summernote/summernote.css') }}" rel="stylesheet" type="text/css" />
 <script src="{{ asset('app-assets/global/plugins/bootstrap-summernote/summernote.min.js') }}" type="text/javascript"></script>
 @endsection
@@ -39,12 +47,7 @@
 										<label>Banner Image:<span class="required"> </span></label>
 										<img src="{{ $result->getFirstMediaUrl('location_image') }}" class="img-responsive">
 									</div>
-									<div class="col-sm-12">
-										<label>Description:<span class="required"> * </span></label>
-										<textarea name="description" id="summernote" class="form-control">{{ $result->description }}</textarea>
-                                        @error('description')<span class="required">{{ $message }}</span>@enderror
-									</div>
-									<div class="col-sm-12">
+									<div class="col-sm-12 mt-checkbok-label">
 										<label>Select Language:<span class="required"> * </span></label>
 										@if(count($languages))
 											@foreach ($languages as $language)
@@ -55,6 +58,12 @@
 											@endforeach
 										@endif
 									</div>
+									<div class="col-sm-12">
+										<label>Description:<span class="required"> * </span></label>
+										<textarea name="description" id="summernote" class="form-control">{{ $result->description }}</textarea>
+                                        @error('description')<span class="required">{{ $message }}</span>@enderror
+									</div>
+									
 									<div class="clearfix"></div>
 								</div>
 								<div class="actions btn-set text-right">
