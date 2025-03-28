@@ -19,46 +19,32 @@
 <section class="city_location">
    <div class="container">
       <div class="row">
-         <div class="col-sm-12 col-md-4 col-lg-4">
-            <div class="city_box">
-               <img src="{{ asset('app-assets/site_assets/img/Vedra.jpg') }}">
-               <div class="city_box_text">
-                  <h2>Es Vedrà</h2>
-                  <p>Es Vedrà is a small, uninhabited rocky island off the southwest coast of Ibiza, Spain. Rising dramatically from the </p>
-                  <div class="trip_date_text">
-                     <span><a href="https://clickboat.so-creative-dev.org/single_location">View Location</a></span>
-                     <span>March 19, 2025</span>
+         @if(count($results))
+            @foreach ($results as $result) 
+               <div class="col-sm-12 col-md-4 col-lg-4">
+                  <div class="city_box">
+
+                     <img src="{{ $result->getFirstMediaUrl('location_image') }}">
+
+                     <div class="city_box_text">
+                        <h2>{{ $result->name }}</h2>
+                        <p>{{ substr(strip_tags($result->description),0,170) }}...</p>
+                        <div class="trip_date_text">
+                           <span><a href="{{ route('area',$result->slug) }}">View Location</a></span>
+                           <span>{{ \Carbon\Carbon::parse($result->created_at)->format('F d, Y') }}</span>
+                        </div>
+                     </div>
+                     
                   </div>
                </div>
-               
-            </div>
-         </div>
-         <div class="col-sm-12 col-md-4 col-lg-4">
-            <div class="city_box">
-               <img src="{{ asset('app-assets/site_assets/img/cala-jondal.jpg') }}">
-               <div class="city_box_text">
-                  <h2>Cala Jondal</h2>
-                  <p>Cala Jondal is one of Ibiza’s most exclusive and stylish beaches, located on the island’s south coast, just a short distance from Ibiza Town. Surrounded by pine-covered cliffs and crystal-clear turquoise waters, this cove is famous for its upscale beach clubs,</p>
-                  <div class="trip_date_text">
-                     <span><a href="#">View Location</a></span>
-                     <span>March 19, 2025</span>
-                  </div>
-               </div>
-            </div>
-         </div>
-         <div class="col-sm-12 col-md-4 col-lg-4">
-            <div class="city_box">
-               <img src="{{ asset('app-assets/site_assets/img/cala.jpg') }}">
-               <div class="city_box_text">
-                  <h2>Cala Codolar & The Smugglers’ Cave</h2>
-                  <p>Cala Codolar is a peaceful and secluded beach on Ibiza’s west coast, offering crystal-clear waters, golden sand, and a relaxed atmosphere. But beyond its natural beauty, it hides a secret gem</p>
-                  <div class="trip_date_text">
-                     <span><a href="#">View Location</a></span>
-                     <span>March 19, 2025</span>
-                  </div>
-               </div>
-            </div>
-         </div>
+
+            @endforeach
+         @else
+             <div class="col-sm-12 col-md-12 col-lg-12">
+                 <p>Oops! No results found.</p>
+             </div>
+         @endif
+
       </div>
    </section>
    @endsection

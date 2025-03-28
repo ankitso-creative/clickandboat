@@ -61,14 +61,28 @@
         const year = date.getFullYear();
         return `${day}-${month}-${year}`;
         }
+        var disable = [];
+        @if(!empty($calendarArray))
+            var disableObj  = JSON.parse(@json($calendarArray));
+            function convertDateFormat(dateStr) {
+                    var parts = dateStr.split('-');
+                    return `${parts[0]}-${parts[1]}-${parts[2]}`;          
+            }
+            var disable = Object.values(disableObj).map(item => ({
+                from: convertDateFormat(item.from),
+                to: convertDateFormat(item.to)
+            }));
+        @endif
+            
         flatpickr("#inline-datepicker", {
             mode: "range",
             inline: true,
-            dateFormat: "Y-m-d",
+            dateFormat: "d-m-Y",
             multipleMonth: true,
             showMonths: 2,
             monthSelectorType: "static",
             minDate: "today",
+            disable:disable ,
             onChange: function(selectedDates, dateStr, instance) {
                 if(selectedDates.length === 2) {
                     const checkIn = formatDate(selectedDates[0]);
@@ -103,11 +117,12 @@
         flatpickr("#inline-datepicker-mobile", {
             mode: "range",
             inline: true,
-            dateFormat: "Y-m-d",
+            dateFormat: "d-m-Y",
             multipleMonth: true,
             showMonths: 1,
             monthSelectorType: "static",
             minDate: "today",
+            disable: disable ,
             onChange: function(selectedDates, dateStr, instance) {
                 if(selectedDates.length === 2) {
                     const checkIn = formatDate(selectedDates[0]);
@@ -139,46 +154,54 @@
                 }
             }
         });
-        flatpickr("#checkin-date", {
-        inline: false,
-        dateFormat: "d-m-Y",
-        minDate: "today",
-        });
-        flatpickr("#checkout-date", {
-        inline: false,
-        dateFormat: "d-m-Y",
-        minDate: "today",
-        });
         $(document).ready(function() {
-        $(document).on('change','#checkin-date, #checkout-date',function(){
-            var checkindate = $('#checkin-date').val();
-            var checkoutdate = $('#checkout-date').val();
-            $.ajax({
-                url: '{{ route('getbookingprice') }}',
-                type: 'GET',
-                data: {checkindate: checkindate, checkoutdate: checkoutdate, id: {{ $listing->id }}},
-                success: function(response) {
-                    if (response.status) {
-                    $('#show-Price-sec').removeClass('d-none');
-                    $('#days-val').val(response.days);
-                    $('#total-days').html(response.days);
-                    $('#charter-pice').html(response.price);
-                    $('#charter-fee').html(response.servive_fee);
-                    $('#charter-total').html(response.totalAmount);
-                    }
-                    else
-                    {
-                    $('#price_display').html('<p>Price not available.</p>');
-                    }
-                },
-                error: function() {
-                    $('#price_display').html('<p>Error fetching price.</p>');
-                }
+           
+            flatpickr("#checkin-date", {
+                inline: false,
+                dateFormat: "d-m-Y",
+                minDate: "today",
+                disable: disable ,
             });
-        })
+            flatpickr("#checkout-date", {
+                inline: false,
+                dateFormat: "d-m-Y",
+                minDate: "today",
+                disable:disable ,
+            });
+        
+            $(document).on('change','#checkin-date, #checkout-date',function(){
+                var checkindate = $('#checkin-date').val();
+                var checkoutdate = $('#checkout-date').val();
+                $.ajax({
+                    url: '{{ route('getbookingprice') }}',
+                    type: 'GET',
+                    data: {checkindate: checkindate, checkoutdate: checkoutdate, id: {{ $listing->id }}},
+                    success: function(response) {
+                        if (response.status) {
+                        $('#show-Price-sec').removeClass('d-none');
+                        $('#days-val').val(response.days);
+                        $('#total-days').html(response.days);
+                        $('#charter-pice').html(response.price);
+                        $('#charter-fee').html(response.servive_fee);
+                        $('#charter-total').html(response.totalAmount);
+                        }
+                        else
+                        {
+                        $('#price_display').html('<p>Price not available.</p>');
+                        }
+                    },
+                    error: function() {
+                        $('#price_display').html('<p>Error fetching price.</p>');
+                    }
+                });
+            })
         });
     </script>
-@endsection @section('content')
+@endsection
+@section('content')
+<?php
+//dd($calendarArray)
+?>
 <section class="single_boat_banner"></section>
 <nav aria-label="Page breadcrumb">
     <ol class="breadcrumb">

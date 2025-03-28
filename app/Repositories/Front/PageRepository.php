@@ -1,9 +1,10 @@
 <?php
     namespace App\Repositories\Front;
 
-use App\Events\Front\RequestSubmitted;
-use App\Models\Admin\Blog;
+    use App\Events\Front\RequestSubmitted;
+    use App\Models\Admin\Blog;
     use App\Models\Admin\Listing;
+    use App\Models\Admin\Location;
     use App\Models\Admin\Price;
     use Carbon\Carbon;
     use Illuminate\Support\Facades\Session;
@@ -25,7 +26,7 @@ use App\Models\Admin\Blog;
         }
         public function singleBoatDetails($city,$type,$slug)
         {
-            $listing = Listing::with(['price','seasonPrice','booking'])->where('slug',$slug)->where('city',$city)->where('type',$type)->where('status','1')->first();
+            $listing = Listing::with(['price','seasonPrice','booking','calendar'])->where('slug',$slug)->where('city',$city)->where('type',$type)->where('status','1')->first();
             if($listing):
                 Session::put('listingID', $listing->id);
             endif;
@@ -48,6 +49,11 @@ use App\Models\Admin\Blog;
             }])->first();
             return $blog;
         }
+        public function singleArea($slug)
+        {
+            $location =  Location::where('status', '1')->where('slug', $slug)->first();
+            return $location;
+        }
         public function relatedBlog($id)
         {
             $relatedBlogs =  Blog::where('status', '1')->where('id','!=', $id)->inRandomOrder()->limit(3)->get();
@@ -63,6 +69,11 @@ use App\Models\Admin\Blog;
         {
             $listing = Listing::where('status', '1')->with(['price'])->paginate(9);
             return $listing;
+        }
+        public function allLocationData()
+        {
+            $location = Location::where('status', '1')->paginate(9);
+            return $location;
         }
         public function getBookingPrice($request)
         {
