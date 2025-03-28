@@ -4,6 +4,14 @@
     <title>Manage Location</title>
 @endsection
 @section('css')
+<style>
+	.mt-checkbok-label{
+		margin-top: 15px;
+	}
+	.mt-checkbok-label label {
+    padding-top: 0px !important;
+}
+</style>
 <link href="{{ asset('app-assets/global/plugins/bootstrap-summernote/summernote.css') }}" rel="stylesheet" type="text/css" />
 <script src="{{ asset('app-assets/global/plugins/bootstrap-summernote/summernote.min.js') }}" type="text/javascript"></script>
 @endsection
@@ -34,7 +42,7 @@
 										<input type="file" name="banner_image" value="" class="form-control"/> 
                                         @error('banner_image')<span class="required">{{ $message }}</span>@enderror
 									</div>
-									<div class="col-sm-12">
+									<div class="col-sm-12 mt-checkbok-label">
 										<label>Select Language:<span class="required"> * </span></label>
 										@if(count($languages))
 											@foreach ($languages as $language)
