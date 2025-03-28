@@ -39,6 +39,10 @@ class PageService{
     {
         return $this->repository->allListingData();
     }
+    public function allLocationData()
+    {
+        return $this->repository->allLocationData();
+    }
     public function searchListing($request)
     {
         return $this->repository->searchListing($request);
@@ -46,6 +50,10 @@ class PageService{
     public function singleBlog($slug)
     {
         return $this->repository->singleBlog($slug);
+    }
+    public function singleArea($slug)
+    {
+        return $this->repository->singleArea($slug);
     }
     public function relatedBlog($id)
     {
