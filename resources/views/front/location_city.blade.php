@@ -38,7 +38,7 @@
                <img src="{{ asset('app-assets/site_assets/img/cala-jondal.jpg') }}">
                <div class="city_box_text">
                   <h2>Cala Jondal</h2>
-                  <p>Es Vedrà is a small, uninhabited rocky island off the southwest coast of Ibiza, Spain. Rising dramatically from the </p>
+                  <p>Cala Jondal is one of Ibiza’s most exclusive and stylish beaches, located on the island’s south coast, just a short distance from Ibiza Town. Surrounded by pine-covered cliffs and crystal-clear turquoise waters, this cove is famous for its upscale beach clubs,</p>
                   <div class="trip_date_text">
                      <span><a href="#">View Location</a></span>
                      <span>March 19, 2025</span>
@@ -51,7 +51,7 @@
                <img src="{{ asset('app-assets/site_assets/img/cala.jpg') }}">
                <div class="city_box_text">
                   <h2>Cala Codolar & The Smugglers’ Cave</h2>
-                  <p>Es Vedrà is a small, uninhabited rocky island off the southwest coast of Ibiza, Spain. Rising dramatically from the </p>
+                  <p>Cala Codolar is a peaceful and secluded beach on Ibiza’s west coast, offering crystal-clear waters, golden sand, and a relaxed atmosphere. But beyond its natural beauty, it hides a secret gem</p>
                   <div class="trip_date_text">
                      <span><a href="#">View Location</a></span>
                      <span>March 19, 2025</span>
