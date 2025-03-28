@@ -6249,7 +6249,80 @@ font-size: 15px;
     font-size: 20px;
     color: #f9a126;
   }
-  
+  .city_box img {
+    width: 100%;
+    height: 290px;
+    object-fit: cover;
+    border-radius: 15px 15px 0px 0px;
+}
+.city_location {
+    padding: 75px 0px;
+}
+  .city_box{
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    border-radius: 15px;
+}
+  .city_box h2 {
+    font-size: 28px;
+    text-transform: uppercase;
+    color: #000;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+.city_box_text {
+    padding: 20px 25px;
+}
+  .city_box .trip_date_text span:last-child {
+    float: right;
+    font-size: 12px;
+    font-weight: 600;
+}
+.city_page_banner {
+    background-image: url(../img/location-banner.jpg);
+    width: 100%;
+    height: 285px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+.city_banner_text {
+    position: absolute;
+    top: 56%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+.city_banner_text h1 {
+    font-size: 44px;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+}
+.city_page_text {
+    padding: 60px 0;
+}
+.city_page_text h2 {
+    font-size: 52px;
+    color: #000;
+    text-transform: uppercase;
+    padding-bottom: 15px;
+}
+.city_page_text h3 {
+    font-size: 28px;
+    color: #000;
+    text-transform: uppercase;
+    padding-top:30px;
+}
+.city_page_text ul {
+    margin-left: 30px;
+    margin-top: 10px;
+}
+.city_page_text ul ::marker {
+    font-size: 20px;
+    color: #f9a126;
+  }
 /*--------------------------------------------------------------
 # Media Query
 --------------------------------------------------------------*/
@@ -6962,10 +7035,32 @@ font-size: 15px;
     .nav-mobile img {
         width: 24%;
         top: 6px;
-        right: 8px;
+        right: 20px;
     }
-
-
+    .city_box h2 {
+    font-size: 25px;
+    text-align: center;
+}
+.city_box p{
+    text-align: center;
+}
+.city_box {
+    margin-bottom: 20px;
+}
+.city_page_text h2 {
+    font-size: 30px;
+    text-align: center;
+}
+.city_page_text p{
+    text-align: center;
+}
+.city_page_text h3 {
+    font-size: 25px;
+    text-align: center;
+}
+.city_banner_text h1 {
+    font-size: 30px;
+}
 
 }
 @media (min-width: 767px) and (max-width: 1023px) {
