@@ -69,6 +69,17 @@
                                 <a class="dropdown-item" href="#">3</a>
                             </div>
                         </li>
+                        @if(Auth::check())
+                        <li class="nav-item">
+                            <a href="{{ route('help') }}" class="nav-link">Help</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('logout') }}">Logout </a>
+                        </li>
+                         <li class="nav-item">
+                            <a class="nav-link" href="{{ route('customer.dashboard') }}"><i class="fa-solid fa-user"></i></a>
+                        </li>
+                        @else
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('boatlogin') }}">Register your boat </a>
                         </li>
@@ -79,8 +90,9 @@
                             <a href="{{ route('help') }}" class="nav-link">Help</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link"><i class="fa-solid fa-user"></i></a>
+                            <a class="nav-link" href="{{ route('login') }}"><i class="fa-solid fa-user"></i></a>
                         </li>
+                        @endif
                     </ul>
                 </div>
             </nav>
@@ -149,8 +161,8 @@
                             <li><a href="{{ route('home') }}">Home</a></li>
                             <li><a href="{{ route('about-us') }}">About Us</a></li>
                             <li><a href="{{ route('location') }}">Locations</a></li>
-                            <li><a href="{{ route('ourfleet') }}">Our Fleet</a></li>
-                            <li><a href="{{ route('contact') }}">Contact </a></li>
+                            <!-- <li><a href="{{ route('ourfleet') }}">Our Fleet</a></li>
+                            <li><a href="{{ route('contact') }}">Contact </a></li> -->
                             <li><a href="{{ route('blogs') }}">Blog</a></li>
                         </ul>
                     </div>
