@@ -287,7 +287,7 @@
                                             </div>
                                             <div class="where_box_text">
                                                 <h5>Where</h5>
-                                                <input type="search" value="{{ request()->query('location') ?? '' }}" id="location" name="location" placeholder="City ofdeparture">
+                                                <input type="search" value="{{ request()->query('location') ?? '' }}" id="location" name="location" placeholder="City of departure">
                                             </div>
                                         </div>
                                     </li>
@@ -298,7 +298,7 @@
                                             </div>
                                             <div class="where_box_text">
                                                 <h5>Dates</h5>
-                                                <input type="text" id="calender" name="calender" class="datePicker"/>
+                                                <input type="text" id="calender" name="calender" placeholder="Add your dates" class="datePicker"/>
                                             </div>
                                         </div>
                                     </li>
