@@ -23,9 +23,8 @@
         <div class="container">
             <div class="row">
                 <div class="mx-auto col-md-12">
+                <h2 class="text-center ui-title-inner">Forgot Password</h2>
                     <section class="section-form-contacts">
-                        <h2 class="text-center ui-title-inner">Forgot Password</h2>
-                        <p class="text-center">Nulla pariatur excepteur sint occaecat cupidatat no proident culpa qui officia des mollit anim id est lab orum ut perspiciatis unde omnis iste natuser sit volupta tem accusantium sed ipsum laudantium.</p>
                         <div id="success"></div>
                         <form action="{{ route('password.email') }}" method="POST">
                             @csrf

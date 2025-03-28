@@ -174,9 +174,9 @@ function initialize() {
                             <p>Luxury boats</p>
                             <h3>Cranchi 43</h3>
                         </div>
-                        <p class="featured_price">11 Guests | Price from €1690</p>
                     </a>
                 </div>
+                <p class="featured_price">11 Guests | Price from €1690</p>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-4">
                 <div class="featured_board_boxes">
@@ -186,9 +186,9 @@ function initialize() {
                             <p>Luxury boats</p>
                             <h3>Chaparral 250</h3>
                         </div>
-                        <p class="featured_price">11 Guests | Price from €1690</p>
                     </a>
                 </div>
+                <p class="featured_price">11 Guests | Price from €1690</p>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-4">
                 <div class="featured_board_boxes">
@@ -198,9 +198,9 @@ function initialize() {
                             <p>Luxury boats</p>
                             <h3>Maiora 99</h3>
                         </div>
-                        <p class="featured_price">11 Guests | Price from €1690</p>
                     </a>
                 </div>
+                <p class="featured_price">11 Guests | Price from €1690</p>
             </div>
         </div>
     </div>
@@ -371,42 +371,60 @@ function initialize() {
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <a href="{{ route('locationlisting','Ibiza') }}">
                         <div class="boat_by_location_box">
-                            <h3>Ibiza</h3>
+                            <div class="boat_by_location_text">
+                                <h3>Ibiza</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            </div>
                         </div>
                     </a>
                 </div>
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <a href="{{ route('locationlisting','Guadeloupe') }}">
                         <div class="boat_by_location_box">
-                            <h3>Guadeloupe </h3>
+                            <div class="boat_by_location_text">
+                                <h3>Guadeloupe </h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            </div>
                         </div>
                     </a>
                 </div>
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <a href="{{ route('locationlisting','Italy') }}">
                         <div class="boat_by_location_box">
-                            <h3>Italy</h3>
+                            <div class="boat_by_location_text">
+                                <h3>Italy</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            </div>
                         </div>
                     </a>
                 </div>
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <a href="{{ route('locationlisting','Dubai') }}">
                         <div class="boat_by_location_box">
-                            <h3>Dubai</h3>
+                            <div class="boat_by_location_text">
+                                <h3>Dubai</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            </div>
                         </div>
                     </a>
                 </div>
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <a href="{{ route('locationlisting','Croatia') }}">
                         <div class="boat_by_location_box">
-                            <h3>Croatia</h3>
+                            <div class="boat_by_location_text">
+                                <h3>Croatia</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            </div>
                         </div>
                     </a>
                 </div>
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     <a href="{{ route('locationlisting','Greece') }}">
                         <div class="boat_by_location_box">
-                            <h3>Greece</h3>
+                            <div class="boat_by_location_text">
+                                <h3>Greece</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            </div>
                         </div>
                     </a>
                 </div>
@@ -619,21 +637,21 @@ function initialize() {
     <div class="container-fluid">
         <div class="row">
             @if(count($blogs))
-                @foreach($blogs as $blog)
-                    <div class="col-sm-12 col-md-6 col-lg-4">
-                        <div class="next_trip_box">
-                            <img src="{{ $blog->getFirstMediaUrl('blog_image') }}">
-                            <div class="next_trip_text">
-                                <h3>{{ $blog->title }}</h3>
-                                <p>{{ substr(strip_tags($blog->description),0,170) }}...</p>
-                                <div class="trip_date_text">
-                                    <span><a href="{{ route('single-blog',$blog->slug) }}">View Post</a></span>
-                                    <span>{{ \Carbon\Carbon::parse($blog->created_at)->format('F d, Y') }}</span>
-                                </div>
-                            </div>
+            @foreach($blogs as $blog)
+            <div class="col-sm-12 col-md-6 col-lg-4">
+                <div class="next_trip_box">
+                    <img src="{{ $blog->getFirstMediaUrl('blog_image') }}">
+                    <div class="next_trip_text">
+                        <h3>{{ $blog->title }}</h3>
+                        <p>{{ substr(strip_tags($blog->description),0,170) }}...</p>
+                        <div class="trip_date_text">
+                            <span><a href="{{ route('single-blog',$blog->slug) }}">View Post</a></span>
+                            <span>{{ \Carbon\Carbon::parse($blog->created_at)->format('F d, Y') }}</span>
                         </div>
                     </div>
-                @endforeach
+                </div>
+            </div>
+            @endforeach
             @endif
         </div>
     </div>

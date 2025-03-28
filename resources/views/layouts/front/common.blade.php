@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Click And Boat</title>
+    <title>MyBoatBooker</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,22 +36,22 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav">
-                        <!-- <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle about_menu" href="#" id="navbarDropdown" role="button"
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle about_menu" href="{{ route('about-us') }}" id="navbarDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 About Us
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <a class="dropdown-item" href="#">Something else here</a>
+                                <a class="dropdown-item" href="#">Our Story</a>
+                                <a class="dropdown-item" href="#">Team</a>
+                                <a class="dropdown-item" href="#">Mission</a>
                             </div>
-                        </li> -->
-                        <li class="nav-item dropdown">
+                        </li>
+                        <!-- <li class="nav-item dropdown">
                             <a class="nav-link about_menu" href="{{ route('about-us') }}">
                                 About Us
                             </a>
-                        </li>
+                        </li> -->
                         <li class="nav-item">
                             <select class="select-language" id="language">
                                 {!! selectOption('languages','name','code',session()->get('lang'),array('status' , '1')) !!}
