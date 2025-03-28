@@ -100,11 +100,11 @@ class PagesController extends Controller
     {
         return view('front.contact');
     }
-    // public function location()
-    // {
-    //     $results =  $this->service->allListingData();
-    //     return view('front.location',compact('results'));
-    // }
+    public function boats()
+    {
+        $results =  $this->service->allListingData();
+        return view('front.location',compact('results'));
+    }
     public function location()
     {
         return view('front.location_city');
