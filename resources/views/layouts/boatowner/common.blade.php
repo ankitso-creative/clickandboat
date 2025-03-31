@@ -18,7 +18,8 @@
     <link rel="stylesheet" href="{{ asset('app-assets/site_assets/css/slick.css') }}">   
     <link rel="stylesheet" href="{{ asset('app-assets/site_assets/css/style.css') }}?ver=<?=time()?>"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"  />  
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="shortcut icon" href="{{ asset('app-assets/site_assets/img/favicon.ico') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('app-assets/site_assets/img/favicon.ico') }}" type="image/x-icon">
     <script src="{{ asset('app-assets/site_assets/js/jquery.js') }}"></script>
     @yield('css')
 </head>
@@ -116,8 +117,10 @@
                             <li><a href="{{ route('home') }}">Home</a></li>
                             <li><a href="{{ route('about-us') }}">About Us</a></li>
                             <li><a href="{{ route('location') }}">Locations</a></li>
+
                             <li><a href="{{ route('ourstory') }}">Our Story</a></li>
                             <li><a href="{{ route('contact') }}">Contact </a></li>
+
                             <li><a href="{{ route('blogs') }}">Blog</a></li>
                         </ul>
                     </div>

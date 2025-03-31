@@ -45,7 +45,7 @@
 								</div>
 							</div>
 						@endif
-						<h4>Additional options</h4>
+						{{-- <h4>Additional options</h4>
 						<div class="options-form">
 							<div class="row">
 								<div class="col-md-12">
@@ -101,7 +101,7 @@
 									</label>
 								</div>
 							</div>
-						</div>
+						</div> --}}
 						
 						<div class="insurence-sec">
 							<div class="pay-sec">
