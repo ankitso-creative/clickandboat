@@ -78,76 +78,74 @@
             </div>
         </section>
         <footer class="footer">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-12 col-md-6 col-lg-3">
-                        <div class="footer_newsletter">
-                            <h3>Stay In The Know</h3>
-                            <form>
-                                <div class='email_box'>
-                                    <input class="emailpick" type="email" placeholder="Email Address" />
-                                    <Button class="email_sub_btn"><img
-                                            src="{{ asset('app-assets/site_assets/img/sub-icon.png') }}"></Button>
-                                </div>
-                            </form>
-                            <p>We Will Be Delighted To Assist</p>
-                            <a href="#">Contact Us <i class="fa-solid fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-md-12 col-md-6 col-lg-3">
-                        <div class="footer_menu">
-                            <h5>About Boat Daze</h5>
-                            <ul>
-                                <li><a href="#">Home</a></li>
-                                <li><a href="#">Locations</a></li>
-                                <li><a href="#">Our Fleet</a></li>
-                                <li><a href="#">Contact </a></li>
-                                <li><a href="#">Blog</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-12 col-md-6 col-lg-3">
-                        <div class="cal_mail_box">
-                            <div class="call_box_sec">
-                                <h5>Call Us</h5>
-                                <p><a href="tel:+1 755 302 8549">+1 755 302 8549</a></p>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12 col-md-6 col-lg-3">
+                    <div class="footer_newsletter">
+                        <h3>Stay In The Know</h3>
+                        <form>
+                            <div class='email_box'>
+                                <input class="emailpick" type="email" placeholder="Email Address" />
+                                <Button class="email_sub_btn"><img
+                                        src="{{ asset('app-assets/site_assets/img/sub-icon.png') }}"></Button>
                             </div>
-                            <div class="email_box_sec">
-                                <h5>Email Us</h5>
-                                <p><a href="mailto:support@domain.com">support@domain.com</a></p>
-                            </div>
-                        </div>
+                        </form>
+                        <p>We Will Be Delighted To Assist</p>
+                        <a href="#">Contact Us <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
-                    <div class="col-md-12 col-md-6 col-lg-3">
-                        <div class="footer_social_links">
-                            <h5>Follow Us</h5>
-                            <ul>
-                                <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
-                                <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
-                                <li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
-                            </ul>
+                </div>
+                <div class="col-md-12 col-md-6 col-lg-3">
+                    <div class="footer_menu">
+                        <h5>About Boat Daze</h5>
+                        <ul>
+                            <li><a href="{{ route('home') }}">Home</a></li>
+                            <li><a href="{{ route('about-us') }}">About Us</a></li>
+                            <li><a href="{{ route('location') }}">Locations</a></li>
+                            <li><a href="{{ route('ourstory') }}">Our Story</a></li>
+                            <li><a href="{{ route('contact') }}">Contact </a></li>
+                            <li><a href="{{ route('blogs') }}">Blog</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-12 col-md-6 col-lg-3">
+                    <div class="cal_mail_box">
+                        <div class="call_box_sec">
+                            <h5>Call Us</h5>
+                            <p><a href="tel:{{ phoneWebsite() }}">{{ phoneWebsite() }}</a></p>
+                        </div>
+                        <div class="email_box_sec">
+                            <h5>Email Us</h5>
+                            <p><a href="mailto:{{ emailWebsite() }}">{{ emailWebsite() }}</a></p>
                         </div>
                     </div>
                 </div>
+                <div class="col-md-12 col-md-6 col-lg-3">
+                    <div class="footer_social_links">
+                        <h5>Follow Us</h5>
+                        <ul>
+                            <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+                            <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div class="copyright">
-                <p>© Boat Daze | All rights reserved</p>
-            </div>
-        </footer>
-        <!-- .footer-->
-    </div>
-    <!-- end layout-theme-->
-
-
+        </div>
+        <div class="copyright">
+            <p>© Boat Daze | All rights reserved</p>
+        </div>
+    </footer>
+    <!-- .footer-->
     <!-- ++++++++++++-->
     <!-- MAIN SCRIPTS-->
     <!-- ++++++++++++-->
     <script src="{{ asset('app-assets/site_assets/js/bundle.min.js') }}"></script>
-    <script src="{{ asset('app-assets/site_assets/js/bootstrap.mim.js') }}"></script>
-    <script src="{{ asset('app-assets/site_assets/js/popper.mim.js') }}"></script>
+    <script src="{{ asset('app-assets/site_assets/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('app-assets/site_assets/js/popper.min.js') }}"></script>
     {{-- <script src="{{ asset('app-assets/site_assets/js/map.js') }}"></script> --}}
     <script src="{{ asset('app-assets/site_assets/js/slick.min.js') }}"></script>
-    <script src="{{ asset('app-assets/site_assets/js/script.js') }}"></script>
+    <script src="{{ asset('app-assets/site_assets/js/script.js') }}?ver=<?=time()?>"></script>
+
     @yield('js')
 
 </body>

@@ -116,7 +116,7 @@
                             <li><a href="{{ route('home') }}">Home</a></li>
                             <li><a href="{{ route('about-us') }}">About Us</a></li>
                             <li><a href="{{ route('location') }}">Locations</a></li>
-                            <li><a href="{{ route('ourfleet') }}">Our Fleet</a></li>
+                            <li><a href="{{ route('ourstory') }}">Our Story</a></li>
                             <li><a href="{{ route('contact') }}">Contact </a></li>
                             <li><a href="{{ route('blogs') }}">Blog</a></li>
                         </ul>
@@ -126,11 +126,11 @@
                     <div class="cal_mail_box">
                         <div class="call_box_sec">
                             <h5>Call Us</h5>
-                            <p><a href="tel:+1 755 302 8549">+1 755 302 8549</a></p>
+                            <p><a href="tel:{{ phoneWebsite() }}">{{ phoneWebsite() }}</a></p>
                         </div>
                         <div class="email_box_sec">
                             <h5>Email Us</h5>
-                            <p><a href="mailto:support@domain.com">support@domain.com</a></p>
+                            <p><a href="mailto:{{ emailWebsite() }}">{{ emailWebsite() }}</a></p>
                         </div>
                     </div>
                 </div>
@@ -150,11 +150,7 @@
             <p>© Boat Daze | All rights reserved</p>
         </div>
     </footer>
-        <!-- .footer-->
-    </div>
-    <!-- end layout-theme-->
-
-
+    <!-- .footer-->
     <!-- ++++++++++++-->
     <!-- MAIN SCRIPTS-->
     <!-- ++++++++++++-->
@@ -163,7 +159,8 @@
     <script src="{{ asset('app-assets/site_assets/js/popper.min.js') }}"></script>
     {{-- <script src="{{ asset('app-assets/site_assets/js/map.js') }}"></script> --}}
     <script src="{{ asset('app-assets/site_assets/js/slick.min.js') }}"></script>
-    <script src="{{ asset('app-assets/site_assets/js/script.js') }}"></script>
+    <script src="{{ asset('app-assets/site_assets/js/script.js') }}?ver=<?=time()?>"></script>
+
     @yield('js')
 
 </body>

@@ -170,7 +170,7 @@
                                 <p class="radioOption-Item">
                                     <input type="radio" {{ checkradio($listing->type,'Motorboat') }} name="type" id="BannerType1" value="Motorboat" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false">
                                     <label for="BannerType1">
-                                        <img src="{{ asset('app-assets/site_assets/img/motorboat-V1.png') }}">Motorboat
+                                        <img src="{{ asset('app-assets/site_assets/img/motorboat-v1.png') }}">Motorboat
                                     </label>
                                 </p>
                                 <p class="radioOption-Item">
@@ -194,7 +194,7 @@
                                 <p class="radioOption-Item">
                                     <input type="radio" {{ checkradio($listing->type,'Houseboat') }} name="type" id="BannerType5" value="Houseboat" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false">
                                     <label for="BannerType5">
-                                        <img src="{{ asset('app-assets/site_assets/img/jet-ski-v1.png') }}">Jet ski
+                                        <img src="{{ asset('app-assets/site_assets/img/Jet-ski-v1.png') }}">Jet ski
                                     </label>
                                 </p>
                                 <p class="radioOption-Item">
@@ -288,7 +288,7 @@
                             @error('title')<span class="required">{{ $message }}</span>@enderror
                         </div>
                     </div>
-                    <div class="p-0 pt-4 col-sm-12">
+                    <div class="p-0 pt-4 col-sm-12 language_tab">
                         <h5 class="bold ">Language</h5>
                         @php
                             $value = Session('lang');

@@ -131,6 +131,9 @@
                             <div class="arrow left">&#8249;</div>
                         </li>
                         <li><a href="{{ route('about-us') }}">About Us</a></li>
+                        <li><a href="{{ route('ourstory') }}">Our Story</a></li>
+                        <li><a href="{{ route('team') }}">Team</a></li>
+                        <li><a href="{{ route('mission') }}">Mission</a></li>
                     </ul>
                 </li>
             </ul>
