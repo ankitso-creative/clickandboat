@@ -43,9 +43,9 @@
                                 About Us
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Our Story</a>
-                                <a class="dropdown-item" href="#">Team</a>
-                                <a class="dropdown-item" href="#">Mission</a>
+                                <a class="dropdown-item" href="{{ route('ourstory') }}">Our Story</a>
+                                <a class="dropdown-item" href="{{ route('team') }}">Team</a>
+                                <a class="dropdown-item" href="{{ route('mission') }}">Mission</a>
                             </div>
                         </li>
                         <!-- <li class="nav-item dropdown">
