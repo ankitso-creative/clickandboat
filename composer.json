@@ -16,7 +16,8 @@
         "livewire/livewire": "^3.0",
         "seyyedam7/laravel-html-parser": "^2.2",
         "spatie/laravel-medialibrary": "^11.10",
-        "stichoza/google-translate-php": "^5.2"
+        "stichoza/google-translate-php": "^5.2",
+        "stripe/stripe-php": "^16.6"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

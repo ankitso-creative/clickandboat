@@ -7,7 +7,23 @@
 
 @endsection
 @section('js')
-
+    <script>
+        $(document).ready(function(){
+            $(document).on('click','#see-more-faq',function(){
+                var self = $(this);
+                if($('.see_more_faq').css('display') == 'none')
+                {
+                    $('.see_more_faq').css('display','block') ;
+                    self.text('Less');
+                }
+                else
+                {
+                    $('.see_more_faq').css('display','none') ;
+                    self.text('See More');
+                }
+            })
+        })
+    </script>
 @endsection
 @section('content')
 <!-- Help Banner Section -->
@@ -131,9 +147,7 @@
                             </div>
                         </div>
                     </div><!-- End -->
-                    <div class="mt-5 text-center read_more_btn">
-                        <a href="#">See More</a>
-                    </div>
+                    
                     <div class="see_more_faq">
                         <!-- Accordion item 6 -->
                         <div class="card">
@@ -661,7 +675,9 @@
                             </div>
                         </div><!-- End -->
                     </div>
-
+                    <div class="mt-5 text-center read_more_btn">
+                        <a href="javascript:;" id="see-more-faq">See More</a>
+                    </div>
                 </div><!-- End -->
             </div>
         </div>
