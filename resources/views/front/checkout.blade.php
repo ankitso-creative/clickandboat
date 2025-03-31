@@ -25,7 +25,7 @@
 					</div>
 					<div class="rental-type-sec">
 						@if($listing->skipper != 'without skipper')
-							<h4>Rental type</h4>
+							{{-- <h4>Rental type</h4>
 							<div class="rental-form">
 								<div class="row">
 									<div class="col-md-12">
@@ -43,7 +43,7 @@
 										</label>
 									</div>
 								</div>
-							</div>
+							</div> --}}
 						@endif
 						{{-- <h4>Additional options</h4>
 						<div class="options-form">
@@ -114,18 +114,18 @@
 										<input type="radio" checked="" value="Without skipper" class="form-check-input" name="optradio" id="myRadio8">
 										<label for="myRadio8">
 											<span class="title-label">Pay the total amount</span>
-											<span class="title-text">€414</span>
+											<span class="title-text">€{{ $price['price'] }}</span>
 											<p>Pay the total amount of the booking today.</p>
 										</label>
 										</div>
-										<div class="col-md-12">
-										<input type="radio" checked="" value="With a skipper" class="form-check-input" name="optradio" id="myRadio9">
-										<label for="myRadio9">
-												<span class="title-label">Pay in two parts without any extra fee</span>
-												<span class="title-text">€193</span>
-												<p>Pay €193 now and the balance (€221) before 31 Dec 2024.</p>
-										</label>
-										</div>
+										{{-- <div class="col-md-12">
+											<input type="radio" checked="" value="With a skipper" class="form-check-input" name="optradio" id="myRadio9">
+											<label for="myRadio9">
+													<span class="title-label">Pay in two parts without any extra fee</span>
+													<span class="title-text">€193</span>
+													<p>Pay €193 now and the balance (€221) before 31 Dec 2024.</p>
+											</label>
+										</div> --}}
 									</div>
 								</div>
 								<div class="payment-sec">
@@ -160,7 +160,7 @@
 										</div>
 
 										<!-- Revolut Pay -->
-										<div class="form-group form-accordion-title">
+										{{-- <div class="form-group form-accordion-title">
 											<div class="custom-control custom-radio">
 												<input type="radio" id="revolutPay" name="paymentMethod" class="custom-control-input" data-toggle="collapse" data-target="#revolutDetails">
 												<label class="custom-control-label" for="revolutPay">
@@ -181,7 +181,7 @@
 											<div id="paypalDetails" class="collapse" data-parent="#paymentAccordion">
 												<p class="mt-3 text-muted">PayPal option will redirect you to the secure PayPal gateway.</p>
 											</div>
-										</div>
+										</div> --}}
 									</div>
 								</div>
 								<div class="cancellation-sec">
@@ -211,7 +211,7 @@
 								</div>
 								<div class="checkout-btn-sec">
 									<p>By selecting the button below, you unconditionally agree to the <a href="#">Terms & Conditions</a>, <a href="#">Cancellation conditions</a>, <a href="#">Insurance conditions</a>. You also agree to pay the total amount of the reservation.</p>
-									<button class="btn btn-primary btn-checkout">Booking request · <span>€414</span></button>
+									<button class="btn btn-primary btn-checkout">Booking request · <span>€{{ $price['price'] }}</span></button>
 								</div>
 							</div>
 						</div>
@@ -242,37 +242,37 @@
 						<h5>Price details</h5>
 						<div class="price-tables">
 							<div class="price-heading">Charter price</div>
-							<div class="price-amount">{{ $price['price'] }}</div>
+							<div class="price-amount">€{{ $price['price'] }}</div>
 						</div>
-						<div class="promotional-sec">
+						{{-- <div class="promotional-sec">
 							<a href="#">Add a promotional code</a>
-						</div>
+						</div> --}}
 						<div class="pay-downpayment-sec">
 							<div class="card">
 								<div class="card-body">
-									<div class="payment-item">
+									{{-- <div class="payment-item">
 										<div class="circle active">✔</div>
 										<div class="payment-content">
 											<h5>Down Payment</h5>
 											<small class="text-muted">To be paid now</small>
 										</div>
 										<div class="payment-amount">€286</div>
-									</div>
-									<div class="payment-item">
+									</div> --}}
+									{{-- <div class="payment-item">
 										<div class="circle active">✔</div>
 										<div class="payment-content">
 											<h5>Balance payment</h5>
 											<small class="text-muted">To be paid before December 31, 2024</small>
 										</div>
-										<div class="payment-amount">€221</div>
-									</div>
+										<div class="payment-amount">€{{ $price['price'] }}</div>
+									</div> --}}
 									<div class="payment-item">
 										<div class="circle"></div>
 										<div class="payment-content">
 											<div>To pay at the harbour</div>
 											<small class="text-muted">Due on February 1, 2025</small>
 										</div>
-										<div class="payment-amount">€440</div>
+										<div class="payment-amount">€{{ $price['price'] }}</div>
 									</div>
 								</div>
 							</div>
