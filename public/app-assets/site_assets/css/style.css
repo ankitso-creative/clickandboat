@@ -401,6 +401,7 @@ button:focus {
     padding: 4px 7px 1px 7px !important;
     text-shadow: none;
     height: 32px;
+    line-height: 26px;
 }
 .navbar-nav li .gbp_btn{
     background: #0000006e;
@@ -426,7 +427,7 @@ button:focus {
     border-radius: 10px;
     margin: 0 7px;
     border: 1px solid #fff;
-    padding: 4px 7px 4px 7px !important;
+    padding: 6px 7px 4px 7px !important;
     text-shadow: none;
     color: #fff;
     cursor: pointer;
@@ -858,9 +859,9 @@ button:focus {
     text-transform: inherit !important;
 
 }
-.boat_type_box:hover {
+/*.boat_type_box:hover {
     cursor: url('../img/view.png'), auto; 
-  }
+  }*/
 /*--------------------------------------------------------------
 # Boat renter owner section
 --------------------------------------------------------------*/
@@ -1037,12 +1038,20 @@ button:focus {
 }
 .home_page_box_text {
     position: absolute;
+    width: 95%;
+    text-align: center;
+    margin-top: -38%;
+    margin-left: 2%;
+}
+
+/*.home_page_box_text {
+    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 95%;
     text-align: center;
-}
+}*/
 .home_page_box_text h3 {
     font-size: 15px;
     color: #fff;
@@ -1057,6 +1066,7 @@ button:focus {
 .home_page_box_text p {
     color: #fff;
     font-weight: 600;
+    padding: 0px 50px;
 }
 /*--------------------------------------------------------------
 # Boat by loaction section
@@ -1154,7 +1164,7 @@ button:focus {
     top: 50%;
     right: 130px;
 }
-.image-box {
+/*.image-box {
     position: relative;
     display: inline-block;
     cursor: none;
@@ -1182,7 +1192,7 @@ button:focus {
 }
 .cursor.active {
     opacity: 1;
-}
+}*/
 /*--------------------------------------------------------------
 # Follow sailer section
 --------------------------------------------------------------*/
@@ -4171,7 +4181,18 @@ section.about_zigzag_section {
     margin: 0;
     width: 100% !important;
 }
-
+.see_more_faq {
+    display: none;
+}
+.read_more_btn a {
+    background: #f9a126;
+    display: inline-block;
+    color: #fff;
+    border-radius: 15px;
+    border: 1px solid #f8a126;
+    text-transform: uppercase;
+    padding: 10px 40px;
+}
 /*--------------------------------------------------------------
 # Single boat page
 --------------------------------------------------------------*/
@@ -4509,11 +4530,11 @@ section.about_zigzag_section {
     border-radius: .25rem;
 }
 .checkout-section {
-    padding: 50px 0px;
+    padding: 95px 0px;
 }
 .checkout-title h1 {
     font-size: 2rem;
-    color: #222;
+    color: #000;
     margin-bottom: 30px;
 }
 .checkout-title h1 .btn-back {
@@ -4530,6 +4551,7 @@ section.about_zigzag_section {
 .rental-type-sec h4 {
     font-size: 1.25rem;
     margin-bottom: 25px;
+    color: #000;
 }
 .rental-form {
     margin-bottom: 30px;
@@ -4541,8 +4563,8 @@ section.about_zigzag_section {
 .rental-form .row {
     margin: 0px;
 }
-.rental-form .col-md-12{
-    padding: 0px;
+.rental-form .col-md-12 {
+    padding: 6px 0;
 }
 .rental-form .col-md-12 label{
     border: .0625rem solid #ced4da;
@@ -4550,7 +4572,7 @@ section.about_zigzag_section {
     margin-bottom: 0px;
 }
 .rental-form .col-md-12 input[type="radio"]:checked + label {
-    border: .0625rem solid #30a8d5 !important;
+    border: .0625rem solid #f9a126 !important;
 }
 .rental-form .col-md-12 label {
     width: 100%;
@@ -4562,9 +4584,9 @@ section.about_zigzag_section {
     content: " ";
     display: block;
     border-radius: 50%;
-    border: 2px solid #30a8d5;
+    border: 2px solid #f9a126;
     position: absolute;
-    top: 10px;
+    top: 32px;
     right: 10px;
     width: 23px;
     height: 23px;
@@ -4573,21 +4595,21 @@ section.about_zigzag_section {
     transition-duration: 0.5s;
 }
 .rental-form .col-md-12 label:after {
-    background: #30a8d5;
+    background: #f9a126;
     content: " ";
     display: block;
     width: 15px;
     height: 15px;
     border-radius: 50%;
     position: absolute;
-    top: 14px;
+    top: 36px;
     right: 14px;
     transition-duration: 0.5s;
     opacity: 0;
 }
 .rental-form .col-md-12 input[type="radio"]:checked + label::before {
     content: "";
-    border: 2px solid #30a8d5;
+    border: 2px solid #f9a126;
 }
 .rental-form .col-md-12 input[type="radio"]:checked + label::after {
     opacity: 1;
@@ -4622,7 +4644,7 @@ section.about_zigzag_section {
     margin-bottom: 10px;
 }
 .options-form .col-md-12 input[type="checkbox"]:checked + label {
-    border: .0625rem solid #30a8d5 !important;
+    border: .0625rem solid #f9a126 !important;
 }
 .options-form .col-md-12 label {
     width: 100%;
@@ -4635,8 +4657,8 @@ section.about_zigzag_section {
 .options-form .col-md-12 label:before {
     content: " ";
     display: block;
-    border-radius: 0px;
-    border: 2px solid #30a8d5;
+    border-radius: 50%;
+    border: 2px solid #f9a126;
     position: absolute;
     top: 30%;
     right: 10px;
@@ -4649,8 +4671,9 @@ section.about_zigzag_section {
 .options-form .col-md-12 input[type="checkbox"]:checked + label::before {
     content: "✓";
     color: #fff;
-    background: #30a8d5;
+    background: #f9a126;
     font-weight: 500;
+    border-radius: 50%;
 }
 
 .options-form .col-md-12 input[type="checkbox"][id^="myCheckbox"] {
@@ -4670,8 +4693,11 @@ section.about_zigzag_section {
 .option-icon {
     display: flex;
     align-items: center;
-    background: #eaf9ff;
+    background: #f9a126;
     padding: 10px;
+}
+.options-form  svg {
+    filter: invert(1);
 }
 .option-box {
     padding: 10px 15px;
@@ -4716,7 +4742,7 @@ section.about_zigzag_section {
     padding: 0px;
 }
 .insurance-form .col-md-12 input[type="radio"]:checked + label {
-    border: .0625rem solid #30a8d5 !important;
+    border: .0625rem solid #f9a126 !important;
 }
 .insurance-form .col-md-12 label {
     width: 100%;
@@ -4731,7 +4757,7 @@ section.about_zigzag_section {
     content: " ";
     display: block;
     border-radius: 50%;
-    border: 2px solid #30a8d5;
+    border: 2px solid #f9a126;
     position: absolute;
     top: 20px;
     left: 10px;
@@ -4742,7 +4768,7 @@ section.about_zigzag_section {
     transition-duration: 0.5s;
 }
 .insurance-form .col-md-12 label:after {
-    background: #30a8d5;
+    background: #f9a126;
     content: " ";
     display: block;
     width: 15px;
@@ -4754,9 +4780,72 @@ section.about_zigzag_section {
     transition-duration: 0.5s;
     opacity: 0;
 }
+.checkout-btn-sec button {
+    background: #f9a126 !important;
+    border-radius: 11px;
+    margin: 20px 0px 0px 0px;
+    border: 1px solid #f9a126;
+    box-shadow: none;
+    width: 100% !important;
+}
+.checkout-btn-sec button:hover{
+    background:none !important;
+    color: #f9a126;
+    border: 1px solid #f9a126;
+    box-shadow: none;
+  
+}
+#paymentAccordion .custom-radio {
+    border: 0px solid #ddd;
+    padding: 0px 35px;
+    display: block;
+    position: relative;
+    margin: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #000;
+    box-shadow: none;
+}
+#paymentAccordion .custom-control-label {
+    display: flex;
+}
+#paymentAccordion svg, #paymentAccordion img {
+    width: 26px !important;
+    margin-right: 15px;
+}
+.payment-sec #paymentAccordion {
+    width: 100%;
+    display: block;
+    position: relative;
+    border: .0625rem solid #ced4da;
+    border-radius: .5rem;
+    margin-bottom: 15px;
+    margin-top: 30px;
+}
+#paymentAccordion .form-accordion-title {
+    border-bottom: .0625rem solid #ced4da;
+}
+#paymentAccordion .form-accordion-title:last-child{
+    border-bottom: 0px solid #ced4da;
+}
+#paymentAccordion .custom-radio .custom-control-input:checked~.custom-control-label::after{
+    display: none;
+}
+#paymentAccordion .custom-radio .custom-control-input:checked~.custom-control-label::before {
+    background-color: #f9a126;
+}
+#paymentAccordion #cardDetails {
+    padding: 0 15px;
+}
+#paymentAccordion .text-muted {
+    padding: 0 15px;
+}
+.cancellation-sec a {
+    color: #f9a126;
+}
 .insurance-form .col-md-12 input[type="radio"]:checked + label::before {
     content: "";
-    border: 2px solid #30a8d5;
+    border: 2px solid #f9a126;
 }
 .insurance-form .col-md-12 input[type="radio"]:checked + label::after {
     opacity: 1;
@@ -4861,13 +4950,16 @@ section.about_zigzag_section {
     width: 43px;
     height: 43px;
     justify-content: center;
-    background: #d5f4ff;
+    background: #f9a126;
     border-radius: 10px;
     align-items: center;
     margin-right: 20px;
 }
+.checkout-btn-sec a {
+    color: #f9a126;
+}
 .custom-icon i {
-    color: #44b1d9;
+    color: #ffff;
     font-size: 22px;
 }
 .custom-text {
@@ -4930,10 +5022,10 @@ section.about_zigzag_section {
 }
 .date-icon i {
     font-size: 30px;
-    color: #30a8d5;
+    color: #f9a126;
 }
 .date-order-sec .date-text p span {
-    color: #30a8d5;
+    color: #f9a126;
 }
 .price-tables, .price-total {
     display: flex;
@@ -4944,7 +5036,7 @@ section.about_zigzag_section {
     font-size: 16px;
 }
 .price-amount {
-    color: #44b1d9;
+    color: #f9a126;
     font-weight: 700;
 }
 .price-total .price-heading {
@@ -4956,9 +5048,16 @@ section.about_zigzag_section {
 }
 .promotional-sec a{
     font-size: 20px;
+    background: #f9a126;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 11px;
+    border: 1px solid #f9a126;
 }
 .promotional-sec a:hover{
-    color: #30a8d5;
+    color: #f9a126;
+    background: #fff;
+    border: 1px solid #f9a126;
 }
 .pay-downpayment-sec .card-body {
     padding: 0px;
@@ -4972,19 +5071,23 @@ section.about_zigzag_section {
     display: flex;
     align-items: center;
     margin-bottom: 15px;
+    padding: 10px 15px;
+}
+.pay-downpayment-sec h5 {
+    margin: 0;
 }
 .circle {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    border: 2px solid #007bff;
+    border: 2px solid #f9a126;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-right: 15px;
 }
 .circle.active {
-    background-color: #007bff;
+    background-color: #f9a126;
     color: white;
 }
 .payment-content {
@@ -5777,6 +5880,31 @@ font-size: 15px;
     margin-top: 20px;
     font-size: 18px;
 }
+.dashboard_listing_edit #description input[type="radio"]:checked+label {
+    border-color: #e5006d;
+    color: #e5006d;
+}
+.language_tab label {
+    border: 1px solid #ddd;
+    display: block;
+    position: relative;
+    margin: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    color: #000;
+    box-shadow: 0 0 5px lightgrey;
+    width: 15%;
+    height: 46px;
+    line-height: 40px;
+}
+.language_tab input#inlineCheckbox1 {
+    visibility: hidden;
+    position: absolute;
+}
+.language_tab label {
+    display: inline-block;
+}
 /*--------------------------------------------------------------
 # Qequest submit page
 --------------------------------------------------------------*/
@@ -6479,6 +6607,144 @@ font-size: 15px;
     padding-top: 20px;
 }
 /*--------------------------------------------------------------
+# Our Team
+--------------------------------------------------------------*/
+.team_banner_section {
+    background-image: url(../img/about-us-banner.jpg);
+    width: 100%;
+    height: 465px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+.team_banner_text {
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+}
+.team_banner_text h1 {
+    font-size: 64px;
+    color: #fff;
+    text-transform: uppercase;
+    padding-top: 10px;
+}
+.team_content_block h2 {
+    font-size: 64px;
+    color: #000;
+    text-transform: uppercase;
+}
+.team_content_section {
+    padding: 60px 0;
+}
+.team_section_box img {
+    width: 100%;
+    height: 370px;
+    object-fit: cover;
+    border-radius: 10px 10px 0px 0px;
+}
+.team_section_box {
+    margin-top: 65px;
+    text-align: center;
+}
+.team_section_box h2 {
+    font-size: 28px;
+    text-transform: uppercase;
+    color: #000;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    padding-top: 20px;
+}
+.team_section_box {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    padding: 11px 10px;
+    border-radius: 15px;
+}
+.team_social_media {
+    list-style: none;
+    margin-top: 10px;
+    margin-bottom: 13px;
+}
+.team_social_media li a i {
+    color: #fff;
+    background: #f9a126;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 50%;
+    text-align: center;
+}
+.team_social_media li a i:hover{
+    background: #37393c;
+    color: #fff;
+}
+.team_social_media li {
+    display: inline-block;
+    padding: 0 10px 0px 0;
+}
+.team_content_block {
+    max-width: 900px;
+    margin: 0px auto;
+}
+/*--------------------------------------------------------------
+# Our mission page
+--------------------------------------------------------------*/
+.our_mission_content {
+    padding: 65px 0px;
+}
+.our_misson_content_block h2 {
+    font-size: 64px;
+    color: #000;
+    text-transform: uppercase;
+}
+.our_mission_content .container {
+    max-width: 1040px;
+    margin: 0px auto 0;
+}
+.our_mission_heading h3 {
+    font-size: 44px;
+    color: #000;
+    text-transform: uppercase;
+    padding-top: 50px;
+    padding-bottom: 30px;
+}
+.our_mission_box {
+    background: #f2f2f2;
+    border-radius: 15px;
+    text-align: center;
+    padding: 20px 30px;
+    cursor: pointer;
+    transition: 0.3s;
+    border: 1px solid #ebebeb;
+}
+.our_mission_box  img {
+    margin: 0px auto;
+}
+.our_mission_box h3 {
+    font-size: 28px;
+    text-transform: uppercase;
+    padding-top: 15px;
+    color: #000;
+}
+.our_mission_box:hover {
+    background: #f9a126;
+}
+.our_mission_box:hover img {
+    filter: invert(1);
+}
+.our_mission_box:hover h3,
+.our_mission_box:hover p{
+    color: #fff;
+}
+.our_mission_con {
+    max-width: 1400px;
+    margin: 0px auto;
+}
+/*--------------------------------------------------------------
 # Media Query
 --------------------------------------------------------------*/
 @media (min-width: 320px) and (max-width: 767px){
@@ -6810,9 +7076,10 @@ font-size: 15px;
     .section-form-contacts {
         padding: 0 15px;
     }
-    .sing_upform_logo img {
-        width: 80%;
-    }
+  .sing_upform_logo img {
+    width: 50%;
+    padding-top: 40px;
+}
     .login_sign_up_form .container {
         padding: 0 25px;
     }
@@ -7231,6 +7498,31 @@ font-size: 15px;
 .ourstory_content_section {
     padding: 40px 0px;
 }
+.team_banner_text h1 {
+    font-size: 30px;
+}
+.team_content_block h2 {
+    font-size: 30px;
+}
+.header-dashboard {
+    text-align: center;
+}
+.our_misson_content_block h2 {
+    font-size: 30px;
+}
+.our_mission_heading h3 {
+    font-size: 30px;
+}
+.our_mission_con .our_mission_box {
+    margin-bottom: 30px;
+}
+.goals_row {
+    flex-direction: column-reverse;
+}
+.checkout-section {
+    padding: 70px 0 25px 0px;
+}
+
 }
 @media (min-width: 767px) and (max-width: 1023px) {
 
@@ -7405,5 +7697,8 @@ font-size: 15px;
 }
 .banner_form {
     top: -195px;
+}
+.team_section_box img {
+    height: 320px;
 }
 }

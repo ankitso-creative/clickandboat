@@ -24,7 +24,7 @@ session()->put("role",$role)
     <section class="login_sign_up_form">
         <div class="container">
             <div class="sing_upform_logo">
-                <img src="{{ asset('app-assets/site_assets/img/booker-boat-logo-v1-white.png') }}">
+                <img src="{{ whiteLogoURL() }}">
             </div>
             <div class="row justify-content-center">
                 <div class="col-md-12">

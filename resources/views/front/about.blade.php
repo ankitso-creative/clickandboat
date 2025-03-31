@@ -34,12 +34,12 @@
         <div class="pt-5 row">
             <div class="col-sm-12 col-md-6 col-lg-6">
                 <div class="about_sec_img">
-                    <img src="{{ asset('app-assets/site_assets/img/About-Us-img-01.jpg') }}">
+                    <img src="{{ asset('app-assets/site_assets/img/about-us-img-01.jpg') }}">
                 </div>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-6">
                 <div class="about_sec_img">
-                    <img src="{{ asset('app-assets/site_assets/img/About-Us-img-02.jpg') }}">
+                    <img src="{{ asset('app-assets/site_assets/img/about-us-img-02.jpg') }}">
                 </div>
             </div>
         </div>
@@ -95,7 +95,7 @@
     <div class="row align-items-center">
         <div class="col-sm-12 col-md-6 col-lg-6">
             <div class="about_insurance_box">
-                <img src="{{ asset('app-assets/site_assets/img/About-Us-insurance-img.jpg') }}">
+                <img src="{{ asset('app-assets/site_assets/img/about-us-insurance-img.jpg') }}">
             </div>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-6">
@@ -114,7 +114,7 @@
         </div>
         <div class="col-sm-12 col-md-6 col-lg-6">
             <div class="about_insurance_box">
-                <img src="{{ asset('app-assets/site_assets/img/about-Us-insuranceimg-02.jpg') }}">
+                <img src="{{ asset('app-assets/site_assets/img/about-us-insuranceimg-02.jpg') }}">
             </div>
         </div>
     </div>
