@@ -417,10 +417,10 @@ button:focus {
 .dropdown .dropdown-item {
     background: #fff !important;
     margin: 0px 5px 6px 0 !important;
-    color: #f8a126 !important;
+    color: #000 !important;
 }
-.navbar-nav .dropdown a:hover{
-    border:1px solid #f8a126 !important;
+.navbar-nav .dropdown a:hover {
+    border-bottom: 1px solid #f8a126 !important;
 }
 #language {
     background: #0000006b;
@@ -1159,10 +1159,12 @@ button:focus {
 .home_page_slider .slick-prev {
     top: 50%;
     left: 7%;
+    z-index: 999;
 }
 .home_page_slider .slick-next {
     top: 50%;
     right: 130px;
+    z-index: 999;
 }
 /*.image-box {
     position: relative;
@@ -1371,7 +1373,7 @@ button:focus {
     color: #000;
     overflow: hidden;
     display: -webkit-box;
-    -webkit-line-clamp: 4;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
 }
 .next_trip_box {
@@ -3688,6 +3690,8 @@ section.about_zigzag_section {
     color: #fff;
     text-transform: uppercase;
     line-height: 65px;
+    width: 80%;
+    margin: 0px auto;
 }
 .blog_inner_text_box .blog_pera {
     color: #ffff;
@@ -3719,12 +3723,34 @@ section.about_zigzag_section {
 }
 .inner_blog_text_section img {
     margin-top: 50px;
-    margin-bottom: 50px;
+    margin-bottom: 25px;
     width: 100% !important;
 }
 .inner_blog_text_section .container {
     max-width: 1015px;
     margin: 0px auto;
+}
+.inner_blog_text_section h2 {
+    font-size: 46px;
+    text-transform: uppercase;
+    color: #000;
+}
+.inner_blog_text_section h3 {
+    font-size: 35px;
+    text-transform: uppercase;
+    color: #000;
+    padding: 30px 0px 10px 0px;
+}
+.inner_blog_text_section  ul{
+    text-align: left;
+}
+.inner_blog_text_section ul li::marker {
+    color: #f9a126;
+    font-size: 20px;
+}
+.inner_blog_text_section ul li {
+    padding: 10px 0;
+    font-family: 'Montserrat';
 }
 .single_blog_trip {
     margin-top: 70px;
@@ -4534,7 +4560,7 @@ section.about_zigzag_section {
 }
 .checkout-title h1 {
     font-size: 2rem;
-    color: #000;
+    color: #222;
     margin-bottom: 30px;
 }
 .checkout-title h1 .btn-back {
@@ -4551,7 +4577,6 @@ section.about_zigzag_section {
 .rental-type-sec h4 {
     font-size: 1.25rem;
     margin-bottom: 25px;
-    color: #000;
 }
 .rental-form {
     margin-bottom: 30px;
@@ -4786,14 +4811,12 @@ section.about_zigzag_section {
     margin: 20px 0px 0px 0px;
     border: 1px solid #f9a126;
     box-shadow: none;
-    width: 100% !important;
 }
 .checkout-btn-sec button:hover{
     background:none !important;
     color: #f9a126;
     border: 1px solid #f9a126;
     box-shadow: none;
-  
 }
 #paymentAccordion .custom-radio {
     border: 0px solid #ddd;
@@ -5898,13 +5921,10 @@ font-size: 15px;
     height: 46px;
     line-height: 40px;
 }
-.language_tab input#inlineCheckbox1 {
-    visibility: hidden;
-    position: absolute;
-}
 .language_tab label {
     display: inline-block;
 }
+
 /*--------------------------------------------------------------
 # Qequest submit page
 --------------------------------------------------------------*/
@@ -6532,6 +6552,12 @@ font-size: 15px;
 }
 .city_page_text h3 {
     font-size: 28px;
+    color: #000;
+    text-transform: uppercase;
+    padding-top:30px;
+}
+.city_page_text h5 {
+    font-size: 20px;
     color: #000;
     text-transform: uppercase;
     padding-top:30px;
@@ -7522,7 +7548,15 @@ font-size: 15px;
 .checkout-section {
     padding: 70px 0 25px 0px;
 }
-
+.inner_blog_text_section h2 {
+    font-size: 30px;
+}
+.inner_blog_text_section h3 {
+    font-size: 28px;
+}
+.inner_blog_text_section  ul {
+    padding: 0 30px;
+}
 }
 @media (min-width: 767px) and (max-width: 1023px) {
 
