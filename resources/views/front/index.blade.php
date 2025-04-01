@@ -16,6 +16,9 @@
 }
 .custom-div .text {
     position: absolute;
+    left: 0;
+    top: 0;
+    transform: translate(-50%, -50%);
     white-space: nowrap;
     background-color: transparent;
     font-size: 60px;
@@ -28,7 +31,7 @@
 }
 
 .text {
-  z-index: 5;
+  z-index: 999;
 }
 
 .custom-div:nth-child(odd) {
@@ -707,21 +710,22 @@ function moveText(event) {
     var div = event.currentTarget;
     var text = div.querySelector(".text");
 
-    var offsetX =
-        event.clientX - div.getBoundingClientRect().left - text.offsetWidth / 2;
-    var offsetY =
-        event.clientY - div.getBoundingClientRect().top - text.offsetHeight / 2;
+    if (!text) return;
 
-    text.style.left = offsetX + "px";
-    text.style.top = offsetY + "px";
+    var rect = div.getBoundingClientRect();
+    var offsetX = event.clientX - rect.left;
+    var offsetY = event.clientY - rect.top;
+
+    text.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
     text.style.display = "block";
-    }
+}
 
-    function hideText(event) {
+function hideText(event) {
     var text = event.currentTarget.querySelector(".text");
-    text.style.display = "none";
+    if (text) {
+        text.style.display = "none";
     }
-
+}
 </script>
 <!-- /next trip Section -->
 
