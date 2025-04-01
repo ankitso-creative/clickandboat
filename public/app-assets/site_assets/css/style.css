@@ -425,7 +425,7 @@ label, input, textarea, button, select {
 .navbar-nav .dropdown a:hover {
     border: 1px solid #f8a126 !important;
 }
-#language {
+#language, #currency_name {
     background: #0000006b;
     border-radius: 10px;
     margin: 0 7px;
@@ -441,6 +441,10 @@ label, input, textarea, button, select {
     font-weight: 300;
     font-family: 'GT America Trial Cn Md' !important;
 }
+#currency_name option{
+    background:#fff;
+    color: #000;
+}
 #language:hover{
     border:1px solid #f8a126;
 }
@@ -448,6 +452,7 @@ label, input, textarea, button, select {
     background: #fff;
     color: #f8a126;
 }
+
 /*--------------------------------------------------------------
 # Mobile menu
 --------------------------------------------------------------*/
@@ -1400,6 +1405,36 @@ label, input, textarea, button, select {
 .next_trip_box {
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    transition:all 0.4s ease;
+}
+.next_trip_box:before, .next_trip_box:after {
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    z-index: 2;
+    inset: -12px;
+    transition: translate .25s cubic-bezier(.4,0,.2,1);
+    opacity: 0;
+}
+.next_trip_box:before {
+    translate: 0;
+    border-top: 12px solid #f9a126;
+    border-left: 12px solid #f9a126;
+}
+.next_trip_box:after {
+    translate: 0;
+    border-right: 12px solid #f9a126;
+    border-bottom: 12px solid #f9a126;
+}
+.next_trip_box:hover:before {
+    translate: 12px 12px 0;
+    opacity: 1;
+}
+.next_trip_box:hover:after{
+    translate: -12px -12px 0;
+    opacity: 1;
 }
 .next_trip_text {
     padding: 20px 25px;
@@ -4054,7 +4089,7 @@ section.about_zigzag_section {
     cursor: pointer;
     transition: 0.3s;
     border: 1px solid #ebebeb;
-    height: 260px;
+    height: 277px;
 }
 .more_resource_section  .more_resource_box:hover {
     background: #f9a126;
@@ -4063,8 +4098,8 @@ section.about_zigzag_section {
 .more_resource_section  .more_resource_box:hover p {
     color: #fff;
 }
-.more_resource_section  .more_resource_box:hover img {
-    filter: invert(1);
+.more_resource_section  .more_resource_box:hover i {
+    color: #fff;
 }
 .more_resource_section  .more_resource_box h3 {
     font-size: 28px;
@@ -4072,6 +4107,9 @@ section.about_zigzag_section {
     padding-top: 15px;
     color: #000;
     height: 84px;
+}
+.more_resource_box i {
+    font-size: 60px;
 }
 .help_contact_section {
     background: #f9a126;
