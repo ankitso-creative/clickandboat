@@ -37,8 +37,7 @@
             <input type="text" id="search" placeholder="Search...">
             <button id="search-button">Search</button>
         </div>
-        <p><span class="help_text_style">Popular searches… :</span> Contact Booker Boat, payment, insurance,
-            cancellation</p>
+        <p><span class="help_text_style">Contact MyBoatBooker</p>
     </div>
 </section>
 <!-- /Help Banner Section -->
