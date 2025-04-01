@@ -352,6 +352,9 @@ button:focus {
 .form-control:focus {
     border-color: #bfc7d1;
 }
+label, input, textarea, button, select {
+    font-family: 'Montserrat' !important;
+}
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
@@ -433,9 +436,10 @@ button:focus {
     cursor: pointer;
     outline: none;
     text-transform: uppercase;
-    font-size: 14px;
+    font-size: 15px;
     height: 32px;
     font-weight: 300;
+    font-family: 'GT America Trial Cn Md' !important;
 }
 #language:hover{
     border:1px solid #f8a126;
@@ -617,13 +621,14 @@ button:focus {
 /*--------------------------------------------------------------
 # Home Banner
 --------------------------------------------------------------*/
-.home_banner_section{
+.home_banner_section {
     background-image: url(../img/boat-banner-image.jpg);
     width: 100%;
-    height: 640px;
+    height: 100vh;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
+    background-position: center;
 }
 .banner_text {
     padding-top: 100px;
@@ -707,6 +712,7 @@ button:focus {
     text-transform: uppercase;
     margin: 0;
     padding-bottom: 8px;
+    font-weight: 500;
 }
 .has-search ::placeholder,
 .datepicker ::placeholder {
@@ -1003,15 +1009,17 @@ button:focus {
     padding: 0px 35px;
 }
 .boat_type_section_slider .slick-prev::before {
-    content: url(../img/slider-left-icon.png) !important;
+    content: url(../img/long-arrow-left-icon.svg) !important;
+    filter: invert(1);
 }
 .boat_type_section_slider .slick-next::before {
-    content: url(../img/slider-right-icon.png) !important;
+    content: url(../img/long-arrow-right-icon.svg) !important;
+    filter: invert(1);
 }
 .boat_type_section_slider .slick-prev,
 .boat_type_section_slider .slick-next {
-    width: 40px !important;
-    height: 40px !important;
+    width: 60px !important;
+    height: 60px !important;
     z-index: 1 !important;
 }
 .boat_type_section_slider .slick-prev {
@@ -1020,7 +1028,7 @@ button:focus {
 }
 .boat_type_section_slider .slick-next {
     top: 44%;
-    right: 64px;
+    right: 37px;
 }
 /*--------------------------------------------------------------
 # home page location section
@@ -1145,26 +1153,26 @@ button:focus {
     color: #fff;
 }
 .home_page_slider .slick-prev::before {
-    content: url(../img/slider-left-icon.png) !important;
+    content: url(../img/long-arrow-left-icon.svg) !important;
+    filter: invert(1);
 }
 .home_page_slider .slick-next::before {
-    content: url(../img/slider-right-icon.png) !important;
+    content: url(../img/long-arrow-right-icon.svg) !important;
+    filter: invert(1);
 }
 .home_page_slider .slick-prev,
 .home_page_slider .slick-next {
-    width: 40px !important;
-    height: 40px !important;
+    width: 60px !important;
+    height: 60px !important;
     z-index: 1 !important;
 }
 .home_page_slider .slick-prev {
     top: 50%;
     left: 7%;
-    z-index: 999;
 }
 .home_page_slider .slick-next {
     top: 50%;
-    right: 130px;
-    z-index: 999;
+    right: 100px;
 }
 /*.image-box {
     position: relative;
@@ -2560,6 +2568,7 @@ button:focus {
 .where_box {
     display: flex;
     padding: 7px 20px;
+    align-items: center;
 }
 .location_facility svg {
     position: relative;
@@ -2567,18 +2576,18 @@ button:focus {
     margin-right: 2px;
     fill: #343a40;
 }
-.location_options i {
-    position: relative;
-    top: 15px;
-}
 .where_box i {
     color: #677785;
 }
+.where_box svg {
+    fill: #677785;;
+}
 .where_box_text h5 {
     color: #343a40;
-    font-size: 15px;
+    font-size: 14px;
     font-family: 'Montserrat' !important;
     font-weight: 500  !important;
+    margin-bottom: 0px;
 }
 .where_box_text p {
     color: #8a98a6;
@@ -2592,6 +2601,9 @@ button:focus {
     background: none;
     border: none;
     outline: none;
+    font-family: 'Montserrat' !important;
+    color: #677785cc;
+    width: 100%;
 }
 .location_options ul{
     list-style:none;
@@ -3197,7 +3209,12 @@ button:focus {
 .where_box_text select {
     border: none;
     outline: none;
-    color: #343a40;
+    color: #677785cc;
+    margin-left: -4px;
+    font-family: 'Montserrat' !important;
+}
+.where_box_text {
+    width: 100%;
 }
 .pac-logo:after{
     display: none;
@@ -3718,7 +3735,6 @@ section.about_zigzag_section {
     list-style: none;
 }
 .inner_blog_text_section {
-    text-align: center;
     margin: 50px auto 0px;
 }
 .inner_blog_text_section img {
@@ -3741,16 +3757,17 @@ section.about_zigzag_section {
     color: #000;
     padding: 30px 0px 10px 0px;
 }
-.inner_blog_text_section  ul{
-    text-align: left;
+.inner_blog_text_section  ul {
+    margin-left: 25px;
 }
 .inner_blog_text_section ul li::marker {
     color: #f9a126;
     font-size: 20px;
 }
 .inner_blog_text_section ul li {
-    padding: 10px 0;
+    padding: 5px 0;
     font-family: 'Montserrat';
+    font-size: 15px;
 }
 .single_blog_trip {
     margin-top: 70px;
@@ -6566,6 +6583,9 @@ font-size: 15px;
     margin-left: 30px;
     margin-top: 10px;
 }
+.city_page_text li {
+    font-size: 15px;
+}
 .city_page_text ul ::marker {
     font-size: 20px;
     color: #f9a126;
@@ -7563,9 +7583,9 @@ font-size: 15px;
 
 }
 @media (min-width: 1250px) and (max-width: 1299px) {
-    .home_banner_section {
+/*    .home_banner_section {
         height: 630px;
-    }
+    }*/
     .blog_inner_banner {
         height: 440px;
     }
@@ -7578,9 +7598,9 @@ font-size: 15px;
 
 }
 @media (min-width: 1400px) and (max-width: 1499px) {
-    .home_banner_section {
+/*    .home_banner_section {
         height: 690px;
-    }
+    }*/
     .boat_by_location {
         height: 450px;
     }
@@ -7611,9 +7631,9 @@ font-size: 15px;
 
 }
 @media (min-width: 1500px) and (max-width: 1599px) {
-    .home_banner_section {
+/*    .home_banner_section {
         height: 704px;
-    }
+    }*/
     .boat_by_location {
         height: 470px;
     }
@@ -7638,9 +7658,9 @@ font-size: 15px;
 
 }
 @media (min-width: 1600px) and (max-width: 1899px) {
-    .home_banner_section {
+/*    .home_banner_section {
         height: 704px;
-    }
+    }*/
     .boat_by_location {
         height: 470px;
     }
@@ -7662,9 +7682,9 @@ font-size: 15px;
     .blog_banner {
         height: 765px;
     }
- .home_banner_section {
+/* .home_banner_section {
         height: 900px;
-    }
+    }*/
 .featured_board_boxes img {
         height: 500px;
     }
