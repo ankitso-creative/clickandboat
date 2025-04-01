@@ -37,7 +37,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav">
-                        <li class="nav-item dropdown">
+                        <!-- <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle about_menu" href="{{ route('about-us') }}" id="navbarDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 About Us
@@ -47,12 +47,38 @@
                                 <a class="dropdown-item" href="{{ route('team') }}">Team</a>
                                 <a class="dropdown-item" href="{{ route('mission') }}">Mission</a>
                             </div>
-                        </li>
+                        </li> -->
                         <!-- <li class="nav-item dropdown">
                             <a class="nav-link about_menu" href="{{ route('about-us') }}">
                                 About Us
                             </a>
                         </li> -->
+                        <li class="nav-item">
+                            <a href="{{ route('about-us') }}" class="nav-link">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('location') }}" class="nav-link">Explore Ibiza</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('blogs') }}" class="nav-link">Our Blog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Book A Boat</a>
+                        </li>
+                        @if(!Auth::check())
+                            <li class="nav-item">
+                                <a href="{{ route('login') }}" class="nav-link">Sign In</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('userlogin') }}">Sign Up</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('boatlogin') }}">Register your boat </a>
+                            </li>
+                        @endif
+                        <li class="nav-item">
+                            <a href="{{ route('help') }}" class="nav-link">Help</a>
+                        </li>
                         <li class="nav-item">
                             <select class="select-language" id="language">
                                 {!! selectOption('languages','name','code',session()->get('lang'),array('status' , '1')) !!}
@@ -70,28 +96,14 @@
                                 <a class="dropdown-item" href="#">3</a>
                             </div>
                         </li>
+                        
                         @if(Auth::check())
-                        <li class="nav-item">
-                            <a href="{{ route('help') }}" class="nav-link">Help</a>
-                        </li>
+                       
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('logout') }}">Logout </a>
                         </li>
-                         <li class="nav-item">
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('customer.dashboard') }}"><i class="fa-solid fa-user"></i></a>
-                        </li>
-                        @else
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('boatlogin') }}">Register your boat </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('userlogin') }}">Sign Up</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('help') }}" class="nav-link">Help</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}"><i class="fa-solid fa-user"></i></a>
                         </li>
                         @endif
                     </ul>
