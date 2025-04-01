@@ -423,7 +423,7 @@ label, input, textarea, button, select {
     color: #000 !important;
 }
 .navbar-nav .dropdown a:hover {
-    border-bottom: 1px solid #f8a126 !important;
+    border: 1px solid #f8a126 !important;
 }
 #language {
     background: #0000006b;
@@ -901,6 +901,19 @@ label, input, textarea, button, select {
     font-size: 15px;
     color: #000;
     font-weight: 600;
+}
+.boat_renter_text i {
+    position: absolute;
+    top: -10px;
+    left: -20px;
+    background: #f9a126;
+    width: 55px;
+    height: 55px;
+    line-height: 55px;
+    text-align: center;
+    color: #fff;
+    border-radius: 50%;
+    font-size: 25px;
 }
 .boat_renter_text img {
     position: absolute;

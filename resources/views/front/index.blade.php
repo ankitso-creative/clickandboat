@@ -222,18 +222,18 @@ function initialize() {
                         <p>See all of our listings via the search engine. Find a motorboat or a sailboat for rent near
                             me or in your desired destination, at the best price. Take advantage of our all inclusive
                             insurance so you can rent and navigate peacefully and in complete security.</p>
-                        <img src="{{ asset('app-assets/site_assets/img/main-icon-1.png') }}">
+                        <i class="fa-solid fa-magnifying-glass"></i>
                     </div>
                     <div class="boat_renter_text">
                         <p>Contact yacht owners free of charge and ask them all your practical questions about the
                             yacht, its equipment and its availability via our integrated Click&Boat messenger.</p>
-                        <img src="{{ asset('app-assets/site_assets/img/main-icon-2.png') }}">
+                        <i class="fa-solid fa-message"></i>
                     </div>
                     <div class="boat_renter_text">
                         <p>Book directly and safely online in just a few clicks and charter the yacht of your dreams.
                             You will only be charged if your charter request is accepted by the owner of the yacht. 100%
                             secured payment. Click&Boat is your trustworthy third party.</p>
-                        <img src="{{ asset('app-assets/site_assets/img/main-icon-3.png') }}">
+                        <i class="fa-solid fa-thumbs-up"></i>
                     </div>
                     <div class="find_boat_btn">
                         <a href="">Find a boat</a>
@@ -246,18 +246,18 @@ function initialize() {
                     <div class="boat_renter_text">
                         <p>Create a free listing to make your boat available for charter to other people. Yachts,
                             sailboats, RIBs, motorboats, catamarans - all are welcome on Click&Boat!</p>
-                        <img src="{{ asset('app-assets/site_assets/img/main-icon-4.png') }}">
+                      <i class="fa-solid fa-sailboat"></i>
                     </div>
                     <div class="boat_renter_text">
                         <p>Charter to whoever you want, whenever you want and at the price you want. Click&Boat allows
                             you to monetise your yacht and to help cover the costs related to its maintenance and use.
                         </p>
-                        <img src="{{ asset('app-assets/site_assets/img/main-icon-5.png') }}">
+                        <i class="fa-solid fa-location-crosshairs"></i>
                     </div>
                     <div class="boat_renter_text">
                         <p>Optional comprehensive insurance plan covering up to 8 million euros and a security deposit.
                             Entrust the chartering of your yacht, sailboat, motorboat or catamaran to us.</p>
-                        <img src="{{ asset('app-assets/site_assets/img/main-icon-6.png') }}">
+                        <i class="fa-solid fa-lock"></i>
                     </div>
                     <div class="estimate_btn">
                         <a href="">Estimate your earnings</a>
@@ -336,7 +336,7 @@ function initialize() {
             <div class="col-sm-12 col-md-6 col-lg-6">
                 <a href="#">
                     <div class="boat_type_box">
-                        <img src="{{ asset('app-assets/site_assets/img/image00344.jpg') }}" alt="boat-img">
+                        <img src="{{ asset('app-assets/site_assets/img/image00400.jpeg') }}" alt="boat-img">
                         <div class="boat_type_text">
                             <h3>Jet skis</h3>
                         </div>
@@ -346,7 +346,7 @@ function initialize() {
             <div class="col-sm-12 col-md-6 col-lg-6">
                 <a href="#">
                     <div class="boat_type_box">
-                        <img src="{{ asset('app-assets/site_assets/img/image00400.jpeg') }}" alt="boat-img">
+                        <img src="{{ asset('app-assets/site_assets/img/image00344.jpg') }}" alt="boat-img">
                         <div class="boat_type_text">
                             <h3>Yacht</h3>
                         </div>
