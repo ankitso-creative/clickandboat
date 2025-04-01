@@ -12,12 +12,79 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 @endsection
 @section('js')
+	<script src="https://js.stripe.com/v3/"></script>
+	<script>
+		const stripe = Stripe("{{ config('services.stripe.key') }}");
+		const elements = stripe.elements();
+        const card = elements.create("card");
+        card.mount("#card-element");
+		card.on('change', function(event) {
+            const cardErrors = document.getElementById('card-errors');
+            if (event.error) {
+                cardErrors.textContent = event.error.message;
+            } else {
+                cardErrors.textContent = ''; 
+            }
+        });
+ 		document.getElementById("payment-form").addEventListener("submit", async (event) => {
+			event.preventDefault();
+			const from = document.getElementById("from").value;
+			const to = document.getElementById("to").value;
+			const listingID = document.getElementById("listingID").value;
+			try {
+				const response = await fetch("{{ route('customer.stripe.createPaymentIntent') }}", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+						"X-CSRF-TOKEN": "{{ csrf_token() }}"
+					},
+					body: JSON.stringify({ from, to, listingID })
+				});
+				const data = await response.json();
+				if (data.error) {
+					document.getElementById("card-errors").innerText = data.error;
+					return;
+				}
+				const { paymentIntent, error } = await stripe.confirmCardPayment(data.clientSecret, {
+					payment_method: {
+						card: card,
+					}
+				});
+				if (error) {
+					document.getElementById("card-errors").innerText = error.message;
+				} 
+				else {
+					const confirmationResponse = await fetch("{{ route('customer.stripe.confirmPaymentIntent') }}", {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json",
+							"X-CSRF-TOKEN": "{{ csrf_token() }}"
+						},
+						body: JSON.stringify({
+							paymentIntentId: paymentIntent.id,
+							paymentStatus: paymentIntent.status, 
+							from,
+							to,
+							listingID
+						})
+					});
+					const confirmationData = await confirmationResponse.json();
+					if (confirmationData.error) {
+						document.getElementById("card-errors").innerText = confirmationData.error;
+					} else {
+						window.location.href = confirmationData.url
+					}
+				}
+			} catch (error) {
+				document.getElementById("card-errors").innerText = error.message;
+			}
+		});
+	</script>
 @endsection
 @section('content')
 <section class="checkout-section">
    <div class="container">
-		<form method="Post">
-			@csrf
+		<form id="payment-form">
 			<div class="row">
 				<div class="col-md-8">
 					<div class="checkout-title">
@@ -141,22 +208,11 @@
 												<input type="radio" id="cardPayment" name="paymentMethod" class="custom-control-input" data-toggle="collapse" data-target="#cardDetails" checked>
 												<label class="custom-control-label" for="cardPayment"><svg class="p-Icon p-Icon--card Icon p-Icon--md TabIcon p-PaymentAccordionButtonIcon TabIcon--selected" role="presentation" fill="var(--colorIcon)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" clip-rule="evenodd" d="M0 4a2 2 0 012-2h12a2 2 0 012 2H0zm0 2v6a2 2 0 002 2h12a2 2 0 002-2V6H0zm3 5a1 1 0 011-1h1a1 1 0 110 2H4a1 1 0 01-1-1z"></path></svg> Card</label>
 											</div>
-											<div id="cardDetails" class="collapse show" data-parent="#paymentAccordion">
-												<div class="form-row mt-3">
-													<div class="form-group col-md-6">
-														<label for="cardNumber">Card Number</label>
-														<input type="text" class="form-control" id="cardNumber" placeholder="1234 1234 1234 1234">
-													</div>
-													<div class="form-group col-md-3">
-														<label for="expiryDate">Expiration Date</label>
-														<input type="text" class="form-control" id="expiryDate" placeholder="MM / YY">
-													</div>
-													<div class="form-group col-md-3">
-														<label for="cvcCode">Security Code</label>
-														<input type="text" class="form-control" id="cvcCode" placeholder="CVC">
-													</div>
-												</div>
-											</div>
+											<input type="hidden" id="from" value="{{ $dateData['checkin_date'] }}" >
+											<input type="hidden" id="to" value="{{ $dateData['checkout_date'] }}" >
+											<input type="hidden" id="listingID" value="{{ $listingID }}" >
+
+											<div id="card-element"></div>
 										</div>
 
 										<!-- Revolut Pay -->
@@ -211,7 +267,8 @@
 								</div>
 								<div class="checkout-btn-sec">
 									<p>By selecting the button below, you unconditionally agree to the <a href="#">Terms & Conditions</a>, <a href="#">Cancellation conditions</a>, <a href="#">Insurance conditions</a>. You also agree to pay the total amount of the reservation.</p>
-									<button class="btn btn-primary btn-checkout">Booking request · <span>€{{ $price['price'] }}</span></button>
+									<div id="card-errors"></div>
+									<button class="btn btn-primary btn-checkout" id="submit-button">Booking request · <span>€{{ $price['price'] }}</span></button>
 								</div>
 							</div>
 						</div>
@@ -280,7 +337,7 @@
 					</div>
 				</div>
 			</div>
-		</form>
+		</form> 
    	</div>
 </section>
 @endsection

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('listing_id')->constrained()->onDelete('cascade');
+            $table->string('payment_intent_id')->nullable();
             $table->string('rental_type')->nullable();
             $table->string('additional_options')->nullable();
             $table->string('multi_risk')->nullable();
@@ -27,7 +28,7 @@ return new class extends Migration
             $table->string('extra_fees')->nullable();
             $table->string('total');
             $table->string('amount_paid');
-            $table->string('pending_amount');
+            $table->string('pending_amount')->nullable();
             $table->string('payment_status')->nullable();
             $table->timestamps();
         });

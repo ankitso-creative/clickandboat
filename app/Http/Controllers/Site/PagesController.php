@@ -103,10 +103,11 @@ class PagesController extends Controller
         endif;
         $dateData = Session::get('dateData');
         $request['id'] = Session::get('listingID');
+        $listingID = $request['id'];
         $request['checkindate'] = $request['checkin_date'];
         $request['checkoutdate'] = $request['checkout_date'];
         $price = bookingPrice($request);
-        return view('front.checkout',compact('dateData','listing','price'));
+        return view('front.checkout',compact('dateData','listing','price','listingID'));
     }
     public function aboutUs()
     {
@@ -187,4 +188,5 @@ class PagesController extends Controller
         return $this->service->submitRequest($request);
          
     }
+    
 }
