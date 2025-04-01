@@ -58,9 +58,12 @@ function bookingPrice($request)
     $days = $startDate->diffInDays($endDate);
     $seasonData = SeasonPrice::where('listing_id', $request['id'])->get();
     $hasError  = true;
-    if ($days >= 1) {
-        if (count($seasonData)) {
-            foreach ($seasonData as $key => $season) {
+    if ($days >= 1) 
+    {
+        if (count($seasonData)) 
+        {
+            foreach ($seasonData as $key => $season) 
+            {
                 $from = Carbon::parse($season->from . ' 1st')->month;
                 $to = Carbon::parse($season->to)->month;
                 $month = $startDate->month;
@@ -68,7 +71,8 @@ function bookingPrice($request)
                     $hasError=false;
                     $seasonId = $season->id;
                     $price = Price::where('season_price_id', $seasonId)->first();
-                    if ($price) {
+                    if ($price) 
+                    {
                         $priceArray = $price->toArray();
                         if ($priceArray['one_half_day'] && $days == 1):
                             $total_price = $priceArray['one_half_day'];
@@ -95,7 +99,9 @@ function bookingPrice($request)
                             'servive_fee' => $servive_fee,
                             'totalAmount' => $totalAmount,
                         ];
-                    } else {
+                    } 
+                    else 
+                    {
                         $total_price = $season->price * $days;
                         $servive_fee = 0;
                         $totalAmount = $total_price + $servive_fee;
@@ -108,7 +114,9 @@ function bookingPrice($request)
                     }
                 }
             }
-        } else {
+        } 
+        else 
+        {
             $price = Price::where('listing_id', $request['id'])->first();
             if ($price) {
                 $priceArray = $price->toArray();
@@ -121,7 +129,9 @@ function bookingPrice($request)
                     'servive_fee' => $servive_fee,
                     'totalAmount' => $totalAmount,
                 ];
-            } else {
+            } 
+            else 
+            {
                 $total_price = 0;
                 $result['error'] = 'Product not found';
             }
@@ -131,7 +141,6 @@ function bookingPrice($request)
             $result['status'] = 'error';
             $result['message'] = 'Please select different date.';
         }
-       
         return $result;
     }
 }

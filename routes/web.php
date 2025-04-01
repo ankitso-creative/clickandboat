@@ -24,6 +24,7 @@ use App\Http\Controllers\Customer\DashboardController as CustomerDashboardContro
 use App\Http\Controllers\Customer\ProfileController;
 use App\Http\Controllers\Site\AjaxController;
 use App\Http\Controllers\Site\PagesController;
+use App\Http\Controllers\Site\StripeController;
 use Illuminate\Contracts\Session\Session;
 
 Route::middleware('Setlang')->group(function(){
@@ -105,7 +106,10 @@ Route::middleware('Setlang')->group(function(){
         Route::put('password-update', [ProfileController::class, 'passwordUpdate'])->name('password.update');
         Route::post('/upload-image', [ProfileController::class, 'uploadImage'])->name('profile.image');
         Route::get('/favourites', [ProfileController::class, 'favourite'])->name('favourite');
+        Route::get('/paymentconfirm', [BookingController::class, 'paymentConfirm'])->name('paymentconfirm');
         Route::resource('booking', BookingController::class);
+        Route::post('/stripe/payment-intent', [StripeController::class, 'createPaymentIntent'])->name('stripe.createPaymentIntent');
+        Route::post('/stripe/confirmPaymentIntent', [StripeController::class, 'confirmPaymentIntent'])->name('stripe.confirmPaymentIntent');
     });
 
     Route::get('/login', function(){
@@ -170,7 +174,7 @@ Route::middleware('Setlang')->group(function(){
     Route::get('boat-category/{type}', [PagesController::class, 'locationCategry'])->name('locationcategry');
     Route::match(['get', 'post'],'checkout', [PagesController::class, 'checkout'])->name('checkout');
     Route::get('getbookingprice', [PagesController::class, 'getBookingPrice'])->name('getbookingprice');
-
+    
     Route::prefix('ajax')->name('ajax.')->middleware('ajax')->group(function () {
         Route::get('getregisterboatform', [AjaxController::class, 'getRegisterBoatForm'])->name('getregisterboatform');
         Route::post('favorited-item', [AjaxController::class, 'favorited'])->name('favorite');

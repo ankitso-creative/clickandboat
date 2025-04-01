@@ -13,9 +13,9 @@ class BookingController extends Controller
         $active = 'booking';
         return view('customer.booking',compact('active'));
     }
-    public function order(Request $request)
+   
+    public function paymentConfirm()
     {
-        $dateData = Session::get('dateData');
-        $listingID = Session::get('listingID');
+        return view('front.paymentconfirm');
     }
 }
