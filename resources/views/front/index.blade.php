@@ -532,7 +532,20 @@ function initialize() {
     <div class="home_page_slider_Sec">
         <div class="row location_slider">
             <div class="location_slide">
-                <a href="#">
+                <a href="{{ route('location') }}">
+                    <div class="home_page_slider_box">
+                        <img src="{{ asset('app-assets/site_assets/img/location-slider-1.jpg') }}" class="image">
+                        <div class="home_page_box_text">
+                            <h3>LUXURY boats</h3>
+                            <h2>Es vedre</h2>
+                            <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed
+                                odio tortor, hendrerit ut arcu vitae, efficitur convallis eros.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="location_slide">
+              <a href="{{ route('location') }}">
                 <div class="home_page_slider_box">
                     <img src="{{ asset('app-assets/site_assets/img/location-slider-1.jpg') }}" class="image">
                     <div class="home_page_box_text">
@@ -545,30 +558,17 @@ function initialize() {
                 </a>
             </div>
             <div class="location_slide">
-              <a href="#">
-                <div class="home_page_slider_box">
-                    <img src="{{ asset('app-assets/site_assets/img/location-slider-1.jpg') }}" class="image">
-                    <div class="home_page_box_text">
-                        <h3>LUXURY boats</h3>
-                        <h2>Es vedre</h2>
-                        <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed
-                            odio tortor, hendrerit ut arcu vitae, efficitur convallis eros.</p>
+                <a href="{{ route('location') }}">
+                    <div class="home_page_slider_box">
+                        <img src="{{ asset('app-assets/site_assets/img/location-slider-1.jpg') }}" class="image">
+                        <div class="home_page_box_text">
+                            <h3>LUXURY boats</h3>
+                            <h2>Es vedre</h2>
+                            <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed
+                                odio tortor, hendrerit ut arcu vitae, efficitur convallis eros.</p>
+                        </div>
                     </div>
-                </div>
                 </a>
-            </div>
-            <div class="location_slide">
-            <a href="#">
-                <div class="home_page_slider_box">
-                    <img src="{{ asset('app-assets/site_assets/img/location-slider-1.jpg') }}" class="image">
-                    <div class="home_page_box_text">
-                        <h3>LUXURY boats</h3>
-                        <h2>Es vedre</h2>
-                        <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed
-                            odio tortor, hendrerit ut arcu vitae, efficitur convallis eros.</p>
-                    </div>
-                </div>
-                <a href="#"></a>
             </div>
         </div>
     </div>
@@ -630,21 +630,21 @@ function initialize() {
     <div class="container-fluid">
         <div class="row">
             @if(count($blogs))
-            @foreach($blogs as $blog)
-            <div class="col-sm-12 col-md-6 col-lg-4">
-                <div class="next_trip_box">
-                    <img src="{{ $blog->getFirstMediaUrl('blog_image') }}">
-                    <div class="next_trip_text">
-                        <h3>{{ $blog->title }}</h3>
-                        <p>{{ substr(strip_tags($blog->description),0,170) }}...</p>
-                        <div class="trip_date_text">
-                            <span><a href="{{ route('single-blog',$blog->slug) }}">View Post</a></span>
-                            <span>{{ \Carbon\Carbon::parse($blog->created_at)->format('F d, Y') }}</span>
+                @foreach($blogs as $blog)
+                    <div class="col-sm-12 col-md-6 col-lg-4">
+                        <div class="next_trip_box">
+                            <img src="{{ $blog->getFirstMediaUrl('blog_image') }}">
+                            <div class="next_trip_text">
+                                <h3>{{ $blog->title }}</h3>
+                                <p>{{ substr(strip_tags($blog->description),0,170) }}...</p>
+                                <div class="trip_date_text">
+                                    <span><a href="{{ route('single-blog',$blog->slug) }}">View Post</a></span>
+                                    <span>{{ \Carbon\Carbon::parse($blog->created_at)->format('F d, Y') }}</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            @endforeach
+                @endforeach
             @endif
         </div>
     </div>
