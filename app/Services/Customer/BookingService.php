@@ -1,23 +1,15 @@
 <?php
 namespace App\Services\Customer;
-use App\Repositories\Customer\ProfileRepository;
+use App\Repositories\Customer\BookingRepository;
 class BookingService{
     protected $repository;
     public function __construct()
     {
-        $this->repository = new ProfileRepository();
+        $this->repository = new BookingRepository();
     }
-    public function updateProfile($request)
+    public function bookingAll()
     {
-        return $this->repository->updateProfile($request);
-    }
-    public function passwordUpdate($request)
-    {
-        return $this->repository->passwordUpdate($request);
-    }
-    public function uploadImage($request)
-    {
-        return $this->repository->uploadImage($request);
+        return $this->repository->bookingAll();
     }
 }
 ?>
