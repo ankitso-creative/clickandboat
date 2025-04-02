@@ -143,16 +143,17 @@ function initialize() {
                     <div class="boat_select">
                         <span><i class="fa-solid fa-sailboat"></i></span>
                         <select name="cars" id="cars">
+                        <select name="cars" id="cars">
                             <option value="">Sailboat, motorboat,...</option>
                             <option value="Motorboat">Motorboat</option>
-                            <option value="Sailboat">Sailboat</option>
-                            <option value="RIB">RIB</option>
+                            <option value="Sailboat">RIB</option>
+                            <option value="RIB">Sailboat</option>
                             <option value="Catamaran">Catamaran</option>
-                            <option value="Houseboat">Houseboat</option>
-                            <option value="Jet ski">Jet ski</option>
-                            <option value="Gulet">Gule </option>
-                            <option value="Boat without licence">Boat without licence</option>
-                            <option value="Yacht">Yacht</option>
+                            <option value="Houseboat">Sailing yacht</option>
+                            <option value="Jet ski">Fishing boat</option>
+                            <option value="Gulet">Jet skis </option>
+                            <option value="Boat without licence">Yackt</option>
+                        </select>
                         </select>
                     </div>
                 </div>
@@ -531,6 +532,7 @@ function initialize() {
     <div class="home_page_slider_Sec">
         <div class="row location_slider">
             <div class="location_slide">
+                <a href="#">
                 <div class="home_page_slider_box">
                     <img src="{{ asset('app-assets/site_assets/img/location-slider-1.jpg') }}" class="image">
                     <div class="home_page_box_text">
@@ -540,8 +542,10 @@ function initialize() {
                             odio tortor, hendrerit ut arcu vitae, efficitur convallis eros.</p>
                     </div>
                 </div>
+                </a>
             </div>
             <div class="location_slide">
+              <a href="#">
                 <div class="home_page_slider_box">
                     <img src="{{ asset('app-assets/site_assets/img/location-slider-1.jpg') }}" class="image">
                     <div class="home_page_box_text">
@@ -551,8 +555,10 @@ function initialize() {
                             odio tortor, hendrerit ut arcu vitae, efficitur convallis eros.</p>
                     </div>
                 </div>
+                </a>
             </div>
             <div class="location_slide">
+            <a href="#">
                 <div class="home_page_slider_box">
                     <img src="{{ asset('app-assets/site_assets/img/location-slider-1.jpg') }}" class="image">
                     <div class="home_page_box_text">
@@ -562,6 +568,7 @@ function initialize() {
                             odio tortor, hendrerit ut arcu vitae, efficitur convallis eros.</p>
                     </div>
                 </div>
+                <a href="#"></a>
             </div>
         </div>
     </div>
