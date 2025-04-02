@@ -43,7 +43,6 @@ class BlogController extends Controller
     public function store(BlogStoreRequest $request)
     {
         $request = $request->all();
-        dd($request);
         $result = $this->service->store($request);
         if($result):
            return redirect()->route('admin.blog.index')->with('success', 'Blog created successfully!'); 
