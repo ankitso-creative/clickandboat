@@ -731,6 +731,21 @@ label, input, textarea, button, select {
     color: #fff;
     font-size: 15px;
   }
+  .has-search select {
+    background: #00000047;
+    border: 1px solid #fff;
+    border-radius: 15px;
+    width: 233px;
+    height: 45px;
+    color: #fff;
+    outline: none;
+    text-indent: 43px;
+}
+.has-search select option {
+    background: #fff;
+    color: #f8a126;
+    padding-left: 0px !important;
+}
   .search_btn {
     background: #f8a126;
     color: #fff;
@@ -7000,6 +7015,12 @@ font-size: 15px;
         background: #fff;
         border: 1px solid #ebebeb;
         width: 100%;
+    }
+    .has-search select{
+        background: #fff;
+        border: 1px solid #ebebeb;
+        width: 100%;
+        color: #000;
     }
     .date_col {
         width: 50%;

@@ -108,9 +108,17 @@ function initialize() {
                     <label>{{ __('home.search-area')}}</label>
                     <div class="form-group has-search">
                         <span class="fa fa-search form-control-feedback"></span>
-
-                        <input type="text" class="form-control" name="location" id="location-search"
-                            placeholder="Ibiza, Croatia, Sardinia...">
+                        <select name="location-search" class="loaction-search" placeholder="Search Loaction">
+                            <option value="IGY Ibiza Marina">IGY Ibiza Marina</option>
+                            <option value="Marina Botafoch">Marina Botafoch</option>
+                            <option value="Marina Formentera Mar S.A.">Marina Formentera Mar S.A.</option>
+                            <option value="Marina Ibiza">Marina Ibiza</option>
+                            <option value="Marina Port Ibiza">Marina Port Ibiza</option>
+                            <option value="Marina Santa Eulalia">Marina Santa Eulalia</option>
+                            <option value="San Antonio Marina">San Antonio Marina </option>
+                        </select>
+                        <!-- <input type="text" class="form-control" name="location" id="location-search"
+                            placeholder="Ibiza, Croatia, Sardinia..."> -->
 
                     </div>
                 </div>
@@ -143,7 +151,6 @@ function initialize() {
                     <div class="boat_select">
                         <span><i class="fa-solid fa-sailboat"></i></span>
                         <select name="cars" id="cars">
-                        <select name="cars" id="cars">
                             <option value="">Sailboat, motorboat,...</option>
                             <option value="Motorboat">Motorboat</option>
                             <option value="Sailboat">RIB</option>
@@ -153,7 +160,6 @@ function initialize() {
                             <option value="Jet ski">Fishing boat</option>
                             <option value="Gulet">Jet skis </option>
                             <option value="Boat without licence">Yackt</option>
-                        </select>
                         </select>
                     </div>
                 </div>
