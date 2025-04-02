@@ -3,7 +3,8 @@
 
     use App\Events\Front\RequestSubmitted;
     use App\Models\Admin\Blog;
-    use App\Models\Admin\Listing;
+use App\Models\Admin\Category;
+use App\Models\Admin\Listing;
     use App\Models\Admin\Location;
     use App\Models\Admin\Price;
     use Carbon\Carbon;
@@ -23,6 +24,11 @@
         {
             $blogs = Blog::where('status','1')->orderBy('created_at', 'desc')->limit(3)->get();
             return $blogs;
+        }
+        public function categories()
+        {
+            $category = Category::where('status','1')->with('media')->get();
+            return $category;
         }
         public function singleBoatDetails($city,$type,$slug)
         {

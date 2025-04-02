@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\BookingController as AdminBookingController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ListingController;
 use App\Http\Controllers\Admin\LocationController;
@@ -58,6 +59,8 @@ Route::middleware('Setlang')->group(function(){
         Route::post('listing/change_status', [ListingController::class, 'changeStatus'])->name('listing.change-status');
         Route::resource('bookings', AdminBookingController::class);  
         Route::resource('blog',BlogController::class);
+        Route::post('caterogy_status', [CategoryController::class, 'changeStatus'])->name('caterogystatus');
+        Route::resource('category',CategoryController::class);
         Route::resource('location',LocationController::class);
         Route::post('locationstatus', [LocationController::class, 'changeStatus'])->name('locationstatus');
         Route::get('blog/blogcomments/{id}', [BlogController::class, 'blogComments'])->name('blog.blogcomments');
@@ -160,6 +163,7 @@ Route::middleware('Setlang')->group(function(){
     Route::get('/boats', [PagesController::class, 'boats'])->name('boats');
     Route::get('/location', [PagesController::class, 'location'])->name('location');
     Route::get('/area/{slug}', [PagesController::class, 'area'])->name('area');
+    
     Route::get('/single_location', [PagesController::class, 'singleLocation'])->name('single_location');
     Route::get('/boat-rental/search', [PagesController::class, 'search'])->name('search');
     Route::get('/privacy-policy', [PagesController::class, 'PrivacyPolicy'])->name('privacy-policy');
@@ -171,7 +175,7 @@ Route::middleware('Setlang')->group(function(){
     Route::get('single/{slug}', [PagesController::class, 'single'])->name('single');
     Route::get('boat-rental/{city}/{type}/{slug}', [PagesController::class, 'singleBoat'])->name('singleboat');
     Route::get('boat-rental/{city}', [PagesController::class, 'locationListing'])->name('locationlisting');
-    Route::get('boat-category/{type}', [PagesController::class, 'locationCategry'])->name('locationcategry');
+    Route::get('boat-category/{slug}', [PagesController::class, 'locationCategry'])->name('locationcategry');
     Route::match(['get', 'post'],'checkout', [PagesController::class, 'checkout'])->name('checkout');
     Route::get('getbookingprice', [PagesController::class, 'getBookingPrice'])->name('getbookingprice');
     

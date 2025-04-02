@@ -108,7 +108,8 @@ function initialize() {
                     <label>{{ __('home.search-area')}}</label>
                     <div class="form-group has-search">
                         <span class="fa fa-search form-control-feedback"></span>
-                        <select name="location-search" class="loaction-search" placeholder="Search Loaction">
+                        <select name="location" class="loaction-search" placeholder="Search Loaction">
+                            <option value=""></option>
                             <option value="IGY Ibiza Marina">IGY Ibiza Marina</option>
                             <option value="Marina Botafoch">Marina Botafoch</option>
                             <option value="Marina Formentera Mar S.A.">Marina Formentera Mar S.A.</option>
@@ -150,16 +151,9 @@ function initialize() {
                     <label>{{ __('home.boat-type')}}</label>
                     <div class="boat_select">
                         <span><i class="fa-solid fa-sailboat"></i></span>
-                        <select name="cars" id="cars">
+                        <select name="type" id="cars">
                             <option value="">Sailboat, motorboat,...</option>
-                            <option value="Motorboat">Motorboat</option>
-                            <option value="Sailboat">RIB</option>
-                            <option value="RIB">Sailboat</option>
-                            <option value="Catamaran">Catamaran</option>
-                            <option value="Houseboat">Sailing yacht</option>
-                            <option value="Jet ski">Fishing boat</option>
-                            <option value="Gulet">Jet skis </option>
-                            <option value="Boat without licence">Yackt</option>
+                            {!! selectOption('categories','name','name',request()->get('type'),array('status' , '1')) !!} 
                         </select>
                     </div>
                 </div>
@@ -276,93 +270,27 @@ function initialize() {
 </section>
 <!-- /Boat renter owner Section -->
 <!-- Boat Types Section -->
-<section class="boat_type_section_slider">
-    <div class="boat_type_sec">
-        <h2>Boat Types</h2>
-        <div class="row boat_type_slider">
-            <div class="col-sm-12 col-md-6 col-lg-6">
-                <a href="#">
-                    <div class="boat_type_box">
-                        <img src="{{ asset('app-assets/site_assets/img/image00113.jpg') }}" alt="boat-img">
-                        <div class="boat_type_text">
-                            <h3>Motorboat</h3>
-                        </div>
+@if(count($categories))
+    <section class="boat_type_section_slider">
+        <div class="boat_type_sec">
+            <h2>Boat Types</h2>
+            <div class="row boat_type_slider">
+                @foreach($categories as $category)
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                        <a href="{{ route('locationcategry',$category->slug) }}">
+                            <div class="boat_type_box">
+                                <img src="{{ $category->getFirstMediaUrl('category_image') }}" alt="boat-img">
+                                <div class="boat_type_text">
+                                    <h3>{{ $category->name }}</h3>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                </a>
-            </div>
-            <div class="col-sm-12 col-md-6 col-lg-6">
-                <a href="#">
-                    <div class="boat_type_box">
-                        <img src="{{ asset('app-assets/site_assets/img/image00139.jpg') }}" alt="boat-img">
-                        <div class="boat_type_text">
-                            <h3>RIBS</h3>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-sm-12 col-md-6 col-lg-6">
-                <a href="#">
-                    <div class="boat_type_box">
-                        <img src="{{ asset('app-assets/site_assets/img/image00170.jpeg') }}" alt="boat-img">
-                        <div class="boat_type_text">
-                            <h3>Sailboat</h3>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-sm-12 col-md-6 col-lg-6">
-                <a href="#">
-                    <div class="boat_type_box">
-                        <img src="{{ asset('app-assets/site_assets/img/image00206.jpg') }}" alt="boat-img">
-                        <div class="boat_type_text">
-                            <h3>Catamaran</h3>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-sm-12 col-md-6 col-lg-6">
-                <a href="#">
-                    <div class="boat_type_box">
-                        <img src="{{ asset('app-assets/site_assets/img/image00247.jpg') }}" alt="boat-img">
-                        <div class="boat_type_text">
-                            <h3>Sailing yacht</h3>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-sm-12 col-md-6 col-lg-6">
-                <a href="#">
-                    <div class="boat_type_box">
-                        <img src="{{ asset('app-assets/site_assets/img/image00293.jpeg') }}" alt="boat-img">
-                        <div class="boat_type_text">
-                            <h3>Fishing boat</h3>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-sm-12 col-md-6 col-lg-6">
-                <a href="#">
-                    <div class="boat_type_box">
-                        <img src="{{ asset('app-assets/site_assets/img/image00400.jpeg') }}" alt="boat-img">
-                        <div class="boat_type_text">
-                            <h3>Jet skis</h3>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-sm-12 col-md-6 col-lg-6">
-                <a href="#">
-                    <div class="boat_type_box">
-                        <img src="{{ asset('app-assets/site_assets/img/image00344.jpg') }}" alt="boat-img">
-                        <div class="boat_type_text">
-                            <h3>Yacht</h3>
-                        </div>
-                    </div>
-                </a>
+                @endforeach
             </div>
         </div>
-    </div>
-</section>
+    </section>
+@endif
 <!-- /Boat Types Section -->
 <!-- Boats by location Section -->
 <section class="boat_by_location_section">

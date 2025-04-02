@@ -206,6 +206,14 @@
                                 <span class="arrow open"></span>
                             </a>
                         </li>
+                        <li class="nav-item start {{ $active == 'category' ? 'active open' : '' }}">
+                            <a href="{{ route('admin.category.index') }}" class="nav-link">
+                                <i class="fa fa-file-text"></i>
+                                <span class="title">Manage Categories</span>
+                                <span class="selected"></span>
+                                <span class="arrow open"></span>
+                            </a>
+                        </li>
                         <li class="nav-item start {{ $active == 'listing' ? 'active open' : '' }}">
                             <a href="{{ route('admin.listing') }}" class="nav-link">
                                 <i class="fa fa-ship"></i>

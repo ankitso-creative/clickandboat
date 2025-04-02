@@ -15,6 +15,10 @@ class PageService{
     {
         return $this->repository->blogs();
     }
+    public function categories()
+    {
+        return $this->repository->categories();
+    }
     public function singleBoatDetails($city,$type,$slug)
     {
         return $this->repository->singleBoatDetails($city,$type,$slug);
