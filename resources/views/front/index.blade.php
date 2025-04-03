@@ -109,7 +109,7 @@ function initialize() {
                     <div class="form-group has-search">
                         <span class="fa fa-search form-control-feedback"></span>
                         <select name="location" class="loaction-search" placeholder="Search Loaction">
-                            <option value=""></option>
+                            <option value="">Select the Locations</option>
                             <option value="IGY Ibiza Marina">IGY Ibiza Marina</option>
                             <option value="Marina Botafoch">Marina Botafoch</option>
                             <option value="Marina Formentera Mar S.A.">Marina Formentera Mar S.A.</option>
@@ -583,7 +583,7 @@ function initialize() {
         </div>
     </div>
 </section>
-<script>
+<!-- <script>
 function moveText(event) {
     var div = event.currentTarget;
     var text = div.querySelector(".text");
@@ -604,7 +604,7 @@ function hideText(event) {
         text.style.display = "none";
     }
 }
-</script>
+</script> -->
 <!-- /next trip Section -->
 
 @endsection
