@@ -30,14 +30,14 @@
                                         @error('name')<span class="required">{{ $message }}</span>@enderror
 									</div>
 									<div class="col-sm-4">
-										<label>Image:<span class="required"> * </span></label>
-										<input type="file" name="banner_image" value="" class="form-control"/> 
-                                        @error('banner_image')<span class="required">{{ $message }}</span>@enderror
+										<label>Image:<span class="required">  </span></label>
+										<input type="file" name="image" value="" class="form-control"/> 
+                                        @error('image')<span class="required">{{ $message }}</span>@enderror
 									</div>
 									<div class="col-sm-4">
-										<label>Icon:<span class="required"> * </span></label>
+										<label>Icon:<span class="required">  </span></label>
 										<input type="file" name="icon" value="" class="form-control"/> 
-                                        @error('banner_image')<span class="required">{{ $message }}</span>@enderror
+                                        @error('icon')<span class="required">{{ $message }}</span>@enderror
 									</div>
 									<div class="col-sm-4">
 										<label>Image:<span class="required">  </span></label>
