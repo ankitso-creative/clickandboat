@@ -25,6 +25,7 @@
 </head>
 
 <body class="page">
+    <input type="hidden" value="{{ url('/') }}" id="baseUrl">
     <!-- Loader-->
     <div id="page-preloader"><span class="spinner border-t_second_b border-t_prim_a"></span></div>
     <!-- Loader end-->
@@ -70,6 +71,7 @@
                             <li class="{{ $active=='profile' ? 'active':'' }}"><a href="{{ route('customer.profile') }}"><i class="fas fa-user-circle"></i> Profile</a></li>
                             <li class="{{ $active=='booking' ? 'active':'' }}"><a href="{{ route('customer.booking.index') }}"><i class="fas fa-clipboard-list"></i> Bookings</a></li>
                             <li class="{{ $active=='favourite' ? 'active':'' }}"><a href="{{ route('customer.favourite')}}"><i class="fas fa-heart"></i> Favourites</a></li>
+                            <li class="{{ $active=='support' ? 'active':'' }}"><a href="{{ route('customer.support')}}"><i class="fas fa-heart"></i> Support</a></li>
                             <li><a href="{{ route('logout') }}"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
                         </ul>
                     </aside>

@@ -21,12 +21,14 @@ use App\Http\Controllers\BoatOwner\DashboardController as BoatOwnerDashboardCont
 use App\Http\Controllers\BoatOwner\ListingController as BoatOwnerListingController;
 use App\Http\Controllers\BoatOwner\ProfileController as BoatOwnerProfileController;
 use App\Http\Controllers\Customer\BookingController;
+use App\Http\Controllers\Customer\ChatController;
 use App\Http\Controllers\Customer\DashboardController as CustomerDashboardController;
 use App\Http\Controllers\Customer\ProfileController;
 use App\Http\Controllers\Site\AjaxController;
 use App\Http\Controllers\Site\PagesController;
 use App\Http\Controllers\Site\StripeController;
 use Illuminate\Contracts\Session\Session;
+use Illuminate\Support\Facades\Request;
 
 Route::middleware('Setlang')->group(function(){
     Route::get('setlang/{lang}', function($lang){
@@ -113,6 +115,11 @@ Route::middleware('Setlang')->group(function(){
         Route::resource('booking', BookingController::class);
         Route::post('/stripe/payment-intent', [StripeController::class, 'createPaymentIntent'])->name('stripe.createPaymentIntent');
         Route::post('/stripe/confirmPaymentIntent', [StripeController::class, 'confirmPaymentIntent'])->name('stripe.confirmPaymentIntent');
+        Route::get('/support', [ChatController::class, 'index'])->name('support');
+        Route::get('/support/message/{slug}', [ChatController::class, 'message'])->name('message');
+        Route::post('/support/send-message', [ChatController::class, 'sendMessage'])->name('support.send-message');
+        Route::post('/support/fetch-messages/{receiver_id}', [ChatController::class, 'sendMessage'])->name('support.fetchMessages');
+       
     });
 
     Route::get('/login', function(){

@@ -503,7 +503,7 @@
                             <p><i class="fa-regular fa-clock"></i> Response time: within a few hours</p>
                         </div>
                         <div class="contact_own_btn">
-                        <a href="#" class="contact_owner_btn">Contact Owner</a>
+                        <a href="{{ route('customer.message', $listing->slug) }}" class="contact_owner_btn">Contact Owner</a>
                         </div>
                     </div>
                     <div class="boat-card-content-sec">
