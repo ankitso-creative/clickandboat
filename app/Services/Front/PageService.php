@@ -15,6 +15,10 @@ class PageService{
     {
         return $this->repository->blogs();
     }
+    public function allBlogs()
+    {
+        return $this->repository->allBlogs();
+    }
     public function categories()
     {
         return $this->repository->categories();
