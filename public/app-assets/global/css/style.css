@@ -99,6 +99,12 @@
 .portlet img {
     width: 142px;
 }
+.language_edit label {
+    padding-top: 0px !important;
+}
+.portlet label {
+    padding-top: 0px !important;
+}
 @media (min-width: 320px) and (max-width: 767px){
 .page-header.navbar .top-menu .navbar-nav>li.dropdown-user .dropdown-toggle {
     background-color: #f9a126;

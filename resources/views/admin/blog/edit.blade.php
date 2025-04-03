@@ -44,7 +44,7 @@
 										<textarea name="description" id="summernote" class="form-control">{{ $result->description }}</textarea>
                                         @error('description')<span class="required">{{ $message }}</span>@enderror
 									</div>
-									<div class="col-sm-12">
+									<div class="col-sm-12 language_edit">
 										<label>Select Language:<span class="required"> * </span></label>
 										@if(count($languages))
 											@foreach ($languages as $language)
@@ -57,8 +57,8 @@
 									</div>
 									<div class="clearfix"></div>
 								</div>
-								<div class="actions btn-set text-right">
-									<button type="button" onclick="window.location = '';" class="btn btn default">
+								<div class="text-right actions btn-set">
+									<button type="button" onclick="window.location = '';" class="btn default">
 										<i class="fa fa-angle-left"></i> Back
 									</button>	
 									<input type="hidden" name="s" value="ok">
