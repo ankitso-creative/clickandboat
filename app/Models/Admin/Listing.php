@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Admin\Price;
 use App\Models\FavoriteItem;
+use App\Models\Order;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Support\Str;
@@ -72,6 +73,10 @@ class Listing extends Model implements HasMedia
     public function seasonPrice() 
     {
         return $this->hasMany(SeasonPrice::class);
+    }
+    public function orders() 
+    {
+        return $this->hasMany(Order::class);
     }
     public function favoriteitems() 
     {

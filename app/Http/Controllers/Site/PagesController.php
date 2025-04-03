@@ -154,7 +154,8 @@ class PagesController extends Controller
     }
     public function blog()
     {
-        return view('front.blog');
+        $blogs = $this->service->allBlogs();
+        return view('front.blog',compact('blogs'));
     }
     public function singleBlog($slug)
     {

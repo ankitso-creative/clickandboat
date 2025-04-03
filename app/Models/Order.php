@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Admin\Listing;
 use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
@@ -26,5 +27,8 @@ class Order extends Model
         'pending_amount',
         'payment_status',
     ];
-
+    public function listing() 
+    {
+        return $this->belongsTo(Listing::class);
+    }
 }

@@ -51,46 +51,32 @@
  <!-- Blog Section-->
 <section class="blog_section">
     <div class="container">
-    <?php
-                    for ($i= 0; $i < 10; $i++) {                                                                                                                                                                                                                                                                                        
-                    ?>
-        <div class="row align-items-center">
-            <div class="col-sm-12 col-md-6 col-lg-6">
-                <div class="blog_img">
-                    <img src="{{ asset('app-assets/site_assets/img/blog-02.jpg') }}">
+        @if(count($blogs))
+            @foreach($blogs as $blog)
+                <div class="row align-items-center">
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                        <div class="blog_img">
+                            <img src="{{ $blog->getFirstMediaUrl('blog_image') }}">
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                        <div class="blog_text_box">
+                            <p class="blog_teg">Featured Posts: The Latest / News Inspiration</p>
+                            <h2>{{ $blog->title }}</h2>
+                            <p class="blog_date">{{ \Carbon\Carbon::parse($blog->created_at)->format('d F, Y') }} / Felicie</p>
+                            <p class="blog_des_pera">{{ substr(strip_tags($blog->description),0,250) }}...</p>
+                            <a href="{{ route('single-blog',$blog->slug) }}">View Post</a>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-sm-12 col-md-6 col-lg-6">
-                <div class="blog_text_box">
-                    <p class="blog_teg">Featured Posts: The Latest / News Inspiration</p>
-                    <h2>Sailing events to look
-                        out for in 2025</h2>
-                    <p class="blog_date">11 January 2025 / Felicie</p>
-                    <p class="blog_des_pera">Every year, the boating world surprises and delights sailing fans around
-                        the world with events, races and regattas. We’ve put together a short list of sailing events
-                        we’ll be looking…</p>
-                    <a href="#">View Post</a>
-                </div>
-            </div>
-        </div>
-        <?php
-                        }
-                        ?>
+            @endforeach
+        @endif
     </div>
 <!-- /Blog Section-->    
  <!-- Pagination Section-->    
     <div class="location_pagination">
-                    <div class="pagination">
-                        <a href="#">&laquo;</a>
-                        <a class="active" href="#">1</a>
-                        <a  href="#">2</a>
-                        <a href="#">3</a>
-                        <a href="#">4</a>
-                        <a href="#">5</a>
-                        <a href="#">6</a>
-                        <a href="#">&raquo;</a>
-                    </div>
-                </div>
+        {{ $blogs->links('pagination::default') }}
+    </div>
 </section>
  <!-- /Pagination Section-->
 @endsection

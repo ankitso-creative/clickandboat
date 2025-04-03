@@ -25,6 +25,11 @@ use App\Models\Admin\Listing;
             $blogs = Blog::where('status','1')->orderBy('created_at', 'desc')->limit(3)->get();
             return $blogs;
         }
+        public function allBlogs()
+        {
+            $blogs = Blog::where('status','1')->orderBy('created_at', 'desc')->paginate(7);
+            return $blogs;
+        }
         public function categories()
         {
             $category = Category::where('status','1')->with('media')->get();
