@@ -46,6 +46,8 @@
                                 <a class="dropdown-item" href="{{ route('ourstory') }}">Our Story</a>
                                 <a class="dropdown-item" href="{{ route('team') }}">Team</a>
                                 <a class="dropdown-item" href="{{ route('mission') }}">Mission</a>
+                                <a class="dropdown-item" href="{{ route('location') }}">Explore Ibiza</a>
+                                <a class="dropdown-item" href="{{ route('blogs') }}">Our Blog</a>
                             </div>
                         </li>
                         <li class="nav-item">
