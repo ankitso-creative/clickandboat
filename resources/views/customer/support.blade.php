@@ -66,28 +66,38 @@
                         <thead>
                             <tr>
                                 <th>Sr. No.</th>
-                                <th>Booking Date</th>
-                                <th>Boat Owner Name</th>
+                                <th>Owner Name</th>
                                 <th>Boat Name</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>22-11-2024</td>
-                                <td>Maxi Dolphin 100ft Finot Conq (2013) - NOMAD IV</td>
-                                <td>12-01-2024</td>
-                                <td>
-                                    <div class="td-actions">
-                                        <button class="btn btn-success"><i class="fas fa-eye"></i></button>
-                                    </div>
-                                </td>
-                            </tr>
+                            @if($usersWithLastMessage)
+                                @foreach($usersWithLastMessage as $userMessage)
+                                    @php 
+                                        $user = $userMessage['user'];
+                                        $message = $userMessage['message'];
+                                        $listing = collect($user->listing)->filter(function($listing) use ($message) {
+                                            return $listing->id == $message['listing_id'];
+                                        })->first();
+                                    @endphp
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $user->name }}</td>
+                                        <td>{{ $listing->type  }} {{ $listing->boat_name }}</td>
+                                        <td>
+                                            <div class="td-actions">
+                                                <a href={{ route('customer.message', $listing->slug) }} class="btn btn-success"><i class="fas fa-eye"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @endif
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
+    
 @endsection

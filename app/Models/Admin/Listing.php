@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Admin\Price;
 use App\Models\FavoriteItem;
+use App\Models\Message;
 use App\Models\Order;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
@@ -81,6 +82,10 @@ class Listing extends Model implements HasMedia
     public function favoriteitems() 
     {
         return $this->hasMany(FavoriteItem::class);
+    }
+    public function message() 
+    {
+        return $this->hasMany(Message::class);
     }
     public static function boot()
     {
