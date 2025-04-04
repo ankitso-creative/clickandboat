@@ -471,9 +471,8 @@ function initialize() {
                         <img src="{{ asset('app-assets/site_assets/img/location-slider-1.jpg') }}" class="image">
                         <div class="home_page_box_text">
                             <h3>LUXURY boats</h3>
-                            <h2>Es vedre</h2>
-                            <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed
-                                odio tortor, hendrerit ut arcu vitae, efficitur convallis eros.</p>
+                            <h2>Es Vedrà</h2>
+                            <p>*Es Vedrà is a small, uninhabited rocky island off the southwest coast of Ibiza, Spain. Rising dramatically from the sea at about 400 meters (1,312 feet) high, it is one of Ibiza’s most iconic and mystical landmarks.* (this paragraph to be on front slide)</p>
                         </div>
                     </div>
                 </a>
@@ -484,9 +483,8 @@ function initialize() {
                     <img src="{{ asset('app-assets/site_assets/img/location-slider-1.jpg') }}" class="image">
                     <div class="home_page_box_text">
                         <h3>LUXURY boats</h3>
-                        <h2>Es vedre</h2>
-                        <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed
-                            odio tortor, hendrerit ut arcu vitae, efficitur convallis eros.</p>
+                        <h2>Cala Jondal</h2>
+                        <p>*Cala Jondal is one of Ibiza’s most exclusive and stylish beaches, located on the island’s south coast, just a short distance from Ibiza Town. Surrounded by pine-covered cliffs and crystal-clear turquoise waters, this cove is famous for its upscale beach clubs, fine dining, and celebrity visitors.* (front slide)</p>
                     </div>
                 </div>
                 </a>
@@ -497,9 +495,8 @@ function initialize() {
                         <img src="{{ asset('app-assets/site_assets/img/location-slider-1.jpg') }}" class="image">
                         <div class="home_page_box_text">
                             <h3>LUXURY boats</h3>
-                            <h2>Es vedre</h2>
-                            <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed
-                                odio tortor, hendrerit ut arcu vitae, efficitur convallis eros.</p>
+                            <h2>Cala Codolar & The Smugglers’ Cav</h2>
+                            <p>*Cala Codolar is a peaceful and secluded beach on Ibiza’s west coast, offering crystal-clear waters, golden sand, and a relaxed atmosphere. But beyond its natural beauty, it hides a secret gem—the Smugglers’ Cave, a mysterious spot filled with history and adventure.* (front slide)</p>
                         </div>
                     </div>
                 </a>
@@ -580,6 +577,9 @@ function initialize() {
                     </div>
                 @endforeach
             @endif
+        </div>
+        <div class="text-center all_blog_button">
+            <a href="">View All Blogs</a>
         </div>
     </div>
 </section>
