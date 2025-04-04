@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\BoatOwner\Message;
+namespace App\Http\Requests\Customer\Message;
 
 use Illuminate\Foundation\Http\FormRequest;
 
