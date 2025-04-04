@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Customer;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Customer\Message\MessageRequest;
 use App\Models\Admin\Listing;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Services\Customer\ChatService;
 
@@ -24,11 +25,19 @@ class ChatController extends Controller
     {
         $active = 'support';
         $receiver_id = Listing::where('slug', $slug)->pluck('user_id')->first();
-        return view('customer.message',compact('active','receiver_id'));
+        $sender = auth()->user();
+        $receiver = User::find($receiver_id);
+        $replies  = $this->service->fetchMessages($receiver_id);
+        return view('customer.message',compact('active','receiver_id','replies','sender','receiver'));
     }
     public function sendMessage(MessageRequest $request)
     {
         return $this->service->sendMessage($request);
+    }
+    public function seeAllMessage(Request $request)
+    {
+        $request = $request->all();
+        return $this->service->seeAllMessage($request);
     }
     public function fetchMessages($receiver_id)
     {

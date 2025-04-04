@@ -33,15 +33,8 @@ class ChatMessageSent
     {
         return new Channel('chat.' . $this->message->receiver_id);
     }
-    public function broadcastWith()
+    public function broadcastAs()
     {
-        return [
-            'id' => $this->message->id,
-            'sender_id' => $this->message->sender_id,
-            'receiver_id' => $this->message->receiver_id,
-            'message' => $this->message->message,
-            'image' => $this->message->image ? asset('storage/' . $this->message->image) : null,
-            'created_at' => $this->message->created_at->toDateTimeString(),
-        ];
+        return 'message.sent';
     }
 }

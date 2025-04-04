@@ -118,6 +118,7 @@ Route::middleware('Setlang')->group(function(){
         Route::get('/support', [ChatController::class, 'index'])->name('support');
         Route::get('/support/message/{slug}', [ChatController::class, 'message'])->name('message');
         Route::post('/support/send-message', [ChatController::class, 'sendMessage'])->name('support.send-message');
+        Route::post('/support/see-all-message', [ChatController::class, 'seeAllMessage'])->name('support.see-all-message');
         Route::post('/support/fetch-messages/{receiver_id}', [ChatController::class, 'sendMessage'])->name('support.fetchMessages');
        
     });

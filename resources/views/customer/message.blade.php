@@ -9,87 +9,171 @@
 @endsection
 
 @section('js')
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/pusher-js@7.0.3/dist/web/pusher.min.js"></script>
-    <script src="{{ asset('app-assets/site_assets/js/reb/echo.js') }}"></script>
+<script>
+    // $(document).ready(function(){
+    //     var receiver_id = $('form#message_form input[name="receiver_id"]').val();
+    //     var data = "receiver_id="+receiver_id;
+    //     //var result = CallAjax('ajax/seen_notification', data);
+    //     setInterval(function()
+    //     {
+    //         var result = CallAjax('ajax/see_all_message_request',data);
+    //         if(result.status=="success")
+    //         {
+    //             $('.message ul').html(result.html);
+    //             $('.mCustomScrollbar ul.message_sidebar').html(result.sidebar_html);
+    //             $(".message").animate({ scrollTop: $('.message ul').height() }, "fast");
+    //         }
+    //     },5000) 
+    //         clearInterval(5000); 
+    // }); 
+    $( document ).ready(function() {
+        $(".message").animate({ scrollTop: $('.message ul').height() }, "fast");
+    });
+    $( document ).ready(function() {
+        var receiver_id = $('form#message_form input[name="receiver_id"]').val();
+        var csrfToken = $('meta[name="csrf-token"]').attr('content');
+        setInterval(function()
+        {
+            $.ajax({
+                url: "{{ route('customer.support.see-all-message') }}",
+                type: "POST",
+                data: { receiver_id: receiver_id },
+                headers: {
+                    'X-CSRF-TOKEN': csrfToken 
+                },
+                success: function(response) {
+                    var resp = response;
+                    if(resp.status == "success") {
+                        $('.message ul').html(resp.html);
+                        $(".message").animate({ scrollTop: $('.message ul').height() }, "fast");
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error("Error: " + status + " - " + error);
+                }
+            });
+        },5000) 
+            clearInterval(5000); 
+    });
+
+    $(document).on('change','.file_upload',function(){
+        
+        var form = $(this).parents('form');
+        var formData = new FormData(form[0]);
+
+        var imgname  =  $('input[type=file]').val();
+        $.ajax({
+            url: "",
+            dataType: "json",
+            type: 'post', 
+            data: formData, 
+            contentType: false, 
+            processData: false, 
+        
+            success: function (result) {
+                if (result.status == "success") 
+                {
+                    $('.message ul').append(result.html);
+                    $(".message").animate({ scrollTop: $('.message ul').height() }, "fast");
+                } 
+                
+            },
+        })
+    }); 
+    $(document).on('submit','#message_form', function(e) {
+        e.preventDefault();
+        var csrfToken = $('meta[name="csrf-token"]').attr('content');
+        $.ajax({
+            url: "{{ route('customer.support.send-message') }}",
+            type: "POST",
+            data: new FormData(this),
+            contentType: false,
+            cache: false,
+            processData: false,
+            headers: {
+                'X-CSRF-TOKEN': csrfToken 
+            },
+            success: function(response) {
+                var resp = response;
+                if(resp.status == "success") {
+                    $('.message ul').prepend(resp.html);
+                    $(".message").animate({ scrollTop: $('.message ul').height() }, "fast");
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error("Error: " + status + " - " + error);
+            }
+        });
+    });
+
+</script>
 @endsection
 
 @section('content')
     <div class="col-lg-9 main-dashboard">
-        <div class="page-title">
-            <h1>All Your Bookings Support</h1>
-        </div>
-        <div id="chat-container">
-            <div id="messages"></div>
-
-            <textarea id="message" placeholder="Type your message"></textarea>
-            <input type="file" id="image">
-            <button onclick=sendMessage()>Send</button>
-        </div>
-
-        {{-- <script>
-            let userId = {{ auth()->id() }};
-            let receiverId = {{ $receiver_id }};
-
-            // Initialize Laravel Echo with Reverb
-            window.Echo = new Echo({
-                broadcaster: 'reverb',
-            });
-
-            // Listen for new messages
-            window.Echo.channel('chat.' + receiverId)
-                .listen('message.sent', (event) => {
-                    let message = event.message;
-                    displayMessage(message);
-                });
-
-            function displayMessage(message) {
-                let messageContainer = document.createElement('div');
-                messageContainer.classList.add('message');
-
-                messageContainer.innerHTML = `
-                <strong>${message.sender.name}:</strong>
-                <p>${message.message}</p>
-                ${message.image ? `<img src="/storage/${message.image}" alt="image">` : ''}
-            `;
-
-                document.getElementById('messages').appendChild(messageContainer);
-            }
-
-            async function sendMessage() {
-                let message = document.getElementById('message').value;
-                let image = document.getElementById('image').files[0];
-
-                let formData = new FormData();
-                formData.append('receiver_id', receiverId);
-                formData.append('message', message);
-                if (image) {
-                    formData.append('image', image);
-                }
-
-                try {
-                    // Set CSRF token in Axios
-                    axios.defaults.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name="csrf-token"]')
-                        .getAttribute('content');
-
-                    await axios.post('/customer/support/send-message', formData, {
-                        headers: {
-                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute(
-                                'content')
+        <div class="message mCustomScrollbar" data-mcs-theme="minimal-dark">
+            <ul>
+                @php
+                if($replies): 
+                    foreach($replies as $reply):
+                        if($reply['sender_id'] == auth()->id()):
+                            $class = 'msg-right';
+                            $sub_class = 'msg-right-sub';
+                            $user_data = $sender;
+                        else:
+                            $class = 'msg-left';
+                            $sub_class = 'msg-left-sub';
+                            $user_data = $receiver;
+                        endif;
+                        
+                        if(empty($user_data->getFirstMediaUrl('profile_image'))):
+                            $user_image =  '';//base_url('/assets/front/images/man01.png');
+                        else:
+                            $user_image = $user_data->getFirstMediaUrl('profile_image');
+                        endif;
+                        if($reply['message'])
+                        {
+                            $message = $reply['message'];
                         }
-                    });
-
-                    console.log('Message sent successfully');
-                } catch (error) {
-                    console.error('Error sending message:', error);
-                }
-
-                document.getElementById('message').value = '';
-                document.getElementById('image').value = '';
-            }
-        </script> --}}
-
-
-
+                        else
+                        {
+                            //$attachment_id = $reply['image'];
+                            //$name = $this->common_model->GetSingleValue(MEDIA_TABLE,'name', array('id' => $attachment_id));
+                            // $allowed = array('.jpg','.jpeg','.gif','.png');
+                            // if (in_array(strtolower(strrchr($name, '.')), $allowed)) {
+                            //     $message = '<a href="'.base_url('/uploads/'.$name).'"  target="_blank"><img class="msg_desc_img" style="width: 100px; height: 100px; object-fit:cover;" src="'.base_url('/uploads/'.$name).'"></a>';
+                            // }
+                            // else
+                            // {
+                            //     $message = '<a href="'.base_url('/uploads/'.$name).'" target="_blank"><img  class="msg_desc_img" src="'.base_url('assets/front/images/pdf-icon.png').'" style="width: 100px; height: 100px; object-fit:cover;"></a>';
+                            // }
+                        }
+                    @endphp
+                        <li class="<?php echo $class?>">
+                            <div class="<?php echo $sub_class ?>">
+                                <img src="<?php echo $user_image?>">
+                            <div class="msg-desc">
+                                <?php echo $message?>
+                            </div>
+                                <small><?php echo $reply['created_on'] ?></small>
+                            </div>
+                        </li>
+                @php
+                    endforeach;
+                endif;
+            @endphp
+                <!--<li class="msg-day"><small>Wednesday</small></li>-->
+                
+            </ul>
+        </div>
+        <form id="message_form">
+            <div class="upload-btn">
+                <a href="javascript:;" onclick="document.getElementById('msgInput').click();"><i class="fa-solid fa-paperclip"></i></a>
+                <input type="file" class="file_upload" id="msgInput" style="display:none" name="file" value="">
+            </div>
+            <input type="hidden" name="receiver_id" value="<?php echo $receiver_id?>">
+            <input type="text" name="message" placeholder="type here...">
+            <button class="btn-send" id="message_button"><i class="fa-solid fa-paper-plane"></i></button>
+        </form>
     </div>
 @endsection
