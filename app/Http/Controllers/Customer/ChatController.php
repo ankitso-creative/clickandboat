@@ -44,7 +44,7 @@ class ChatController extends Controller
         $sender = auth()->user();
         $receiver = User::find($receiver_id);
         $replies  = $this->service->fetchMessages($receiver_id);
-        return view('customer.message',compact('active','receiver_id','replies','sender','receiver'));
+        return view('customer.message',compact('active','receiver_id','replies','sender','receiver','slug'));
     }
     public function sendMessage(MessageRequest $request)
     {

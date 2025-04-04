@@ -2,6 +2,7 @@
 namespace App\Repositories\Customer;
 
 use App\Events\Auth\ChatMessageSent;
+use App\Models\Admin\Listing;
 use App\Models\Message;
 use App\Models\User;
 
@@ -16,9 +17,12 @@ class ChatRepository
             $imagePath = $request->file('image')->store('chat_images', 'public');
         }
         $userData = auth()->user();
+        $listingId = Listing::where('slug', $request['slug'])->pluck('id')->first();
+        
         $message = Message::create([
             'sender_id' => auth()->id(),
             'receiver_id' => $request->receiver_id,
+            'listing_id' => $listingId,
             'message' => $request->message,
             'image' => $imagePath,
         ]);
@@ -28,15 +32,17 @@ class ChatRepository
         else:
             $userImage = $userData->getFirstMediaUrl('profile_image');
         endif;
-        $html = '<li class="msg-right">
-                            <div class="msg-right-sub">
-                                <img src="'.$userImage.'">
+        $html = '<div class="msg-right">
+                    <div class="msg-right-sub">
+                        <div class="msg-avatar"><img src="'.$userImage.'"></div>
+                        <div class="msg-content">
                             <div class="msg-desc">
                                 '.$message->message.'
                             </div>
-                                <small>'.$message->created_on.' </small>
-                            </div>
-                        </li>';
+                            <small class="msg-time">10 Second Ago</small>
+                        </div>
+                    </div>
+                </div>';
         return response()->json([
             'html' => $html,
             'status' => 'success',
