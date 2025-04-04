@@ -63,28 +63,28 @@
                                 <option value="opel">USD $</option>
                             </select>
                         </li>
-                        @if(Auth::check())
-                        <li class="nav-item">
-                            <a href="{{ route('help') }}" class="nav-link">Help</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle about_menu" href="{{ route('about-us') }}" id="navbarDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                My Account & Services
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('location') }}">Explore Ibiza</a>
+                                <a class="dropdown-item" href="{{ route('blogs') }}">Our Blog</a>
+                                <a class="dropdown-item" href="#">Book A Boat</a>
+                                @if(!Auth::check())
+                                <a class="dropdown-item" href="{{ route('login') }}">Sign In</a>
+                                <a class="dropdown-item" href="{{ route('userlogin') }}">Sign Up</a>
+                                <a class="dropdown-item" href="{{ route('boatlogin') }}">Register Your Boat</a>
+                                @endif
+                                <a class="dropdown-item" href="{{ route('help') }}">Help</a>
+                               
+                            </div>
                         </li>
+                        @if(Auth::check())
+                       
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('logout') }}">Logout </a>
-                        </li>
-                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('customer.dashboard') }}"><i class="fa-solid fa-user"></i></a>
-                        </li>
-                        @else
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('boatlogin') }}">Register your boat </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('userlogin') }}">Sign Up</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('help') }}" class="nav-link">Help</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}"><i class="fa-solid fa-user"></i></a>
                         </li>
                         @endif
                     </ul>
@@ -98,6 +98,13 @@
                 {!! selectOption('languages','name','code',session()->get('lang'),array('status' , '1')) !!}
             </select>
         </li>
+        <li class="nav-item mobile_language">
+                           <select name="currency" id="currency_name">
+                                <option value="GBP">GBP: £</option>
+                                <option value="EUR">EUR €</option>
+                                <option value="opel">USD $</option>
+                            </select>
+                        </li>
         <li><a href="{{ route('home') }}"><img src="{{ logoURL() }}"></a></li>
         <li class="menu-container">
             <input id="menu-toggle" type="checkbox">
@@ -111,13 +118,10 @@
                 </svg>
             </label>
             <ul class="menu-sidebar">
-                <li><a href="{{ route('boatlogin') }}">Register your boat</a></li>
-                <li><a href="{{ route('userlogin') }}">Sign Up</a></li>
-                <li><a href="{{ route('help') }}">Help</a></li>
-                <li><a href="#"><i class="fa-solid fa-user"></i></a></li>
+                
                 <li>
                     <input type="checkbox" id="sub-one" class="submenu-toggle">
-                    <label class="submenu-label" for="sub-one">About</label>
+                    <label class="submenu-label" for="sub-one">About Us</label>
                     <div class="arrow right">&#8250;</div>
                     <ul class="menu-sub">
                         <li class="menu-sub-title">
@@ -130,6 +134,32 @@
                         <li><a href="{{ route('mission') }}">Mission</a></li>
                     </ul>
                 </li>
+                <li>
+                    <input type="checkbox" id="sub-two" class="submenu-toggle">
+                    <label class="submenu-label" for="sub-two">My Account & Services</label>
+                    <div class="arrow right">&#8250;</div>
+                    <ul class="menu-sub">
+                        <li class="menu-sub-title">
+                            <label class="submenu-label" for="sub-two">Back</label>
+                            <div class="arrow left">&#8249;</div>
+                        </li>
+                        <li><a href="{{ route('location') }}">Explore Ibiza</a></li>
+                        <li><a href="{{ route('blogs') }}">Our Blog</a></li>
+                        <li><a href="#">Book A Boat</a></li>
+                        @if(!Auth::check())
+                        <li><a href="{{ route('login') }}">Sign In</a></li>
+                        <li><a href="{{ route('userlogin') }}">Sign Up</a></li>
+                        <li><a href="{{ route('boatlogin') }}">Register Your Boat</a></li>
+                        @endif
+                        <li><a href="{{ route('help') }}">Help</a></li>
+                    </ul>
+                </li>
+                @if(Auth::check())
+                       
+                <li class="nav-item mobile_menu_list">
+                    <a class="nav-link" href="{{ route('logout') }}">Logout </a>
+                </li>
+                @endif
             </ul>
         </li>
     </ul>

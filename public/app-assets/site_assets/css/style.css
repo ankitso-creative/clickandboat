@@ -608,9 +608,6 @@ label, input, textarea, button, select {
     background:#fff;
     color: #000;
 }
-#language:hover{
-    border:1px solid #f8a126;
-}
 #language option {
     background: #fff;
     color: #000;
@@ -916,7 +913,7 @@ label, input, textarea, button, select {
 }
 .has-search select option {
     background: #fff;
-    color: #f8a126;
+    color: #000;
     padding-left: 0px !important;
 }
   .search_btn {
@@ -978,7 +975,7 @@ label, input, textarea, button, select {
 }
 .boat_select select option {
     background: #fff;
-    color: #f8a126;
+    color: #000;
     padding-left: 0px !important;
 }
 .boat_select select option:hover{
@@ -1608,13 +1605,13 @@ label, input, textarea, button, select {
 }
 .next_trip_box:before {
     translate: 0;
-    border-top: 12px solid #f9a126;
-    border-left: 12px solid #f9a126;
+    border-top: 8px solid #f9a126;
+    border-left: 8px solid #f9a126;
 }
 .next_trip_box:after {
     translate: 0;
-    border-right: 12px solid #f9a126;
-    border-bottom: 12px solid #f9a126;
+    border-right: 8px solid #f9a126;
+    border-bottom: 8px solid #f9a126;
 }
 .next_trip_box:hover:before {
     translate: 12px 12px 0;
@@ -4490,6 +4487,11 @@ section.about_zigzag_section {
     text-transform: uppercase;
     padding: 10px 40px;
 }
+.read_more_btn a:hover{
+    background: none;
+    color: #f9a126;
+    border: 1px solid #f9a126;
+}
 /*--------------------------------------------------------------
 # Single boat page
 --------------------------------------------------------------*/
@@ -6773,6 +6775,36 @@ font-size: 15px;
   .city_box{
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    transition:all 0.4s ease;
+}
+.city_box:before, .city_box:after {
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    z-index: 2;
+    inset: -12px;
+    transition: translate .25s cubic-bezier(.4,0,.2,1);
+    opacity: 0;
+}
+.city_box:before {
+    translate: 0;
+    border-top: 8px solid #f9a126;
+    border-left: 8px solid #f9a126;
+}
+.city_box:after {
+    translate: 0;
+    border-right: 8px solid #f9a126;
+    border-bottom: 8px solid #f9a126;
+}
+.city_box:hover:before {
+    translate: 12px 12px 0;
+    opacity: 1;
+}
+.city_box:hover:after{
+    translate: -12px -12px 0;
+    opacity: 1;
 }
   .city_box h2 {
     font-size: 28px;
@@ -7851,6 +7883,24 @@ font-size: 15px;
 }
 .home_page_box_text {
     margin-top: -45%;
+}
+.thankyou_section h2 {
+    font-size: 25px;
+    padding: 25px 40px 0 40px;
+}
+.mobile_menu_list {
+    padding-left: 0px !important;
+}
+.nav-mobile .menu-container .menu-sidebar li .submenu-label {
+    font-weight: 600;
+}
+.mobile_language {
+    position: absolute;
+    top: 2px;
+}
+#currency_name {
+    background: #f9a11d;
+    color: #fff;
 }
 }
 @media (min-width: 767px) and (max-width: 1023px) {
