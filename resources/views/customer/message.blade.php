@@ -29,32 +29,32 @@
     $( document ).ready(function() {
         $(".message").animate({ scrollTop: $('.message ul').height() }, "fast");
     });
-    $( document ).ready(function() {
-        var receiver_id = $('form#message_form input[name="receiver_id"]').val();
-        var csrfToken = $('meta[name="csrf-token"]').attr('content');
-        setInterval(function()
-        {
-            $.ajax({
-                url: "{{ route('customer.support.see-all-message') }}",
-                type: "POST",
-                data: { receiver_id: receiver_id },
-                headers: {
-                    'X-CSRF-TOKEN': csrfToken 
-                },
-                success: function(response) {
-                    var resp = response;
-                    if(resp.status == "success") {
-                        $('.message ul').html(resp.html);
-                        $(".message").animate({ scrollTop: $('.message ul').height() }, "fast");
-                    }
-                },
-                error: function(xhr, status, error) {
-                    console.error("Error: " + status + " - " + error);
-                }
-            });
-        },5000) 
-            clearInterval(5000); 
-    });
+    // $( document ).ready(function() {
+    //     var receiver_id = $('form#message_form input[name="receiver_id"]').val();
+    //     var csrfToken = $('meta[name="csrf-token"]').attr('content');
+    //     setInterval(function()
+    //     {
+    //         $.ajax({
+    //             url: "{{ route('customer.support.see-all-message') }}",
+    //             type: "POST",
+    //             data: { receiver_id: receiver_id },
+    //             headers: {
+    //                 'X-CSRF-TOKEN': csrfToken 
+    //             },
+    //             success: function(response) {
+    //                 var resp = response;
+    //                 if(resp.status == "success") {
+    //                     $('.message ul').html(resp.html);
+    //                     $(".message").animate({ scrollTop: $('.message ul').height() }, "fast");
+    //                 }
+    //             },
+    //             error: function(xhr, status, error) {
+    //                 console.error("Error: " + status + " - " + error);
+    //             }
+    //         });
+    //     },5000) 
+    //         clearInterval(5000); 
+    // });
 
     $(document).on('change','.file_upload',function(){
         
@@ -112,7 +112,7 @@
 @section('content')
     <div class="col-lg-9 main-dashboard">
         <div class="message mCustomScrollbar" data-mcs-theme="minimal-dark">
-            <ul>
+            <div class="message-box">
                 @php
                 if($replies): 
                     foreach($replies as $reply):
@@ -149,22 +149,24 @@
                             // }
                         }
                     @endphp
-                        <li class="<?php echo $class?>">
+                        <div class="<?php echo $class?>">
                             <div class="<?php echo $sub_class ?>">
-                                <img src="<?php echo $user_image?>">
-                            <div class="msg-desc">
-                                <?php echo $message?>
+                                <div class="msg-avatar"><img src="<?php echo $user_image?>"></div>
+                            <div class="msg-content">
+                                <div class="msg-desc">
+                                    <?php echo $message?>
+                                </div>
+                                <small class="msg-time">10 Second Ago<?php echo $reply['created_on'] ?></small>
                             </div>
-                                <small><?php echo $reply['created_on'] ?></small>
                             </div>
-                        </li>
+                    </div>
                 @php
                     endforeach;
                 endif;
             @endphp
                 <!--<li class="msg-day"><small>Wednesday</small></li>-->
                 
-            </ul>
+            </div>
         </div>
         <form id="message_form">
             <div class="upload-btn">
