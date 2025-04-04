@@ -69,7 +69,6 @@
             data: formData, 
             contentType: false, 
             processData: false, 
-        
             success: function (result) {
                 if (result.status == "success") 
                 {
@@ -127,7 +126,7 @@
                         endif;
                         
                         if(empty($user_data->getFirstMediaUrl('profile_image'))):
-                            $user_image =  '';//base_url('/assets/front/images/man01.png');
+                            $user_image =  'https://static1.clickandboat.com/v1/o/img/mask~dddc60cc1d.png';
                         else:
                             $user_image = $user_data->getFirstMediaUrl('profile_image');
                         endif;

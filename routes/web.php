@@ -103,6 +103,7 @@ Route::middleware('Setlang')->group(function(){
         Route::delete('listing/remove', [BoatOwnerListingController::class, 'removeImage'])->name('removegallery'); 
         Route::get('customers', [CustomerController::class, 'index'])->name('customers'); 
         Route::resource('booking', BoatOwnerBookingController::class);
+       // Route::post('/support/fetch-messages/{receiver_id}', [ChatController::class, 'sendMessage'])->name('support.fetchMessages');
     });
     Route::prefix('customer')->name('customer.')->middleware(['auth:sanctum', 'verified', 'onlyCustomer'])->group(function () {
         Route::get('dashboard', [CustomerDashboardController::class, 'index'])->name('dashboard');
@@ -119,8 +120,7 @@ Route::middleware('Setlang')->group(function(){
         Route::get('/support/message/{slug}', [ChatController::class, 'message'])->name('message');
         Route::post('/support/send-message', [ChatController::class, 'sendMessage'])->name('support.send-message');
         Route::post('/support/see-all-message', [ChatController::class, 'seeAllMessage'])->name('support.see-all-message');
-        Route::post('/support/fetch-messages/{receiver_id}', [ChatController::class, 'sendMessage'])->name('support.fetchMessages');
-       
+        
     });
 
     Route::get('/login', function(){

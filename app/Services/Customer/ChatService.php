@@ -19,4 +19,8 @@ class ChatService {
     {
         return $this->repository->fetchMessages($receiver_id);
     }
+    public function usersWithLastMessage()
+    {
+        return $this->repository->usersWithLastMessage();
+    }
 }

@@ -16,11 +16,27 @@ class ChatController extends Controller
     {
         $this->service = new ChatService();
     }
+    // public function index()
+    // {
+    //     $user = auth()->user();
+    //     $users = User::whereHas('sentMessages', function ($query) use ($user) {
+    //         $query->where('receiver_id', $user->id);
+    //     })
+    //     ->orWhereHas('receivedMessages', function ($query) use ($user) {
+    //         $query->where('sender_id', $user->id);
+    //     })
+    //     ->get();
+    //     dd($users);
+    //     $active = 'support';
+    //     return view('customer.support',compact('active','users'));
+    // }
     public function index()
     {
+        $usersWithLastMessage = $this->service->usersWithLastMessage();
         $active = 'support';
-        return view('customer.support',compact('active'));
+        return view('customer.support', compact('active', 'usersWithLastMessage'));
     }
+
     public function message($slug)
     {
         $active = 'support';
@@ -43,4 +59,5 @@ class ChatController extends Controller
     {
         return $this->service->fetchMessages($receiver_id);
     }
+    
 }

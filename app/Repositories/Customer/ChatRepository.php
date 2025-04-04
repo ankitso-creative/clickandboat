@@ -24,7 +24,7 @@ class ChatRepository
         ]);
 
         if(empty($userData->getFirstMediaUrl('profile_image'))):
-            $userImage =  '';//base_url('/assets/front/images/man01.png');
+            $userImage =  'https://static1.clickandboat.com/v1/o/img/mask~dddc60cc1d.png';
         else:
             $userImage = $userData->getFirstMediaUrl('profile_image');
         endif;
@@ -75,7 +75,7 @@ class ChatRepository
                 endif;
                 
                 if(empty($user_data->getFirstMediaUrl('profile_image'))):
-                    $user_image =  '';//base_url('/assets/front/images/man01.png');
+                    $user_image =  'https://static1.clickandboat.com/v1/o/img/mask~dddc60cc1d.png';
                 else:
                     $user_image = $user_data->getFirstMediaUrl('profile_image');
                 endif;
@@ -112,5 +112,42 @@ class ChatRepository
                 'status' => 'success',
             ]);
         endif;
+    }
+    public function usersWithLastMessage()
+    {
+        $user = auth()->user();
+        $users = User::whereHas('sentMessages', function ($query) use ($user) {
+            $query->where('receiver_id', $user->id);
+        })
+        ->orWhereHas('receivedMessages', function ($query) use ($user) {
+            $query->where('sender_id', $user->id);
+        })
+        ->with(['sentMessages' => function ($query) use ($user) {
+            $query->where('receiver_id', $user->id)
+                ->orderBy('created_at', 'desc')
+                ->limit(1);
+        }, 'receivedMessages' => function ($query) use ($user) {
+            $query->where('sender_id', $user->id)
+                ->orderBy('created_at', 'desc')
+                ->limit(1);
+        }])
+        ->get();
+        $usersWithLastMessage = $users->map(function ($user) {
+            $lastSentMessage = $user->sentMessages->first();
+            $lastReceivedMessage = $user->receivedMessages->first();
+            $lastMessage = null;
+            if ($lastSentMessage && $lastReceivedMessage) {
+                $lastMessage = $lastSentMessage->created_at > $lastReceivedMessage->created_at ? $lastSentMessage : $lastReceivedMessage;
+            } elseif ($lastSentMessage) {
+                $lastMessage = $lastSentMessage;
+            } elseif ($lastReceivedMessage) {
+                $lastMessage = $lastReceivedMessage;
+            }
+            return [
+                'user' => $user,
+                'message' => $lastMessage
+            ];
+        });
+        return $usersWithLastMessage;
     }
 }
