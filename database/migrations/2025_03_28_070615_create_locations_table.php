@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->longText('description');
+            $table->longText('description_for_home_pape')->nullable();
             $table->string('language');
             $table->string('slug');
             $table->tinyInteger('status')->default('1');

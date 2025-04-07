@@ -23,6 +23,10 @@ class PageService{
     {
         return $this->repository->categories();
     }
+    public function locations()
+    {
+        return $this->repository->locations();
+    }
     public function singleBoatDetails($city,$type,$slug)
     {
         return $this->repository->singleBoatDetails($city,$type,$slug);

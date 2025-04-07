@@ -28,7 +28,7 @@
 
                      <div class="city_box_text">
                         <h2>{{ $result->name }}</h2>
-                        <p>{{ substr(strip_tags($result->description),0,170) }}...</p>
+                        <p>{{ substr(html_entity_decode(strip_tags($result->description)), 0, 170) }}...</p>
                         <div class="trip_date_text">
                            <span><a href="{{ route('area',$result->slug) }}">View Location</a></span>
                            <span>{{ \Carbon\Carbon::parse($result->created_at)->format('F d, Y') }}</span>

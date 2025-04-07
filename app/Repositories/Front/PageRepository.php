@@ -35,6 +35,11 @@ use App\Models\Admin\Listing;
             $category = Category::where('status','1')->with('media')->get();
             return $category;
         }
+        public function locations()
+        {
+            $category = Location::where('status','1')->with('media')->get();
+            return $category;
+        }
         public function singleBoatDetails($city,$type,$slug)
         {
             $listing = Listing::with(['price','seasonPrice','booking','calendar'])->where('slug',$slug)->where('city',$city)->where('type',$type)->where('status','1')->first();

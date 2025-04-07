@@ -22,6 +22,7 @@ class LocationRepository
         $blog = new Location();
         $blog->name = $request['name'];
         $blog->description = $request['description'];
+        $blog->description_for_home_pape = $request['description_for_home_pape'];
         $blog->language = $request['language'];
         if($blog->save()):
             self::uploadImage($request['banner_image'],$blog->id);
@@ -40,6 +41,7 @@ class LocationRepository
         $blog = Location::find($id);
         $blog->name = $request['name'];
         $blog->description = $request['description'];
+        $blog->description_for_home_pape = $request['description_for_home_pape'];
         $blog->language = $request['language'];
         if($blog->update()):
             if(isset($request['banner_image']) && $request['banner_image']) {
