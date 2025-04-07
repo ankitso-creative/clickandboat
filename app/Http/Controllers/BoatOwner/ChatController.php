@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\BoatOwner;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Customer\Message\MessageRequest;
+use App\Http\Requests\BoatOwner\Message\MessageRequest;
 use App\Models\Admin\Listing;
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\Services\Customer\ChatService;
+use App\Services\BoatOwner\ChatService;
 
 class ChatController extends Controller
 {
@@ -33,18 +33,30 @@ class ChatController extends Controller
     public function index()
     {
         $usersWithLastMessage = $this->service->usersWithLastMessage();
+        $postData[] = '';
+        if($usersWithLastMessage):
+            foreach($usersWithLastMessage as $userMessage):
+                $user = $userMessage['user'];
+                $message = $userMessage['message'];
+                $listing = collect($user->listing)->filter(function($listing) use ($message) {
+                    return $listing->id == $message['listing_id'];
+                })->first();
+            endforeach;
+        endif;   
+        
         $active = 'support';
-        return view('customer.support', compact('active', 'usersWithLastMessage'));
+        return view('boatowner.support', compact('active', 'usersWithLastMessage'));
     }
 
-    public function message($slug)
+    public function message($receiver_id,$slug)
     {
         $active = 'support';
-        $receiver_id = Listing::where('slug', $slug)->pluck('user_id')->first();
+        $slug = $slug;
+        $receiver_id = $receiver_id;
         $sender = auth()->user();
         $receiver = User::find($receiver_id);
         $replies  = $this->service->fetchMessages($receiver_id);
-        return view('customer.message',compact('active','receiver_id','replies','sender','receiver','slug'));
+        return view('boatowner.message',compact('active','receiver_id','replies','sender','receiver','slug'));
     }
     public function sendMessage(MessageRequest $request)
     {

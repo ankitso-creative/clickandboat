@@ -9,43 +9,7 @@
 @endsection
 
 @section('js')
-    <script>
-        $(document).ready(function() {
-            $(document).on('click','.favorite_item', function(){
-                var list = $(this).attr('list');
-                var self =  $(this)
-                $.ajax({
-                    url: "{{ route('ajax.favorite') }}",  
-                    method: 'POST',
-                    dataType: 'json',
-                    data: {
-                        item_id: list,
-                        _token: '{{ csrf_token() }}'  
-                    },
-                    success: function(response) {
-                        if (response.success) 
-                        {
-                            if(response.action=='save')
-                            {
-                                self.html('<i class="fa-solid fa-heart"></i>');
-                            }
-                            else
-                            {
-                                self.parents('.single-item').remove();
-                            }
-                        } else
-                        {
-                            
-                        }
-                    },
-                    error: function() 
-                    {
-                        
-                    }
-                });
-            });
-        })
-    </script>
+    
 @endsection
 
 @section('content')
@@ -77,9 +41,7 @@
                                     @php 
                                         $user = $userMessage['user'];
                                         $message = $userMessage['message'];
-                                        $listing = collect($user->listing)->filter(function($listing) use ($message) {
-                                            return $listing->id == $message['listing_id'];
-                                        })->first();
+                                        $listing = App\Models\Admin\listing::where('id', $message->listing_id)->first();
                                     @endphp
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
@@ -87,7 +49,7 @@
                                         <td>{{ $listing->type  }} {{ $listing->boat_name }}</td>
                                         <td>
                                             <div class="td-actions">
-                                                <a href={{ route('customer.message', $listing->slug) }} class="btn btn-success"><i class="fas fa-eye"></i></a>
+                                                <a href="{{ route('boatowner.message', ['receiver_id' => $user->id, 'slug' => $listing->slug]) }}" class="btn btn-success"><i class="fas fa-eye"></i></a>
                                             </div>
                                         </td>
                                     </tr>
