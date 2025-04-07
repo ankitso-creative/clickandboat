@@ -1545,7 +1545,7 @@
                             </select>
                         </div>
                         <div class="col-sm-4">
-                            <label>Minimum rental duration</label></div>
+                            <label>Minimum rental duration</label>
                             <select name="last_min_booking[day_rental_duration]" class="form-control">
                                 <option
                                     {{ isset($last_min_booking['day_rental_duration']) && $last_min_booking['day_rental_duration'] =='' ? 'selected' : "" }}
