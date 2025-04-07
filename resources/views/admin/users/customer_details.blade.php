@@ -121,7 +121,7 @@
                 value = 1;
             }
             $.ajax({
-                url: "{{ route('admin.change-status') }}",
+                url: "{{ route('admin.userchange') }}",
                 type: 'POST',
                 data: { value: value, id: id},
                 dataType: 'json',

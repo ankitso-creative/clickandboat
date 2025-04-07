@@ -467,7 +467,7 @@
                             <li><i class="fa-solid fa-square-check"></i> Verified profile</li>
                         </ul>
                         <p class="about_heading">About me</p>
-                        <p>{{ $listing->user->exprience->description }}</p>
+                        <p>{{ optional($listing->user->exprience)->description }}</p>
                         <a href="#" class="read_more-btn">Read More</a>
                         <div class="offere_language">
                             <p><i class="fa-solid fa-language"></i> Language spoken: <span class="offered_language_style">English</span></p>

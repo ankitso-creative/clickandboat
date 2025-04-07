@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\BookingController as AdminBookingController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\ListingController;
 use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Admin\SettingController;
@@ -63,6 +64,8 @@ Route::middleware('Setlang')->group(function(){
         Route::resource('bookings', AdminBookingController::class);  
         Route::resource('blog',BlogController::class);
         Route::post('caterogy_status', [CategoryController::class, 'changeStatus'])->name('caterogystatus');
+        Route::resource('faq',FaqController::class);
+        Route::post('faq_change_status', [FaqController::class, 'changeStatus'])->name('faqchangestatus');
         Route::resource('category',CategoryController::class);
         Route::resource('location',LocationController::class);
         Route::post('locationstatus', [LocationController::class, 'changeStatus'])->name('locationstatus');
