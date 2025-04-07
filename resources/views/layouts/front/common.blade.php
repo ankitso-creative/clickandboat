@@ -46,8 +46,6 @@
                                 <a class="dropdown-item" href="{{ route('ourstory') }}">Our Story</a>
                                 <a class="dropdown-item" href="{{ route('team') }}">Team</a>
                                 <a class="dropdown-item" href="{{ route('mission') }}">Mission</a>
-                                <a class="dropdown-item" href="{{ route('location') }}">Explore Ibiza</a>
-                                <a class="dropdown-item" href="{{ route('blogs') }}">Our Blog</a>
                             </div>
                         </li>
                         <li class="nav-item">
@@ -68,7 +66,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 My Account & Services
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <div class="dropdown-menu mob_other_menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('location') }}">Explore Ibiza</a>
                                 <a class="dropdown-item" href="{{ route('blogs') }}">Our Blog</a>
                                 <a class="dropdown-item" href="#">Book A Boat</a>

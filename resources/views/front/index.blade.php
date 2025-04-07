@@ -220,20 +220,15 @@ function initialize() {
                 <div class="boat_renter_box box-one">
                     <h2>Boat renter</h2>
                     <div class="boat_renter_text">
-                        <p>See all of our listings via the search engine. Find a motorboat or a sailboat for rent near
-                            me or in your desired destination, at the best price. Take advantage of our all inclusive
-                            insurance so you can rent and navigate peacefully and in complete security.</p>
+                        <p>Browse all our listings using the search tool. Whether you're looking to rent a motorboat or a sailboat near you or at your dream destination, find the best deals available. Enjoy peace of mind with MyBoatBooker, ensuring a safe and worry-free boating experience</p>
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </div>
                     <div class="boat_renter_text">
-                        <p>Contact yacht owners free of charge and ask them all your practical questions about the
-                            yacht, its equipment and its availability via our integrated Click&Boat messenger.</p>
+                        <p>Reach out to yacht owners at no cost and get answers to all your questions about the boat, its equipment, and availability through our built-in messaging system.</p>
                         <i class="fa-solid fa-message"></i>
                     </div>
                     <div class="boat_renter_text">
-                        <p>Book directly and safely online in just a few clicks and charter the yacht of your dreams.
-                            You will only be charged if your charter request is accepted by the owner of the yacht. 100%
-                            secured payment. Click&Boat is your trustworthy third party.</p>
+                        <p>Securely book the yacht of your dreams online in just a few clicks. You’ll only be charged once the owner approves your charter request. With 100% secure payment, MyBoatBooker acts as your trusted third party every step of the way.</p>
                         <i class="fa-solid fa-thumbs-up"></i>
                     </div>
                     <div class="find_boat_btn">
@@ -245,23 +240,19 @@ function initialize() {
                 <div class="boat_renter_box box-two">
                     <h2>Boat owner</h2>
                     <div class="boat_renter_text">
-                        <p>Create a free listing to make your boat available for charter to other people. Yachts,
-                            sailboats, RIBs, motorboats, catamarans - all are welcome on Click&Boat!</p>
+                        <p>List your boat for free and share it with others looking to charter. Whether it's a yacht, sailboat, RIB, motorboat, or catamaran.</p>
                       <i class="fa-solid fa-sailboat"></i>
                     </div>
                     <div class="boat_renter_text">
-                        <p>Charter to whoever you want, whenever you want and at the price you want. Click&Boat allows
-                            you to monetise your yacht and to help cover the costs related to its maintenance and use.
-                        </p>
+                        <p>Charter your boat on your own terms, to whoever you choose, whenever it suits you, and at the price you set. MyBoatBooker helps you earn income from your yacht and offset maintenance and operating costs</p>
                         <i class="fa-solid fa-location-crosshairs"></i>
                     </div>
                     <div class="boat_renter_text">
-                        <p>Optional comprehensive insurance plan covering up to 8 million euros and a security deposit.
-                            Entrust the chartering of your yacht, sailboat, motorboat or catamaran to us.</p>
+                        <p>Why register your boat with MyBoatBooker? By listing your boat with us, you open up opportunities to earn income, increase your boat’s visibility, and make it available to a wide range of potential charterers. Enjoy a hassle-free experience with trusted bookings, secure payments, and the peace of mind that comes with our reliable platform.</p>
                         <i class="fa-solid fa-lock"></i>
                     </div>
                     <div class="estimate_btn">
-                        <a href="">Estimate your earnings</a>
+                        <a href="">Register your boat</a>
                     </div>
                 </div>
             </div>
@@ -606,5 +597,14 @@ function hideText(event) {
 }
 </script> -->
 <!-- /next trip Section -->
+ <script>
+    $(window).scroll(function(){
+      if ($(this).scrollTop() > 120) {
+          $('.header').addClass('fixed');
+      } else {
+          $('.header').removeClass('fixed');
+      }
+});
+ </script>
 
 @endsection

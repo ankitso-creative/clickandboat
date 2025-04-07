@@ -516,7 +516,6 @@ label, input, textarea, button, select {
 --------------------------------------------------------------*/
 .navbar {
     background: #fff;
-    position: fixed;
     width: 100%;
     padding: 7px 19px;
     z-index: 9999;
@@ -542,6 +541,17 @@ label, input, textarea, button, select {
     0 0 2em black,
     0 0 1.2em black; */
     padding: 4px 0;
+}
+.header{
+    transition: .5s ease-in;
+    height: 70px;
+}
+.header.fixed {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 9999;
+    height: 50px;
 }
 .navbar-nav .dropdown a {
     background: #fff;
@@ -1078,9 +1088,9 @@ label, input, textarea, button, select {
     padding: 24px 40px;
     border: 1px solid #ebebeb;
     margin: 20px 0;
-    height: 151px;
     border-radius: 15px;
     position: relative;
+    height: 210px;
 }
 .boat_reanter_owner_section .container-fluid {
     max-width: 1335px;
@@ -7021,6 +7031,10 @@ font-size: 15px;
 .team_content_block {
     max-width: 900px;
     margin: 0px auto;
+}
+.mob_other_menu {
+    left: 9px  !important;
+    min-width: 200px !important;
 }
 /*--------------------------------------------------------------
 # Our mission page
