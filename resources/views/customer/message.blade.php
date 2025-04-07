@@ -177,7 +177,7 @@
             </div> --}}
             <input type="hidden" name="receiver_id" value="<?php echo $receiver_id?>">
             <input type="hidden" name="slug" value="<?php echo $slug?>">
-            <input type="text" name="message" placeholder="type here..." id="chat">
+            <input type="text" name="message" placeholder="Type here..." id="chat">
             <button class="btn-send" id="message_button"><i class="fa-solid fa-paper-plane"></i></button>
         </form>
     </div>

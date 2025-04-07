@@ -34,7 +34,7 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="dashboard_box_btns">
-                                    <a href="">Add a photo</a>
+                                    <a href="#">Add a photo</a>
                                 </div>
                             </div>
                         </div>
@@ -55,7 +55,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="dashboard_box_btns">
-                                <a href="">Add a photo</a>
+                                <a href="/#">Add a photo</a>
                             </div>
                         </div>
                     </div>
