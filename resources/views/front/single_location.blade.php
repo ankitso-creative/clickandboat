@@ -9,8 +9,8 @@
 
 @endsection
 @section('content')
-<section class="city_page_banner">
-   <div class="city_banner_text" style="background-image: url('{{ $result->getFirstMediaUrl('location_image') }}')">
+<section class="city_page_banner" style="background-image: url('{{ $result->getFirstMediaUrl('location_image') }}')">
+   <div class="city_banner_text">
       <h1>{{ $result->name }}</h1>
    </div>
 </section>
