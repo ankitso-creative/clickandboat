@@ -16,6 +16,7 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\SocialAuthController;
 use App\Http\Controllers\BoatOwner\BookingController as BoatOwnerBookingController;
+use App\Http\Controllers\BoatOwner\ChatController as BoatOwnerChatController;
 use App\Http\Controllers\BoatOwner\CustomerController;
 use App\Http\Controllers\BoatOwner\DashboardController as BoatOwnerDashboardController;
 use App\Http\Controllers\BoatOwner\ListingController as BoatOwnerListingController;
@@ -103,7 +104,10 @@ Route::middleware('Setlang')->group(function(){
         Route::delete('listing/remove', [BoatOwnerListingController::class, 'removeImage'])->name('removegallery'); 
         Route::get('customers', [CustomerController::class, 'index'])->name('customers'); 
         Route::resource('booking', BoatOwnerBookingController::class);
-       // Route::post('/support/fetch-messages/{receiver_id}', [ChatController::class, 'sendMessage'])->name('support.fetchMessages');
+        Route::get('/support', [BoatOwnerChatController::class, 'index'])->name('support');
+        Route::get('/support/messages/{receiver_id}/{slug}', [BoatOwnerChatController::class, 'message'])->name('message');
+        Route::post('/support/send-message', [BoatOwnerChatController::class, 'sendMessage'])->name('support.send-message');
+        Route::post('/support/see-all-message', [BoatOwnerChatController::class, 'seeAllMessage'])->name('support.see-all-message');
     });
     Route::prefix('customer')->name('customer.')->middleware(['auth:sanctum', 'verified', 'onlyCustomer'])->group(function () {
         Route::get('dashboard', [CustomerDashboardController::class, 'index'])->name('dashboard');

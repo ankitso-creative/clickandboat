@@ -27,7 +27,7 @@
     //         clearInterval(5000); 
     // }); 
     $( document ).ready(function() {
-        $("#messages").animate({ scrollTop: $('#messages').height() }, "fast");
+        $('#messages').animate({ scrollTop: $('#messages').height() }, "fast");
     });
     // $( document ).ready(function() {
     //     var receiver_id = $('form#message_form input[name="receiver_id"]').val();
@@ -35,7 +35,7 @@
     //     setInterval(function()
     //     {
     //         $.ajax({
-    //             url: "{{ route('customer.support.see-all-message') }}",
+    //             url: "{{ route('boatowner.support.see-all-message') }}",
     //             type: "POST",
     //             data: { receiver_id: receiver_id },
     //             headers: {
@@ -44,8 +44,8 @@
     //             success: function(response) {
     //                 var resp = response;
     //                 if(resp.status == "success") {
-    //                     $('.message ul').html(resp.html);
-    //                     $(".message").animate({ scrollTop: $('.message ul').height() }, "fast");
+    //                     $('#messages div.message').html(resp.html);
+    //                     $('#messages div.message').animate({ scrollTop: $('#messages div.message').height() }, "fast");
     //                 }
     //             },
     //             error: function(xhr, status, error) {
@@ -83,7 +83,7 @@
         e.preventDefault();
         var csrfToken = $('meta[name="csrf-token"]').attr('content');
         $.ajax({
-            url: "{{ route('customer.support.send-message') }}",
+            url: "{{ route('boatowner.support.send-message') }}",
             type: "POST",
             data: new FormData(this),
             contentType: false,
@@ -96,8 +96,8 @@
                 var resp = response;
                 if(resp.status == "success") 
                 {
-                    $('#messages .message').prepend(resp.html);
-                    $("#messages .message").animate({ scrollTop: $('#messages div').height() }, "fast");
+                    $('#messages div.message').append(resp.html);
+                    $("#messages").animate({ scrollTop: $('#messages div.message').height() }, "fast");
                     $('#chat').val('');
                 }
             },

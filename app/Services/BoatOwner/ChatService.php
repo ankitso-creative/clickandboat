@@ -1,6 +1,6 @@
 <?php 
 namespace App\Services\BoatOwner;
-use App\Repositories\Customer\ChatRepository;
+use App\Repositories\BoatOwner\ChatRepository;
 class ChatService {
     protected $repository;
     public function __construct()
