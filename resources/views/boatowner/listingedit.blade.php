@@ -252,6 +252,7 @@
                     </div>
                     <div class="p-0 pt-4 col-sm-12 language_tab">
                         <h5 class="bold ">Language</h5>
+                        <div class="language-label">
                         @php
                             $value = Session('lang');
                             if(!$value):
@@ -260,12 +261,14 @@
                         @endphp
                         @if(count($languages))
                             @foreach ($languages as $language)
-                                <label class="mt-checkbox">
-                                    <input type="radio" {{ singleCheckbox($language->code, $value) }} id="inlineCheckbox{{ $loop->iteration }}" value="{{ $language->code }}" name="language"> {{ $language->name }}
-                                    <span></span>
-                                </label>
+                                    <label class="mt-checkbox">
+                                    <input type="radio" {{ singleCheckbox($language->code, $value) }} id="inlineCheckbox{{ $loop->iteration }}" value="{{ $language->code }}" name="language">
+                                    <span>{{ $language->name }}</span>
+                                    </label>
+                                
                             @endforeach
                         @endif
+                        </div>
                     </div>
                     <div class="p-0 pt-4 col-sm-12">
                         <h4 class="bold ">Description</h4>

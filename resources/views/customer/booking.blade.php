@@ -4,9 +4,14 @@
 @endsection
 @section('css')
 <style>
-    .table thead th{
-        white-space: nowrap;
-        font-weight: 800;
+   .table thead th {
+    white-space: nowrap;
+    font-weight: 600;
+    font-size: 17px;
+    background: #323131;
+    color: #fff;
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
     }
     .table tbody tr td {
         white-space: nowrap;

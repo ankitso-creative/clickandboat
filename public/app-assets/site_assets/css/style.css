@@ -427,7 +427,7 @@ label, input, textarea, button, select {
 }
 
 .msg-left .msg-desc {
-    background-color: #e0e0e0;
+    background-color: #fff;
     border-top-left-radius: 0;
     margin-left: 10px;
     border: 1px solid #ededed;
@@ -444,13 +444,12 @@ label, input, textarea, button, select {
 }
 
 .msg-right .msg-desc {
-    background-color: #ffffff;
+    background-color: #fff0d9;
     border-top-right-radius: 0;
     margin-right: 10px;
-    border: 1px solid #ededed;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    border: 1px solid #ffe7c1b5;
+    box-shadow: 0 2px 6px rgb(255 240 217);
 }
-
 .msg-right .msg-time {
     text-align: right;
 }
@@ -465,21 +464,22 @@ label, input, textarea, button, select {
     position: sticky;
     bottom: 0;
     z-index: 10;
+    margin-bottom: 30px !important;
 }
 
 #message_form input[type="text"] {
     flex: 1;
-    padding: 10px 15px;
+    padding: 8px 15px;
     font-size: 14px;
     border: 1px solid #ccc;
-    border-radius: 20px;
+    border-radius: 10px;
     outline: none;
     transition: all 0.2s ease-in-out;
 }
 
 #message_form input[type="text"]:focus {
-    border-color: #7ec6b1;
-    box-shadow: 0 0 0 3px rgba(126, 198, 177, 0.2);
+    border-color: #f9a126;
+    box-shadow: 0 0 0 3px rgba(249, 161, 38, 0.199);
 }
 
 .upload-btn a {
@@ -494,21 +494,23 @@ label, input, textarea, button, select {
 }
 
 .btn-send {
-    background-color: #7ec6b1;
+    background-color: #f9a126;
     border: none;
     color: white;
     padding: 10px 15px;
-    border-radius: 50%;
+    border-radius: 10px;
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.2s ease-in-out;
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 1px solid #f9a126;
 }
 
 .btn-send:hover {
-    background-color: #64b09d;
+    background-color: #fff;
+    color: #f9a126;
 }
 
 /*--------------------------------------------------------------
@@ -6210,6 +6212,11 @@ font-size: 15px;
     border-color: #e5006d;
     color: #e5006d;
 }
+.language-labels {
+    width: 100%;
+    float: left;
+    margin-bottom: 20px;
+}
 .language_tab label {
     border: 1px solid #ddd;
     display: block;
@@ -6226,8 +6233,43 @@ font-size: 15px;
 }
 .language_tab label {
     display: inline-block;
+    border: none;
+    box-shadow: none;
+    background: #ddd;
 }
-
+.language_tab input {
+    /* display: none; */
+}
+.language_tab label + input:checked {
+    background: #f9a126;
+    color: #fff !important;
+    border: 1px solid #f9a126 !important;
+}
+.language_tab .language-label {
+    position: relative;
+    display: inline;
+}
+.language-label .mt-checkbox input[type="radio"]:checked + span {
+    background-color: #f9a126;
+    color: #fff;
+    display: block;
+    height: 46px;
+    border-radius: 8px;
+    line-height: 46px;
+}
+  /* Make label respond to selection visually */
+  .language-label .mt-checkbox {
+    display: inline-block;
+    align-items: center;
+    padding: 0px !important;
+    border-radius: 6px;
+    cursor: pointer;
+}
+  
+  /* Hide the radio button but keep it functional */
+  .language-label .mt-checkbox input[type="radio"] {
+    display: none;
+  }
 /*--------------------------------------------------------------
 # Qequest submit page
 --------------------------------------------------------------*/
