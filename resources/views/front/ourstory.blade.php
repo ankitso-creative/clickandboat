@@ -45,7 +45,7 @@
         <div class="pt-5 row">
             <div class="col-lg-12">
                 <div class="text-center ourstory_sec_img">
-                    <img src="{{ asset('app-assets/site_assets/img/About-Us-img-01.jpg') }}">
+                    <img src="{{ asset('app-assets/site_assets/img/about-us-img-01.jpg') }}">
                 </div>
                 <div class="pt-5 text-center ourstory_content_sec">
                 <p>Vestibulum euismod posuere vulputate. Fusce a nunc sit amet mauris vehicula lacinia. Mauris in
