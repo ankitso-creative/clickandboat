@@ -520,9 +520,11 @@ label, input, textarea, button, select {
     padding: 7px 19px;
     z-index: 9999;
     box-shadow: .0625rem .125rem .25rem rgba(0,0,0,0.08);
+    height: 70px;
 }
 .navbar-nav {
     margin-left: auto;
+    align-items: baseline;
 }
 #nav-bar img {
     width: 55%;
@@ -544,7 +546,6 @@ label, input, textarea, button, select {
 }
 .header{
     transition: .5s ease-in;
-    height: 70px;
 }
 .header.fixed {
     width: 100%;
@@ -1100,7 +1101,7 @@ label, input, textarea, button, select {
 .boat_renter_text p {
     font-size: 15px;
     color: #000;
-    font-weight: 600;
+    font-weight: 500;
 }
 .boat_renter_text i {
     position: absolute;
@@ -1286,7 +1287,7 @@ label, input, textarea, button, select {
 }
 .home_page_box_text p {
     color: #fff;
-    font-weight: 600;
+    font-weight: 500;
     padding: 0px 50px;
 }
 /*--------------------------------------------------------------
@@ -1449,7 +1450,7 @@ label, input, textarea, button, select {
 }
 .follow_main_text {
     font-size: 15px;
-    font-weight: 600;
+    font-weight: 500;
     padding-top: 15px;
 }
 .custmer_text h5 {
@@ -3470,6 +3471,7 @@ label, input, textarea, button, select {
     color: #677785cc;
     margin-left: -4px;
     font-family: 'Montserrat' !important;
+    width: 100%;
 }
 .where_box_text {
     width: 100%;
@@ -3729,6 +3731,10 @@ label, input, textarea, button, select {
     text-transform: uppercase;
     padding-top: 10px;
     line-height: 45px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 .blog_text_box {
     padding-left: 50px;
@@ -3753,6 +3759,10 @@ label, input, textarea, button, select {
     padding-top: 10px;
     color: #000;
     font-weight: 500;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
 }
 .blog_section .row{
     border-top: 1px solid #bcbcbc;
@@ -3764,7 +3774,8 @@ label, input, textarea, button, select {
 }
 .blog_img img {
     width: 100%;
-    height: 100%;
+    height: 400px;
+    object-fit: cover;
 }
 .destination_banner_img img {
     width: 100%;
@@ -3773,6 +3784,14 @@ label, input, textarea, button, select {
 .destination_banner_img .conatiner {
     max-width: 1015px;
     margin: 0px auto;
+}
+.blog_inner_banner:after {
+    content: "";
+    background: #000;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.3;
 }
 /*--------------------------------------------------------------
 # About page
@@ -3952,6 +3971,7 @@ section.about_zigzag_section {
     transform: translate(-50%, -50%);
     width: 100%;
     text-align: center;
+    z-index: 99;
 }
 .blog_inner_text_box .blog_text {
     color: #fff;
@@ -6782,12 +6802,13 @@ font-size: 15px;
 .city_location {
     padding: 75px 0px;
 }
-  .city_box{
+.city_box {
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     border-radius: 15px;
     position: relative;
     overflow: hidden;
-    transition:all 0.4s ease;
+    transition: all 0.4s ease;
+    margin-bottom: 20px;
 }
 .city_box:before, .city_box:after {
     pointer-events: none;
@@ -7538,7 +7559,7 @@ font-size: 15px;
         margin: 0px auto;
     }
     .home_page_slider .slick-next {
-        right: 60px;
+        right: 30px;
     }
     .next_trip_section .col-sm-12.col-md-6.col-lg-4 {
         padding: 0px;
@@ -7923,10 +7944,850 @@ font-size: 15px;
 .all_blog_button a {
     margin-top: 0;
 }
+.home_page_box_text h2 {
+    font-size: 30px;
+}
 }
 @media (min-width: 767px) and (max-width: 1023px) {
-
-
+    .header-slider {
+        display: none;
+    }
+    .nav-mobile {
+        display: block;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 999;
+    }
+    .banner_text h1 {
+        font-size: 30px;
+    }
+    .home_banner_section {
+        height: 440px;
+        background-position: center;
+    }
+    .banner_text {
+        bottom: -15%;
+    }
+    .banner_form {
+        top: 15px;
+        height: auto;
+        background: #fff;
+        padding: 0;
+    }
+    .search_btn {
+        margin-top: 25px;
+        width: 100%;
+    }
+    .featured_boats_section {
+        margin-top: 60px;
+    }
+    .featured_boat_heading h2 {
+        font-size: 30px;
+        padding-bottom: 30px;
+    }
+    .featured_boats_section .col-sm-12.col-md-6.col-lg-4 {
+        padding: 0;
+    }
+    .featured_board_boxes h3 {
+        font-size: 30px;
+    }
+    .boat_reanter_owner_section h2 {
+        font-size: 30px;
+    }
+    .boat_reanter_owner_section {
+        margin-top: 30px;
+    }
+    .boat_renter_box .boat_renter_text {
+        height: auto;
+    }
+    .boat_reanter_owner_section .boat_renter_box.box-one {
+        padding-right: 0px;
+    }
+    .boat_reanter_owner_section .boat_renter_box.box-two {
+        padding-left: 0px;
+        margin-top: 0px;
+    }
+    .boat_type_section_slider h2 {
+        font-size: 30px;
+    }
+    .boat_by_location {
+        height: 500px;
+    }
+    .boat_by_location .row {
+        left: 54%;
+        width: 390px;
+        top: 54%;
+    }
+    .boat_by_location_section h2 {
+        font-size: 30px;
+    }
+    .boat_by_location_box h3 {
+        font-size: 25px;
+    }
+    .follow_sailer_section h2 {
+        font-size: 30px;
+    }
+    .follow_sailer_box {
+        height: auto;
+    }
+    .home_page_slider {
+        overflow: hidden;
+    }
+    .next_trip_section h2 {
+        font-size: 30px;
+    }
+    .next_trip_text h3 {
+        font-size: 25px;
+        text-align: center;
+    }
+    .next_trip_text p {
+        text-align: center;
+    }
+    .comment-form-cookies-consent {
+        display: flex;
+    }
+    .comment-form-cookies-consent input {
+        position: relative;
+        top: -15px;
+        margin-right: 10px;
+    }
+    .menu-sidebar i {
+        padding-top: 20px;
+    }
+    .footer_menu {
+        padding-left: 0;
+    }
+    .cal_mail_box {
+        padding-left: 0px;
+    }
+    .footer_social_links {
+        float: left;
+    }
+    .next_trip_box {
+        margin-bottom: 30px;
+    }
+    .banner_form label {
+        color: #000;
+    }
+    .has-search .form-control {
+        background: #fff;
+        border: 1px solid #ebebeb;
+        color: #000;
+        width: 100%;
+    }
+    .has-search .form-control-feedback {
+        color: #343a40;
+        border-right: 1px solid #ebebeb;
+    }
+    .has-search ::placeholder {
+        color: #343a40;
+      }
+    .navbar-brand {
+        width: 50%;
+    }
+    .datepicker input#fecha1 {
+        background: #fff;
+    }
+    .datepicker .input-group-text {
+        background: #fff;
+    }
+    .datepicker i,
+    .boat_select i {
+        color: #343a40;
+    }
+    .boat_select select {
+        background: #fff;
+        border: 1px solid #ebebeb;
+        width: 100%;
+        color: #000;
+    }
+    .has-search select{
+        background: #fff;
+        border: 1px solid #ebebeb;
+        width: 100%;
+        color: #000;
+    }
+    .date_col {
+        width: 50%;
+        flex-basis: auto;
+    }
+    .boat_select span {
+        border-right: 1px solid #ebebeb;
+    }
+    .datepicker.date.input-group {
+        width: 100%;
+    }
+    .about_banner_section {
+        height: 440px;
+    }
+    .about_banner_text h1 {
+        font-size: 30px;
+    }
+    .about_text_block h2 {
+        font-size: 30px;
+    }
+    .about_text_block .about_small_text {
+        padding-top: 5px;
+    }
+    .about_text_block h3 {
+        font-size: 30px;
+    }
+    .about_slider_box {
+        padding: 60px 15px;
+    }
+    .about_slider {
+        margin-top: 30px;
+        margin-bottom: 25px;
+    }
+    .about_slider .slick-prev {
+        left: 40%;
+    }
+    .about_zigzag_section,
+    .about_slider,
+    .boat_by_location_section,
+    .help_contact_section,
+    .login_sign_up_form {
+        overflow: hidden;
+    }
+    .about_sec_img img {
+        margin-bottom: 15px;
+    }
+    .about_zigzag_section .row:nth-child(2) {
+        flex-direction: column-reverse;
+    }
+    .about_zigzag_section h2 {
+        font-size: 30px;
+    }
+    .about_insurance_text {
+        padding: 40px 30px;
+    }
+    .blog_banner_text h1 {
+        font-size: 30px;
+        line-height: 32px;
+        padding: 0 15px;
+    }
+    .blog_banner {
+        height: 485px;
+    }
+    .destination_info_section {
+        margin-top: 40px;
+    }
+    .destination_info_section h2 {
+        font-size: 30px;
+    }
+    .destination_banner_img img {
+        height: auto;
+    }
+    .blog_section {
+        margin-top: 37px;
+    }
+    .blog_text_box h2 {
+        font-size: 25px;
+        line-height: 35px;
+    }
+    .blog_text_box {
+        padding: 25px 25px 0px 25px;
+        text-align: center;
+    }
+    .footer {
+        text-align: center;
+    }
+    .footer_social_links {
+        float: none;
+    }
+    .footer .container-fluid h5 {
+        padding-bottom: 0px;
+        padding-top: 30px;
+    }
+    .footer .container-fluid .email_box_sec {
+        padding-top: 0;
+    }
+    .footer_newsletter {
+        padding-bottom: 20px;
+    }
+    .email_box {
+        width: 85%;
+    }
+    .location_banner_text h1 {
+        font-size: 30px;
+        padding: 0 15px;
+    }
+    .location_banner_text h1 br{
+        display: none;
+    }
+    .location_rightside_box {
+        padding-top: 30px;
+    }
+    .location_main_heading h2 {
+        padding-bottom: 15px;
+        text-align: center;
+    }
+    .location_filter_section {
+        margin-bottom: 0;
+    }
+    .help_banner_text h1 {
+        font-size: 30px;
+        line-height: 45px;
+    }
+    .location_filter_section .container-fluid {
+        padding: 0 15px;
+    }
+    .help_banner_text {
+        width: 90%;
+        top: 54%;
+    }
+    .help_banner_text h5 {
+        padding-bottom: 0px;
+    }
+    .knowlwdge_heaidng h2 {
+        font-size: 30px;
+    }
+    .knowledge_section button {
+        font-size: 20px;
+    }
+    .faq_section .faq_heading h2 {
+        font-size: 30px;
+    }
+    .faq_section button {
+        font-size: 20px;
+        padding: 0px 20px;
+    }
+    .more_resource_section h2 {
+        font-size: 30px;
+    }
+    .more_resource_section  .more_resource_box {
+        margin-bottom: 20px;
+        height: auto;
+        padding: 40px 25px;
+    }
+    .more_resource_section .col-sm-12.col-md-6.col-lg-3 {
+        padding: 0px;
+    }
+    .help_contact_section .row {
+        flex-direction: column-reverse;
+    }
+    .help_contact_text h2 {
+        font-size: 30px;
+    }
+    .help_contact_text {
+        text-align: center;
+        padding: 40px 25px;
+    }
+    .login_section .container {
+        padding: 0px 25px;
+    }
+    .section-form-contacts {
+        padding: 0 15px;
+    }
+  .sing_upform_logo img {
+    width: 50%;
+    padding-top: 40px;
+}
+    .login_sign_up_form .container {
+        padding: 0 25px;
+    }
+    .singup_welcome_section {
+        padding: 0 15px;
+    }
+    .form_signup_other_option a {
+        margin-bottom: 10px;
+    }
+    .form_or_text:before {
+        width: 134px;
+    }
+    .form_or_text:after {
+        width: 134px;
+    }
+    .boat_type_sec {
+        padding: 0px 15px;
+    }
+    .boat_type_box h3 {
+        font-size: 30px;
+    }
+    .location_inner_box img {
+        height: 265px;
+    }
+    .request_banner_text h1 {
+        font-size: 30px;
+    }
+    .request_banner_text {
+        width: 90%;
+    }
+    .request_banner_section {
+        height: 440px;
+    }
+    .request_submit_form_section .container {
+        margin: 40px auto;
+    }
+    .request_submit_form_section {
+        margin: 0 15px;
+    }
+    .blog_inner_text_box h1 {
+        font-size: 28px;
+        line-height: 40px;
+        padding: 0 15px;
+    }
+    .single_blog_trip {
+        margin-top: 50px;
+        margin-bottom: 30px;
+    }
+    .single_blog_trip .col-sm-12.col-md-6.col-lg-4 {
+        padding: 0px;
+    }
+    #language {
+        padding: 5px 1px 5px 8px !important;
+        position: relative;
+        right: 100px;
+        font-size: 15px;
+        background: #f9a11d;
+        color: #fff;
+        right: 37%;
+    }
+    .about_sec_heading {
+        padding-top: 30px !important;
+        padding-bottom: 20px;
+    }
+    .single_boat_banner {
+        height: 125px;
+    }
+    .boat-title h1 {
+        font-size: 30px;
+        padding-top: 10px;
+    }
+    .rating-menus li {
+        padding: 0 5px 0 0;
+        font-size: 13px;
+    }
+    .breadcrumb {
+        margin-bottom: 0px;
+    }
+    .boat-content-sec .col-md-8 {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .share-menu {   
+        justify-content: center;
+        margin-top: 10px;
+    }
+    .features-menus {
+        display: block;
+    }
+    .features-menus li {
+        padding-bottom: 15px;
+        width: calc(100% - .5rem);
+    }
+    .boat-card-content-sec,
+    .single_boat_faq_section {
+        padding: 0 15px;
+    }
+    .location-sec {
+        padding-top: 30px;
+    }
+    .login_section h2,
+    .signup_form h2,
+    .singup_welcome_section h2 {
+        font-size: 25px;
+    }
+    .home_page_box_text p {
+        width: 39%;
+        margin: 0px auto;
+    }
+    .home_page_slider .slick-next {
+        right: 30px;
+    }
+    .next_trip_section .col-sm-12.col-md-6.col-lg-4 {
+        padding: 0px;
+    }
+    .next_trip_section {
+        margin-bottom: 30px;
+    }
+    .number_list {
+        margin: 0 25px 0 10px;
+    }
+    .breadcrumb {
+        text-align: center;
+    }
+    .boat-content-sec h3 {
+        text-align: center;
+        padding-top: 20px;
+    }
+    .boat-description-sec {
+        padding-top: 30px;
+        text-align: center;
+        font-size: 25px;
+    }
+    .keyinfo-sec {
+        margin-top: 25px;
+    }
+    .similar_boat_section {
+        padding: 0 15px;
+    }
+    .specification-box {
+        padding-bottom: 20px;
+    }
+    .equip-button-sec {
+        text-align: center;
+    }
+    .ideas-sec {
+        padding-top: 25px;
+    }
+    .contact_own_btn {
+        text-align: center;
+        padding-bottom: 30px;
+    }
+    .more_resource_section  .more_resource_box h3 {
+        font-size: 25px;
+        padding: 20px 20px;
+    }
+    .request_banner_text h5 {
+        padding-bottom: 0px;
+    }
+    .request_submit_form_section .col-md-12 {
+        padding: 0px;
+    }
+    .checking_box {
+        display: flex;
+    }
+    .checking_box label {
+        padding: 0 10px;
+        bottom: 20px;
+        top: auto;
+        left: 0;
+    }
+    .checking_box input {
+        position: relative;
+        bottom: 17px;
+    }
+    .request_file_upload {
+        width: 100%;
+    }
+    .request_save_btn {
+        text-align: center;
+    }
+    .request_banner_section #search-wrapper {
+        margin-top: 5px;
+    }
+    .location_col {
+        width: 100%;
+        flex-basis: auto;
+        max-width: 100%;
+    }
+    .custom-wrapper {
+        padding: 0 10px 0 0px;
+    }
+    .help_banner_section {
+        height: 440px;
+    }
+    .help_contact_section {
+        margin-top: 30px;
+    }
+    .blog_banner {
+        height: 440px;
+    }
+    .main-dashboard-container .sidebar ul {
+        margin: 30px 0 30px 0px;
+    }
+    .main-dashboard-container .sidebar .user .user-avatar {
+        margin: 20px auto 0;
+    }
+    .main-dashboard h1 {
+        font-size: 25px;
+        text-align: center;
+    }
+    .main-dashboard .dashboard_box_one_text {
+        display: block;
+        text-align: center;
+    }
+    .main-dashboard .box_text h3 {
+        padding-top: 15px;
+    }
+    .dashboard_box_btns {
+        margin-top: 15px;
+        float: none;
+        text-align: center;
+    }
+    .main-dashboard .box_text h3 {
+        padding-top: 18px;
+        font-size: 25px;
+    }
+    .main-dashboard {
+        padding: 45px 30px 0px 30px;
+    }
+    .no_message_box {
+        height: 115px;
+        margin-top: 30px;
+    }
+    .account-overview .nav-tabs {
+        flex-direction: column;
+    }
+    #details-tabs li a {
+        margin: 10px 0px 0 0;
+        text-align: center;
+    }
+    .main-dashboard-container  h2 {
+        font-size: 25px;
+        text-align: center;
+    }
+    .verification_box_section {
+        padding: 25px 0px;
+    }
+    .verification_box {
+        margin-bottom: 15px;
+    }
+    .verification_box h3 {
+        font-size: 25px;
+    }
+    .main-dashboard-container .card-section {
+        padding: 26px 11px;
+    }
+    .menus-customer {
+        justify-content: center;
+        padding-top: 8px;
+    }
+    .checking_box input[type="checkbox"] {
+        width: 50px;
+    }
+    .main-dashboard-container {
+        overflow: hidden;
+    }
+    .main-dashboard-container .deactivate-form {
+        text-align: center;
+    }
+    .your_listing_section {
+        padding: 18px 4px 0px 0px;
+    }
+    .side_bar {
+        padding: 30px 40px 6px 28px !important;
+    }
+    .listing_edit_btns {
+        padding: 0 28px;
+        text-align: center;
+    }
+    .calender_btn {
+        padding: 13px 35px;
+    }
+    .pre_list_btn {
+        padding: 13px 24px;
+    }
+    .boat_type_section {
+        margin-top: 15px;
+    }
+    .boat_type_section h3:before {
+        right: 63%;
+        width: 115px;
+    }
+    .boat_type_section h3:after {
+            left: 63%;
+            width: 115px;
+    }
+    .sidebar_box_pera h3 {
+        padding-top: 70px;
+    }
+    .sidebar_box_pera {
+        margin: 0px 30px 0 30px;
+    }
+    .your_boats_type .radio-with-Icon p.radioOption-Item {
+        width: 147px;
+    }
+    .your_boats_type .radio-with-Icon p.radioOption-Item label {
+        font-size: 11px;
+    }
+    .des__pera_text {
+        padding-top: 25px;
+        text-align: center;
+    }
+    .uploaded_img {
+        padding: 30px 5px 0 5px;
+    }
+    .photo_sec_pera {
+        text-align: center;
+    }
+    #uploade-cover-image img {
+        width: 100%;
+        height: 230px;
+        margin-top: 20px;
+    }
+    .listing_banner_text h1 {
+        font-size: 30px;
+    }
+    .listing_banner_text p {
+        padding: 0 30px;
+    }
+    .comment-form-cookies-consent label {
+        top: -16px;
+    }
+    .comment-form-cookies-consent input[type="checkbox"] {
+        width: 35px;
+        height: 22px;
+    }
+    .single_blog_comment_section {
+        padding: 50px 0px;
+    }
+    .pac-container.pac-logo {
+        width: 280px!important;
+    }
+    .datepicker-desktop {
+        display: none;
+    }
+    .datepicker-mobile {
+        display: block;
+    }
+    .sidebar_form input {
+        margin-bottom: 25px;
+    }
+    .idea_sec_text h3 {
+        text-align: left;
+        padding-top: 0;
+    }
+    #experience input[type="checkbox"], .setting_section input[type="checkbox"] {
+        margin: 0 0px 0 0px;
+    }
+    #experience label, .setting_section label {
+        font-size: 13px;
+    }
+    .natutical_message_box textarea {
+        height: 200px;
+    }
+    .dashboard-logo img {
+        padding-bottom: 10px;
+    }
+    .single_calender_container .flatpickr-input {
+        margin: 0 0 10px 0px;
+    }
+    #map {
+        width: 100%;
+    }
+    .location-sec p {
+        text-align: center;
+    }
+    .nav-mobile img {
+        width: 13%;
+        top: 6px;
+        right: 20px;
+    }
+    .city_box h2 {
+    font-size: 25px;
+    text-align: center;
+}
+.city_box p{
+    text-align: center;
+}
+.city_box {
+    margin-bottom: 20px;
+}
+.city_page_text h2 {
+    font-size: 30px;
+    text-align: center;
+}
+.city_page_text p{
+    text-align: center;
+}
+.city_page_text h3 {
+    font-size: 25px;
+    text-align: center;
+}
+.city_banner_text h1 {
+    font-size: 30px;
+}
+.ourstory_sec_img img {
+    width: 100%;
+}
+.ourstory_banner_text h1 {
+    font-size: 30px;
+}
+.ourstory_content_block h2 {
+    font-size: 30px;
+}
+.ourstory_content_section h3 {
+    font-size: 30px;
+}
+.ourstory_content_section {
+    padding: 40px 0px;
+}
+.team_banner_text h1 {
+    font-size: 30px;
+}
+.team_content_block h2 {
+    font-size: 30px;
+}
+.header-dashboard {
+    text-align: center;
+}
+.our_misson_content_block h2 {
+    font-size: 30px;
+}
+.our_mission_heading h3 {
+    font-size: 30px;
+}
+.our_mission_con .our_mission_box {
+    margin-bottom: 30px;
+}
+.goals_row {
+    flex-direction: column-reverse;
+}
+.checkout-section {
+    padding: 70px 0 25px 0px;
+}
+.inner_blog_text_section h2 {
+    font-size: 30px;
+}
+.inner_blog_text_section h3 {
+    font-size: 28px;
+}
+.inner_blog_text_section  ul {
+    padding: 0 30px;
+}
+.featured_price {
+    padding: 10px;
+    text-align: center;
+}
+.featured_box_text {
+    bottom: -30px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+.boat_reanter_owner_section .container-fluid {
+    padding: 0 15px 0 28px;
+}
+.home_page_box_text {
+    margin-top: -45%;
+}
+.thankyou_section h2 {
+    font-size: 25px;
+    padding: 25px 40px 0 40px;
+}
+.mobile_menu_list {
+    padding-left: 0px !important;
+}
+.nav-mobile .menu-container .menu-sidebar li .submenu-label {
+    font-weight: 600;
+}
+.mobile_language {
+    position: absolute;
+    top: 2px;
+}
+#currency_name {
+    background: #f9a11d;
+    color: #fff;
+    right: 67%;
+    position: absolute;
+    top: 7px;
+}
+.boat_type_text {
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.all_blog_button a {
+    margin-top: 0;
+}
+.home_page_box_text h2 {
+    font-size: 30px;
+}
+.featured_boats_section .col-sm-12.col-md-4.col-lg-4 {
+    padding: 0 10px;
+}
 }
 @media (min-width: 1250px) and (max-width: 1299px) {
 /*    .home_banner_section {
@@ -7940,6 +8801,9 @@ font-size: 15px;
     }
     .form_signup_other_option a {
         font-size: 14px;
+    }
+    .banner_text {
+        bottom: -1%;
     }
 
 }
@@ -7973,6 +8837,9 @@ font-size: 15px;
     }
     .form_signup_other_option a {
         font-size: 14px;
+    }
+    .banner_text {
+        bottom: -4%;
     }
 
 }

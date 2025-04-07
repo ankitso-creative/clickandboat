@@ -187,7 +187,16 @@
 												</div>
 												<div class="col-sm-3">
 													<label>City:<span class="required"> * </span></label>
-													<input type="text" name="city" class="form-control" required value="{{ old('city', $listing->city) }}">
+													<!-- <input type="text" name="city" class="form-control" required value="{{ old('city', $listing->city) }}"> -->
+													<select name="location" class="loaction-search form-control" placeholder="Search Loaction">
+														<option value="">All Marinas</option>
+														<option value="Marina Santa Eulalia">Marina Santa Eulalia</option>
+														<option value="Puerto Sant Antoni">Puerto Sant Antoni</option>
+														<option value="Marina Ibiza">Marina Ibiza</option>
+														<option value="Marina Botafoch">Marina Botafoch</option>
+														<option value="Ibiza Magna">Ibiza Magna</option>
+														<option value="Club Nautico">Club Nautico</option>
+													</select>
 													@error('city')<span class="required">{{ $message }}</span>@enderror
 												</div>
 												<div class="clearfix"></div>
@@ -302,8 +311,8 @@
 												<div class="clearfix"></div>
 											</div>
 											
-											<div class="actions btn-set text-right">
-												<button type="button" onclick="window.location = '';"class="btn btn default">
+											<div class="text-right actions btn-set">
+												<button type="button" onclick="window.location = '';"class="btn default">
 													<i class="fa fa-angle-left"></i> Back
 												</button>	
 												<input type="hidden" name="s" value="general">
@@ -421,8 +430,8 @@
 													<input type="text" name="one_week_price" value="{{ $listing->price->one_week ?? '' }}" class="form-control" >
 												</div>
 											</div>
-											<div class="actions btn-set text-right">
-												<button type="button" onclick="window.location = '';"class="btn btn default">
+											<div class="text-right actions btn-set">
+												<button type="button" onclick="window.location = '';"class="btn default">
 													<i class="fa fa-angle-left"></i> Back
 												</button>	
 												<input type="hidden" name="s" value="price">
@@ -455,7 +464,7 @@
 												</div>
 												<div class="col-sm-3">
 													<label>Check in:<span class="required"> * </span></label>
-													<input type="text" class="form-control  timepicker-24" id="check_in" name="check_in" required value="{{ $listing->booking->check_in ?? '' }}">
+													<input type="text" class="form-control timepicker-24" id="check_in" name="check_in" required value="{{ $listing->booking->check_in ?? '' }}">
 													@error('check_in')<span class="required">{{ $message }}</span>@enderror
 												</div>
 												<div class="col-sm-3">
@@ -471,7 +480,7 @@
 												<div class="clearfix"></div>
 												<div class="col-sm-3">
 													<label>Check out rental:<span class="required"> </span></label>
-													<input type="text" class="form-control  timepicker-24" id="check_out_rental" name="check_out_rental" value="{{ $listing->booking->check_out_rental ?? '' }}">
+													<input type="text" class="form-control timepicker-24" id="check_out_rental" name="check_out_rental" value="{{ $listing->booking->check_out_rental ?? '' }}">
 												</div>
 												<div class="col-sm-3">
 													<label>Fuel cost:<span class="required"> * </span></label>
@@ -495,8 +504,8 @@
 													@error('night_fees')<span class="required">{{ $message }}</span>@enderror
 												</div>
 											</div>
-											<div class="actions btn-set text-right">
-												<button type="button" onclick="window.location = '';"class="btn btn default">
+											<div class="text-right actions btn-set">
+												<button type="button" onclick="window.location = '';"class="btn default">
 													<i class="fa fa-angle-left"></i> Back
 												</button>	
 												<input type="hidden" name="s" value="booking">
@@ -590,8 +599,8 @@
 													</div>
 													<div class="col-lg-12" style="margin-top: 8px;margin-bottom: 10px;"><button type="button" class="btn btn-success btn-sm add_new_row"> Add another date  </button></div>
 										    </div>
-										    <div class="actions btn-set text-right">
-												<button type="button" onclick="window.location = '';" class="btn btn default">
+										    <div class="text-right actions btn-set">
+												<button type="button" onclick="window.location = '';" class="btn default">
 													<i class="fa fa-angle-left"></i> Back
 												</button>	
 												<input type="hidden" name="s" value="calendar">
@@ -921,8 +930,8 @@
 													</div>
 												</div>
 											</div>
-											<div class="actions btn-set text-right">
-												<button type="button" onclick="window.location = '';"class="btn btn default">
+											<div class="text-right actions btn-set">
+												<button type="button" onclick="window.location = '';"class="btn default">
 													<i class="fa fa-angle-left"></i> Back
 												</button>	
 												<input type="hidden" name="s" value="equipment">
@@ -984,8 +993,8 @@
 												</div>
 												<div class="clearfix"></div>
 											</div>
-											<div class="actions btn-set text-right">
-												<button type="button" onclick="window.location = '';"class="btn btn default">
+											<div class="text-right actions btn-set">
+												<button type="button" onclick="window.location = '';"class="btn default">
 													<i class="fa fa-angle-left"></i> Back
 												</button>	
 												<input type="hidden" name="s" value="other">
@@ -1160,8 +1169,8 @@
 													<input type="number" name="custom_discount[discount]" class="form-control" value="{{ $custom_discounts['discount'] ?? '' }}" placeholder="Discount (%) ">
 												</div>
 											</div>
-											<div class="actions btn-set text-right">
-												<button type="button" onclick="window.location = '';"class="btn btn default">
+											<div class="text-right actions btn-set">
+												<button type="button" onclick="window.location = '';"class="btn default">
 													<i class="fa fa-angle-left"></i> Back
 												</button>	
 												<input type="hidden" name="s" value="discount">

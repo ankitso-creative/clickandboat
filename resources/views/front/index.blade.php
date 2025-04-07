@@ -109,14 +109,13 @@ function initialize() {
                     <div class="form-group has-search">
                         <span class="fa fa-search form-control-feedback"></span>
                         <select name="location" class="loaction-search" placeholder="Search Loaction">
-                            <option value="">Select the Locations</option>
-                            <option value="IGY Ibiza Marina">IGY Ibiza Marina</option>
-                            <option value="Marina Botafoch">Marina Botafoch</option>
-                            <option value="Marina Formentera Mar S.A.">Marina Formentera Mar S.A.</option>
-                            <option value="Marina Ibiza">Marina Ibiza</option>
-                            <option value="Marina Port Ibiza">Marina Port Ibiza</option>
+                            <option value="">All Marinas</option>
                             <option value="Marina Santa Eulalia">Marina Santa Eulalia</option>
-                            <option value="San Antonio Marina">San Antonio Marina </option>
+                            <option value="Puerto Sant Antoni">Puerto Sant Antoni</option>
+                            <option value="Marina Ibiza">Marina Ibiza</option>
+                            <option value="Marina Botafoch">Marina Botafoch</option>
+                            <option value="Ibiza Magna">Ibiza Magna</option>
+                            <option value="Club Nautico">Club Nautico</option>
                         </select>
                         <!-- <input type="text" class="form-control" name="location" id="location-search"
                             placeholder="Ibiza, Croatia, Sardinia..."> -->
@@ -172,7 +171,7 @@ function initialize() {
             <h2>{{ __('home.featured-boats')}}</h2>
         </div>
         <div class="row">
-            <div class="col-sm-12 col-md-6 col-lg-4">
+            <div class="col-sm-12 col-md-4 col-lg-4">
                 <div class="featured_board_boxes">
                     <a href="#">
                         <img src="{{ asset('app-assets/site_assets/img/image00065.jpg') }}" alt="featured-img">
@@ -184,7 +183,7 @@ function initialize() {
                 </div>
                 <p class="featured_price">11 Guests | Price from €1690</p>
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-4">
+            <div class="col-sm-12 col-md-4 col-lg-4">
                 <div class="featured_board_boxes">
                     <a href="#">
                         <img src="{{ asset('app-assets/site_assets/img/image00076.jpg') }}" alt="featured-img">
@@ -196,7 +195,7 @@ function initialize() {
                 </div>
                 <p class="featured_price">11 Guests | Price from €1690</p>
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-4">
+            <div class="col-sm-12 col-md-4 col-lg-4">
                 <div class="featured_board_boxes">
                     <a href="#">
                         <img src="{{ asset('app-assets/site_assets/img/image00092.jpg') }}" alt="featured-img">
@@ -220,7 +219,7 @@ function initialize() {
                 <div class="boat_renter_box box-one">
                     <h2>Boat renter</h2>
                     <div class="boat_renter_text">
-                        <p>Browse all our listings using the search tool. Whether you're looking to rent a motorboat or a sailboat near you or at your dream destination, find the best deals available. Enjoy peace of mind with MyBoatBooker, ensuring a safe and worry-free boating experience</p>
+                        <p>Browse all our listings using the search tool. Whether you're looking to rent a motorboat or a sailboat near you or at your dream destination, find the best deals available. Enjoy peace of mind with MyBoatBooker, ensuring a safe and worry-free boating experience.</p>
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </div>
                     <div class="boat_renter_text">
@@ -244,7 +243,7 @@ function initialize() {
                       <i class="fa-solid fa-sailboat"></i>
                     </div>
                     <div class="boat_renter_text">
-                        <p>Charter your boat on your own terms, to whoever you choose, whenever it suits you, and at the price you set. MyBoatBooker helps you earn income from your yacht and offset maintenance and operating costs</p>
+                        <p>Charter your boat on your own terms, to whoever you choose, whenever it suits you, and at the price you set. MyBoatBooker helps you earn income from your yacht and offset maintenance and operating costs.</p>
                         <i class="fa-solid fa-location-crosshairs"></i>
                     </div>
                     <div class="boat_renter_text">
@@ -570,7 +569,7 @@ function initialize() {
             @endif
         </div>
         <div class="text-center all_blog_button">
-            <a href="">View All Blogs</a>
+            <a href="{{ route('blogs') }}">View All Blogs</a>
         </div>
     </div>
 </section>
