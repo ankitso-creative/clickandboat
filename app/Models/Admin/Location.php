@@ -13,6 +13,7 @@ class Location extends Model implements HasMedia
     protected $fillable = [
         'name',
         'description',
+        'description_for_home_pape',
         'language',
         'status',
     ];

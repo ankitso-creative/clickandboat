@@ -63,7 +63,10 @@
 										<textarea name="description" id="summernote" class="form-control">{{ $result->description }}</textarea>
                                         @error('description')<span class="required">{{ $message }}</span>@enderror
 									</div>
-									
+									<div class="col-sm-12">
+										<label>Description For Home Pape:<span class="required"> * </span></label>
+										<textarea  name="description_for_home_pape"  class="form-control"> {{ $result->description_for_home_pape }} </textarea>
+                                    </div>
 									<div class="clearfix"></div>
 								</div>
 								<div class="actions btn-set text-right">

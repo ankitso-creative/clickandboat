@@ -97,8 +97,13 @@ class User extends Authenticatable implements HasMedia
     {
         return $this->hasMany(Message::class, 'receiver_id');
     }
+    public function orders()
+    {
+        return $this->hasMany(Order::class, 'receiver_id');
+    }
     public function listings()
     {
         return $this->hasManyThrough(Listing::class, Message::class, 'sender_id', 'id', 'id', 'listing_id')->distinct();
     }
+    
 }

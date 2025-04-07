@@ -58,6 +58,10 @@
 										<textarea  name="description" id="summernote" class="form-control"> </textarea>
                                         @error('description')<span class="required">{{ $message }}</span>@enderror
 									</div>
+									<div class="col-sm-12">
+										<label>Description For Home Pape:<span class="required"> * </span></label>
+										<textarea  name="description_for_home_pape"  class="form-control"> </textarea>
+                                    </div>
 								</div>
 								<div class="actions btn-set text-right">
 									<button type="button" onclick="window.location = '';"class="btn btn default">

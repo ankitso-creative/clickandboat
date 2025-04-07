@@ -10,7 +10,7 @@
 @endsection
 @section('content')
 <section class="city_page_banner">
-   <div class="city_banner_text">
+   <div class="city_banner_text" style="background-image: url('{{ $result->getFirstMediaUrl('location_image') }}')">
       <h1>{{ $result->name }}</h1>
    </div>
 </section>

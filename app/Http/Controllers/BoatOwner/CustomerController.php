@@ -4,16 +4,22 @@ namespace App\Http\Controllers\BoatOwner;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Services\BoatOwner\CustomerServise;
 class CustomerController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+    protected $service;
+    public function __construct()
+    {
+        $this->service = new CustomerServise();
+    }
     public function index()
     {
+        $results = $this->service->allCustomer(); 
         $active = 'cuctomers';
-        return view('boatowner.customer',compact('active'));
+        return view('boatowner.customer',compact('active','results'));
     }
 
     /**

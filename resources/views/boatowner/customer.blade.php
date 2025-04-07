@@ -25,22 +25,26 @@
                             <th>Email</th>
                             <th>Phone</th>
                             <th>Created At</th>
-                            <th>Action</th>
+                            {{-- <th>Action</th> --}}
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>22-11-2024</td>
-                            <td>Maxi Dolphin 100ft Finot Conq (2013) - NOMAD IV</td>
-                            <td>£75</td>
-                            <td>12-01-2024</td>
-                            <td>
-                                <div class="td-actions">
-                                    <button class="btn btn-success"><i class="fas fa-eye"></i></button>
-                                </div>
-                            </td>
-                        </tr>
+                        @if($results)
+                            @foreach($results as $result)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $result->name }}</td>
+                                    <td>{{ $result->email }}</td>
+                                    <td>{{ $result->phone }}</td>
+                                    <td>{{ $result->created_at }}</td>
+                                    {{-- <td>
+                                        <div class="td-actions">
+                                            <button class="btn btn-success"><i class="fas fa-eye"></i></button>
+                                        </div>
+                                    </td> --}}
+                                </tr>
+                            @endforeach
+                        @endif
                     </tbody>
                 </table>
             </div>

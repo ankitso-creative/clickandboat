@@ -24,29 +24,33 @@
                     <thead>
                         <tr>
                             <th>Sr. No.</th>
-                            <th>Booking Date</th>
-                            <th>Boat Name</th>
+                            <th>Transaction Id</th>
+                            <th>Check In</th>
+                            <th>Name</th>
                             <th>Price</th>
-                            <th>Category</th>
                             <th>Submitted On</th>
-                            <th>Action</th>
+                            {{-- <th>Action</th> --}}
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>22-11-2024</td>
-                            <td>Maxi Dolphin 100ft Finot Conq (2013) - NOMAD IV</td>
-                            <td>£75</td>
-                            <td>Boat</td>
-                            <td>12-01-2024</td>
-                            <td>
-                                <div class="td-actions">
-                                    <button class="btn btn-success"><i class="fas fa-edit"></i></button>
-                                    <button class="btn btn-danger"><i class="fas fa-trash"></i></button>
-                                </div>
-                            </td>
-                        </tr>
+                        @if($results)
+                            @foreach($results as $result)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $result->payment_intent_id }}</td>
+                                    <td>{{ $result->check_in }}</td>
+                                    <td>{{ $result->user->name }}</td>
+                                    <td>{{ $result->total }}</td>
+                                    <td>{{ $result->created_at }}</td>
+                                    {{-- <td>
+                                        <div class="td-actions">
+                                            <button class="btn btn-success"><i class="fas fa-edit"></i></button>
+                                            <button class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td> --}}
+                                </tr>
+                            @endforeach
+                        @endif
                     </tbody>
                 </table>
             </div>

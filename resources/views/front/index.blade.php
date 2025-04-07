@@ -45,52 +45,13 @@
 @endsection
 @section('js')
 <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.6/dist/flatpickr.min.js"></script>
-<script type="text/javascript"
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAli6rCJivgzTbWznnkqFtT_btPww6WBYs&libraries=places"></script>
-<script>
-flatpickr(".datePicker-search", {
-    inline: false,
-    dateFormat: "d-m-Y",
-    minDate: "today",
-});
-$(document).ready(function() {
-    google.maps.event.addDomListener(window, 'load', initialize);
-});
-
-function initialize() {
-    var input = document.getElementById('location-search');
-    var autocomplete = new google.maps.places.Autocomplete(input);
-    autocomplete.addListener('place_changed', function() {
-        var place = autocomplete.getPlace();
-        if (!place.geometry || !place.address_components) {
-            console.log("Place details not found");
-            return;
-        }
-        var city = '';
-        var country = '';
-        var state = '';
-        for (var i = 0; i < place.address_components.length; i++) {
-            var component = place.address_components[i];
-            if (component.types.includes('locality')) {
-                city = component.long_name;
-            }
-            if (component.types.includes('administrative_area_level_1')) {
-                state = component.long_name;
-            }
-            if (component.types.includes('country')) {
-                country = component.long_name;
-            }
-        }
-        if (city && country && state) {
-            input.value = city + ', ' + state + ', ' + country;
-        }
-        if (city == state) {
-            input.value = city + ', ' + country;
-        }
-        $('#search-filter-fom').submit();
-    });
-}
-</script>
+    <script>
+        flatpickr(".datePicker-search", {
+            inline: false,
+            dateFormat: "d-m-Y",
+            minDate: "today",
+        });
+    </script>
 @endsection
 @section('content')
 <!-- Banner Section -->
@@ -118,9 +79,6 @@ function initialize() {
                             <option value="Marina Santa Eulalia">Marina Santa Eulalia</option>
                             <option value="San Antonio Marina">San Antonio Marina </option>
                         </select>
-                        <!-- <input type="text" class="form-control" name="location" id="location-search"
-                            placeholder="Ibiza, Croatia, Sardinia..."> -->
-
                     </div>
                 </div>
                 <div class="col date_col">
@@ -456,42 +414,22 @@ function initialize() {
 <section class="home_page_slider">
     <div class="home_page_slider_Sec">
         <div class="row location_slider">
-            <div class="location_slide">
-                <a href="{{ route('location') }}">
-                    <div class="home_page_slider_box">
-                        <img src="{{ asset('app-assets/site_assets/img/location-slider-1.jpg') }}" class="image">
-                        <div class="home_page_box_text">
-                            <h3>LUXURY boats</h3>
-                            <h2>Es Vedrà</h2>
-                            <p>*Es Vedrà is a small, uninhabited rocky island off the southwest coast of Ibiza, Spain. Rising dramatically from the sea at about 400 meters (1,312 feet) high, it is one of Ibiza’s most iconic and mystical landmarks.* (this paragraph to be on front slide)</p>
-                        </div>
+            @if($locations)
+                @foreach($locations as $locations)
+                    <div class="location_slide">
+                        <a href="{{ route('area', $locations->slug) }}">
+                            <div class="home_page_slider_box">
+                                <img src="{{ $locations->getFirstMediaUrl('location_image') }}" class="image">
+                                <div class="home_page_box_text">
+                                    <h3>LUXURY boats</h3>
+                                    <h2>{{ $locations->name }}</h2>
+                                    <p>{{ $locations->description_for_home_pape }}</p>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                </a>
-            </div>
-            <div class="location_slide">
-              <a href="{{ route('location') }}">
-                <div class="home_page_slider_box">
-                    <img src="{{ asset('app-assets/site_assets/img/location-slider-1.jpg') }}" class="image">
-                    <div class="home_page_box_text">
-                        <h3>LUXURY boats</h3>
-                        <h2>Cala Jondal</h2>
-                        <p>*Cala Jondal is one of Ibiza’s most exclusive and stylish beaches, located on the island’s south coast, just a short distance from Ibiza Town. Surrounded by pine-covered cliffs and crystal-clear turquoise waters, this cove is famous for its upscale beach clubs, fine dining, and celebrity visitors.* (front slide)</p>
-                    </div>
-                </div>
-                </a>
-            </div>
-            <div class="location_slide">
-                <a href="{{ route('location') }}">
-                    <div class="home_page_slider_box">
-                        <img src="{{ asset('app-assets/site_assets/img/location-slider-1.jpg') }}" class="image">
-                        <div class="home_page_box_text">
-                            <h3>LUXURY boats</h3>
-                            <h2>Cala Codolar & The Smugglers’ Cav</h2>
-                            <p>*Cala Codolar is a peaceful and secluded beach on Ibiza’s west coast, offering crystal-clear waters, golden sand, and a relaxed atmosphere. But beyond its natural beauty, it hides a secret gem—the Smugglers’ Cave, a mysterious spot filled with history and adventure.* (front slide)</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
+                @endforeach
+            @endif
         </div>
     </div>
 </section>

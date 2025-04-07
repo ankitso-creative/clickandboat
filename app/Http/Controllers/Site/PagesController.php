@@ -20,7 +20,8 @@ class PagesController extends Controller
     {
         $blogs = $this->service->blogs();
         $categories = $this->service->categories();
-        return view('front.index',compact('blogs','categories'));
+        $locations = $this->service->locations();
+        return view('front.index',compact('blogs','categories','locations'));
     }
     public function thankYou()
     {
