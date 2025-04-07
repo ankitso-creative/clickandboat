@@ -3,6 +3,18 @@
 <title>Dashboard - {{ config('app.name') }}</title>
 @endsection
 @section('css')
+<style>
+    .table thead th{
+        white-space: nowrap;
+        font-weight: 800;
+    }
+    .table tbody tr td {
+        white-space: nowrap;
+        vertical-align: middle;
+        padding-bottom: 5px;
+        padding-top: 5px;
+    }
+</style>
 @endsection
 @section('js')
 @endsection

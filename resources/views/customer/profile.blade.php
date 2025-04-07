@@ -379,7 +379,7 @@
                 </div>
             </div>
         </div>
-        <div class="tab-pane" id="delete">
+        <div class="tab-pane" id="delete" style="margin-bottom: 40px;">
             <div class="card-section">
                 <div class="card-sec-title">
                     <h2>Setting</h2>
