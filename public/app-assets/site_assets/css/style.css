@@ -7916,6 +7916,13 @@ font-size: 15px;
     background: #f9a11d;
     color: #fff;
 }
+.boat_type_text {
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.all_blog_button a {
+    margin-top: 0;
+}
 }
 @media (min-width: 767px) and (max-width: 1023px) {
 
