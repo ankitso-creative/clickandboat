@@ -169,16 +169,27 @@
                 <!--<li class="msg-day"><small>Wednesday</small></li>-->
                 </div> 
             </div>
+            <form id="message_form">
+                {{-- <div class="upload-btn">
+                    <a href="javascript:;" onclick="document.getElementById('msgInput').click();"><i class="fa-solid fa-paperclip"></i></a>
+                    <input type="file" class="file_upload" id="msgInput" style="display:none" name="file" value="">
+                </div> --}}
+                <input type="hidden" name="receiver_id" value="<?php echo $receiver_id?>">
+                <input type="hidden" name="slug" value="<?php echo $slug?>">
+                <input type="text" name="message" placeholder="Type here..." id="chat">
+                <button class="btn-send" id="message_button"><i class="fa-solid fa-paper-plane"></i></button>
+            </form>
         </div>
-        <form id="message_form">
-            {{-- <div class="upload-btn">
-                <a href="javascript:;" onclick="document.getElementById('msgInput').click();"><i class="fa-solid fa-paperclip"></i></a>
-                <input type="file" class="file_upload" id="msgInput" style="display:none" name="file" value="">
-            </div> --}}
-            <input type="hidden" name="receiver_id" value="<?php echo $receiver_id?>">
-            <input type="hidden" name="slug" value="<?php echo $slug?>">
-            <input type="text" name="message" placeholder="Type here..." id="chat">
-            <button class="btn-send" id="message_button"><i class="fa-solid fa-paper-plane"></i></button>
-        </form>
+        <div class="list-boat-sec">
+            <div class="list-title">
+                <h2>Your request regarding the boat of Audrey</h2>
+            </div>
+            <div class="list-boat-box">
+                <div class="list-boat-img">
+                    <img src="{{ asset('assets/front/images/boat.jpg') }}" alt="boat">
+                </div>
+            </div>
+        </div>
+        
     </div>
 @endsection
