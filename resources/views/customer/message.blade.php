@@ -3,13 +3,29 @@
 @section('meta')
     <title>Dashboard - {{ config('app.name') }}</title>
 @endsection
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
 @section('css')
 
 @endsection
-
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 @section('js')
 <script>
+
+$(document).ready(function() {
+var disable = [];
+flatpickr("#checkin-date", {
+    inline: false,
+    dateFormat: "d-m-Y",
+    minDate: "today",
+    disable: disable,
+});
+flatpickr("#checkout-date", {
+    inline: false,
+    dateFormat: "d-m-Y",
+    minDate: "today",
+    disable: disable,
+});
+})
     // $(document).ready(function(){
     //     var receiver_id = $('form#message_form input[name="receiver_id"]').val();
     //     var data = "receiver_id="+receiver_id;
@@ -106,7 +122,6 @@
             }
         });
     });
-
 </script>
 @endsection
 
@@ -186,8 +201,43 @@
             </div>
             <div class="list-boat-box">
                 <div class="list-boat-img">
-                    <img src="{{ asset('assets/front/images/boat.jpg') }}" alt="boat">
+                    <img src="http://127.0.0.1:8000/app-assets/site_assets/img/image00076.jpg" alt="boat" class="img-fluid">
                 </div>
+                <div class="list-boat-text">
+                    <h3>Maxi Dolphin 100ft Finot Conq</h3>
+                    <span>2013</span><i class="fa-solid fa-circle"></i><a href="#">View the listing</a>
+                    <p>Mediterranean Sea</p>
+                </div>
+            </div>
+            <div class="list-boat-form">
+                <!-- Form for dates -->
+                <form action="{{ route('checkout') }}" method="POST">
+                    @csrf
+                    <div class="row sidebar_form">
+                        <div class="p-0 col-md-6">
+                            <div class="form-group">
+                                <input type="date" id="checkin-date" name="checkin_date"
+                                    class="form-control" placeholder="Check-in" />
+                            </div>
+                        </div>
+                        <div class="p-0 col-md-6">
+                            <div class="form-group">
+                                <input type="date" id="checkout-date" class="form-control"
+                                    name="checkout_date" placeholder="Check-out" />
+                                <input type="hidden" id="days-val" value="" name="days_val" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="show-Price" id="show-Price-sec">
+                        <p>Hire: <span id="hire">€47,143</span></p>
+                        <p>Service Fee: <span id="service-fee">€45</span></p>
+                        <p>APA (Advanced Provisioning Allowance): <span id="apa-fees">€0</span></p>
+                        <p>Total: <span id="boat-total">€47,188</span></p>
+                    </div>
+                    <div class="d-flex flex-column">
+                        <button class="btn book_btn">Book</button>
+                    </div>
+                </form>
             </div>
         </div>
         
