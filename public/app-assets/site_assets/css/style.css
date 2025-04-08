@@ -356,6 +356,161 @@ label, input, textarea, button, select {
     font-family: 'Montserrat' !important;
 }
 /*--------------------------------------------------------------
+# Sidebar Modal css
+--------------------------------------------------------------*/
+/* MODAL FADE LEFT RIGHT BOTTOM */
+.right .modal-header .close {
+    position: absolute;
+    right: 15px;
+}
+.modal.fade:not(.in).left .modal-dialog {
+	-webkit-transform: translate3d(-25%, 0, 0);
+	transform: translate3d(-25%, 0, 0);
+}
+.modal.fade:not(.in).right .modal-dialog {
+	-webkit-transform: translate3d(25%, 0, 0);
+	transform: translate3d(0%, 0, 0);
+}
+.modal.fade:not(.in).bottom .modal-dialog {
+	-webkit-transform: translate3d(0, 25%, 0);
+	transform: translate3d(0, 25%, 0);
+}
+
+.modal.right .modal-dialog {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    width: 400px;
+    max-width: 400px;
+}
+
+.modal.left .modal-dialog {
+	position:absolute;
+	top:0;
+	left:0;
+	margin:0;
+}
+.modal.left .modal-content, .modal.right .modal-content {
+	min-height:100vh;
+	border:0;
+}
+.right .modal-header {
+    border: none;
+}
+.owner-detail-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #efeeee;
+    margin-bottom: 30px !important;
+    padding-bottom: 30px;
+}
+.owner-detail-box .owner-title p {
+    font-weight: 600;
+    font-size: 18px;
+}
+.owner-avatar {
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+.owner-avatar img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.right .modal-body .row{
+    margin: 0px auto !important;
+}
+.right .modal-body .row .col-md-12 {
+    padding: 0px;
+}
+.right .modal-body .book_btn {
+    width: 100%;
+}
+.right .modal-body .row.message-modal-text{
+    margin: 0px auto !important
+}
+.right .modal-body .row.message-modal-text .col-md-12 {
+    border-top: 1px solid #efeeee;
+    margin-top: 30px !important;
+    padding-top: 30px;
+}
+.right .modal-body .row.message-modal-text ul {
+    padding-left: 15px;
+    font-size: 15px;
+    margin-bottom: 20px;
+    font-family: 'Montserrat';
+    line-height: 26px !important;
+    font-weight: 400;
+}
+.right .modal-body .row.label_form label {
+    padding-left: 7px;
+}
+.right .modal-body .row.message-modal-text textarea {
+    height: 130px;
+}
+.right.location-modals .modal-header {
+    justify-content: center;
+    width: 100%;
+}
+.right.location-modals .modal-header .close {
+    left: 0px !important;
+    width: 20px;
+    right: auto;
+}
+.right.location-modals .location-image {
+    width: 100%;
+    height: 400px;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    position: relative;
+}
+.right.location-modals .expand-location-section {
+    border-radius: 20px 20px 0px 0px!important;
+    padding: 30px 15px;
+    text-align: center;
+    background: #fff;
+    box-shadow: 0 -5px 5px -5px #333;
+    position: absolute;
+    bottom: 0px;
+}
+.right.location-modals .expand-location-section .expand_loc_btn {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0px;
+
+}
+.right.location-modals .expand-location-section .expand_loc_btn a {
+    width: 100%;
+    background: #f9a126;
+    margin-bottom: 10px;
+    color: #fff;
+    padding: 10px  0px;
+    border: 1px solid #f9a126;
+    border-radius: 3px;
+}
+.right.location-modals .expand-location-section .expand_loc_btn a:first-child{
+    background: #fff;
+    color: #f9a126;
+}
+.right.location-modals .expand-location-section .expand_loc_btn a:hover{
+    background: #f9a126;
+    color: #fff;
+}
+.right.location-modals .expand-location-section .expand_loc_btn span {
+    font-size: 12px;
+}
+.right.location-modals .expand-location-section .expand_loc_btn span i, .right.location-modals .modal-title i{
+    color: #f9a126;
+}
+.right.location-modals .modal-title i{
+    margin-right: 10px;
+}
+/*--------------------------------------------------------------
 # Message box css
 --------------------------------------------------------------*/
 .message-box {
