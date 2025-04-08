@@ -66,6 +66,7 @@
                                 <option value="opel">USD $</option>
                             </select>
                         </li>
+                        @if(!Auth::check())
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('userlogin') }}">Sign Up</a>
                         </li>
@@ -75,6 +76,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('login') }}"><i class="fa-solid fa-user"></i></a>
                         </li>
+                        @endif
                         @if(Auth::check())
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('logout') }}">Logout </a>

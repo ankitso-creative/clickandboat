@@ -124,6 +124,7 @@ Route::middleware('Setlang')->group(function(){
         Route::post('/stripe/payment-intent', [StripeController::class, 'createPaymentIntent'])->name('stripe.createPaymentIntent');
         Route::post('/stripe/confirmPaymentIntent', [StripeController::class, 'confirmPaymentIntent'])->name('stripe.confirmPaymentIntent');
         Route::get('/support', [ChatController::class, 'index'])->name('support');
+        Route::get('/support/send-quotation', [ChatController::class, 'sendQuotation'])->name('support.quotation');
         Route::get('/support/message/{slug}', [ChatController::class, 'message'])->name('message');
         Route::post('/support/send-message', [ChatController::class, 'sendMessage'])->name('support.send-message');
         Route::post('/support/see-all-message', [ChatController::class, 'seeAllMessage'])->name('support.see-all-message');
