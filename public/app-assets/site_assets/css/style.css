@@ -832,7 +832,7 @@ label, input, textarea, button, select {
     border-radius: 30px;
     margin: 0 7px;
     border: 1px solid #000;
-    padding: 3px 12px 1px 12px !important;
+    padding: 3px 23px 1px 14px !important;
     text-shadow: none;
     color: #262626;
     cursor: pointer;
@@ -842,7 +842,21 @@ label, input, textarea, button, select {
     height: 43px;
     font-weight: 300;
     font-family: 'GT America Trial Cn Md' !important;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill='black' d='M5 7l5 5 5-5H5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 7px center;
+    background-size: 12px;
+    padding-right: 35px;
 }
+
+/* Ensure the arrow appears in Edge */
+#language::-ms-expand {
+    display: none;
+}
+
 #language:hover,
 #currency_name:hover{
     border: 1px solid #f9a126;
@@ -857,7 +871,7 @@ label, input, textarea, button, select {
     border-radius: 30px;
     margin: 0 7px;
     border: 1px solid #000;
-    padding: 2px 12px 1px 12px !important;
+    padding: 2px 25px 1px 15px !important;
     text-shadow: none;
     color: #262626;
     cursor: pointer;
@@ -867,6 +881,18 @@ label, input, textarea, button, select {
     height: 42px;
     font-weight: 300;
     font-family: 'GT America Trial Cn Md' !important;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill='black' d='M5 7l5 5 5-5H5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 6px center;
+    background-size: 12px;
+    padding-right: 35px;
+}
+/* Ensure the arrow appears in Edge */
+#currency_name::-ms-expand {
+    display: none;
 }
 #currency_name option{
     background:#fff;
@@ -1181,6 +1207,9 @@ label, input, textarea, button, select {
     color: #fff;
     outline: none;
     text-indent: 43px;
+    -webkit-appearance: none; /* Removes default Safari styling */
+    -moz-appearance: none; /* Removes default Firefox styling */
+    appearance: none;
 }
 .has-search select option {
     background: #fff;
@@ -1230,6 +1259,9 @@ label, input, textarea, button, select {
     color: #fff;
     outline: none;
     text-indent: 43px;
+    -webkit-appearance: none; /* Removes default Safari styling */
+    -moz-appearance: none; /* Removes default Firefox styling */
+    appearance: none;
 }
 .boat_select span {
     position: absolute;
@@ -1516,8 +1548,9 @@ label, input, textarea, button, select {
     margin: 0 15px;
 }
 .home_page_slider_box img {
-    width: 100%;
+    width: 980px;
     height: 600px;
+    object-fit: cover;
 }
 .home_page_box_text {
     position: absolute;
@@ -1539,17 +1572,20 @@ label, input, textarea, button, select {
     font-size: 15px;
     color: #fff;
     text-transform: uppercase;
+    text-shadow: 0px 2px 0px #0000004d, 0 0 2em #0000008a, 0 0 1.2em #0000008a;
 }
 .home_page_box_text h2 {
     font-size: 64px;
     color: #fff;
     text-transform: uppercase;
     padding-top: 15px;
+    text-shadow: 0px 2px 0px #0000004d, 0 0 2em #0000008a, 0 0 1.2em #0000008a;
 }
 .home_page_box_text p {
     color: #fff;
     font-weight: 500;
     padding: 0px 50px;
+    text-shadow: 0px 2px 0px #0000004d, 0 0 2em #0000008a, 0 0 1.2em #0000008a;
 }
 /*--------------------------------------------------------------
 # Boat by loaction section
@@ -5856,6 +5892,8 @@ section.about_zigzag_section {
     margin: 10px auto 0;
     text-transform: uppercase;
     cursor: pointer;
+    font-weight: 500;
+    font-size: 14px;
 }
 .check_ava_btn:hover{
     background:none;
@@ -5868,15 +5906,17 @@ section.about_zigzag_section {
     padding: 10px 0px;
     border-radius: 3px;
     color: #fff;
-    margin-top: 16px;
     width: 97%;
     margin: 10px auto 0;
     box-shadow: none;
+    font-weight: 500;
+    font-size: 14px;
 }
 .book_btn:hover{
     background: none;
     border: 1px solid #f9a126;
     color: #f9a126;
+    box-shadow: none;
 }
 .form_text p {
     font-size: 14px;
@@ -7177,7 +7217,7 @@ font-size: 15px;
     width: 100%;
 }
 .city_banner_text h1 {
-    font-size: 44px;
+    font-size: 64px;
     color: #fff;
     text-align: center;
     text-transform: uppercase;
@@ -7454,6 +7494,7 @@ font-size: 15px;
     }
     .featured_boats_section {
         margin-top: 60px;
+        padding: 0 0;
     }
     .featured_boat_heading h2 {
         font-size: 30px;
@@ -7816,6 +7857,8 @@ font-size: 15px;
         background: #fff;
         color: #000;
         height: 31px;
+        appearance: auto;
+        z-index: 999;
     }
     .nav-mobile li a {
         padding: 0;
@@ -8207,15 +8250,20 @@ font-size: 15px;
 }
 .inner_blog_text_section h2 {
     font-size: 30px;
+    text-align: center;
 }
 .inner_blog_text_section h3 {
     font-size: 28px;
+    text-align: center;
 }
 .inner_blog_text_section  ul {
     padding: 0 30px;
 }
 .featured_price {
     padding: 10px;
+    text-align: center;
+}
+.inner_blog_text_section p{
     text-align: center;
 }
 .featured_box_text {
@@ -8249,6 +8297,7 @@ font-size: 15px;
     color: #000;
     height: 30px;
     padding: 5px 10px 0 9px !important;
+    appearance: auto;
 }
 .boat_type_text {
     left: 50%;
@@ -8260,7 +8309,11 @@ font-size: 15px;
 .home_page_box_text h2 {
     font-size: 30px;
 }
-
+.home_page_slider_box img {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+}
 }
 @media (min-width: 767px) and (max-width: 1023px) {
     .header-slider {
@@ -8650,13 +8703,11 @@ font-size: 15px;
         padding: 0px;
     }
     #language {
-        padding: 5px 1px 5px 8px !important;
+        right: 36%;
         position: relative;
-        right: 100px;
-        font-size: 15px;
-        background: #f9a11d;
-        color: #fff;
-        right: 37%;
+        top: 1px;
+        padding: 0px 23px 1px 14px !important;
+        font-size: 14px;
     }
     .about_sec_heading {
         padding-top: 30px !important;
@@ -9083,11 +9134,10 @@ font-size: 15px;
     top: 2px;
 }
 #currency_name {
-    background: #f9a11d;
-    color: #fff;
     right: 67%;
     position: absolute;
-    top: 7px;
+    top: 1px;
+    padding: 0px 25px 1px 15px !important;
 }
 .boat_type_text {
     left: 50%;
@@ -9104,9 +9154,9 @@ font-size: 15px;
 }
 }
 @media (min-width: 1250px) and (max-width: 1299px) {
-/*    .home_banner_section {
+   .home_banner_section {
         height: 630px;
-    }*/
+    }
     .blog_inner_banner {
         height: 440px;
     }
@@ -9120,14 +9170,15 @@ font-size: 15px;
         bottom: -1%;
     }
     .home_page_slider_box img {
-        height: 600px;
+        height: 599px;
+        width: 900px;
     }
 
 }
 @media (min-width: 1400px) and (max-width: 1499px) {
-/*    .home_banner_section {
+   .home_banner_section {
         height: 690px;
-    }*/
+    }
     .boat_by_location {
         height: 450px;
     }
@@ -9158,12 +9209,15 @@ font-size: 15px;
     .banner_text {
         bottom: -4%;
     }
+    .home_page_slider_box img {
+        width: 1000px;
+    }
 
 }
 @media (min-width: 1500px) and (max-width: 1599px) {
-/*    .home_banner_section {
+   .home_banner_section {
         height: 704px;
-    }*/
+    }
     .boat_by_location {
         height: 470px;
     }
@@ -9188,9 +9242,9 @@ font-size: 15px;
 
 }
 @media (min-width: 1600px) and (max-width: 1899px) {
-/*    .home_banner_section {
+   .home_banner_section {
         height: 704px;
-    }*/
+    }
     .boat_by_location {
         height: 470px;
     }
@@ -9212,9 +9266,9 @@ font-size: 15px;
     .blog_banner {
         height: 765px;
     }
-/* .home_banner_section {
+.home_banner_section {
         height: 900px;
-    }*/
+    }
 .featured_board_boxes img {
         height: 500px;
     }
@@ -9286,6 +9340,13 @@ font-size: 15px;
     height: 320px;
 }
 .home_page_slider_box img {
-    height: 950px;
+    height: 810px;
+    width: 1500px;
+}
+.navbar {
+    padding: 9px 40px;
+}
+.home_page_box_text {
+    margin-top: -33%;
 }
 }

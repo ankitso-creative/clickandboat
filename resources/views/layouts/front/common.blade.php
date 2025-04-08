@@ -47,9 +47,7 @@
                                 <a class="dropdown-item" href="{{ route('about-us') }}">About Us</a>
                                 <a class="dropdown-item" href="{{ route('location') }}">Explore Ibiza</a>
                                 <a class="dropdown-item" href="{{ route('blogs') }}">Our Blog</a>
-                                <a class="dropdown-item" href="{{ route('ourstory') }}">Our Story</a>
-                                <a class="dropdown-item" href="{{ route('team') }}">Team</a>
-                                <a class="dropdown-item" href="{{ route('mission') }}">Mission</a>
+                                <a class="dropdown-item" href="#">Book a boat</a>
                             </div>
                         </li>
                         <li class="nav-item">
@@ -61,7 +59,7 @@
                         <!-- <li><a class="nav-link gbp_btn" href="#">GBP: £</a></li> -->
                         <li class="nav-item">
                             <select name="currency" id="currency_name">
-                                <option value="GBP">GBP: £</option>
+                                <option value="GBP">GBP: £ </option>
                                 <option value="EUR">EUR €</option>
                                 <option value="opel">USD $</option>
                             </select>
@@ -126,9 +124,6 @@
                         <li><a href="{{ route('location') }}">Explore Ibiza</a></li>
                         <li><a href="{{ route('blogs') }}">Our Blog</a></li>
                         <li><a href="{{ route('about-us') }}">About Us</a></li>
-                        <li><a href="{{ route('ourstory') }}">Our Story</a></li>
-                        <li><a href="{{ route('team') }}">Team</a></li>
-                        <li><a href="{{ route('mission') }}">Mission</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
@@ -174,7 +169,6 @@
                             <li><a href="{{ route('home') }}">Home</a></li>
                             <li><a href="{{ route('about-us') }}">About Us</a></li>
                             <li><a href="{{ route('location') }}">Locations</a></li>
-                            <li><a href="{{ route('ourstory') }}">Our Story</a></li>
                             <!-- <li><a href="{{ route('contact') }}">Contact </a></li> -->
                             <li><a href="{{ route('blogs') }}">Blog</a></li>
                         </ul>

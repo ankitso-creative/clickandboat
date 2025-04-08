@@ -37,7 +37,6 @@
 .custom-div:nth-child(odd) {
   /* background-color: #d9d9d9; */
 }
-
 </style>
 @endsection
 @section('css')
