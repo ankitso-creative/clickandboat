@@ -4,7 +4,7 @@ namespace App\Http\Requests\Customer\Message;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class MessageRequest extends FormRequest
+class QuotationRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,8 +22,8 @@ class MessageRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'message' => ['required'],
-            'image' => ['file', 'mimes:jpeg,jpg', 'max:1024'],
+            'checkin_date' => ['required'],
+            'checkout_date' => ['required'],
         ];
     }
 }

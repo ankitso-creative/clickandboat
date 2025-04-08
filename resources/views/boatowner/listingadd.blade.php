@@ -287,7 +287,7 @@
         const imageDropzone = new Dropzone("#imageDropzone", {
             url: "/upload",  
             paramName: 'file', 
-            maxFilesize: 2, 
+            maxFilesize: 5, 
             acceptedFiles: 'image/*',
             autoProcessQueue: false,
             addRemoveLinks: true,

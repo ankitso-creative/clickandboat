@@ -23,4 +23,8 @@ class ChatService {
     {
         return $this->repository->usersWithLastMessage();
     }
+    public function sendQuotation($request)
+    {
+        return $this->repository->sendQuotation($request);
+    }
 }

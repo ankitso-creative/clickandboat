@@ -3,6 +3,7 @@ namespace App\Repositories\Customer;
 
 use App\Events\Auth\ChatMessageSent;
 use App\Models\Admin\Listing;
+use App\Models\Admin\Quotation;
 use App\Models\Message;
 use App\Models\User;
 
@@ -155,5 +156,38 @@ class ChatRepository
             ];
         });
         return $usersWithLastMessage;
+    }
+    public function sendQuotation($request)
+    {
+        $quotation = new Quotation();
+        $user = auth()->user();
+        $listingId = Listing::where('slug', $request['slug'])->pluck('id')->first();
+        $receiver_id = Listing::where('slug', $request['slug'])->pluck('user_id')->first();
+        $request['checkindate'] = $request['checkin_date'];
+        $request['checkoutdate'] = $request['checkout_date'];
+        $request['id'] = $listingId;
+        $price = bookingPrice($request);
+        $quotation->user_id = $user->id;
+        $quotation->listing_id =  $listingId;
+        $quotation->checkin = $request['checkin_date'];
+        $quotation->checkout = $request['checkout_date'];
+        $quotation->net_amount = $price['price'];
+        $quotation->service_fee = $price['servive_fee']; 
+        $quotation->sub_total = $price['totalAmount'];
+        $quotation->total = $price['totalAmount']; 
+        $quotation->status = $request['slug'];
+        if($quotation->save())
+        {
+            $message = Message::create([
+                'sender_id' => auth()->id(),
+                'receiver_id' => $receiver_id,
+                'listing_id' => $listingId,
+                'message' => $request['messages'],
+            ]);
+            return response()->json([
+                'status' => 'success',
+            ]);
+        }
+
     }
 }

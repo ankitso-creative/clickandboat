@@ -30,7 +30,7 @@ class UpdateListing extends FormRequest
                 'manufacturer' => ['required'],
                 'model' => ['required'],
                 'boat_name' => ['required'],
-                'file' => 'nullable|image|max:2048',
+                'file' => 'nullable|image|max:5120',
             ];
         elseif($request['s']=='descriptions'):
             return [
