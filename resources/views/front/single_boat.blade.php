@@ -566,8 +566,8 @@
                                 <p>Total: <span id="charter-total"></span></p>
                             </div>
                             <div class="d-flex flex-column">
-                                <!-- <button class="mb-2 check_ava_btn">Check availability</button> -->
-                                <span class="mt-2 mb-2 text-center d-block font-weight-bold">or</span>
+                                <button class="mb-2 check_ava_btn">Request a quotation</button>
+                                <span class="mt-1 mb-1 text-center d-block font-weight-bold">or</span>
                                 <button class="btn book_btn">Book</button>
                                 <div class="pt-3 text-center form_text">
                                     <p>You will only be charged if the request is accepted</p>
