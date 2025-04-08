@@ -526,10 +526,11 @@ label, input, textarea, button, select {
     z-index: 1;
 }
 /* Common layout */
-.msg-left,
+.msg-left, 
 .msg-right {
     display: flex;
     width: 100%;
+    margin: 7px auto;
 }
 
 .msg-left-sub,
@@ -551,7 +552,6 @@ label, input, textarea, button, select {
     flex-direction: column;
     gap: 4px;
 }
-
 /* Bubble */
 .msg-desc {
     background-color: #f0f0f0;
@@ -582,7 +582,7 @@ label, input, textarea, button, select {
 
 .msg-left .msg-desc {
     background-color: #fff;
-    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
     margin-left: 10px;
     border: 1px solid #ededed;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
@@ -599,7 +599,7 @@ label, input, textarea, button, select {
 
 .msg-right .msg-desc {
     background-color: #fff0d9;
-    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
     margin-right: 10px;
     border: 1px solid #ffe7c1b5;
     box-shadow: 0 2px 6px rgb(255 240 217);
