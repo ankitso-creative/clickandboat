@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Customer\Message\MessageRequest;
+use App\Http\Requests\Customer\Message\QuotationRequest;
 use App\Models\Admin\Listing;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -58,6 +59,11 @@ class ChatController extends Controller
     public function fetchMessages($receiver_id)
     {
         return $this->service->fetchMessages($receiver_id);
+    }
+    public function sendQuotation(QuotationRequest $request)
+    {
+        $request = $request->all();
+        return $this->service->sendQuotation($request);
     }
     
 }

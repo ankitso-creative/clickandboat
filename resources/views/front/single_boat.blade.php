@@ -2,10 +2,12 @@
     <title>Motorboat Quicksilver 675 Open 150hp</title>
     @endsection @section('css')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+    <link href="{{ asset('app-assets/global/plugins/bootstrap-sweetalert/sweetalert.css') }}" rel="stylesheet" type="text/css" />
     @endsection @section('js')
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAli6rCJivgzTbWznnkqFtT_btPww6WBYs&callback=initMap" async
-        defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAli6rCJivgzTbWznnkqFtT_btPww6WBYs&callback=initMap" async defer></script>
+    <script src="{{ asset('app-assets/global/plugins/bootstrap-sweetalert/sweetalert.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('app-assets/pages/scripts/ui-sweetalert.min.js') }}" type="text/javascript"></script>
     <script type="text/javascript">
         let map;
         let marker;
@@ -98,10 +100,10 @@
                             if (response.status) {
                                 $('#show-Price-sec,#show-Price-sec-2').removeClass('d-none');
                                 $('#days-val, #days-val-2').val(response.days);
-                                $('#total-days, #total-days-2').html(response.days);
+                                $('#total-days, #total-days-2, #total-days-3').html(response.days);
                                 $('#charter-pice, #charter-pice-2').html(response.price);
                                 $('#charter-fee, #charter-fee-2').html(response.servive_fee);
-                                $('#charter-total, #charter-total-2').html(response.totalAmount);
+                                $('#charter-total, #charter-total-2, #charter-total-3').html(response.totalAmount);
                             } else {
                                 $('#price_display').html('<p>Price not available.</p>');
                             }
@@ -169,10 +171,23 @@
                 minDate: "today",
                 disable: disable,
             });
+            flatpickr("#qcheckin-date", {
+                inline: false,
+                dateFormat: "d-m-Y",
+                minDate: "today",
+                disable: disable,
+            });
+            flatpickr("#qcheckout-date", {
+                inline: false,
+                dateFormat: "d-m-Y",
+                minDate: "today",
+                disable: disable,
+            });
 
             $(document).on('change', '#checkin-date, #checkout-date', function() {
                 var checkindate = $('#checkin-date').val();
                 var checkoutdate = $('#checkout-date').val();
+                
                 $.ajax({
                     url: '{{ route('getbookingprice') }}',
                     type: 'GET',
@@ -183,12 +198,15 @@
                     },
                     success: function(response) {
                         if (response.status) {
-                            $('#show-Price-sec').removeClass('d-none');
-                            $('#days-val').val(response.days);
-                            $('#total-days').html(response.days);
+                            $('#show-Price-sec,#qshow-Price-sec').removeClass('d-none');
+                            $('#days-val, #qdays-val').val(response.days);
+                            $('#total-days, #qtotal-days').html(response.days);
                             $('#charter-pice').html(response.price);
                             $('#charter-fee').html(response.servive_fee);
-                            $('#charter-total').html(response.totalAmount);
+                            $('#charter-total,#qcharter-total').html(response.totalAmount);
+                            $('#qcheckin-date').val(checkindate);
+                            $('#qcheckout-date').val(checkoutdate);
+                            $('#submit-qut').removeAttr('disabled');
                         } else {
                             $('#price_display').html('<p>Price not available.</p>');
                         }
@@ -198,12 +216,88 @@
                     }
                 });
             })
+
+            $(document).on('change', '#qcheckin-date, #qcheckout-date', function() {
+                var checkindate = $('#qcheckin-date').val();
+                var checkoutdate = $('#qcheckout-date').val();
+                
+                $.ajax({
+                    url: '{{ route('getbookingprice') }}',
+                    type: 'GET',
+                    data: {
+                        checkindate: checkindate,
+                        checkoutdate: checkoutdate,
+                        id: {{ $listing->id }}
+                    },
+                    success: function(response) {
+                        if (response.status) {
+                            $('#show-Price-sec,#qshow-Price-sec').removeClass('d-none');
+                            $('#days-val, #qdays-val').val(response.days);
+                            $('#total-days, #qtotal-days').html(response.days);
+                            $('#charter-pice').html(response.price);
+                            $('#charter-fee').html(response.servive_fee);
+                            $('#charter-total,#qcharter-total').html(response.totalAmount);
+                            $('#checkin-date').val(checkindate);
+                            $('#checkout-date').val(checkoutdate);
+                            $('#submit-qut').removeAttr('disabled');
+                        } else {
+                            $('#price_display').html('<p>Price not available.</p>');
+                        }
+                    },
+                    error: function() {
+                        $('#price_display').html('<p>Error fetching price.</p>');
+                    }
+                });
+            })
+            $(document).on('submit','#form-quot', function(e) {
+                e.preventDefault();
+                var csrfToken = $('meta[name="csrf-token"]').attr('content');
+                $.ajax({
+                    url: "{{ route('customer.support.quotation') }}",
+                    type: "POST",
+                    data: new FormData(this),
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    headers: {
+                        'X-CSRF-TOKEN': csrfToken 
+                    },
+                    success: function(response) {
+                        var resp = response;
+                        if(resp.status == "success") 
+                        {
+                            $('#sidebar-right .owner-details-contain').addClass('d-none');
+                            $('#sidebar-right .location-modal-box').removeClass('d-none');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("Error: " + status + " - " + error);
+                    }
+                });
+            });
         });
     </script>
     <script>
         $(document).ready(function() {
             $(".modal a").not(".dropdown-toggle").on("click", function() {
-                $(".modal").modal("hide");
+                $("#sidebar-right").modal("hide");
+            });
+            $('.not-login-user').on('click', function() {
+                swal({
+                    title: 'Warning!',
+                    text: 'You need to login as a customer.',
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: '#DD6B55',
+                    confirmButtonText: 'Go to Login',
+                    cancelButtonText: 'No, cancel it!',
+                    allowOutsideClick: false, 
+                },
+                function(isConfirm) {
+                    if (isConfirm) {
+                        window.location.href = '/login';
+                    } 
+                })
             });
         });
     </script>
@@ -526,8 +620,18 @@
                                 <p><i class="fa-regular fa-clock"></i> Response time: within a few hours</p>
                             </div>
                             <div class="contact_own_btn">
-                                <a href="{{ route('customer.message', $listing->slug) }}"
-                                    class="contact_owner_btn">Contact Owner</a>
+                                @if(Auth::check())
+                                    @php
+                                        $user = auth()->user();
+                                    @endphp
+                                    @if($user->role == 'customer')
+                                        <a href="{{ route('customer.message', $listing->slug) }}" class="contact_owner_btn">Contact Owner</a>
+                                    @else
+                                        <a href="javascript:;" class="contact_owner_btn not-login-user">Contact Owner</a>
+                                    @endif
+                                @else
+                                    <a href="javascript:;" class="contact_owner_btn not-login-user">Contact Owner</a>
+                                @endif
                             </div>
                         </div>
                         <div class="boat-card-content-sec">
@@ -592,9 +696,25 @@
                                     <p>Total: <span id="charter-total"></span></p>
                                 </div>
                                 <div class="d-flex flex-column">
-                                    <button class="mb-2 check_ava_btn" type="button" data-toggle="modal"
-                                        data-target="#sidebar-right" class="btn btn-primary navbar-btn pull-left">Request
-                                        a quotation</button>
+                                    @if(Auth::check())
+                                        @php
+                                            $user = auth()->user();
+                                        @endphp
+                                        @if($user->role == 'customer')
+                                            <a class="mb-2 check_ava_btn" href="javascript:;" data-toggle="modal" data-target="#sidebar-right" class="btn btn-primary navbar-btn pull-left">
+                                                Request a quotation 
+                                            </a>
+                                        @else
+                                            <a class="mb-2 check_ava_btn not-login-user" href="javascript:;">
+                                                Request a quotation 
+                                            </a>
+                                        @endif
+                                    @else
+                                        <a class="mb-2 check_ava_btn not-login-user" href="javascript:;">
+                                            Request a quotation 
+                                        </a>
+                                    @endif
+                                    
                                     <span class="mt-1 mb-1 text-center d-block font-weight-bold">or</span>
                                     <button class="btn book_btn">Book</button>
                                     <div class="pt-3 text-center form_text">
@@ -928,15 +1048,21 @@
                     <div class="owner-details-contain">
                         <div class="owner-detail-box">
                             <div class="owner-title">
-                                <p>Cioffi</p>
+                                <p>{{ $listing->user->name }}</p>
                             </div>
+                            @php
+                                $image = $listing->user->getFirstMediaUrl('profile_image');
+                                if (!$image):
+                                    $image = 'https://static1.clickandboat.com/v1/o/img/mask~dddc60cc1d.png';
+                                endif;
+                            @endphp
                             <div class="owner-avatar">
-                                <img src="https://static.vecteezy.com/system/resources/previews/009/292/244/non_2x/default-avatar-icon-of-social-media-user-vector.jpg" alt="boat">
+                                <img src="{{ $image }}" alt="boat">
                             </div>
                         </div>
                         <div class="booking-date-form">
                             <!-- Form for dates -->
-                            <form action="{{ route('checkout') }}" method="POST">
+                            <form action="{{ route('customer.support.quotation') }}" method="post" id="form-quot">
                                 @csrf
                                 <div class="row label_form">
                                     <div class="col-md-12">
@@ -946,23 +1072,21 @@
                                 <div class="row sidebar_form">
                                     <div class="p-0 col-md-6">
                                         <div class="form-group">
-                                            <input type="date" id="checkin-date" name="checkin_date"
-                                                class="form-control" placeholder="Check-in" />
+                                            <input type="date" id="qcheckin-date" name="checkin_date" class="form-control" placeholder="Check-in" />
+                                            
                                         </div>
                                     </div>
                                     <div class="p-0 col-md-6">
                                         <div class="form-group">
-                                            <input type="date" id="checkout-date" class="form-control"
-                                                name="checkout_date" placeholder="Check-out" />
-                                            <input type="hidden" id="days-val" value="" name="days_val" />
+                                            <input type="date" id="qcheckout-date" class="form-control" name="checkout_date" placeholder="Check-out" />
+                                            <input type="hidden" id="qdays-val" value="" name="qdays_val" />
+                                            <input type="hidden" value="{{ $listing->slug }}" name="slug" />
                                         </div>
                                     </div>
                                 </div>
-                                <div class="show-Price d-none" id="show-Price-sec">
-                                    <p>Days: <span id="total-days"></span></p>
-                                    <p>Charter Price: <span id="charter-pice"></span></p>
-                                    <p>Service Fee: <span id="charter-fee"></span></p>
-                                    <p>Total: <span id="charter-total"></span></p>
+                                <div class="show-Price d-none" id="qshow-Price-sec">
+                                    <p>Days: <span id="qtotal-days"></span></p>
+                                    <p>Price: <span id="qcharter-total"></span></p>
                                 </div>
                                 <div class="row message-modal-text">
                                     <div class="col-md-12">
@@ -972,26 +1096,35 @@
                                             <li>Number of passengers for your rental</li>
                                             <li>With or without a skipper</li>
                                         </ul>
-                                        <textarea class="form-control" name="messages" id="messages"
-                                            placeholder="Write your message here..."></textarea>
+                                        <textarea class="form-control" name="messages" id="messages"placeholder="Write your message here...">Hello {{ $listing->user->name }}, 
+I am interested in renting your motorboat, is it still available? 
+If yes, can you please send me a quote/offer? 
+Thank you
+@if(Auth::check())
+    @php
+    $user = auth()->user();
+    @endphp
+{{ $user->name }}
+@endif
+                                        </textarea>
                                     </div>
                                 </div>
                                 <div class="d-flex flex-column">
-                                    <button class="btn book_btn">Send</button>
+                                    <button class="btn book_btn" id="submit-qut" disabled>Send</button>
                                     
                                 </div>
                             </form>
                         </div>
                     </div>
-                    <div class="location-modal-box" style="display: none;">
+                    <div class="location-modal-box d-none" >
                         <div class="location-image" style="background:url(https://www.charlestonoutdooradventures.com/wp-content/uploads/2023/02/Sisters-creeks-sunset-beautiful-drone-photo-scaled.jpg)">
                         </div>
                         <div class="expand-location-section">
                             <h2>Expand your options</h2>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec tortor mi.</p>
                             <div class="expand_loc_btn">
-                                <a href="#">See the conversations</a>
-                                <a href="#">Receive other quotes</a>
+                                <a href="{{ route('customer.message', $listing->slug) }}">See the conversations</a>
+                                <a href="{{ route('search') }}">Receive other quotes</a>
                                 <span>Recommended <i class="fa-solid fa-check"></i></span>
                             </div>
                         </div>
