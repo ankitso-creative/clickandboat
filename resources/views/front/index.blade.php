@@ -177,7 +177,7 @@
                 <div class="boat_renter_box box-one">
                     <h2>Boat renter</h2>
                     <div class="boat_renter_text">
-                        <p>Browse all our listings using the search tool. Whether you're looking to rent a motorboat or a sailboat near you or at your dream destination, find the best deals available. Enjoy peace of mind with MyBoatBooker, ensuring a safe and worry-free boating experience.</p>
+                        <p>Browse all our listings using the search tool. Enjoy complete peace of mind with MyBoatBooker, providing you with a safe, secure, and worry-free boating experience. Whether you're a seasoned sailor or a first-time boater, we ensure that every aspect of your journey is well taken care of. With our reliable services, you can focus on enjoying the open water while we handle the details, offering you the confidence and support you deserve throughout your entire boating adventure.</p>
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </div>
                     <div class="boat_renter_text">
@@ -197,7 +197,7 @@
                 <div class="boat_renter_box box-two">
                     <h2>Boat owner</h2>
                     <div class="boat_renter_text">
-                        <p>List your boat for free and share it with others looking to charter. Whether it's a yacht, sailboat, RIB, motorboat, or catamaran.</p>
+                        <p>List your boat for free and make it available to a wide range of people seeking the perfect charter experience. Whether you own a luxurious yacht, a sleek sailboat, a versatile RIB, a powerful motorboat, or a spacious catamaran, MyBoatBooker offers a seamless platform to connect you with potential renters.</p>
                       <i class="fa-solid fa-sailboat"></i>
                     </div>
                     <div class="boat_renter_text">

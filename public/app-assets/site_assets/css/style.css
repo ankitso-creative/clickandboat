@@ -542,6 +542,9 @@ label, input, textarea, button, select {
     border-radius: 50%;
     margin-top: -5px;
 }
+.navbar-nav li a i:hover{
+    background:#f9a126;
+}
 .navbar-nav li a {
     text-transform: uppercase;
     font-size: 15px;
@@ -552,6 +555,9 @@ label, input, textarea, button, select {
     0 0 2em black,
     0 0 1.2em black; */
     margin-top: 5px;
+}
+.navbar-nav li a:hover{
+    color: #f9a126 !important;
 }
 .header{
     transition: .5s ease-in;
@@ -572,6 +578,10 @@ label, input, textarea, button, select {
     text-shadow: none;
     height: 42px;
     line-height: 25px;
+}
+.navbar-nav .about_menu:hover{
+    border: 1px solid #f9a126 !important;
+    color: #f9a126 !important;
 }
 .about_menu {
     border: 1px solid #d4d4d4 !important;
@@ -608,12 +618,21 @@ label, input, textarea, button, select {
     font-weight: 300;
     font-family: 'GT America Trial Cn Md' !important;
 }
+#language:hover,
+#currency_name:hover{
+    border: 1px solid #f9a126;
+    color: #f9a126;
+}
+.navbar-nav .about_menu:hover{
+    border: 1px solid #f9a126 !important;
+    color: #f9a126 !important;
+}
 #currency_name {
     background: #fff;
     border-radius: 30px;
     margin: 0 7px;
     border: 1px solid #000;
-    padding: 8px 12px 1px 12px !important;
+    padding: 2px 12px 1px 12px !important;
     text-shadow: none;
     color: #262626;
     cursor: pointer;
@@ -631,6 +650,10 @@ label, input, textarea, button, select {
 #language option {
     background: #fff;
     color: #000;
+}
+#language option:hover,
+#currency_name:hover{
+    color: #f9a11d !important;
 }
 
 /*--------------------------------------------------------------
@@ -1103,7 +1126,7 @@ label, input, textarea, button, select {
     margin: 20px 0;
     border-radius: 15px;
     position: relative;
-    height: 210px;
+    height: 260px;
 }
 .boat_reanter_owner_section .container-fluid {
     max-width: 1335px;
@@ -5604,9 +5627,15 @@ section.about_zigzag_section {
     padding: 10px 0px;
     border-radius: 3px;
     color: #fff;
-    margin-top: 16px;
     width: 97%;
     margin: 10px auto 0;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+.check_ava_btn:hover{
+    background:none;
+    color: #f9a126;
+    border: 1px solid #f9a126;
 }
 .book_btn {
     background: #f9a126;
