@@ -5894,6 +5894,7 @@ section.about_zigzag_section {
     cursor: pointer;
     font-weight: 500;
     font-size: 14px;
+    text-align: center;
 }
 .check_ava_btn:hover{
     background:none;
