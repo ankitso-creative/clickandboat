@@ -202,7 +202,7 @@
             </div>
             <div class="list-boat-box">
                 @php 
-                    $image = $receiver->getFirstMediaUrl('profile_image');
+                    $image =  $listing->getFirstMediaUrl('cover_images');
                     if(!$image):
                         $image = 'https://static1.clickandboat.com/v1/o/img/mask~dddc60cc1d.png';
                     endif;
