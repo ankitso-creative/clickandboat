@@ -1,6 +1,7 @@
 <?php
     namespace App\Repositories\Front;
 
+    use App\Events\Front\AddFavorite;
     use App\Models\Admin\Blog;
     use App\Models\Admin\BlogComment;
     use Illuminate\Support\Facades\Session;
@@ -19,6 +20,7 @@
                 $item->listing_id =$request->item_id;
                 if($item->save())
                 {
+                    event(new AddFavorite($item));
                     return response()->json([
                         'success' => 'success',
                         'action' => 'save',
