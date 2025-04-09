@@ -188,8 +188,17 @@
                         </div>
                         <div class="col-lg-4">
                             <label>Harbour:<span class="required"> * </span></label>
-                            <input type="text" name="harbour" value="{{ old('harbour', $listing->harbour) }}"
-                                class="form-control" required>
+                            <!-- <input type="text" name="harbour" value="{{ old('harbour', $listing->harbour) }}"
+                                class="form-control" required> -->
+                                <select name="location" class="form-control" placeholder="Search Loaction">
+                                <option value="">All Marinas</option>
+                                <option value="Marina Santa Eulalia">Marina Santa Eulalia</option>
+                                <option value="Puerto Sant Antoni">Puerto Sant Antoni</option>
+                                <option value="Marina Ibiza">Marina Ibiza</option>
+                                <option value="Marina Botafoch">Marina Botafoch</option>
+                                <option value="Ibiza Magna">Ibiza Magna</option>
+                                <option value="Club Nautico">Club Nautico</option>
+                            </select>
                             @error('harbour')<span class="required">{{ $message }}</span>@enderror
                         </div>
                         <div class="clearfix"></div>
@@ -271,25 +280,18 @@
                         </div>
                     </div>
                     <div class="p-0 pt-4 col-sm-12">
-                        <h4 class="bold ">Description</h4>
+                        <h4 class="bold ">Boat Description</h4>
                     </div>
                     <?php 
                     //dd($listing->description[0]->description);
                     ?>
                     <div class="pt-4 row">
                         <div class="col-md-6">
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="8" name="description">{{ optional($listing->description[0] ?? null)->description }}</textarea>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="13" name="description">{{ optional($listing->description[0] ?? null)->description }}</textarea>
                             @error('description')<span class="required">{{ $message }}</span>@enderror
                         </div>
                         <div class="col-md-6">
-                            <p class="des__pera_text">Write about your yacht Number of berths, equipment, safety features. The history of the yacht, your use of this yacht (family outings, regattas).
-                                About your area!
-                                Things to see in your area (best restaurants, places to moor, a pretty cove, a place not
-                                to be missed).Some ideas on things to do with your yacht (tell us about the best places to visit from your yacht's harbour of departure).
-                                About you!
-                                Why did you buy this yacht?
-                                In which harbour is it located?
-                                A short anecdote.
+                            <p class="des__pera_text">Write about your yacht Number of berths, equipment, safety features. The history of the yacht, your use of this yacht (family outings, regattas). About your area! Things to see in your area (best restaurants, places to moor, a pretty cove, a place not to be missed).Some ideas on things to do with your yacht (tell us about the best places to visit from your yacht's harbour of departure). About you! Why did you buy this yacht? In which harbour is it located? A short anecdote." to " Write a description about your boat. For example, number of berths, air conditioning, toilet and shower accessibility, unique features that make your boat stand out, cabin features, safety equipment.
                             </p>
                         </div>
                     </div>

@@ -48,6 +48,8 @@
                                 <a class="dropdown-item" href="{{ route('location') }}">Explore Ibiza</a>
                                 <a class="dropdown-item" href="{{ route('blogs') }}">Our Blog</a>
                                 <a class="dropdown-item" href="#">Book a boat</a>
+                                <a class="dropdown-item" href="{{ route('help') }}">Help</a>
+
                             </div>
                         </li>
                         <li class="nav-item">
