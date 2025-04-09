@@ -767,6 +767,89 @@ label, input, textarea, button, select {
     text-decoration: underline;
     color: #f9a126;
 }
+.message-owner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: #f5f5f5;
+    border: 1px solid #ebebeb;
+}
+.message-owner .message-avatar-box {
+    display: flex;
+    align-items: center;
+    gap:15px;
+}
+.message-owner .message-avatar-box .message-avatar-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid #ebebeb;
+}
+.message-owner .message-avatar-box .message-avatar-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.message-owner .message-avatar-box .message-avatar-title h3 {
+    text-transform: capitalize;
+    margin-bottom: 0px;
+    font-size: 16px;
+}
+.message-owner .message-avatar-link a {
+    color: #37393c;
+    transition: 0.5s;
+}
+.message-owner .message-avatar-link a:hover{
+    text-decoration: underline;
+    color: #f9a126;
+}
+.special-offers-modal .modal-header {
+    border-bottom: 1px solid #ebebeb;
+}
+.rental-box-sec .rental-title {
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+.rental-feilds-box {
+    width: 100%;
+}
+.rental-feilds-box form {
+    width: 100%;
+}
+.charter-sec{
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #ced4da;
+    padding: .375rem .75rem;
+    border-radius: 5px;
+}
+.offered-label {
+    font-size: 12px;
+}
+.total-form-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #ced4da;
+}
+.charter-sec  .charter-title p,
+.charter-sec  .charter-price p {
+    font-weight: 600;
+}
+.special-offers-modal .modal-body {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.special-offers-modal .rental-box-sec .rental-title,
+.special-offers-modal .rental-box-sec .rental-feilds-box {
+    padding: 0px 15px !important;
+}
+.special-offers-modal .offer-separator {
+    border-top: 10px solid rgba(0,0,0,.1);
+}
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
