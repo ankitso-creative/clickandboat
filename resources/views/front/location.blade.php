@@ -35,6 +35,7 @@
             $(document).on('click','.favorite_item', function(){
                 var list = $(this).attr('list');
                 var self =  $(this)
+                self.html('<i class="fa-solid fa-spinner fa-spin custom-spinner"></i>');
                 $.ajax({
                     url: "{{ route('ajax.favorite') }}",  
                     method: 'POST',
