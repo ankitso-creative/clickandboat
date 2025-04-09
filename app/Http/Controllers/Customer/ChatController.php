@@ -48,7 +48,7 @@ class ChatController extends Controller
         $sender = auth()->user();
         $receiver = User::find($receiver_id);
         $replies  = $this->service->fetchMessages($receiver_id);
-        $quotation = Quotation::where('listing_id',$listingId)->first();
+        $quotation = Quotation::where('listing_id',$listingId)->where('user_id',$sender->id)->first();
         return view('customer.message',compact('active','receiver_id','replies','sender','receiver','slug','quotation','listing'));
     }
     public function sendMessage(MessageRequest $request)

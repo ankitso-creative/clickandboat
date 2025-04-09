@@ -5,6 +5,7 @@ namespace App\Http\Controllers\BoatOwner;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BoatOwner\Message\MessageRequest;
 use App\Models\Admin\Listing;
+use App\Models\Admin\Quotation;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Services\BoatOwner\ChatService;
@@ -52,11 +53,13 @@ class ChatController extends Controller
     {
         $active = 'support';
         $slug = $slug;
+        $listing = Listing::where('slug', $slug)->first();
         $receiver_id = $receiver_id;
         $sender = auth()->user();
         $receiver = User::find($receiver_id);
         $replies  = $this->service->fetchMessages($receiver_id);
-        return view('boatowner.message',compact('active','receiver_id','replies','sender','receiver','slug'));
+        $quotation = Quotation::where('listing_id',$listing->id)->where('user_id',$receiver_id)->first();
+        return view('boatowner.message',compact('active','receiver_id','replies','sender','receiver','slug','quotation','listing'));
     }
     public function sendMessage(MessageRequest $request)
     {

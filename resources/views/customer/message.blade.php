@@ -43,7 +43,7 @@ flatpickr("#checkout-date", {
     //         clearInterval(5000); 
     // }); 
     $( document ).ready(function() {
-        $("#messages").animate({ scrollTop: $('#messages').height() }, "fast");
+        $('#messages').animate({ scrollTop: $('#messages div.message').height() }, "fast");
     });
     // $( document ).ready(function() {
     //     var receiver_id = $('form#message_form input[name="receiver_id"]').val();
@@ -113,7 +113,7 @@ flatpickr("#checkout-date", {
                 if(resp.status == "success") 
                 {
                     $('#messages .message').append(resp.html);
-                    $("#messages .message").animate({ scrollTop: $('#messages div').height() }, "fast");
+                    $("#messages").animate({ scrollTop: $('#messages div.message').height() }, "fast");
                     $('#chat').val('');
                 }
             },
@@ -183,17 +183,17 @@ flatpickr("#checkout-date", {
                     @endphp
                 <!--<li class="msg-day"><small>Wednesday</small></li>-->
                 </div> 
+                <form id="message_form">
+                    {{-- <div class="upload-btn">
+                        <a href="javascript:;" onclick="document.getElementById('msgInput').click();"><i class="fa-solid fa-paperclip"></i></a>
+                        <input type="file" class="file_upload" id="msgInput" style="display:none" name="file" value="">
+                    </div> --}}
+                    <input type="hidden" name="receiver_id" value="<?php echo $receiver_id?>">
+                    <input type="hidden" name="slug" value="<?php echo $slug?>">
+                    <input type="text" name="message" placeholder="Type here..." id="chat">
+                    <button class="btn-send" id="message_button"><i class="fa-solid fa-paper-plane"></i></button>
+                </form>
             </div>
-            <form id="message_form">
-                {{-- <div class="upload-btn">
-                    <a href="javascript:;" onclick="document.getElementById('msgInput').click();"><i class="fa-solid fa-paperclip"></i></a>
-                    <input type="file" class="file_upload" id="msgInput" style="display:none" name="file" value="">
-                </div> --}}
-                <input type="hidden" name="receiver_id" value="<?php echo $receiver_id?>">
-                <input type="hidden" name="slug" value="<?php echo $slug?>">
-                <input type="text" name="message" placeholder="Type here..." id="chat">
-                <button class="btn-send" id="message_button"><i class="fa-solid fa-paper-plane"></i></button>
-            </form>
         </div>
 
         <div class="list-boat-sec">
@@ -202,12 +202,19 @@ flatpickr("#checkout-date", {
             </div>
             <div class="list-boat-box">
                 <div class="list-boat-img">
-                    <img src="http://127.0.0.1:8000/app-assets/site_assets/img/image00076.jpg" alt="boat" class="img-fluid">
+                    @php 
+                        $image = $receiver->getFirstMediaUrl('profile_image');
+                        if(!$image):
+                            $image = 'https://static1.clickandboat.com/v1/o/img/mask~dddc60cc1d.png';
+                        endif;
+                        
+                    @endphp
+                    <img src="{{ $image }}" alt="boat" class="img-fluid">
                 </div>
                 <div class="list-boat-text">
-                    <h3>Maxi Dolphin 100ft Finot Conq</h3>
-                    <span>2013</span><i class="fa-solid fa-circle"></i><a href="#">View the listing</a>
-                    <p>Mediterranean Sea</p>
+                    <h3>{{ $listing->boat_name }}</h3>
+                    <span>{{ $listing->construction_year }}</span><i class="fa-solid fa-circle"></i><a href="{{ route('singleboat', ['city' => $listing->city, 'type' => $listing->type, 'slug' => $listing->slug]) }}">View the listing</a>
+                    <p>{{ $listing->city }}</p>
                 </div>
             </div>
             <div class="list-boat-form">
