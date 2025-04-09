@@ -275,6 +275,39 @@
                     }
                 });
             });
+            $(document).on('click','.favorite_item', function(){
+                var list = $(this).attr('list');
+                var self =  $(this)
+                $.ajax({
+                    url: "{{ route('ajax.favorite') }}",  
+                    method: 'POST',
+                    dataType: 'json',
+                    data: {
+                        item_id: list,
+                        _token: '{{ csrf_token() }}'  
+                    },
+                    success: function(response) {
+                        if (response.success) 
+                        {
+                            if(response.action=='save')
+                            {
+                                self.html('<i class="fa-solid fa-heart"></i>');
+                            }
+                            else
+                            {
+                                self.html('<i class="fa-regular fa-heart"></i>');
+                            }
+                        } else
+                        {
+                            
+                        }
+                    },
+                    error: function() 
+                    {
+                        
+                    }
+                });
+            })
         });
     </script>
     <script>
@@ -371,18 +404,23 @@
                                     Share
                                 </a>
                             </li>
-                            <li>
-                                <a href="#">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                        viewBox="0 0 24 24">
-                                        <path fill="none" d="M0 0h24v24H0V0z"></path>
-                                        <path
-                                            d="M19.66 3.99c-2.64-1.8-5.9-.96-7.66 1.1-1.76-2.06-5.02-2.91-7.66-1.1-1.4.96-2.28 2.58-2.34 4.29-.14 3.88 3.3 6.99 8.55 11.76l.1.09c.76.69 1.93.69 2.69-.01l.11-.1c5.25-4.76 8.68-7.87 8.55-11.75-.06-1.7-.94-3.32-2.34-4.28zM12.1 18.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z">
-                                        </path>
-                                    </svg>
-                                    Add to favorites
-                                </a>
-                            </li>
+                            @php
+                                $heart_html = '<li class="wishlist_icon not-login-user"><i class="fa-regular fa-heart"></i></li>';
+                                if(Auth::check()):
+                                    $user = auth()->user();
+                                    if($user->role == 'customer'):
+                                        $isFavorited = $user->favoriteitems()->where('listing_id', $listing->id)->exists();
+                                        if(!$isFavorited):
+                                            $heart_html = '<li class="wishlist_icon"><a href="javascript:;" list="'.$listing->id.'" class="favorite_item"><i class="fa-regular fa-heart"></i></a></li>';
+                                        else:
+                                            $heart_html = '<li class="wishlist_icon"><a href="javascript:;" list="'.$listing->id.'" class="favorite_item"><i class="fa-solid fa-heart"></i></a></li>';
+                                        endif;
+                                    else:
+                                        $heart_html = '';
+                                    endif;
+                                endif;
+                            @endphp    
+                            {!! $heart_html !!}
                         </ul>
                     </div>
                 </div>
