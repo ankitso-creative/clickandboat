@@ -175,7 +175,7 @@ class ChatRepository
         $quotation->service_fee = $price['servive_fee']; 
         $quotation->sub_total = $price['totalAmount'];
         $quotation->total = $price['totalAmount']; 
-        $quotation->status = $request['slug'];
+        $quotation->status = 'Pending';
         if($quotation->save())
         {
             $message = Message::create([

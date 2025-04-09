@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Customer\Message\MessageRequest;
 use App\Http\Requests\Customer\Message\QuotationRequest;
 use App\Models\Admin\Listing;
+use App\Models\Admin\Quotation;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Services\Customer\ChatService;
@@ -41,11 +42,14 @@ class ChatController extends Controller
     public function message($slug)
     {
         $active = 'support';
-        $receiver_id = Listing::where('slug', $slug)->pluck('user_id')->first();
+        $listing = Listing::where('slug', $slug)->first();
+        $receiver_id = $listing->user_id;
+        $listingId = $listing->id;
         $sender = auth()->user();
         $receiver = User::find($receiver_id);
         $replies  = $this->service->fetchMessages($receiver_id);
-        return view('customer.message',compact('active','receiver_id','replies','sender','receiver','slug'));
+        $quotation = Quotation::where('listing_id',$listingId)->first();
+        return view('customer.message',compact('active','receiver_id','replies','sender','receiver','slug','quotation','listing'));
     }
     public function sendMessage(MessageRequest $request)
     {

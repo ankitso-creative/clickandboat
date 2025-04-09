@@ -195,9 +195,10 @@ flatpickr("#checkout-date", {
                 <button class="btn-send" id="message_button"><i class="fa-solid fa-paper-plane"></i></button>
             </form>
         </div>
+
         <div class="list-boat-sec">
             <div class="list-title">
-                <h2>Your request regarding the boat of Audrey</h2>
+                <h2>Your request regarding the boat of {{ $receiver->name }}</h2>
             </div>
             <div class="list-boat-box">
                 <div class="list-boat-img">
@@ -211,28 +212,25 @@ flatpickr("#checkout-date", {
             </div>
             <div class="list-boat-form">
                 <!-- Form for dates -->
-                <form action="{{ route('checkout') }}" method="POST">
+                {{-- <form action="{{ route('checkout') }}" method="POST"> --}}
+                <form  method="POST">
                     @csrf
                     <div class="row sidebar_form">
                         <div class="p-0 col-md-6">
                             <div class="form-group">
-                                <input type="date" id="checkin-date" name="checkin_date"
-                                    class="form-control" placeholder="Check-in" />
+                                <input type="text"  value="{{ $quotation->checkin }}" readonly name="checkin_date" class="form-control" placeholder="Check-in" />
                             </div>
                         </div>
                         <div class="p-0 col-md-6">
                             <div class="form-group">
-                                <input type="date" id="checkout-date" class="form-control"
-                                    name="checkout_date" placeholder="Check-out" />
-                                <input type="hidden" id="days-val" value="" name="days_val" />
+                                <input type="text"  value="{{ $quotation->checkout }}" readonly class="form-control" name="checkout_date" placeholder="Check-out" />
                             </div>
                         </div>
                     </div>
                     <div class="show-Price" id="show-Price-sec">
-                        <p>Hire: <span id="hire">€47,143</span></p>
-                        <p>Service Fee: <span id="service-fee">€45</span></p>
-                        <p>APA (Advanced Provisioning Allowance): <span id="apa-fees">€0</span></p>
-                        <p>Total: <span id="boat-total">€47,188</span></p>
+                        <p>Hire: <span id="hire">{{ $quotation->net_amount }}</span></p>
+                        <p>Service Fee: <span id="service-fee">€{{ $quotation->service_fee }}</span></p>
+                        <p>Total: <span id="boat-total">€{{ $quotation->total }}</span></p>
                     </div>
                     <div class="d-flex flex-column">
                         <button class="btn book_btn">Book</button>

@@ -278,6 +278,7 @@
             $(document).on('click','.favorite_item', function(){
                 var list = $(this).attr('list');
                 var self =  $(this)
+                self.html('<i class="fa-solid fa-spinner fa-spin custom-spinner"></i>');
                 $.ajax({
                     url: "{{ route('ajax.favorite') }}",  
                     method: 'POST',
@@ -740,21 +741,21 @@
                                         @endphp
                                         @if($user->role == 'customer')
                                             <a class="mb-2 check_ava_btn" href="javascript:;" data-toggle="modal" data-target="#sidebar-right" class="btn btn-primary navbar-btn pull-left">
-                                                Request a quotation 
+                                                Book
                                             </a>
                                         @else
                                             <a class="mb-2 check_ava_btn not-login-user" href="javascript:;">
-                                                Request a quotation 
+                                                Book
                                             </a>
                                         @endif
                                     @else
                                         <a class="mb-2 check_ava_btn not-login-user" href="javascript:;">
-                                            Request a quotation 
+                                            Book
                                         </a>
                                     @endif
                                     
-                                    <span class="mt-1 mb-1 text-center d-block font-weight-bold">or</span>
-                                    <button class="btn book_btn">Book</button>
+                                    {{-- <span class="mt-1 mb-1 text-center d-block font-weight-bold">or</span>
+                                    <button class="btn book_btn">Book</button> --}}
                                     <div class="pt-3 text-center form_text">
                                         <p>You will only be charged if the request is accepted</p>
                                         <p>Pay in 3 or 4 installments without fees with</p>
