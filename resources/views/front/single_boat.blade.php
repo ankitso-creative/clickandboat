@@ -405,15 +405,15 @@
                                 </a>
                             </li>
                             @php
-                                $heart_html = '<li class="wishlist_icon not-login-user"><i class="fa-regular fa-heart"></i></li>';
+                                $heart_html = '<li class="wishlist_icon not-login-user"><i class="fa-regular fa-heart"></i> Add to favorites</li>';
                                 if(Auth::check()):
                                     $user = auth()->user();
                                     if($user->role == 'customer'):
                                         $isFavorited = $user->favoriteitems()->where('listing_id', $listing->id)->exists();
                                         if(!$isFavorited):
-                                            $heart_html = '<li class="wishlist_icon"><a href="javascript:;" list="'.$listing->id.'" class="favorite_item"><i class="fa-regular fa-heart"></i></a></li>';
+                                            $heart_html = '<li class="wishlist_icon"><a href="javascript:;" list="'.$listing->id.'" class="favorite_item"><i class="fa-regular fa-heart"></i></a> Add to favorites</li>';
                                         else:
-                                            $heart_html = '<li class="wishlist_icon"><a href="javascript:;" list="'.$listing->id.'" class="favorite_item"><i class="fa-solid fa-heart"></i></a></li>';
+                                            $heart_html = '<li class="wishlist_icon"><a href="javascript:;" list="'.$listing->id.'" class="favorite_item"><i class="fa-solid fa-heart"></i></a> Add to favorites</li>';
                                         endif;
                                     else:
                                         $heart_html = '';
