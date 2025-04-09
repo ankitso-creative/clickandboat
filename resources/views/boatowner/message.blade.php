@@ -239,7 +239,9 @@
                         <p>Total: <span id="boat-total">€{{ $quotation->total }}</span></p>
                     </div>
                     <div class="d-flex flex-column">
-                        <button class="btn book_btn">Book</button>
+                        <a class="btn book_pre_accept" href="#">Pre-accept the request</a>
+                        <a class="btn book_personal" href="#">Create a personalised offer</a>
+                        <a class="btn book_refuse" href="#">Refuse the request</a>
                     </div>
                 </form>
             </div>
