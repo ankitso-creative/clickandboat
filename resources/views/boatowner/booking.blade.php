@@ -2,6 +2,23 @@
 @section('meta')
 <title>Dashboard - {{ config('app.name') }}</title>
 @endsection
+<style>
+.table thead th {
+    white-space: nowrap;
+    font-weight: 600;
+    font-size: 17px;
+    background: #323131;
+    color: #fff;
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+.table tbody tr td {
+    white-space: nowrap;
+    vertical-align: middle;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+ </style>
 @section('css')
 @endsection
 @section('js')
