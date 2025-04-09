@@ -5,7 +5,11 @@
 @endsection
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
 @section('css')
-
+<style>
+    .main-dashboard {
+        padding: 0px 20px 0px 2px !important;
+    }
+</style>
 @endsection
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 @section('js')
@@ -128,6 +132,16 @@ flatpickr("#checkout-date", {
 @section('content')
     <div class="col-lg-9 main-dashboard">
         <div class="message mCustomScrollbar" data-mcs-theme="minimal-dark">
+            <div class="message-owner">
+                <div class="message-avatar-box">
+                    <div class="message-avatar-img">
+                        <img src="<?php echo $sender->getFirstMediaUrl('profile_image')?>" alt="user">
+                    </div>
+                    <div class="message-avatar-title">
+                        <h3><?php echo $sender->name?></h3>
+                    </div>
+                </div>
+            </div>
             <div class="message-box" id="messages">
                 <div class="message">
                     @php

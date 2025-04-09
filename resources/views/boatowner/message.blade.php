@@ -4,6 +4,11 @@
     <title>Dashboard - {{ config('app.name') }}</title>
 @endsection
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+<style>
+.main-dashboard {
+    padding: 0px 20px 0px 2px !important;
+}
+</style>
 @section('css')
 
 @endsection
@@ -128,7 +133,21 @@
 @section('content')
     <div class="col-lg-9 main-dashboard">
         <div class="message mCustomScrollbar" data-mcs-theme="minimal-dark">
+            <div class="message-owner">
+                <div class="message-avatar-box">
+                    <div class="message-avatar-img">
+                        <img src="<?php echo $sender->getFirstMediaUrl('profile_image')?>" alt="user">
+                    </div>
+                    <div class="message-avatar-title">
+                        <h3><?php echo $sender->name?></h3>
+                    </div>
+                </div>
+                {{-- <div class="message-avatar-link">
+                    <a href="#">View Profile</a>
+                </div> --}}
+            </div>
             <div class="message-box" id="messages">
+                
                 <div class="message">
                     @php
                     if($replies): 
@@ -240,7 +259,7 @@
                     </div>
                     <div class="d-flex flex-column">
                         <a class="btn book_pre_accept" href="#">Pre-accept the request</a>
-                        <a class="btn book_personal" href="#">Create a personalised offer</a>
+                        <a class="btn book_personal" href="javascript:;" data-toggle="modal" data-target="#sidebar-right">Create a personalised offer</a>
                         <a class="btn book_refuse" href="#">Refuse the request</a>
                     </div>
                 </form>
@@ -248,4 +267,92 @@
         </div>
         
     </div>
+
+
+  <!-- Sidebar Right -->
+  <div class="modal fade right special-offers-modal" id="sidebar-right" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Special Offers</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="rental-box-sec">
+                        <div class="rental-title">
+                            <h5>Rental</h5>
+                        </div>
+                        <div class="rental-feilds-box">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="dates">Dates</label>
+                                        <input type="text" class="form-control" name="dates" id="dates" placeholder="" readonly />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 pl-0">
+                                    <div class="form-group">
+                                        <label for="check-in">Check-in time</label>
+                                        <input type="text" class="form-control" name="check-in" id="check-in" placeholder="" readonly />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 pr-0">
+                                    <div class="form-group">
+                                        <label for="check-out">Check-out time</label>
+                                        <input type="text" class="form-control" name="check-out" id="check-out" placeholder="" readonly />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="offer-separator">
+                        <div class="rental-title">
+                            <h5>Prices</h5>
+                        </div>
+                        <div class="rental-feilds-box">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <div class="charter-sec">
+                                            <div class="charter-title"><p>Charter</p></div>
+                                            <div class="charter-price"><p>€200</p></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="check-in" class="offered-label">Offered extras</label>
+                                        <div class="charter-sec">
+                                            <div class="charter-title"><p>Skipper</p></div>
+                                            <div class="charter-price"><p>€200</p></div>
+                                        </div>
+                                    </div>
+                                </div> --}}
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="check-in">Special Offers</label>
+                                        <select class="form-control" name="special-offers" id="special-offers">
+                                            <option value="0">Select</option>
+                                            <option value="1">Special Offer 1</option>
+                                            <option value="2">Special Offer 2</option>
+                                            <option value="3">Special Offer 3</option>
+                                            <option value="4">Special Offer 4</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="total-form-group">
+                                        <div class="total-title"><h6>Total Price</h6></div>
+                                        <div class="total-amount"><p>€200</p></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
