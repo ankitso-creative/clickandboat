@@ -16,20 +16,20 @@
 @section('js')
 <script>
     $(document).ready(function() {
-    var disable = [];
-    flatpickr("#checkin-date", {
-        inline: false,
-        dateFormat: "d-m-Y",
-        minDate: "today",
-        disable: disable,
-    });
-    flatpickr("#checkout-date", {
-        inline: false,
-        dateFormat: "d-m-Y",
-        minDate: "today",
-        disable: disable,
-    });
-})
+        var disable = [];
+        flatpickr("#checkin-date", {
+            inline: false,
+            dateFormat: "d-m-Y",
+            minDate: "today",
+            disable: disable,
+        });
+        flatpickr("#checkout-date", {
+            inline: false,
+            dateFormat: "d-m-Y",
+            minDate: "today",
+            disable: disable,
+        });
+    })
     // $(document).ready(function(){
     //     var receiver_id = $('form#message_form input[name="receiver_id"]').val();
     //     var data = "receiver_id="+receiver_id;
@@ -126,7 +126,41 @@
             }
         });
     });
-
+    $(document).on('submit','#spcial-offer-form', function(e) {
+        e.preventDefault();
+        var csrfToken = $('meta[name="csrf-token"]').attr('content');
+        $.ajax({
+            url: "{{ route('boatowner.support.spcial-offer-edit') }}",
+            type: "POST",
+            data: new FormData(this),
+            contentType: false,
+            cache: false,
+            processData: false,
+            headers: {
+                'X-CSRF-TOKEN': csrfToken 
+            },
+            success: function(response) {
+                var resp = response;
+                if(resp.status == "success") 
+                {
+                    $('#messages div.message').append(resp.html);
+                    $("#messages").animate({ scrollTop: $('#messages div.message').height() }, "fast");
+                    $('#chat').val('');
+                    $('#sidebar-right').modal('hide');
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error("Error: " + status + " - " + error);
+            }
+        });
+    });
+    $(document).on('change','#special-offers',function(){
+        var val = $(this).val();
+        var price = $('#price-get').attr('pdata');
+        var discountprice = (price*val)/100;
+        var priceafterdiscount = price - discountprice;
+        $('.price-after').html(priceafterdiscount);
+    })
 </script>
 @endsection
 
@@ -253,9 +287,9 @@
                         </div>
                     </div>
                     <div class="show-Price" id="show-Price-sec">
-                        <p>Hire: <span id="hire">{{ $quotation->net_amount }}</span></p>
+                        <p>Hire: <span id="hire" class="price-after">{{ $quotation->net_amount }}</span></p>
                         <p>Service Fee: <span id="service-fee">€{{ $quotation->service_fee }}</span></p>
-                        <p>Total: <span id="boat-total">€{{ $quotation->total }}</span></p>
+                        <p>Total: <span id="boat-total" class="price-after">€{{ $quotation->total }}</span></p>
                     </div>
                     <div class="d-flex flex-column">
                         <a class="btn book_pre_accept" href="#">Pre-accept the request</a>
@@ -279,29 +313,25 @@
                 <h4 class="modal-title">Special Offers</h4>
             </div>
             <div class="modal-body">
-                <form>
+                <form id="spcial-offer-form">
                     <div class="rental-box-sec">
                         <div class="rental-title">
                             <h5>Rental</h5>
                         </div>
                         <div class="rental-feilds-box">
                             <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="dates">Dates</label>
-                                        <input type="text" class="form-control" name="dates" id="dates" placeholder="" readonly />
-                                    </div>
-                                </div>
                                 <div class="col-md-6 pl-0">
                                     <div class="form-group">
-                                        <label for="check-in">Check-in time</label>
-                                        <input type="text" class="form-control" name="check-in" id="check-in" placeholder="" readonly />
+                                        <label for="check-in">Check-in Date</label>
+                                        <input type="text" class="form-control" value="{{ $quotation->checkin }}" name="check-in" id="check-in" placeholder="" readonly />
                                     </div>
                                 </div>
                                 <div class="col-md-6 pr-0">
                                     <div class="form-group">
-                                        <label for="check-out">Check-out time</label>
-                                        <input type="text" class="form-control" name="check-out" id="check-out" placeholder="" readonly />
+                                        <label for="check-out">Check-out Date</label>
+                                        <input type="text" class="form-control" value="{{ $quotation->checkout }}" name="check-out" id="check-out" placeholder="" readonly />
+                                        <input type="hidden" value="{{ $quotation->id }}" name="quotation">
+                                        <input type="hidden" value="{{ $listing->slug }}" name="locationslug">
                                     </div>
                                 </div>
                             </div>
@@ -316,7 +346,7 @@
                                     <div class="form-group">
                                         <div class="charter-sec">
                                             <div class="charter-title"><p>Charter</p></div>
-                                            <div class="charter-price"><p>€200</p></div>
+                                            <div class="charter-price price-after"><p>{{ $quotation->total }}</p></div>
                                         </div>
                                     </div>
                                 </div>
@@ -331,21 +361,22 @@
                                 </div> --}}
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="check-in">Special Offers</label>
-                                        <select class="form-control" name="special-offers" id="special-offers">
-                                            <option value="0">Select</option>
-                                            <option value="1">Special Offer 1</option>
-                                            <option value="2">Special Offer 2</option>
-                                            <option value="3">Special Offer 3</option>
-                                            <option value="4">Special Offer 4</option>
+                                        <label for="check-in">Discount</label>
+                                        <select class="form-control" name="discount" id="special-offers">
+                                            @for($d=0; $d <= 20; $d++)
+                                                <option value="{{ $d }}">{{ $d }}%</option>
+                                            @endfor
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="total-form-group">
                                         <div class="total-title"><h6>Total Price</h6></div>
-                                        <div class="total-amount"><p>€200</p></div>
+                                        <div class="total-amount price-after" id="price-get" pdata="{{ $quotation->total }}" ><p>€{{ $quotation->total }}</p></div>
                                     </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <button class="confirm-btn btn">Send Spcial Offer</button>
                                 </div>
                             </div>
                         </div>

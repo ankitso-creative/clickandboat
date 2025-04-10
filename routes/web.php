@@ -111,6 +111,7 @@ Route::middleware('Setlang')->group(function(){
         Route::get('/support/messages/{receiver_id}/{slug}', [BoatOwnerChatController::class, 'message'])->name('message');
         Route::post('/support/send-message', [BoatOwnerChatController::class, 'sendMessage'])->name('support.send-message');
         Route::post('/support/see-all-message', [BoatOwnerChatController::class, 'seeAllMessage'])->name('support.see-all-message');
+        Route::post('/support/spcial-offer', [BoatOwnerChatController::class, 'spcialOfferSend'])->name('support.spcial-offer-edit');
     });
     Route::prefix('customer')->name('customer.')->middleware(['auth:sanctum', 'verified', 'onlyCustomer'])->group(function () {
         Route::get('dashboard', [CustomerDashboardController::class, 'index'])->name('dashboard');
@@ -128,6 +129,7 @@ Route::middleware('Setlang')->group(function(){
         Route::get('/support/message/{slug}', [ChatController::class, 'message'])->name('message');
         Route::post('/support/send-message', [ChatController::class, 'sendMessage'])->name('support.send-message');
         Route::post('/support/see-all-message', [ChatController::class, 'seeAllMessage'])->name('support.see-all-message');
+        
     });
 
     Route::get('/login', function(){

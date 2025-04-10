@@ -23,4 +23,8 @@ class ChatService {
     {
         return $this->repository->usersWithLastMessage();
     }
+    public function spcialOfferSend($request)
+    {
+        return $this->repository->spcialOfferSend($request);
+    }
 }
