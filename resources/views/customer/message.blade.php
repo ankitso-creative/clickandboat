@@ -15,21 +15,21 @@
 @section('js')
 <script>
 
-$(document).ready(function() {
-var disable = [];
-flatpickr("#checkin-date", {
-    inline: false,
-    dateFormat: "d-m-Y",
-    minDate: "today",
-    disable: disable,
-});
-flatpickr("#checkout-date", {
-    inline: false,
-    dateFormat: "d-m-Y",
-    minDate: "today",
-    disable: disable,
-});
-})
+    $(document).ready(function() {
+        var disable = [];
+        flatpickr("#checkin-date", {
+            inline: false,
+            dateFormat: "d-m-Y",
+            minDate: "today",
+            disable: disable,
+        });
+        flatpickr("#checkout-date", {
+            inline: false,
+            dateFormat: "d-m-Y",
+            minDate: "today",
+            disable: disable,
+        });
+    })
     // $(document).ready(function(){
     //     var receiver_id = $('form#message_form input[name="receiver_id"]').val();
     //     var data = "receiver_id="+receiver_id;
@@ -245,6 +245,7 @@ flatpickr("#checkout-date", {
                         <div class="p-0 col-md-6">
                             <div class="form-group">
                                 <input type="text"  value="{{ $quotation->checkout }}" readonly class="form-control" name="checkout_date" placeholder="Check-out" />
+                                <input type="hidden" name="quotation" value="{{ $quotationID }}">
                             </div>
                         </div>
                     </div>
@@ -254,7 +255,11 @@ flatpickr("#checkout-date", {
                         <p>Total: <span id="boat-total">€{{ $quotation->total }}</span></p>
                     </div>
                     <div class="d-flex flex-column">
-                        <button class="btn book_btn">Book</button>
+                        @if($quotation->status=='Accept')
+                            <button class="btn book_btn">Confirm And Pay</button>
+                        @else
+                            <button class="btn book_btn">Book</button>
+                        @endif
                     </div>
                 </form>
             </div>

@@ -74,5 +74,9 @@ class ChatController extends Controller
     {
         return $this->service->fetchMessages($receiver_id);
     }
-    
+    public function spcialOfferSend(Request $request)
+    {
+        $request = $request->all();
+        return $this->service->spcialOfferSend($request);
+    }
 }

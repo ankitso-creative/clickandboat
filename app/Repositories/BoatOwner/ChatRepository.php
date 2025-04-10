@@ -3,6 +3,7 @@ namespace App\Repositories\BoatOwner;
 
 use App\Events\Auth\ChatMessageSent;
 use App\Models\Admin\Listing;
+use App\Models\Admin\Quotation;
 use App\Models\Message;
 use App\Models\User;
 
@@ -155,5 +156,55 @@ class ChatRepository
             ];
         });
         return $usersWithLastMessage;
+    }
+    public function spcialOfferSend($request)
+    {
+        $userData = auth()->user();
+        $request['checkindate'] = $request['check-in'];
+        $request['checkoutdate'] = $request['check-out'];
+        $listingId = Listing::where('slug', $request['locationslug'])->pluck('id')->first();
+        $request['id'] = $listingId;
+        //$price = bookingPrice($request);
+        $quotation = Quotation::where('id', $request['quotation'])->first();
+        $quotationNetAmount = $quotation['net_amount'];
+        $discountPrice = $quotationNetAmount * $request['discount'] / 100;
+        $PriceAfterDiscount = $quotationNetAmount - $discountPrice;
+        $quotationServiceFee = $quotation['service_fee'];
+        $quotation->net_amount = $PriceAfterDiscount;
+        $quotation->sub_total = $PriceAfterDiscount + $quotationServiceFee;
+        $quotation->total = $PriceAfterDiscount + $quotationServiceFee;
+        $quotation->status = 'Accept';
+        if($quotation->update()):
+            $message = Message::create([
+                'sender_id' => $userData->id,
+                'receiver_id' => $quotation->user_id,
+                'listing_id' => $listingId,
+                'message' => 'Please check your offer and click on confirm button.',
+            ]);
+            if(empty($userData->getFirstMediaUrl('profile_image'))):
+                $userImage =  'https://static1.clickandboat.com/v1/o/img/mask~dddc60cc1d.png';
+            else:
+                $userImage = $userData->getFirstMediaUrl('profile_image');
+            endif;
+            $html = '<div class="msg-right">
+                <div class="msg-right-sub">
+                    <div class="msg-avatar"><img src="'.$userImage.'"></div>
+                    <div class="msg-content">
+                        <div class="msg-desc">
+                            Please check your offer and click on confirm button.
+                        </div>
+                        <small class="msg-time">10 Second Ago</small>
+                    </div>
+                </div>
+            </div>';
+            return response()->json([
+                'html' => $html,
+                'status' => 'success',
+            ]);
+        else:
+            return response()->json([
+                'status' => 'error',
+            ]);
+        endif;
     }
 }
