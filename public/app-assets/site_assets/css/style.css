@@ -6209,11 +6209,15 @@ section.about_zigzag_section {
     background: none;
     padding: 0px;
     border-radius: 15px;
-    border: 1px solid #acacac !important;
+    /* border-bottom: 1px solid #acacac !important; */
+}
+.single_boat_faq .card .collapse.show {
+    display: block;
+    border-top: 1px solid #acacac;
 }
 .single_boat_faq .card {
     box-shadow: none;
-    border: 1px solid #ebebeb!important;
+    border: 1px solid #acacac !important;
     margin-bottom: 15px;
     border-radius: 15px;
     background: #e4e4e4;
