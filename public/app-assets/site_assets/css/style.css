@@ -394,6 +394,7 @@ label, input, textarea, button, select {
 .owner-detail-box .owner-title p {
     font-weight: 600;
     font-size: 18px;
+    text-transform: capitalize;
 }
 .owner-avatar {
     width: 40px;
@@ -495,6 +496,97 @@ label, input, textarea, button, select {
 .right.location-modals .modal-title i{
     margin-right: 10px;
 }
+/*--------------------------------------------------------------
+# Social Share Modal CSS Start
+ --------------------------------------------------------------*/
+.share-modal .modal-dialog {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) !important;
+    width: 100% !IMPORTANT;
+    margin: 0px auto !important;
+    border-radius: 20px;
+    overflow: hidden;
+}
+.share-modal .modal-title {
+    padding: 0px 15px 10px 15px;
+}
+.share-modal ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.share-modal ul li{
+    border-bottom: .0625rem solid #efeeee;
+}
+.share-modal ul li a {
+    display: flex;
+    padding: 10px 10px;
+    color: #000;
+    gap: 10px;
+    font-family: 'Montserrat' !important;
+    transition: 0.5s;
+}
+.share-modal ul li:last-child {
+    border-bottom: none !important;
+}
+.share-modal ul li a:hover{
+    color: #f9a126;
+}
+/*--------------------------------------------------------------
+# Social Share Modal End CSS
+ --------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# Equipment Modal Start CSS
+ --------------------------------------------------------------*/
+ .equipment-modal .modal-dialog {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) !important;
+    margin: 0px auto !important;
+    width: 100%;
+    max-width: 700px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+.equipment-modal .modal-dialog .modal-content .modal-body {
+    height: 500px;
+    overflow-y: auto;
+}
+.equipment-title-sec {
+    margin-bottom: 30px;
+    border-bottom: 1px solid #efeeee;
+    padding-bottom: 15px;
+}
+.equipment-content-sec h2 {
+    font-size: 1.5rem !important;
+    margin-bottom: 30px;
+}
+.equipment-services-sec h6 {
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+.equipment-services-sec ul {
+    list-style: none;
+    margin-bottom: 20px;
+}
+.equipment-services-sec li {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+.equipment-services-sec li  svg {
+    width: 30px;
+}
+/*--------------------------------------------------------------
+# Equipment Modal End CSS
+ --------------------------------------------------------------*/
 /*--------------------------------------------------------------
 # Message box css
 --------------------------------------------------------------*/
