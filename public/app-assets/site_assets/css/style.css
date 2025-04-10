@@ -394,6 +394,7 @@ label, input, textarea, button, select {
 .owner-detail-box .owner-title p {
     font-weight: 600;
     font-size: 18px;
+    text-transform: capitalize;
 }
 .owner-avatar {
     width: 40px;
@@ -494,6 +495,43 @@ label, input, textarea, button, select {
 }
 .right.location-modals .modal-title i{
     margin-right: 10px;
+}
+/*--------------------------------------------------------------
+# Social Share Modal css
+--------------------------------------------------------------*/
+.share-modal .modal-dialog {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) !important;
+    width: 100% !IMPORTANT;
+    margin: 0px auto !important;
+}
+.share-modal .modal-title {
+    padding: 0px 15px 10px 15px;
+}
+.share-modal ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.share-modal ul li{
+    border-bottom: .0625rem solid #efeeee;
+}
+.share-modal ul li a {
+    display: flex;
+    padding: 10px 10px;
+    color: #000;
+    gap: 10px;
+    font-family: 'Montserrat' !important;
+    transition: 0.5s;
+}
+.share-modal ul li:last-child {
+    border-bottom: none !important;
+}
+.share-modal ul li a:hover{
+    color: #f9a126;
 }
 /*--------------------------------------------------------------
 # Message box css
