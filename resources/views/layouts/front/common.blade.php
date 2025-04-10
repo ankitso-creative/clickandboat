@@ -37,7 +37,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav">
-                        <li class="nav-item dropdown">
+                        <!-- <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle about_menu" href="{{ route('about-us') }}"
                                 id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
@@ -51,7 +51,17 @@
                                 <a class="dropdown-item" href="{{ route('help') }}">Help</a>
 
                             </div>
-                        </li>
+                        </li> -->
+                        <div class="dropdown my_account_btn about_btn">
+                                <button class="dropbtn">About Us <i class="fa-solid fa-caret-down"></i></button>
+                                <div class="dropdown-content">
+                                <a class="dropdown-item" href="{{ route('about-us') }}">About Us</a>
+                                <a class="dropdown-item" href="{{ route('location') }}">Explore Ibiza</a>
+                                <a class="dropdown-item" href="{{ route('blogs') }}">Our Blog</a>
+                                <a class="dropdown-item" href="#">Book a boat</a>
+                                <a class="dropdown-item" href="{{ route('help') }}">Help</a>
+                                </div>
+                            </div>
                         <li class="nav-item">
                             <select class="select-language" id="language">
                                 {!! selectOption('languages','name','code',session()->get('lang'),array('status' , '1'))
@@ -78,9 +88,16 @@
                         </li>
                         @endif
                         @if(Auth::check())
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link" href="{{ route('logout') }}">Logout </a>
-                        </li>
+                        </li> -->
+                            <div class="dropdown my_account_btn">
+                                <button class="dropbtn">My account<i class="fa-solid fa-caret-down"></i></button>
+                                <div class="dropdown-content">
+                                <a class="dropdown-item" href="#">Dashboard</a>
+                                <a class="dropdown-item" href="{{ route('logout') }}">Logout </a>
+                                </div>
+                            </div>
                         @endif
                     </ul>
                 </div>
@@ -139,8 +156,21 @@
                 </li>
                 @if(Auth::check())
 
-                <li class="nav-item mobile_menu_list">
+                <!-- <li class="nav-item mobile_menu_list">
                     <a class="nav-link" href="{{ route('logout') }}">Logout </a>
+                </li> -->
+                <li>
+                    <input type="checkbox" id="sub-two" class="submenu-toggle">
+                    <label class="submenu-label" for="sub-two">My Account</label>
+                    <div class="arrow right">&#8250;</div>
+                    <ul class="menu-sub">
+                        <li class="menu-sub-title">
+                            <label class="submenu-label" for="sub-two">Back</label>
+                            <div class="arrow left">&#8249;</div>
+                        </li>
+                        <li><a href="#">Dashboard</a></li>
+                        <li><a href="{{ route('logout') }}">Logout</a></li>
+                    </ul>
                 </li>
                 @endif
             </ul>
