@@ -296,6 +296,19 @@
                         </div>
                     </div>
                     <div class="p-0 pt-4 col-sm-12">
+                        <h4 class="bold ">Whats Included</h4>
+                    </div>
+                    <div class="pt-4 row">
+                        <div class="col-md-6">
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="8" name="description">{{ optional($listing->description[0] ?? null)->description }}</textarea>
+                            @error('description')<span class="required">{{ $message }}</span>@enderror
+                        </div>
+                        <div class="col-md-6">
+                            <p class="des__pera_text">Write about what is included in your trip. For Example, your destinations, what is included in your price (captain, fuel, drinks, food, water sports), please state prices for anything that is not included in your price, late check out fee, sunset fee, paddle boards, snorkelling equipment, towels, start and end times.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-0 pt-4 col-sm-12">
                         <h4 class="bold ">Technical</h4>
                     </div>
                     <div class="row">
@@ -521,7 +534,7 @@
                             <input type="text" name="season_price[1][to]" value="{{ optional($listing->seasonPrice[0] ?? null)->to ?? '' }}" class="month-picker form-control">
                         </div>
                         <div class="col-sm-4">
-                            <label>Price:<span class="required"> * </span></label>
+                            <label>Full day price:<span class="required"> * </span></label>
                             <input type="text" name="season_price[1][price]" value="{{ optional($listing->seasonPrice[0] ?? null)->price ?? '' }}" class="form-control">
                             <input type="hidden" name="season_price[1][name]" value="low_season">
                         </div>
@@ -577,7 +590,7 @@
                             <input type="text" name="season_price[2][to]" value="{{ optional($listing->seasonPrice[1] ?? null)->to ?? '' }}" class="month-picker form-control">
                         </div>
                         <div class="col-sm-4">
-                            <label>Price:<span class="required"> *</span></label>
+                            <label>Full day price:<span class="required"> *</span></label>
                             <input type="text" name="season_price[2][price]" value="{{ optional($listing->seasonPrice[1] ?? null)->price ?? '' }}" class="form-control">
                             <input type="hidden" name="season_price[2][name]" value="mid_season">
                         </div>
@@ -633,7 +646,7 @@
                             <input type="text" name="season_price[3][to]" value="{{ optional($listing->seasonPrice[2] ?? null)->to ?? '' }}" class="month-picker form-control">
                         </div>
                         <div class="col-sm-4">
-                            <label>Price:<span class="required"> *</span></label>
+                            <label>Full day price:<span class="required"> *</span></label>
                             <input type="text" name="season_price[3][price]" value="{{ optional($listing->seasonPrice[2] ?? null)->price ?? '' }}" class="form-control">
                             <input type="hidden" name="season_price[3][name]" value="high_season">
                         </div>
