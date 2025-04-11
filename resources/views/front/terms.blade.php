@@ -16,7 +16,7 @@
             <h1 class="b-title-page">Terms & Conditions</h1>
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="home.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Terms & Conditions</li>
               </ol>
             </nav>

@@ -588,6 +588,30 @@ label, input, textarea, button, select {
 # Equipment Modal End CSS
  --------------------------------------------------------------*/
 /*--------------------------------------------------------------
+# Services Modal Start CSS
+ --------------------------------------------------------------*/
+ .services-modal .modal-dialog {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) !important;
+    border-radius: 20px;
+    overflow: hidden;
+    width: 100%;
+    margin: 0px !important;
+}
+.services-modal .crew-info {
+    display: flex;
+    flex-direction: column;
+}
+.services-modal .crew-info span:last-child {
+    font-size: 12px;
+    color: #737373;
+}
+/*--------------------------------------------------------------
+# Services Modal End CSS
+ --------------------------------------------------------------*/
+/*--------------------------------------------------------------
 # Message box css
 --------------------------------------------------------------*/
 .message-box {
@@ -6056,6 +6080,11 @@ section.about_zigzag_section {
     display: inline-block;
     margin-top: 40px;
     padding-bottom: 20px;
+    transition: 0.5s;
+}
+.delete_dates:hover {
+    color: #f9a126;
+    text-decoration: underline;
 }
 .ideas-sec {
     display: flex;
@@ -6209,11 +6238,18 @@ section.about_zigzag_section {
     background: none;
     padding: 0px;
     border-radius: 15px;
-    border: 1px solid #acacac !important;
+    /* border-bottom: 1px solid #acacac !important; */
+}
+.single_boat_faq .card-header h2 .btn:hover {
+    text-decoration: none !important;
+}
+.single_boat_faq .card .collapse.show {
+    display: block;
+    border-top: 1px solid #acacac;
 }
 .single_boat_faq .card {
     box-shadow: none;
-    border: 1px solid #ebebeb!important;
+    border: 1px solid #acacac !important;
     margin-bottom: 15px;
     border-radius: 15px;
     background: #e4e4e4;

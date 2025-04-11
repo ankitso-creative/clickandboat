@@ -33,9 +33,9 @@
                     <h2>Edvard gill</h2>
                     <p>Ceo, founder</p>
                     <ul class="team_social_media">
-                        <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
-                        <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
-                        <li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -45,9 +45,9 @@
                     <h2>Edvard gill</h2>
                     <p>Ceo, founder</p>
                     <ul class="team_social_media">
-                        <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
-                        <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
-                        <li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -57,9 +57,9 @@
                     <h2>Edvard gill</h2>
                     <p>Ceo, founder</p>
                     <ul class="team_social_media">
-                        <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
-                        <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
-                        <li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a></li>
                     </ul>
                 </div>
             </div>
