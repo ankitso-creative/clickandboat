@@ -181,7 +181,7 @@
 										<input type="radio" checked="" value="Without skipper" class="form-check-input" name="optradio" id="myRadio8">
 										<label for="myRadio8">
 											<span class="title-label">Pay the total amount</span>
-											<span class="title-text">€{{ $price['price'] }}</span>
+											<span class="title-text">€{{ $quotation['total'] }}</span>
 											<p>Pay the total amount of the booking today.</p>
 										</label>
 										</div>
@@ -208,9 +208,9 @@
 												<input type="radio" id="cardPayment" name="paymentMethod" class="custom-control-input" data-toggle="collapse" data-target="#cardDetails" checked>
 												<label class="custom-control-label" for="cardPayment"><svg class="p-Icon p-Icon--card Icon p-Icon--md TabIcon p-PaymentAccordionButtonIcon TabIcon--selected" role="presentation" fill="var(--colorIcon)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" clip-rule="evenodd" d="M0 4a2 2 0 012-2h12a2 2 0 012 2H0zm0 2v6a2 2 0 002 2h12a2 2 0 002-2V6H0zm3 5a1 1 0 011-1h1a1 1 0 110 2H4a1 1 0 01-1-1z"></path></svg> Card</label>
 											</div>
-											<input type="hidden" id="from" value="{{ $dateData['checkin_date'] }}" >
-											<input type="hidden" id="to" value="{{ $dateData['checkout_date'] }}" >
-											<input type="hidden" id="listingID" value="{{ $listingID }}" >
+											<input type="hidden" id="from" value="{{ $quotation['checkin'] }}" >
+											<input type="hidden" id="to" value="{{ $quotation['checkout'] }}" >
+											<input type="hidden" id="listingID" value="{{ $listing->id }}" >
 
 											<div id="card-element"></div>
 										</div>
@@ -268,7 +268,7 @@
 								<div class="checkout-btn-sec">
 									<p>By selecting the button below, you unconditionally agree to the <a href="#">Terms & Conditions</a>, <a href="#">Cancellation conditions</a>, <a href="#">Insurance conditions</a>. You also agree to pay the total amount of the reservation.</p>
 									<div id="card-errors"></div>
-									<button class="btn btn-primary btn-checkout" id="submit-button">Booking request · <span>€{{ $price['price'] }}</span></button>
+									<button class="btn btn-primary btn-checkout" id="submit-button">Booking request · <span>€{{ $quotation['total'] }}</span></button>
 								</div>
 							</div>
 						</div>
@@ -290,8 +290,8 @@
 								<i class="fas fa-calendar-week"></i>
 							</div>
 							<div class="date-text">
-								<p> From {{ date('F d, Y', strtotime($dateData['checkin_date'])) }} - <span>9:00 AM</span></p>
-								<p>To {{ date('F d, Y', strtotime($dateData['checkout_date'])) }} - <span>6:00 PM</span></p>
+								<p> From {{ date('F d, Y', strtotime($quotation->checkin)) }} - <span>9:00 AM</span></p>
+								<p>To {{ date('F d, Y', strtotime( $quotation->checkout)) }} - <span>6:00 PM</span></p>
 							</div>
 						</div>
 					</div>
@@ -299,7 +299,7 @@
 						<h5>Price details</h5>
 						<div class="price-tables">
 							<div class="price-heading">Charter price</div>
-							<div class="price-amount">€{{ $price['price'] }}</div>
+							<div class="price-amount">€{{ $quotation['total'] }}</div>
 						</div>
 						{{-- <div class="promotional-sec">
 							<a href="#">Add a promotional code</a>
@@ -329,7 +329,7 @@
 											<div>To pay at the harbour</div>
 											<small class="text-muted">Due on February 1, 2025</small>
 										</div>
-										<div class="payment-amount">€{{ $price['price'] }}</div>
+										<div class="payment-amount">€{{ $quotation['price'] }}</div>
 									</div>
 								</div>
 							</div>
