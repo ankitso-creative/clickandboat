@@ -50,7 +50,11 @@ class ChatController extends Controller
         $receiver = User::find($receiver_id);
         $replies  = $this->service->fetchMessages($receiver_id);
         $quotation = Quotation::where('listing_id',$listingId)->where('user_id',$sender->id)->first();
-        $quotationID = Crypt::encrypt($quotation->id);
+        $quotationID = '';
+        if($quotation)
+        {
+            $quotationID = Crypt::encrypt($quotation->id);
+        }
         return view('customer.message',compact('active','receiver_id','replies','sender','receiver','slug','quotation','listing','quotationID'));
     }
     public function sendMessage(MessageRequest $request)

@@ -382,6 +382,24 @@ $(document).ready(function() {
     });
 });
 $(document).ready(function() {
+	$(document).on('change','#currency_name',function(){
+		var code = $(this).val();
+		var baseUrl = $('#baseUrl').val();
+		$.ajax({
+			url: baseUrl+'/ajax/changecurrency',
+			type: 'GET',
+			dataType: 'json',
+			data: {
+				code: code,
+			},
+			success: function(response) {
+				window.location.reload();
+			},
+			error: function(xhr, status, error) {
+				
+			}
+		});
+	})
 	$(document).on('click','#boat-register', function() {
 		var baseUrl = $('#baseUrl').val();
 		$.ajax({

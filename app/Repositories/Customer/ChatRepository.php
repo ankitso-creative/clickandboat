@@ -40,7 +40,7 @@ class ChatRepository
                             <div class="msg-desc">
                                 '.$message->message.'
                             </div>
-                            <small class="msg-time">10 Second Ago</small>
+                            <small class="msg-time">'.Timeago($message['created_at']).'</small>
                         </div>
                     </div>
                 </div>';
@@ -104,15 +104,17 @@ class ChatRepository
                     // }
                 }
             
-                $html .= '<li class="'.$class.'">
+                $html .= '<div class="'.$class.'">
                     <div class="'.$sub_class.'">
-                        <img src="'.$user_image.'">
-                    <div class="msg-desc">
-                        '.$message.'
+                        <div class="msg-avatar"><img src="'.$user_image.'"></div>
+                        <div class="msg-content">
+                            <div class="msg-desc">
+                                '.$message.'
+                            </div>
+                             <small>'.Timeago($reply['created_at']).'</small>
+                        </div>
                     </div>
-                        <small>'.$reply['created_on'].'</small>
-                    </div>
-                </li>';
+                </div>';
             endforeach;
             return response()->json([
                 'html' => $html,

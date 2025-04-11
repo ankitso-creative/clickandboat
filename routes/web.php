@@ -200,5 +200,6 @@ Route::middleware('Setlang')->group(function(){
         Route::get('getregisterboatform', [AjaxController::class, 'getRegisterBoatForm'])->name('getregisterboatform');
         Route::post('favorited-item', [AjaxController::class, 'favorited'])->name('favorite');
         Route::post('post-comment', [AjaxController::class, 'storePostComment'])->name('post-comment');
+        Route::get('changecurrency', [AjaxController::class, 'changeCurrency'])->name('changecurrency');
     });
 });
