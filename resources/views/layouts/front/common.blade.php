@@ -64,8 +64,7 @@
                             </div>
                         <li class="nav-item">
                             <select class="select-language" id="language">
-                                {!! selectOption('languages','name','code',session()->get('lang'),array('status' , '1'))
-                                !!}
+                                {!! selectOption('languages','name','code',session()->get('lang'),array('status' , '1')) !!}
                             </select>
                         </li>
                         <!-- <li><a class="nav-link gbp_btn" href="#">GBP: £</a></li> -->
@@ -73,7 +72,7 @@
                             <select name="currency" id="currency_name">
                                 <option value="GBP">GBP: £ </option>
                                 <option value="EUR">EUR €</option>
-                                <option value="opel">USD $</option>
+                                <option value="USD">USD $</option>
                             </select>
                         </li>
                         @if(!Auth::check())
