@@ -599,7 +599,7 @@
                                     </li>
                                 </ul>
                                 <div class="equip-button-sec">
-                                    <a href="#" class="equip_btn">View all services</a>
+                                    <a href="#" class="equip_btn" data-toggle="modal" data-target="#services-modal">View all services</a>
                                 </div>
                             </div>
                         </div>
@@ -1080,7 +1080,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span
-                            aria-hidden="true">&times;</span></button>
+                            aria-hidden="true"><i class="fa-solid fa-xmark"></i></span></button>
                     <h4 class="modal-title">Contact</h4>
                 </div>
                 <div class="modal-body">
@@ -1303,6 +1303,45 @@ Thank you
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M8 6C5.79086 6 4 7.79086 4 10V38C4 40.2091 5.79086 42 8 42H40C42.2091 42 44 40.2091 44 38V10C44 7.79086 42.2091 6 40 6H8ZM40 8H8C6.89543 8 6 8.89543 6 10V17H21V16C21 14.8954 21.8954 14 23 14H25C26.1046 14 27 14.8954 27 16V17H42V10C42 8.89543 41.1046 8 40 8ZM42 19H27V20C27 21.1046 26.1046 22 25 22H23C21.8954 22 21 21.1046 21 20V19H6V38C6 39.1046 6.89543 40 8 40H40C41.1046 40 42 39.1046 42 38V19ZM25 16H23V20H25V16Z"></path>
                             </svg>
                             Ice box
+                        </li>
+                    </ul>
+                </div>
+          </div>
+      </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Services Modal Start-->
+<div class="modal fade services-modal" id="services-modal">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+      
+       <!-- Modal Header -->
+       <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+          <div class="equipment-title-sec">
+                <h4 class="modal-title">Services</h4>
+                <p class="modal-subtitle">Discover all the services offered by the owner.</p>
+          </div>
+          <div class="equipment-content-sec">
+                <h2>Mandatory Extras</h2>
+                <div class="equipment-services-sec">
+                    <h6>Crew</h6>
+                    <ul>
+                        <li>
+                            <svg name="icon-captain-48" width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M24 30C29.3333 30 34.6667 30.6667 40 32C36.6667 37.3333 31.3333 40 24 40C16.6667 40 11.3333 37.3333 8 32C13.3333 30.6667 18.6667 30 24 30ZM24 32C19.8242 32 15.6471 32.4219 11.4669 33.2664C14.4031 36.4291 18.5331 38 24 38C29.3061 38 33.3528 36.5202 36.271 33.5413L36.5331 33.2664L35.5685 33.079C31.7103 32.3595 27.8546 32 24 32ZM24 8C32 8 44 17 44 20C44 22 42.6667 25.3333 40 30C34.6667 28.6667 29.3333 28 24 28C18.6667 28 13.3333 28.6667 8 30C5.33333 26.6667 4 23.3333 4 20C4 15 16 8 24 8ZM24 10C16.8548 10 6 16.445 6 20C6 22.5279 6.91745 25.1036 8.80456 27.7499C13.8663 26.5837 18.9323 26 24 26C28.9999 26 33.9982 26.5682 38.9923 27.7035L39.3855 26.9717C41.0294 23.8637 41.8931 21.5787 41.9907 20.2437L41.9985 20.0939L41.9646 20.0164C41.9245 19.932 41.8656 19.8274 41.7878 19.7067C41.5296 19.3063 41.1176 18.8121 40.577 18.2648C39.412 17.0852 37.7606 15.7663 35.9027 14.5471C31.6788 11.7752 27.1941 10 24 10ZM24 13C24.5128 13 24.9355 13.386 24.9933 13.8834L25 14V15H26C26.5128 15 26.9355 15.386 26.9933 15.8834L27 16C27 16.5128 26.614 16.9355 26.1166 16.9933L26 17H25V21C26.0544 21 26.9182 20.1841 26.9945 19.1493L27 19L27.0067 18.8834C27.0645 18.386 27.4872 18 28 18C28.5523 18 29 18.4477 29 19C29 21.1422 27.316 22.8911 25.1996 22.9951L25 23H23C20.7909 23 19 21.2091 19 19L19.0067 18.8834C19.0645 18.386 19.4872 18 20 18C20.5128 18 20.9355 18.386 20.9933 18.8834L21 19C21 20.1046 21.8954 21 23 21V17H22L21.8834 16.9933C21.386 16.9355 21 16.5128 21 16C21 15.4872 21.386 15.0645 21.8834 15.0067L22 15H23V14L23.0067 13.8834C23.0645 13.386 23.4872 13 24 13Z"></path>
+                            </svg>
+                            <div class="crew-info">
+                                <span>Skipper</span>
+                                <span>Offered</span>
+                            </div>
                         </li>
                     </ul>
                 </div>
