@@ -20,7 +20,7 @@
                 $item->listing_id =$request->item_id;
                 if($item->save())
                 {
-                    event(new AddFavorite($item));
+                   // event(new AddFavorite($item));
                     return response()->json([
                         'success' => 'success',
                         'action' => 'save',

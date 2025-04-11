@@ -80,36 +80,8 @@ class PagesController extends Controller
     {
         $request =  $request->all();
         $listing = $this->service->getListingData();
-        if (Session::has('dateData') && Auth::check()):
-            $user = Auth::user();
-            if($user->role != RolesEnum::CUSTOMER->value)
-            {
-                return redirect()->route('home');
-            }
-            if(isset($request['checkin_date']) && isset($request['checkout_date']) && isset($request['days_val'])):
-                $sessionArray = [
-                    'checkin_date' => $request['checkin_date'],
-                    'checkout_date' => $request['checkout_date'],
-                    'days_val' => $request['days_val'],
-                ];
-                Session::put('dateData', $sessionArray);
-            endif;
-        else:
-            $sessionArray = [
-                'checkin_date' => $request['checkin_date'],
-                'checkout_date' => $request['checkout_date'],
-                'days_val' => $request['days_val'],
-            ];
-            Session::put('dateData', $sessionArray);
-            return redirect()->route('login');
-        endif;
-        $dateData = Session::get('dateData');
-        $request['id'] = Session::get('listingID');
-        $listingID = $request['id'];
-        $request['checkindate'] = $request['checkin_date'];
-        $request['checkoutdate'] = $request['checkout_date'];
-        $price = bookingPrice($request);
-        return view('front.checkout',compact('dateData','listing','price','listingID'));
+        $quotation = $this->service->getQuotationData($request);
+        return view('front.checkout',compact('listing','quotation'));
     }
     public function aboutUs()
     {
@@ -171,9 +143,11 @@ class PagesController extends Controller
         return view('front.single_location',compact('result'));
     }
    
-    public function help()
+    public function help(Request $request)
     {
-        return view('front.help');
+        //$request = $request->all();
+        $faqs = $this->service->allFaqs($request);
+        return view('front.help',compact('faqs'));
     }
     public function requestSubmit()
     {

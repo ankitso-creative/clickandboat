@@ -234,7 +234,7 @@
             <div class="list-boat-form">
                 <!-- Form for dates -->
                 {{-- <form action="{{ route('checkout') }}" method="POST"> --}}
-                <form  method="POST">
+                <form action="{{ route('checkout') }}" method="POST">
                     @csrf
                     <div class="row sidebar_form">
                         <div class="p-0 col-md-6">

@@ -47,6 +47,10 @@ class PageService{
     {
         return $this->repository->getListingData();
     }
+    public function getQuotationData($request)
+    {
+        return $this->repository->getQuotationData($request);
+    }
     public function allListingData()
     {
         return $this->repository->allListingData();
@@ -66,6 +70,10 @@ class PageService{
     public function singleArea($slug)
     {
         return $this->repository->singleArea($slug);
+    }
+    public function allFaqs($request)
+    {
+        return $this->repository->allFaqs($request);
     }
     public function relatedBlog($id)
     {

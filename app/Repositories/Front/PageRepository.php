@@ -4,11 +4,14 @@
     use App\Events\Front\RequestSubmitted;
     use App\Models\Admin\Blog;
 use App\Models\Admin\Category;
+use App\Models\Admin\Faq;
 use App\Models\Admin\Listing;
     use App\Models\Admin\Location;
     use App\Models\Admin\Price;
-    use Carbon\Carbon;
-    use Illuminate\Support\Facades\Session;
+use App\Models\Admin\Quotation;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Session;
 
     class PageRepository
     {
@@ -70,6 +73,16 @@ use App\Models\Admin\Listing;
             $location =  Location::where('status', '1')->where('slug', $slug)->first();
             return $location;
         }
+        public function allFaqs($request)
+        {
+            $faqs = Faq::where('status', '1')
+            ->when($request->has('question') && !empty($request->question), function ($query) use ($request) {
+                $question = $request->question;
+                return $query->where('question', 'like', '%' . $question . '%');
+            })
+            ->paginate(5);
+            return $faqs;
+        }
         public function relatedBlog($id)
         {
             $relatedBlogs =  Blog::where('status', '1')->where('id','!=', $id)->inRandomOrder()->limit(3)->get();
@@ -80,6 +93,12 @@ use App\Models\Admin\Listing;
             $listingID = Session::get('listingID');
             $listing = Listing::with(['price'])->where('id',$listingID)->first();
             return $listing;
+        }
+        public function getQuotationData($request)
+        {
+            $quotationId = Crypt::decrypt($request['quotation']);
+            $quotation = Quotation::where('id',$quotationId)->first();
+            return $quotation;
         }
         public function allListingData()
         {
