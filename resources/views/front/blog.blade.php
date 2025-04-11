@@ -17,7 +17,7 @@
         <h1>A short guide to the best Azores<br>
             islands to visit by boat</h1>
         <p>1 February / 2025</p>
-        <a href="">View Post</a>
+        <a href="#">View Post</a>
     </div>
 </section>
 <!-- /Blog banner Section-->
@@ -32,7 +32,7 @@
                     <p class="desti_date_pera">1 February / 2025</p>
                     <p class="desti_des">Rent a boat, set sail and enjoy the tastes of the world. Welcome to our Dream
                         Cruise Routes for Foodies!</p>
-                    <a href="">View Post</a>
+                    <a href="#">View Post</a>
                 </div>
             </div>
         </div>

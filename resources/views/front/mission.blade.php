@@ -37,13 +37,13 @@
                 <div class="our_mission_box">
                     <img src="{{ asset('app-assets/site_assets/img/about-icon-1.png') }}">
                     <h3>Mission</h3>
-                        <p>Aenean molestie luctus velit, ut rhoncus erat interdum eu. Curabitur vehicula nisl a dui tempor rhoncus. Quisque felis urna, semper ac volutpat quis, molestie sit amet velit. </p>
+                    <p>Aenean molestie luctus velit, ut rhoncus erat interdum eu. Curabitur vehicula nisl a dui tempor rhoncus. Quisque felis urna, semper ac volutpat quis, molestie sit amet velit. </p>
                 </div>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-3">
                 <div class="our_mission_box">
                     <img src="{{ asset('app-assets/site_assets/img/about-icon-1.png') }}">
-                    <h3>Visoin</h3>
+                    <h3>Vision</h3>
                         <p>Aenean molestie luctus velit, ut rhoncus erat interdum eu. Curabitur vehicula nisl a dui tempor rhoncus. Quisque felis urna, semper ac volutpat quis, molestie sit amet velit. </p>
                 </div>
             </div>
