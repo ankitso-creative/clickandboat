@@ -55,7 +55,7 @@
             <div class="about_slide col-md-4">
                 <div class="about_slider_box ">
                     <img src="{{ asset('app-assets/site_assets/img/about-icon-1.png') }}">
-                    <h3>IMore than
+                    <h3>More than
                     1,100,000 members</h3>
                 </div>
             </div>
@@ -83,7 +83,7 @@
             <div class="about_slide col-md-4">
                 <div class="about_slider_box">
                     <img src="{{ asset('app-assets/site_assets/img/about-icon-1.png') }}">
-                    <h3>IMore than
+                    <h3>More than
                     1,100,000 members</h3>
                 </div>
             </div>

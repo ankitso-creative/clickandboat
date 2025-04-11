@@ -603,7 +603,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="bende-card-content-sec">
+                        <div class="boat-card-content-sec">
                             <div class="calendar-sec">
                                 <h3>Calendar</h3>
                                 <p>Add dates for prices</p>

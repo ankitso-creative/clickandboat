@@ -6080,6 +6080,11 @@ section.about_zigzag_section {
     display: inline-block;
     margin-top: 40px;
     padding-bottom: 20px;
+    transition: 0.5s;
+}
+.delete_dates:hover {
+    color: #f9a126;
+    text-decoration: underline;
 }
 .ideas-sec {
     display: flex;

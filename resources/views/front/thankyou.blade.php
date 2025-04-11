@@ -70,10 +70,10 @@
                     <div class="thankyou_section">
                         <h2>Thank You! We Appreciate You!</h2>
                         <i class="fa-solid fa-face-smile"></i>
-                <p>Your request has been received. We truly appreciate your time and support!</p>
+                        <p>Your request has been received. We truly appreciate your time and support!</p>
                     </div>
                     <div class="back_to_home_btn">
-                        <a href="https://clickboat.so-creative-dev.org/">Back to Home</a>
+                        <a href="{{ route('home') }}">Back to Home</a>
                     </div>
                 </div>
             </div>
