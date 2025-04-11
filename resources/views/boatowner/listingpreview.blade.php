@@ -41,7 +41,7 @@
         }
         $(document).ready(function() 
         {
-            $('#see-price').click(function(){
+            $('.see-price').click(function(){
                 if($('#price-list').hasClass('open'))
                 {
                     $('#price-list').removeClass('open');
@@ -430,7 +430,7 @@
                             <h3>Calendar</h3>
                             <p>Add dates for prices</p>
                             <div class="calendar-btn-sec">
-                                <a href="javascript:;" id="see-price"> See the price list</a>
+                                <a href="javascript:;" class="see-price"> See the price list</a>
                             </div>
                             <div class="datepicker-desktop">
                                 <div id="inline-datepicker"></div>
@@ -509,7 +509,7 @@
                         </div>
                         <!-- Rating -->
                         <div class="mb-3 text-center see_price_btn">
-                            <a href="javascript:;" id="see-price"> See the price list</a>
+                            <a href="javascript:;" class="see-price"> See the price list</a>
                         </div>
                         <div class="dates_heading">
                             <p>Dates:</p>
