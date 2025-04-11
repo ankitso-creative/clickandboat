@@ -105,6 +105,25 @@
 .portlet label {
     padding-top: 0px !important;
 }
+.pagination {
+    display: flex;
+    width: 100%;
+    justify-content: right;
+}
+  
+  .pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+  }
+  
+  .pagination a.active {
+    background-color: #f9a126;
+    color: white;
+  }
+  
+  .pagination a:hover:not(.active) {background-color: #ddd;}
 @media (min-width: 320px) and (max-width: 767px){
 .page-header.navbar .top-menu .navbar-nav>li.dropdown-user .dropdown-toggle {
     background-color: #f9a126;
