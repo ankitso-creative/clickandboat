@@ -1668,12 +1668,12 @@
                         <div class="col-sm-12">
                             <label>Booking dates </label>
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-4 cus_input">
                             <input type="text" name="custom_discount[from_date]"
                                 value="{{ $custom_discounts['from_date'] ?? '' }}" class="form-control datePicker"
                                 placeholder="From">
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-4 cus_input">
                             <input type="text" name="custom_discount[to_date]" class="form-control datePicker"
                                 value="{{ $custom_discounts['to_date'] ?? '' }}" placeholder="To">
                         </div>
@@ -1681,15 +1681,15 @@
                         <div class="col-sm-12">
                             <label>Rental dates </label>
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-4 cus_input">
                             <input type="text" name="custom_discount[rental_from_date]" class="form-control datePicker"
                                 value="{{ $custom_discounts['rental_from_date'] ?? '' }}" placeholder="From">
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-4 cus_input">
                             <input type="text" name="custom_discount[rental_to_date]" class="form-control datePicker"
                                 value="{{ $custom_discounts['rental_to_date'] ?? '' }}" placeholder="To">
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-4 cus_input">
                             <input type="number" name="custom_discount[discount]" class="form-control"
                                 value="{{ $custom_discounts['discount'] ?? '' }}" placeholder="Discount (%) ">
                         </div>

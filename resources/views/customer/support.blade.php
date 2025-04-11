@@ -9,6 +9,7 @@
     padding: 9px 15px;
     border: 1px solid #f9a126;
     color: #fff;
+    box-shadow: none;
 }
 .booking-list-section .td-actions .btn:hover{
     background: #fff !important;
@@ -113,7 +114,7 @@
                                         <td>{{ $listing->type  }} {{ $listing->boat_name }}</td>
                                         <td>
                                             <div class="td-actions">
-                                                <a href={{ route('customer.message', $listing->slug) }} class="btn btn-success"><i class="fas fa-eye"></i></a>
+                                                <a href={{ route('customer.message', $listing->slug) }} class="btn"><i class="fas fa-eye"></i></a>
                                             </div>
                                         </td>
                                     </tr>
