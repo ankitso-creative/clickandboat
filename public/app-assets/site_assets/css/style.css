@@ -1192,7 +1192,7 @@ label, input, textarea, button, select {
 .about_btn button {
     border: 1px solid #000 !important;
     border-radius: 30px !important;
-    padding: 10px 13px !important;
+    padding: 11px 11px 9px 13px !important;
 }
 .about_btn button:hover{
     border: 1px solid #f9a126 !important;
@@ -3397,13 +3397,6 @@ label, input, textarea, button, select {
     margin-bottom: 35px;
     position: relative;
 }
-.wishlist_icon {
-    position: absolute;
-    top: 3px;
-    right: 9%;
-    color: #222;
-    font-size: 18px;
-}
 .wishlist_icon i {
     color: #f9a126;
 }
@@ -5183,9 +5176,12 @@ section.about_zigzag_section {
     display: flex;
     justify-content: end;
     margin-bottom: 15px;
+    align-items: baseline;
 }
 .share-menu li {
     margin-left: 20px;
+    align-items: center;
+    font-family: 'GT America Trial Cn Md' !important;
 }
 .share-menu li a {
     color: #222;
