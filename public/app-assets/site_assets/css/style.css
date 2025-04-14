@@ -377,8 +377,8 @@ label, input, textarea, button, select {
     transition: 0.5s ease-in-out;
 }
 .modal.right .modal-content {
-	min-height:100vh;
-	border:0;
+    min-height:100vh;
+    border:0;
 }
 .right .modal-header {
     border: none;
@@ -1192,7 +1192,7 @@ label, input, textarea, button, select {
 .about_btn button {
     border: 1px solid #000 !important;
     border-radius: 30px !important;
-    padding: 11px 11px 9px 13px !important;
+    padding: 12px 11px 8px 13px !important;
 }
 .about_btn button:hover{
     border: 1px solid #f9a126 !important;
@@ -1391,7 +1391,7 @@ label, input, textarea, button, select {
 .home_banner_section {
     background-image: url(../img/boat-banner-image.jpg);
     width: 100%;
-    height: 564px;
+    height: 90vh;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
@@ -1648,9 +1648,51 @@ label, input, textarea, button, select {
     text-transform: inherit !important;
 
 }
-/*.boat_type_box:hover {
-    cursor: url('../img/view.png'), auto; 
-  }*/
+.featured_boat_section_mobile img {
+    width: 100%;
+    height: 290px;
+    object-fit: cover;
+    border-radius: 11px;
+}
+.featured_boat_section_mobile .featured_boat_box {
+    background: #f9a126;
+    margin: 0px 0px;
+    border-radius: 20px;
+    padding: 0 15px;
+}
+.featured_boat_section_mobile h3 {
+    font-size: 30px;
+    color: #fff;
+    text-transform: uppercase;
+    padding-top: 15px;
+    padding-bottom: 5px;
+}
+.featured_boat_section_mobile .featured_price_mobile {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    padding-top: 15px;
+    text-transform: uppercase;
+    padding-bottom: 11px;
+}
+.book_now_btn {
+    padding: 5px 15px 5px 5px;
+    border: 1px solid #fff;
+    border-radius: 30px;
+    display: inline-flex;
+    color: #fff !important;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    line-height: 40px;
+}
+.featured_boat_section_mobile{
+    display: none;
+}
+.book_now_btn img {
+    width: 40px;
+    height: 40px;
+    margin-right: 6px;
+}
 /*--------------------------------------------------------------
 # Boat renter owner section
 --------------------------------------------------------------*/
@@ -1846,7 +1888,7 @@ label, input, textarea, button, select {
     position: absolute;
     width: 95%;
     text-align: center;
-    margin-top: -42%;
+    margin-top: -40%;
     margin-left: 2%;
 }
 
@@ -2024,7 +2066,7 @@ label, input, textarea, button, select {
 .follow_sailer_box {
     border: 1px solid #ebebeb;
     border-radius: 15px;
-    height: 220px;
+    height: auto;
     padding: 35px 30px;
     margin-bottom: 15px;
 }
@@ -2045,7 +2087,7 @@ label, input, textarea, button, select {
     margin: 0;
 }
 .custmer_text {
-    margin-left: 16px;
+    margin-left: 0px;
     padding-top: 8px;
 }
 .follow_sailer_box a {
@@ -2172,10 +2214,7 @@ label, input, textarea, button, select {
     font-size: 28px;
     text-transform: uppercase;
     color: #000;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
+    height: 135px;
 }
 .next_trip_text p {
     font-weight: 400;
@@ -3165,6 +3204,7 @@ label, input, textarea, button, select {
     display: block;
     margin: 0 auto;
     padding-bottom: 0px;
+    width: 60px;
 }
 .photo_sec_pera {
     padding-top: 10px;
@@ -3399,6 +3439,12 @@ label, input, textarea, button, select {
 }
 .wishlist_icon i {
     color: #f9a126;
+    font-size: 20px;
+}
+.wishlist_icon {
+    position: absolute;
+    top: 7px;
+    right: 10px;
 }
 .location_leftside_box {
     border: 1px solid #ebebeb;
@@ -7253,9 +7299,6 @@ font-size: 15px;
 .footer .container-fluid .email_box_sec a:hover{
     color: #f9a126;
 }
-.footer .container-fluid .email_box_sec {
-    padding-top: 36px;
-}
 .footer_social_links ul {
     list-style: none;
 }
@@ -7283,7 +7326,7 @@ font-size: 15px;
     float: right;
 }
 .footer_menu {
-    padding-left: 110px;
+    padding-left: 95px;
 }
 .cal_mail_box {
     padding-left: 40px;
@@ -7758,6 +7801,33 @@ font-size: 15px;
     max-width: 1400px;
     margin: 0px auto;
 }
+.sweet-alert .confirm {
+    background: #f9a126 !important;
+    border: 1px solid #f9a126;
+    box-shadow: none !important;
+}
+.sweet-alert .confirm:hover{
+    background: none !important;
+    color: #f9a126;
+    border: 1px solid #f9a126;
+}
+.sweet-alert .cancel {
+    background: #000 !important;
+    box-shadow: none !important;
+    border: 1px solid #000;
+}
+.sweet-alert .cancel:hover{
+    background: none !important;
+    color: #000;
+    border: 1px solid #000;
+}
+.sweet-alert  .lead {
+    padding-bottom: 15px;
+}
+.show-Price {
+    padding-left: 15px;
+    padding-top: 10px;
+}
 /*--------------------------------------------------------------
 # Media Query
 --------------------------------------------------------------*/
@@ -7807,13 +7877,17 @@ font-size: 15px;
         font-size: 30px;
     }
     .boat_reanter_owner_section h2 {
-        font-size: 30px;
+        font-size: 20px;
+        text-align: left;
+        padding-bottom: 0px;
     }
     .boat_reanter_owner_section {
         margin-top: 30px;
     }
     .boat_renter_box .boat_renter_text {
         height: auto;
+        padding: 10px 0px 7px 30px;
+        border: 0px solid #fff;
     }
     .boat_reanter_owner_section .boat_renter_box.box-one {
         padding-right: 0px;
@@ -7854,6 +7928,7 @@ font-size: 15px;
     .next_trip_text h3 {
         font-size: 25px;
         text-align: center;
+        height: auto;
     }
     .next_trip_text p {
         text-align: center;
@@ -7901,7 +7976,7 @@ font-size: 15px;
         width: 50%;
     }
     .datepicker input#fecha1 {
-        background: #f8a126;
+        background: #fff;
     }
     .datepicker .input-group-text {
         background: #fff;
@@ -8576,7 +8651,7 @@ font-size: 15px;
     text-align: center;
 }
 .boat_reanter_owner_section .container-fluid {
-    padding: 0 15px 0 28px;
+    padding: 0 15px 0 15px;
 }
 .home_page_box_text {
     margin-top: -45%;
@@ -8605,6 +8680,9 @@ font-size: 15px;
 .boat_type_text {
     left: 50%;
     transform: translate(-50%, -50%);
+    top: 50%;
+    bottom: auto;
+    text-align: center;
 }
 .all_blog_button a {
     margin-top: 0;
@@ -8642,6 +8720,7 @@ font-size: 15px;
 .cus_input input {
     margin-bottom: 15px;
 }
+
 }
 @media (min-width: 767px) and (max-width: 1023px) {
     .header-slider {
@@ -9482,8 +9561,8 @@ font-size: 15px;
 }
 }
 @media (min-width: 1250px) and (max-width: 1299px) {
-   .home_banner_section {
-        height: 630px;
+    .home_banner_section {
+        height: 94vh;
     }
     .blog_inner_banner {
         height: 440px;
@@ -9505,7 +9584,7 @@ font-size: 15px;
 }
 @media (min-width: 1400px) and (max-width: 1499px) {
    .home_banner_section {
-        height: 690px;
+        height: 93vh;
     }
     .boat_by_location {
         height: 450px;
@@ -9543,8 +9622,8 @@ font-size: 15px;
 
 }
 @media (min-width: 1500px) and (max-width: 1599px) {
-   .home_banner_section {
-        height: 704px;
+    .home_banner_section {
+        height: 91vh;
     }
     .boat_by_location {
         height: 470px;
@@ -9570,8 +9649,8 @@ font-size: 15px;
 
 }
 @media (min-width: 1600px) and (max-width: 1899px) {
-   .home_banner_section {
-        height: 704px;
+    .home_banner_section {
+        height: 94vh;
     }
     .boat_by_location {
         height: 470px;
@@ -9594,8 +9673,8 @@ font-size: 15px;
     .blog_banner {
         height: 765px;
     }
-.home_banner_section {
-        height: 900px;
+    .home_banner_section {
+        height: 99vh;
     }
 .featured_board_boxes img {
         height: 500px;

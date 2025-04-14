@@ -251,8 +251,7 @@
     <!-- Banner Section -->
     <section class="location_page_banner">
         <div class="location_banner_text">
-        <h1>CHARTER A MOTOR BOAT, SAIL BOAT AND<br>
-                MORE ON MY BOAT BOOKER
+        <h1>FIND YOUR IBIZA BOAT RENTAL AT THE <br>BEST PRICE WITH MY BOAT BOOKER
             </h1>
         </div>
     </section>

@@ -28,7 +28,7 @@
                 <div class="mx-auto col-md-12">
                 <h2 class="text-center ui-title-inner">Login</h2>
                     <section class="section-form-contacts">
-                        <h3>Welcome to Booker Boat</h3>
+                        <h3>Welcome to my Boat Booker</h3>
                         <!-- <p class="text-center">Nulla pariatur excepteur sint occaecat cupidatat no proident culpa qui officia des mollit anim id est lab orum ut perspiciatis unde omnis iste natuser sit volupta tem accusantium sed ipsum laudantium.</p> -->
                         <div id="success"></div>
                         @if(session('success'))

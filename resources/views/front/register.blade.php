@@ -19,7 +19,7 @@
     }
 </style>
     <!-- end .b-title-page-->
-    <div class="l-main-content sign_up_form_section">
+    <div class="l-main-content sign_up_form_section ">
         <div class="container">
         <div class="sing_upform_logo">
                 <a href="{{ route('home') }}"> <img src="{{ whiteLogoURL() }}"></a>
