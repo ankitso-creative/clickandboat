@@ -70,6 +70,7 @@ Route::middleware('Setlang')->group(function(){
         Route::resource('location',LocationController::class);
         Route::post('locationstatus', [LocationController::class, 'changeStatus'])->name('locationstatus');
         Route::get('blog/blogcomments/{id}', [BlogController::class, 'blogComments'])->name('blog.blogcomments');
+        Route::post('blog/changeorderblog', [BlogController::class, 'changeOrderBlog'])->name('blog.changeorderblog');
         Route::post('commentstatus', [BlogController::class, 'commentStatus'])->name('commentstatus');
         Route::post('change_status', [BlogController::class, 'changeStatus'])->name('changestatus');
         Route::get('settings', [SettingController::class, 'index'])->name('settings.index');  

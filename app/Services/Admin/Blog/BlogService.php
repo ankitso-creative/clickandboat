@@ -42,4 +42,8 @@ class BlogService{
     {
         return $this->repostiry->commentStatus($id);
     }
+    public function changeOrderBlog($id)
+    {
+        return $this->repostiry->changeOrderBlog($id);
+    }
 }
