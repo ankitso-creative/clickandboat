@@ -76,7 +76,7 @@
                     <div class="mt-5 text-center read_more_btn">
                         @if ($faqs->hasMorePages())
                             <div style="text-align:center; margin-top: 20px;">
-                                <a href="{{ $faqs->nextPageUrl() }}" class="btn btn-primary">
+                                <a href="{{ $faqs->nextPageUrl() }}" class="btn">
                                     View More
                                 </a>
                             </div>
@@ -133,7 +133,7 @@
                 <h2>Contact us!</h2>
                 <p>Still have questions? If you didn't find what you need, you can send an inquiry through our contact
                     form.</p>
-                <a href="#">Submit a reqiest</a>
+                <a href="#">Submit a request</a>
             </div>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-6">

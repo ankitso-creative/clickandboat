@@ -49,35 +49,35 @@
     $( document ).ready(function() {
         $('#messages').animate({ scrollTop: $('#messages div.message').height() }, "fast");
     });
-    // $( document ).ready(function() {
-    //     var receiver_id = $('form#message_form input[name="receiver_id"]').val();
-    //     var csrfToken = $('meta[name="csrf-token"]').attr('content');
-    //     setInterval(function()
-    //     {
-    //         $.ajax({
-    //             url: "{{ route('customer.support.see-all-message') }}",
-    //             type: "POST",
-    //             data: { receiver_id: receiver_id },
-    //             headers: {
-    //                 'X-CSRF-TOKEN': csrfToken 
-    //             },
-    //             success: function(response) {
-    //                 var resp = response;
-    //                 if(resp.status == "success") {
-    //                     $('.message ul').html(resp.html);
-    //                     $(".message").animate({ scrollTop: $('.message ul').height() }, "fast");
-    //                 }
-    //             },
-    //             error: function(xhr, status, error) {
-    //                 console.error("Error: " + status + " - " + error);
-    //             }
-    //         });
-    //     },5000) 
-    //         clearInterval(5000); 
-    // });
+    $( document ).ready(function() {
+        var receiver_id = $('form#message_form input[name="receiver_id"]').val();
+        var csrfToken = $('meta[name="csrf-token"]').attr('content');
+        setInterval(function()
+        {
+            $.ajax({
+                url: "{{ route('customer.support.see-all-message') }}",
+                type: "POST",
+                data: { receiver_id: receiver_id },
+                headers: {
+                    'X-CSRF-TOKEN': csrfToken 
+                },
+                success: function(response) {
+                    var resp = response;
+                    if(resp.status == "success") {
+                        $('#messages div.message').html(resp.html);
+                        $("#messages").animate({ scrollTop: $('#messages div.message').height() }, "fast");
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error("Error: " + status + " - " + error);
+                }
+            });
+        },5000) 
+            clearInterval(5000); 
+    });
 
-    $(document).on('change','.file_upload',function(){
-        
+    $(document).on('change','.file_upload',function()
+    {
         var form = $(this).parents('form');
         var formData = new FormData(form[0]);
 
@@ -135,10 +135,16 @@
             <div class="message-owner">
                 <div class="message-avatar-box">
                     <div class="message-avatar-img">
-                        <img src="<?php echo $sender->getFirstMediaUrl('profile_image')?>" alt="user">
+                        @php 
+                            $image = $receiver->getFirstMediaUrl('profile_image');
+                            if(!$image):
+                                $image = 'https://static1.clickandboat.com/v1/o/img/mask~dddc60cc1d.png';
+                            endif;
+                        @endphp
+                        <img src="<?php echo $image?>" alt="user">
                     </div>
                     <div class="message-avatar-title">
-                        <h3><?php echo $sender->name?></h3>
+                        <h3><?php echo $receiver->name?></h3>
                     </div>
                 </div>
             </div>
@@ -187,7 +193,7 @@
                                             <div class="msg-desc">
                                                 <?php echo $message?>
                                             </div>
-                                            <small class="msg-time">10 Second Ago<?php echo $reply['created_on'] ?></small>
+                                            <small class="msg-time">{{ Timeago($reply['created_at']) }}</small>
                                         </div>
                                     </div>
                                 </div>
@@ -209,7 +215,7 @@
                 </form>
             </div>
         </div>
-
+        
         <div class="list-boat-sec">
             <div class="list-title">
                 <h2>Your request regarding the boat of {{ $receiver->name }}</h2>
@@ -231,39 +237,40 @@
                     <p>{{ $listing->city }}</p>
                 </div>
             </div>
-            <div class="list-boat-form">
-                <!-- Form for dates -->
-                {{-- <form action="{{ route('checkout') }}" method="POST"> --}}
-                <form action="{{ route('checkout') }}" method="POST">
-                    @csrf
-                    <div class="row sidebar_form">
-                        <div class="p-0 col-md-6">
-                            <div class="form-group">
-                                <input type="text"  value="{{ $quotation->checkin }}" readonly name="checkin_date" class="form-control" placeholder="Check-in" />
+            @if($quotation)
+                <div class="list-boat-form">
+                    <!-- Form for dates -->
+                    {{-- <form action="{{ route('checkout') }}" method="POST"> --}}
+                    <form action="{{ route('checkout') }}" method="POST">
+                        @csrf
+                        <div class="row sidebar_form">
+                            <div class="p-0 col-md-6">
+                                <div class="form-group">
+                                    <input type="text"  value="{{ $quotation->checkin }}" readonly name="checkin_date" class="form-control" placeholder="Check-in" />
+                                </div>
+                            </div>
+                            <div class="p-0 col-md-6">
+                                <div class="form-group">
+                                    <input type="text"  value="{{ $quotation->checkout }}" readonly class="form-control" name="checkout_date" placeholder="Check-out" />
+                                    <input type="hidden" name="quotation" value="{{ $quotationID }}">
+                                </div>
                             </div>
                         </div>
-                        <div class="p-0 col-md-6">
-                            <div class="form-group">
-                                <input type="text"  value="{{ $quotation->checkout }}" readonly class="form-control" name="checkout_date" placeholder="Check-out" />
-                                <input type="hidden" name="quotation" value="{{ $quotationID }}">
-                            </div>
+                        <div class="show-Price" id="show-Price-sec">
+                            <p>Hire: <span id="hire">{{ $quotation->net_amount }}</span></p>
+                            <p>Service Fee: <span id="service-fee">€{{ $quotation->service_fee }}</span></p>
+                            <p>Total: <span id="boat-total">€{{ $quotation->total }}</span></p>
                         </div>
-                    </div>
-                    <div class="show-Price" id="show-Price-sec">
-                        <p>Hire: <span id="hire">{{ $quotation->net_amount }}</span></p>
-                        <p>Service Fee: <span id="service-fee">€{{ $quotation->service_fee }}</span></p>
-                        <p>Total: <span id="boat-total">€{{ $quotation->total }}</span></p>
-                    </div>
-                    <div class="d-flex flex-column">
-                        @if($quotation->status=='Accept')
-                            <button class="btn book_btn">Confirm And Pay</button>
-                        @else
-                            <button class="btn book_btn">Book</button>
-                        @endif
-                    </div>
-                </form>
-            </div>
+                        <div class="d-flex flex-column">
+                            @if($quotation->status=='Accept')
+                                <button class="btn book_btn">Confirm And Pay</button>
+                            @else
+                                <button class="btn book_btn">Book</button>
+                            @endif
+                        </div>
+                    </form>
+                </div>
+            @endif
         </div>
-        
     </div>
 @endsection

@@ -3,17 +3,18 @@
 <title>Home</title>
 <style>
 .custom-div {
-  position: relative;
-  display: inline-block;
-  /* background-color: #d9d9d9; */
-  /* width: calc(100vw / 3 - 2px);
+    position: relative;
+    display: inline-block;
+    /* background-color: #d9d9d9; */
+    /* width: calc(100vw / 3 - 2px);
   height: 100vh; */
-  padding: 0;
-  margin: -2px;
-  overflow: visible;
-  outline: 1px white solid;
-  cursor: none;
+    padding: 0;
+    margin: -2px;
+    overflow: visible;
+    outline: 1px white solid;
+    cursor: none;
 }
+
 .custom-div .text {
     position: absolute;
     left: 0;
@@ -31,11 +32,11 @@
 }
 
 .text {
-  z-index: 999;
+    z-index: 999;
 }
 
 .custom-div:nth-child(odd) {
-  /* background-color: #d9d9d9; */
+    /* background-color: #d9d9d9; */
 }
 </style>
 @endsection
@@ -44,13 +45,13 @@
 @endsection
 @section('js')
 <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.6/dist/flatpickr.min.js"></script>
-    <script>
-        flatpickr(".datePicker-search", {
-            inline: false,
-            dateFormat: "d-m-Y",
-            minDate: "today",
-        });
-    </script>
+<script>
+flatpickr(".datePicker-search", {
+    inline: false,
+    dateFormat: "d-m-Y",
+    minDate: "today",
+});
+</script>
 @endsection
 @section('content')
 <!-- Banner Section -->
@@ -109,7 +110,8 @@
                         <span><i class="fa-solid fa-sailboat"></i></span>
                         <select name="type" id="cars">
                             <option value="">Sailboat, motorboat,...</option>
-                            {!! selectOption('categories','name','name',request()->get('type'),array('status' , '1')) !!} 
+                            {!! selectOption('categories','name','name',request()->get('type'),array('status' , '1'))
+                            !!}
                         </select>
                     </div>
                 </div>
@@ -127,7 +129,7 @@
         <div class="featured_boat_heading">
             <h2>{{ __('home.featured-boats')}}</h2>
         </div>
-        <div class="row">
+        <div class="row feature_box_main">
             <div class="col-sm-12 col-md-4 col-lg-4">
                 <div class="featured_board_boxes">
                     <a href="#">
@@ -154,15 +156,39 @@
             </div>
             <div class="col-sm-12 col-md-4 col-lg-4">
                 <div class="featured_board_boxes">
-                    <a href="#">
-                        <img src="{{ asset('app-assets/site_assets/img/image00092.jpg') }}" alt="featured-img">
-                        <div class="featured_box_text">
-                            <p>Luxury boats</p>
-                            <h3>Maiora 99</h3>
-                        </div>
-                    </a>
+                    <img src="{{ asset('app-assets/site_assets/img/image00092.jpg') }}" alt="featured-img">
+                    <div class="featured_box_text">
+                        <p>Luxury boats</p>
+                        <h3>Maiora 99</h3>
+                    </div>
                 </div>
                 <p class="featured_price">11 Guests | Price from €1690</p>
+            </div>
+        </div>
+        <div class="text-center row featured_boat_section_mobile featured_boat_slider">
+            <div class="col-sm-12 col-md-4 col-lg-4">
+                <div class="featured_boat_box">
+                    <h3>Cranchi 43</h3>
+                    <img src="{{ asset('app-assets/site_assets/img/image00092.jpg') }}" alt="featured-img">
+                    <p class="featured_price_mobile">11 Guests | Price from €1690</p>
+                    <a class="book_now_btn" href="#"><img src="{{ asset('app-assets/site_assets/img/arrow-icon01.png') }}" alt="featured-img"> Book Now</a>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-4 col-lg-4">
+                <div class="featured_boat_box">
+                    <h3>Chaparral 250</h3>
+                    <img src="{{ asset('app-assets/site_assets/img/image00092.jpg') }}" alt="featured-img">
+                    <p class="featured_price_mobile">11 Guests | Price from €1690</p>
+                    <a class="book_now_btn" href="#"><img src="{{ asset('app-assets/site_assets/img/arrow-icon01.png') }}" alt="featured-img"> Book Now</a>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-4 col-lg-4">
+                <div class="featured_boat_box">
+                    <h3>Maiora 99</h3>
+                    <img src="{{ asset('app-assets/site_assets/img/image00092.jpg') }}" alt="featured-img">
+                    <p class="featured_price_mobile">11 Guests | Price from €1690</p>
+                    <a class="book_now_btn" href="#"><img src="{{ asset('app-assets/site_assets/img/arrow-icon01.png') }}" alt="featured-img"> Book Now</a>
+                </div>
             </div>
         </div>
     </div>
@@ -176,19 +202,27 @@
                 <div class="boat_renter_box box-one">
                     <h2>Boat renter</h2>
                     <div class="boat_renter_text">
-                        <p>Browse all our listings using the search tool. Enjoy complete peace of mind with MyBoatBooker, providing you with a safe, secure, and worry-free boating experience. Whether you're a seasoned sailor or a first-time boater, we ensure that every aspect of your journey is well taken care of. With our reliable services, you can focus on enjoying the open water while we handle the details, offering you the confidence and support you deserve throughout your entire boating adventure.</p>
+                        <p>Browse all our listings using the search tool. Enjoy complete peace of mind with
+                            MyBoatBooker, providing you with a safe, secure, and worry-free boating experience. Whether
+                            you're a seasoned sailor or a first-time boater, we ensure that every aspect of your journey
+                            is well taken care of. With our reliable services, you can focus on enjoying the open water
+                            while we handle the details, offering you the confidence and support you deserve throughout
+                            your entire boating adventure.</p>
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </div>
                     <div class="boat_renter_text">
-                        <p>Reach out to yacht owners at no cost and get answers to all your questions about the boat, its equipment, and availability through our built-in messaging system.</p>
+                        <p>Reach out to yacht owners at no cost and get answers to all your questions about the boat,
+                            its equipment, and availability through our built-in messaging system.</p>
                         <i class="fa-solid fa-message"></i>
                     </div>
                     <div class="boat_renter_text">
-                        <p>Securely book the yacht of your dreams online in just a few clicks. You’ll only be charged once the owner approves your charter request. With 100% secure payment, MyBoatBooker acts as your trusted third party every step of the way.</p>
+                        <p>Securely book the yacht of your dreams online in just a few clicks. You’ll only be charged
+                            once the owner approves your charter request. With 100% secure payment, MyBoatBooker acts as
+                            your trusted third party every step of the way.</p>
                         <i class="fa-solid fa-thumbs-up"></i>
                     </div>
                     <div class="find_boat_btn">
-                        <a href="">Find a boat</a>
+                        <a href="{{ route('boats') }}">Find a boat</a>
                     </div>
                 </div>
             </div>
@@ -196,19 +230,27 @@
                 <div class="boat_renter_box box-two">
                     <h2>Boat owner</h2>
                     <div class="boat_renter_text">
-                        <p>List your boat for free and make it available to a wide range of people seeking the perfect charter experience. Whether you own a luxurious yacht, a sleek sailboat, a versatile RIB, a powerful motorboat, or a spacious catamaran, MyBoatBooker offers a seamless platform to connect you with potential renters.</p>
-                      <i class="fa-solid fa-sailboat"></i>
+                        <p>List your boat for free and make it available to a wide range of people seeking the perfect
+                            charter experience. Whether you own a luxurious yacht, a sleek sailboat, a versatile RIB, a
+                            powerful motorboat, or a spacious catamaran, MyBoatBooker offers a seamless platform to
+                            connect you with potential renters.</p>
+                        <i class="fa-solid fa-sailboat"></i>
                     </div>
                     <div class="boat_renter_text">
-                        <p>Charter your boat on your own terms, to whoever you choose, whenever it suits you, and at the price you set. MyBoatBooker helps you earn income from your yacht and offset maintenance and operating costs.</p>
+                        <p>Charter your boat on your own terms, to whoever you choose, whenever it suits you, and at the
+                            price you set. MyBoatBooker helps you earn income from your yacht and offset maintenance and
+                            operating costs.</p>
                         <i class="fa-solid fa-location-crosshairs"></i>
                     </div>
                     <div class="boat_renter_text">
-                        <p>Why register your boat with MyBoatBooker? By listing your boat with us, you open up opportunities to earn income, increase your boat’s visibility, and make it available to a wide range of potential charterers. Enjoy a hassle-free experience with trusted bookings, secure payments, and the peace of mind that comes with our reliable platform.</p>
+                        <p>Why register your boat with MyBoatBooker? By listing your boat with us, you open up
+                            opportunities to earn income, increase your boat’s visibility, and make it available to a
+                            wide range of potential charterers. Enjoy a hassle-free experience with trusted bookings,
+                            secure payments, and the peace of mind that comes with our reliable platform.</p>
                         <i class="fa-solid fa-lock"></i>
                     </div>
                     <div class="estimate_btn">
-                        <a href="">Register your boat</a>
+                        <a href="{{ route('boatlogin') }}">Register your boat</a>
                     </div>
                 </div>
             </div>
@@ -218,25 +260,25 @@
 <!-- /Boat renter owner Section -->
 <!-- Boat Types Section -->
 @if(count($categories))
-    <section class="boat_type_section_slider">
-        <div class="boat_type_sec">
-            <h2>Boat Types</h2>
-            <div class="row boat_type_slider">
-                @foreach($categories as $category)
-                    <div class="col-sm-12 col-md-6 col-lg-6">
-                        <a href="{{ route('locationcategry',$category->slug) }}">
-                            <div class="boat_type_box">
-                                <img src="{{ $category->getFirstMediaUrl('category_image') }}" alt="boat-img">
-                                <div class="boat_type_text">
-                                    <h3>{{ $category->name }}</h3>
-                                </div>
-                            </div>
-                        </a>
+<section class="boat_type_section_slider">
+    <div class="boat_type_sec">
+        <h2>Boat Types</h2>
+        <div class="row boat_type_slider">
+            @foreach($categories as $category)
+            <div class="col-sm-12 col-md-6 col-lg-6">
+                <a href="{{ route('locationcategry',$category->slug) }}">
+                    <div class="boat_type_box">
+                        <img src="{{ $category->getFirstMediaUrl('category_image') }}" alt="boat-img">
+                        <div class="boat_type_text">
+                            <h3>{{ $category->name }}</h3>
+                        </div>
                     </div>
-                @endforeach
+                </a>
             </div>
+            @endforeach
         </div>
-    </section>
+    </div>
+</section>
 @endif
 <!-- /Boat Types Section -->
 <!-- Boats by location Section -->
@@ -245,7 +287,7 @@
     <div class="boat_by_location">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-sm-12 col-md-6 col-lg-4">
+                <div class="col-sm-6 col-md-6 col-lg-4">
                     <a href="{{ route('locationlisting','Ibiza') }}">
                         <div class="boat_by_location_box">
                             <div class="boat_by_location_text">
@@ -254,7 +296,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-sm-12 col-md-6 col-lg-4">
+                <div class="col-sm-6 col-md-6 col-lg-4">
                     <a href="{{ route('locationlisting','Guadeloupe') }}">
                         <div class="boat_by_location_box">
                             <div class="boat_by_location_text">
@@ -263,7 +305,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-sm-12 col-md-6 col-lg-4">
+                <div class="col-sm-6 col-md-6 col-lg-4">
                     <a href="{{ route('locationlisting','Italy') }}">
                         <div class="boat_by_location_box">
                             <div class="boat_by_location_text">
@@ -272,7 +314,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-sm-12 col-md-6 col-lg-4">
+                <div class="col-sm-6 col-md-6 col-lg-4">
                     <a href="{{ route('locationlisting','Dubai') }}">
                         <div class="boat_by_location_box">
                             <div class="boat_by_location_text">
@@ -281,7 +323,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-sm-12 col-md-6 col-lg-4">
+                <div class="col-sm-6 col-md-6 col-lg-4">
                     <a href="{{ route('locationlisting','Croatia') }}">
                         <div class="boat_by_location_box">
                             <div class="boat_by_location_text">
@@ -290,7 +332,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-sm-12 col-md-6 col-lg-4">
+                <div class="col-sm-6 col-md-6 col-lg-4">
                     <a href="{{ route('locationlisting','Greece') }}">
                         <div class="boat_by_location_box">
                             <div class="boat_by_location_text">
@@ -307,15 +349,14 @@
 <!-- Follow sailer Section -->
 <section class="follow_sailer_section">
     <div class="container-fluid">
-        <h2>Fellow sailors share<br>
-            their amazing experiences</h2>
+        <h2>Amazing Tales Shared <br> by sailors</h2>
         <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-6">
                 <div class="follow_sailer_box">
                     <div class="custmer_revie">
-                        <div class="custmer_img">
+                        <!-- <div class="custmer_img">
                             <img src="{{ asset('app-assets/site_assets/img/testimonial-img.png') }}">
-                        </div>
+                        </div> -->
                         <div class="custmer_text">
                             <div class="follow_rating">
                                 <h5>Thomas</h5>
@@ -324,23 +365,27 @@
                                     <li><i class="fa-solid fa-star"></i></li>
                                 </ul>
                             </div>
-                            <p>Jan 2025 Rent a boat in RANIERI Soverato in Port d'Alcúdia</p>
+                            <p>Jan 2025 Ibiza boat rental in Santa Eulalia, Ibiza.</p>
                         </div>
                     </div>
-                    <p class="follow_main_text">This is by far the best boat rental experience we’ve had!! The team is
-                        so welcoming and friendly - we can’t wait to </p>
+                    <p class="follow_main_text">We had a great boat trip to Formentera a couple of weeks ago. The boat
+                        itself was immaculate—clean, spacious, and felt brand new, which made the experience even more
+                        enjoyable. Jay was fantastic, making sure we felt completely at ease from the start. They were
+                        attentive, offering drinks throughout the trip and ensuring we were comfortable. The captain was
+                        excellent, providing a smooth and safe journey and stopping in great spots around the island of
+                        formentera. Overall, it was a perfect day on the water, highly recommend Jay’s boat.</p>
                     <a href="#">Read More</a>
                 </div>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-6">
                 <div class="follow_sailer_box">
                     <div class="custmer_revie">
-                        <div class="custmer_img">
+                        <!-- <div class="custmer_img">
                             <img src="{{ asset('app-assets/site_assets/img/testimonial-img.png') }}">
-                        </div>
+                        </div> -->
                         <div class="custmer_text">
                             <div class="follow_rating">
-                                <h5>Thomas</h5>
+                                <h5>Chris</h5>
                                 <ul>
                                     <li><i class="fa-solid fa-star"></i></li>
                                     <li><i class="fa-solid fa-star"></i></li>
@@ -349,46 +394,52 @@
                                     <li><i class="fa-solid fa-star"></i></li>
                                 </ul>
                             </div>
-                            <p>Jan 2025 Rent a boat in RANIERI Soverato in Port d'Alcúdia</p>
+                            <p>Jan 2025 Ibiza boat rental in San Anotnio, Ibiza.</p>
                         </div>
                     </div>
-                    <p class="follow_main_text">This is by far the best boat rental experience we’ve had!! The team is
-                        so welcoming and friendly - we can’t wait to </p>
+                    <p class="follow_main_text">We recently rented Hugo's yacht for a day trip from Ibiza to Formentera,
+                        and it was an unforgettable experience! The yacht itself is stunning—sleek, modern, and
+                        incredibly spacious, making it perfect for our large group. The staff was another highlight of
+                        the trip. They were attentive, friendly, and went above and beyond to make sure we had
+                        everything we needed. From drinks and snacks to local knowledge about the best spots to visit in
+                        Formentera, they truly made the day special. I highly recommend renting this yacht for anyone
+                        looking to explore the beautiful Balearic Islands in style and comfort!!</p>
                     <a href="#">Read More</a>
                 </div>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-6">
                 <div class="follow_sailer_box">
                     <div class="custmer_revie">
-                        <div class="custmer_img">
+                        <!-- <div class="custmer_img">
                             <img src="{{ asset('app-assets/site_assets/img/testimonial-img.png') }}">
-                        </div>
+                        </div> -->
                         <div class="custmer_text">
                             <div class="follow_rating">
-                                <h5>Thomas</h5>
+                                <h5>Helena</h5>
                                 <ul>
                                     <li><i class="fa-solid fa-star"></i></li>
                                     <li><i class="fa-solid fa-star"></i></li>
                                     <li><i class="fa-solid fa-star"></i></li>
                                 </ul>
                             </div>
-                            <p>Jan 2025 Rent a boat in RANIERI Soverato in Port d'Alcúdia</p>
+                            <p>Jan 2025 Ibiza boat rental in Marina Botafoch, Ibiza.</p>
                         </div>
                     </div>
-                    <p class="follow_main_text">This is by far the best boat rental experience we’ve had!! The team is
-                        so welcoming and friendly - we can’t wait to </p>
+                    <p class="follow_main_text">The Captain & Staff where fantastic. Excellent communication before the
+                        trip, helped organise the itinerary and communicated with the lunch restaurant. Stunning
+                        location and great clean and spacious boat. Will be back and highly recommend</p>
                     <a href="#">Read More</a>
                 </div>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-6">
                 <div class="follow_sailer_box">
                     <div class="custmer_revie">
-                        <div class="custmer_img">
+                        <!-- <div class="custmer_img">
                             <img src="{{ asset('app-assets/site_assets/img/testimonial-img.png') }}">
-                        </div>
+                        </div> -->
                         <div class="custmer_text">
                             <div class="follow_rating">
-                                <h5>Thomas</h5>
+                                <h5>Paul</h5>
                                 <ul>
                                     <li><i class="fa-solid fa-star"></i></li>
                                     <li><i class="fa-solid fa-star"></i></li>
@@ -396,11 +447,13 @@
                                     <li><i class="fa-solid fa-star"></i></li>
                                 </ul>
                             </div>
-                            <p>Jan 2025 Rent a boat in RANIERI Soverato in Port d'Alcúdia</p>
+                            <p>Jan 2025 Ibiza boat rental in Marina Ibiza, Ibiza.</p>
                         </div>
                     </div>
-                    <p class="follow_main_text">This is by far the best boat rental experience we’ve had!! The team is
-                        so welcoming and friendly - we can’t wait to </p>
+                    <p class="follow_main_text">Most amazing day on the water. The girls found us on the port and walked
+                        us to the right boat. Alfonso assisted us with anything we needed while on the water. We went to
+                        the most beautiful spots and there were no restrictions with what we could do on board.
+                        Everything we needed was provided for us. 10/10 experience</p>
                     <a href="#">Read More</a>
                 </div>
             </div>
@@ -413,20 +466,19 @@
     <div class="home_page_slider_Sec">
         <div class="row location_slider">
             @if($locations)
-                @foreach($locations as $locations)
-                    <div class="location_slide">
-                        <a href="{{ route('area', $locations->slug) }}">
-                            <div class="home_page_slider_box">
-                                <img src="{{ $locations->getFirstMediaUrl('location_image') }}" class="image">
-                                <div class="home_page_box_text">
-                                    <h3>LUXURY boats</h3>
-                                    <h2>{{ $locations->name }}</h2>
-                                    <p>{{ $locations->description_for_home_pape }}</p>
-                                </div>
-                            </div>
-                        </a>
+            @foreach($locations as $locations)
+            <div class="location_slide">
+                <a href="{{ route('area', $locations->slug) }}">
+                    <div class="home_page_slider_box">
+                        <img src="{{ $locations->getFirstMediaUrl('location_image') }}" class="image">
+                        <div class="home_page_box_text">
+                            <h2>{{ $locations->name }}</h2>
+                            <p>{{ $locations->description_for_home_pape }}</p>
+                        </div>
                     </div>
-                @endforeach
+                </a>
+            </div>
+            @endforeach
             @endif
         </div>
     </div>
@@ -488,21 +540,21 @@
     <div class="container-fluid">
         <div class="row">
             @if(count($blogs))
-                @foreach($blogs as $blog)
-                    <div class="col-sm-12 col-md-6 col-lg-4">
-                        <div class="next_trip_box">
-                            <img src="{{ $blog->getFirstMediaUrl('blog_image') }}">
-                            <div class="next_trip_text">
-                                <h3>{{ $blog->title }}</h3>
-                                <p>{{ substr(strip_tags($blog->description),0,170) }}...</p>
-                                <div class="trip_date_text">
-                                    <span><a href="{{ route('single-blog',$blog->slug) }}">View Post</a></span>
-                                    <span>{{ \Carbon\Carbon::parse($blog->created_at)->format('F d, Y') }}</span>
-                                </div>
-                            </div>
+            @foreach($blogs as $blog)
+            <div class="col-sm-12 col-md-6 col-lg-4">
+                <div class="next_trip_box">
+                    <img src="{{ $blog->getFirstMediaUrl('blog_image') }}">
+                    <div class="next_trip_text">
+                        <h3>{{ $blog->title }}</h3>
+                        <p>{{ substr(strip_tags($blog->description),0,170) }}...</p>
+                        <div class="trip_date_text">
+                            <span><a href="{{ route('single-blog',$blog->slug) }}">View Post</a></span>
+                            <span>{{ \Carbon\Carbon::parse($blog->created_at)->format('F d, Y') }}</span>
                         </div>
                     </div>
-                @endforeach
+                </div>
+            </div>
+            @endforeach
             @endif
         </div>
         <div class="text-center all_blog_button">
@@ -533,14 +585,14 @@ function hideText(event) {
 }
 </script> -->
 <!-- /next trip Section -->
- <script>
-    $(window).scroll(function(){
-      if ($(this).scrollTop() > 120) {
-          $('.header').addClass('fixed');
-      } else {
-          $('.header').removeClass('fixed');
-      }
+<script>
+$(window).scroll(function() {
+    if ($(this).scrollTop() > 120) {
+        $('.header').addClass('fixed');
+    } else {
+        $('.header').removeClass('fixed');
+    }
 });
- </script>
+</script>
 
 @endsection

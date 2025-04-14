@@ -110,6 +110,7 @@ $(document).ready(function(){
 				  breakpoint: 1000,
 				  settings: {
 					slidesToShow: 2,
+					autoplay: true,
 					slidesToScroll: 1
 				  }
 				},
@@ -117,6 +118,7 @@ $(document).ready(function(){
 				  breakpoint: 770,
 				  settings: {
 					slidesToShow: 1,
+					autoplay: true,
 					slidesToScroll: 1
 				  }
 				},
@@ -124,12 +126,49 @@ $(document).ready(function(){
 				  breakpoint: 480,
 				  settings: {
 					slidesToShow: 1,
+					autoplay: true,
 					slidesToScroll: 1
 				  }
 				}
 			  ]
 			});
 		}
+		if($('.featured_boat_slider').length)
+			{
+				$('.featured_boat_slider').slick({
+					//infinite: true,
+					  slidesToShow: 3,
+					slidesToScroll: 1,
+					autoplay: true,
+					draggable: true,
+					loop: true,
+					arrow: true,
+					 autoplaySpeed: 3000,
+					 responsive: [
+					{
+					  breakpoint: 1000,
+					  settings: {
+						slidesToShow: 2,
+						slidesToScroll: 1
+					  }
+					},
+					{
+					  breakpoint: 770,
+					  settings: {
+						slidesToShow: 1,
+						slidesToScroll: 1
+					  }
+					},
+					{
+					  breakpoint: 480,
+					  settings: {
+						slidesToShow: 1,
+						slidesToScroll: 1
+					  }
+					}
+				  ]
+				});
+			}
 	if($('.location_slider').length)
 	{
 		$('.location_slider').slick({
@@ -382,6 +421,24 @@ $(document).ready(function() {
     });
 });
 $(document).ready(function() {
+	$(document).on('change','#currency_name',function(){
+		var code = $(this).val();
+		var baseUrl = $('#baseUrl').val();
+		$.ajax({
+			url: baseUrl+'/ajax/changecurrency',
+			type: 'GET',
+			dataType: 'json',
+			data: {
+				code: code,
+			},
+			success: function(response) {
+				window.location.reload();
+			},
+			error: function(xhr, status, error) {
+				
+			}
+		});
+	})
 	$(document).on('click','#boat-register', function() {
 		var baseUrl = $('#baseUrl').val();
 		$.ajax({
@@ -454,5 +511,6 @@ $(document).ready(function() {
 		});
 	});
 });
+
 
 

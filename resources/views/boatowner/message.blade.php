@@ -49,32 +49,32 @@
     $( document ).ready(function() {
         $('#messages').animate({ scrollTop: $('#messages div.message').height() }, "fast");
     });
-    // $( document ).ready(function() {
-    //     var receiver_id = $('form#message_form input[name="receiver_id"]').val();
-    //     var csrfToken = $('meta[name="csrf-token"]').attr('content');
-    //     setInterval(function()
-    //     {
-    //         $.ajax({
-    //             url: "{{ route('boatowner.support.see-all-message') }}",
-    //             type: "POST",
-    //             data: { receiver_id: receiver_id },
-    //             headers: {
-    //                 'X-CSRF-TOKEN': csrfToken 
-    //             },
-    //             success: function(response) {
-    //                 var resp = response;
-    //                 if(resp.status == "success") {
-    //                     $('#messages div.message').html(resp.html);
-    //                     $('#messages div.message').animate({ scrollTop: $('#messages div.message').height() }, "fast");
-    //                 }
-    //             },
-    //             error: function(xhr, status, error) {
-    //                 console.error("Error: " + status + " - " + error);
-    //             }
-    //         });
-    //     },5000) 
-    //         clearInterval(5000); 
-    // });
+    $( document ).ready(function() {
+        var receiver_id = $('form#message_form input[name="receiver_id"]').val();
+        var csrfToken = $('meta[name="csrf-token"]').attr('content');
+        setInterval(function()
+        {
+            $.ajax({
+                url: "{{ route('boatowner.support.see-all-message') }}",
+                type: "POST",
+                data: { receiver_id: receiver_id },
+                headers: {
+                    'X-CSRF-TOKEN': csrfToken 
+                },
+                success: function(response) {
+                    var resp = response;
+                    if(resp.status == "success") {
+                        $('#messages div.message').html(resp.html);
+                        $('#messages div.message').animate({ scrollTop: $('#messages div.message').height() }, "fast");
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error("Error: " + status + " - " + error);
+                }
+            });
+        },5000) 
+            clearInterval(5000); 
+    });
 
     $(document).on('change','.file_upload',function(){
         
@@ -169,11 +169,17 @@
         <div class="message mCustomScrollbar" data-mcs-theme="minimal-dark">
             <div class="message-owner">
                 <div class="message-avatar-box">
+                    @php 
+                        $image = $receiver->getFirstMediaUrl('profile_image');
+                        if(!$image):
+                            $image = 'https://static1.clickandboat.com/v1/o/img/mask~dddc60cc1d.png';
+                        endif;
+                    @endphp
                     <div class="message-avatar-img">
-                        <img src="<?php echo $sender->getFirstMediaUrl('profile_image')?>" alt="user">
+                        <img src="<?php echo $image?>" alt="user">
                     </div>
                     <div class="message-avatar-title">
-                        <h3><?php echo $sender->name?></h3>
+                        <h3><?php echo $receiver->name?></h3>
                     </div>
                 </div>
                 {{-- <div class="message-avatar-link">
@@ -226,7 +232,7 @@
                                         <div class="msg-desc">
                                             <?php echo $message?>
                                         </div>
-                                        <small class="msg-time">10 Second Ago<?php echo $reply['created_on'] ?></small>
+                                        <small class="msg-time">{{ Timeago($reply['created_at']) }}</small>
                                     </div>
                                 </div>
                             </div>
@@ -270,120 +276,124 @@
                     <p>{{ $listing->city }}</p>
                 </div>
             </div>
-            <div class="list-boat-form">
-                <!-- Form for dates -->
-                <form action="{{ route('checkout') }}" method="POST">
-                    @csrf
-                    <div class="row sidebar_form">
-                        <div class="p-0 col-md-6">
-                            <div class="form-group">
-                                <input type="text"  value="{{ $quotation->checkin }}" readonly name="checkin_date" class="form-control" placeholder="Check-in" />
+            @if($quotation)
+                <div class="list-boat-form">
+                    <!-- Form for dates -->
+                    <form action="{{ route('checkout') }}" method="POST">
+                        @csrf
+                        <div class="row sidebar_form">
+                            <div class="p-0 col-md-6">
+                                <div class="form-group">
+                                    <input type="text"  value="{{ $quotation->checkin }}" readonly name="checkin_date" class="form-control" placeholder="Check-in" />
+                                </div>
+                            </div>
+                            <div class="p-0 col-md-6">
+                                <div class="form-group">
+                                    <input type="text"  value="{{ $quotation->checkout }}" readonly class="form-control" name="checkout_date" placeholder="Check-out" />
+                                </div>
                             </div>
                         </div>
-                        <div class="p-0 col-md-6">
-                            <div class="form-group">
-                                <input type="text"  value="{{ $quotation->checkout }}" readonly class="form-control" name="checkout_date" placeholder="Check-out" />
-                            </div>
+                        <div class="show-Price" id="show-Price-sec">
+                            <p>Hire: <span id="hire" class="price-after">{{ $quotation->net_amount }}</span></p>
+                            <p>Service Fee: <span id="service-fee">€{{ $quotation->service_fee }}</span></p>
+                            <p>Total: <span id="boat-total" class="price-after">€{{ $quotation->total }}</span></p>
                         </div>
-                    </div>
-                    <div class="show-Price" id="show-Price-sec">
-                        <p>Hire: <span id="hire" class="price-after">{{ $quotation->net_amount }}</span></p>
-                        <p>Service Fee: <span id="service-fee">€{{ $quotation->service_fee }}</span></p>
-                        <p>Total: <span id="boat-total" class="price-after">€{{ $quotation->total }}</span></p>
-                    </div>
-                    <div class="d-flex flex-column">
-                        <a class="btn book_pre_accept" href="#">Pre-accept the request</a>
-                        <a class="btn book_personal" href="javascript:;" data-toggle="modal" data-target="#sidebar-right">Create a personalised offer</a>
-                        <a class="btn book_refuse" href="#">Refuse the request</a>
-                    </div>
-                </form>
-            </div>
+                        <div class="d-flex flex-column">
+                            <a class="btn book_pre_accept" href="#">Pre-accept the request</a>
+                            <a class="btn book_personal" href="javascript:;" data-toggle="modal" data-target="#sidebar-right">Create a personalised offer</a>
+                            <a class="btn book_refuse" href="#">Refuse the request</a>
+                        </div>
+                    </form>
+                </div>
+            @endif
         </div>
         
     </div>
 
 
   <!-- Sidebar Right -->
-  <div class="modal fade right special-offers-modal" id="sidebar-right" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-sm" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span
-                        aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Special Offers</h4>
-            </div>
-            <div class="modal-body">
-                <form id="spcial-offer-form">
-                    <div class="rental-box-sec">
-                        <div class="rental-title">
-                            <h5>Rental</h5>
-                        </div>
-                        <div class="rental-feilds-box">
-                            <div class="row">
-                                <div class="col-md-6 pl-0">
-                                    <div class="form-group">
-                                        <label for="check-in">Check-in Date</label>
-                                        <input type="text" class="form-control" value="{{ $quotation->checkin }}" name="check-in" id="check-in" placeholder="" readonly />
-                                    </div>
-                                </div>
-                                <div class="col-md-6 pr-0">
-                                    <div class="form-group">
-                                        <label for="check-out">Check-out Date</label>
-                                        <input type="text" class="form-control" value="{{ $quotation->checkout }}" name="check-out" id="check-out" placeholder="" readonly />
-                                        <input type="hidden" value="{{ $quotation->id }}" name="quotation">
-                                        <input type="hidden" value="{{ $listing->slug }}" name="locationslug">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <hr class="offer-separator">
-                        <div class="rental-title">
-                            <h5>Prices</h5>
-                        </div>
-                        <div class="rental-feilds-box">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <div class="charter-sec">
-                                            <div class="charter-title"><p>Charter</p></div>
-                                            <div class="charter-price price-after"><p>{{ $quotation->total }}</p></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                {{-- <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="check-in" class="offered-label">Offered extras</label>
-                                        <div class="charter-sec">
-                                            <div class="charter-title"><p>Skipper</p></div>
-                                            <div class="charter-price"><p>€200</p></div>
-                                        </div>
-                                    </div>
-                                </div> --}}
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="check-in">Discount</label>
-                                        <select class="form-control" name="discount" id="special-offers">
-                                            @for($d=0; $d <= 20; $d++)
-                                                <option value="{{ $d }}">{{ $d }}%</option>
-                                            @endfor
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="total-form-group">
-                                        <div class="total-title"><h6>Total Price</h6></div>
-                                        <div class="total-amount price-after" id="price-get" pdata="{{ $quotation->total }}" ><p>€{{ $quotation->total }}</p></div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <button class="confirm-btn btn">Send Spcial Offer</button>
-                                </div>
-                            </div>
-                        </div>
+    @if($quotation)
+        <div class="modal fade right special-offers-modal" id="sidebar-right" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Special Offers</h4>
                     </div>
-                </form>
+                    <div class="modal-body">
+                        <form id="spcial-offer-form">
+                            <div class="rental-box-sec">
+                                <div class="rental-title">
+                                    <h5>Rental</h5>
+                                </div>
+                                <div class="rental-feilds-box">
+                                    <div class="row">
+                                        <div class="col-md-6 pl-0">
+                                            <div class="form-group">
+                                                <label for="check-in">Check-in Date</label>
+                                                <input type="text" class="form-control" value="{{ $quotation->checkin }}" name="check-in" id="check-in" placeholder="" readonly />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 pr-0">
+                                            <div class="form-group">
+                                                <label for="check-out">Check-out Date</label>
+                                                <input type="text" class="form-control" value="{{ $quotation->checkout }}" name="check-out" id="check-out" placeholder="" readonly />
+                                                <input type="hidden" value="{{ $quotation->id }}" name="quotation">
+                                                <input type="hidden" value="{{ $listing->slug }}" name="locationslug">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="offer-separator">
+                                <div class="rental-title">
+                                    <h5>Prices</h5>
+                                </div>
+                                <div class="rental-feilds-box">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <div class="charter-sec">
+                                                    <div class="charter-title"><p>Charter</p></div>
+                                                    <div class="charter-price price-after"><p>{{ $quotation->total }}</p></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {{-- <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="check-in" class="offered-label">Offered extras</label>
+                                                <div class="charter-sec">
+                                                    <div class="charter-title"><p>Skipper</p></div>
+                                                    <div class="charter-price"><p>€200</p></div>
+                                                </div>
+                                            </div>
+                                        </div> --}}
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="check-in">Discount</label>
+                                                <select class="form-control" name="discount" id="special-offers">
+                                                    @for($d=0; $d <= 20; $d++)
+                                                        <option value="{{ $d }}">{{ $d }}%</option>
+                                                    @endfor
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="total-form-group">
+                                                <div class="total-title"><h6>Total Price</h6></div>
+                                                <div class="total-amount price-after" id="price-get" pdata="{{ $quotation->total }}" ><p>€{{ $quotation->total }}</p></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <button class="confirm-btn btn">Send Spcial Offer</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
+    @endif
 @endsection

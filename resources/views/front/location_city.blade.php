@@ -10,7 +10,7 @@
 <!-- Banner Section -->
 <section class="location_page_banner">
    <div class="location_banner_text">
-      <h1>Explore Ibiza by Boat: All the best stops<br> for your ibiza boat trip
+      <h1>Explore Ibiza by Boat: All the best stops<br> for your ibiza boat rental
       </h1>
    </div>
 </section>

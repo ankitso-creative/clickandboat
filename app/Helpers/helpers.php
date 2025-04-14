@@ -254,3 +254,42 @@ function minMaxPrice($season, $price = '')
         }
     }
 }
+function getAmountWithSymble($price, $code)
+{
+    $req_url = 'https://api.exchangerate-api.com/v4/latest/USD';
+    $response_json = file_get_contents($req_url);
+    if(false !== $response_json) {
+        try {
+            $response_object = json_decode($response_json);
+            $EUR_price = round(($price * $response_object->rates->EUR), 2);
+        }
+        catch(Exception $e) {
+            // Handle JSON parse error...
+        }
+    }
+}
+function Timeago($time)
+{
+    $time = strtotime($time);
+	$time_difference = time() - $time;
+
+	if( $time_difference < 1 ) { return 'less than 1 second ago'; }
+	$condition = array( 12 * 30 * 24 * 60 * 60 =>  'year',
+				30 * 24 * 60 * 60       =>  'month',
+				24 * 60 * 60            =>  'day',
+				60 * 60                 =>  'hour',
+				60                      =>  'min',
+				1                       =>  'sec'
+	);
+
+	foreach( $condition as $secs => $str )
+	{
+		$d = $time_difference / $secs;
+
+		if( $d >= 1 )
+		{
+			$t = round( $d );
+			return  $t . ' ' . $str . ( $t > 1 ? 's' : '' ) . ' ago';
+		}
+	}
+}

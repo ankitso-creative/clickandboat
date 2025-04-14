@@ -64,8 +64,7 @@
                             </div>
                         <li class="nav-item">
                             <select class="select-language" id="language">
-                                {!! selectOption('languages','name','code',session()->get('lang'),array('status' , '1'))
-                                !!}
+                                {!! selectOption('languages','name','code',session()->get('lang'),array('status' , '1')) !!}
                             </select>
                         </li>
                         <!-- <li><a class="nav-link gbp_btn" href="#">GBP: £</a></li> -->
@@ -73,7 +72,7 @@
                             <select name="currency" id="currency_name">
                                 <option value="GBP">GBP: £ </option>
                                 <option value="EUR">EUR €</option>
-                                <option value="opel">USD $</option>
+                                <option value="USD">USD $</option>
                             </select>
                         </li>
                         @if(!Auth::check())
@@ -196,7 +195,7 @@
                 </div>
                 <div class="col-md-12 col-md-6 col-lg-3">
                     <div class="footer_menu">
-                        <h5>About Boat Daze</h5>
+                        <h5>About My Boat Booker</h5>
                         <ul>
                             <li><a href="{{ route('home') }}">Home</a></li>
                             <li><a href="{{ route('about-us') }}">About Us</a></li>
@@ -208,10 +207,10 @@
                 </div>
                 <div class="col-md-12 col-md-6 col-lg-3">
                     <div class="cal_mail_box">
-                        <div class="call_box_sec">
+                        <!-- <div class="call_box_sec">
                             <h5>Call Us</h5>
                             <p><a href="tel:{{ phoneWebsite() }}">{{ phoneWebsite() }}</a></p>
-                        </div>
+                        </div> -->
                         <div class="email_box_sec">
                             <h5>Email Us</h5>
                             <p><a href="mailto:{{ emailWebsite() }}">{{ emailWebsite() }}</a></p>
@@ -231,7 +230,7 @@
             </div>
         </div>
         <div class="copyright">
-            <p>© Boat Daze | All rights reserved</p>
+            <p>© My Boat Booker | All rights reserved</p>
         </div>
     </footer>
     <!-- .footer-->
