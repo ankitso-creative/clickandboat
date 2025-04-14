@@ -30,7 +30,7 @@ use Illuminate\Support\Facades\Session;
         }
         public function allBlogs()
         {
-            $blogs = Blog::where('status','1')->orderBy('created_at', 'desc')->paginate(7);
+            $blogs = Blog::where('status','1')->orderBy('order_by', 'asc')->paginate(7);
             return $blogs;
         }
         public function categories()
