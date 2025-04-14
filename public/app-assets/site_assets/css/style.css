@@ -8720,7 +8720,32 @@ font-size: 15px;
 .cus_input input {
     margin-bottom: 15px;
 }
-
+.boat_type_section_slider .slick-next::before,
+.boat_type_section_slider .slick-prev::before,
+.home_page_slider_box .slick-next::before,
+.home_page_slider_box .slick-prev::before {
+    display: none;
+}
+.featured_boats_section .row {
+    overflow: hidden;
+}
+.boat_renter_text i {
+    top: 23px;
+    left: -9px;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 16px;
+}
+.boat_renter_text p {
+    font-size: 13px;
+}
+.feature_box_main {
+    display: none;
+}
+.featured_boat_section_mobile{
+    display: block;
+}
 }
 @media (min-width: 767px) and (max-width: 1023px) {
     .header-slider {
