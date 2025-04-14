@@ -58,7 +58,7 @@
                                 <a class="dropdown-item" href="{{ route('about-us') }}">About Us</a>
                                 <a class="dropdown-item" href="{{ route('location') }}">Explore Ibiza</a>
                                 <a class="dropdown-item" href="{{ route('blogs') }}">Our Blog</a>
-                                <a class="dropdown-item" href="#">Book a boat</a>
+                                <a class="dropdown-item" href="{{ route('search') }}">Book a boat</a>
                                 <a class="dropdown-item" href="{{ route('help') }}">Help</a>
                                 </div>
                             </div>
@@ -76,15 +76,15 @@
                             </select>
                         </li>
                         @if(!Auth::check())
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('userlogin') }}">Sign Up</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('boatlogin') }}">Register your boat </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}"><i class="fa-solid fa-user"></i></a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('userlogin') }}">Sign Up</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('boatlogin') }}">Register your boat </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}"><i class="fa-solid fa-user"></i></a>
+                            </li>
                         @endif
                         @if(Auth::check())
                         <!-- <li class="nav-item">
@@ -92,9 +92,9 @@
                         </li> -->
                             <div class="dropdown my_account_btn">
                                 <button class="dropbtn">My account<i class="fa-solid fa-caret-down"></i></button>
-                                <div class="dropdown-content">
-                                <a class="dropdown-item" href="#">Dashboard</a>
-                                <a class="dropdown-item" href="{{ route('logout') }}">Logout </a>
+                                    <div class="dropdown-content">
+                                    <a class="dropdown-item" href="#">Dashboard</a>
+                                    <a class="dropdown-item" href="{{ route('logout') }}">Logout </a>
                                 </div>
                             </div>
                         @endif
