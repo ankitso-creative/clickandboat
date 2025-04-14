@@ -27,7 +27,7 @@ return new class extends Migration
             $table->string('website')->nullable();
             $table->string('boat_name');
             $table->string('title')->nullable();
-            $table->string('what_included')->nullable();
+            $table->string('description')->nullable();
             $table->string('onboard_capacity')->nullable();
             $table->string('cabins')->nullable();
             $table->string('berths')->nullable();
