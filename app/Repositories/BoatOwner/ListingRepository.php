@@ -46,7 +46,6 @@
             $listing->type = $request['type'];
             $listing->harbour = $request['harbour'];
             $listing->city = $request['city'];
-            $listing->professional = $request['professional'];
             $listing->manufacturer = $request['manufacturer'];
             $listing->model = $request['model'];
             $listing->boat_name = $request['boat_name'];  
@@ -89,11 +88,9 @@
             $listing = Listing::where('id', $id)->with(['price','booking','otherListingSetting','equipment','discount','calendar'])->first();
             if($request['s']=='general')
             {
-
                 $listing->type = $request['type'];
                 $listing->harbour = $request['harbour'];
                 $listing->city = $request['city'];
-                $listing->professional = $request['professional'];
                 $listing->manufacturer = $request['manufacturer'];
                 $listing->model = $request['model'];
                 $listing->boat_name = $request['boat_name'];
@@ -103,13 +100,11 @@
                // $listing->company_name = $request['company_name'];
                // $listing->website = $request['website'];
                // $listing->title = $request['title'];
-               // $listing->description = $request['description'];
                // $listing->onboard_capacity = $request['onboard_capacity'];
                // $listing->cabins = $request['cabins'];
                // $listing->berths = $request['berths'];
                // $listing->bathrooms = $request['bathrooms'];
                 //$listing->construction_year = $request['construction_year'];
-               // $listing->fuel = $request['fuel'];
                // $listing->renovated = $request['renovated'];
                // $listing->speed = $request['speed'];
                 if($listing->update()):
@@ -125,6 +120,7 @@
                 // $listing->capacity = $request['capacity'];
                 // $listing->company_name = $request['company_name'];
                 // $listing->website = $request['website'];
+                $listing->what_included = $request['what_included'];
                 $listing->construction_year = $request['construction_year'];
                 $listing->length = $request['length'];
                 $listing->title = $request['title'];
@@ -133,9 +129,17 @@
                 $listing->berths = $request['berths'];
                 $listing->bathrooms = $request['bathrooms'];
                 $listing->fuel = $request['fuel'];
+                $listing->fuel_Include = $request['fuel_Include'];
+                $listing->fuel_price = $request['fuel_price'];
                 $listing->renovated = $request['renovated'];
                 $listing->speed = $request['speed'];
                 if($listing->update()):
+                    $listing->security()->UpdateOrCreate(['listing_id' => $listing->id],[
+                        'listing_id' => $listing->id,
+                        'security_deposit' => $request['security_deposit'],
+                        'type' => $request['deposit_type'],
+                        'amount' => $request['deposit_amount'],
+                    ]);
                     $listing->description()->UpdateOrCreate(['listing_id' => $listing->id, 'language'  => $request['language']],[
                         'listing_id' => $listing->id,
                         'description'  => $request['description'],
@@ -353,7 +357,7 @@
         {
             $userId = auth()->id();
             $searchTerm = '%'.$request['search'].'%';
-            return Listing::with(['media'])->where('user_id',$userId)->where('boat_name', 'LIKE', $searchTerm)->get();
+            return Listing::with(['media'])->where('user_id',$userId)->where('boat_name', 'LIKE', "%{$searchTerm}%")->orderBy('created_at', 'desc')->get();
         }
         public function changeStatus($request)
         {

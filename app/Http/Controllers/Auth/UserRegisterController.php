@@ -99,7 +99,7 @@ class UserRegisterController extends Controller
         }
         $status = 1;
         if(isset($request->role)):
-            $status = 0;
+            $status = 1;
         endif;
         $user = User::create([
             'name' => $request->fname.' '.$request->lname,
@@ -110,9 +110,10 @@ class UserRegisterController extends Controller
         ]);
         if($user->role == RolesEnum::BOATOWNER->value)
         {
-            event(new UserRegistered($user));
+            //event(new UserRegistered($user));
+            Auth::login($user);
             Session::forget('email-user');
-            return redirect()->route('register-your-boat')->with('success', 'Registration successful! Please wait for admin approval.');
+            return redirect()->route('boatowner.listing-add')->with('success', 'Registration successful! Please wait for admin approval.');
         }
         else
         {

@@ -69,7 +69,7 @@
                             @if(count($categories))
                                 @foreach($categories as $category)
                                     <p class="radioOption-Item">
-                                        <input type="radio" name="type" id="BannerType{{ $loop->iteration }}" value="{{ $category->slug }}" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false">
+                                        <input type="radio" {{ singleCheckbox($loop->iteration,'1') }} name="type" id="BannerType{{ $loop->iteration }}" value="{{ $category->slug }}" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false">
                                         <label for="BannerType{{ $loop->iteration }}">
                                             <img src="{{ $category->getFirstMediaUrl('category_icon') }}">{{ $category->name }}
                                         </label>
@@ -84,34 +84,42 @@
                     <div class="row password_section">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="label-default">City</label>
-                                <input type="text" name="city" id="location-add" value="" class="form-control">
+                                <label class="label-default">City:<span class="required"> * </span></label>
+                                <input type="text" name="city" value=""  class="form-control">
                                 @error('city')<span class="required">{{ $message }}</span>@enderror
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="exampleFormControlSelect1">Harbour</label>
-                                <input type="text" name="harbour" value="" class="form-control">
+                                <label for="exampleFormControlSelect1">Harbour:<span class="required"> * </span></label>
+                                <select name="harbour" class="form-control" placeholder="Search Loaction">
+                                    <option value="">All Marinas</option>
+                                    <option value="Marina Santa Eulalia">Marina Santa Eulalia</option>
+                                    <option value="Puerto Sant Antoni">Puerto Sant Antoni</option>
+                                    <option value="Marina Ibiza">Marina Ibiza</option>
+                                    <option value="Marina Botafoch">Marina Botafoch</option>
+                                    <option value="Ibiza Magna">Ibiza Magna</option>
+                                    <option value="Club Nautico">Club Nautico</option>
+                                </select>
                                 @error('harbour')<span class="required">{{ $message }}</span>@enderror
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="label-default">Manufacturer</label>
-                                <input type="text" name="manufacturer" class="form-control" required value="{{ old('manufacturer') }}">
+                                <label class="label-default">Manufacturer:<span class="required"> * </span></label>
+                                <input type="text" name="manufacturer" class="form-control" value="{{ old('manufacturer') }}">
                                 @error('manufacturer')<span class="required">{{ $message }}</span>@enderror
                             </div>
                         </div>
                         <div class="col-md-6">
                             <label>Model:<span class="required"> * </span></label>
-                            <input type="text" name="model" class="form-control" required value="{{ old('model') }}">
+                            <input type="text" name="model" class="form-control" value="{{ old('model') }}">
                             @error('model')<span class="required">{{ $message }}</span>@enderror
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="exampleFormControlSelect1">Is your boat rented with a skipper?</label>
-                                <select name="skippers" class="form-control" required>
+                                <label for="exampleFormControlSelect1">Is your boat rented with a skipper?<span class="required"> * </span></label>
+                                <select name="skippers" class="form-control">
                                     <option value="withoutskipper">Without a skipper</option>
                                     <option value="withskipper">With a skipper</option>
                                     <option value="withorwthout">With or without</option>
@@ -120,19 +128,8 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="exampleFormControlSelect1">Are you a professional?</label>
-                                <select name="professional" class="form-control" required>
-                                    <option value="No">No</option>
-                                    <option value="Yes">Yes</option>
-                                </select>
-                                @error('professional')<span class="required">{{ $message }}</span>@enderror
-                            </div>
-                        </div>
-
-                        <div class="col-md-12">
                             <label>Boat name:<span class="required"> * </span></label>
-                            <input type="text" name="boat_name" class="form-control" required value="{{ old('boat_name') }}">
+                            <input type="text" name="boat_name" class="form-control" value="{{ old('boat_name') }}">
                             @error('boat_name')<span class="required">{{ $message }}</span>@enderror
                         </div>
                         {{-- <div class="col-md-6">
@@ -287,7 +284,7 @@
         const imageDropzone = new Dropzone("#imageDropzone", {
             url: "/upload",  
             paramName: 'file', 
-            maxFilesize: 5, 
+            maxFilesize: 10, 
             acceptedFiles: 'image/*',
             autoProcessQueue: false,
             addRemoveLinks: true,
@@ -302,27 +299,72 @@
                 console.error('Error uploading file:', response);
             }
         });
-        document.getElementById('uploadForm').addEventListener('submit', function(e) {
-            e.preventDefault(); 
-            let formData = new FormData(document.getElementById('uploadForm'));
+        // document.getElementById('uploadForm').addEventListener('submit', function(e) {
+        //     e.preventDefault(); 
+        //     let formData = new FormData(document.getElementById('uploadForm'));
+        //     imageDropzone.files.forEach(function(file) {
+        //         formData.append("files[]", file);
+        //     });
+        //     let formAction = document.getElementById('uploadForm').action;
+        //     fetch(formAction, {
+        //         method: "POST",
+        //         body: formData,
+        //         headers: {
+        //             'X-CSRF-TOKEN': '{{ csrf_token() }}', 
+        //         }
+        //     })
+        //     .then(response => response.json())
+        //     .then(data => {
+        //         window.location.href = data.data.redirect_url; 
+        //     })
+        //     .catch(error => {
+        //         console.error('Error submitting form:', error);
+        //     });
+        // });
+        $('#uploadForm').on('submit', function(e) {
+            e.preventDefault();
+            let formData = new FormData(this);
             imageDropzone.files.forEach(function(file) {
-                formData.append("files[]", file);
+                formData.append('files[]', file);
             });
-            let formAction = document.getElementById('uploadForm').action;
-            fetch(formAction, {
-                method: "POST",
-                body: formData,
+            let formAction = $(this).attr('action');
+            $.ajax({
+                url: formAction,
+                method: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
                 headers: {
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}', 
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                success: function(data) {
+                    window.location.href = data.data.redirect_url;
+                },
+                error: function(xhr) {
+                    if (xhr.responseJSON && xhr.responseJSON.errors) {
+                        let errors = xhr.responseJSON.errors;
+                        let firstErrorField;
+                        $.each(errors, function(fieldName, errorMessages) {
+                            let field = $('[name="' + fieldName + '"]');
+                            if (field.length) {
+                                field.after('<div class="text-danger">' + errorMessages[0] + '</div>');
+                                if (!firstErrorField) {
+                                    firstErrorField = field;
+                                }
+                            }
+                            if (firstErrorField) {
+                                $('html, body').animate({
+                                    scrollTop: firstErrorField.offset().top - 100 // adjust as needed
+                                }, 'fast');
+                            }
+                        });
+                    } else {
+                        console.error('Unexpected error:', xhr.responseText);
+                        alert('An error occurred. Check console for details.');
+                    }
                 }
-            })
-            .then(response => response.json())
-            .then(data => {
-                window.location.href = data.data.redirect_url; 
-            })
-            .catch(error => {
-                console.error('Error submitting form:', error);
             });
         });
+
     </script>
 @endsection
