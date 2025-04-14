@@ -86,13 +86,13 @@
                                 {{-- <a href="#">Delete /</a> 
                                 <a href="#">Preview listing</a> --}}
                             </li>
-                            <li><div class="content active_inactive_btn">
+                            {{-- <li><div class="content active_inactive_btn">
                                 <label class="switch m5">
                                     <input type="checkbox" {{ $checked }} class="change_status" Lid="{{ $result->id }}"> 
                                     <small></small>
                                 </label>
                                </div>
-                           </li>
+                           </li> --}}
                             </ul>
                         </div>
                     </div>

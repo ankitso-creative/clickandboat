@@ -37,14 +37,32 @@
             $('#closeMenu').click(function() {
                 $('#price-list').removeClass('open');
             });
+            $('#closeMenu').click(function() {
+                $('#price-list').removeClass('open');
+            });
+            $(document).on('change','.security-deposit',function(){
+                var value = $(this).val();
+                if(value == '0')
+                {
+                    $('.deposit-type, .deposit-amount').addClass('d-none');
+                }
+                else
+                {
+                    $('.deposit-type, .deposit-amount').removeClass('d-none');
+                }
+            })
+            $(document).on('change','.fuel-Include',function(){
+                var val = $(this).val();
+                if(val == '0')
+                {
+                    $('.fule-price').addClass('d-none');
+                }
+                else
+                {
+                    $('.fule-price').removeClass('d-none');
+                }
+            })
         });
-
-
-        $('#closeMenu').click(function() {
-            $('#price-list').removeClass('open');
-        });
-
-
         flatpickr(".from_date", {
             inline: false,
             dateFormat: "d-m-Y",
@@ -156,15 +174,10 @@
         </div>
         <div class="px-3 py-3 tab-content px-sm-0" id="nav-tabContent">
             <div class="tab-pane fade show active" id="general" role="tabpanel" aria-labelledby="nav-general-tab">
-                {{-- <form action="{{ route('boatowner.listing-settings', $listing->id) }}" method="POST"
-                enctype="multipart/form-data"> --}}
                 <form method="POST">
                     <div class="text-center boat_type_section">
                         <h2>Your boat</h2>
                         <h3>Type</h3>
-                        @php
-                        //dd($listing);
-                        @endphp
                         <div class="your_boats_type">
                             <div class="radio-with-Icon">
                                 @if(count($categories))
@@ -183,14 +196,12 @@
                     <div class="row">
                         <div class="col-lg-4">
                             <label>City:<span class="required"> * </span></label>
-                            <input type="text" name="city" id="location-edit" class="form-control" required value="{{ old('city', $listing->city) }}">
+                            <input type="text" name="city" class="form-control" required value="{{ old('city', $listing->city) }}">
                             @error('city')<span class="required">{{ $message }}</span>@enderror
                         </div>
                         <div class="col-lg-4">
                             <label>Harbour:<span class="required"> * </span></label>
-                            <!-- <input type="text" name="harbour" value="{{ old('harbour', $listing->harbour) }}"
-                                class="form-control" required> -->
-                                <select name="location" class="form-control" placeholder="Search Loaction">
+                            <select name="harbour" class="form-control" placeholder="Search Loaction">
                                 <option value="">All Marinas</option>
                                 <option value="Marina Santa Eulalia">Marina Santa Eulalia</option>
                                 <option value="Puerto Sant Antoni">Puerto Sant Antoni</option>
@@ -203,27 +214,18 @@
                         </div>
                         <div class="clearfix"></div>
                         <div class="col-lg-4">
-                            <label>Are you a professional?:<span class="required"> * </span></label>
-                            <select name="professional" class="form-control" required>
-                                <option @if($listing->professional=='No') {{ 'selected' }} @endif value="No">No</option>
-                                <option @if($listing->professional=='Yes') {{ 'selected' }} @endif value="Yes">Yes
-                                </option>
-                            </select>
-                            @error('professional')<span class="required">{{ $message }}</span>@enderror
-                        </div>
-                        <div class="col-lg-4">
                             <label>Manufacturer:<span class="required"> * </span></label>
                             <input type="text" name="manufacturer" class="form-control" required
                                 value="{{ old('manufacturer', $listing->manufacturer) }}">
                             @error('manufacturer')<span class="required">{{ $message }}</span>@enderror
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-6">
                             <label>Model:<span class="required"> * </span></label>
                             <input type="text" name="model" class="form-control" required
                                 value="{{ old('model', $listing->model) }}">
                             @error('model')<span class="required">{{ $message }}</span>@enderror
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-6">
                             <label>Boat name<span class="required"> * </span></label>
                             <input type="text" name="boat_name" class="form-control" required
                                 value="{{ old('boat_name', $listing->boat_name) }}">
@@ -282,12 +284,9 @@
                     <div class="p-0 pt-4 col-sm-12">
                         <h4 class="bold ">Boat Description</h4>
                     </div>
-                    <?php 
-                    //dd($listing->description[0]->description);
-                    ?>
                     <div class="pt-4 row">
                         <div class="col-md-6">
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="13" name="description">{{ optional($listing->description[0] ?? null)->description }}</textarea>
+                            <textarea class="form-control" rows="13" name="description">{{ optional($listing->description[0] ?? null)->description }}</textarea>
                             @error('description')<span class="required">{{ $message }}</span>@enderror
                         </div>
                         <div class="col-md-6">
@@ -300,12 +299,36 @@
                     </div>
                     <div class="pt-4 row">
                         <div class="col-md-6">
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="8" name="description">{{ optional($listing->description[0] ?? null)->description }}</textarea>
-                            @error('description')<span class="required">{{ $message }}</span>@enderror
+                            <textarea class="form-control" rows="8" name="what_included">{{ $listing->what_included }}</textarea>
+                            @error('what_included')<span class="required">{{ $message }}</span>@enderror
                         </div>
                         <div class="col-md-6">
                             <p class="des__pera_text">Write about what is included in your trip. For Example, your destinations, what is included in your price (captain, fuel, drinks, food, water sports), please state prices for anything that is not included in your price, late check out fee, sunset fee, paddle boards, snorkelling equipment, towels, start and end times.
                             </p>
+                        </div>
+                    </div>
+                    <div class="p-0 pt-4 col-sm-12">
+                        <h4 class="bold ">Security Deposit</h4>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <label>Security Deposit</label>
+                            <select name="security_deposit" class="form-control security-deposit">
+                                <option {{ checkselect(optional($listing->security)->security_deposit,'0') }} value="0">No</option>
+                                <option {{ checkselect(optional($listing->security)->security_deposit,'1') }} value="1">Yes</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-4 deposit-type d-none">
+                            <label>Deposit In</label>
+                            <select name="deposit_type" class="form-control">
+                                <option {{ checkselect(optional($listing->security)->type,'0') }} value="0">Percentage</option>
+                                <option {{ checkselect(optional($listing->security)->type,'1') }} value="1">Flat Amount</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-4 deposit-amount d-none">
+                            <label>Deposit value</label>
+                            <input type="text" name="deposit_amount" class="form-control"> 
                         </div>
                     </div>
                     <div class="p-0 pt-4 col-sm-12">
@@ -355,10 +378,21 @@
                             <input type="text" name="renovated" class="form-control" required value="{{ old('renovated', $listing->renovated) }}">
                             @error('renovated')<span class="required">{{ $message }}</span>@enderror
                         </div>
-                        <div class="col-lg-12">
+                        <div class="col-lg-4">
                             <label>Speed (Kn)<span class="required"> *</span></label>
                             <input type="text" name="speed" class="form-control" required value="{{ old('speed', $listing->speed) }}">
                             @error('speed')<span class="required">{{ $message }}</span>@enderror
+                        </div>
+                        <div class="col-lg-4">
+                            <label>Is Fuel Included In Your Price?</label>
+                            <select name="fuel_Include" class="form-control fuel-Include">
+                                <option {{ checkselect($listing->fuel_Include,0) }} value="0">Yes</option>
+                                <option {{ checkselect($listing->fuel_Include,1) }} value="1">No</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-4 fule-price d-none">
+                            <label>Price Of Fuel Per Hour</label>
+                            <input type="text" name="fuel_price" value="{{ $listing->fuel_price }}" class="form-control"> 
                         </div>
                     </div>
                     <div class="boat_listing_images_video_save_btn">
@@ -1819,7 +1853,7 @@
     const imageDropzone = new Dropzone("#imageDropzone", {
         url: "{{ route('boatowner.uploadgallery',$listing->id) }}", // URL to handle file upload
         paramName: 'file', // The name that will be used to send the file
-        maxFilesize: 5, // Max file size in MB
+        maxFilesize: 10, // Max file size in MB
         acceptedFiles: 'image/*', // Only allow image files
         dictDefaultMessage: 'Drag & Drop or Click to Upload Image',
         headers: {
@@ -1870,7 +1904,7 @@
     const imageDropzonetwo = new Dropzone("#imageDropzone-plan", {
         url: "{{ route('boatowner.uploadplanimage',$listing->id) }}", // URL to handle file upload
         paramName: 'file', // The name that will be used to send the file
-        maxFilesize: 2, // Max file size in MB
+        maxFilesize: 10, // Max file size in MB
         acceptedFiles: 'image/*', // Only allow image files
         dictDefaultMessage: 'Drag & Drop or Click to Upload Image',
         headers: {

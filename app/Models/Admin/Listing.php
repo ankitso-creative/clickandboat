@@ -30,12 +30,15 @@ class Listing extends Model implements HasMedia
         'website',
         'boat_name',
         'title',
+        'what_included',
         'onboard_capacity',
         'cabins',
         'berths',
         'bathrooms',
         'construction_year',
         'fuel',
+        'fuel_include',
+        'fuel_price',
         'renovated',
         'speed',
     ];
@@ -86,6 +89,10 @@ class Listing extends Model implements HasMedia
     public function message() 
     {
         return $this->hasMany(Message::class);
+    }
+    public function security() 
+    {
+        return $this->hasOne(SecurityDeposit::class);
     }
     public static function boot()
     {
