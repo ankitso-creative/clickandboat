@@ -966,6 +966,18 @@ label, input, textarea, button, select {
 .special-offers-modal .offer-separator {
     border-top: 10px solid rgba(0,0,0,.1);
 }
+.rental-feilds-box .confirm-btn {
+    background: #fff;
+    width: 100%;
+    border: 1px solid #f9a126;
+    color: #f9a126;
+    transition: 0.5s;
+    margin-top: 20px;
+}
+.rental-feilds-box .confirm-btn:hover{
+    background: #f9a126;
+    color: #fff;
+}
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
