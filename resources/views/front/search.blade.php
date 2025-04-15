@@ -17,14 +17,13 @@
         $(document).ready(function() {
             $('.not-login-user').on('click', function() {
                 swal({
-                    title: 'Warning!',
+                    title: '',
                     text: 'You need to login as a customer.',
-                    type: "warning",
-                    showCancelButton: true,
+                    type: "",
+                    showCancelButton: false,
                     confirmButtonColor: '#DD6B55',
                     confirmButtonText: 'Go to Login',
-                    cancelButtonText: 'No, cancel it!',
-                    allowOutsideClick: false, 
+                    allowOutsideClick: false,
                 },
                 function(isConfirm) {
                     if (isConfirm) {
@@ -305,7 +304,9 @@
                                     <li>
                                         <div class="where_box">
                                             <div class="icon_box">
-                                                <i class="fa-solid fa-person-skiing-nordic"></i>
+                                            <svg name="icon-skipper-17" width="17" height="14" viewBox="0 0 17 14" xmlns="http://www.w3.org/2000/svg">
+                                                  <path fill-rule="evenodd" clip-rule="evenodd" d="M16.8334 5.33331C16.8334 3.24998 11.8334 0.333313 8.50008 0.333313C5.16675 0.333313 0.166748 3.24998 0.166748 5.33331C0.166748 6.45791 0.530984 7.5825 1.25946 8.70709C3.673 8.12457 6.08654 7.83331 8.50008 7.83331C10.8737 7.83331 13.2472 8.115 15.6208 8.67839C16.4292 7.15915 16.8334 6.04413 16.8334 5.33331ZM8.50008 9.49998C10.7223 9.49998 12.9445 9.77776 15.1667 10.3333C13.7779 12.5555 11.5556 13.6666 8.50008 13.6666C5.44453 13.6666 3.2223 12.5555 1.83341 10.3333C4.05564 9.77776 6.27786 9.49998 8.50008 9.49998ZM8.50008 5.33331C9.19044 5.33331 9.75008 4.77367 9.75008 4.08331C9.75008 3.39296 9.19044 2.83331 8.50008 2.83331C7.80973 2.83331 7.25008 3.39296 7.25008 4.08331C7.25008 4.77367 7.80973 5.33331 8.50008 5.33331Z"></path>
+                                                </svg>
                                             </div>
                                             <div class="where_box_text">
                                                 <h5>Rental Type</h5>
@@ -544,7 +545,7 @@
                             <div class="toggle_filter">
                                 <div class="toggle_text">
                                     <label>Highest rated <i class="fa-solid fa-star"></i></label>
-                                    <p>ROnly display boats with a rating over 4 stars</p>
+                                    <p>Only display boats with a rating over 4 stars</p>
                                 </div>
                                 <div class="toggle_btn">
                                     <button type="button" class="btn btn-sm btn-toggle active" data-toggle="button"
@@ -565,7 +566,7 @@
                             @if(count($results))
                                 @foreach ($results as $result) 
                                     @php
-                                        $heart_html = '<div class="wishlist_icon not-login-user"><i class="fa-regular fa-heart"></i></div>';
+                                        $heart_html = '<div class="wishlist_icon not-login-user"><a href="javascript:;" class="favorite_item"><i class="fa-regular fa-heart"></i></a></div>';
                                         if(Auth::check()):
                                             $user = auth()->user();
                                             if($user->role == 'customer'):

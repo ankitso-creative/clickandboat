@@ -37,54 +37,60 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav">
-                        <!-- <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle about_menu" href="{{ route('about-us') }}"
-                                id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false">
-                                About Us
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('about-us') }}">About Us</a>
-                                <a class="dropdown-item" href="{{ route('location') }}">Explore Ibiza</a>
-                                <a class="dropdown-item" href="{{ route('blogs') }}">Our Blog</a>
-                                <a class="dropdown-item" href="#">Book a boat</a>
-                                <a class="dropdown-item" href="{{ route('help') }}">Help</a>
-
-                            </div>
-                        </li> -->
                         <div class="dropdown my_account_btn about_btn">
-                                <button class="dropbtn">About Us <i class="fa-solid fa-caret-down"></i></button>
-                                <div class="dropdown-content">
+                            <button class="dropbtn">About Us <i class="fa-solid fa-caret-down"></i></button>
+                            <div class="dropdown-content">
                                 <a class="dropdown-item" href="{{ route('about-us') }}">About Us</a>
                                 <a class="dropdown-item" href="{{ route('location') }}">Explore Ibiza</a>
                                 <a class="dropdown-item" href="{{ route('blogs') }}">Our Blog</a>
                                 <a class="dropdown-item" href="{{ route('search') }}">Book a boat</a>
                                 <a class="dropdown-item" href="{{ route('help') }}">Help</a>
-                                </div>
                             </div>
+                        </div>
                         <li class="nav-item">
                             <select class="select-language" id="language">
-                                {!! selectOption('languages','name','code',session()->get('lang'),array('status' , '1')) !!}
+                                {!! selectOption('languages','name','code',session()->get('lang'),array('status' , '1'))
+                                !!}
                             </select>
                         </li>
-                        <!-- <li><a class="nav-link gbp_btn" href="#">GBP: £</a></li> -->
                         <li class="nav-item">
                             <select name="currency" id="currency_name">
-                                <option value="GBP">GBP: £ </option>
-                                <option value="EUR">EUR €</option>
-                                <option value="USD">USD $</option>
+                                <option value="GBP">EUR €</option>
+                                <option value="EUR">USD $</option>
+                                <option value="opel">GBP £</option>
+                                <option value="opel">CHF </option>
+                                <option value="opel">RUB ₽</option>
+                                <option value="opel">NOK kr</option>
+                                <option value="opel">SEK kr</option>
+                                <option value="opel">DKK kr</option>
+                                <option value="opel">CZK kr</option>
+                                <option value="opel">PLN zł</option>
+                                <option value="opel">CAD</option>
+                                <option value="opel">AUD</option>
+                                <option value="opel">HUF . ft</option>
+                                <option value="opel">RON . lei</option>
+                                <option value="opel">BGN . Лв</option>
+                                <option value="opel">HRK . kn</option>
+                                <option value="opel">BRL</option>
+                                <option value="opel">ARS . $</option>
+                                <option value="opel">ILS . ₪</option>
+                                <option value="opel">AED . د.إ </option>
+                                <option value="opel">CLP . $</option>
+                                <option value="opel">COP . $</option>
+                                <option value="opel">MXN . $</option>
+                                <option value="opel">UYU . $</option>
                             </select>
                         </li>
                         @if(!Auth::check())
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('userlogin') }}">Sign Up</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('boatlogin') }}">Register your boat </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}"><i class="fa-solid fa-user"></i></a>
-                            </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('userlogin') }}">Sign Up</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('boatlogin') }}">Register your boat </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}"><i class="fa-solid fa-user"></i></a>
+                        </li>
                         @endif
                         @if(Auth::check())
                         <!-- <li class="nav-item">
@@ -96,15 +102,21 @@
                                     <a class="dropdown-item" href="{{ route('customer.dashboard') }}">Dashboard</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}">Logout </a>
                                 </div>
+
                             </div>
+                        </div>
                         @endif
                     </ul>
                 </div>
             </nav>
         </div>
     </header>
-    <ul class="nav-mobile">
-        <li class="nav-item">
+    <div>
+        <ul class="nav-mobile">
+            <li class="nav-item">
+                <a href="">.</a>
+            </li>
+            <!-- <li class="nav-item">
             <select class="select-language" id="language">
                 {!! selectOption('languages','name','code',session()->get('lang'),array('status' , '1')) !!}
             </select>
@@ -115,6 +127,7 @@
                 <option value="EUR">EUR €</option>
                 <option value="opel">USD $</option>
             </select>
+
         </li>
         <li><a href="{{ route('home') }}"><img src="{{ logoURL() }}"></a></li>
         <li class="menu-container">
@@ -129,6 +142,7 @@
                 </svg>
             </label>
             <ul class="menu-sidebar">
+
                 <li>
                     <input type="checkbox" id="sub-one" class="submenu-toggle">
                     <label class="submenu-label" for="sub-one">About Us</label>
@@ -153,10 +167,6 @@
                     <a class="nav-link" href="{{ route('login') }}"><i class="fa-solid fa-user"></i></a>
                 </li>
                 @if(Auth::check())
-
-                <!-- <li class="nav-item mobile_menu_list">
-                    <a class="nav-link" href="{{ route('logout') }}">Logout </a>
-                </li> -->
                 <li>
                     <input type="checkbox" id="sub-two" class="submenu-toggle">
                     <label class="submenu-label" for="sub-two">My Account</label>
@@ -169,11 +179,12 @@
                         <li><a href="#">Dashboard</a></li>
                         <li><a href="{{ route('logout') }}">Logout</a></li>
                     </ul>
-                </li>
-                @endif
-            </ul>
-        </li>
-    </ul>
+                </li> 
+                    @endif -->
+                </ul>
+            </li>
+        </ul>
+    </div>
     @yield('content')
     <footer class="footer">
         <div class="container-fluid">
@@ -199,7 +210,6 @@
                             <li><a href="{{ route('home') }}">Home</a></li>
                             <li><a href="{{ route('about-us') }}">About Us</a></li>
                             <li><a href="{{ route('location') }}">Locations</a></li>
-                            <!-- <li><a href="{{ route('contact') }}">Contact </a></li> -->
                             <li><a href="{{ route('blogs') }}">Blog</a></li>
                         </ul>
                     </div>

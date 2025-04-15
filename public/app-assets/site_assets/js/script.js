@@ -149,6 +149,7 @@ $(document).ready(function(){
 					  breakpoint: 1000,
 					  settings: {
 						slidesToShow: 2,
+						arrows: false,
 						slidesToScroll: 1
 					  }
 					},
@@ -156,6 +157,7 @@ $(document).ready(function(){
 					  breakpoint: 770,
 					  settings: {
 						slidesToShow: 1,
+						arrows: false,
 						slidesToScroll: 1
 					  }
 					},
@@ -163,53 +165,108 @@ $(document).ready(function(){
 					  breakpoint: 480,
 					  settings: {
 						slidesToShow: 1,
+						arrows: false,
 						slidesToScroll: 1
 					  }
 					}
 				  ]
 				});
 			}
-	if($('.location_slider').length)
-	{
-		$('.location_slider').slick({
-			slidesToShow: 2,           
-			slidesToScroll: 1,
-			centerMode: true,
-			//autoplay: true,
-			autoplaySpeed: 5000,         
-			//speed: 5000,               
-			cssEase: 'linear',        
-			infinite: true,
-			arrows: true,            
-			pauseOnHover: false,      
-			pauseOnFocus: false,
-			variableWidth: true,
-			responsive: [
-				{
-				breakpoint: 1000,
-				settings: {
-					slidesToShow: 2,
-					slidesToScroll: 1
-				}
-				},
-				{
-				breakpoint: 770,
-				settings: {
+			$(document).ready(function () {
+				const isHomePage = window.location.pathname === "/" || window.location.pathname === "/index.html";
+				const isMobile = window.innerWidth <= 770;
+			  
+				if (isHomePage && isMobile && $('.home_review_slider').length) {
+				  $('.home_review_slider').slick({
 					slidesToShow: 1,
-					slidesToScroll: 1
+					slidesToScroll: 1,
+					autoplay: true,
+					draggable: true,
+					loop: true,
+					arrows: false,
+					autoplaySpeed: 3000,
+					responsive: [
+					  {
+						breakpoint: 1000,
+					  settings: {
+						slidesToShow: 2,
+						autoplay:true,
+						slidesToScroll: 1
+					  }
+					},
+					{
+					  breakpoint: 770,
+					  settings: {
+						slidesToShow: 1,
+						autoplay:true,
+						slidesToScroll: 1
+					  }
+					},
+					{
+					  breakpoint: 480,
+					  settings: {
+						slidesToShow: 1,
+						autoplay:true,
+						slidesToScroll: 1
+					  }
+					  }
+					]
+				  });
+				} else {
+				  // Destroy slick if initialized (optional safety)
+				  if ($('.home_review_slider').hasClass('slick-initialized')) {
+					$('.home_review_slider').slick('unslick');
+				  }
+			  
+				  // Optional: ensure proper layout on desktop or non-home pages
+				  $('.home_review_slider').addClass('no-slider');
 				}
-				},
-				{
-				breakpoint: 480,
-				settings: {
-					slidesToShow: 1,
-					slidesToScroll: 1
-				}
-				}
-			]
-			
-			});
-	}
+			  });
+			  
+				if($('.location_slider').length)
+					{
+						$('.location_slider').slick({
+							slidesToShow: 2,           
+							slidesToScroll: 1,
+							centerMode: true,
+							autoplay: false,
+							autoplaySpeed: 5000,         
+							//speed: 5000,               
+							cssEase: 'linear',        
+							infinite: true,
+							arrows: true,            
+							pauseOnHover: false,      
+							pauseOnFocus: false,
+							variableWidth: true,
+							responsive: [
+								{
+								breakpoint: 1000,
+								settings: {
+									slidesToShow: 2,
+									slidesToScroll: 1
+								}
+								},
+								{
+								breakpoint: 770,
+								settings: {
+									slidesToShow: 1,
+									slidesToScroll: 1
+								}
+								},
+								{
+								breakpoint: 480,
+								settings: {
+									slidesToShow: 1,
+									variableWidth: false,
+									autoplay: true,
+									slidesToScroll: 1
+								}
+								}
+							]
+							
+							});
+					}
+
 	if($('.package_slider').length)
 	{
 		$('.package_slider').slick({
@@ -392,7 +449,7 @@ $(document).ready(function(){
 });
 $(document).ready(function() {
     // Configure/customize these variables.
-    var showChar = 400;  // How many characters are shown by default
+    var showChar = 260;  // How many characters are shown by default
     var ellipsestext = "...";
     var moretext = "View More >";
     var lesstext = "View Less ^";
@@ -511,6 +568,8 @@ $(document).ready(function() {
 		});
 	});
 });
+
+
 
 
 
