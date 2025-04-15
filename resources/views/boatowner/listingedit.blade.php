@@ -1853,7 +1853,7 @@
     const imageDropzone = new Dropzone("#imageDropzone", {
         url: "{{ route('boatowner.uploadgallery',$listing->id) }}", // URL to handle file upload
         paramName: 'file', // The name that will be used to send the file
-        maxFilesize: 10, // Max file size in MB
+        maxFilesize: 20, // Max file size in MB
         acceptedFiles: 'image/*', // Only allow image files
         dictDefaultMessage: 'Drag & Drop or Click to Upload Image',
         headers: {
@@ -1904,7 +1904,7 @@
     const imageDropzonetwo = new Dropzone("#imageDropzone-plan", {
         url: "{{ route('boatowner.uploadplanimage',$listing->id) }}", // URL to handle file upload
         paramName: 'file', // The name that will be used to send the file
-        maxFilesize: 10, // Max file size in MB
+        maxFilesize: 20, // Max file size in MB
         acceptedFiles: 'image/*', // Only allow image files
         dictDefaultMessage: 'Drag & Drop or Click to Upload Image',
         headers: {

@@ -88,10 +88,10 @@ use Illuminate\Support\Facades\Session;
             $relatedBlogs =  Blog::where('status', '1')->where('id','!=', $id)->inRandomOrder()->limit(3)->get();
             return $relatedBlogs;
         }
-        public function getListingData()
+        public function getListingData($request)
         {
-            $listingID = Session::get('listingID');
-            $listing = Listing::with(['price'])->where('id',$listingID)->first();
+            $slug = $request['slug'];
+            $listing = Listing::with(['price'])->where('slug',$slug)->first();
             return $listing;
         }
         public function getQuotationData($request)

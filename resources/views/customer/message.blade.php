@@ -253,19 +253,33 @@
                                 <div class="form-group">
                                     <input type="text"  value="{{ $quotation->checkout }}" readonly class="form-control" name="checkout_date" placeholder="Check-out" />
                                     <input type="hidden" name="quotation" value="{{ $quotationID }}">
+                                    <input type="hidden" name="slug" value="<?php echo $listing->slug?>">
                                 </div>
                             </div>
                         </div>
                         <div class="show-Price" id="show-Price-sec">
                             <p>Hire: <span id="hire">{{ $quotation->net_amount }}</span></p>
                             <p>Service Fee: <span id="service-fee">€{{ $quotation->service_fee }}</span></p>
-                            <p>Total: <span id="boat-total">€{{ $quotation->total }}</span></p>
+                            @if($listing->fuel_include == '1')
+                                <p>Fuel Charges: <span id="service-fee">€{{ $listing->fuel_price }}</span></p>
+                                <p>Total: <span id="boat-total" class="price-after">€{{ $quotation->total + $listing->fuel_price }}</span></p>
+                            @else
+                                <p>Total: <span id="boat-total">€{{ $quotation->total }}</span></p>
+                            @endif
                         </div>
                         <div class="d-flex flex-column">
-                            @if($quotation->status=='Accept')
-                                <button class="btn book_btn">Confirm And Pay</button>
+                            @php
+                                $userId = auth()->id(); // or any specific user ID you have
+                                $orderExists = App\Models\Order::where('user_id', $userId)->where('listing_id',$listing->id)->exists();
+                            @endphp
+                            @if($orderExists)
+                                <a href="#" class="btn book_btn">View Order</a>
                             @else
-                                <button class="btn book_btn">Book</button>
+                                @if($quotation->status=='Accept')
+                                    <button class="btn book_btn">Confirm And Pay</button>
+                                @else
+                                    <button class="btn book_btn">Book</button>
+                                @endif
                             @endif
                         </div>
                     </form>
