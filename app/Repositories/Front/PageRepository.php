@@ -30,7 +30,7 @@ use Illuminate\Support\Facades\Session;
         }
         public function allBlogs()
         {
-            $blogs = Blog::where('status','1')->orderBy('created_at', 'desc')->paginate(7);
+            $blogs = Blog::where('status','1')->orderBy('order_by', 'asc')->paginate(7);
             return $blogs;
         }
         public function categories()
@@ -88,10 +88,10 @@ use Illuminate\Support\Facades\Session;
             $relatedBlogs =  Blog::where('status', '1')->where('id','!=', $id)->inRandomOrder()->limit(3)->get();
             return $relatedBlogs;
         }
-        public function getListingData()
+        public function getListingData($request)
         {
-            $listingID = Session::get('listingID');
-            $listing = Listing::with(['price'])->where('id',$listingID)->first();
+            $slug = $request['slug'];
+            $listing = Listing::with(['price'])->where('slug',$slug)->first();
             return $listing;
         }
         public function getQuotationData($request)

@@ -83,6 +83,7 @@
                                     <th>#</th>
                                     <th>Name</th>
                                     <th>Created At</th>
+                                    <th>Order</th>
                                     <th>Active</th>
                                     <th>Action</th>
                                 </tr>
@@ -100,6 +101,7 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $result->title }}</td>
                                             <td>{{ $result->created_at }}</td>
+                                            <td><p contenteditable="true" class="order-by" bid="{{ $result->id }}">{{ $result->order_by }}</p></td>
                                             <td><input  {{ $checked }} value="{{ $result->id }}" type="checkbox" data-size="mini" class="make-switch change_status" data-on-color="success" data-off-color="danger"></td>
                                             <td>
                                                 <a href="{{ route('admin.blog.edit', $result->id) }}" class="btn btn-circle btn-icon-only btn-default tooltips" title = "Edit" href="javascript:;"> <i class="icon-note"></i></a>
@@ -113,6 +115,9 @@
                             </tbody>
                         </table>                                               
                     </div>
+                    <div class="pagination">
+                        {{ $results->appends(request()->all())->links('pagination::default') }}
+                    </div>
                 </div>
             </div>
             <!-- END SAMPLE TABLE PORTLET-->
@@ -125,6 +130,29 @@
         <!-- END CONTENT BODY -->
     </div>
     <script>
+        $(document).on('keyup','.order-by',function(){
+            var val = $(this).text();
+            var bid = $(this).attr('bid');
+            $.ajax({
+                url: "{{ route('admin.blog.changeorderblog') }}",
+                type: 'POST',
+                data: { value: val, id: bid},
+                dataType: 'json',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(response) {
+                    if(response.success) 
+                    {
+                        $('#listing-section').html(response.html);
+                    } 
+                    else 
+                    {
+                       $('.message').html(response.message);
+                    }
+                },
+            });
+        })
         $(document).on('click','.change_status',function(){
             var id = $(this).val();
             var value = 0;

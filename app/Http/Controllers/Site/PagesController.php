@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use App\Services\Front\PageService;
 use Illuminate\Support\Facades\Session;
 use Auth;
+use Illuminate\Support\Facades\Crypt;
+
 class PagesController extends Controller
 {
     protected $service;
@@ -79,9 +81,10 @@ class PagesController extends Controller
     public function checkout(CheckoutRequest $request)
     {
         $request =  $request->all();
-        $listing = $this->service->getListingData();
+        $listing = $this->service->getListingData($request);
         $quotation = $this->service->getQuotationData($request);
-        return view('front.checkout',compact('listing','quotation'));
+        $quotationID = Crypt::encrypt($quotation->id);
+        return view('front.checkout',compact('listing','quotation','quotationID'));
     }
     public function aboutUs()
     {

@@ -28,9 +28,7 @@
         });
  		document.getElementById("payment-form").addEventListener("submit", async (event) => {
 			event.preventDefault();
-			const from = document.getElementById("from").value;
-			const to = document.getElementById("to").value;
-			const listingID = document.getElementById("listingID").value;
+			const quotationID = document.getElementById("quotationID").value;
 			try {
 				const response = await fetch("{{ route('customer.stripe.createPaymentIntent') }}", {
 					method: "POST",
@@ -38,7 +36,7 @@
 						"Content-Type": "application/json",
 						"X-CSRF-TOKEN": "{{ csrf_token() }}"
 					},
-					body: JSON.stringify({ from, to, listingID })
+					body: JSON.stringify({ quotationID })
 				});
 				const data = await response.json();
 				if (data.error) {
@@ -63,9 +61,7 @@
 						body: JSON.stringify({
 							paymentIntentId: paymentIntent.id,
 							paymentStatus: paymentIntent.status, 
-							from,
-							to,
-							listingID
+							quotationID
 						})
 					});
 					const confirmationData = await confirmationResponse.json();
@@ -177,14 +173,43 @@
 								</div>
 								<div class="insurance-form ">
 									<div class="row">
-										<div class="col-md-12">
-										<input type="radio" checked="" value="Without skipper" class="form-check-input" name="optradio" id="myRadio8">
-										<label for="myRadio8">
-											<span class="title-label">Pay the total amount</span>
-											<span class="title-text">€{{ $quotation['total'] }}</span>
-											<p>Pay the total amount of the booking today.</p>
-										</label>
-										</div>
+										@if($listing->security && optional($listing->security)->security_deposit == '1')
+											@php
+												if($listing->security->type == 1):
+													$depositAmount = $listing->security->amount;
+												else:
+													$amount = $listing->security->amount;
+													$depositAmount = $quotation['total'] * $amount / 100;
+												endif;
+											@endphp
+											<div class="col-md-12">
+												<input type="radio" value="deposit-payment" class="form-check-input" name="payment_type" id="myRadiodeposit">
+												<label for="myRadiodeposit">
+													<span class="title-label">Pay the deposit amount</span>
+													<span class="title-text">€{{ $depositAmount }}</span>
+													<p>Pay the deposit amount of the booking today.</p>
+												</label>
+											</div>
+										@endif
+										@if($listing->fuel_include == '0')
+											<div class="col-md-12">
+												<input type="radio" checked="" value="full-payment" class="form-check-input" name="payment_type" id="myRadiofull">
+												<label for="myRadiofull">
+													<span class="title-label">Pay the total amount</span>
+													<span class="title-text">€{{ $quotation['total'] }}</span>
+													<p>Pay the total amount of the booking today.</p>
+												</label>
+											</div>
+										@else
+											<div class="col-md-12">
+												<input type="radio" checked="" value="full-payment" class="form-check-input" name="payment_type" id="myRadiofull">
+												<label for="myRadiofull">
+													<span class="title-label">Pay the total amount with fuel charges</span>
+													<span class="title-text">€{{ $quotation['total'] + $listing->fuel_price }}</span>
+													<p>Pay the total amount of the booking today.</p>
+												</label>
+											</div>
+										@endif
 										{{-- <div class="col-md-12">
 											<input type="radio" checked="" value="With a skipper" class="form-check-input" name="optradio" id="myRadio9">
 											<label for="myRadio9">
@@ -193,6 +218,7 @@
 													<p>Pay €193 now and the balance (€221) before 31 Dec 2024.</p>
 											</label>
 										</div> --}}
+
 									</div>
 								</div>
 								<div class="payment-sec">
@@ -208,9 +234,7 @@
 												<input type="radio" id="cardPayment" name="paymentMethod" class="custom-control-input" data-toggle="collapse" data-target="#cardDetails" checked>
 												<label class="custom-control-label" for="cardPayment"><svg class="p-Icon p-Icon--card Icon p-Icon--md TabIcon p-PaymentAccordionButtonIcon TabIcon--selected" role="presentation" fill="var(--colorIcon)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" clip-rule="evenodd" d="M0 4a2 2 0 012-2h12a2 2 0 012 2H0zm0 2v6a2 2 0 002 2h12a2 2 0 002-2V6H0zm3 5a1 1 0 011-1h1a1 1 0 110 2H4a1 1 0 01-1-1z"></path></svg> Card</label>
 											</div>
-											<input type="hidden" id="from" value="{{ $quotation['checkin'] }}" >
-											<input type="hidden" id="to" value="{{ $quotation['checkout'] }}" >
-											<input type="hidden" id="listingID" value="{{ $listing->id }}" >
+											<input type="hidden" id="quotationID" value="{{ $quotationID }}" >
 
 											<div id="card-element"></div>
 										</div>
@@ -323,14 +347,14 @@
 										</div>
 										<div class="payment-amount">€{{ $price['price'] }}</div>
 									</div> --}}
-									<div class="payment-item">
+									{{-- <div class="payment-item">
 										<div class="circle"></div>
 										<div class="payment-content">
 											<div>To pay at the harbour</div>
 											<small class="text-muted">Due on February 1, 2025</small>
 										</div>
 										<div class="payment-amount">€{{ $quotation['price'] }}</div>
-									</div>
+									</div> --}}
 								</div>
 							</div>
 						</div>

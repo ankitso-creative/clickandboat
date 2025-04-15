@@ -93,11 +93,16 @@
                         </li>
                         @endif
                         @if(Auth::check())
-                        <div class="dropdown my_account_btn">
-                            <button class="dropbtn">My account<i class="fa-solid fa-caret-down"></i></button>
-                            <div class="dropdown-content">
-                                <a class="dropdown-item" href="#">Dashboard</a>
-                                <a class="dropdown-item" href="{{ route('logout') }}">Logout </a>
+                        <!-- <li class="nav-item">
+                            <a class="nav-link" href="{{ route('logout') }}">Logout </a>
+                        </li> -->
+                            <div class="dropdown my_account_btn">
+                                <button class="dropbtn">My account<i class="fa-solid fa-caret-down"></i></button>
+                                    <div class="dropdown-content">
+                                    <a class="dropdown-item" href="{{ route('customer.dashboard') }}">Dashboard</a>
+                                    <a class="dropdown-item" href="{{ route('logout') }}">Logout </a>
+                                </div>
+
                             </div>
                         </div>
                         @endif
@@ -122,69 +127,22 @@
                 <option value="EUR">EUR €</option>
                 <option value="opel">USD $</option>
             </select>
-        </li> -->
-            <li><a href="{{ route('home') }}"><img src="{{ logoURL() }}"></a></li>
-            <li class="menu-container">
-                <input id="menu-toggle" type="checkbox">
-                <label for="menu-toggle" class="menu-button">
-                    <svg class="icon-open" viewBox="0 0 24 24">
-                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
-                    </svg>
-                    <svg class="icon-close" viewBox="0 0 100 100">
-                        <path
-                            d="M83.288 88.13c-2.114 2.112-5.575 2.112-7.69 0L53.66 66.188c-2.113-2.112-5.572-2.112-7.686 0l-21.72 21.72c-2.114 2.113-5.572 2.113-7.687 0l-4.693-4.692c-2.114-2.114-2.114-5.573 0-7.688l21.72-21.72c2.112-2.115 2.112-5.574 0-7.687L11.87 24.4c-2.114-2.113-2.114-5.57 0-7.686l4.842-4.842c2.113-2.114 5.57-2.114 7.686 0l21.72 21.72c2.114 2.113 5.572 2.113 7.688 0l21.72-21.72c2.115-2.114 5.574-2.114 7.688 0l4.695 4.695c2.112 2.113 2.112 5.57-.002 7.686l-21.72 21.72c-2.112 2.114-2.112 5.573 0 7.686L88.13 75.6c2.112 2.11 2.112 5.572 0 7.687l-4.842 4.84z" />
-                    </svg>
-                </label>
-                <ul class="menu-sidebar">
-                    <li class="nav-item">
-                        <form class="nosubmit">
-                            <input class="nosubmit" type="search" placeholder="Search...">
-                        </form>
-                    </li>
-                    @if(!Auth::check())
-                    <li class="nav-item login_mov">
-                        <a class="nav-link" href="{{ route('login') }}">Login</a>
-                    </li>
-                    @endif
-                    <li>
-                        <input type="checkbox" id="sub-one" class="submenu-toggle">
-                        <label class="submenu-label" for="sub-one">About Us</label>
-                        <div class="arrow right">&#8250;</div>
-                        <ul class="menu-sub">
-                            <li class="menu-sub-title">
-                                <label class="submenu-label" for="sub-one">Back</label>
-                                <div class="arrow left">&#8249;</div>
-                            </li>
-                            <li><a href="{{ route('location') }}">Explore Ibiza</a></li>
-                            <li><a href="{{ route('blogs') }}">Our Blog</a></li>
-                            <li><a href="{{ route('about-us') }}">About Us</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('boatlogin') }}">Register your boat </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('help') }}"><i class="fa-solid fa-question"></i> Help </a>
-                    </li>
 
-                    @if(Auth::check())
-                    <li><a href="{{ route('logout') }}">Logout</a></li>
-                    @endif
-                    <li class="nav-item">
-                        <select class="select-language" id="language">
-                            {!! selectOption('languages','name','code',session()->get('lang'),array('status' , '1')) !!}
-                        </select>
-                    </li>
-                    <li class="nav-item mobile_language">
-                        <select name="currency" id="currency_name">
-                            <option value="GBP">EUR €</option>
-                            <option value="EUR">USD $</option>
-                            <option value="opel">GBP £</option>
-                            <option value="opel">CHF </option>
-                            <option value="opel">RUB ₽</option>
-                        </select>
-                    </li>
-                    <!-- 
+        </li>
+        <li><a href="{{ route('home') }}"><img src="{{ logoURL() }}"></a></li>
+        <li class="menu-container">
+            <input id="menu-toggle" type="checkbox">
+            <label for="menu-toggle" class="menu-button">
+                <svg class="icon-open" viewBox="0 0 24 24">
+                    <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
+                </svg>
+                <svg class="icon-close" viewBox="0 0 100 100">
+                    <path
+                        d="M83.288 88.13c-2.114 2.112-5.575 2.112-7.69 0L53.66 66.188c-2.113-2.112-5.572-2.112-7.686 0l-21.72 21.72c-2.114 2.113-5.572 2.113-7.687 0l-4.693-4.692c-2.114-2.114-2.114-5.573 0-7.688l21.72-21.72c2.112-2.115 2.112-5.574 0-7.687L11.87 24.4c-2.114-2.113-2.114-5.57 0-7.686l4.842-4.842c2.113-2.114 5.57-2.114 7.686 0l21.72 21.72c2.114 2.113 5.572 2.113 7.688 0l21.72-21.72c2.115-2.114 5.574-2.114 7.688 0l4.695 4.695c2.112 2.113 2.112 5.57-.002 7.686l-21.72 21.72c-2.112 2.114-2.112 5.573 0 7.686L88.13 75.6c2.112 2.11 2.112 5.572 0 7.687l-4.842 4.84z" />
+                </svg>
+            </label>
+            <ul class="menu-sidebar">
+
                 <li>
                     <input type="checkbox" id="sub-one" class="submenu-toggle">
                     <label class="submenu-label" for="sub-one">About Us</label>

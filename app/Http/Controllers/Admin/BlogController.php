@@ -101,6 +101,10 @@ class BlogController extends Controller
     {
        return $this->service->commentStatus($request);
     }
+    public function changeOrderBlog(Request $request)
+    {
+       return $this->service->changeOrderBlog($request);
+    }
     public function blogComments($blogId)
     {
         $active = 'blog';

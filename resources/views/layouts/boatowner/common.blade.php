@@ -33,7 +33,7 @@
             <div class="container-fluid">
             	<div class="row">
             		<div class="my-auto col-lg-3">
-            			<a href="" class="dashboard-logo">
+            			<a href="{{ route('home') }}" class="dashboard-logo">
             				<img src="{{ logoURL() }}" class="img-fluid" alt="logo">
             			</a>
             		</div>

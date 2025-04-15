@@ -15,6 +15,7 @@ class BlogRepository
             $language = $request->language; 
             return $query->where('language', $language); 
         })
+        ->orderBy('order_by', 'ASC')
         ->paginate(9);
 
         return $blog;
@@ -85,6 +86,14 @@ class BlogRepository
         $id = $request['id'];
         $blog = BlogComment::where('id',$id)->first();
         $blog->status = $request['value'];
+        $blog->update();
+        return $blog;
+    }
+    public function changeOrderBlog($request)
+    {
+        $id = $request['id'];
+        $blog = Blog::where('id',$id)->first();
+        $blog->order_by = $request['value'];
         $blog->update();
         return $blog;
     }
