@@ -129,7 +129,6 @@
                 </svg>
             </label>
             <ul class="menu-sidebar">
-
                 <li>
                     <input type="checkbox" id="sub-one" class="submenu-toggle">
                     <label class="submenu-label" for="sub-one">About Us</label>

@@ -43,9 +43,9 @@ class PageService{
     {
         return $this->repository->getBookingPrice($request);
     }
-    public function getListingData()
+    public function getListingData($request)
     {
-        return $this->repository->getListingData();
+        return $this->repository->getListingData($request);
     }
     public function getQuotationData($request)
     {
