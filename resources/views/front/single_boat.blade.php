@@ -325,13 +325,12 @@
             });
             $('.not-login-user').on('click', function() {
                 swal({
-                    title: 'Warning!',
+                    title: '',
                     text: 'You need to login as a customer.',
-                    type: "warning",
-                    showCancelButton: true,
+                    type: "",
+                    showCancelButton: false,
                     confirmButtonColor: '#DD6B55',
                     confirmButtonText: 'Go to Login',
-                    cancelButtonText: 'No, cancel it!',
                     allowOutsideClick: false, 
                 },
                 function(isConfirm) {
@@ -413,7 +412,7 @@
                                 </a>
                             </li>
                             @php
-                                $heart_html = '<li class="wishlist_icon not-login-user"><i class="fa-regular fa-heart"></i> Add to favorites</li>';
+                                $heart_html = '<li class="wishlist_icon not-login-user"><a href="javascript:;" class="favorite_item"><i class="fa-regular fa-heart"></i> Add to favorites</a></li>';
                                 if(Auth::check()):
                                     $user = auth()->user();
                                     if($user->role == 'customer'):
