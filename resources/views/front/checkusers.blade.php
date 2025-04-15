@@ -32,7 +32,7 @@ session()->put("role",$role)
                         <h2>Log in or sign up</h2>
                     </div>
                     <div class="singup_welcome_section">
-                        <h2>Welcome to Booker Boat</h2>
+                        <h2>Welcome to my boat booker</h2>
                         <form  action="{{ route('checkemail') }}" method="post">
                             @csrf
                             <div class="form-group">

@@ -38,6 +38,73 @@
 .custom-div:nth-child(odd) {
     /* background-color: #d9d9d9; */
 }
+
+.banner_text_style {
+    position: absolute;
+    width: 840px;
+    left: 50%;
+    margin-left: -360px;
+    height: 40px;
+    top: 50%;
+    margin-top: -20px;
+}
+
+.banner_text_style p {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0;
+    font-size: 72px;
+    color: #fff;
+    font-weight: 600;
+    text-shadow: 0px 2px 0px #0000004d, 0 0 2em #0000008a, 0 0 1.2em #0000008a;
+}
+
+.banner_text_style .word {
+    position: absolute;
+    opacity: 0;
+}
+
+.banner_text_style .letter {
+    display: inline-block;
+    position: relative;
+    float: left;
+    transform: translateZ(25px);
+    transform-origin: 50% 50% 25px;
+}
+
+.banner_text_style .letter.out {
+    transform: rotateX(90deg);
+    transition: transform 0.32s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+.banner_text_style .letter.behind {
+    transform: rotateX(-90deg);
+}
+
+.banner_text_style .letter.in {
+    transform: rotateX(0deg);
+    transition: transform 0.38s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.banner_text_style .wisteria {
+    color: #f9a126;
+}
+
+.banner_text_style .belize {
+    color: #f9a126;
+}
+
+.banner_text_style .pomegranate {
+    color: #f9a126;
+}
+
+.banner_text_style .green {
+    color: #f9a126;
+}
+
+.banner_text_style .midnight {
+    color: #f9a126;
+}
 </style>
 @endsection
 @section('css')
@@ -52,13 +119,81 @@ flatpickr(".datePicker-search", {
     minDate: "today",
 });
 </script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', function() {
+    var words = document.getElementsByClassName('word');
+    var wordArray = [];
+    var currentWord = 0;
+
+    words[currentWord].style.opacity = 1;
+    for (var i = 0; i < words.length; i++) {
+        splitLetters(words[i]);
+    }
+
+    function changeWord() {
+        var cw = wordArray[currentWord];
+        var nw = currentWord == words.length - 1 ? wordArray[0] : wordArray[currentWord + 1];
+        for (var i = 0; i < cw.length; i++) {
+            animateLetterOut(cw, i);
+        }
+
+        for (var i = 0; i < nw.length; i++) {
+            nw[i].className = 'letter behind';
+            nw[0].parentElement.style.opacity = 1;
+            animateLetterIn(nw, i);
+        }
+
+        currentWord = (currentWord == wordArray.length - 1) ? 0 : currentWord + 1;
+    }
+
+    function animateLetterOut(cw, i) {
+        setTimeout(function() {
+            cw[i].className = 'letter out';
+        }, i * 80);
+    }
+
+    function animateLetterIn(nw, i) {
+        setTimeout(function() {
+            nw[i].className = 'letter in';
+        }, 340 + (i * 80));
+    }
+
+    function splitLetters(word) {
+        var content = word.innerHTML;
+        word.innerHTML = '';
+        var letters = [];
+        for (var i = 0; i < content.length; i++) {
+            var letter = document.createElement('span');
+            letter.className = 'letter';
+            letter.innerHTML = content.charAt(i);
+            word.appendChild(letter);
+            letters.push(letter);
+        }
+
+        wordArray.push(letters);
+    }
+
+    changeWord();
+    setInterval(changeWord, 3000);
+});
+</script>
 @endsection
 @section('content')
 <!-- Banner Section -->
 <section class="home_banner_section">
     <div class="banner_text">
-        <h1>{{ __('home.banner')}}<span class="banner_text_style">...</span><br>{{ __('home.bannet-text')}} <span
-                class="banner_text_style">{{ __('home.bannet1')}}.</span></h1>
+        <!-- <h1>{{ __('home.banner')}}<span class="banner_text_style">...</span><br>{{ __('home.bannet-text')}} <span
+                class="banner_text_style">{{ __('home.bannet1')}}.</span></h1> -->
+        <div class="banner_text_style">
+            <p>IBIZA BOAT</p>
+            <p>
+                <span class="word wisteria">BOOKING.</span>
+                <span class="word belize">RENTALS.</span>
+                <span class="word pomegranate">DAYS.</span>
+                <span class="word pomegranate">HIRE.</span>
+                <span class="word pomegranate">TRIPS.</span>
+            </p>
+        </div>
     </div>
 </section>
 <div class="banner_form">
@@ -171,7 +306,9 @@ flatpickr(".datePicker-search", {
                     <h3>Cranchi 43</h3>
                     <img src="{{ asset('app-assets/site_assets/img/image00092.jpg') }}" alt="featured-img">
                     <p class="featured_price_mobile">11 Guests | Price from €1690</p>
-                    <a class="book_now_btn" href="#"><img src="{{ asset('app-assets/site_assets/img/arrow-icon01.png') }}" alt="featured-img"> Book Now</a>
+                    <a class="book_now_btn" href="{{ route('boats') }}"><img
+                            src="{{ asset('app-assets/site_assets/img/arrow-icon01.png') }}" alt="featured-img"> Book
+                        Now</a>
                 </div>
             </div>
             <div class="col-sm-12 col-md-4 col-lg-4">
@@ -179,7 +316,9 @@ flatpickr(".datePicker-search", {
                     <h3>Chaparral 250</h3>
                     <img src="{{ asset('app-assets/site_assets/img/image00092.jpg') }}" alt="featured-img">
                     <p class="featured_price_mobile">11 Guests | Price from €1690</p>
-                    <a class="book_now_btn" href="#"><img src="{{ asset('app-assets/site_assets/img/arrow-icon01.png') }}" alt="featured-img"> Book Now</a>
+                    <a class="book_now_btn" href="{{ route('boats') }}"><img
+                            src="{{ asset('app-assets/site_assets/img/arrow-icon01.png') }}" alt="featured-img"> Book
+                        Now</a>
                 </div>
             </div>
             <div class="col-sm-12 col-md-4 col-lg-4">
@@ -187,7 +326,9 @@ flatpickr(".datePicker-search", {
                     <h3>Maiora 99</h3>
                     <img src="{{ asset('app-assets/site_assets/img/image00092.jpg') }}" alt="featured-img">
                     <p class="featured_price_mobile">11 Guests | Price from €1690</p>
-                    <a class="book_now_btn" href="#"><img src="{{ asset('app-assets/site_assets/img/arrow-icon01.png') }}" alt="featured-img"> Book Now</a>
+                    <a class="book_now_btn" href="{{ route('boats') }}"><img
+                            src="{{ asset('app-assets/site_assets/img/arrow-icon01.png') }}" alt="featured-img"> Book
+                        Now</a>
                 </div>
             </div>
         </div>
@@ -350,7 +491,7 @@ flatpickr(".datePicker-search", {
 <section class="follow_sailer_section">
     <div class="container-fluid">
         <h2>Amazing Tales Shared <br> by sailors</h2>
-        <div class="row">
+        <div class="row home_review_slider">
             <div class="col-sm-12 col-md-6 col-lg-6">
                 <div class="follow_sailer_box">
                     <div class="custmer_revie">
@@ -368,13 +509,9 @@ flatpickr(".datePicker-search", {
                             <p>Jan 2025 Ibiza boat rental in Santa Eulalia, Ibiza.</p>
                         </div>
                     </div>
-                    <p class="follow_main_text">We had a great boat trip to Formentera a couple of weeks ago. The boat
-                        itself was immaculate—clean, spacious, and felt brand new, which made the experience even more
-                        enjoyable. Jay was fantastic, making sure we felt completely at ease from the start. They were
-                        attentive, offering drinks throughout the trip and ensuring we were comfortable. The captain was
-                        excellent, providing a smooth and safe journey and stopping in great spots around the island of
-                        formentera. Overall, it was a perfect day on the water, highly recommend Jay’s boat.</p>
-                    <a href="#">Read More</a>
+                    <p class="follow_main_text more">
+                    We had a great boat trip to Formentera a couple of weeks ago. The boat itself was immaculate—clean, spacious, and felt brand new, which made the experience even more enjoyable. Jay was fantastic, making sure we felt completely at ease from the start. They were attentive, offering drinks throughout the trip and ensuring we were comfortable. The captain was excellent, providing a smooth and safe journey and stopping in great spots around the island of formentera. Overall, it was a perfect day on the water, highly recommend Jay’s boat.
+                    </p>
                 </div>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-6">
@@ -397,14 +534,13 @@ flatpickr(".datePicker-search", {
                             <p>Jan 2025 Ibiza boat rental in San Anotnio, Ibiza.</p>
                         </div>
                     </div>
-                    <p class="follow_main_text">We recently rented Hugo's yacht for a day trip from Ibiza to Formentera,
+                    <p class="follow_main_text more">We recently rented Hugo's yacht for a day trip from Ibiza to Formentera,
                         and it was an unforgettable experience! The yacht itself is stunning—sleek, modern, and
                         incredibly spacious, making it perfect for our large group. The staff was another highlight of
                         the trip. They were attentive, friendly, and went above and beyond to make sure we had
                         everything we needed. From drinks and snacks to local knowledge about the best spots to visit in
                         Formentera, they truly made the day special. I highly recommend renting this yacht for anyone
                         looking to explore the beautiful Balearic Islands in style and comfort!!</p>
-                    <a href="#">Read More</a>
                 </div>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-6">
@@ -425,10 +561,9 @@ flatpickr(".datePicker-search", {
                             <p>Jan 2025 Ibiza boat rental in Marina Botafoch, Ibiza.</p>
                         </div>
                     </div>
-                    <p class="follow_main_text">The Captain & Staff where fantastic. Excellent communication before the
+                    <p class="follow_main_text more">The Captain & Staff where fantastic. Excellent communication before the
                         trip, helped organise the itinerary and communicated with the lunch restaurant. Stunning
                         location and great clean and spacious boat. Will be back and highly recommend</p>
-                    <a href="#">Read More</a>
                 </div>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-6">
@@ -450,11 +585,10 @@ flatpickr(".datePicker-search", {
                             <p>Jan 2025 Ibiza boat rental in Marina Ibiza, Ibiza.</p>
                         </div>
                     </div>
-                    <p class="follow_main_text">Most amazing day on the water. The girls found us on the port and walked
+                    <p class="follow_main_text more">Most amazing day on the water. The girls found us on the port and walked
                         us to the right boat. Alfonso assisted us with anything we needed while on the water. We went to
                         the most beautiful spots and there were no restrictions with what we could do on board.
                         Everything we needed was provided for us. 10/10 experience</p>
-                    <a href="#">Read More</a>
                 </div>
             </div>
         </div>

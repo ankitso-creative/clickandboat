@@ -1,6 +1,6 @@
-/* 
-    Web design by : So-creative
- */
+/*--------------------------------------------------------------
+# Web design by : So-creative
+--------------------------------------------------------------*/
  @font-face {
     font-family: 'GT America Trial Cn Md';
     src: url('./../fonts/GTAmericaTrial-CnMd.woff2') format('woff2'),
@@ -1286,6 +1286,7 @@ label, input, textarea, button, select {
     transform: translateX(0);
     transition: transform 0.3s cubic-bezier(0, 0, 0.3, 1);
     z-index: 11;
+    max-width: 100%;
 }
 .nav-mobile .menu-container {
     width: 65px;
@@ -1296,9 +1297,9 @@ label, input, textarea, button, select {
 .nav-mobile .menu-container .menu-sidebar {
     box-shadow: 5px 0 5px -5px #333;
     display: block;
-    width: 65vw;
+    width: 100%;
     bottom: 0;
-    background: #f9a126;
+    background: #f8a126;
     color: #333;
     position: fixed;
     transform: translateX(-405px);
@@ -1330,12 +1331,12 @@ label, input, textarea, button, select {
     font-size: 16px;
     text-align: left;
     position: relative;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    /* border-bottom: 1px solid rgba(0, 0, 0, 0.1); */
     padding-left: 20px;
 }
-.nav-mobile .menu-container .menu-sidebar li:hover {
-    background: #37393c;
-}
+/* .nav-mobile .menu-container .menu-sidebar li:hover {
+    background: #f9a126;
+} */
 .nav-mobile .menu-container .menu-sidebar li .menu-sub {
     position: fixed;
     top: 0;
@@ -1370,7 +1371,7 @@ label, input, textarea, button, select {
     display: none;
 }
 .nav-mobile .menu-container .menu-sidebar li .submenu-toggle.active ~ .menu-sub, .nav-mobile .menu-container .menu-sidebar li .submenu-toggle:checked ~ .menu-sub {
-    width: 65vw;
+    width: 100%;
     visibility: visible;
     z-index: 1;
     transition: width 0.35s cubic-bezier(0, 0, 0.3, 1);
@@ -1384,6 +1385,72 @@ label, input, textarea, button, select {
     float: right;
     position: absolute;
     top: 11px;
+}
+
+.menu-sidebar form {
+    color: #555;
+    display: flex;
+    padding: 2px;
+    border: 1px solid currentColor;
+    border-radius: 5px;
+    margin: 0 0 30px;
+  }
+  
+ .menu-sidebar  input[type="search"] {
+    margin: 0;
+    font-size: 14px;
+    color: inherit;
+    border-radius: inherit;
+  }
+  
+  .menu-sidebar  input[type="search"]::placeholder {
+    color: #bbb;
+  }
+  
+  .menu-sidebar  button[type="submit"] {
+    text-indent: -999px;
+    overflow: hidden;
+    width: 40px;
+    padding: 0;
+    margin: 0;
+    border: 1px solid transparent;
+    border-radius: inherit;
+    background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E") no-repeat center;
+    cursor: pointer;
+    opacity: 0.7;
+  }
+  
+  .menu-sidebar button[type="submit"]:hover {
+    opacity: 1;
+  }  
+  .menu-sidebar form.nosubmit {
+   border: none;
+   padding: 0;
+  }
+  .menu-sidebar  input.nosubmit {
+    border: 1px solid #d4d4d4;
+    width: 95%;
+    padding: 9px 4px 9px 40px;
+    background: transparent url("../img/location-black-small.png") no-repeat 13px center;
+    height: 52px;
+    margin-top: 15px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    outline: none;
+    background-color: #fff;
+}
+.login_mov {
+    margin-top: 15px;
+}
+.nav-mobile .fa-question {
+    background: #fff;
+    width: 20px;
+    height: 20px;
+    color: #f8a126;
+    line-height: 20px;
+    padding: 1px 3px;
+    text-align: center;
+    border-radius: 30px;
+    font-size: 15px;
 }
 /*--------------------------------------------------------------
 # Home Banner
@@ -1402,7 +1469,7 @@ label, input, textarea, button, select {
 }
 .banner_text {
     position: absolute;
-    bottom: -4%;
+    bottom: 18%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 100%;
@@ -1873,6 +1940,8 @@ label, input, textarea, button, select {
 --------------------------------------------------------------*/
 .home_page_slider_Sec {
     margin-top: 40px;
+    margin-right: 15px;
+    margin-left: 15px;
 }
 .home_page_slider_box {
     position: relative;
@@ -1886,20 +1955,13 @@ label, input, textarea, button, select {
 }
 .home_page_box_text {
     position: absolute;
-    width: 95%;
-    text-align: center;
-    margin-top: -40%;
-    margin-left: 2%;
-}
-
-/*.home_page_box_text {
-    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 95%;
     text-align: center;
-}*/
+    width: 100%;
+}
+
 .home_page_box_text h3 {
     font-size: 15px;
     color: #fff;
@@ -1907,7 +1969,7 @@ label, input, textarea, button, select {
     text-shadow: 0px 2px 0px #0000004d, 0 0 2em #0000008a, 0 0 1.2em #0000008a;
 }
 .home_page_box_text h2 {
-    font-size: 64px;
+    font-size: 50px;
     color: #fff;
     text-transform: uppercase;
     padding-top: 15px;
@@ -2015,7 +2077,7 @@ label, input, textarea, button, select {
 }
 .home_page_slider .slick-next {
     top: 50%;
-    right: 100px;
+    right: 93px;
 }
 /*.image-box {
     position: relative;
@@ -2051,6 +2113,7 @@ label, input, textarea, button, select {
 --------------------------------------------------------------*/
 .follow_sailer_section {
     margin-top: 65px;
+    overflow: hidden;
 }
 .follow_sailer_section .container-fluid {
     max-width: 1060px;
@@ -5225,9 +5288,11 @@ section.about_zigzag_section {
     align-items: baseline;
 }
 .share-menu li {
-    margin-left: 20px;
+    margin-left: 30px;
     align-items: center;
     font-family: 'GT America Trial Cn Md' !important;
+    position: relative;
+    top: 0px;
 }
 .share-menu li a {
     color: #222;
@@ -7846,7 +7911,7 @@ font-size: 15px;
         font-size: 30px;
     }
     .home_banner_section {
-        height: 440px;
+        height: 86vh;
         background-position: center;
     }
     .banner_text {
@@ -7885,10 +7950,10 @@ font-size: 15px;
         margin-top: 30px;
     }
     .boat_renter_box .boat_renter_text {
-        height: auto;
-        padding: 10px 0px 7px 30px;
-        border: 0px solid #fff;
-    }
+    height: auto;
+    padding: 0px 0px 0px 30px;
+    border: 0px solid #fff;
+}
     .boat_reanter_owner_section .boat_renter_box.box-one {
         padding-right: 0px;
     }
@@ -7900,19 +7965,25 @@ font-size: 15px;
         font-size: 30px;
     }
     .boat_by_location {
-        height: 1020px;
+        height: 435px;
     }
     .boat_by_location .row {
-        left: 54%;
-        width: 390px;
-        top: 54%;
+        left: 50%;
+        width: 100%;
+        top: 58%;
+        display: flex;
+        justify-content: center;
+        margin: 0;
     }
     .boat_by_location_section h2 {
         font-size: 30px;
     }
     .boat_by_location_box h3 {
-        font-size: 25px;
+    font-size: 15px;
     }
+    .boat_by_location_box {
+    height: 88px;
+}
     .follow_sailer_section h2 {
         font-size: 30px;
     }
@@ -8226,17 +8297,21 @@ font-size: 15px;
     }
     #language {
         padding: 4px 1px 2px 8px !important;
-        position: relative;
-        right: 100px;
         font-size: 15px;
         background: #fff;
-        color: #000;
-        height: 31px;
+        color: #555 !important;
+        height: 51px;
         appearance: auto;
         z-index: 999;
+        width: 96%;
+        margin: 0 0;
+        border-radius: 5px;
+        border: 1px solid #d4d4d4;
     }
     .nav-mobile li a {
         padding: 0;
+        font-weight: 400 !important;
+        font-family: 'Montserrat' !important;
     }
     .about_sec_heading {
         padding-top: 30px !important;
@@ -8284,8 +8359,10 @@ font-size: 15px;
         font-size: 25px;
     }
     .home_page_box_text p {
-        width: 39%;
+        width: 100%;
         margin: 0px auto;
+        padding: 0 15px;
+        line-height: 24px !important;
     }
     .home_page_slider .slick-next {
         right: 30px;
@@ -8653,9 +8730,6 @@ font-size: 15px;
 .boat_reanter_owner_section .container-fluid {
     padding: 0 15px 0 15px;
 }
-.home_page_box_text {
-    margin-top: -45%;
-}
 .thankyou_section h2 {
     font-size: 25px;
     padding: 25px 40px 0 40px;
@@ -8664,7 +8738,9 @@ font-size: 15px;
     padding-left: 0px !important;
 }
 .nav-mobile .menu-container .menu-sidebar li .submenu-label {
-    font-weight: 600;
+    font-weight: 400;
+    font-family: 'Montserrat' !important;
+    font-size: 20px;
 }
 .mobile_language {
     position: absolute;
@@ -8672,10 +8748,15 @@ font-size: 15px;
 }
 #currency_name {
     background: #fff;
-    color: #000;
+    color: #555;
     height: 30px;
     padding: 5px 10px 0 9px !important;
     appearance: auto;
+    width: 96%;
+    height: 50px;
+    border-radius: 5px;
+    margin: 0 0;
+    border: 1px solid #d4d4d4;
 }
 .boat_type_text {
     left: 50%;
@@ -8689,10 +8770,11 @@ font-size: 15px;
 }
 .home_page_box_text h2 {
     font-size: 30px;
+    padding: 0 0px;
 }
 .home_page_slider_box img {
     width: 100%;
-    height: 600px;
+    height: 450px;
     object-fit: cover;
 }
 .list-boat-sec {
@@ -8723,14 +8805,18 @@ font-size: 15px;
 .boat_type_section_slider .slick-next::before,
 .boat_type_section_slider .slick-prev::before,
 .home_page_slider_box .slick-next::before,
-.home_page_slider_box .slick-prev::before {
+.home_page_slider_box .slick-prev::before,
+.home_page_slider .slick-next::before,
+.home_page_slider .slick-prev::before,
+.next_trip_box:before,
+.next_trip_box:after {
     display: none;
 }
 .featured_boats_section .row {
     overflow: hidden;
 }
 .boat_renter_text i {
-    top: 23px;
+    top: 7px;
     left: -9px;
     width: 30px;
     height: 30px;
@@ -8739,12 +8825,44 @@ font-size: 15px;
 }
 .boat_renter_text p {
     font-size: 13px;
+    line-height: 22px !important;
 }
 .feature_box_main {
     display: none;
 }
 .featured_boat_section_mobile{
     display: block;
+}
+.banner_text_style p {
+    font-size: 30px;
+}
+.banner_text_style {
+    width: 350px;
+    margin-left: -162px;
+    top: -3%;
+    margin-top: -20px;
+}
+.boat_type_box:before,
+.boat_type_box:after{
+    display: none;
+}
+.boat_by_location .col-sm-6.col-md-6.col-lg-4 {
+    width: 50%;
+}
+.home_page_slider_box:after {
+    border-right: 0px solid #f9a126;
+    border-bottom: 0px solid #f9a126;
+}
+.home_page_slider_box:before {
+    translate: 0;
+    border-top: 0px solid #f9a126;
+    border-left: 0px solid #f9a126;
+}
+.menu-sub li a {
+    text-align: center;
+}
+.home_page_box_text {
+    width: 100%;
 }
 }
 @media (min-width: 767px) and (max-width: 1023px) {
@@ -9599,7 +9717,7 @@ font-size: 15px;
         font-size: 14px;
     }
     .banner_text {
-        bottom: -1%;
+        bottom: 13%;
     }
     .home_page_slider_box img {
         height: 599px;
@@ -9639,7 +9757,7 @@ font-size: 15px;
         font-size: 14px;
     }
     .banner_text {
-        bottom: -4%;
+        bottom: 16%;
     }
     .home_page_slider_box img {
         width: 1000px;
@@ -9763,7 +9881,7 @@ font-size: 15px;
     height: 695px;
 }
 .banner_text {
-    bottom: 8%;
+    bottom: 16%;
 }
 .banner_form {
     top: -195px;
