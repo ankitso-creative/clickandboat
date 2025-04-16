@@ -4,14 +4,15 @@
 @endsection
 @section('css')
 <link href="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.1.0/css/datepicker.min.css" rel="stylesheet" type="text/css" />
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"/>
 @endsection
 @section('js')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.1.0/js/datepicker.min.js" type="text/javascript"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.1.0/js/i18n/datepicker.en.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAli6rCJivgzTbWznnkqFtT_btPww6WBYs&libraries=places"></script>
-<script>
-    $(document).ready(function () {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.1.0/js/datepicker.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.1.0/js/i18n/datepicker.en.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAli6rCJivgzTbWznnkqFtT_btPww6WBYs&libraries=places"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+    <script>
+        $(document).ready(function () {
             google.maps.event.addDomListener(window, 'load', initialize);
         });
         function initialize() 
@@ -48,7 +49,20 @@
                 }
             });
         }
-</script>
+        
+        const input = document.querySelector("#phone");
+        const iti = window.intlTelInput(input, {
+            utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+            initialCountry: "auto",
+            nationalMode: false, // Ensures full international number is shown
+        });
+
+        
+        @if(old('phone', $userData->profile->phone))
+            iti.setNumber("{{ old('phone', $userData->profile->phone) }}");
+        @endif
+
+    </script>
 @endsection
 @section('content')
 <div class="col-lg-9 main-dashboard">
@@ -214,8 +228,8 @@
                         <div class="row">
                         <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="label-default">Telephone<span class="required"> *</span></label>
-                                    <input type="tel" name="phone" value="{{ $userData->profile->phone ?? '' }}" class="form-control">
+                                    <label class="label-default">Phone<span class="required"> *</span></label>
+                                    <input id="phone" type="tel" name="phone" value="{{ $userData->profile->phone ?? '' }}" class="form-control">
                                     @error('phone')<span class="required">{{ $message }}</span>@enderror
                                 </div>
                             </div>
