@@ -1,7 +1,7 @@
 /*--------------------------------------------------------------
 # Web design by : So-creative
 --------------------------------------------------------------*/
- @font-face {
+@font-face {
     font-family: 'GT America Trial Cn Md';
     src: url('./../fonts/GTAmericaTrial-CnMd.woff2') format('woff2'),
         url('./../fonts/fonts/GTAmericaTrial-CnMd.woff') format('woff');
@@ -1615,6 +1615,7 @@ label, input, textarea, button, select {
     border-radius: 0px 15px 15px 0px;
     border-left: 0px;
     color: #fff;
+    height: 44px;
 }
 .datepicker.date.input-group {
     width: 182px;
@@ -7906,6 +7907,163 @@ font-size: 15px;
     padding-top: 10px;
 }
 /*--------------------------------------------------------------
+# Contact Us page
+--------------------------------------------------------------*/
+.contact_banner_section {
+    background-image: url(../img/contact-banner01.png);
+    width: 100%;
+    height: 465px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+.contact_banner_text {
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+}
+.contact_banner_text h1 {
+    font-size: 64px;
+    color: #fff;
+    text-transform: uppercase;
+    padding-top: 10px;
+}
+.sec-title .sub-title {
+    position: relative;
+    display: inline-block;
+    font-size: 16px;
+    color: #f9a126;
+    letter-spacing: 0.2em;
+    top: -5px;
+    margin-bottom: 2px;
+    margin-top: 7px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.sec-title h2 {
+    position: relative;
+    font-size: 44px;
+    color: #000;
+    letter-spacing: -0.01em;
+    margin-bottom: 0;
+}
+.sec-title {
+    position: relative;
+    margin-bottom: 60px;
+}
+.form-control, .input-text {
+    height: 66px;
+    padding: 14px 30px;
+    outline: 0;
+    background-color: #f4f5f8;
+    border: 1px solid #f4f5f8;
+    color: #686a6f;
+    font-size: 0.9rem;
+    width: 100%;
+}
+.btn-style-one {
+    position: relative;
+    font-size: 15px;
+    line-height: 27px;
+    padding: 11px 26px;
+    font-weight: 400;
+    overflow: hidden;
+    color: #fff;
+    background: #f9a126;
+    border-radius: 15px;
+    text-transform: uppercase;
+    border: 1px solid #f9a126;
+    cursor: pointer;
+    font-family: 'GT America Trial Cn Md' !important;
+}
+.btn-style-one:hover{
+    background: none;
+    color: #f9a126;
+    border: 1px solid #f9a126;
+}
+.contact_form_section textarea.form-control {
+    min-height: 160px;
+}
+.contact_form_section {
+    margin-top: 80px;
+    margin-bottom: 50px;
+}
+.sec-title .text {
+    font-size: 16px;
+    line-height: 30px;
+    margin-top: 20px;
+}
+.contact-details_info {
+    position: relative;
+    display: block;
+    margin-top: 41px;
+}
+.list-unstyled {
+    padding-left: 0;
+    list-style: none;
+}
+.contact-details_info li {
+    position: relative;
+    align-items: center;
+    margin: 20px 1px;
+}
+.contact-details_info li .icon {
+    height: 80px;
+    width: 80px;
+    background-color: #f9a126;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-transition: all 500ms ease;
+    transition: all 500ms ease;
+    border-radius: 50%;
+}
+.contact-details_info li .icon span {
+    color: #fff;
+    font-size: 25px;
+    -webkit-transition: all 500ms ease;
+    transition: all 500ms ease;
+}
+.contact-details_info li .icon span {
+    color: #000;
+    font-size: 25px;
+    -webkit-transition: all 500ms ease;
+    transition: all 500ms ease;
+}
+.contact-details_info li .text h6 {
+    margin-bottom: 5px;
+    margin-top: 0;
+}
+.contact-details_info li .text a {
+    font-size: 18px;
+    color: #000;
+    -webkit-transition: all 500ms ease;
+    transition: all 500ms ease;
+}
+.contact-details_info li .text span {
+    font-size: 20px;
+    color: #000;
+}
+.contact-details_info li .text {
+    margin-left: 30px;
+}
+.contat_map_section {
+    margin-bottom: -7px;
+}
+.contact_form_section i {
+    color: #fff;
+    font-size: 30px;
+}
+/*--------------------------------------------------------------
 # Media Query
 --------------------------------------------------------------*/
 @media (min-width: 320px) and (max-width: 767px){
@@ -8875,6 +9033,50 @@ font-size: 15px;
 }
 .home_page_box_text {
     width: 100%;
+}
+.next_trip_text {
+    padding: 20px 15px;
+}
+.nav-mobile .menu-container .menu-sidebar li .menu-sub li {
+    padding-left: 0;
+}
+.blog_img img {
+    height: 290px;
+}
+.inner_blog_text_section ol {
+    padding: 0 20px;
+}
+.inner_blog_text_section ol li {
+    padding: 10px 0px;
+}
+.contact_banner_section {
+    height: 440px;
+}
+.contact_banner_text h1 {
+    font-size: 30px;
+}
+.contact-details_info li .text {
+    margin-left: 0;
+    margin-top: 15px;
+}
+.list-unstyled {
+    text-align: center;
+}
+.contact-details_info li .icon {
+    margin: 0px auto;
+}
+.sec-title {
+    text-align: center;
+}
+.contact_form_section {
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+.contact_btns {
+    text-align: center;
+}
+.sec-title h2 {
+    font-size: 30px;
 }
 }
 @media (min-width: 767px) and (max-width: 1023px) {

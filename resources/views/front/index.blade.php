@@ -62,6 +62,7 @@
 .banner_text_style .word {
     position: absolute;
     opacity: 0;
+    margin-left: 15px;
 }
 
 .banner_text_style .letter {
