@@ -261,61 +261,61 @@
     </script>
 @endsection
 @section('content')
-<!-- Filter Mobile Section -->
-<section class="location_filter_mobile">
-    <div class="container">
-    <div class="row mob_filter_one">
-        <div class="col location_col">
-            <div class="form-group has-search">
-                <span class="fa fa-search form-control-feedback"></span>
-                <select name="location" class="loaction-search" placeholder="Search Loaction">
-                    <option value="">All Marinas</option>
-                    <option value="Marina Santa Eulalia">Marina Santa Eulalia</option>
-                    <option value="Puerto Sant Antoni">Puerto Sant Antoni</option>
-                    <option value="Marina Ibiza">Marina Ibiza</option>
-                    <option value="Marina Botafoch">Marina Botafoch</option>
-                    <option value="Ibiza Magna">Ibiza Magna</option>
-                    <option value="Club Nautico">Club Nautico</option>
-                </select>
-            </div>
-        </div>
-        <div class="col date_col">
-            <div class="mb-4 form-group">
-                <div class="datepicker date input-group">
-                    <div class="input-group-append">
-                        <span class="input-group-text"><i class="fa-solid fa-calendar-days"></i></span>
+    <!-- Filter Mobile Section -->
+    <section class="location_filter_mobile">
+        <div class="container">
+            <div class="row mob_filter_one">
+                <div class="col location_col">
+                    <div class="form-group has-search">
+                        <span class="fa fa-search form-control-feedback"></span>
+                        <select name="location" class="loaction-search" id="mobile-location" placeholder="Search Loaction">
+                            <option value="">All Marinas</option>
+                            <option value="Marina Santa Eulalia">Marina Santa Eulalia</option>
+                            <option value="Puerto Sant Antoni">Puerto Sant Antoni</option>
+                            <option value="Marina Ibiza">Marina Ibiza</option>
+                            <option value="Marina Botafoch">Marina Botafoch</option>
+                            <option value="Ibiza Magna">Ibiza Magna</option>
+                            <option value="Club Nautico">Club Nautico</option>
+                        </select>
                     </div>
-                    <input type="date" id="calender" name="calender" class="datePicker form-control datePicker-search"
-                        placeholder="Add your dates" />
+                </div>
+                <div class="col date_col">
+                    <div class="mb-4 form-group">
+                        <div class="datepicker date input-group">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fa-solid fa-calendar-days"></i></span>
+                            </div>
+                            <input type="date" id="calender" name="calender" class="datePicker form-control datePicker-search"
+                                placeholder="Add your dates" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mob_filter_two">
+                <div class="col-md-8">
+                <select name="type" id="boats">
+                        <option value="">Boat</option>
+                        <option value="Motorboat">Motorboat</option>
+                        <option value="Sail boat">Sail boat</option>
+                        <option value="Ribs">Ribs</option>
+                        <option value="Catamaran">Catamaran</option>
+                        <option value="Jet ski">Jet ski</option>
+                        <option value="Yacht">Yacht</option>
+                        <option value="Sailing yacht">Sailing yacht</option>
+                        <option value="Fishing boat">Fishing boat</option>
+                    </select>
+                    <select name="type" id="skipper">
+                        <option value="">Skipper</option>
+                        <option value="Motorboat">With skipper</option>
+                        <option value="Sail boat">Without skipper</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                <button type="button" data-toggle="modal" data-target="#staticBackdrop" class="btn filter_btn"><i class="fa-solid fa-sliders"></i> Filter</button>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row mob_filter_two">
-        <div class="col-md-8">
-        <select name="type" id="boats">
-                <option value="">Boat</option>
-                <option value="Motorboat">Motorboat</option>
-                <option value="Sail boat">Sail boat</option>
-                <option value="Ribs">Ribs</option>
-                <option value="Catamaran">Catamaran</option>
-                <option value="Jet ski">Jet ski</option>
-                <option value="Yacht">Yacht</option>
-                <option value="Sailing yacht">Sailing yacht</option>
-                <option value="Fishing boat">Fishing boat</option>
-            </select>
-            <select name="type" id="skipper">
-                <option value="">Skipper</option>
-                <option value="Motorboat">With skipper</option>
-                <option value="Sail boat">Without skipper</option>
-            </select>
-        </div>
-        <div class="col-md-4">
-        <button type="button" data-toggle="modal" data-target="#staticBackdrop" class="btn filter_btn"><i class="fa-solid fa-sliders"></i> Filter</button>
-        </div>
-    </div>
-    </div>
-</section>
+    </section>
     <!-- Banner Section -->
     <section class="location_page_banner">
         <div class="location_banner_text">
