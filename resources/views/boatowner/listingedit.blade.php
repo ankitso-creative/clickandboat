@@ -203,12 +203,12 @@
                             <label>Harbour:<span class="required"> * </span></label>
                             <select name="harbour" class="form-control" placeholder="Search Loaction">
                                 <option value="">All Marinas</option>
-                                <option value="Marina Santa Eulalia">Marina Santa Eulalia</option>
-                                <option value="Puerto Sant Antoni">Puerto Sant Antoni</option>
-                                <option value="Marina Ibiza">Marina Ibiza</option>
-                                <option value="Marina Botafoch">Marina Botafoch</option>
-                                <option value="Ibiza Magna">Ibiza Magna</option>
-                                <option value="Club Nautico">Club Nautico</option>
+                                <option {{ checkselect($listing->harbour,'Marina Santa Eulalia') }} value="Marina Santa Eulalia">Marina Santa Eulalia</option>
+                                <option {{ checkselect($listing->harbour,'Puerto Sant Antoni') }} value="Puerto Sant Antoni">Puerto Sant Antoni</option>
+                                <option {{ checkselect($listing->harbour,'Marina Ibiza') }} value="Marina Ibiza">Marina Ibiza</option>
+                                <option {{ checkselect($listing->harbour,'Marina Botafoch') }} value="Marina Botafoch">Marina Botafoch</option>
+                                <option {{ checkselect($listing->harbour,'Ibiza Magna') }} value="Ibiza Magna">Ibiza Magna</option>
+                                <option {{ checkselect($listing->harbour,'Club Nautico') }} value="Club Nautico">Club Nautico</option>
                             </select>
                             @error('harbour')<span class="required">{{ $message }}</span>@enderror
                         </div>

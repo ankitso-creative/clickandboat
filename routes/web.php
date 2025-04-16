@@ -174,6 +174,7 @@ Route::middleware('Setlang')->group(function(){
     Route::get('/about-us', [PagesController::class, 'aboutUs'])->name('about-us');
     Route::get('/help', [PagesController::class, 'help'])->name('help');
     Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
+    Route::post('/submit-enquiry', [PagesController::class, 'submitEnquiry'])->name('submitenquiry');
     Route::get('/request-submit', [PagesController::class, 'requestSubmit'])->name('request-submit');
     Route::get('/ourstory', [PagesController::class, 'ourStory'])->name('ourstory');
     Route::get('/team', [PagesController::class, 'team'])->name('team');

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Site;
 use App\Enums\Auth\Role\RolesEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Customer\Checkout\CheckoutRequest;
+use App\Http\Requests\Site\Contact\ContactFormRequest;
+use App\Models\Admin\Faq;
 use Illuminate\Http\Request;
 use App\Services\Front\PageService;
 use Illuminate\Support\Facades\Session;
@@ -94,6 +96,10 @@ class PagesController extends Controller
     {
         return view('front.contact');
     }
+    public function submitEnquiry(ContactFormRequest $request)
+    {
+        $results =  $this->service->submitEnquiry($request);
+    }
     public function boats()
     {
         $results =  $this->service->allListingData();
@@ -149,7 +155,43 @@ class PagesController extends Controller
     public function help(Request $request)
     {
         //$request = $request->all();
-        $faqs = $this->service->allFaqs($request);
+        $faqs = Faq::where('status', '1')
+        ->when($request->has('question') && !empty($request->question), function ($query) use ($request) {
+            $question = $request->question;
+            return $query->where('question', 'like', '%' . $question . '%');
+        })
+        ->paginate(5);
+        if ($request->ajax()) 
+        {
+            $html = '';
+            $fCount = ($faqs->currentPage() - 1) * $faqs->perPage();
+            if(count($faqs)):
+                foreach($faqs as $faq):
+                    $fCount++;
+                    $html .= '<div class="card">
+                            <div id="heading'.$faq->id.'" class="border-0 shadow-sm card-header">
+                                <h2 class="mb-0">
+                                    <button type="button" data-toggle="collapse" data-target="#collapse'.$faq->id.'"
+                                        aria-expanded="false" aria-controls="collapse'.$faq->id.'"
+                                        class="btn btn-link collapsed text-dark font-weight-bold text-uppercase collapsible-link">
+                                        '.$fCount.'. '.$faq->question.'
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapse'.$faq->id.'" aria-labelledby="heading'.$faq->id.'" data-parent="#accordionExample"
+                                class="collapse">
+                                <div class="card-body">
+                                    <p class="m-0">'.$faq->answer.'</p>
+                                </div>
+                            </div>
+                        </div>';
+                endforeach;
+            endif;
+            return response()->json([
+                'html' => $html,
+                'next_page' => $faqs->currentPage() < $faqs->lastPage() ? $faqs->currentPage() + 1 : null
+            ]);
+        }
         return view('front.help',compact('faqs'));
     }
     public function requestSubmit()

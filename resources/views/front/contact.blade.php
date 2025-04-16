@@ -23,43 +23,43 @@
                     <span class="sub-title">Send us email</span>
                     <h2>Feel free to write</h2>
                 </div>
-                <form id="contact_form" name="contact_form" class="" action="" method="post">
+                <form id="contact_form" name="contact_form" class="" action="{{ route('submitenquiry') }}" method="post">
+                    @csrf
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="mb-3">
-                                <input name="form_name" class="form-control" type="text" placeholder="Enter Name">
+                                <input name="name" class="form-control" type="text" value="{{ old('name') }}" placeholder="Enter Name">
+                                @error('name')<span class="required">{{ $message }}</span>@enderror
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="mb-3">
-                                <input name="form_email" class="form-control required email" type="email"
-                                    placeholder="Enter Email">
+                                <input name="email" class="form-control required email" value="{{ old('email') }}" type="email" placeholder="Enter Email">
+                                @error('email')<span class="required">{{ $message }}</span>@enderror
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="mb-3">
-                                <input name="form_subject" class="form-control required" type="text"
-                                    placeholder="Enter Subject">
+                                <input name="subject" class="form-control required" value="{{ old('subject') }}" type="text" placeholder="Enter Subject">
+                                @error('subject')<span class="required">{{ $message }}</span>@enderror
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="mb-3">
-                                <input name="form_phone" class="form-control" type="text" placeholder="Enter Phone">
+                                <input name="phone" class="form-control" value="{{ old('phone') }}" type="text" placeholder="Enter Phone">
+                                @error('phone')<span class="required">{{ $message }}</span>@enderror
                             </div>
                         </div>
                     </div>
                     <div class="mb-3">
-                        <textarea name="form_message" class="form-control required" rows="7"
-                            placeholder="Enter Message"></textarea>
+                        <textarea name="form_message" class="form-control required" rows="7" placeholder="Enter Message"></textarea>
                     </div>
                     <div class="mb-5 contact_btns">
                         <input name="form_botcheck" class="form-control" type="hidden" value="">
-                        <button type="submit" class="mb-3 theme-btn btn-style-one mb-sm-0"
-                            data-loading-text="Please wait..."><span class="btn-title">Send message</span></button>
-                        <button type="reset" class="theme-btn btn-style-one bg-theme-color5"><span
-                                class="btn-title">Reset</span></button>
+                        <button type="submit" class="mb-3 theme-btn btn-style-one mb-sm-0" data-loading-text="Please wait..."><span class="btn-title">Send message</span></button>
+                        <button type="reset" class="theme-btn btn-style-one bg-theme-color5"><span class="btn-title">Reset</span></button>
                     </div>
                 </form>
             </div>

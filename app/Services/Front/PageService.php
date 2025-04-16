@@ -55,6 +55,10 @@ class PageService{
     {
         return $this->repository->allListingData();
     }
+    public function submitEnquiry($request)
+    {
+        return $this->repository->submitEnquiry($request);
+    }
     public function allLocationData()
     {
         return $this->repository->allLocationData();
@@ -71,10 +75,7 @@ class PageService{
     {
         return $this->repository->singleArea($slug);
     }
-    public function allFaqs($request)
-    {
-        return $this->repository->allFaqs($request);
-    }
+    
     public function relatedBlog($id)
     {
         return $this->repository->relatedBlog($id);
