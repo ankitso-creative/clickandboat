@@ -201,8 +201,10 @@ class PagesController extends Controller
     public function search(Request $request)
     {
         //$request = $request->all();
+        $userAgent = $request->header('User-Agent');
+        $isMobile = preg_match('/Mobile|Android|iPhone|iPad|iPod/i', $userAgent);
         $results = $this->service->searchListing($request);
-        return view('front.search',compact('results'));
+        return view('front.search',compact('results','isMobile'));
     }
     public function submitRequest(Request $request)
     {

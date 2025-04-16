@@ -176,10 +176,8 @@ use Illuminate\Support\Facades\Session;
                 return $query->whereIn('type', $type); 
             })
             ->when($request->has('location') && !empty($request->location), function ($query) use ($request) {
-                $location = explode(',', $request->location); 
-                if (count($location) > 0) {
-                    return $query->where('city', $location[0]); 
-                }
+                $location = $request->location; 
+                return $query->where('city', $location); 
             })
             ->when($request->has('rental_type') && !empty($request->rental_type), function ($query) use ($request) {
                 $rental_type = $request->rental_type; 
