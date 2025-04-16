@@ -3210,6 +3210,9 @@ label, input, textarea, button, select {
 .listing_img_box_hide {
     display: none;
 }
+.iti--allow-dropdown {
+    width: 100%;
+}
 /*--------------------------------------------------------------
 # Boatowner listing Page
 --------------------------------------------------------------*/
