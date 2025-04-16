@@ -340,9 +340,19 @@
                                                 <i class="fa-solid fa-location-dot"></i>
                                             </div>
                                             <div class="where_box_text">
-                                                <h5>Where</h5>
-                                                <input type="search" value="{{ request()->query('location') ?? '' }}" id="location" name="location" placeholder="City of departure">
-                                            </div>
+                                            <h5>Where</h5>
+                                            <!-- <input type="search" id="location" name="gsearch" placeholder="City of departure"> -->
+                                            <select name="location" class="loaction-search"
+                                                placeholder="Search Loaction">
+                                                <option value="">All Marinas</option>
+                                                <option value="Marina Santa Eulalia">Marina Santa Eulalia</option>
+                                                <option value="Puerto Sant Antoni">Puerto Sant Antoni</option>
+                                                <option value="Marina Ibiza">Marina Ibiza</option>
+                                                <option value="Marina Botafoch">Marina Botafoch</option>
+                                                <option value="Ibiza Magna">Ibiza Magna</option>
+                                                <option value="Club Nautico">Club Nautico</option>
+                                            </select>
+                                        </div>
                                         </div>
                                     </li>
                                     <li>
