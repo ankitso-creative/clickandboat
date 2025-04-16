@@ -81,6 +81,39 @@ use Illuminate\Support\Facades\Session;
                 return $query->where('question', 'like', '%' . $question . '%');
             })
             ->paginate(5);
+
+            if ($request->ajax()) 
+            {
+                $html = '';
+                $fCount = ($faqs->currentPage() - 1) * $faqs->perPage();
+                if(count($faqs)):
+                    foreach($faqs as $faq):
+                        $fCount++;
+                        $html .= '<div class="card">
+                                <div id="heading'.$faq->id.'" class="border-0 shadow-sm card-header">
+                                    <h2 class="mb-0">
+                                        <button type="button" data-toggle="collapse" data-target="#collapse'.$faq->id.'"
+                                            aria-expanded="false" aria-controls="collapse'.$faq->id.'"
+                                            class="btn btn-link collapsed text-dark font-weight-bold text-uppercase collapsible-link">
+                                            '.$fCount.'. '.$faq->question .'
+                                        </button>
+                                    </h2>
+                                </div>
+                                <div id="collapse'.$faq->id.'" aria-labelledby="heading'.$faq->id.'" data-parent="#accordionExample"
+                                    class="collapse">
+                                    <div class="card-body">
+                                        <p class="m-0">'.$faq->answer.'</p>
+                                    </div>
+                                </div>
+                            </div>';
+                    endforeach;
+                endif;
+                return response()->json([
+                    'html' => $html,
+                    'next_page' => $faqs->currentPage() < $faqs->lastPage() ? $faqs->currentPage() + 1 : null
+                ]);
+            }
+            
             return $faqs;
         }
         public function relatedBlog($id)
@@ -104,6 +137,10 @@ use Illuminate\Support\Facades\Session;
         {
             $listing = Listing::where('status', '1')->with(['price'])->paginate(9);
             return $listing;
+        }
+        public function submitEnquiry($request)
+        {
+            dd($request);
         }
         public function allLocationData()
         {
