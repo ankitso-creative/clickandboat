@@ -4884,6 +4884,7 @@ section.about_zigzag_section {
     margin: 0px auto;
     margin-top: 20px;
     margin-bottom: 12px;
+    position: relative;
 }
 .help_banner_section  #search {
     border: none;
@@ -4904,9 +4905,12 @@ section.about_zigzag_section {
     cursor: pointer;
     color: #fff;
     background-color: #f9a126;
-    padding: 0px 22px;
+    padding: 12px 22px;
     text-transform: uppercase;
     outline: none;
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 .help_banner_section  #search-wrapper i {
     color: #fff;
@@ -9191,6 +9195,9 @@ font-size: 15px;
 }
 .desktop_filter_section {
     display: none;
+}
+.banner_text_style .word {
+    margin-left: 3px;
 }
 }
 @media (min-width: 767px) and (max-width: 1023px) {
