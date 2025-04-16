@@ -242,7 +242,7 @@
                             </div>
                         </form>
                         <p>We Will Be Delighted To Assist</p>
-                        <a href="#">Contact Us <i class="fa-solid fa-arrow-right"></i></a>
+                        <a href="{{ route('contact') }}">Contact Us <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="col-md-12 col-md-6 col-lg-3">
@@ -253,6 +253,7 @@
                             <li><a href="{{ route('about-us') }}">About Us</a></li>
                             <li><a href="{{ route('location') }}">Locations</a></li>
                             <li><a href="{{ route('blogs') }}">Blog</a></li>
+                            <li><a href="{{ route('contact') }}">Contact</a></li>
                         </ul>
                     </div>
                 </div>
