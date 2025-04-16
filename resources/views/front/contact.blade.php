@@ -86,7 +86,7 @@
                         </div>
                         <div class="text">
                             <h6>Write email</h6>
-                            <a href="mailto:needhelp@company.com">needhelp@company.com</a>
+                            <a href="mailto:info@myboatbooker.com">info@myboatbooker.com</a>
                         </div>
                     </li>
                     <li class="d-block d-sm-flex align-items-center ">
