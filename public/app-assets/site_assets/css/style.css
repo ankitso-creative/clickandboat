@@ -8133,6 +8133,40 @@ font-size: 15px;
 .mob_filter_two .fa-sliders {
     transform: rotate(87deg);
 }
+.mobile_filter_model .modal-dialog {
+    margin: 0px;
+}
+.delete_btn {
+    background: none;
+    color: #000;
+    font-size: 12px;
+    padding: 0 0;
+    box-shadow: none;
+}
+.view_boat_btn {
+    background: #f9a126;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 7px;
+    box-shadow: none;
+    border: 1px solid #f9a126;
+}
+.view_boat_btn:hover{
+    background:none;
+    color: #f9a126;
+    border: 1px solid #f9a126;
+}
+.mobile_filter_model .modal-footer {
+    display: flex;
+    justify-content: space-between;
+}
+.mobile_filter_model .close_arrow {
+    color: #000;
+    font-size: 34px;
+}
+.mobile_filter_model .modal-title{
+    text-transform: uppercase;
+}
 /*--------------------------------------------------------------
 # Media Query
 --------------------------------------------------------------*/
@@ -8417,11 +8451,12 @@ font-size: 15px;
         display: none;
     }
     .location_rightside_box {
-        padding-top: 30px;
+        padding-top: 0px;
     }
     .location_main_heading h2 {
         padding-bottom: 15px;
-        text-align: center;
+        text-align: left;
+        font-size: 20px;
     }
     .location_filter_section {
         margin-bottom: 0;
@@ -9152,6 +9187,9 @@ font-size: 15px;
     display: block;
 }
 .location_page_banner {
+    display: none;
+}
+.desktop_filter_section {
     display: none;
 }
 }
