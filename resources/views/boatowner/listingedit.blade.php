@@ -543,18 +543,18 @@
                 <form method="POST">
                     <div class="row">
                         <div class="col-sm-12">
-                            <h4 class="bold ">Price</h4>
+                            {{-- <h4 class="bold ">Price</h4> --}}
                             @php 
                                 $lowseason = $listing->price()->where('season_price_id', optional($listing->seasonPrice[0] ?? null)->id)->first();
                                 $midSeason = $listing->price()->where('season_price_id', optional($listing->seasonPrice[1] ?? null)->id)->first();
                                 $highSeason = $listing->price()->where('season_price_id', optional($listing->seasonPrice[2] ?? null)->id)->first();
                             @endphp
                         </div>
-                        <div class="col-sm-4">
+                        {{-- <div class="col-sm-4">
                             <label>Price:<span class="required"> * </span></label>
                             <input type="text" name="price" value="{{ optional($listing->price)->price }}" class="form-control">
                             @error('price')<span class="required">{{ $message }}</span>@enderror
-                        </div>
+                        </div> --}}
                         <div class="clearfix"></div>
                         <div class="pt-4 col-sm-12">
                             <h4 class="bold ">Low Season Prices</h4>

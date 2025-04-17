@@ -521,8 +521,11 @@ $(document).ready(function() {
 	});	
 	
 	
-	$(document).on('change','input[name="type[]"], #rental_type, #Halfday, #Fullday, #Overnightstay, select[name="location"]', function() {
+	$(document).on('change','input[name="type[]"], input[name="equipment"], #rental_type, #Halfday, #Fullday, #Overnightstay, select[name="location"]', function() {
 		$('#search-filter-fom').submit();
+    });
+	$(document).on('change', 'select[name="location"], select[name="type[]"], #rental_type', function() {
+		$('#search-filter-mobile').submit();
     });
 	$(document).on('click','#details-tabs li a', function() {
 		$('#details-tabs li a').removeClass('active')

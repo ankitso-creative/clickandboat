@@ -167,11 +167,11 @@
             }
             elseif($request['s']=='price')
             {
-                $listing->price()->UpdateOrCreate(['listing_id' => $listing->id],[
-                    'listing_id' => $listing->id,
-                    'price'  => $request['price'],
+                // $listing->price()->UpdateOrCreate(['listing_id' => $listing->id],[
+                //     'listing_id' => $listing->id,
+                //     'price'  => $request['price'],
                    
-                ]);
+                // ]);
                 $seasonPrices = $request['season_price'];
                 if($seasonPrices):
                     foreach($seasonPrices as $seasonPrice):

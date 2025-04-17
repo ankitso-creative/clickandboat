@@ -100,7 +100,6 @@
                             </div>
                         @endforeach
                     @endif
-                    
                 </div>
                 <div class="mt-5 text-center read_more_btn">
                     @if ($faqs->hasMorePages())

@@ -295,7 +295,7 @@
                     </div>
                     <div class="row mob_filter_two">
                         <div class="col-md-8">
-                            <select name="type" id="boats">
+                            <select name="type[]" id="boats">
                                 <option value="">Boat</option>
                                 <option value="Motorboat">Motorboat</option>
                                 <option value="Sail boat">Sail boat</option>
@@ -306,10 +306,10 @@
                                 <option value="Sailing yacht">Sailing yacht</option>
                                 <option value="Fishing boat">Fishing boat</option>
                             </select>
-                            <select name="type" id="skipper">
-                                <option value="">Skipper</option>
-                                <option value="Motorboat">With skipper</option>
-                                <option value="Sail boat">Without skipper</option>
+                            <select name="rental_type" id="rental_type">
+                                <option  value="">With Or Without Skipper</option>
+                                <option {{ checkselect(request()->query('rental_type'), 'with skipper') }} value="with skipper">With Skipper</option>
+                                <option {{ checkselect(request()->query('rental_type'), 'without skipper') }} value="without skipper">Without Skipper</option>
                             </select>
                         </div>
                         <div class="col-md-4">
@@ -528,6 +528,40 @@
                                 </div>
                             </div>
                             <div class="location_checkbox_two">
+                                <div class="row">
+                                    <div class="number_list">
+                                        <label>Number of peoples</label>
+                                        <div class="number_list_filter">
+                                            <div class="number_counter">
+                                                <a href="#"><i class="fa-solid fa-minus"></i></a>
+                                                <input type="number" id="quantity" name="quantity" min="1" max="5">
+                                                <a href="#"><i class="fa-solid fa-plus"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="number_list">
+                                        <label>Number of cabins</label>
+                                        <div class="number_list_filter">
+                                            <div class="number_counter">
+                                                <a href="#"><i class="fa-solid fa-minus"></i></a>
+                                                <input type="number" id="quantity" name="quantity" min="1" max="5">
+                                                <a href="#"><i class="fa-solid fa-plus"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="number_list">
+                                        <label>Number of berths</label>
+                                        <div class="number_list_filter">
+                                            <div class="number_counter">
+                                                <a href="#"><i class="fa-solid fa-minus"></i></a>
+                                                <input type="number" id="quantity" name="quantity" min="1" max="5">
+                                                <a href="#"><i class="fa-solid fa-plus"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="location_checkbox_two">
                                 <div class="toggle_filter">
                                     <div class="toggle_text">
                                         <label>Super Owners</label>
@@ -568,31 +602,31 @@
                             <div class="location_checkbox_two">
                                 <h5>Equipment</h5>
                                 <div class="input-group">
-                                    <input type="checkbox" id="wakeboard" name="Wakeboard" value="Wakeboard">
+                                    <input type="checkbox" id="wakeboard" name="equipment" value="Wakeboard">
                                     <label for="wakeboard"> Wakeboard</label><br>
                                 </div>
                                 <div class="input-group">
-                                    <input type="checkbox" id="towable-tube" name="towable" value="towable">
+                                    <input type="checkbox" id="towable-tube" name="equipment" value="towable">
                                     <label for="towable-tube">Towable Tube</label><br>
                                 </div>
                                 <div class="input-group">
-                                    <input type="checkbox" id="watermaker" name="watermaker" value="watermaker">
-                                    <label for="watermaker"> Watermaker</label><br>
+                                    <input type="checkbox" id="watermaker" name="equipment" value="watermarker">
+                                    <label for="watermaker"> Watermarker</label><br>
                                 </div>
                                 <div class="input-group">
-                                    <input type="checkbox" id="generator" name="generator" value="generator">
+                                    <input type="checkbox" id="generator" name="equipment" value="generator">
                                     <label for="generator"> Generator</label><br>
                                 </div>
                                 <div class="input-group">
-                                    <input type="checkbox" id="air-conditioning" name="Conditioning" value="Conditioning">
+                                    <input type="checkbox" id="air-conditioning" name="equipment" value="Conditioning">
                                     <label for="air-conditioning"> Air Conditioning</label><br>
                                 </div>
                                 <div class="input-group">
-                                    <input type="checkbox" id="external-speakers" name="external" value="external">
+                                    <input type="checkbox" id="external-speakers" name="equipment" value="external">
                                     <label for="external-speakers"> External speakers</label><br>
                                 </div>
                                 <div class="input-group">
-                                    <input type="checkbox" id="events" name="events" value="events">
+                                    <input type="checkbox" id="events" name="equipment" value="events">
                                     <label for="events"> Air Conditioning</label><br>
                                 </div>
                             </div>
@@ -708,13 +742,13 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="#" method="get" class="mobile_filter_section">
+                        <form action="{{ route('search') }}" method="get" class="mobile_filter_section" id="search-filter-fom">
                             <div class="location_checkbox_two">
                                 <h5>Boat length</h5>
                                 <div class="custom-wrapper">
                                     <div class="boat-input">
-                                        <input type="range" class="min-boat-range" min="0" max="200" value="0" step="10">
-                                        <input type="range" class="max-boat-range" min="0" max="200" value="200" step="10">
+                                        <input type="range" class="min-boat-range" min="0" max="{{ maxLengthValue() }}" value="{{ request()->query('min-length') ?? 0 }}" step="10">
+                                        <input type="range" class="max-boat-range" min="0" max="{{ maxLengthValue() }}" value="{{ request()->query('max-length') ?? maxLengthValue() }}" step="10">
                                     </div>
                                     <div class="price-input-container">
                                         <div class="slider-container-length">
@@ -723,12 +757,13 @@
                                         </div>
                                         <div class="length-input">
                                             <div class="price-field">
-                                                <input type="number" class="min-length-input" value="0">
+                                                <input type="number" name="min-length" class="min-length-input" value="{{ request()->query('min-length') ?? 0}}">
                                             </div>
                                             <div class="price-field">
-                                                <input type="number" class="max-length-input" value="200">
+                                                <input type="number" name="max-length" class="max-length-input" value="{{ request()->query('max-length') ?? maxLengthValue() }}">
                                             </div>
                                         </div>
+                                    
                                     </div>
                                 </div>
                             </div>
@@ -736,10 +771,8 @@
                                 <h5>Price per day</h5>
                                 <div class="custom-wrapper">
                                     <div class="range-input">
-                                        <input type="range" class="min-range" min="0" max="{{ maxPriceValue() }}" value="0"
-                                            step="50">
-                                        <input type="range" class="max-range" min="0" max="{{ maxPriceValue() }}"
-                                            value="{{ maxPriceValue() }}" step="50">
+                                        <input type="range" class="min-range" min="0" max="{{ maxPriceValue() }}" value="{{ request()->query('min_price') ?? 0 }}" step="50">
+                                        <input type="range" class="max-range" min="0" max="{{ maxPriceValue() }}" value="{{ request()->query('max_price') ?? maxPriceValue() }}" step="50">
                                     </div>
                                     <div class="price-input-container">
                                         <div class="slider-container">
@@ -748,13 +781,13 @@
                                         </div>
                                         <div class="price-input">
                                             <div class="price-field">
-                                                <input type="number" class="min-input" value="0">
+                                                <input type="number" name="min_price" class="min-input" value="{{ request()->query('min_price') ?? 0 }}">
                                             </div>
                                             <div class="price-field">
-                                                <input type="number" class="max-input" value="{{ maxPriceValue() }}">
+                                                <input type="number" name="max_price" class="max-input" value="{{ request()->query('max_price') ?? maxPriceValue() }}">
                                             </div>
                                         </div>
-
+                                    
                                     </div>
                                 </div>
                             </div>
@@ -833,31 +866,31 @@
                             <div class="location_checkbox_two">
                                 <h5>Equipment</h5>
                                 <div class="input-group">
-                                    <input type="checkbox" id="wakeboard" name="Wakeboard" value="Wakeboard">
+                                    <input type="checkbox" id="wakeboard" name="equipment" value="Wakeboard">
                                     <label for="wakeboard"> Wakeboard</label><br>
                                 </div>
                                 <div class="input-group">
-                                    <input type="checkbox" id="towable-tube" name="towable" value="towable">
+                                    <input type="checkbox" id="towable-tube" name="equipment" value="towable">
                                     <label for="towable-tube">Towable Tube</label><br>
                                 </div>
                                 <div class="input-group">
-                                    <input type="checkbox" id="watermaker" name="watermaker" value="watermaker">
-                                    <label for="watermaker"> Watermaker</label><br>
+                                    <input type="checkbox" id="watermaker" name="equipment" value="watermarker">
+                                    <label for="watermaker"> watermarker</label><br>
                                 </div>
                                 <div class="input-group">
-                                    <input type="checkbox" id="generator" name="generator" value="generator">
+                                    <input type="checkbox" id="generator" name="equipment" value="generator">
                                     <label for="generator"> Generator</label><br>
                                 </div>
                                 <div class="input-group">
-                                    <input type="checkbox" id="air-conditioning" name="Conditioning" value="Conditioning">
+                                    <input type="checkbox" id="air-conditioning" name="equipment" value="Conditioning">
                                     <label for="air-conditioning"> Air Conditioning</label><br>
                                 </div>
                                 <div class="input-group">
-                                    <input type="checkbox" id="external-speakers" name="external" value="external">
+                                    <input type="checkbox" id="external-speakers" name="equipment" value="external">
                                     <label for="external-speakers"> External speakers</label><br>
                                 </div>
                                 <div class="input-group">
-                                    <input type="checkbox" id="events" name="events" value="events">
+                                    <input type="checkbox" id="events" name="equipment" value="events">
                                     <label for="events"> Air Conditioning</label><br>
                                 </div>
                             </div>
@@ -874,6 +907,8 @@
                                         </button>
                                     </div>
                                 </div>
+                                <input type="hidden" name="location" value="{{ request()->query('location') }}">
+                                <input type="hidden" name="rental_type" value="{{ request()->query('rental_type') }}">
                                 <div class="toggle_filter">
                                     <div class="toggle_text">
                                         <label>Highest rated <i class="fa-solid fa-star"></i></label>
@@ -889,10 +924,7 @@
                             </div>
                         </form>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn delete_btn" data-dismiss="modal">Delete all</button>
-                        <button type="button" class="btn view_boat_btn">View boats</button>
-                    </div>
+                    
                 </div>
             </div>
         </div>

@@ -48,9 +48,7 @@ class UpdateListing extends FormRequest
                 'speed' => ['required'],
             ];
         elseif($request['s']=='price'):
-            return [
-                'price' => ['required'],
-            ];
+            return [];
         elseif($request['s']=='booking'):
             return [
                 'cancellation_conditions' => ['required'],
