@@ -147,7 +147,7 @@
         <div class="sidebar_box_pera">
             <h3>Ahoy there <span class="">Captain!</span> </h3>
             <p>Your yacht will soon be visible to the largest community of sailors interested in peer-to-peer yacht
-                charters. Welcome to Booker Boat</p>
+                charters. Welcome to my Boat Booker</p>
         </div>
         <div class="listing_progress_bar">
             <!-- <p>Progress</p> -->
