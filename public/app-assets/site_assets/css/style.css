@@ -4191,7 +4191,9 @@ label, input, textarea, button, select {
     padding: 5px 8px !important;
     border-top: 0px solid #e6e6e6 !important;
 }
-
+.rental_tyle_field {
+    margin-left: -4px;
+}
 /*--------------------------------------------------------------
 # Range slider
 --------------------------------------------------------------*/
@@ -5224,12 +5226,14 @@ section.about_zigzag_section {
     border-radius: 15px;
     border: 1px solid #f8a126;
     text-transform: uppercase;
-    padding: 10px 40px;
+    padding: 12px 40px;
+    box-shadow: none;
 }
 .read_more_btn a:hover{
     background: none;
     color: #f9a126;
     border: 1px solid #f9a126;
+    box-shadow: none;
 }
 /*--------------------------------------------------------------
 # Single boat page

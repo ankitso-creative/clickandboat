@@ -374,7 +374,7 @@ function initialize() {
                                                     </path>
                                                 </svg>
                                             </div>
-                                            <div class="where_box_text">
+                                            <div class="where_box_text rental_tyle_field">
                                                 <h5>Rental Type</h5>
                                                 <select name="rental_type" id="rental_type">
                                                     <option value="">With Or Without Skipper</option>
