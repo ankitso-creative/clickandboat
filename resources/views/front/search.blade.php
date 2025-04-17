@@ -698,205 +698,204 @@
         </div>
     </section>
     <!-- Modal -->
-@if($isMobile)
-    <div class="modal fade mobile_filter_model" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">More filters</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span class="close_arrow" aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-        <form action="#" method="get" class="mobile_filter_section">
-                        <div class="location_checkbox_two">
-                            <h5>Boat length</h5>
-                            <div class="custom-wrapper">
-                                <div class="boat-input">
-                                    <input type="range" class="min-boat-range" min="0" max="200" value="0" step="10">
-                                    <input type="range" class="max-boat-range" min="0" max="200" value="200" step="10">
+    @if($isMobile)
+        <div class="modal fade mobile_filter_model" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">More filters</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span class="close_arrow" aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="#" method="get" class="mobile_filter_section">
+                            <div class="location_checkbox_two">
+                                <h5>Boat length</h5>
+                                <div class="custom-wrapper">
+                                    <div class="boat-input">
+                                        <input type="range" class="min-boat-range" min="0" max="200" value="0" step="10">
+                                        <input type="range" class="max-boat-range" min="0" max="200" value="200" step="10">
+                                    </div>
+                                    <div class="price-input-container">
+                                        <div class="slider-container-length">
+                                            <div class="length-slider">
+                                            </div>
+                                        </div>
+                                        <div class="length-input">
+                                            <div class="price-field">
+                                                <input type="number" class="min-length-input" value="0">
+                                            </div>
+                                            <div class="price-field">
+                                                <input type="number" class="max-length-input" value="200">
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="price-input-container">
-                                    <div class="slider-container-length">
-                                        <div class="length-slider">
-                                        </div>
+                            </div>
+                            <div class="location_checkbox_two">
+                                <h5>Price per day</h5>
+                                <div class="custom-wrapper">
+                                    <div class="range-input">
+                                        <input type="range" class="min-range" min="0" max="{{ maxPriceValue() }}" value="0"
+                                            step="50">
+                                        <input type="range" class="max-range" min="0" max="{{ maxPriceValue() }}"
+                                            value="{{ maxPriceValue() }}" step="50">
                                     </div>
-                                    <div class="length-input">
-                                        <div class="price-field">
-                                            <input type="number" class="min-length-input" value="0">
+                                    <div class="price-input-container">
+                                        <div class="slider-container">
+                                            <div class="price-slider">
+                                            </div>
                                         </div>
-                                        <div class="price-field">
-                                            <input type="number" class="max-length-input" value="200">
+                                        <div class="price-input">
+                                            <div class="price-field">
+                                                <input type="number" class="min-input" value="0">
+                                            </div>
+                                            <div class="price-field">
+                                                <input type="number" class="max-input" value="{{ maxPriceValue() }}">
+                                            </div>
                                         </div>
-                                    </div>
 
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="location_checkbox_two">
-                            <h5>Price per day</h5>
-                            <div class="custom-wrapper">
-                                <div class="range-input">
-                                    <input type="range" class="min-range" min="0" max="{{ maxPriceValue() }}" value="0"
-                                        step="50">
-                                    <input type="range" class="max-range" min="0" max="{{ maxPriceValue() }}"
-                                        value="{{ maxPriceValue() }}" step="50">
-                                </div>
-                                <div class="price-input-container">
-                                    <div class="slider-container">
-                                        <div class="price-slider">
+                            <div class="location_checkbox_two">
+                                <div class="row">
+                                    <div class="number_list">
+                                        <label>Number of peoples</label>
+                                        <div class="number_list_filter">
+                                            <div class="number_counter">
+                                                <a href="#"><i class="fa-solid fa-minus"></i></a>
+                                                <input type="number" id="quantity" name="quantity" min="1" max="5">
+                                                <a href="#"><i class="fa-solid fa-plus"></i></a>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="price-input">
-                                        <div class="price-field">
-                                            <input type="number" class="min-input" value="0">
-                                        </div>
-                                        <div class="price-field">
-                                            <input type="number" class="max-input" value="{{ maxPriceValue() }}">
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="location_checkbox_two">
-                            <div class="row">
-                                <div class="number_list">
-                                    <label>Number of peoples</label>
-                                    <div class="number_list_filter">
-                                        <div class="number_counter">
-                                            <a href="#"><i class="fa-solid fa-minus"></i></a>
-                                            <input type="number" id="quantity" name="quantity" min="1" max="5">
-                                            <a href="#"><i class="fa-solid fa-plus"></i></a>
+                                    <div class="number_list">
+                                        <label>Number of cabins</label>
+                                        <div class="number_list_filter">
+                                            <div class="number_counter">
+                                                <a href="#"><i class="fa-solid fa-minus"></i></a>
+                                                <input type="number" id="quantity" name="quantity" min="1" max="5">
+                                                <a href="#"><i class="fa-solid fa-plus"></i></a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="number_list">
-                                    <label>Number of cabins</label>
-                                    <div class="number_list_filter">
-                                        <div class="number_counter">
-                                            <a href="#"><i class="fa-solid fa-minus"></i></a>
-                                            <input type="number" id="quantity" name="quantity" min="1" max="5">
-                                            <a href="#"><i class="fa-solid fa-plus"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="number_list">
-                                    <label>Number of berths</label>
-                                    <div class="number_list_filter">
-                                        <div class="number_counter">
-                                            <a href="#"><i class="fa-solid fa-minus"></i></a>
-                                            <input type="number" id="quantity" name="quantity" min="1" max="5">
-                                            <a href="#"><i class="fa-solid fa-plus"></i></a>
+                                    <div class="number_list">
+                                        <label>Number of berths</label>
+                                        <div class="number_list_filter">
+                                            <div class="number_counter">
+                                                <a href="#"><i class="fa-solid fa-minus"></i></a>
+                                                <input type="number" id="quantity" name="quantity" min="1" max="5">
+                                                <a href="#"><i class="fa-solid fa-plus"></i></a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="location_checkbox_two">
-                            <div class="toggle_filter">
-                                <div class="toggle_text">
-                                    <label>Super Owners</label>
-                                    <p>Rent from well-reputed boat owners</p>
-                                </div>
-                                <div class="toggle_btn">
-                                    <button type="button" class="btn btn-sm btn-toggle active" data-toggle="button"
-                                        aria-pressed="true" autocomplete="off">
-                                        <div class="handle"></div>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="location_checkbox_two">
-                            <h5>Ideal for</h5>
-                            <div class="input-group">
-                                <input type="checkbox" id="wakeboard-water" name="Wakeboard" value="Wakeboard">
-                                <label for="wakeboard-water"> Wakeboard and water skis</label><br>
-                            </div>
-                            <div class="input-group">
-                                <input type="checkbox" id="water-based" name="waterbased" value="waterbased">
-                                <label for="water-based">Water-based activities</label><br>
-                            </div>
-                            <div class="input-group">
-                                <input type="checkbox" id="unique-experience" name="uniqueexperience"
-                                    value="uertosantantoni">
-                                <label for="unique-experience"> Unique experience</label><br>
-                            </div>
-                            <div class="input-group">
-                                <input type="checkbox" id="fishing" name="fishing" value="fishing">
-                                <label for="fishing"> Fishing</label><br>
-                            </div>
-                            <div class="input-group">
-                                <input type="checkbox" id="events" name="events" value="events">
-                                <label for="events"> Events</label><br>
-                            </div>
-                        </div>
-                        <div class="location_checkbox_two">
-                            <h5>Equipment</h5>
-                            <div class="input-group">
-                                <input type="checkbox" id="wakeboard" name="Wakeboard" value="Wakeboard">
-                                <label for="wakeboard"> Wakeboard</label><br>
-                            </div>
-                            <div class="input-group">
-                                <input type="checkbox" id="towable-tube" name="towable" value="towable">
-                                <label for="towable-tube">Towable Tube</label><br>
-                            </div>
-                            <div class="input-group">
-                                <input type="checkbox" id="watermaker" name="watermaker" value="watermaker">
-                                <label for="watermaker"> Watermaker</label><br>
-                            </div>
-                            <div class="input-group">
-                                <input type="checkbox" id="generator" name="generator" value="generator">
-                                <label for="generator"> Generator</label><br>
-                            </div>
-                            <div class="input-group">
-                                <input type="checkbox" id="air-conditioning" name="Conditioning" value="Conditioning">
-                                <label for="air-conditioning"> Air Conditioning</label><br>
-                            </div>
-                            <div class="input-group">
-                                <input type="checkbox" id="external-speakers" name="external" value="external">
-                                <label for="external-speakers"> External speakers</label><br>
-                            </div>
-                            <div class="input-group">
-                                <input type="checkbox" id="events" name="events" value="events">
-                                <label for="events"> Air Conditioning</label><br>
-                            </div>
-                        </div>
-                        <div class="location_checkbox_two">
-                            <div class="toggle_filter">
-                                <div class="toggle_text">
-                                    <label>Free cancellation</label>
-                                    <p>Refunds are possible until the day before departure</p>
-                                </div>
-                                <div class="toggle_btn">
-                                    <button type="button" class="btn btn-sm btn-toggle active" data-toggle="button"
-                                        aria-pressed="true" autocomplete="off">
-                                        <div class="handle"></div>
-                                    </button>
+                            <div class="location_checkbox_two">
+                                <div class="toggle_filter">
+                                    <div class="toggle_text">
+                                        <label>Super Owners</label>
+                                        <p>Rent from well-reputed boat owners</p>
+                                    </div>
+                                    <div class="toggle_btn">
+                                        <button type="button" class="btn btn-sm btn-toggle active" data-toggle="button"
+                                            aria-pressed="true" autocomplete="off">
+                                            <div class="handle"></div>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="toggle_filter">
-                                <div class="toggle_text">
-                                    <label>Highest rated <i class="fa-solid fa-star"></i></label>
-                                    <p>Only display boats with a rating over 4 stars</p>
+                            <div class="location_checkbox_two">
+                                <h5>Ideal for</h5>
+                                <div class="input-group">
+                                    <input type="checkbox" id="wakeboard-water" name="Wakeboard" value="Wakeboard">
+                                    <label for="wakeboard-water"> Wakeboard and water skis</label><br>
                                 </div>
-                                <div class="toggle_btn">
-                                    <button type="button" class="btn btn-sm btn-toggle active" data-toggle="button"
-                                        aria-pressed="true" autocomplete="off">
-                                        <div class="handle"></div>
-                                    </button>
+                                <div class="input-group">
+                                    <input type="checkbox" id="water-based" name="waterbased" value="waterbased">
+                                    <label for="water-based">Water-based activities</label><br>
+                                </div>
+                                <div class="input-group">
+                                    <input type="checkbox" id="unique-experience" name="uniqueexperience"
+                                        value="uertosantantoni">
+                                    <label for="unique-experience"> Unique experience</label><br>
+                                </div>
+                                <div class="input-group">
+                                    <input type="checkbox" id="fishing" name="fishing" value="fishing">
+                                    <label for="fishing"> Fishing</label><br>
+                                </div>
+                                <div class="input-group">
+                                    <input type="checkbox" id="events" name="events" value="events">
+                                    <label for="events"> Events</label><br>
                                 </div>
                             </div>
-                        </div>
-                    </form>
+                            <div class="location_checkbox_two">
+                                <h5>Equipment</h5>
+                                <div class="input-group">
+                                    <input type="checkbox" id="wakeboard" name="Wakeboard" value="Wakeboard">
+                                    <label for="wakeboard"> Wakeboard</label><br>
+                                </div>
+                                <div class="input-group">
+                                    <input type="checkbox" id="towable-tube" name="towable" value="towable">
+                                    <label for="towable-tube">Towable Tube</label><br>
+                                </div>
+                                <div class="input-group">
+                                    <input type="checkbox" id="watermaker" name="watermaker" value="watermaker">
+                                    <label for="watermaker"> Watermaker</label><br>
+                                </div>
+                                <div class="input-group">
+                                    <input type="checkbox" id="generator" name="generator" value="generator">
+                                    <label for="generator"> Generator</label><br>
+                                </div>
+                                <div class="input-group">
+                                    <input type="checkbox" id="air-conditioning" name="Conditioning" value="Conditioning">
+                                    <label for="air-conditioning"> Air Conditioning</label><br>
+                                </div>
+                                <div class="input-group">
+                                    <input type="checkbox" id="external-speakers" name="external" value="external">
+                                    <label for="external-speakers"> External speakers</label><br>
+                                </div>
+                                <div class="input-group">
+                                    <input type="checkbox" id="events" name="events" value="events">
+                                    <label for="events"> Air Conditioning</label><br>
+                                </div>
+                            </div>
+                            <div class="location_checkbox_two">
+                                <div class="toggle_filter">
+                                    <div class="toggle_text">
+                                        <label>Free cancellation</label>
+                                        <p>Refunds are possible until the day before departure</p>
+                                    </div>
+                                    <div class="toggle_btn">
+                                        <button type="button" class="btn btn-sm btn-toggle active" data-toggle="button"
+                                            aria-pressed="true" autocomplete="off">
+                                            <div class="handle"></div>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="toggle_filter">
+                                    <div class="toggle_text">
+                                        <label>Highest rated <i class="fa-solid fa-star"></i></label>
+                                        <p>Only display boats with a rating over 4 stars</p>
+                                    </div>
+                                    <div class="toggle_btn">
+                                        <button type="button" class="btn btn-sm btn-toggle active" data-toggle="button"
+                                            aria-pressed="true" autocomplete="off">
+                                            <div class="handle"></div>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn delete_btn" data-dismiss="modal">Delete all</button>
+                        <button type="button" class="btn view_boat_btn">View boats</button>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="modal-footer">
-            <button type="button" class="btn delete_btn" data-dismiss="modal">Delete all</button>
-            <button type="button" class="btn view_boat_btn">View boats</button>
-        </div>
-        </div>
-    </div>
-    </div>
     @endif
 @endsection
