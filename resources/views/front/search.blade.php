@@ -323,9 +323,8 @@
     <!-- Banner Section -->
     <section class="location_page_banner">
         <div class="location_banner_text">
-            <h1>Charter a motor boat or motor yacht<br>
-                on Booker Boat at best price
-            </h1>
+        <h1>FIND YOUR IBIZA BOAT RENTAL AT THE <br>BEST PRICE WITH MY BOAT BOOKER
+        </h1>
         </div>
     </section>
     <!-- /Banner Section -->
@@ -376,7 +375,7 @@
                                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M16.8334 5.33331C16.8334 3.24998 11.8334 0.333313 8.50008 0.333313C5.16675 0.333313 0.166748 3.24998 0.166748 5.33331C0.166748 6.45791 0.530984 7.5825 1.25946 8.70709C3.673 8.12457 6.08654 7.83331 8.50008 7.83331C10.8737 7.83331 13.2472 8.115 15.6208 8.67839C16.4292 7.15915 16.8334 6.04413 16.8334 5.33331ZM8.50008 9.49998C10.7223 9.49998 12.9445 9.77776 15.1667 10.3333C13.7779 12.5555 11.5556 13.6666 8.50008 13.6666C5.44453 13.6666 3.2223 12.5555 1.83341 10.3333C4.05564 9.77776 6.27786 9.49998 8.50008 9.49998ZM8.50008 5.33331C9.19044 5.33331 9.75008 4.77367 9.75008 4.08331C9.75008 3.39296 9.19044 2.83331 8.50008 2.83331C7.80973 2.83331 7.25008 3.39296 7.25008 4.08331C7.25008 4.77367 7.80973 5.33331 8.50008 5.33331Z"></path>
                                                     </svg>
                                                 </div>
-                                                <div class="where_box_text">
+                                                <div class="where_box_text rental_tyle_field">
                                                     <h5>Rental Type</h5>
                                                     <select name="rental_type" id="rental_type">
                                                         <option  value="">With Or Without Skipper</option>
