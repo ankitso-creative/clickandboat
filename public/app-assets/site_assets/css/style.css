@@ -3588,7 +3588,7 @@ label, input, textarea, button, select {
     color: #343a40;
     position: relative;
     top: -3px;
-    left: 7px;
+    left: 3px;
     font-family: 'Montserrat';
     font-weight: 500;
 }
@@ -3663,7 +3663,7 @@ label, input, textarea, button, select {
     color: #343a40;
     position: relative;
     top: 1px;
-    left: 7px;
+    left: 3px;
 }
 .location_checkbox_two h5 {
     font-size: 17px;
@@ -3690,6 +3690,7 @@ label, input, textarea, button, select {
 }
 .location_filter_section .input-group {
     padding-bottom: 10px;
+    margin-left: 14px;
 }
 .switch h3 {
     font-weight: 400;
@@ -5219,7 +5220,7 @@ section.about_zigzag_section {
 .see_more_faq {
     display: none;
 }
-.read_more_btn a {
+.read_more_btn button {
     background: #f9a126;
     display: inline-block;
     color: #fff;
@@ -5228,8 +5229,9 @@ section.about_zigzag_section {
     text-transform: uppercase;
     padding: 12px 40px;
     box-shadow: none;
+    font-size: 15px;
 }
-.read_more_btn a:hover{
+.read_more_btn button:hover{
     background: none;
     color: #f9a126;
     border: 1px solid #f9a126;
@@ -8486,8 +8488,8 @@ font-size: 15px;
     .knowlwdge_heaidng h2 {
         font-size: 30px;
     }
-    .knowledge_section button {
-        font-size: 20px;
+   .knowledge_section button {
+       font-size: 18px !important;
     }
     .faq_section .faq_heading h2 {
         font-size: 30px;
@@ -9203,6 +9205,15 @@ font-size: 15px;
 .banner_text_style .word {
     margin-left: 3px;
 }
+.help_banner_section  #search {
+    position: absolute;
+    left: 40px;
+    top: 13px;
+}
+.help_banner_section  #search-wrapper i {
+    padding: 6px 0px;
+    position: absolute;
+}
 }
 @media (min-width: 767px) and (max-width: 1023px) {
     .header-slider {
@@ -9219,11 +9230,11 @@ font-size: 15px;
         font-size: 30px;
     }
     .home_banner_section {
-        height: 440px;
+        height: 100vh;
         background-position: center;
     }
     .banner_text {
-        bottom: -15%;
+        bottom: 0%;
     }
     .banner_form {
         top: 15px;
@@ -9237,6 +9248,7 @@ font-size: 15px;
     }
     .featured_boats_section {
         margin-top: 60px;
+        padding: 0 0;
     }
     .featured_boat_heading h2 {
         font-size: 30px;
@@ -9246,7 +9258,7 @@ font-size: 15px;
         padding: 0;
     }
     .featured_board_boxes h3 {
-        font-size: 30px;
+        font-size: 25px;
     }
     .boat_reanter_owner_section h2 {
         font-size: 30px;
@@ -9271,9 +9283,9 @@ font-size: 15px;
         height: 500px;
     }
     .boat_by_location .row {
-        left: 54%;
-        width: 390px;
-        top: 54%;
+        left: 50%;
+        width: 570px;
+        top: 58%;
     }
     .boat_by_location_section h2 {
         font-size: 30px;
@@ -9296,6 +9308,10 @@ font-size: 15px;
     .next_trip_text h3 {
         font-size: 25px;
         text-align: center;
+        height: auto;
+    }
+    .footer .row {
+        justify-content: center;
     }
     .next_trip_text p {
         text-align: center;
@@ -9314,14 +9330,12 @@ font-size: 15px;
     .footer_menu {
         padding-left: 0;
     }
-    .cal_mail_box {
-        padding-left: 0px;
+    .next_trip_box {
+        margin-bottom: 30px;
+        margin: 0px 15px 30px 15px;
     }
     .footer_social_links {
         float: left;
-    }
-    .next_trip_box {
-        margin-bottom: 30px;
     }
     .banner_form label {
         color: #000;
@@ -9444,7 +9458,7 @@ font-size: 15px;
     }
     .blog_text_box {
         padding: 25px 25px 0px 25px;
-        text-align: center;
+        text-align: left;
     }
     .footer {
         text-align: center;
@@ -9516,6 +9530,7 @@ font-size: 15px;
         margin-bottom: 20px;
         height: auto;
         padding: 40px 25px;
+        margin: 15px 15px;
     }
     .more_resource_section .col-sm-12.col-md-6.col-lg-3 {
         padding: 0px;
@@ -9652,6 +9667,11 @@ font-size: 15px;
     }
     .next_trip_section .col-sm-12.col-md-6.col-lg-4 {
         padding: 0px;
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    .next_trip_box img {
+        height: 330px;
     }
     .next_trip_section {
         margin-bottom: 30px;
@@ -10005,9 +10025,6 @@ font-size: 15px;
 .boat_reanter_owner_section .container-fluid {
     padding: 0 15px 0 28px;
 }
-.home_page_box_text {
-    margin-top: -45%;
-}
 .thankyou_section h2 {
     font-size: 25px;
     padding: 25px 40px 0 40px;
@@ -10040,6 +10057,77 @@ font-size: 15px;
 }
 .featured_boats_section .col-sm-12.col-md-4.col-lg-4 {
     padding: 0 10px;
+}
+.banner_text_style {
+    width: 570px;
+    left: 68%;
+}
+.banner_text_style p {
+    font-size: 40px;
+}
+#language {
+    padding: 4px 1px 2px 8px !important;
+    font-size: 15px;
+    background: #fff;
+    color: #555 !important;
+    height: 51px;
+    appearance: auto;
+    z-index: 999;
+    width: 94%;
+    margin: 0 0;
+    border-radius: 5px;
+    border: 1px solid #d4d4d4;
+    right: -1%;
+}
+#currency_name {
+    background: #fff;
+    color: #555;
+    height: 30px;
+    padding: 5px 10px 0 9px !important;
+    appearance: auto;
+    width: 92%;
+    height: 50px;
+    border-radius: 5px;
+    margin: 0 0;
+    border: 1px solid #d4d4d4;
+    right: 4%;
+}
+.home_page_slider_box img {
+    height: 435px;
+}
+.featured_board_boxes img {
+    height: 220px;
+}
+.about_slider_box h3 {
+    font-size: 25px;
+}
+.about_zigzag_section .col-sm-12.col-md-6.col-lg-6 {
+    padding: 0;
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+.about_zigzag_section p {
+    width: 80%;
+    margin: 0px auto;
+}
+.contact_banner_text h1 {
+    font-size: 30px;
+}
+.contact_form_section .col-md-6.col-lg-7,
+.contact_form_section  .col-md-6.col-lg-5{
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+.sec-title h2 {
+    font-size: 30px;
+}
+.city_location .col-sm-12.col-md-4.col-lg-4 {
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+.help_contact_section .col-sm-12.col-md-6.col-lg-6 {
+    flex: 0 0 100%;
+    max-width: 100%;
 }
 }
 @media (min-width: 1250px) and (max-width: 1299px) {

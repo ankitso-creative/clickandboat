@@ -197,7 +197,7 @@ $(document).ready(function(){
 					{
 					  breakpoint: 770,
 					  settings: {
-						slidesToShow: 1,
+						slidesToShow: 2,
 						autoplay:true,
 						slidesToScroll: 1
 					  }
@@ -250,6 +250,9 @@ $(document).ready(function(){
 								breakpoint: 770,
 								settings: {
 									slidesToShow: 1,
+									variableWidth: false,
+									autoplay: true,
+									arrows: false, 
 									slidesToScroll: 1
 								}
 								},
@@ -259,7 +262,9 @@ $(document).ready(function(){
 									slidesToShow: 1,
 									variableWidth: false,
 									autoplay: true,
+									arrows: false, 
 									slidesToScroll: 1
+									
 								}
 								}
 							]

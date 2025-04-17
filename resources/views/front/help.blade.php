@@ -104,7 +104,7 @@
                 </div>
                 <div class="mt-5 text-center read_more_btn">
                     @if ($faqs->hasMorePages())
-                        <div class="text-center mt-4">
+                        <div class="mt-4 text-center">
                             <button id="loadMore" class="btn" data-next-page="{{ $faqs->currentPage() + 1 }}">View More</button>
                         </div>
                     @endif
@@ -159,7 +159,7 @@
                 <h2>Contact us!</h2>
                 <p>Still have questions? If you didn't find what you need, you can send an inquiry through our contact
                     form.</p>
-                <a href="#">Submit a request</a>
+                <a href="{{ route('contact') }}">Submit a request</a>
             </div>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-6">

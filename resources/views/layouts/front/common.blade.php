@@ -55,30 +55,29 @@
                         </li>
                         <li class="nav-item">
                             <select name="currency" id="currency_name">
-                                <option value="GBP">EUR €</option>
-                                <option value="EUR">USD $</option>
+                            <option value="EUR">USD $</option>
                                 <option value="opel">GBP £</option>
-                                <option value="opel">CHF </option>
-                                <option value="opel">RUB ₽</option>
-                                <option value="opel">NOK kr</option>
-                                <option value="opel">SEK kr</option>
-                                <option value="opel">DKK kr</option>
-                                <option value="opel">CZK kr</option>
-                                <option value="opel">PLN zł</option>
-                                <option value="opel">CAD</option>
-                                <option value="opel">AUD</option>
-                                <option value="opel">HUF . ft</option>
-                                <option value="opel">RON . lei</option>
-                                <option value="opel">BGN . Лв</option>
-                                <option value="opel">HRK . kn</option>
-                                <option value="opel">BRL</option>
-                                <option value="opel">ARS . $</option>
-                                <option value="opel">ILS . ₪</option>
-                                <option value="opel">AED . د.إ </option>
-                                <option value="opel">CLP . $</option>
-                                <option value="opel">COP . $</option>
-                                <option value="opel">MXN . $</option>
-                                <option value="opel">UYU . $</option>
+                                <option value="chf">CHF </option>
+                                <option value="rub">RUB ₽</option>
+                                <option value="nok">NOK kr</option>
+                                <option value="sek">SEK kr</option>
+                                <option value="dkk">DKK kr</option>
+                                <option value="czk">CZK kr</option>
+                                <option value="pln">PLN zł</option>
+                                <option value="cad">CAD</option>
+                                <option value="aud">AUD</option>
+                                <option value="huf">HUF . ft</option>
+                                <option value="ron">RON . lei</option>
+                                <option value="bgn">BGN . Лв</option>
+                                <option value="hrk">HRK . kn</option>
+                                <option value="brl">BRL</option>
+                                <option value="ars">ARS . $</option>
+                                <option value="ils">ILS . ₪</option>
+                                <option value="aed">AED . د.إ </option>
+                                <option value="clp">CLP . $</option>
+                                <option value="cop">COP . $</option>
+                                <option value="mxn">MXN . $</option>
+                                <option value="uyu">UYU . $</option>
                             </select>
                         </li>
                         @if(!Auth::check())
@@ -177,11 +176,30 @@
                     </li>
                     <li class="nav-item mobile_language">
                         <select name="currency" id="currency_name">
-                            <option value="GBP">EUR €</option>
-                            <option value="EUR">USD $</option>
-                            <option value="opel">GBP £</option>
-                            <option value="opel">CHF </option>
-                            <option value="opel">RUB ₽</option>
+                        <option value="GBP">EUR €</option>
+                                <option value="EUR">USD $</option>
+                                <option value="opel">GBP £</option>
+                                <option value="chf">CHF </option>
+                                <option value="rub">RUB ₽</option>
+                                <option value="nok">NOK kr</option>
+                                <option value="sek">SEK kr</option>
+                                <option value="dkk">DKK kr</option>
+                                <option value="czk">CZK kr</option>
+                                <option value="pln">PLN zł</option>
+                                <option value="cad">CAD</option>
+                                <option value="aud">AUD</option>
+                                <option value="huf">HUF . ft</option>
+                                <option value="ron">RON . lei</option>
+                                <option value="bgn">BGN . Лв</option>
+                                <option value="hrk">HRK . kn</option>
+                                <option value="brl">BRL</option>
+                                <option value="ars">ARS . $</option>
+                                <option value="ils">ILS . ₪</option>
+                                <option value="aed">AED . د.إ </option>
+                                <option value="clp">CLP . $</option>
+                                <option value="cop">COP . $</option>
+                                <option value="mxn">MXN . $</option>
+                                <option value="uyu">UYU . $</option>
                         </select>
                     </li>
                     <!-- 
