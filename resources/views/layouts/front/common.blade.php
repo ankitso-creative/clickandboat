@@ -96,7 +96,7 @@
                         <div class="dropdown my_account_btn">
                             <button class="dropbtn">My account<i class="fa-solid fa-caret-down"></i></button>
                             <div class="dropdown-content">
-                                <a class="dropdown-item" href="#">Dashboard</a>
+                                <a class="dropdown-item" href="{{ route('customer.dashboard') }}">Dashboard</a>
                                 <a class="dropdown-item" href="{{ route('logout') }}">Logout </a>
                             </div>
                         </div>
