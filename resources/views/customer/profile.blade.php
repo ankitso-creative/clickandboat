@@ -58,7 +58,7 @@
         });
 
         
-        @if(old('phone', $userData->profile->phone))
+        @if(old('phone', optional($userData->profile)->phone))
             iti.setNumber("{{ old('phone', $userData->profile->phone) }}");
         @endif
 </script>    
@@ -136,14 +136,14 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="label-default">First Name<span class="required"> *</span></label>
-                                    <input type="text" name="first_name" value="{{ $userData->profile->first_name ?? '' }}" class="form-control">
+                                    <input type="text" name="first_name" value="{{ optional($userData->profile)->first_name ?? '' }}" class="form-control">
                                     @error('first_name')<span class="required">{{ $message }}</span>@enderror
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="label-default">Last Name<span class="required"> *</span></label>
-                                    <input type="text" name="last_name" value="{{ $userData->profile->last_name ?? '' }}" class="form-control">
+                                    <input type="text" name="last_name" value="{{ optional($userData->profile)->last_name ?? '' }}" class="form-control">
                                     @error('last_name')<span class="required">{{ $message }}</span>@enderror
                                 </div>
                             </div>
@@ -159,9 +159,9 @@
                                 <div class="form-group">
                                     <label class="label-default">Gender<span class="required"> *</span></label>
                                     <select name="gender" class="form-control">
-                                        <option @if(isset($userData->profile->gender) && $userData->profile->gender == 'Male') selected @endif value="male">Male</option>
-                                        <option @if(isset($userData->profile->gender) && $userData->profile->gender == 'Female') selected @endif value="Female">Female</option>
-                                        <option @if(isset($userData->profile->gender) && $userData->profile->gender == 'Others') selected @endif value="Others">Others</option>
+                                        <option @if(isset($userData->profile->gender) && optional($userData->profile)->gender == 'Male') selected @endif value="male">Male</option>
+                                        <option @if(isset($userData->profile->gender) && optional($userData->profile)->gender == 'Female') selected @endif value="Female">Female</option>
+                                        <option @if(isset($userData->profile->gender) && optional($userData->profile)->gender == 'Others') selected @endif value="Others">Others</option>
                                     </select>
                                 </div>
                             </div>
@@ -170,7 +170,7 @@
                         <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="label-default">Date of birth</label>
-                                    <input type="text" name="dob" value="{{ $userData->profile->dob ?? '' }}" class="form-control date-picker" autocomplete="off">
+                                    <input type="text" name="dob" value="{{ optional($userData->profile)->dob ?? '' }}" class="form-control date-picker" autocomplete="off">
                                 </div>
                         </div>
                         <div class="col-md-6">
@@ -186,14 +186,14 @@
                         <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="label-default">Phone<span class="required"> *</span></label>
-                                    <input id="phone" type="tel" name="phone" value="{{ $userData->profile->phone ?? '' }}" class="form-control">
+                                    <input id="phone" type="tel" name="phone" value="{{ optional($userData->profile)->phone ?? '' }}" class="form-control">
                                     @error('phone')<span class="required">{{ $message }}</span>@enderror
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="label-default">Address<span class="required"> *</span></label>
-                                    <input type="text" name="address" value="{{ $userData->profile->address ?? '' }}" class="form-control">
+                                    <input type="text" name="address" value="{{optional($userData->profile)->address ?? '' }}" class="form-control">
                                     @error('address')<span class="required">{{ $message }}</span>@enderror
                                 </div>
                             </div>
@@ -202,14 +202,14 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="label-default">City<span class="required"> *</span></label>
-                                    <input type="text" name="city" id="location" value="{{ $userData->profile->city ?? '' }}" class="form-control">
+                                    <input type="text" name="city" id="location" value="{{ optional($userData->profile)->city ?? '' }}" class="form-control">
                                     @error('city')<span class="required">{{ $message }}</span>@enderror
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="label-default">State<span class="required"> *</span></label>
-                                    <input type="text" name="state" value="{{ $userData->profile->state ?? '' }}" class="form-control">
+                                    <input type="text" name="state" value="{{ optional($userData->profile)->state ?? '' }}" class="form-control">
                                     @error('state')<span class="required">{{ $message }}</span>@enderror
                                 </div>
                             </div>
@@ -227,7 +227,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="label-default">Postal Code<span class="required"> *</span></label>
-                                    <input type="text" name="postcode" value="{{ $userData->profile->postcode ?? '' }}" class="form-control">
+                                    <input type="text" name="postcode" value="{{ optional($userData->profile)->postcode ?? '' }}" class="form-control">
                                     @error('postcode')<span class="required">{{ $message }}</span>@enderror
                                 </div>
                             </div>
