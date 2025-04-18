@@ -2,6 +2,7 @@
 namespace App\Repositories\BoatOwner;
 
 use App\Models\Admin\Booking;
+use App\Models\Order;
 use App\Models\User;
 
 class BookingRepository
@@ -21,6 +22,22 @@ class BookingRepository
             }
         }
         return $bookings;
+    }
+    public function editBooking($id)
+    {
+        return Order::find($id);
+    }
+    public function updateBooking($request,$id)
+    {
+        $order = Order::find($id);
+        $order->cancel_reason = $request['cancel_reason'];
+        $order->cancel_message = $request['cancel_message'];
+        $order->payment_status = $request['payment_status'];
+        if($order->update()):
+            return true;
+        else:
+            return false;
+        endif;
     }
     
 }

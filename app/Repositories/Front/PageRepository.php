@@ -48,6 +48,9 @@ use Illuminate\Support\Facades\Session;
             $listing = Listing::with(['price','seasonPrice','booking','calendar'])->where('slug',$slug)->where('city',$city)->where('type',$type)->where('status','1')->first();
             if($listing):
                 Session::put('listingID', $listing->id);
+                Session::put('listingcity', $listing->city);
+                Session::put('listingtype', $listing->type);
+                Session::put('listingslug', $listing->slug);
             endif;
             return $listing;
         }

@@ -50,7 +50,7 @@
                             <th>CheckOut Date</th>
                             <th>Boat Name</th>
                             <th>Price</th>
-                            <th>Category</th>
+                            <th>Status</th>
                             <th>Submitted On</th>
                             <th>Action</th>
                         </tr>
@@ -65,12 +65,11 @@
                                     <td>{{ $result->check_out }}</td>
                                     <td>Maxi Dolphin 100ft Finot Conq (2013) - NOMAD IV</td>
                                     <td>£{{ $result->amount_paid }}</td>
-                                    <td>Boat</td>
+                                    <td>{{ $result->payment_status }}</td>
                                     <td>{{ \Carbon\Carbon::parse($result->created_at)->format('d-m-Y') }}</td>
                                     <td>
                                         <div class="td-actions">
-                                            <button class="btn btn-success"><i class="fas fa-edit"></i></button>
-                                            <button class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                                            <a class="btn btn-success" href="{{ route('customer.booking.edit',$result->id) }}"><i class="fas fa-edit"></i></a>
                                         </div>
                                     </td>
                                 </tr>

@@ -65,10 +65,12 @@ class PagesController extends Controller
         }
         return view('front.single_boat',compact('listing','calendarArray'));
     }
-    public function locationCategry($type)//test_boat
+    public function locationCategry(Request $request , $type)//test_boat
     {
+        $userAgent = $request->header('User-Agent');
+        $isMobile = preg_match('/Mobile|Android|iPhone|iPad|iPod/i', $userAgent);
         $results = $this->service->locationCategry($type);
-        return view('front.search',compact('results'));
+        return view('front.search',compact('results','isMobile'));
     }
     public function locationListing($city)//test_boat
     {
