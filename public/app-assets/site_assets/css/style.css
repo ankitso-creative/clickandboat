@@ -1991,7 +1991,7 @@ label, input, textarea, button, select {
 .home_page_box_text p {
     color: #fff;
     font-weight: 500;
-    padding: 0px 50px;
+    padding: 0px 115px;
     text-shadow: 0px 2px 0px #0000004d, 0 0 2em #0000008a, 0 0 1.2em #0000008a;
 }
 /*--------------------------------------------------------------
@@ -8115,11 +8115,13 @@ font-size: 15px;
     border-right: 0px solid #ebebeb;
 }
 .mob_filter_two select {
-    padding: 10px 10px;
+    padding: 10px 10px !important;
     border-radius: 30px;
     border: 1px solid #d4d4d4;
     width: 41%;
     font-size: 12px;
+    background: #fff;
+    color: #000;
 }
 .mob_filter_two .col-md-8 {
     width: 60%;
@@ -8177,6 +8179,42 @@ font-size: 15px;
 .mobile_filter_model .modal-title{
     text-transform: uppercase;
 }
+.banner_form_mobile .popup_btn {
+    width: 100%;
+    background: #0000003d;
+    border-radius: 56px;
+    cursor: pointer;
+}
+.banner_form_mobile .popup_btn span {
+    display: block;
+}
+.banner_form_mobile .popup_btn i {
+    background: #ffffffa1;
+    position: absolute;
+    top: 14%;
+    right: 13px;
+    height: 50px;
+    width: 50px;
+    line-height: 50px;
+    text-align: center;
+    border-radius: 30px;
+}
+.banner_form_mobile{
+    display: none;
+}
+.banner_form_mobile .modal-dialog .modal-header {
+    padding: 0;
+    border: 0;
+}
+.banner_form_mobile button.close {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    font-size: 38px;
+    color: #f8a126;
+    opacity: 1;
+    z-index: 999;
+}
 /*--------------------------------------------------------------
 # Media Query
 --------------------------------------------------------------*/
@@ -8206,6 +8244,7 @@ font-size: 15px;
         height: auto;
         background: #fff;
         padding: 0;
+        display: none;
     }
     .search_btn {
         margin-top: 25px;
@@ -8353,7 +8392,7 @@ font-size: 15px;
         color: #000;
     }
     .date_col {
-        width: 50%;
+        width: 100%;
         flex-basis: auto;
     }
     .boat_select span {
@@ -8769,10 +8808,13 @@ font-size: 15px;
     }
     .main-dashboard {
         padding: 45px 30px 0px 30px;
+        min-height: auto;
     }
     .no_message_box {
         height: 150px;
         margin-top: 30px;
+        text-align: center;
+        margin-bottom: 30px;
     }
     .account-overview .nav-tabs {
         flex-direction: column;
@@ -8784,6 +8826,7 @@ font-size: 15px;
     .main-dashboard-container  h2 {
         font-size: 25px;
         text-align: center;
+        padding: 0 15px;
     }
     .verification_box_section {
         padding: 25px 0px;
@@ -8844,7 +8887,8 @@ font-size: 15px;
         margin: 0px 30px 0 30px;
     }
     .your_boats_type .radio-with-Icon p.radioOption-Item {
-        width: 147px;
+        width: 125px;
+        height: 125px;
     }
     .your_boats_type .radio-with-Icon p.radioOption-Item label {
         font-size: 11px;
@@ -9079,7 +9123,8 @@ font-size: 15px;
     padding: 0px 7px;
 }
 .language_tab label {
-    width: 30%;
+    width: 29%;
+    font-size: 13px;
 }
 .blog_img {
     padding: 0 15px;
@@ -9122,8 +9167,8 @@ font-size: 15px;
     font-size: 30px;
 }
 .banner_text_style {
-    width: 350px;
-    margin-left: -162px;
+    width: 330px;
+    margin-left: -138px;
     top: -3%;
     margin-top: -20px;
 }
@@ -9213,6 +9258,21 @@ font-size: 15px;
 .help_banner_section  #search-wrapper i {
     padding: 6px 0px;
     position: absolute;
+}
+.header-dashboard .menus-header ul li a {
+    padding: 4px 6px;
+}
+.header-dashboard .container-fluid {
+    padding: 0px;
+}
+.banner_form_mobile {
+    display: block;
+    position: absolute;
+    width: 100%;
+    bottom: 15%;
+}
+.modal-dialog .banner_form {
+    display: block;
 }
 }
 @media (min-width: 767px) and (max-width: 1023px) {
@@ -10323,7 +10383,7 @@ font-size: 15px;
 .navbar {
     padding: 9px 40px;
 }
-.home_page_box_text {
-    margin-top: -33%;
+.home_page_slider .slick-prev {
+    left: 5%;
 }
 }

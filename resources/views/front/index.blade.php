@@ -57,6 +57,7 @@
     color: #fff;
     font-weight: 600;
     text-shadow: 0px 2px 0px #0000004d, 0 0 2em #0000008a, 0 0 1.2em #0000008a;
+    font-family: 'GT America Trial Cn Bd';
 }
 
 .banner_text_style .word {
@@ -105,6 +106,58 @@
 
 .banner_text_style .midnight {
     color: #f9a126;
+}
+
+.search-bar {
+    align-items: center;
+    background: #0000007a;
+    border-radius: 50px;
+    padding: 15px 30px;
+    color: #fff;
+    width: 100%;
+}
+
+
+.dot {
+    font-size: 1.2rem;
+}
+
+.search-button {
+    background: rgb(231 150 35 / 60%);
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    color: white;
+    font-size: 1.1rem;
+    position: absolute;
+    right: 30px;
+    top: 11px;
+}
+.banner_form_mobile p {
+    font-size: 25px;
+    padding-bottom: 5px;
+}
+.search-options span {
+    color: #fff;
+    font-size: 14px;
+}
+.banner_form_mobile .modal-dialog {
+    width: 95% !important;
+    max-width: 95%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) !important;
+    margin: 0px !important;
+}
+.banner_form_mobile .modal-content {
+    padding-bottom: 30px;
+    border-radius: 40px !important;
+}
+.modal-open .modal {
+    background: #000000b3 !important;
 }
 </style>
 @endsection
@@ -196,6 +249,105 @@ document.addEventListener('DOMContentLoaded', function() {
             </p>
         </div>
     </div>
+    <div class="banner_form_mobile">
+        <div class="container">
+            <!-- Button trigger modal -->
+            <div class="search-bar" data-toggle="modal" data-target="#searchmobilefilter">
+                <p>Start your search</p>
+                <div class="search-options">
+                    <span>Mariana</span>
+                    <span class="dot">•</span>
+                    <span>Date</span>
+                    <span class="dot">•</span>
+                    <span>Bot type</span>
+                </div>
+                <button class="search-button">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="searchmobilefilter" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel"></h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="banner_form">
+                                <div class="container-fluid">
+                                    <form action="{{ route('search') }}" method="get">
+                                        <div class="row">
+                                            <div class="col location_col">
+                                                <label>{{ __('home.search-area')}}</label>
+                                                <div class="form-group has-search">
+                                                    <span class="fa fa-search form-control-feedback"></span>
+                                                    <select name="location" class="loaction-search"
+                                                        placeholder="Search Loaction">
+                                                        <option value="">All Marinas</option>
+                                                        <option value="Marina Santa Eulalia">Marina Santa Eulalia</option>
+                                                        <option value="Puerto Sant Antoni">Puerto Sant Antoni</option>
+                                                        <option value="Marina Ibiza">Marina Ibiza</option>
+                                                        <option value="Marina Botafoch">Marina Botafoch</option>
+                                                        <option value="Ibiza Magna">Ibiza Magna</option>
+                                                        <option value="Club Nautico">Club Nautico</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col date_col">
+                                                <label>{{ __('home.starting-date')}}</label>
+                                                <div class="mb-4 form-group">
+                                                    <div class="datepicker date input-group">
+                                                        <div class="input-group-append">
+                                                            <span class="input-group-text"><i
+                                                                    class="fa-solid fa-calendar-days"></i></span>
+                                                        </div>
+                                                        <input type="text" placeholder="DD/MM/YYYY" name="startdate"
+                                                            class="form-control datePicker-search" id="fecha1">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col date_col">
+                                                <label>{{ __('home.ending-date')}}</label>
+                                                <div class="mb-4 form-group">
+                                                    <div class="datepicker date input-group">
+                                                        <div class="input-group-append">
+                                                            <span class="input-group-text"><i
+                                                                    class="fa-solid fa-calendar-days"></i></span>
+                                                        </div>
+                                                        <input type="text" placeholder="DD/MM/YYYY" name="enddate"
+                                                            class="form-control datePicker-search" id="fecha1">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col location_col">
+                                                <label>{{ __('home.boat-type')}}</label>
+                                                <div class="boat_select">
+                                                    <span><i class="fa-solid fa-sailboat"></i></span>
+                                                    <select name="type" id="cars">
+                                                        <option value="">Sailboat, motorboat,...</option>
+                                                        {!!
+                                                        selectOption('categories','name','name',request()->get('type'),array('status'
+                                                        , '1'))
+                                                        !!}
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <button type="submit" class="search_btn">{{ __('home.search')}}</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 <div class="banner_form">
     <div class="container-fluid">
@@ -258,6 +410,8 @@ document.addEventListener('DOMContentLoaded', function() {
         </form>
     </div>
 </div>
+
+
 <!-- /Banner Section -->
 <!-- Featured boats Section -->
 <section class="featured_boats_section">
@@ -511,7 +665,12 @@ document.addEventListener('DOMContentLoaded', function() {
                         </div>
                     </div>
                     <p class="follow_main_text more">
-                    We had a great boat trip to Formentera a couple of weeks ago. The boat itself was immaculate—clean, spacious, and felt brand new, which made the experience even more enjoyable. Jay was fantastic, making sure we felt completely at ease from the start. They were attentive, offering drinks throughout the trip and ensuring we were comfortable. The captain was excellent, providing a smooth and safe journey and stopping in great spots around the island of formentera. Overall, it was a perfect day on the water, highly recommend Jay’s boat.
+                        We had a great boat trip to Formentera a couple of weeks ago. The boat itself was
+                        immaculate—clean, spacious, and felt brand new, which made the experience even more enjoyable.
+                        Jay was fantastic, making sure we felt completely at ease from the start. They were attentive,
+                        offering drinks throughout the trip and ensuring we were comfortable. The captain was excellent,
+                        providing a smooth and safe journey and stopping in great spots around the island of formentera.
+                        Overall, it was a perfect day on the water, highly recommend Jay’s boat.
                     </p>
                 </div>
             </div>
@@ -535,7 +694,8 @@ document.addEventListener('DOMContentLoaded', function() {
                             <p>Jan 2025 Ibiza boat rental in San Anotnio, Ibiza.</p>
                         </div>
                     </div>
-                    <p class="follow_main_text more">We recently rented Hugo's yacht for a day trip from Ibiza to Formentera,
+                    <p class="follow_main_text more">We recently rented Hugo's yacht for a day trip from Ibiza to
+                        Formentera,
                         and it was an unforgettable experience! The yacht itself is stunning—sleek, modern, and
                         incredibly spacious, making it perfect for our large group. The staff was another highlight of
                         the trip. They were attentive, friendly, and went above and beyond to make sure we had
@@ -562,7 +722,8 @@ document.addEventListener('DOMContentLoaded', function() {
                             <p>Jan 2025 Ibiza boat rental in Marina Botafoch, Ibiza.</p>
                         </div>
                     </div>
-                    <p class="follow_main_text more">The Captain & Staff where fantastic. Excellent communication before the
+                    <p class="follow_main_text more">The Captain & Staff where fantastic. Excellent communication before
+                        the
                         trip, helped organise the itinerary and communicated with the lunch restaurant. Stunning
                         location and great clean and spacious boat. Will be back and highly recommend</p>
                 </div>
@@ -586,7 +747,8 @@ document.addEventListener('DOMContentLoaded', function() {
                             <p>Jan 2025 Ibiza boat rental in Marina Ibiza, Ibiza.</p>
                         </div>
                     </div>
-                    <p class="follow_main_text more">Most amazing day on the water. The girls found us on the port and walked
+                    <p class="follow_main_text more">Most amazing day on the water. The girls found us on the port and
+                        walked
                         us to the right boat. Alfonso assisted us with anything we needed while on the water. We went to
                         the most beautiful spots and there were no restrictions with what we could do on board.
                         Everything we needed was provided for us. 10/10 experience</p>
