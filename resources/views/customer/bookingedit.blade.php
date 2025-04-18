@@ -9,7 +9,6 @@
    <script>
         $(document).on('change','select[name="cancel_reason"]',function(){
             var val = $(this).val();
-            alert(val);
             if(val == 'Other')
             {
                 $('#reason-box').removeClass('d-none');
@@ -17,6 +16,17 @@
             else
             {
                 $('#reason-box').addClass('d-none');
+            }
+        })
+        $(document).on('change','select[name="payment_status"]',function(){
+            var val = $(this).val();
+            if(val == 'Other')
+            {
+                $('#reason-select').removeClass('d-none');
+            }
+            else
+            {
+                $('#reason-select').addClass('d-none');
             }
         })
    </script>
@@ -107,7 +117,7 @@
                     <div class="form-group">
                         <label class="label-default">Booking Status<span class="required"></span></label>
                         <select name="payment_status" class="form-control" disabled>
-                            <option {{ checkselect($results->payment_status,'successed') }} value="successed">Success</option>
+                            <option {{ checkselect($results->payment_status,'succeeded') }} value="succeeded">Success</option>
                             <option {{ checkselect($results->payment_status,'cancel') }} value="cancel">cancel</option>
                         </select>
                     </div>
@@ -121,7 +131,7 @@
                 <div class="col-md-6 {{ $dCLsp }}">
                     <div class="form-group">
                         <label class="label-default">Reason For Cancellation<span class="required"></span></label>
-                        <select name="cancel_reason" class="form-control" disabled>
+                        <select name="cancel_reason" class="form-control" disabled id="reason-select">
                             <option value="">Please Select Reason</option>
                             <option {{ checkselect($results->cancel_reason,'Severe weather conditions') }} value="Severe weather conditions">Severe weather conditions</option>
                             <option {{ checkselect($results->cancel_reason,'Mechanical or technical failure') }} value="Mechanical or technical failure">Mechanical or technical failure</option>
