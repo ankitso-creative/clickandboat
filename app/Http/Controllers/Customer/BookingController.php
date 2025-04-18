@@ -25,4 +25,21 @@ class BookingController extends Controller
     {
         return view('front.paymentconfirm');
     }
+    public function edit($id)
+    {
+        $active = 'booking';
+        $results =  $this->service->editBooking($id);
+        return view('customer.bookingedit',compact('active','results'));
+    }
+    public function update(Request $request,$id)
+    {
+        $active = 'booking';
+        $result =  $this->service->updateBooking($request,$id);
+        if($result):
+            return redirect()->route('customer.booking.index')->with('success', 'Order updated successfully!'); 
+         else:
+             session()->flash('error', 'There was an error with your updation.');
+             return redirect()->route('customer.booking.index');  
+         endif;
+    }
 }

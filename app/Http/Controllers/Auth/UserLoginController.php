@@ -24,15 +24,18 @@ class UserLoginController extends Controller
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) 
         {
-            Session::forget('email-user');
+            Session::forget('email-user'); 
             $user = Auth::user();
             if ($user->status != 1) 
             {
                 Auth::logout(); 
                 return redirect()->route('login')->with('error','You are not authorized to access this account.');
             }
-            if(Session::has('dateData')):
-                return redirect()->route('checkout');
+            if(Session::has('listingslug')):
+                $slug = Session::get('listingslug');
+                $type = Session::get('listingtype');
+                $city = Session::get('listingcity');
+                return redirect()->route('singleboat', ['city' => $city, 'type' => $type, 'slug' => $slug]);
             else:
                 return redirect()->route('customer.dashboard');
             endif;

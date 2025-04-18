@@ -29,7 +29,18 @@
         <h1>All Your Bookings</h1>
     </div>
     <div class="no-booking-yet">
-        <p>You haven't made a booking yet, <a href="#">search for a boat</a>.</p>
+        @if(session('success'))
+            <div class="alert alert-success" style="display: block;">
+                <button class="close" data-close="alert"></button>
+                <span> {{ session('success') }} </span>
+            </div>
+        @endif
+        @if(session('error'))
+            <div class="alert alert-danger" style="display: block;">
+                <button class="close" data-close="alert"></button>
+                <span> {{ session('error') }} </span>
+            </div>
+        @endif
     </div>
     <div class="card-section">
         <div class="card-sec-title">
@@ -45,8 +56,9 @@
                             <th>Check In</th>
                             <th>Name</th>
                             <th>Price</th>
+                            <th>Status</th>
                             <th>Submitted On</th>
-                            {{-- <th>Action</th> --}}
+                            <th>Action</th> 
                         </tr>
                     </thead>
                     <tbody>
@@ -58,13 +70,13 @@
                                     <td>{{ $result->check_in }}</td>
                                     <td>{{ $result->user->name }}</td>
                                     <td>{{ $result->total }}</td>
+                                    <td>{{ $result->payment_status }}</td>
                                     <td>{{ $result->created_at }}</td>
-                                    {{-- <td>
+                                    <td>
                                         <div class="td-actions">
-                                            <button class="btn btn-success"><i class="fas fa-edit"></i></button>
-                                            <button class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                                            <a class="btn btn-success" href="{{ route('boatowner.booking.edit', $result->id) }}"><i class="fas fa-edit"></i></a>
                                         </div>
-                                    </td> --}}
+                                    </td>
                                 </tr>
                             @endforeach
                         @endif

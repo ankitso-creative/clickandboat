@@ -25,6 +25,8 @@ class Order extends Model
         'total',
         'amount_paid',
         'pending_amount',
+        'cancel_reason',
+        'cancel_message',
         'payment_status',
     ];
     public function listing() 

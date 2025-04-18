@@ -11,5 +11,13 @@ class BookingService{
     {
         return $this->repository->bookingAll();
     }
+    public function editBooking($id)
+    {
+        return $this->repository->editBooking($id);
+    }
+    public function updateBooking($request,$id)
+    {
+        return $this->repository->updateBooking($request,$id);
+    }
 }
 ?>
