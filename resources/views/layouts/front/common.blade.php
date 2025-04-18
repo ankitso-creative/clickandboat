@@ -135,11 +135,6 @@
                     </svg>
                 </label>
                 <ul class="menu-sidebar">
-                    <li class="nav-item">
-                        <form class="nosubmit">
-                            <input class="nosubmit" type="search" placeholder="Search...">
-                        </form>
-                    </li>
                     @if(!Auth::check())
                     <li class="nav-item login_mov">
                         <a class="nav-link" href="{{ route('login') }}">Login</a>
@@ -167,6 +162,7 @@
                     </li>
 
                     @if(Auth::check())
+                    <li><a href="{{ route('customer.dashboard') }}">Dashboard</a></li>
                     <li><a href="{{ route('logout') }}">Logout</a></li>
                     @endif
                     <li class="nav-item">

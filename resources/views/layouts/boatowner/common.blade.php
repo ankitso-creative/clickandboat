@@ -128,10 +128,10 @@
                 </div>
                 <div class="col-md-12 col-md-6 col-lg-3">
                     <div class="cal_mail_box">
-                        <div class="call_box_sec">
+                        <!-- <div class="call_box_sec">
                             <h5>Call Us</h5>
                             <p><a href="tel:{{ phoneWebsite() }}">{{ phoneWebsite() }}</a></p>
-                        </div>
+                        </div> -->
                         <div class="email_box_sec">
                             <h5>Email Us</h5>
                             <p><a href="mailto:{{ emailWebsite() }}">{{ emailWebsite() }}</a></p>
@@ -151,7 +151,7 @@
             </div>
         </div>
         <div class="copyright">
-            <p>© Boat Daze | All rights reserved</p>
+            <p>© My Boat Booker | All rights reserved</p>
         </div>
     </footer>
     <!-- .footer-->

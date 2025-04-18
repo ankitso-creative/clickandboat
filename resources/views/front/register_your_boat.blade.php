@@ -26,7 +26,7 @@
             </div>
             <div class="row">
                 <div class="mx-auto col-md-12">
-                <r class="text-center ui-title-inner">Welcome to my boat booker</h2>
+                <h2 class="text-center ui-title-inner">Welcome to my boat booker</h2>
                     <section class="section-form-contacts">
                         <div id="success"></div>
                         @if(session('success'))
