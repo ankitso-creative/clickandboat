@@ -8215,6 +8215,19 @@ font-size: 15px;
     opacity: 1;
     z-index: 999;
 }
+.td-actions a {
+    background: #f9a11d !important;
+    color: #fff !important;
+    box-shadow: none;
+    border: 1px solid #f9a11d;
+    padding: 7px 13px;
+}
+.td-actions a:hover{
+    background: none !important;
+    color: #f9a126 !important;
+    border: 1px solid #f9a11d;
+    box-shadow: none;
+}
 /*--------------------------------------------------------------
 # Media Query
 --------------------------------------------------------------*/
