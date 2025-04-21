@@ -6780,6 +6780,14 @@ font-size: 15px;
 }
 .main-dashboard .tab-pane label {
     padding: 3px 0 0px 0px;
+    width: 100%;
+}
+.dashboard_listing_edit .select2-container {
+    width: 100% !important;
+}
+.dashboard_listing_edit .select2-selection.select2-selection--multiple {
+    height: 38px;
+    border: 1px solid #bfc7d1;
 }
 .your_listing_section a {
     color: #f8a126;
@@ -9799,8 +9807,9 @@ font-size: 15px;
         font-size: 25px;
     }
     .home_page_box_text p {
-        width: 39%;
+        width: 100%;
         margin: 0px auto;
+        padding: 0 40px;
     }
     .home_page_slider .slick-next {
         right: 30px;

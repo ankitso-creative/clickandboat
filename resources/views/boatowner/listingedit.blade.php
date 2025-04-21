@@ -565,7 +565,7 @@
                         <div class="pt-4 col-sm-12">
                             <h4 class="bold ">Low Season Prices</h4>
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-3">
                             <label>Starting Month:<span class="required"> * </span></label>
                             <select multiple class="form-control mySelect2" name="season_price[1][from][]">
                                 <option {{ checkSelectMulti($lowSeasonMonth,'January') }} value="January">January</option> 
@@ -582,7 +582,7 @@
                                 <option {{ checkSelectMulti($lowSeasonMonth,'December') }} value="December">December</option> 
                             </select>
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-3">
                             <label>Full day price:<span class="required"> * </span></label>
                             <input type="text" name="season_price[1][price]" value="{{ optional($listing->seasonPrice[0] ?? null)->price ?? '' }}" class="form-control">
                             <input type="hidden" name="season_price[1][name]" value="low_season">
@@ -627,7 +627,7 @@
                         <div class="pt-4 col-sm-12">
                             <h4 class="bold ">Mid Season Prices</h4>
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-3">
                             <label>Starting Month:<span class="required"> *</span></label>
                             <select multiple class="form-control mySelect2" name="season_price[2][from][]">
                                 <option {{ checkSelectMulti($midSeasonMonth,'January') }} value="January">January</option> 
@@ -644,7 +644,7 @@
                                 <option {{ checkSelectMulti($midSeasonMonth,'December') }} value="December">December</option> 
                             </select>
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-3">
                             <label>Full day price:<span class="required"> *</span></label>
                             <input type="text" name="season_price[2][price]" value="{{ optional($listing->seasonPrice[1] ?? null)->price ?? '' }}" class="form-control">
                             <input type="hidden" name="season_price[2][name]" value="mid_season">
@@ -692,7 +692,7 @@
                         <div class="pt-4 col-sm-12">
                             <h4 class="bold ">High Season Prices</h4>
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-3">
                             <label>Starting Month:<span class="required"> *</span></label>
                             <select multiple class="form-control mySelect2" name="season_price[3][from][]">
                                 <option {{ checkSelectMulti($highSeasonMonth,'January') }} value="January">January</option> 
@@ -709,7 +709,7 @@
                                 <option {{ checkSelectMulti($highSeasonMonth,'December') }} value="December">December</option> 
                             </select>
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-3">
                             <label>Full day price:<span class="required"> *</span></label>
                             <input type="text" name="season_price[3][price]" value="{{ optional($listing->seasonPrice[2] ?? null)->price ?? '' }}" class="form-control">
                             <input type="hidden" name="season_price[3][name]" value="high_season">

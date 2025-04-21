@@ -111,6 +111,7 @@ $(document).ready(function(){
 				  settings: {
 					slidesToShow: 2,
 					autoplay: true,
+					arrow: false,
 					slidesToScroll: 1
 				  }
 				},
@@ -119,6 +120,7 @@ $(document).ready(function(){
 				  settings: {
 					slidesToShow: 1,
 					autoplay: true,
+					arrow: false,
 					slidesToScroll: 1
 				  }
 				},
@@ -127,6 +129,7 @@ $(document).ready(function(){
 				  settings: {
 					slidesToShow: 1,
 					autoplay: true,
+					arrow: false,
 					slidesToScroll: 1
 				  }
 				}
@@ -243,6 +246,7 @@ $(document).ready(function(){
 								breakpoint: 1000,
 								settings: {
 									slidesToShow: 2,
+									arrows: false, 
 									slidesToScroll: 1
 								}
 								},
@@ -253,6 +257,7 @@ $(document).ready(function(){
 									variableWidth: false,
 									autoplay: true,
 									arrows: false, 
+									arrows: false, 
 									slidesToScroll: 1
 								}
 								},
@@ -262,6 +267,7 @@ $(document).ready(function(){
 									slidesToShow: 1,
 									variableWidth: false,
 									autoplay: true,
+									arrows: false, 
 									arrows: false, 
 									slidesToScroll: 1
 									
