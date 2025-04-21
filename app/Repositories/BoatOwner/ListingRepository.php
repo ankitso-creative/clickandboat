@@ -129,8 +129,7 @@
                 $listing->berths = $request['berths'];
                 $listing->bathrooms = $request['bathrooms'];
                 $listing->fuel = $request['fuel'];
-                $listing->fuel_Include = $request['fuel_Include'];
-                $listing->fuel_price = $request['fuel_price'];
+                
                 $listing->renovated = $request['renovated'];
                 $listing->speed = $request['speed'];
                 if($listing->update()):
@@ -167,6 +166,11 @@
             }
             elseif($request['s']=='price')
             {
+                $listing->fuel_Include = $request['fuel_Include'];
+                $listing->fuel_price = $request['fuel_price'];
+                $listing->skipper_include = $request['skipper_include'];
+                $listing->skipper_price = $request['skipper_price'];
+                $listing->update();
                 // $listing->price()->UpdateOrCreate(['listing_id' => $listing->id],[
                 //     'listing_id' => $listing->id,
                 //     'price'  => $request['price'],
