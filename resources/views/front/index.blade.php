@@ -115,6 +115,7 @@
     padding: 15px 30px;
     color: #fff;
     width: 100%;
+    position: relative;
 }
 
 
@@ -132,7 +133,7 @@
     color: white;
     font-size: 1.1rem;
     position: absolute;
-    right: 30px;
+    right: 10px;
     top: 11px;
 }
 .banner_form_mobile p {

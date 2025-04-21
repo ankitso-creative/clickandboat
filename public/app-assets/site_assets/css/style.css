@@ -1176,7 +1176,7 @@ label, input, textarea, button, select {
   
   .my_account_btn .dropdown-content a {
     color: #262626 !important;
-    padding: 12px 16px;
+    padding: 5px 16px;
     text-decoration: none;
     display: block;
     text-transform: uppercase;
@@ -9257,6 +9257,9 @@ font-size: 15px;
 .location_page_banner {
     display: none;
 }
+.location_city_banner {
+    display: block;
+}
 .desktop_filter_section {
     display: none;
 }
@@ -9452,7 +9455,7 @@ font-size: 15px;
         color: #000;
     }
     .date_col {
-        width: 50%;
+        width: 100%;
         flex-basis: auto;
     }
     .boat_select span {
@@ -9624,10 +9627,10 @@ font-size: 15px;
     .section-form-contacts {
         padding: 0 15px;
     }
-  .sing_upform_logo img {
-    width: 50%;
-    padding-top: 40px;
-}
+    .sing_upform_logo img {
+        width: 30%;
+        padding-top: 40px;
+    }
     .login_sign_up_form .container {
         padding: 0 25px;
     }
@@ -9858,9 +9861,6 @@ font-size: 15px;
         padding-top: 18px;
         font-size: 25px;
     }
-    .main-dashboard {
-        padding: 45px 30px 0px 30px;
-    }
     .no_message_box {
         height: 115px;
         margin-top: 30px;
@@ -9930,6 +9930,7 @@ font-size: 15px;
     }
     .sidebar_box_pera h3 {
         padding-top: 70px;
+        font-size: 20px;
     }
     .sidebar_box_pera {
         margin: 0px 30px 0 30px;
@@ -10107,16 +10108,11 @@ font-size: 15px;
 }
 .nav-mobile .menu-container .menu-sidebar li .submenu-label {
     font-weight: 600;
+    padding-left: 15px;
 }
 .mobile_language {
     position: absolute;
     top: 2px;
-}
-#currency_name {
-    right: 67%;
-    position: absolute;
-    top: 1px;
-    padding: 0px 25px 1px 15px !important;
 }
 .boat_type_text {
     left: 50%;
@@ -10155,15 +10151,13 @@ font-size: 15px;
 #currency_name {
     background: #fff;
     color: #555;
-    height: 30px;
     padding: 5px 10px 0 9px !important;
     appearance: auto;
-    width: 92%;
+    width: 94%;
     height: 50px;
     border-radius: 5px;
-    margin: 0 0;
+    margin: 10px 8px;
     border: 1px solid #d4d4d4;
-    right: 4%;
 }
 .home_page_slider_box img {
     height: 435px;
@@ -10201,6 +10195,53 @@ font-size: 15px;
 .help_contact_section .col-sm-12.col-md-6.col-lg-6 {
     flex: 0 0 100%;
     max-width: 100%;
+}
+.menu-sub li a {
+    text-align: center;
+}
+.nav-mobile .menu-container .menu-sidebar li .submenu-toggle.active ~ .menu-sub, .nav-mobile .menu-container .menu-sidebar li .submenu-toggle:checked ~ .menu-sub {
+    z-index: 9999;
+    max-width: 100%;
+}
+.banner_form_mobile {
+    display: block;
+    position: absolute;
+    width: 100%;
+    bottom: 25%;
+}
+.banner_form {
+    top: 15px;
+    height: auto;
+    background: #fff;
+    padding: 0;
+    display: none;
+}
+.modal-dialog .banner_form {
+    display: block;
+}
+.footer_social_links ul li {
+    padding: 10px 10px 0px 10px;
+}
+.cal_mail_box {
+    padding-left: 0;
+}
+.header-dashboard .row {
+    flex-flow: nowrap;
+}
+.your_listing_section .col-lg-4 {
+    width: 50%;
+}
+.message.mCustomScrollbar {
+    width: 58%;
+    margin-left: 15px;
+}
+.dashboard_listing_edit .col-md-3 {
+    flex: 0 0 40%;
+    max-width: 40%;
+}
+.dashboard_listing_edit .col-md-9 {
+    flex: 0 0 60%;
+    max-width: 60%;
 }
 }
 @media (min-width: 1250px) and (max-width: 1299px) {

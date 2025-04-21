@@ -133,3 +133,11 @@
     margin-top: 29px;
 }
 }
+@media (min-width: 767px) and (max-width: 1024px){
+    .page-header.navbar .page-logo .logo-default {
+        width: 108px;
+    }
+    
+
+
+}

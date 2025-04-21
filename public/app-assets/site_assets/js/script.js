@@ -197,7 +197,7 @@ $(document).ready(function(){
 					{
 					  breakpoint: 770,
 					  settings: {
-						slidesToShow: 2,
+						slidesToShow: 1,
 						autoplay:true,
 						slidesToScroll: 1
 					  }
