@@ -64,10 +64,9 @@ function bookingPrice($request)
         {
             foreach ($seasonData as $key => $season) 
             {
-                $from = Carbon::parse($season->from . ' 1st')->month;
-                $to = Carbon::parse($season->to)->month;
-                $month = $startDate->month;
-                if ($month >= $from && $month <= $to) {
+                $from = json_decode($season->from);
+                $month = $startDate->format('F');
+                if(in_array($month,$from)) {
                     $hasError=false;
                     $seasonId = $season->id;
                     $price = Price::where('season_price_id', $seasonId)->first();
@@ -209,6 +208,18 @@ function checkselect($selected, $value)
 {
     if (!empty($selected)):
         if ($value == $selected):
+            return 'selected';
+        else:
+            return false;
+        endif;
+    else:
+        return false;
+    endif;
+}
+function checkSelectMulti($array, $value)
+{
+    if (!empty($array)):
+        if (in_array($value, $array)):
             return 'selected';
         else:
             return false;
