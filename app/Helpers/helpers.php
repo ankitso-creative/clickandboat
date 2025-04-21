@@ -55,7 +55,7 @@ function bookingPrice($request)
 {
     $startDate = Carbon::parse($request['checkindate']);
     $endDate = Carbon::parse($request['checkoutdate']);
-    $days = $startDate->diffInDays($endDate);
+    $days = $startDate->diffInDays($endDate)+1;
     $seasonData = SeasonPrice::where('listing_id', $request['id'])->get();
     $hasError  = true;
     if ($days >= 1) 

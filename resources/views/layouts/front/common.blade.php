@@ -49,8 +49,7 @@
                         </div>
                         <li class="nav-item">
                             <select class="select-language" id="language">
-                                {!! selectOption('languages','name','code',session()->get('lang'),array('status' , '1'))
-                                !!}
+                                {!! selectOption('languages','name','code',session()->get('lang'),array('status' , '1')) !!}
                             </select>
                         </li>
                         <li class="nav-item">
