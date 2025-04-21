@@ -11,7 +11,6 @@
     <script type="text/javascript">
         let map;
         let marker;
-
         function initMap() {
             map = new google.maps.Map(document.getElementById("map"), {
                 zoom: 12
@@ -22,7 +21,6 @@
             });
             fetchCityCoordinates("{{ $listing->city }}");
         }
-
         function fetchCityCoordinates(cityName) {
             const geocoder = new google.maps.Geocoder();
             geocoder.geocode({
@@ -52,7 +50,6 @@
                 $('#price-list').removeClass('open');
             });
         });
-
         function formatDate(date) {
             const day = ("0" + date.getDate()).slice(-2);
             const month = ("0" + (date.getMonth() + 1)).slice(-2);
@@ -72,7 +69,6 @@
                 to: convertDateFormat(item.to)
             }));
         @endif
-
         flatpickr("#inline-datepicker", {
             mode: "range",
             inline: true,
@@ -157,98 +153,95 @@
                 }
             }
         });
-        $(document).ready(function() {
-
-            flatpickr("#checkin-date", {
+        $(document).ready(function() 
+        {
+            flatpickr("#checkin-date, #checkout-date", {
                 inline: false,
-                dateFormat: "d-m-Y",
+                mode: "range",
+                dateFormat: "d-m-Y", 
                 minDate: "today",
                 disable: disable,
-            });
-            flatpickr("#checkout-date", {
-                inline: false,
-                dateFormat: "d-m-Y",
-                minDate: "today",
-                disable: disable,
-            });
-            flatpickr("#qcheckin-date", {
-                inline: false,
-                dateFormat: "d-m-Y",
-                minDate: "today",
-                disable: disable,
-            });
-            flatpickr("#qcheckout-date", {
-                inline: false,
-                dateFormat: "d-m-Y",
-                minDate: "today",
-                disable: disable,
-            });
-
-            $(document).on('change', '#checkin-date, #checkout-date', function() {
-                var checkindate = $('#checkin-date').val();
-                var checkoutdate = $('#checkout-date').val();
-                
-                $.ajax({
-                    url: '{{ route('getbookingprice') }}',
-                    type: 'GET',
-                    data: {
-                        checkindate: checkindate,
-                        checkoutdate: checkoutdate,
-                        id: {{ $listing->id }}
-                    },
-                    success: function(response) {
-                        if (response.status) {
-                            $('#show-Price-sec,#qshow-Price-sec').removeClass('d-none');
-                            $('#days-val, #qdays-val').val(response.days);
-                            $('#total-days, #qtotal-days').html(response.days);
-                            $('#charter-pice').html(response.price);
-                            $('#charter-fee').html(response.servive_fee);
-                            $('#charter-total,#qcharter-total').html(response.totalAmount);
-                            $('#qcheckin-date').val(checkindate);
-                            $('#qcheckout-date').val(checkoutdate);
-                            $('#submit-qut').removeAttr('disabled');
-                        } else {
-                            $('#price_display').html('<p>Price not available.</p>');
-                        }
-                    },
-                    error: function() {
-                        $('#price_display').html('<p>Error fetching price.</p>');
+                onChange: function(selectedDates, dateStr, instance) 
+                {
+                    if (selectedDates.length === 2) {
+                        const checkIn = formatDate(selectedDates[0]);
+                        const checkOut = formatDate(selectedDates[1]);
+                        document.getElementById('checkin-date').value = checkIn;
+                        document.getElementById('checkout-date').value = checkOut;
+                        $.ajax({
+                            url: '{{ route('getbookingprice') }}',
+                            type: 'GET',
+                            data: {
+                                checkindate: checkIn,
+                                checkoutdate: checkOut,
+                                id: {{ $listing->id }}
+                            },
+                            success: function(response) {
+                                if (response.status) {
+                                    $('#show-Price-sec,#qshow-Price-sec').removeClass('d-none');
+                                    $('#days-val, #qdays-val').val(response.days);
+                                    $('#total-days, #qtotal-days').html(response.days);
+                                    $('#charter-pice').html(response.price);
+                                    $('#charter-fee').html(response.servive_fee);
+                                    $('#charter-total,#qcharter-total').html(response.totalAmount);
+                                    $('#qcheckin-date').val(checkIn);
+                                    $('#qcheckout-date').val(checkOut);
+                                    $('#submit-qut').removeAttr('disabled');
+                                } else {
+                                    $('#price_display').html('<p>Price not available.</p>');
+                                }
+                            },
+                            error: function() {
+                                $('#price_display').html('<p>Error fetching price.</p>');
+                            }
+                        });
                     }
-                });
-            })
-
-            $(document).on('change', '#qcheckin-date, #qcheckout-date', function() {
-                var checkindate = $('#qcheckin-date').val();
-                var checkoutdate = $('#qcheckout-date').val();
-                
-                $.ajax({
-                    url: '{{ route('getbookingprice') }}',
-                    type: 'GET',
-                    data: {
-                        checkindate: checkindate,
-                        checkoutdate: checkoutdate,
-                        id: {{ $listing->id }}
-                    },
-                    success: function(response) {
-                        if (response.status) {
-                            $('#show-Price-sec,#qshow-Price-sec').removeClass('d-none');
-                            $('#days-val, #qdays-val').val(response.days);
-                            $('#total-days, #qtotal-days').html(response.days);
-                            $('#charter-pice').html(response.price);
-                            $('#charter-fee').html(response.servive_fee);
-                            $('#charter-total,#qcharter-total').html(response.totalAmount);
-                            $('#checkin-date').val(checkindate);
-                            $('#checkout-date').val(checkoutdate);
-                            $('#submit-qut').removeAttr('disabled');
-                        } else {
-                            $('#price_display').html('<p>Price not available.</p>');
-                        }
-                    },
-                    error: function() {
-                        $('#price_display').html('<p>Error fetching price.</p>');
+                }
+            });
+            
+            flatpickr("#qcheckin-date, #qcheckout-date", {
+                inline: false,
+                mode: "range",
+                dateFormat: "d-m-Y",  
+                minDate: "today",
+                disable: disable,
+                onChange: function(selectedDates, dateStr, instance) 
+                {
+                    if (selectedDates.length === 2) {
+                        const checkIn = formatDate(selectedDates[0]);
+                        const checkOut = formatDate(selectedDates[1]);
+                        document.getElementById('qcheckin-date').value = checkIn;
+                        document.getElementById('qcheckout-date').value = checkOut;
+                        $.ajax({
+                            url: '{{ route('getbookingprice') }}',
+                            type: 'GET',
+                            data: {
+                                checkindate: checkIn,
+                                checkoutdate: checkOut,
+                                id: {{ $listing->id }}
+                            },
+                            success: function(response) {
+                                if (response.status) {
+                                    $('#show-Price-sec,#qshow-Price-sec').removeClass('d-none');
+                                    $('#days-val, #qdays-val').val(response.days);
+                                    $('#total-days, #qtotal-days').html(response.days);
+                                    $('#charter-pice').html(response.price);
+                                    $('#charter-fee').html(response.servive_fee);
+                                    $('#charter-total,#qcharter-total').html(response.totalAmount);
+                                    $('#checkin-date').val(checkIn);
+                                    $('#checkout-date').val(checkOut);
+                                    $('#submit-qut').removeAttr('disabled');
+                                } else {
+                                    $('#price_display').html('<p>Price not available.</p>');
+                                }
+                            },
+                            error: function() {
+                                $('#price_display').html('<p>Error fetching price.</p>');
+                            }
+                        });
                     }
-                });
-            })
+                }
+            });
             $(document).on('submit','#form-quot', function(e) {
                 e.preventDefault();
                 var csrfToken = $('meta[name="csrf-token"]').attr('content');
@@ -317,8 +310,6 @@
             console.error('Failed to copy: ', err);
             });
         }
-    </script>
-    <script>
         $(document).ready(function() {
             $(".modal a").not(".dropdown-toggle").on("click", function() {
                 $("#sidebar-right").modal("hide");
@@ -455,19 +446,14 @@
                             @if (count($gallery_images))
                                 @foreach ($gallery_images as $gallery_image)
                                     @if ($loop->iteration >= 1 && $loop->iteration <= 4)
-                                        <a href="#"><img src="{{ $gallery_image->getUrl() }}" alt="Image"
-                                                class="img-fluid" /></a>
+                                        <a href="#"><img src="{{ $gallery_image->getUrl() }}" alt="Image" class="img-fluid" /></a>
                                     @endif
                                 @endforeach
                             @else
-                                <a href="#"><img src="{{ asset('app-assets/site_assets/img/feature-img-3.jpg') }}"
-                                        alt="Image" class="img-fluid" /></a>
-                                <a href="#"><img src="{{ asset('app-assets/site_assets/img/feature-img-3.jpg') }}"
-                                        alt="Image" class="img-fluid" /></a>
-                                <a href="#"><img src="{{ asset('app-assets/site_assets/img/feature-img-3.jpg') }}"
-                                        alt="Image" class="img-fluid" /></a>
-                                <a href="#"><img src="{{ asset('app-assets/site_assets/img/feature-img-3.jpg') }}"
-                                        alt="Image" class="img-fluid" /></a>
+                                <a href="#"><img src="{{ asset('app-assets/site_assets/img/feature-img-3.jpg') }}" alt="Image" class="img-fluid" /></a>
+                                <a href="#"><img src="{{ asset('app-assets/site_assets/img/feature-img-3.jpg') }}" alt="Image" class="img-fluid" /></a>
+                                <a href="#"><img src="{{ asset('app-assets/site_assets/img/feature-img-3.jpg') }}" alt="Image" class="img-fluid" /></a>
+                                <a href="#"><img src="{{ asset('app-assets/site_assets/img/feature-img-3.jpg') }}" alt="Image" class="img-fluid" /></a>
                             @endif {{--
                         <div class="view-more-photos">
                             <a href="#"> View the photos (+10)</a>

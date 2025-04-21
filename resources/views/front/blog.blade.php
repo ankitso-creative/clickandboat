@@ -22,18 +22,49 @@
 </section>
 <!-- /Blog banner Section-->
  <!-- Destination Info Section-->
+@php 
+    $featuredBlogHtml = '';
+    $featuredBlogimage = '';
+    $blogHtml = '';
+    $bCount = 0;
+    if(count($blogs)):
+        foreach($blogs as $blog):
+            $bCount++;
+            if($bCount == 1):
+                $featuredBlogHtml = '<div class="destination_info_text">
+                    <p class="desti_small_heading">Destination Information</p>
+                    <h2>'.$blog->title .'</h2>
+                    <p class="desti_date_pera">'. \Carbon\Carbon::parse($blog->created_at)->format('d F / Y') .'</p>
+                    <p class="desti_des">'. substr(strip_tags($blog->description),0,250) .'...</p>
+                    <a href="'. route('single-blog',$blog->slug) .'">View Post</a>
+                </div>';
+                $featuredBlogimage = $blog->getFirstMediaUrl('blog_image');
+            else:
+                $blogHtml .= '<div class="row align-items-center">
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                        <div class="blog_img">
+                            <img src="'.$blog->getFirstMediaUrl('blog_image').'">
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                        <div class="blog_text_box">
+                            <p class="blog_teg">Featured Posts: The Latest / News Inspiration</p>
+                            <h2>'.$blog->title .'</h2>
+                            <p class="blog_date">'. \Carbon\Carbon::parse($blog->created_at)->format('d F, Y') .' / Felicie</p>
+                            <p class="blog_des_pera">'. substr(strip_tags($blog->description),0,250) .'...</p>
+                            <a href="'. route('single-blog',$blog->slug) .'">View Post</a>
+                        </div>
+                    </div>
+                </div>';
+            endif;
+        endforeach;
+    endif;
+@endphp
 <section class="destination_info_section">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="destination_info_text">
-                    <p class="desti_small_heading">Destination Information</p>
-                    <h2>Dream Cruise Routes for Foodies 2023/24</h2>
-                    <p class="desti_date_pera">1 February / 2025</p>
-                    <p class="desti_des">Rent a boat, set sail and enjoy the tastes of the world. Welcome to our Dream
-                        Cruise Routes for Foodies!</p>
-                    <a href="#">View Post</a>
-                </div>
+               {!! $featuredBlogHtml !!}
             </div>
         </div>
     </div>
@@ -43,7 +74,7 @@
 <section class="destination_banner_img">
     <div class="conatiner">
         <div class="text-center col-md-12">
-            <img src="{{ asset('app-assets/site_assets/img/blog-01.jpg') }}">
+            <img src="{{ $featuredBlogimage }}">
         </div>
     </div>
 </section>
@@ -51,26 +82,7 @@
  <!-- Blog Section-->
 <section class="blog_section">
     <div class="container">
-        @if(count($blogs))
-            @foreach($blogs as $blog)
-                <div class="row align-items-center">
-                    <div class="col-sm-12 col-md-6 col-lg-6">
-                        <div class="blog_img">
-                            <img src="{{ $blog->getFirstMediaUrl('blog_image') }}">
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-md-6 col-lg-6">
-                        <div class="blog_text_box">
-                            <p class="blog_teg">Featured Posts: The Latest / News Inspiration</p>
-                            <h2>{{ $blog->title }}</h2>
-                            <p class="blog_date">{{ \Carbon\Carbon::parse($blog->created_at)->format('d F, Y') }} / Felicie</p>
-                            <p class="blog_des_pera">{{ substr(strip_tags($blog->description),0,250) }}...</p>
-                            <a href="{{ route('single-blog',$blog->slug) }}">View Post</a>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        @endif
+        {!! $blogHtml !!}
     </div>
 <!-- /Blog Section-->    
  <!-- Pagination Section-->    
