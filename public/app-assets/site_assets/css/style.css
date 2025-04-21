@@ -7914,6 +7914,8 @@ font-size: 15px;
 }
 .sweet-alert  .lead {
     padding-bottom: 15px;
+    font-weight: 500;
+    color: #000 !important;
 }
 .show-Price {
     padding-left: 15px;
@@ -8227,6 +8229,54 @@ font-size: 15px;
     color: #f9a126 !important;
     border: 1px solid #f9a11d;
     box-shadow: none;
+}
+.term_condition_section {
+    padding-top: 40px;
+    padding-bottom: 50px;
+}
+.term_condition_banner {
+        background-image: url(../img/location-banner.jpg);
+        width: 100%;
+        height: 285px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+ }
+ .term_condition_heading {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        text-align: center;
+ }
+ .term_condition_heading h1 {
+    font-size: 44px;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+}
+.term_condition_section h2 {
+    font-size: 25px;
+    color: #000;
+    text-transform: uppercase;
+    padding-top: 30px;
+}
+.term_condition_section h3 {
+    font-size: 20px;
+    color: #000;
+    text-transform: uppercase;
+    padding-top: 15px;
+}
+.term_condition_section ul {
+    margin-left: 25px;
+}
+.term_condition_section ul li {
+    padding: 4px 0px;
+}
+.term_condition_section ::marker {
+    font-size: 20px;
+    color: #f9a126;
 }
 /*--------------------------------------------------------------
 # Media Query
@@ -9289,6 +9339,20 @@ font-size: 15px;
 }
 .modal-dialog .banner_form {
     display: block;
+}
+.term_condition_heading h1 {
+    font-size: 30px;
+}
+.term_condition_section h2 {
+    font-size: 30px;
+    text-align: center;
+}
+.term_condition_section {
+    padding-top: 35px;
+}
+.term_condition_section h3 {
+    font-size: 20px;
+    text-align: center;
 }
 }
 @media (min-width: 767px) and (max-width: 1023px) {

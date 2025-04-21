@@ -285,6 +285,89 @@
                     </form>
                 </div>
             </div>
+            <div class="card-section">
+                <div class="card-sec-title">
+                    <h2>Company</h2>
+                </div>
+                <form>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="label-default">Company<span class="required"> *</span></label>
+                                <input type="text" name="company" value="" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="label-default">Address<span class="required"> *</span></label>
+                                <input type="text" name="companyaddress" value="" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="label-default">SIRET<span class="required"> *</span></label>
+                                <input type="text" name="siret" value="" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="label-default">Intracommunity VAT<span class="required"> *</span></label>
+                                <input type="text" name="intracommunity" value="" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="label-default">Website<span class="required"> *</span></label>
+                                    <input type="text" name="website" value="" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="label-default">Booking Management System<span class="required"> *</span></label>
+                                    <select name="bookingmanagement" class="form-control">
+                                        <option value="mmk">Mmk</option>
+                                        <option value="sedna">Sedna</option>
+                                        <option value="yachtsys">Yachtsys</option>
+                                    </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-sec-title">
+                        <h2>Company's files</h2>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="label-default">Certificate of incorporation</label>
+                                <input type="file" id="myfiles" name="certificate" class="form-control" multiple>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="label-default">Identity Document (passport, ID card, driving licence)</label>
+                                <input type="file" id="myfiles" name="identity" class="form-control" multiple>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="label-default">IBAN</label>
+                                <input type="file" id="myfiles" name="iban" class="form-control" multiple>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="text-center form-group">
+                                <button class="save_btn">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
         <div class="tab-pane" id="experience">
             <div class="card-section">
@@ -391,7 +474,7 @@
                             <div class="col-md-12">
                                 <div class="text-center form-group">
                                     <button class="save_btn">Save</button>
-                                </div>
+                             </div>
                             </div>
                         </div>
                     </form>
