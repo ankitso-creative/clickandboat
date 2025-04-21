@@ -39,6 +39,8 @@ class Listing extends Model implements HasMedia
         'fuel',
         'fuel_include',
         'fuel_price',
+        'skipper_include',
+        'skipper_price',
         'renovated',
         'speed',
     ];

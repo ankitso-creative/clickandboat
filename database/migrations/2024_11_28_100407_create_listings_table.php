@@ -35,7 +35,9 @@ return new class extends Migration
             $table->string('construction_year')->nullable();
             $table->string('fuel')->nullable();
             $table->string('fuel_include')->default('0');
-            $table->string('fuel_price')->nullable();
+            $table->float('fuel_price')->nullable();
+            $table->string('skipper_include')->nullable();
+            $table->float('skipper_price')->nullable();
             $table->string('renovated')->nullable();
             $table->string('speed')->nullable();
             $table->string('slug');

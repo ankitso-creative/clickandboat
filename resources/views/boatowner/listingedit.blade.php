@@ -313,7 +313,12 @@
                     <div class="p-0 pt-4 col-sm-12">
                         <h4 class="bold ">Security Deposit</h4>
                     </div>
-                    
+                    @php
+                        $sDnone = 'd-none';
+                        if(optional($listing->security)->security_deposit == 1):
+                            $sDnone = '';
+                        endif;
+                    @endphp
                     <div class="row">
                         <div class="col-lg-4">
                             <label>Security Deposit</label>
@@ -322,16 +327,16 @@
                                 <option {{ checkselect(optional($listing->security)->security_deposit,'1') }} value="1">Yes</option>
                             </select>
                         </div>
-                        <div class="col-lg-4 deposit-type d-none">
+                        <div class="col-lg-4 deposit-type {{ $sDnone }}">
                             <label>Deposit In</label>
                             <select name="deposit_type" class="form-control">
                                 <option {{ checkselect(optional($listing->security)->type,'0') }} value="0">Percentage</option>
                                 <option {{ checkselect(optional($listing->security)->type,'1') }} value="1">Flat Amount</option>
                             </select>
                         </div>
-                        <div class="col-lg-4 deposit-amount d-none">
+                        <div class="col-lg-4 deposit-amount {{ $sDnone }}">
                             <label>Deposit value</label>
-                            <input type="text" name="deposit_amount" class="form-control"> 
+                            <input type="text" name="deposit_amount" value="{{ optional($listing->security)->amount }}" class="form-control"> 
                         </div>
                     </div>
                     <div class="p-0 pt-4 col-sm-12">
@@ -371,12 +376,12 @@
                             <input type="text" name="construction_year" class="form-control" required value="{{ old('construction_year', $listing->construction_year) }}">
                             @error('construction_year')<span class="required">{{ $message }}</span>@enderror
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-4">
                             <label>Fuel (L/h)<span class="required"> * </span></label>
                             <input type="text" name="fuel" class="form-control" required value="{{ old('fuel', $listing->fuel) }}">
                             @error('fuel')<span class="required">{{ $message }}</span>@enderror
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-4">
                             <label>Renovated<span class="required"> * </span></label>
                             <input type="text" name="renovated" class="form-control" required value="{{ old('renovated', $listing->renovated) }}">
                             @error('renovated')<span class="required">{{ $message }}</span>@enderror
@@ -385,17 +390,6 @@
                             <label>Speed (Kn)<span class="required"> *</span></label>
                             <input type="text" name="speed" class="form-control" required value="{{ old('speed', $listing->speed) }}">
                             @error('speed')<span class="required">{{ $message }}</span>@enderror
-                        </div>
-                        <div class="col-lg-4">
-                            <label>Is Fuel Included In Your Price?</label>
-                            <select name="fuel_Include" class="form-control fuel-Include">
-                                <option {{ checkselect($listing->fuel_Include,0) }} value="0">Yes</option>
-                                <option {{ checkselect($listing->fuel_Include,1) }} value="1">No</option>
-                            </select>
-                        </div>
-                        <div class="col-lg-4 fule-price d-none">
-                            <label>Price Of Fuel Per Hour</label>
-                            <input type="text" name="fuel_price" value="{{ $listing->fuel_price }}" class="form-control"> 
                         </div>
                     </div>
                     <div class="boat_listing_images_video_save_btn">
@@ -754,6 +748,42 @@
                                 class="form-control">
                         </div>
                         <div class="clearfix"></div>
+                        <div class="col-lg-12">
+                            <h4>Other Price</h4>
+                        </div>
+                        @php  
+                            $fDnone = 'd-none';
+                            if($listing->fuel_include == 1):
+                                $fDnone = '';
+                            endif;
+                            $spDnone = 'd-none';
+                            if($listing->skipper_include == 1):
+                                $spDnone = '';
+                            endif;
+                        @endphp
+                        <div class="col-lg-3">
+                            <label>Is Fuel Included In Your Price?</label>
+                            <select name="fuel_Include" class="form-control fuel-Include">
+                                <option {{ checkselect($listing->fuel_include,0) }} value="0">Yes</option>
+                                <option {{ checkselect($listing->fuel_include,1) }} value="1">No</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-3 fule-price {{ $fDnone }}">
+                            <label>Price Of Fuel Per Hour</label>
+                            <input type="text" name="fuel_price" value="{{ $listing->fuel_price }}" class="form-control"> 
+                        </div>
+                        <div class="col-lg-3">
+                            <label>Is Skipper Included In Price??</label>
+                            <select name="skipper_include" class="form-control skipper-Include">
+                                <option {{ checkselect($listing->skipper_include,0) }} value="0">Yes</option>
+                                <option {{ checkselect($listing->skipper_include,1) }} value="1">No</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-3 skipper-price {{ $spDnone }}">
+                            <label>Price Of Skipper</label>
+                            <input type="text" name="fuel_price" value="{{ $listing->skipper_price }}" class="form-control"> 
+                        </div>
+
                     </div>
                     <div class="row ">
                         <div class="col-lg-12">
