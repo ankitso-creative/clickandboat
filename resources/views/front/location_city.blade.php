@@ -8,7 +8,7 @@
 @endsection
 @section('content')
 <!-- Banner Section -->
-<section class="location_page_banner">
+<section class="location_page_banner location_city_banner">
    <div class="location_banner_text">
       <h1>Explore Ibiza by Boat: All the best stops<br> for your ibiza boat rental
       </h1>
