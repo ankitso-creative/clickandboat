@@ -6,19 +6,19 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.6/dist/flatpickr.min.css">
 <link rel="stylesheet" href="{{ asset('app-assets/site_assets/css/monthselect.css') }}">
 
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
 <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
-<link href="{{ asset('app-assets/global/plugins/bootstrap-sweetalert/sweetalert.css') }}" rel="stylesheet"
-    type="text/css" />
-<link href="{{ asset('app-assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css') }}"
-    rel="stylesheet" type="text/css" />
+<link href="{{ asset('app-assets/global/plugins/bootstrap-sweetalert/sweetalert.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('app-assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css') }}" rel="stylesheet" type="text/css" />
 <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
 @endsection
 @section('js')
 <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.6/dist/flatpickr.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.6/dist/plugins/monthSelect/index.js"></script>
 
-<script src="{{ asset('app-assets/global/plugins/bootstrap-sweetalert/sweetalert.min.js') }}" type="text/javascript">
-</script>
+<script src="{{ asset('app-assets/global/plugins/bootstrap-sweetalert/sweetalert.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('app-assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js') }}" type="text/javascript"></script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAli6rCJivgzTbWznnkqFtT_btPww6WBYs&libraries=places"></script>
 <!-- END PAGE LEVEL PLUGINS -->
@@ -78,16 +78,16 @@
             dateFormat: "d-m-Y",
             minDate: "today",
         });
-        flatpickr(".month-picker", {
-            plugins: [
-                new monthSelectPlugin({
-                    shorthand: true,  
-                    dateFormat: "F",  
-                    altFormat: "F",  
-                    theme: "dark"
-                })
-            ],
-        });
+        // flatpickr(".month-picker", {
+        //     plugins: [
+        //         new monthSelectPlugin({
+        //             shorthand: true,  
+        //             dateFormat: "F",  
+        //             altFormat: "F",  
+        //             theme: "dark"
+        //         })
+        //     ],
+        // });
         
         $(document).ready(function () {
             google.maps.event.addDomListener(window, 'load', initialize);
@@ -127,6 +127,9 @@
                 $('#search-filter-fom').submit();
             });
         }
+        $('.mySelect2').select2({
+		selectOnClose: true
+	});
     </script>
 @endsection
 @section('content')
@@ -548,6 +551,9 @@
                                 $lowseason = $listing->price()->where('season_price_id', optional($listing->seasonPrice[0] ?? null)->id)->first();
                                 $midSeason = $listing->price()->where('season_price_id', optional($listing->seasonPrice[1] ?? null)->id)->first();
                                 $highSeason = $listing->price()->where('season_price_id', optional($listing->seasonPrice[2] ?? null)->id)->first();
+                                $lowSeasonMonth = json_decode(optional($listing->seasonPrice[0] ?? null)->from);
+                                $midSeasonMonth = json_decode(optional($listing->seasonPrice[1] ?? null)->from);
+                                $highSeasonMonth = json_decode(optional($listing->seasonPrice[2] ?? null)->from);
                             @endphp
                         </div>
                         {{-- <div class="col-sm-4">
@@ -561,11 +567,20 @@
                         </div>
                         <div class="col-sm-4">
                             <label>Starting Month:<span class="required"> * </span></label>
-                            <input type="text" name="season_price[1][from]" value="{{ optional($listing->seasonPrice[0] ?? null)->from ?? '' }}" class="month-picker form-control">
-                        </div>
-                        <div class="col-sm-4">
-                            <label>Ending Month:<span class="required"> * </span></label>
-                            <input type="text" name="season_price[1][to]" value="{{ optional($listing->seasonPrice[0] ?? null)->to ?? '' }}" class="month-picker form-control">
+                            <select multiple class="form-control mySelect2" name="season_price[1][from][]">
+                                <option {{ checkSelectMulti($lowSeasonMonth,'January') }} value="January">January</option> 
+                                <option {{ checkSelectMulti($lowSeasonMonth,'February') }} value="February">February</option> 
+                                <option {{ checkSelectMulti($lowSeasonMonth, 'March') }} value="March">March</option> 
+                                <option {{ checkSelectMulti($lowSeasonMonth,'April') }} value="April">April</option>
+                                <option {{ checkSelectMulti($lowSeasonMonth,'May') }} value="May">May</option> 
+                                <option {{ checkSelectMulti($lowSeasonMonth,'June') }} value="June">June</option> 
+                                <option {{ checkSelectMulti($lowSeasonMonth,'July') }} value="July">July</option> 
+                                <option {{ checkSelectMulti($lowSeasonMonth,'August') }} value="August">August</option> 
+                                <option {{ checkSelectMulti($lowSeasonMonth,'September') }} value="September">September</option> 
+                                <option {{ checkSelectMulti($lowSeasonMonth,'October') }} value="October">October</option> 
+                                <option {{ checkSelectMulti($lowSeasonMonth,'November') }} value="November">November</option> 
+                                <option {{ checkSelectMulti($lowSeasonMonth,'December') }} value="December">December</option> 
+                            </select>
                         </div>
                         <div class="col-sm-4">
                             <label>Full day price:<span class="required"> * </span></label>
@@ -582,18 +597,15 @@
                         </div>
                         <div class="col-sm-3">
                             <label>2 days price:<span class="required"> * </span></label>
-                            <input type="text" name="season_price[1][two_day_price]" value="{{ $lowseason->two_day ?? '' }}"
-                                class="form-control">
+                            <input type="text" name="season_price[1][two_day_price]" value="{{ $lowseason->two_day ?? '' }}" class="form-control">
                         </div>
                         <div class="col-sm-3">
                             <label>3 days price:<span class="required"> *</span></label>
-                            <input type="text" name="season_price[1][three_day_price]" value="{{ $lowseason->three_day ?? '' }}"
-                                class="form-control">
+                            <input type="text" name="season_price[1][three_day_price]" value="{{ $lowseason->three_day ?? '' }}" class="form-control">
                         </div>
                         <div class="col-sm-3">
                             <label>4 days price:<span class="required"> *</span></label>
-                            <input type="text" name="season_price[1][four_day_price]" value="{{ $lowseason->four_day ?? '' }}"
-                                class="form-control">
+                            <input type="text" name="season_price[1][four_day_price]" value="{{ $lowseason->four_day ?? '' }}" class="form-control">
                         </div>
                         <div class="clear"></div>
                         <div class="col-sm-3">
@@ -617,11 +629,20 @@
                         </div>
                         <div class="col-sm-4">
                             <label>Starting Month:<span class="required"> *</span></label>
-                            <input type="text" name="season_price[2][from]" value="{{ optional($listing->seasonPrice[1] ?? null)->from ?? '' }}" class="month-picker form-control">
-                        </div>
-                        <div class="col-sm-4">
-                            <label>Ending Month:<span class="required"> *</span></label>
-                            <input type="text" name="season_price[2][to]" value="{{ optional($listing->seasonPrice[1] ?? null)->to ?? '' }}" class="month-picker form-control">
+                            <select multiple class="form-control mySelect2" name="season_price[2][from][]">
+                                <option {{ checkSelectMulti($midSeasonMonth,'January') }} value="January">January</option> 
+                                <option {{ checkSelectMulti($midSeasonMonth,'February') }} value="February">February</option> 
+                                <option {{ checkSelectMulti($midSeasonMonth, 'March') }} value="March">March</option> 
+                                <option {{ checkSelectMulti($midSeasonMonth,'April') }} value="April">April</option>
+                                <option {{ checkSelectMulti($midSeasonMonth,'May') }} value="May">May</option> 
+                                <option {{ checkSelectMulti($midSeasonMonth,'June') }} value="June">June</option> 
+                                <option {{ checkSelectMulti($midSeasonMonth,'July') }} value="July">July</option> 
+                                <option {{ checkSelectMulti($midSeasonMonth,'August') }} value="August">August</option> 
+                                <option {{ checkSelectMulti($midSeasonMonth,'September') }} value="September">September</option> 
+                                <option {{ checkSelectMulti($midSeasonMonth,'October') }} value="October">October</option> 
+                                <option {{ checkSelectMulti($midSeasonMonth,'November') }} value="November">November</option> 
+                                <option {{ checkSelectMulti($midSeasonMonth,'December') }} value="December">December</option> 
+                            </select>
                         </div>
                         <div class="col-sm-4">
                             <label>Full day price:<span class="required"> *</span></label>
@@ -673,11 +694,20 @@
                         </div>
                         <div class="col-sm-4">
                             <label>Starting Month:<span class="required"> *</span></label>
-                            <input type="text" name="season_price[3][from]" value="{{ optional($listing->seasonPrice[2] ?? null)->from ?? '' }}" class="month-picker form-control">
-                        </div>
-                        <div class="col-sm-4">
-                            <label>Ending Month:<span class="required"> *</span></label>
-                            <input type="text" name="season_price[3][to]" value="{{ optional($listing->seasonPrice[2] ?? null)->to ?? '' }}" class="month-picker form-control">
+                            <select multiple class="form-control mySelect2" name="season_price[3][from][]">
+                                <option {{ checkSelectMulti($highSeasonMonth,'January') }} value="January">January</option> 
+                                <option {{ checkSelectMulti($highSeasonMonth,'February') }} value="February">February</option> 
+                                <option {{ checkSelectMulti($highSeasonMonth, 'March') }} value="March">March</option> 
+                                <option {{ checkSelectMulti($highSeasonMonth,'April') }} value="April">April</option>
+                                <option {{ checkSelectMulti($highSeasonMonth,'May') }} value="May">May</option> 
+                                <option {{ checkSelectMulti($highSeasonMonth,'June') }} value="June">June</option> 
+                                <option {{ checkSelectMulti($highSeasonMonth,'July') }} value="July">July</option> 
+                                <option {{ checkSelectMulti($highSeasonMonth,'August') }} value="August">August</option> 
+                                <option {{ checkSelectMulti($highSeasonMonth,'September') }} value="September">September</option> 
+                                <option {{ checkSelectMulti($highSeasonMonth,'October') }} value="October">October</option> 
+                                <option {{ checkSelectMulti($highSeasonMonth,'November') }} value="November">November</option> 
+                                <option {{ checkSelectMulti($highSeasonMonth,'December') }} value="December">December</option> 
+                            </select>
                         </div>
                         <div class="col-sm-4">
                             <label>Full day price:<span class="required"> *</span></label>

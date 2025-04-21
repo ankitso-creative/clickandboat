@@ -175,13 +175,12 @@
                 $seasonPrices = $request['season_price'];
                 if($seasonPrices):
                     foreach($seasonPrices as $seasonPrice):
-                        if($seasonPrice['from'] && $seasonPrice['to'] && $seasonPrice['price'] )
+                        if($seasonPrice['from'] && $seasonPrice['price'] )
                         {
                             $seasonPriceModel = $listing->seasonPrice()->UpdateOrCreate(['listing_id' => $listing->id, 'name' => $seasonPrice['name']],[
                                 'listing_id' => $listing->id,
                                 'name' => $seasonPrice['name'],
-                                'from'  => $seasonPrice['from'],
-                                'to'  => $seasonPrice['to'],
+                                'from'  => isset($seasonPrice['from']) ? json_encode($seasonPrice['from']) : '',
                                 'price'  => $seasonPrice['price'],
                             ]);
                             if($seasonPriceModel->id)
