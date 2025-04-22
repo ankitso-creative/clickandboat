@@ -358,7 +358,7 @@
                     <div class="card-sec-title">
                         <h2>Company's files</h2>
                     </div>
-                    <div class="row">
+                    <div class="row company_profile_images">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="label-default">Certificate of incorporation</label>
