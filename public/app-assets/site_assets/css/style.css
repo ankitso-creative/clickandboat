@@ -6780,7 +6780,6 @@ font-size: 15px;
 }
 .main-dashboard .tab-pane label {
     padding: 3px 0 0px 0px;
-    width: 100%;
 }
 .dashboard_listing_edit .select2-container {
     width: 100% !important;
@@ -9256,7 +9255,6 @@ font-size: 15px;
     border-bottom: 0px solid #f9a126;
 }
 .home_page_slider_box:before {
-    translate: 0;
     border-top: 0px solid #f9a126;
     border-left: 0px solid #f9a126;
 }
@@ -9636,7 +9634,7 @@ font-size: 15px;
         display: none;
     }
     .location_rightside_box {
-        padding-top: 30px;
+        padding-top: 0px;
     }
     .location_main_heading h2 {
         padding-bottom: 15px;
@@ -10181,8 +10179,10 @@ font-size: 15px;
     padding-left: 0px !important;
 }
 .nav-mobile .menu-container .menu-sidebar li .submenu-label {
-    font-weight: 600;
-    padding-left: 15px;
+    font-weight: 500;
+    padding-left: 4px;
+    font-size: 20px;
+    font-family: 'GT America Trial Cn Md' !important;
 }
 .mobile_language {
     position: absolute;
@@ -10220,18 +10220,20 @@ font-size: 15px;
     margin: 0 0;
     border-radius: 5px;
     border: 1px solid #d4d4d4;
-    right: -1%;
+    right: 0%;
 }
 #currency_name {
     background: #fff;
     color: #555;
     padding: 5px 10px 0 9px !important;
     appearance: auto;
-    width: 94%;
+    width: 92%;
     height: 50px;
     border-radius: 5px;
     margin: 10px 8px;
     border: 1px solid #d4d4d4;
+    position: absolute;
+    right: 34px;
 }
 .home_page_slider_box img {
     height: 435px;
@@ -10316,6 +10318,34 @@ font-size: 15px;
 .dashboard_listing_edit .col-md-9 {
     flex: 0 0 60%;
     max-width: 60%;
+}
+.boat_type_section_slider .slick-next::before,
+.boat_type_section_slider .slick-prev::before,
+.home_page_slider_box .slick-next::before,
+.home_page_slider_box .slick-prev::before,
+.home_page_slider .slick-next::before,
+.home_page_slider .slick-prev::before,
+.next_trip_box:before,
+.next_trip_box:after {
+    display: none;
+}
+.nav-mobile li a {
+    padding: 0;
+}
+.nav-mobile #menu-toggle.active ~ .menu-sidebar, .nav-mobile #menu-toggle:checked ~ .menu-sidebar {
+    padding-top: 10px;
+}
+.location_filter_section .col-sm-12.col-md-6.col-lg-3 {
+    flex: 0 0 40%;
+    max-width: 40%;
+}
+.location_filter_section .col-sm-12.col-md-6.col-lg-9 {
+    flex: 0 0 60%;
+    max-width: 60%;
+}
+.location_rightside_box .col-sm-12.col-md-6.col-lg-4 {
+    flex: 0 0 100%;
+    max-width: 100%;
 }
 }
 @media (min-width: 1250px) and (max-width: 1299px) {
