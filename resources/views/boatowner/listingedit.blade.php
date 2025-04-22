@@ -62,6 +62,17 @@
                     $('.fule-price').removeClass('d-none');
                 }
             })
+            $(document).on('change','.skipper-Include',function(){
+                var val = $(this).val();
+                if(val == '0')
+                {
+                    $('.skipper-price').addClass('d-none');
+                }
+                else
+                {
+                    $('.skipper-price').removeClass('d-none');
+                }
+            })
         });
         flatpickr(".from_date", {
             inline: false,
@@ -559,7 +570,7 @@
                         <div class="pt-4 col-sm-12">
                             <h4 class="bold ">Low Season Prices</h4>
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                             <label>Starting Month:<span class="required"> * </span></label>
                             <select multiple class="form-control mySelect2" name="season_price[1][from][]">
                                 <option {{ checkSelectMulti($lowSeasonMonth,'January') }} value="January">January</option> 
@@ -576,24 +587,24 @@
                                 <option {{ checkSelectMulti($lowSeasonMonth,'December') }} value="December">December</option> 
                             </select>
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                             <label>Full day price:<span class="required"> * </span></label>
                             <input type="text" name="season_price[1][price]" value="{{ optional($listing->seasonPrice[0] ?? null)->price ?? '' }}" class="form-control">
                             <input type="hidden" name="season_price[1][name]" value="low_season">
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                             <label>Overnight stay price:<span class="required"> * </span></label>
                             <input type="text" name="season_price[1][over_night_price]" value="{{ $lowseason->over_night_price ?? '' }}" class="form-control">
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                             <label>1 half day price:<span class="required"> * </span></label>
                             <input type="text" name="season_price[1][one_half_day_price]" value="{{ $lowseason->one_half_day ?? '' }}" class="form-control">
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                             <label>2 days price:<span class="required"> * </span></label>
                             <input type="text" name="season_price[1][two_day_price]" value="{{ $lowseason->two_day ?? '' }}" class="form-control">
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                             <label>3 days price:<span class="required"> *</span></label>
                             <input type="text" name="season_price[1][three_day_price]" value="{{ $lowseason->three_day ?? '' }}" class="form-control">
                         </div>
@@ -621,7 +632,7 @@
                         <div class="pt-4 col-sm-12">
                             <h4 class="bold ">Mid Season Prices</h4>
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                             <label>Starting Month:<span class="required"> *</span></label>
                             <select multiple class="form-control mySelect2" name="season_price[2][from][]">
                                 <option {{ checkSelectMulti($midSeasonMonth,'January') }} value="January">January</option> 
@@ -638,25 +649,25 @@
                                 <option {{ checkSelectMulti($midSeasonMonth,'December') }} value="December">December</option> 
                             </select>
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                             <label>Full day price:<span class="required"> *</span></label>
                             <input type="text" name="season_price[2][price]" value="{{ optional($listing->seasonPrice[1] ?? null)->price ?? '' }}" class="form-control">
                             <input type="hidden" name="season_price[2][name]" value="mid_season">
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                             <label>Overnight stay price:<span class="required"> *</span></label>
                             <input type="text" name="season_price[2][over_night_price]" value="{{ $midSeason->over_night_price ?? '' }}" class="form-control">
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                             <label>1 half day price:<span class="required"> *</span></label>
                             <input type="text" name="season_price[2][one_half_day_price]" value="{{ $midSeason->one_half_day ?? '' }}" class="form-control">
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                             <label>2 days price:<span class="required"> *</span></label>
                             <input type="text" name="season_price[2][two_day_price]" value="{{ $midSeason->two_day ?? '' }}"
                                 class="form-control">
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                             <label>3 days price:<span class="required"> *</span></label>
                             <input type="text" name="season_price[2][three_day_price]" value="{{ $midSeason->three_day ?? '' }}"
                                 class="form-control">
@@ -686,7 +697,7 @@
                         <div class="pt-4 col-sm-12">
                             <h4 class="bold ">High Season Prices</h4>
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                             <label>Starting Month:<span class="required"> *</span></label>
                             <select multiple class="form-control mySelect2" name="season_price[3][from][]">
                                 <option {{ checkSelectMulti($highSeasonMonth,'January') }} value="January">January</option> 
@@ -703,25 +714,25 @@
                                 <option {{ checkSelectMulti($highSeasonMonth,'December') }} value="December">December</option> 
                             </select>
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                             <label>Full day price:<span class="required"> *</span></label>
                             <input type="text" name="season_price[3][price]" value="{{ optional($listing->seasonPrice[2] ?? null)->price ?? '' }}" class="form-control">
                             <input type="hidden" name="season_price[3][name]" value="high_season">
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                             <label>Overnight stay price:<span class="required"> *</span></label>
                             <input type="text" name="season_price[3][over_night_price]" value="{{ $highSeason->over_night_price ?? '' }}" class="form-control">
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                             <label>1 half day price:<span class="required"> *</span></label>
                             <input type="text" name="season_price[3][one_half_day_price]" value="{{ $highSeason->one_half_day ?? '' }}" class="form-control">
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                             <label>2 days price:<span class="required"> *</span></label>
                             <input type="text" name="season_price[3][two_day_price]" value="{{ $highSeason->two_day ?? '' }}"
                                 class="form-control">
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                             <label>3 days price:<span class="required"> *</span></label>
                             <input type="text" name="season_price[3][three_day_price]" value="{{ $highSeason->three_day ?? '' }}"
                                 class="form-control">
@@ -773,7 +784,7 @@
                             <input type="text" name="fuel_price" value="{{ $listing->fuel_price }}" class="form-control"> 
                         </div>
                         <div class="col-lg-3">
-                            <label>Is Skipper Included In Price??</label>
+                            <label>Is Skipper Included In Price?</label>
                             <select name="skipper_include" class="form-control skipper-Include">
                                 <option {{ checkselect($listing->skipper_include,0) }} value="0">Yes</option>
                                 <option {{ checkselect($listing->skipper_include,1) }} value="1">No</option>
@@ -781,7 +792,7 @@
                         </div>
                         <div class="col-lg-3 skipper-price {{ $spDnone }}">
                             <label>Price Of Skipper</label>
-                            <input type="text" name="fuel_price" value="{{ $listing->skipper_price }}" class="form-control"> 
+                            <input type="text" name="skipper_price" value="{{ $listing->skipper_price }}" class="form-control"> 
                         </div>
 
                     </div>
