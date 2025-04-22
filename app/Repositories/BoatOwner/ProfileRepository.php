@@ -50,6 +50,53 @@
             ]);
             return redirect()->route('boatowner.profile')->with('success', 'Profile information updated successfully!'); 
         }
+        public function companyUpdate($request)
+        {
+            $user = Auth::user();
+            $userId = auth()->id();
+            $user->company()->UpdateOrCreate(['user_id' => $userId],[
+                'user_id' => $userId,
+                'company_name' => $request['company_name'],
+                'address' => $request['companyaddress'],
+                'siret' => $request['siret'], 
+                'intracommunity_vat' => $request['intracommunity_vat'],  
+                'website' => $request['website'],  
+                'booking_management_system' => isset($request['booking_management_system']) ? json_encode($request['booking_management_system']) : '',
+            ]);
+            if(isset($request['certificate']) && !empty($request['certificate'])):
+                if ($user->hasMedia('certificate')) {
+                    $user->getMedia('certificate')->each(function ($media) {
+                        $media->delete();  // Delete the old image(s)
+                    });
+                }
+                $media = $user->addMediaFromRequest('certificate')->toMediaCollection('certificate','company_files'); 
+            endif;
+            if(isset($request['identity']) && !empty($request['identity'])):
+                if ($user->hasMedia('identity')) {
+                    $user->getMedia('identity')->each(function ($media) {
+                        $media->delete();  // Delete the old image(s)
+                    });
+                }
+                $media = $user->addMediaFromRequest('identity')->toMediaCollection('identity','company_files'); 
+            endif;
+            if(isset($request['identity']) && !empty($request['identity'])):
+                if ($user->hasMedia('identity')) {
+                    $user->getMedia('identity')->each(function ($media) {
+                        $media->delete();  // Delete the old image(s)
+                    });
+                }
+                $media = $user->addMediaFromRequest('identity')->toMediaCollection('identity','company_files'); 
+            endif;
+            if(isset($request['iban']) && !empty($request['iban'])):
+                if ($user->hasMedia('iban')) {
+                    $user->getMedia('iban')->each(function ($media) {
+                        $media->delete();  // Delete the old image(s)
+                    });
+                }
+                $media = $user->addMediaFromRequest('iban')->toMediaCollection('iban','company_files'); 
+            endif;
+            return redirect()->route('boatowner.profile')->with('success', 'Profile information updated successfully!'); 
+        }
         public function uploadImage($request)
         {
             $user = Auth::user();

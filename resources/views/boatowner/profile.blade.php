@@ -5,6 +5,8 @@
 @section('css')
 <link href="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.1.0/css/datepicker.min.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"/>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 @endsection
 @section('js')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.1.0/js/datepicker.min.js" type="text/javascript"></script>
@@ -12,6 +14,9 @@
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAli6rCJivgzTbWznnkqFtT_btPww6WBYs&libraries=places"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
     <script>
+        $('.mySelect2').select2({
+            selectOnClose: true
+        });
         $(document).ready(function () {
             google.maps.event.addDomListener(window, 'load', initialize);
         });
@@ -58,8 +63,8 @@
         });
 
         
-        @if(old('phone', $userData->profile->phone))
-            iti.setNumber("{{ old('phone', $userData->profile->phone) }}");
+        @if(old('phone', optional($userData->profile)->phone))
+            iti.setNumber("{{ old('phone', optional($userData->profile)->phone) }}");
         @endif
 
     </script>
@@ -179,14 +184,14 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="label-default">First Name<span class="required"> *</span></label>
-                                    <input type="text" name="first_name" value="{{ $userData->profile->first_name ?? '' }}" class="form-control">
+                                    <input type="text" name="first_name" value="{{ optional($userData->profile)->first_name ?? '' }}" class="form-control">
                                     @error('first_name')<span class="required">{{ $message }}</span>@enderror
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="label-default">Last Name<span class="required"> *</span></label>
-                                    <input type="text" name="last_name" value="{{ $userData->profile->last_name ?? '' }}" class="form-control">
+                                    <input type="text" name="last_name" value="{{ optional($userData->profile)->last_name ?? '' }}" class="form-control">
                                     @error('last_name')<span class="required">{{ $message }}</span>@enderror
                                 </div>
                             </div>
@@ -213,7 +218,7 @@
                         <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="label-default">Date of birth</label>
-                                    <input type="text" name="dob" value="{{ $userData->profile->dob ?? '' }}" class="form-control date-picker" autocomplete="off">
+                                    <input type="text" name="dob" value="{{ optional($userData->profile)->dob ?? '' }}" class="form-control date-picker" autocomplete="off">
                                 </div>
                         </div>
                         <div class="col-md-6">
@@ -229,14 +234,14 @@
                         <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="label-default">Phone<span class="required"> *</span></label>
-                                    <input id="phone" type="tel" name="phone" value="{{ $userData->profile->phone ?? '' }}" class="form-control">
+                                    <input id="phone" type="tel" name="phone" value="{{ optional($userData->profile)->phone ?? '' }}" class="form-control">
                                     @error('phone')<span class="required">{{ $message }}</span>@enderror
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="label-default">Address<span class="required"> *</span></label>
-                                    <input type="text" name="address" value="{{ $userData->profile->address ?? '' }}" class="form-control">
+                                    <input type="text" name="address" value="{{ optional($userData->profile)->address ?? '' }}" class="form-control">
                                     @error('address')<span class="required">{{ $message }}</span>@enderror
                                 </div>
                             </div>
@@ -245,14 +250,14 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="label-default">City<span class="required"> *</span></label>
-                                    <input type="text" name="city" id="location" value="{{ $userData->profile->city ?? '' }}" class="form-control">
+                                    <input type="text" name="city" id="location" value="{{ optional($userData->profile)->city ?? '' }}" class="form-control">
                                     @error('city')<span class="required">{{ $message }}</span>@enderror
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="label-default">State<span class="required"> *</span></label>
-                                    <input type="text" name="state" value="{{ $userData->profile->state ?? '' }}" class="form-control">
+                                    <input type="text" name="state" value="{{ optional($userData->profile)->state ?? '' }}" class="form-control">
                                     @error('state')<span class="required">{{ $message }}</span>@enderror
                                 </div>
                             </div>
@@ -270,7 +275,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="label-default">Postal Code<span class="required"> *</span></label>
-                                    <input type="text" name="postcode" value="{{ $userData->profile->postcode ?? '' }}" class="form-control">
+                                    <input type="text" name="postcode" value="{{ optional($userData->profile)->postcode ?? '' }}" class="form-control">
                                     @error('postcode')<span class="required">{{ $message }}</span>@enderror
                                 </div>
                             </div>
@@ -289,59 +294,64 @@
                 <div class="card-sec-title">
                     <h2>Company</h2>
                 </div>
-                <form>
+                <form class="personal-details-form" action="{{ route('boatowner.company.update') }}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="label-default">Company<span class="required"> *</span></label>
-                                <input type="text" name="company" value="" class="form-control">
+                                <label class="label-default">Company<span class="required"> </span></label>
+                                <input type="text" name="company_name" value="{{ optional($userData->company)->company_name }}" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="label-default">Address<span class="required"> *</span></label>
-                                <input type="text" name="companyaddress" value="" class="form-control">
+                                <label class="label-default">Address<span class="required"> </span></label>
+                                <input type="text" name="companyaddress" value="{{ optional($userData->company)->address }}" class="form-control">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="label-default">SIRET<span class="required"> *</span></label>
-                                <input type="text" name="siret" value="" class="form-control">
+                                <label class="label-default">SIRET<span class="required"> </span></label>
+                                <input type="text" name="siret" value="{{ optional($userData->company)->siret }}" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="label-default">Intracommunity VAT<span class="required"> *</span></label>
-                                <input type="text" name="intracommunity" value="" class="form-control">
+                                <label class="label-default">Intracommunity VAT<span class="required"> </span></label>
+                                <input type="text" name="intracommunity_vat" value="{{ optional($userData->company)->intracommunity_vat }}" class="form-control">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="label-default">Website<span class="required"> *</span></label>
-                                    <input type="text" name="website" value="" class="form-control">
+                                <label class="label-default">Website<span class="required"> </span></label>
+                                    <input type="text" name="website" value="{{ optional($userData->company)->website }}" class="form-control">
                             </div>
                         </div>
+                        @php
+                            $bookingManagement = json_decode(optional($userData->company)->booking_management_system);
+                        @endphp
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="label-default">Booking Management System<span class="required"> *</span></label>
-                                    <select name="bookingmanagement" class="form-control">
-                                        <option value="mmk">Mmk</option>
-                                        <option value="sedna">Sedna</option>
-                                        <option value="nausys">Nausys</option>
-                                        <option value="yachtsys">Yachtsys</option>
-                                        <option value="misterbooking">Mister Booking</option>
-                                        <option value="andronautic">Andronautic</option>
-                                        <option value="digitalnautic">Digital Nautic</option>
-                                        <option value="nauticmanager">Nautic Manager</option>
-                                        <option value="myba">MYBA</option>
-                                        <option value="nautal">Nautal</option>
-                                        <option value="fareharbor">Fare Harbor</option>
-                                        <option value="anker">5 Anker</option>
-                                    </select>
+                                <label class="label-default">Booking Management System<span class="required"> </span></label>
+                                <select multiple name="booking_management_system[]" class="form-control mySelect2">
+                                    <option {{ checkSelectMulti($bookingManagement,'mmk') }} value="mmk">Mmk</option>
+                                    <option {{ checkSelectMulti($bookingManagement,'sedna') }} value="sedna">Sedna</option>
+                                    <option {{ checkSelectMulti($bookingManagement,'nausys') }} value="nausys">Nausys</option>
+                                    <option {{ checkSelectMulti($bookingManagement,'yachtsys') }} value="yachtsys">Yachtsys</option>
+                                    <option {{ checkSelectMulti($bookingManagement,'misterbooking') }} value="misterbooking">Mister Booking</option>
+                                    <option {{ checkSelectMulti($bookingManagement,'andronautic') }} value="andronautic">Andronautic</option>
+                                    <option {{ checkSelectMulti($bookingManagement,'digitalnautic') }} value="digitalnautic">Digital Nautic</option>
+                                    <option {{ checkSelectMulti($bookingManagement,'nauticmanager') }} value="nauticmanager">Nautic Manager</option>
+                                    <option {{ checkSelectMulti($bookingManagement,'myba') }} value="myba">MYBA</option>
+                                    <option {{ checkSelectMulti($bookingManagement,'nautal') }} value="nautal">Nautal</option>
+                                    <option {{ checkSelectMulti($bookingManagement,'fareharbor') }} value="fareharbor">Fare Harbor</option>
+                                    <option {{ checkSelectMulti($bookingManagement,'anker') }} value="anker">5 Anker</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -352,20 +362,44 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="label-default">Certificate of incorporation</label>
-                                <input type="file" id="myfiles" name="certificate" class="form-control" multiple>
+                                <input type="file" id="myfiles" name="certificate" class="form-control" accept=".jpeg,.jpg,.pdf,.png">
                             </div>
+                            @php 
+                                $certificate = $userData->getFirstMediaUrl('certificate');
+                            @endphp
+                            @if($certificate)
+                                <div class="user-Certificate">
+                                    <img src="{{ $certificate }}" id="avatar" alt="dejodo">
+                                </div>
+                            @endif
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="label-default">Identity Document (passport, ID card, driving licence)</label>
-                                <input type="file" id="myfiles" name="identity" class="form-control" multiple>
+                                <input type="file" id="myfiles" name="identity" class="form-control" accept=".jpeg,.jpg,.pdf,.png">
                             </div>
+                            @php 
+                                $identity = $userData->getFirstMediaUrl('identity');
+                            @endphp
+                            @if($identity)
+                                <div class="user-Certificate">
+                                    <img src="{{ $identity }}" id="avatar" alt="dejodo">
+                                </div>
+                            @endif
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="label-default">IBAN</label>
-                                <input type="file" id="myfiles" name="iban" class="form-control" multiple>
+                                <input type="file" id="myfiles" name="iban" class="form-control" accept=".jpeg,.jpg,.pdf,.png">
                             </div>
+                            @php 
+                                $iban = $userData->getFirstMediaUrl('iban');
+                            @endphp
+                            @if($iban)
+                                <div class="user-Certificate">
+                                    <img src="{{ $iban }}" id="avatar" alt="dejodo">
+                                </div>
+                            @endif
                         </div>
                     </div>
                     <div class="row">
