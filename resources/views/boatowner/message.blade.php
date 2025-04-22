@@ -99,8 +99,31 @@
             },
         })
     }); 
+    $(document).on('keyup','input[name="message"]',function(){
+        var message = $(this).val();
+        var emailRegex = /[\w.-]+@[\w.-]+\.\w+/gi;
+        var phoneRegex = /(\+?\d{1,4})?[\s.-]?\(?\d{2,4}\)?[\s.-]?\d{3,4}[\s.-]?\d{3,4}/g;
+        var longNumberRegex = /\d{6,}/g;
+        if (emailRegex.test(message) || phoneRegex.test(message) || longNumberRegex.test(message)) {
+            $('input[name="message"]').addClass('invalid-input');
+            return;
+        }
+        else
+        {
+            $('input[name="message"]').removeClass('invalid-input');
+            return;
+        }
+    })
     $(document).on('submit','#message_form', function(e) {
         e.preventDefault();
+        var message = $('input[name="message"]').val();
+        var emailRegex = /[\w.-]+@[\w.-]+\.\w+/gi;
+        var phoneRegex = /(\+?\d{1,4})?[\s.-]?\(?\d{2,4}\)?[\s.-]?\d{3,4}[\s.-]?\d{3,4}/g;
+        var longNumberRegex = /\d{6,}/g;
+        if (emailRegex.test(message) || phoneRegex.test(message) || longNumberRegex.test(message)) {
+            $('input[name="message"]').addClass('invalid-input');
+            return;
+        }
         var csrfToken = $('meta[name="csrf-token"]').attr('content');
         $.ajax({
             url: "{{ route('boatowner.support.send-message') }}",
@@ -119,6 +142,11 @@
                     $('#messages div.message').append(resp.html);
                     $("#messages").animate({ scrollTop: $('#messages div.message').height() }, "fast");
                     $('#chat').val('');
+                }
+                else
+                {
+                    $('input[name="message"]').addClass('invalid-input');
+                    return;
                 }
             },
             error: function(xhr, status, error) {

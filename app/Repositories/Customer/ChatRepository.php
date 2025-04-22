@@ -20,6 +20,16 @@ class ChatRepository
         $userData = auth()->user();
         $listingId = Listing::where('slug', $request['slug'])->pluck('id')->first();
         
+        $message = $request->message;
+        $emailRegex = '/[\w\.-]+@[\w\.-]+\.\w+/i';
+        $phoneRegex = '/\d{6,}/';
+        if (preg_match($emailRegex, $message) || preg_match($phoneRegex, $message)) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Emails and phone number are not allowed in the message.'
+            ]);
+        }
+    
         $message = Message::create([
             'sender_id' => auth()->id(),
             'receiver_id' => $request->receiver_id,
