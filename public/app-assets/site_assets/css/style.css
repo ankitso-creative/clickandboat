@@ -6788,6 +6788,7 @@ font-size: 15px;
 .dashboard_listing_edit .select2-selection.select2-selection--multiple {
     height: 38px;
     border: 1px solid #bfc7d1;
+    overflow-y: scroll;
 }
 .your_listing_section a {
     color: #f8a126;
