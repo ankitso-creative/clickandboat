@@ -79,14 +79,6 @@
                 }
                 $media = $user->addMediaFromRequest('identity')->toMediaCollection('identity','company_files'); 
             endif;
-            if(isset($request['identity']) && !empty($request['identity'])):
-                if ($user->hasMedia('identity')) {
-                    $user->getMedia('identity')->each(function ($media) {
-                        $media->delete();  // Delete the old image(s)
-                    });
-                }
-                $media = $user->addMediaFromRequest('identity')->toMediaCollection('identity','company_files'); 
-            endif;
             if(isset($request['iban']) && !empty($request['iban'])):
                 if ($user->hasMedia('iban')) {
                     $user->getMedia('iban')->each(function ($media) {
