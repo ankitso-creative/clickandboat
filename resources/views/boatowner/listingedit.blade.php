@@ -571,7 +571,7 @@
                             <h4 class="bold ">Low Season Prices</h4>
                         </div>
                         <div class="col-sm-4">
-                            <label>Starting Month:<span class="required"> * </span></label>
+                            <label>Season Month:<span class="required"> * </span></label>
                             <select multiple class="form-control mySelect2" name="season_price[1][from][]">
                                 <option {{ checkSelectMulti($lowSeasonMonth,'January') }} value="January">January</option> 
                                 <option {{ checkSelectMulti($lowSeasonMonth,'February') }} value="February">February</option> 
@@ -633,7 +633,7 @@
                             <h4 class="bold ">Mid Season Prices</h4>
                         </div>
                         <div class="col-sm-4">
-                            <label>Starting Month:<span class="required"> *</span></label>
+                            <label>Season Month:<span class="required"> *</span></label>
                             <select multiple class="form-control mySelect2" name="season_price[2][from][]">
                                 <option {{ checkSelectMulti($midSeasonMonth,'January') }} value="January">January</option> 
                                 <option {{ checkSelectMulti($midSeasonMonth,'February') }} value="February">February</option> 
@@ -698,7 +698,7 @@
                             <h4 class="bold ">High Season Prices</h4>
                         </div>
                         <div class="col-sm-4">
-                            <label>Starting Month:<span class="required"> *</span></label>
+                            <label>Season Month:<span class="required"> *</span></label>
                             <select multiple class="form-control mySelect2" name="season_price[3][from][]">
                                 <option {{ checkSelectMulti($highSeasonMonth,'January') }} value="January">January</option> 
                                 <option {{ checkSelectMulti($highSeasonMonth,'February') }} value="February">February</option> 

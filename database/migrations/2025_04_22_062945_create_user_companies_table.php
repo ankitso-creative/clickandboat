@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('user_companies', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->string('company_name')->nullable();
             $table->string('address')->nullable();
             $table->string('siret')->nullable();
             $table->string('intracommunity_vat')->nullable();
             $table->string('website')->nullable();
-            $table->string('booking_management_system')->nullable();
+            $table->longText('booking_management_system')->nullable();
             $table->timestamps();
         });
     }

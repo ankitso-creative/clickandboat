@@ -19,6 +19,10 @@ class ProfileService{
     {
         return $this->repository->experienceUpdate($request);
     }
+    public function companyUpdate($request)
+    {
+        return $this->repository->companyUpdate($request);
+    }
     public function accountDelete($request)
     {
         return $this->repository->accountDelete($request);
