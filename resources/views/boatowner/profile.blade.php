@@ -371,7 +371,7 @@
                             @if($certificate)
                                 @if($extension=='pdf')
                                     <div class="user-Certificate">
-                                        <a href="{{ $certificate }}"><img src="{{ asset('app-assets/site_assets/img/pdf-img.png') }}" id="avatar" alt="identity"></a>
+                                        <a href="{{ $certificate }}" target="_blank"><img src="{{ asset('app-assets/site_assets/img/pdf-img.png') }}" id="avatar" alt="identity"></a>
                                     </div>
                                 @else
                                     <div class="user-Certificate">
@@ -392,7 +392,7 @@
                             @if($identity)
                                 @if($extensionID == 'pdf')
                                     <div class="user-identity">
-                                        <a href="{{ $identity }}"><img src="{{ asset('app-assets/site_assets/img/pdf-img.png') }}" id="avatar" alt="identity"></a>
+                                        <a href="{{ $identity }}" target="_blank"><img src="{{ asset('app-assets/site_assets/img/pdf-img.png') }}" id="avatar" alt="identity"></a>
                                     </div>
                                 @else
                                     <div class="user-identity">
@@ -413,7 +413,7 @@
                             @if($iban)
                                 @if($extensionIB == 'pdf')
                                     <div class="user-iban">
-                                        <a href="{{ $iban }}"><img src="{{ asset('app-assets/site_assets/img/pdf-img.png') }}" id="avatar" alt="identity"></a>
+                                        <a href="{{ $iban }}" target="_blank"><img src="{{ asset('app-assets/site_assets/img/pdf-img.png') }}" id="avatar" alt="identity"></a>
                                     </div>
                                 @else
                                     <div class="user-iban">
