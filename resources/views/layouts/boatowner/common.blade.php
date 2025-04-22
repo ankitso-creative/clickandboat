@@ -118,11 +118,9 @@
                             <li><a href="{{ route('home') }}">Home</a></li>
                             <li><a href="{{ route('about-us') }}">About Us</a></li>
                             <li><a href="{{ route('location') }}">Locations</a></li>
-
-                            <li><a href="{{ route('ourstory') }}">Our Story</a></li>
-                            <li><a href="{{ route('contact') }}">Contact </a></li>
-
                             <li><a href="{{ route('blogs') }}">Blog</a></li>
+                            <li><a href="{{ route('terms-condition') }}">Terms and conditions</a></li>
+                            <li><a href="{{ route('contact') }}">Contact</a></li>
                         </ul>
                     </div>
                 </div>

@@ -331,7 +331,16 @@
                                     <select name="bookingmanagement" class="form-control">
                                         <option value="mmk">Mmk</option>
                                         <option value="sedna">Sedna</option>
+                                        <option value="nausys">Nausys</option>
                                         <option value="yachtsys">Yachtsys</option>
+                                        <option value="misterbooking">Mister Booking</option>
+                                        <option value="andronautic">Andronautic</option>
+                                        <option value="digitalnautic">Digital Nautic</option>
+                                        <option value="nauticmanager">Nautic Manager</option>
+                                        <option value="myba">MYBA</option>
+                                        <option value="nautal">Nautal</option>
+                                        <option value="fareharbor">Fare Harbor</option>
+                                        <option value="anker">5 Anker</option>
                                     </select>
                             </div>
                         </div>
@@ -447,7 +456,7 @@
                             </div>
                         </div>
                         <div class="pt-3 row">
-                            <div class="col-md-6">
+                            <div class="col-md-12 col-lg-6">
                                 <div class="natutical_message_box">
                                     <div class="form-group">
                                         <label for="exampleFormControlTextarea1">Description</label>
@@ -455,7 +464,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-12 col-lg-6">
                                 <div class="natutical_text_box">
                                     <h5>Briefly describe yourself</h5>
                                     <p>Your age, your hobbies, your job, your region</p>
