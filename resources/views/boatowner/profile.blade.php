@@ -366,11 +366,18 @@
                             </div>
                             @php 
                                 $certificate = $userData->getFirstMediaUrl('certificate');
+                                $extension = pathinfo($certificate, PATHINFO_EXTENSION);
                             @endphp
                             @if($certificate)
-                                <div class="user-Certificate">
-                                    <img src="{{ $certificate }}" id="avatar" alt="dejodo">
-                                </div>
+                                @if($extension=='pdf')
+                                    <div class="user-Certificate">
+                                        <a href="{{ $certificate }}"><img src="{{ asset('app-assets/site_assets/img/pdf-img.png') }}" id="avatar" alt="identity"></a>
+                                    </div>
+                                @else
+                                    <div class="user-Certificate">
+                                        <img src="{{ $certificate }}" id="avatar" alt="identity">
+                                    </div>
+                                @endif
                             @endif
                         </div>
                         <div class="col-md-6">
@@ -380,11 +387,18 @@
                             </div>
                             @php 
                                 $identity = $userData->getFirstMediaUrl('identity');
+                                $extensionID = pathinfo($identity, PATHINFO_EXTENSION);
                             @endphp
                             @if($identity)
-                                <div class="user-Certificate">
-                                    <img src="{{ $identity }}" id="avatar" alt="dejodo">
-                                </div>
+                                @if($extensionID == 'pdf')
+                                    <div class="user-identity">
+                                        <a href="{{ $identity }}"><img src="{{ asset('app-assets/site_assets/img/pdf-img.png') }}" id="avatar" alt="identity"></a>
+                                    </div>
+                                @else
+                                    <div class="user-identity">
+                                        <img src="{{ $identity }}" id="avatar" alt="identity">
+                                    </div>
+                                @endif
                             @endif
                         </div>
                         <div class="col-md-6">
@@ -394,11 +408,18 @@
                             </div>
                             @php 
                                 $iban = $userData->getFirstMediaUrl('iban');
+                                $extensionIB = pathinfo($iban, PATHINFO_EXTENSION);
                             @endphp
                             @if($iban)
-                                <div class="user-Certificate">
-                                    <img src="{{ $iban }}" id="avatar" alt="dejodo">
-                                </div>
+                                @if($extensionIB == 'pdf')
+                                    <div class="user-iban">
+                                        <a href="{{ $iban }}"><img src="{{ asset('app-assets/site_assets/img/pdf-img.png') }}" id="avatar" alt="identity"></a>
+                                    </div>
+                                @else
+                                    <div class="user-iban">
+                                        <img src="{{ $iban }}" id="avatar" alt="identity">
+                                    </div>
+                                @endif
                             @endif
                         </div>
                     </div>
