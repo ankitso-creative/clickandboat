@@ -331,7 +331,16 @@
                                     <select name="bookingmanagement" class="form-control">
                                         <option value="mmk">Mmk</option>
                                         <option value="sedna">Sedna</option>
+                                        <option value="nausys">Nausys</option>
                                         <option value="yachtsys">Yachtsys</option>
+                                        <option value="misterbooking">Mister Booking</option>
+                                        <option value="andronautic">Andronautic</option>
+                                        <option value="digitalnautic">Digital Nautic</option>
+                                        <option value="nauticmanager">Nautic Manager</option>
+                                        <option value="myba">MYBA</option>
+                                        <option value="nautal">Nautal</option>
+                                        <option value="fareharbor">Fare Harbor</option>
+                                        <option value="anker">5 Anker</option>
                                     </select>
                             </div>
                         </div>
