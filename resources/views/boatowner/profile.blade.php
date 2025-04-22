@@ -447,7 +447,7 @@
                             </div>
                         </div>
                         <div class="pt-3 row">
-                            <div class="col-md-6">
+                            <div class="col-md-12 col-lg-6">
                                 <div class="natutical_message_box">
                                     <div class="form-group">
                                         <label for="exampleFormControlTextarea1">Description</label>
@@ -455,7 +455,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-12 col-lg-6">
                                 <div class="natutical_text_box">
                                     <h5>Briefly describe yourself</h5>
                                     <p>Your age, your hobbies, your job, your region</p>
