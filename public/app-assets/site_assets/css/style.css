@@ -4972,6 +4972,7 @@ section.about_zigzag_section {
 .knowledge_section button {
     font-size: 28px;
     padding: 0px 30px 0 15px;
+    text-transform: inherit !important;
 }
 .knowledge_section button:hover{
    text-decoration: none;
@@ -8286,6 +8287,9 @@ font-size: 15px;
     font-size: 20px;
     color: #f9a126;
 }
+.message-box .invalid-input {
+    color: red;
+}
 /*--------------------------------------------------------------
 # Media Query
 --------------------------------------------------------------*/
@@ -9112,7 +9116,7 @@ font-size: 15px;
     text-align: center;
 }
 .inner_blog_text_section  ul {
-    padding: 0 30px;
+    padding: 0 15px;
 }
 .featured_price {
     padding: 10px;
@@ -10156,7 +10160,7 @@ font-size: 15px;
     font-size: 28px;
 }
 .inner_blog_text_section  ul {
-    padding: 0 30px;
+    padding: 0 15px;
 }
 .featured_price {
     padding: 10px;
