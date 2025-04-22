@@ -8290,6 +8290,12 @@ font-size: 15px;
 .message-box .invalid-input {
     color: red;
 }
+.user-Certificate img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
 /*--------------------------------------------------------------
 # Media Query
 --------------------------------------------------------------*/
@@ -9364,6 +9370,9 @@ font-size: 15px;
 .term_condition_section h3 {
     font-size: 20px;
     text-align: center;
+}
+.user-Certificate img {
+    height: 265px;
 }
 }
 @media (min-width: 767px) and (max-width: 1023px) {
