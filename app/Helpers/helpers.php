@@ -283,8 +283,7 @@ function Timeago($time)
 {
     $time = strtotime($time);
 	$time_difference = time() - $time;
-
-	if( $time_difference < 1 ) { return 'less than 1 second ago'; }
+    if( $time_difference < 1 ) { return 'less than 1 second ago'; }
 	$condition = array( 12 * 30 * 24 * 60 * 60 =>  'year',
 				30 * 24 * 60 * 60       =>  'month',
 				24 * 60 * 60            =>  'day',
@@ -292,8 +291,7 @@ function Timeago($time)
 				60                      =>  'min',
 				1                       =>  'sec'
 	);
-
-	foreach( $condition as $secs => $str )
+    foreach( $condition as $secs => $str )
 	{
 		$d = $time_difference / $secs;
 

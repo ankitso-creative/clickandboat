@@ -139,16 +139,7 @@
                 }
             }
         });
-        flatpickr("#checkin-date", {
-        inline: false,
-        dateFormat: "d-m-Y",
-        minDate: "today",
-        });
-        flatpickr("#checkout-date", {
-        inline: false,
-        dateFormat: "d-m-Y",
-        minDate: "today",
-        });
+        
         $(document).ready(function() {
         $(document).on('change','#checkin-date, #checkout-date',function(){
             var checkindate = $('#checkin-date').val();
@@ -515,31 +506,26 @@
                             <p>Dates:</p>
                         </div>
                         <!-- Form for dates -->
-                        <form action="{{ route('checkout') }}" method="POST">
+                        <form>
                             @csrf
                             <div class="row sidebar_form">
                                 <div class="p-0 col-md-6">
                                     <div class="form-group">
-                                        <input type="date" id="checkin-date" name="checkin_date" class="form-control" placeholder="Check-in" />
+                                        <input type="date" disabled name="checkin_date" class="form-control" placeholder="Check-in" />
                                     </div>
                                 </div>
                                 <div class="p-0 col-md-6">
                                     <div class="form-group">
-                                        <input type="date" id="checkout-date" class="form-control" name="checkout_date" placeholder="Check-out" />
-                                        <input type="hidden" id="days-val" value="" name="days_val" />
+                                        <input type="date" disabled  class="form-control" name="checkout_date" placeholder="Check-out" />
+                                        <input type="hidden"  disabled value="" name="days_val" />
                                     </div>
                                 </div>
                             </div>
-                            <div class="show-Price d-none" id="show-Price-sec">
-                                <p>Days: <span id="total-days"></span></p>
-                                <p>Charter Price: <span id="charter-pice"></span></p>
-                                <p>Service Fee: <span id="charter-fee"></span></p>
-                                <p>Total: <span id="charter-total"></span></p>
-                            </div>
+                            
                             <div class="d-flex flex-column">
                                 <!-- <button class="mb-2 check_ava_btn">Check availability</button> -->
                                 <span class="mt-2 mb-2 text-center d-block font-weight-bold">or</span>
-                                <button class="btn book_btn">Book</button>
+                                <button class="btn book_btn" disabled>Book</button>
                                 <div class="pt-3 text-center form_text">
                                     <p>You will only be charged if the request is accepted</p>
                                     <p>Pay in 3 or 4 installments without fees with</p>
@@ -582,218 +568,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="pt-3 boat-card-content-secs">
-                    <div class="single_boat_faq_section">
-                        <h3>Frequently asked questions</h3>
-                        <div class="pt-3 row single_boat_faq">
-                            <div class="col-md-6">
-                                <div id="accordionExample" class="shadow accordion">
-                                    <!-- Accordion item 1 -->
-                                    <div class="card">
-                                        <div id="headingEight" class="border-0 shadow-sm card-header">
-                                            <h2 class="mb-0">
-                                                <button
-                                                    type="button"
-                                                    data-toggle="collapse"
-                                                    data-target="#collapseEight"
-                                                    aria-expanded="false"
-                                                    aria-controls="collapseEight"
-                                                    class="btn btn-link collapsed text-dark font-weight-bold text-uppercase collapsible-link"
-                                                >
-                                                    Collapsible I am a boat owner
-                                                </button>
-                                            </h2>
-                                        </div>
-                                        <div id="collapseEight" aria-labelledby="headingEight" data-parent="#accordionExample" class="collapse">
-                                            <div class="card-body">
-                                                <p class="m-0">
-                                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
-                                                    laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End -->
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div id="accordionExample" class="shadow accordion">
-                                    <!-- Accordion item 1 -->
-                                    <div class="card">
-                                        <div id="headingNine" class="border-0 shadow-sm card-header">
-                                            <h2 class="mb-0">
-                                                <button
-                                                    type="button"
-                                                    data-toggle="collapse"
-                                                    data-target="#collapseNine"
-                                                    aria-expanded="false"
-                                                    aria-controls="collapseNine"
-                                                    class="btn btn-link collapsed text-dark font-weight-bold text-uppercase collapsible-link"
-                                                >
-                                                    Collapsible I am a boat owner
-                                                </button>
-                                            </h2>
-                                        </div>
-                                        <div id="collapseNine" aria-labelledby="headingNine" data-parent="#accordionExample" class="collapse">
-                                            <div class="card-body">
-                                                <p class="m-0">
-                                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
-                                                    laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End -->
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div id="accordionExample" class="shadow accordion">
-                                    <!-- Accordion item 1 -->
-                                    <div class="card">
-                                        <div id="headingTen" class="border-0 shadow-sm card-header">
-                                            <h2 class="mb-0">
-                                                <button
-                                                    type="button"
-                                                    data-toggle="collapse"
-                                                    data-target="#collapseTen"
-                                                    aria-expanded="false"
-                                                    aria-controls="collapseTen"
-                                                    class="btn btn-link collapsed text-dark font-weight-bold text-uppercase collapsible-link"
-                                                >
-                                                    Collapsible I am a boat owner
-                                                </button>
-                                            </h2>
-                                        </div>
-                                        <div id="collapseTen" aria-labelledby="headingTen" data-parent="#accordionExample" class="collapse">
-                                            <div class="card-body">
-                                                <p class="m-0">
-                                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
-                                                    laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End -->
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div id="accordionExample" class="shadow accordion">
-                                    <!-- Accordion item 1 -->
-                                    <div class="card">
-                                        <div id="headingeleven" class="border-0 shadow-sm card-header">
-                                            <h2 class="mb-0">
-                                                <button
-                                                    type="button"
-                                                    data-toggle="collapse"
-                                                    data-target="#collapseeleven"
-                                                    aria-expanded="false"
-                                                    aria-controls="collapseeleven"
-                                                    class="btn btn-link collapsed text-dark font-weight-bold text-uppercase collapsible-link"
-                                                >
-                                                    Collapsible I am a boat owner
-                                                </button>
-                                            </h2>
-                                        </div>
-                                        <div id="collapseeleven" aria-labelledby="headingeleven" data-parent="#accordionExample" class="collapse">
-                                            <div class="card-body">
-                                                <p class="m-0">
-                                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
-                                                    laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- <div class="pt-5 similar_boat_section oat-card-content-secs">
-                    <div class="text-center">
-                        <h3>Check availability of similar boats</h3>
-                    </div>
-                    <div class="pt-4 row">
-                        <div class="col-sm-12 col-md-6 col-lg-4">
-                            <div class="location_inner_box">
-                                <img src="{{ asset('app-assets/site_assets/img/feature-img-2.jpg') }}" />
-                                <div class="wishlist_icon">
-                                    <i class="fa-regular fa-heart"></i>
-                                </div>
-                                <div class="location_inner_main_box">
-                                    <div class="location_inner_text">
-                                        <h3>test</h3>
-                                        <p class="location_pera">sport 30 (2023)</p>
-                                        <p class="people_pera">people · 30 hp · 5 m</p>
-                                        <h5 class="location_price">From <span class="price_style">€27</span> / day</h5>
-                                        <div class="location_facility">
-                                            <ul>
-                                                <li>With Skipper</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="location_review_box">
-                                        <span>Flexible cancellation</span>
-                                        <span><i class="fa-solid fa-star"></i> NEW</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 col-md-6 col-lg-4">
-                            <div class="location_inner_box">
-                                <img src="{{ asset('app-assets/site_assets/img/feature-img-2.jpg') }}" />
-                                <div class="wishlist_icon">
-                                    <i class="fa-regular fa-heart"></i>
-                                </div>
-                                <div class="location_inner_main_box">
-                                    <div class="location_inner_text">
-                                        <h3>test</h3>
-                                        <p class="location_pera">sport 30 (2023)</p>
-                                        <p class="people_pera">people · 30 hp · 5 m</p>
-                                        <h5 class="location_price">From <span class="price_style">€27</span> / day</h5>
-                                        <div class="location_facility">
-                                            <ul>
-                                                <li>With Skipper</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="location_review_box">
-                                        <span>Flexible cancellation</span>
-                                        <span><i class="fa-solid fa-star"></i> NEW</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 col-md-6 col-lg-4">
-                            <div class="location_inner_box">
-                                <img src="{{ asset('app-assets/site_assets/img/feature-img-2.jpg') }}" />
-                                <div class="wishlist_icon">
-                                    <i class="fa-regular fa-heart"></i>
-                                </div>
-                                <div class="location_inner_main_box">
-                                    <div class="location_inner_text">
-                                        <h3>test</h3>
-                                        <p class="location_pera">sport 30 (2023)</p>
-                                        <p class="people_pera">people · 30 hp · 5 m</p>
-                                        <h5 class="location_price">From <span class="price_style">€27</span> / day</h5>
-                                        <div class="location_facility">
-                                            <ul>
-                                                <li>With Skipper</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="location_review_box">
-                                        <span>Flexible cancellation</span>
-                                        <span><i class="fa-solid fa-star"></i> NEW</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="view_more_boats">
-                            <a href="">View More Boats</a>
-                        </div>
-                </div> -->
             </div>
         </div>
     </section>

@@ -1,4 +1,4 @@
-@extends('layouts.boatowner.common')
+@extends('layouts.customer.common')
 @section('meta')
 <title>Dashboard - {{ config('app.name') }}</title>
 @endsection

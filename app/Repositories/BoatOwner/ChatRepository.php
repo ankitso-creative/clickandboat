@@ -58,22 +58,31 @@ class ChatRepository
             'status' => 'success',
         ]);
     }
-    public function fetchMessages($receiver_id)
+    public function fetchMessages($receiver_id,$listingId)
     {
-        $messages = Message::where(function ($query) use ($receiver_id) {
-            $query->where('sender_id', auth()->id())->where('receiver_id', $receiver_id);
-        })->orWhere(function ($query) use ($receiver_id) {
-            $query->where('sender_id', $receiver_id)->where('receiver_id', auth()->id());
+        $messages = Message::where(function ($query) use ($receiver_id, $listingId) {
+            $query->where('sender_id', auth()->id())
+                  ->where('receiver_id', $receiver_id)
+                  ->where('listing_id', $listingId);
+        })->orWhere(function ($query) use ($receiver_id, $listingId) {
+            $query->where('sender_id', $receiver_id)
+                  ->where('receiver_id', auth()->id())
+                  ->where('listing_id', $listingId);
         })->orderBy('created_at', 'asc')->get();
         return $messages;
     }
     public function seeAllMessage($request)
     {
         $receiver_id = $request['receiver_id'];
-        $messages = Message::where(function ($query) use ($receiver_id) {
-            $query->where('sender_id', auth()->id())->where('receiver_id', $receiver_id);
-        })->orWhere(function ($query) use ($receiver_id) {
-            $query->where('sender_id', $receiver_id)->where('receiver_id', auth()->id());
+        $listingId = Listing::where('slug', $request['slug'])->pluck('id')->first();
+        $messages = Message::where(function ($query) use ($receiver_id, $listingId) {
+            $query->where('sender_id', auth()->id())
+                  ->where('receiver_id', $receiver_id)
+                  ->where('listing_id', $listingId);
+        })->orWhere(function ($query) use ($receiver_id, $listingId) {
+            $query->where('sender_id', $receiver_id)
+                  ->where('receiver_id', auth()->id())
+                  ->where('listing_id', $listingId);
         })->orderBy('created_at', 'asc')->get();
         $html = '';
         $sender = auth()->user();
@@ -131,42 +140,72 @@ class ChatRepository
             ]);
         endif;
     }
+    // public function usersWithLastMessage()
+    // {
+    //     $user = auth()->user();
+    //     $users = User::whereHas('sentMessages', function ($query) use ($user) {
+    //         $query->where('receiver_id', $user->id);
+    //     })
+    //     ->orWhereHas('receivedMessages', function ($query) use ($user) {
+    //         $query->where('sender_id', $user->id);
+    //     })
+    //     ->with(['sentMessages' => function ($query) use ($user) {
+    //         $query->where('receiver_id', $user->id)
+    //             ->orderBy('created_at', 'desc')
+    //             ->limit(1);
+    //     }, 'receivedMessages' => function ($query) use ($user) {
+    //         $query->where('sender_id', $user->id)
+    //             ->orderBy('created_at', 'desc')
+    //             ->limit(1);
+    //     }])
+    //     ->get();
+    //     $usersWithLastMessage = $users->map(function ($user) {
+    //         $lastSentMessage = $user->sentMessages->first();
+    //         $lastReceivedMessage = $user->receivedMessages->first();
+    //         $lastMessage = null;
+    //         if ($lastSentMessage && $lastReceivedMessage) {
+    //             $lastMessage = $lastSentMessage->created_at > $lastReceivedMessage->created_at ? $lastSentMessage : $lastReceivedMessage;
+    //         } elseif ($lastSentMessage) {
+    //             $lastMessage = $lastSentMessage;
+    //         } elseif ($lastReceivedMessage) {
+    //             $lastMessage = $lastReceivedMessage;
+    //         }
+    //         return [
+    //             'user' => $user,
+    //             'message' => $lastMessage
+    //         ];
+    //     });
+    //     return $usersWithLastMessage;
+    // }
     public function usersWithLastMessage()
     {
         $user = auth()->user();
-        $users = User::whereHas('sentMessages', function ($query) use ($user) {
-            $query->where('receiver_id', $user->id);
-        })
-        ->orWhereHas('receivedMessages', function ($query) use ($user) {
-            $query->where('sender_id', $user->id);
-        })
-        ->with(['sentMessages' => function ($query) use ($user) {
-            $query->where('receiver_id', $user->id)
-                ->orderBy('created_at', 'desc')
-                ->limit(1);
-        }, 'receivedMessages' => function ($query) use ($user) {
-            $query->where('sender_id', $user->id)
-                ->orderBy('created_at', 'desc')
-                ->limit(1);
-        }])
-        ->get();
-        $usersWithLastMessage = $users->map(function ($user) {
-            $lastSentMessage = $user->sentMessages->first();
-            $lastReceivedMessage = $user->receivedMessages->first();
-            $lastMessage = null;
-            if ($lastSentMessage && $lastReceivedMessage) {
-                $lastMessage = $lastSentMessage->created_at > $lastReceivedMessage->created_at ? $lastSentMessage : $lastReceivedMessage;
-            } elseif ($lastSentMessage) {
-                $lastMessage = $lastSentMessage;
-            } elseif ($lastReceivedMessage) {
-                $lastMessage = $lastReceivedMessage;
+        $listings = $user->listing()->with(['message' => function ($query) use ($user) {
+            $query->where(function ($q) use ($user) {
+                $q->where('sender_id', $user->id)
+                  ->orWhere('receiver_id', $user->id);
+            })->orderBy('created_at', 'desc');
+        }])->get();
+        $result = [];
+        foreach ($listings as $listing) 
+        {
+            $messages = $listing->message ?? collect();
+            $groupedMessages = $messages->groupBy(function ($msg) use ($user) {
+                return $msg->sender_id === $user->id ? $msg->receiver_id : $msg->sender_id;
+            });
+            foreach ($groupedMessages as $otherUserId => $messagesGroup) {
+                $lastMessage = $messagesGroup->first();
+                $result[] = [
+                    'listing' => $listing,
+                    'user' => User::find($otherUserId),
+                    'message' => $lastMessage,
+                ];
             }
-            return [
-                'user' => $user,
-                'message' => $lastMessage
-            ];
-        });
-        return $usersWithLastMessage;
+        }
+        $sortedResult = collect($result)->sortByDesc(function ($item) {
+            return $item['message']->created_at;
+        })->values(); 
+        return $sortedResult;
     }
     public function spcialOfferSend($request)
     {

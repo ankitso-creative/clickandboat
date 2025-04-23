@@ -29,7 +29,6 @@ class ChatRepository
                 'message' => 'Emails and phone number are not allowed in the message.'
             ]);
         }
-    
         $message = Message::create([
             'sender_id' => auth()->id(),
             'receiver_id' => $request->receiver_id,
@@ -43,38 +42,47 @@ class ChatRepository
         else:
             $userImage = $userData->getFirstMediaUrl('profile_image');
         endif;
-        $html = '<div class="msg-right">
-                    <div class="msg-right-sub">
-                        <div class="msg-avatar"><img src="'.$userImage.'"></div>
-                        <div class="msg-content">
-                            <div class="msg-desc">
-                                '.$message->message.'
-                            </div>
-                            <small class="msg-time">'.Timeago($message['created_at']).'</small>
+            $html = '<div class="msg-right">
+                <div class="msg-right-sub">
+                    <div class="msg-avatar"><img src="'.$userImage.'"></div>
+                    <div class="msg-content">
+                        <div class="msg-desc">
+                            '.$message->message.'
                         </div>
+                        <small class="msg-time">'.Timeago($message['created_at']).'</small>
                     </div>
-                </div>';
+                </div>
+            </div>';
         return response()->json([
             'html' => $html,
             'status' => 'success',
         ]);
     }
-    public function fetchMessages($receiver_id)
+    public function fetchMessages($receiver_id,$listingId)
     {
-        $messages = Message::where(function ($query) use ($receiver_id) {
-            $query->where('sender_id', auth()->id())->where('receiver_id', $receiver_id);
-        })->orWhere(function ($query) use ($receiver_id) {
-            $query->where('sender_id', $receiver_id)->where('receiver_id', auth()->id());
+        $messages = Message::where(function ($query) use ($receiver_id, $listingId) {
+            $query->where('sender_id', auth()->id())
+                  ->where('receiver_id', $receiver_id)
+                  ->where('listing_id', $listingId);
+        })->orWhere(function ($query) use ($receiver_id, $listingId) {
+            $query->where('sender_id', $receiver_id)
+                  ->where('receiver_id', auth()->id())
+                  ->where('listing_id', $listingId);
         })->orderBy('created_at', 'asc')->get();
         return $messages;
     }
     public function seeAllMessage($request)
     {
+        $listingId = Listing::where('slug', $request['slug'])->pluck('id')->first();
         $receiver_id = $request['receiver_id'];
-        $messages = Message::where(function ($query) use ($receiver_id) {
-            $query->where('sender_id', auth()->id())->where('receiver_id', $receiver_id);
-        })->orWhere(function ($query) use ($receiver_id) {
-            $query->where('sender_id', $receiver_id)->where('receiver_id', auth()->id());
+        $messages = Message::where(function ($query) use ($receiver_id, $listingId) {
+            $query->where('sender_id', auth()->id())
+                  ->where('receiver_id', $receiver_id)
+                  ->where('listing_id', $listingId);
+        })->orWhere(function ($query) use ($receiver_id, $listingId) {
+            $query->where('sender_id', $receiver_id)
+                  ->where('receiver_id', auth()->id())
+                  ->where('listing_id', $listingId);
         })->orderBy('created_at', 'asc')->get();
         $html = '';
         $sender = auth()->user();
@@ -135,39 +143,28 @@ class ChatRepository
     public function usersWithLastMessage()
     {
         $user = auth()->user();
-        $users = User::whereHas('sentMessages', function ($query) use ($user) {
-            $query->where('receiver_id', $user->id);
-        })
-        ->orWhereHas('receivedMessages', function ($query) use ($user) {
-            $query->where('sender_id', $user->id);
-        })
-        ->with(['sentMessages' => function ($query) use ($user) {
-            $query->where('receiver_id', $user->id)
-                ->orderBy('created_at', 'desc')
-                ->limit(1);
-        }, 'receivedMessages' => function ($query) use ($user) {
-            $query->where('sender_id', $user->id)
-                ->orderBy('created_at', 'desc')
-                ->limit(1);
-        }])
-        ->get();
-        $usersWithLastMessage = $users->map(function ($user) {
-            $lastSentMessage = $user->sentMessages->first();
-            $lastReceivedMessage = $user->receivedMessages->first();
-            $lastMessage = null;
-            if ($lastSentMessage && $lastReceivedMessage) {
-                $lastMessage = $lastSentMessage->created_at > $lastReceivedMessage->created_at ? $lastSentMessage : $lastReceivedMessage;
-            } elseif ($lastSentMessage) {
-                $lastMessage = $lastSentMessage;
-            } elseif ($lastReceivedMessage) {
-                $lastMessage = $lastReceivedMessage;
-            }
-            return [
-                'user' => $user,
-                'message' => $lastMessage
-            ];
+        $messages = \App\Models\Message::with(['sender', 'receiver'])
+            ->where(function ($query) use ($user) {
+                $query->where('sender_id', $user->id)
+                      ->orWhere('receiver_id', $user->id);
+            })
+            ->orderBy('created_at', 'desc') 
+            ->get();
+        $threads = $messages->groupBy(function ($message) use ($user) {
+            $otherUserId = $message->sender_id === $user->id ? $message->receiver_id : $message->sender_id;
+            return $message->listing_id . '-' . $otherUserId;
         });
-        return $usersWithLastMessage;
+         $chatThreads = $threads->map(function ($thread) use ($user) {
+            $lastMessage = $thread->first(); 
+            $otherUser = $lastMessage->sender_id === $user->id ? $lastMessage->receiver : $lastMessage->sender;
+        
+            return [
+                'user' => $otherUser,
+                'listing_id' => $lastMessage->listing_id,
+                'message' => $lastMessage,
+            ];
+        })->values();
+        return $chatThreads;
     }
     public function sendQuotation($request)
     {

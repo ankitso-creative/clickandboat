@@ -27,6 +27,7 @@
             else
             {
                 $('#reason-select').addClass('d-none');
+                $('#reason-box').addClass('d-none');
             }
         })
    </script>

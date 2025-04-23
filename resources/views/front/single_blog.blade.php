@@ -19,12 +19,11 @@
             <h1>{{ $result->title }}</h1>
             <p class="blog_pera">{{ \Carbon\Carbon::parse($result->created_at)->format('d F Y') }} / 4 minute read / May</p>
             <ul class="blog_banner_social_media">
-                <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
-                <li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
-                <li><a href="#"><i class="fa-brands fa-google-plus-g"></i></a></li>
-                <li><a href="#"><i class="fa-brands fa-pinterest"></i></a></li>
-                <li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
-                <li><a href="#"><i class="fa-regular fa-envelope"></i></a></li>
+                <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ route('single-blog', $result->slug) }}" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
+                <li><a href="https://twitter.com/intent/tweet?text=Check+this+out!&url={{ route('single-blog', $result->slug) }}" target="_blank"><i class="fa-brands fa-x-twitter"></i></a></li>
+                <li><a href="https://pinterest.com/pin/create/button/?url={{ route('single-blog', $result->slug) }}&media={{ $result->getFirstMediaUrl('blog_image') }}" target="_blank"><i class="fa-brands fa-pinterest"></i></a></li>
+                <li><a href="https://www.linkedin.com/shareArticle?mini=true&url={{ urlencode(route('single-blog', $result->slug)) }}&title={{  urlencode($result->title) }}" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                <li><a href="mailto:?subject=Check out this blog&body=I thought you might like this: {{ route('single-blog', $result->slug) }}" target="_blank"><i class="fa-regular fa-envelope"></i></a></li>
             </ul>
         </div>
     </section>
