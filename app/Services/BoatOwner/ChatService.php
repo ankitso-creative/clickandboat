@@ -15,9 +15,9 @@ class ChatService {
     {
         return $this->repository->seeAllMessage($request);
     }
-    public function fetchMessages($receiver_id)
+    public function fetchMessages($receiver_id,$listingId)
     {
-        return $this->repository->fetchMessages($receiver_id);
+        return $this->repository->fetchMessages($receiver_id,$listingId);
     }
     public function usersWithLastMessage()
     {

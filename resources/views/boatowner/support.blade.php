@@ -57,7 +57,7 @@
                         <thead>
                             <tr>
                                 <th>Sr. No.</th>
-                                <th>Owner Name</th>
+                                <th>Customer Name</th>
                                 <th>Boat Name</th>
                                 <th>Action</th>
                             </tr>
@@ -68,7 +68,7 @@
                                     @php 
                                         $user = $userMessage['user'];
                                         $message = $userMessage['message'];
-                                        $listing = App\Models\Admin\listing::where('id', $message->listing_id)->first();
+                                        $listing = $userMessage['listing']
                                     @endphp
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>

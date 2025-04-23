@@ -44,26 +44,32 @@ class PagesController extends Controller
     {
         $listing = $this->service->singleBoatDetails($city,$type,$slug);
         $calendarArray = '';
-        // if(count($listing->calendar))
-        // {
-        //     $calendarArray = [];
-        //     $calendars = $listing->calendar;
-        //     foreach($calendars as $key => $calendar):
-        //         $calendarArray[$key] = [
-        //             'from' => $calendar['from_date'],
-        //             'to' => $calendar['from_to'],
-        //         ];
-        //     endforeach;
-        //    //dd($calendarArray);
-        //     $calendarArray = json_encode($calendarArray, JSON_FORCE_OBJECT);
-        //    // dd($calendarArray);
-        // }
-       
         if(!$listing)
         {
             return redirect()->route('home');
         }
-        return view('front.single_boat',compact('listing','calendarArray'));
+        $equipments = $listing->equipment;
+        $flatItems=[];
+        $sixEquipments='';
+        $totalEquipments = 0;
+        if($equipments):
+            unset($equipments->id);
+            unset($equipments->listing_id);
+            unset($equipments->created_at);
+            unset($equipments->updated_at);
+            $equipments = $equipments->toArray();
+            foreach ($equipments as $category => $itemsJson) 
+            {
+                $items = json_decode($itemsJson, true);
+                if($items):
+                    $flatItems = array_merge($flatItems, $items);
+                endif;
+            }
+            $sixEquipments = array_slice($flatItems,0,6);
+            $totalEquipments = count($flatItems);
+            $viewEquipments = count($flatItems) - 6;
+        endif;
+        return view('front.single_boat',compact('listing','calendarArray','equipments','viewEquipments','sixEquipments','totalEquipments'));
     }
     public function locationCategry(Request $request , $type)//test_boat
     {

@@ -51,13 +51,14 @@
     });
     $( document ).ready(function() {
         var receiver_id = $('form#message_form input[name="receiver_id"]').val();
+        var slug = $('form#message_form input[name="slug"]').val();
         var csrfToken = $('meta[name="csrf-token"]').attr('content');
         setInterval(function()
         {
             $.ajax({
                 url: "{{ route('boatowner.support.see-all-message') }}",
                 type: "POST",
-                data: { receiver_id: receiver_id },
+                data: { receiver_id: receiver_id, slug: slug },
                 headers: {
                     'X-CSRF-TOKEN': csrfToken 
                 },
@@ -65,7 +66,7 @@
                     var resp = response;
                     if(resp.status == "success") {
                         $('#messages div.message').html(resp.html);
-                        $('#messages div.message').animate({ scrollTop: $('#messages div.message').height() }, "fast");
+                        $('#messages').animate({ scrollTop: $('#messages div.message').height() }, "fast");
                     }
                 },
                 error: function(xhr, status, error) {

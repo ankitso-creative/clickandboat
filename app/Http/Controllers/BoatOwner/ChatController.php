@@ -57,7 +57,7 @@ class ChatController extends Controller
         $receiver_id = $receiver_id;
         $sender = auth()->user();
         $receiver = User::find($receiver_id);
-        $replies  = $this->service->fetchMessages($receiver_id);
+        $replies  = $this->service->fetchMessages($receiver_id,$listing->id);
         $quotation = Quotation::where('listing_id',$listing->id)->where('user_id',$receiver_id)->first();
         return view('boatowner.message',compact('active','receiver_id','replies','sender','receiver','slug','quotation','listing'));
     }
