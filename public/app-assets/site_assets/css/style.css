@@ -3019,6 +3019,7 @@ label, input, textarea, button, select {
 .delete_acc_btn {
     background: none;
     border: 1px solid #000;
+    color: #000;
     padding: 8px 30px;
     border-radius: 15px;
     font-size: 15px;
@@ -4776,6 +4777,7 @@ section.about_zigzag_section {
     font-size: 15px;
     margin-top: 10px;
     border: 1px solid #f9a126;
+    cursor: pointer;
 }
 .comment_form_pera {
     padding-bottom: 20px;
@@ -7688,7 +7690,8 @@ font-size: 15px;
     font-size: 20px;
     color: #000;
     text-transform: uppercase;
-    padding-top:30px;
+    padding-top: 30px;
+    text-align: center;
 }
 .city_page_text ul {
     margin-left: 30px;
@@ -8346,6 +8349,9 @@ margin-right:15px;
     margin-top: 25px;
     justify-content: center;
 }
+.main-dashboard input[type="file"]::file-selector-button {
+    color: #000;
+}
 /*--------------------------------------------------------------
 # Media Query
 --------------------------------------------------------------*/
@@ -8382,7 +8388,7 @@ margin-right:15px;
         width: 100%;
     }
     .featured_boats_section {
-        margin-top: 60px;
+        margin-top: 45px;
         padding: 0 0;
     }
     .featured_boat_heading h2 {
@@ -8399,6 +8405,7 @@ margin-right:15px;
         font-size: 20px;
         text-align: left;
         padding-bottom: 0px;
+        margin-left: 25px;
     }
     .boat_reanter_owner_section {
         margin-top: 30px;
@@ -8865,6 +8872,7 @@ margin-right:15px;
     .more_resource_section  .more_resource_box h3 {
         font-size: 25px;
         padding: 20px 20px;
+        height: auto;
     }
     .request_banner_text h5 {
         padding-bottom: 0px;
@@ -9023,7 +9031,8 @@ margin-right:15px;
     }
     .your_boats_type .radio-with-Icon p.radioOption-Item label {
         font-size: 11px;
-    }
+        padding-top: 10px;
+    }   
     .des__pera_text {
         padding-top: 25px;
     }
@@ -9431,6 +9440,24 @@ margin-right:15px;
 }
 .dashbaord_detail_boxes {
     margin-bottom: 15px;
+}
+.blog_banner_text {
+    top: 55%;
+}
+ .main-dashboard textarea {
+    height: 115px;
+}
+.listing_banner {
+    height: 440px;
+}
+.term_condition_section ul li {
+    line-height: 25px;
+}
+.term_condition_heading {
+    top: 55%;
+}
+.nav-mobile .menu-container .menu-sidebar li .submenu-toggle.active ~ .menu-sub, .nav-mobile .menu-container .menu-sidebar li .submenu-toggle:checked ~ .menu-sub {
+    max-width: 430px;
 }
 }
 @media (min-width: 767px) and (max-width: 1023px) {

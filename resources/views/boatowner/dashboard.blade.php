@@ -61,17 +61,11 @@
             </div>
         </div>
     </div>
-    <!-- <div class="recent_message_box">
-                <h1>Recent Message</h1>
-                <div class="no_message_box">
-                    <p>You have no messages.</p>
-                </div>
-            </div> -->
     <div class="dashbaord_detail_boxes">
         <div class="row dash_panel">
             <div class="col-sm-12 col-md-2 col-lg-3 panel">
                 <div class="logo"><i class="fa-solid fa-sailboat"></i></div>
-                <span class="label">Total Boat </span>
+                <span class="label">Total Boat</span>
                 <span class="value">20</span>
             </div>
             <div class="col-sm-12 col-md-2 col-lg-3 panel">
