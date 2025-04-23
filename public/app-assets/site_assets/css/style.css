@@ -665,24 +665,28 @@ label, input, textarea, button, select {
     display: flex;
     flex-direction: column;
     gap: 4px;
+    position: relative;
 }
 /* Bubble */
 .msg-desc {
     background-color: #f0f0f0;
-    padding: 12px 16px;
+    padding: 17px 15px;
     border-radius: 16px;
     font-size: 14px;
     line-height: 1.4;
     word-break: break-word;
-    min-width: 60px;
+    min-width: 110px;
     max-width: 100%;
 }
 
 /* Timestamp below bubble */
-.msg-time {
-    font-size: 11px;
+.msg-content small {
+    font-size: 10px;
     color: #555;
     margin-top: 2px;
+    position: absolute;
+    bottom: 3px;
+    right: 15px;
 }
 
 /* LEFT Message */
@@ -3015,6 +3019,7 @@ label, input, textarea, button, select {
 .delete_acc_btn {
     background: none;
     border: 1px solid #000;
+    color: #000;
     padding: 8px 30px;
     border-radius: 15px;
     font-size: 15px;
@@ -4772,6 +4777,7 @@ section.about_zigzag_section {
     font-size: 15px;
     margin-top: 10px;
     border: 1px solid #f9a126;
+    cursor: pointer;
 }
 .comment_form_pera {
     padding-bottom: 20px;
@@ -7684,7 +7690,8 @@ font-size: 15px;
     font-size: 20px;
     color: #000;
     text-transform: uppercase;
-    padding-top:30px;
+    padding-top: 30px;
+    text-align: center;
 }
 .city_page_text ul {
     margin-left: 30px;
@@ -8297,6 +8304,54 @@ font-size: 15px;
     object-fit: cover;
     margin-bottom: 15px;
 }
+.dashbaord_detail_boxes .panel {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background: white;
+    margin: 10px 10px;
+    flex: 0 0 22%;
+    max-width: 22%;
+    padding: 35px 0px;
+    border-radius: 11px;
+}
+.dashbaord_detail_boxes .logo { display:block;
+float:left;
+margin-left:10px;
+}
+.dashbaord_detail_boxes .logo i {
+    margin: 10px 0px 15px 5px;
+    width: 40px;
+    height: 40px;
+    background: #f9a126;
+    line-height: 40px;
+    text-align: center;
+    color: #fff;
+}
+.dashbaord_detail_boxes .label, .value {
+display:block;	
+position:relative;
+color: #000;
+text-align:right;	
+margin-right:15px;
+}
+
+.dashbaord_detail_boxes .label {
+ margin-top:10px;
+ font-size:0.75em;
+   font-weight:300;
+   text-transform:uppercase;
+}
+.dashbaord_detail_boxes .value {
+    font-size: 1.25em;
+    font-weight: 600;
+    color: #f9a126;
+}
+.dashbaord_detail_boxes .row.dash_panel {
+    margin-top: 25px;
+    justify-content: center;
+}
+.main-dashboard input[type="file"]::file-selector-button {
+    color: #000;
+}
 /*--------------------------------------------------------------
 # Media Query
 --------------------------------------------------------------*/
@@ -8333,7 +8388,7 @@ font-size: 15px;
         width: 100%;
     }
     .featured_boats_section {
-        margin-top: 60px;
+        margin-top: 45px;
         padding: 0 0;
     }
     .featured_boat_heading h2 {
@@ -8350,6 +8405,7 @@ font-size: 15px;
         font-size: 20px;
         text-align: left;
         padding-bottom: 0px;
+        margin-left: 25px;
     }
     .boat_reanter_owner_section {
         margin-top: 30px;
@@ -8816,6 +8872,7 @@ font-size: 15px;
     .more_resource_section  .more_resource_box h3 {
         font-size: 25px;
         padding: 20px 20px;
+        height: auto;
     }
     .request_banner_text h5 {
         padding-bottom: 0px;
@@ -8974,7 +9031,8 @@ font-size: 15px;
     }
     .your_boats_type .radio-with-Icon p.radioOption-Item label {
         font-size: 11px;
-    }
+        padding-top: 10px;
+    }   
     .des__pera_text {
         padding-top: 25px;
     }
@@ -9374,6 +9432,32 @@ font-size: 15px;
 }
 .company_profile_images img {
     height: 265px;
+}
+.dashbaord_detail_boxes .panel {
+    margin: 10px 10px;
+    flex: 0 0 43%;
+    max-width: 43%;
+}
+.dashbaord_detail_boxes {
+    margin-bottom: 15px;
+}
+.blog_banner_text {
+    top: 55%;
+}
+ .main-dashboard textarea {
+    height: 115px;
+}
+.listing_banner {
+    height: 440px;
+}
+.term_condition_section ul li {
+    line-height: 25px;
+}
+.term_condition_heading {
+    top: 55%;
+}
+.nav-mobile .menu-container .menu-sidebar li .submenu-toggle.active ~ .menu-sub, .nav-mobile .menu-container .menu-sidebar li .submenu-toggle:checked ~ .menu-sub {
+    max-width: 430px;
 }
 }
 @media (min-width: 767px) and (max-width: 1023px) {

@@ -57,12 +57,15 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
+.logo_img img{
+    width: 150px;
+}
 </style>
 
     <body class=" login">
         <div class="content">
 			<div class="text-center col-md-12 logo_img">
-                <img src="{{ logoURL() }}" width="100%" style="margin: 20px 0;">
+                <img src="{{ logoURL() }}" style="margin: 20px 0;">
 			</div>
 			<div class="clearfix"></div>
 			<form class="login-form" action="{{ route('admin.do_login') }}" method="post">

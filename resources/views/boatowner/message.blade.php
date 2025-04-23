@@ -363,13 +363,13 @@
                                 </div>
                                 <div class="rental-feilds-box">
                                     <div class="row">
-                                        <div class="col-md-6 pl-0">
+                                        <div class="pl-0 col-md-6">
                                             <div class="form-group">
                                                 <label for="check-in">Check-in Date</label>
                                                 <input type="text" class="form-control" value="{{ $quotation->checkin }}" name="check-in" id="check-in" placeholder="" readonly />
                                             </div>
                                         </div>
-                                        <div class="col-md-6 pr-0">
+                                        <div class="pr-0 col-md-6">
                                             <div class="form-group">
                                                 <label for="check-out">Check-out Date</label>
                                                 <input type="text" class="form-control" value="{{ $quotation->checkout }}" name="check-out" id="check-out" placeholder="" readonly />
