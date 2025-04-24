@@ -87,6 +87,14 @@
                 }
                 $media = $user->addMediaFromRequest('iban')->toMediaCollection('iban','company_files'); 
             endif;
+            if(isset($request['ownership']) && !empty($request['ownership'])):
+                if ($user->hasMedia('ownership')) {
+                    $user->getMedia('ownership')->each(function ($media) {
+                        $media->delete();  // Delete the old image(s)
+                    });
+                }
+                $media = $user->addMediaFromRequest('ownership')->toMediaCollection('ownership','company_files'); 
+            endif;
             return redirect()->route('boatowner.profile')->with('success', 'Profile information updated successfully!'); 
         }
         public function uploadImage($request)
@@ -113,6 +121,22 @@
             else:
                 return redirect()->route('boatowner.profile')->with('error', 'Please try again.');
             endif;
+        }
+        public function paymentUpdate($request)
+        {
+            $user = Auth::user();
+            $userId = auth()->id();
+            $user->paymentDetail()->UpdateOrCreate(['user_id' => $userId],[
+                'user_id' => $userId,
+                'account_type' => $request['account_type'],
+                'account_holder_name' => $request['account_holder_name'],
+                'iban' => $request['iban'], 
+                'biccode' => $request['biccode'],  
+                'code' => $request['code'],  
+                'account_number' => $request['account_number'],
+                'routing_number' => $request['routing_number'],
+            ]);
+            return redirect()->route('boatowner.profile')->with('success', 'Profile information updated successfully!'); 
         }
     }
 

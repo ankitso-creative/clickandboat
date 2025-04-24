@@ -364,7 +364,7 @@
                                                 </div>
                                                 <div class="where_box_text">
                                                     <h5>Dates</h5>
-                                                    <input type="text" value="{{ request()->query('startdate')}}" id="calender" name="calender" placeholder="Add your dates" class="datePicker"/>
+                                                    <input type="text" value="{{ request()->query('startdate') }}" id="calender" name="calender" placeholder="Add your dates" class="datePicker"/>
                                                 </div>
                                             </div>
                                         </li>
@@ -483,8 +483,8 @@
                                 <h5>Boat length</h5>
                                 <div class="custom-wrapper">
                                     <div class="boat-input">
-                                        <input type="range" class="min-boat-range" min="0" max="{{ maxLengthValue() }}" value="{{ request()->query('min-length') ?? 0 }}" step="10">
-                                        <input type="range" class="max-boat-range" min="0" max="{{ maxLengthValue() }}" value="{{ request()->query('max-length') ?? maxLengthValue() }}" step="10">
+                                        <input type="range" class="min-boat-range" min="0" max="{{ maxLengthValue() }}" value="{{ request()->query('min_length') ?? 0 }}" step="10">
+                                        <input type="range" class="max-boat-range" min="0" max="{{ maxLengthValue() }}" value="{{ request()->query('max_length') ?? maxLengthValue() }}" step="10">
                                     </div>
                                     <div class="price-input-container">
                                         <div class="slider-container-length">
@@ -493,10 +493,10 @@
                                         </div>
                                         <div class="length-input">
                                             <div class="price-field">
-                                                <input type="number" name="min-length" class="min-length-input" value="{{ request()->query('min-length') ?? 0}}">
+                                                <input type="number" name="min_length" class="min-length-input" value="{{ request()->query('min_length') ?? 0}}">
                                             </div>
                                             <div class="price-field">
-                                                <input type="number" name="max-length" class="max-length-input" value="{{ request()->query('max-length') ?? maxLengthValue() }}">
+                                                <input type="number" name="max_length" class="max-length-input" value="{{ request()->query('max_length') ?? maxLengthValue() }}">
                                             </div>
                                         </div>
                                     
@@ -747,8 +747,8 @@
                                 <h5>Boat length</h5>
                                 <div class="custom-wrapper">
                                     <div class="boat-input">
-                                        <input type="range" class="min-boat-range" min="0" max="{{ maxLengthValue() }}" value="{{ request()->query('min-length') ?? 0 }}" step="10">
-                                        <input type="range" class="max-boat-range" min="0" max="{{ maxLengthValue() }}" value="{{ request()->query('max-length') ?? maxLengthValue() }}" step="10">
+                                        <input type="range" class="min-boat-range" min="0" max="{{ maxLengthValue() }}" value="{{ request()->query('min_length') ?? 0 }}" step="10">
+                                        <input type="range" class="max-boat-range" min="0" max="{{ maxLengthValue() }}" value="{{ request()->query('max_length') ?? maxLengthValue() }}" step="10">
                                     </div>
                                     <div class="price-input-container">
                                         <div class="slider-container-length">
@@ -757,10 +757,10 @@
                                         </div>
                                         <div class="length-input">
                                             <div class="price-field">
-                                                <input type="number" name="min-length" class="min-length-input" value="{{ request()->query('min-length') ?? 0}}">
+                                                <input type="number" name="min_length" class="min-length-input" value="{{ request()->query('min_length') ?? 0}}">
                                             </div>
                                             <div class="price-field">
-                                                <input type="number" name="max-length" class="max-length-input" value="{{ request()->query('max-length') ?? maxLengthValue() }}">
+                                                <input type="number" name="max_length" class="max-length-input" value="{{ request()->query('max_length') ?? maxLengthValue() }}">
                                             </div>
                                         </div>
                                     

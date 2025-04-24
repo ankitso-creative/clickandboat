@@ -348,8 +348,7 @@
     <section class="single_boat_banner"></section>
     <nav aria-label="Page breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item active" aria-current="page">Yacht hire > Hire a boat in Greece with or without a
-                licence > Skiathos</li>
+            <li class="breadcrumb-item active" aria-current="page">Ibiza boat rental > Hire a {{ $listing->type }} ibiza > Rent a boat {{ $listing->skipper }} > Ibiza</li>
         </ol>
     </nav>
     <!-- end .b-title-page-->

@@ -23,6 +23,10 @@ class ProfileService{
     {
         return $this->repository->companyUpdate($request);
     }
+    public function paymentUpdate($request)
+    {
+        return $this->repository->paymentUpdate($request);
+    }
     public function accountDelete($request)
     {
         return $this->repository->accountDelete($request);

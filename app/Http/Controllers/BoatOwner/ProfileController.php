@@ -7,6 +7,7 @@ use App\Http\Requests\BoatOwner\Profile\CompanyRequest;
 use App\Http\Requests\BoatOwner\Profile\ProfileRequest;
 use App\Http\Requests\BoatOwner\Profile\PasswordRequest;
 use App\Http\Requests\BoatOwner\Profile\ExperienceRequest;
+use App\Http\Requests\BoatOwner\Profile\PaymentRequest;
 use App\Http\Requests\BoatOwner\Profile\UploadImageRequest;
 use App\Models\Country;
 use App\Models\UserExprience;
@@ -50,6 +51,11 @@ class ProfileController extends Controller
     {
         $request = $request->all();
         return $this->service->companyUpdate($request);
+    }
+    public function paymentUpdate(PaymentRequest $request)
+    {
+        $request = $request->all();
+        return $this->service->paymentUpdate($request);
     }
     public function accountDelete(Request $request)
     {

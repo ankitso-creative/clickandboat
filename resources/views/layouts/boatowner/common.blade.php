@@ -85,7 +85,7 @@
                                 <li class="{{ $active=='listing' ? 'active':'' }}"><a href="{{ route('boatowner.listing') }}"><i class="fa-solid fa-list"></i> Listing</a></li>
                                 <li class="{{ $active=='customers' ? 'active':'' }}"><a href="{{ route('boatowner.customers') }}"><i class="fa-solid fa-users"></i> Customers</a></li>
                                 <li class="{{ $active=='booking' ? 'active':'' }}"><a href="{{ route('boatowner.booking.index') }}"><i class="fas fa-clipboard-list"></i> Bookings</a></li>
-                                <li class="{{ $active=='support' ? 'active':'' }}"><a href="{{ route('boatowner.support')}}"><i class="fas fa-heart"></i> Support</a></li>
+                                <li class="{{ $active=='support' ? 'active':'' }}"><a href="{{ route('boatowner.support')}}"><i class="fas fa-heart"></i> Messages</a></li>
                                 <li><a href="{{ route('logout') }}"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
                             </ul>
                         </aside>
