@@ -9464,6 +9464,9 @@ margin-right:15px;
 .menu-sidebar {
     padding-top: 88px !important;
 }
+.sign_up_form_section .row {
+    padding: 0 10px;
+}
 }
 @media (min-width: 767px) and (max-width: 1023px) {
     .header-slider {

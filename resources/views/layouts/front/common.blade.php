@@ -147,15 +147,17 @@
                     <li class="nav-item">
                        <a class="nav-link" href="{{ route('blogs') }}">Our Blog</a>
                     </li>
+                    @if(!Auth::check())
                     <li class="mt-4 nav-item">
                         <a class="nav-link" href="{{ route('boatlogin') }}">Register your boat </a>
                     </li>
                     <li class="nav-item login_mov">
-                        <a class="nav-link" href="{{ route('login') }}">Sign Up</a>
+                        <a class="nav-link" href="{{ route('userlogin') }}">Sign Up</a>
                     </li>
                     <li class="nav-item login_mov">
                         <a class="nav-link" href="{{ route('login') }}">Login</a>
                     </li>
+                    @endif
                     @if(Auth::check())
                     <li><a href="{{ route('customer.dashboard') }}">Dashboard</a></li>
                     <li><a href="{{ route('logout') }}">Logout</a></li>
