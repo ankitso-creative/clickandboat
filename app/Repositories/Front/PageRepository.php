@@ -174,13 +174,13 @@ use Illuminate\Support\Facades\Session;
         public function searchListing($request)
         {
             $listing = Listing::where('status', '1')
-            ->when($request->has('type') && !empty($request->type), function ($query) use ($request) {
-                $type = $request->type; 
+            ->when($request->has('type') && !empty(array_filter($request->type)), function ($query) use ($request) {
+                $type = $request->type;
                 return $query->whereIn('type', $type); 
             })
             ->when($request->has('location') && !empty($request->location), function ($query) use ($request) {
                 $location = $request->location; 
-                return $query->where('city', $location); 
+                return $query->where('harbour', $location); 
             })
             ->when($request->has('rental_type') && !empty($request->rental_type), function ($query) use ($request) {
                 $rental_type = $request->rental_type; 
@@ -227,7 +227,6 @@ use Illuminate\Support\Facades\Session;
             })
             ->with(['price','equipment'])
             ->paginate(9);
-           
             return $listing;
         }
         public function submitRequest($request)

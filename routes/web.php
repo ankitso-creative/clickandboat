@@ -114,6 +114,8 @@ Route::middleware('Setlang')->group(function(){
         Route::post('/support/send-message', [BoatOwnerChatController::class, 'sendMessage'])->name('support.send-message');
         Route::post('/support/see-all-message', [BoatOwnerChatController::class, 'seeAllMessage'])->name('support.see-all-message');
         Route::post('/support/spcial-offer', [BoatOwnerChatController::class, 'spcialOfferSend'])->name('support.spcial-offer-edit');
+        Route::get('/support/update-quotation/{id}', [BoatOwnerChatController::class, 'updateQuotation'])->name('support.update.quotation');
+        Route::get('/support/cancel-quotation/{id}', [BoatOwnerChatController::class, 'cancelQuotation'])->name('support.cancel.quotation');
     });
     Route::prefix('customer')->name('customer.')->middleware(['auth:sanctum', 'verified', 'onlyCustomer'])->group(function () {
         Route::get('dashboard', [CustomerDashboardController::class, 'index'])->name('dashboard');

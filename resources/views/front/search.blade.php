@@ -272,12 +272,12 @@
                                 <span class="fa fa-search form-control-feedback"></span>
                                 <select name="location" class="loaction-search" placeholder="Search Loaction">
                                     <option value="">All Marinas</option>
-                                    <option value="Marina Santa Eulalia">Marina Santa Eulalia</option>
-                                    <option value="Puerto Sant Antoni">Puerto Sant Antoni</option>
-                                    <option value="Marina Ibiza">Marina Ibiza</option>
-                                    <option value="Marina Botafoch">Marina Botafoch</option>
-                                    <option value="Ibiza Magna">Ibiza Magna</option>
-                                    <option value="Club Nautico">Club Nautico</option>
+                                    <option {{ checkselect(request()->query('location'), 'Marina Santa Eulalia') }} value="Marina Santa Eulalia">Marina Santa Eulalia</option>
+                                    <option {{ checkselect(request()->query('location'), 'Puerto Sant Antoni') }} value="Puerto Sant Antoni">Puerto Sant Antoni</option>
+                                    <option {{ checkselect(request()->query('location'), 'Marina Ibiza') }} value="Marina Ibiza">Marina Ibiza</option>
+                                    <option {{ checkselect(request()->query('location'), 'Marina Botafoch') }} value="Marina Botafoch">Marina Botafoch</option>
+                                    <option {{ checkselect(request()->query('location'), 'Ibiza Magna') }} value="Ibiza Magna">Ibiza Magna</option>
+                                    <option {{ checkselect(request()->query('location'), 'Club Nautico') }} value="Club Nautico">Club Nautico</option>
                                 </select>
                             </div>
                         </div>
@@ -287,7 +287,7 @@
                                     <div class="input-group-append">
                                         <span class="input-group-text"><i class="fa-solid fa-calendar-days"></i></span>
                                     </div>
-                                    <input type="date" id="calender" name="calender" class="datePicker form-control datePicker-search"
+                                    <input type="date" value="{{ request()->query('startdate') }}" id="calender" name="calender" class="datePicker form-control datePicker-search"
                                         placeholder="Add your dates" />
                                 </div>
                             </div>
@@ -347,12 +347,12 @@
                                                 <h5>Where</h5>
                                                 <select name="location" class="loaction-search" placeholder="Search Loaction">
                                                     <option value="">All Marinas</option>
-                                                    <option value="Marina Santa Eulalia">Marina Santa Eulalia</option>
-                                                    <option value="Puerto Sant Antoni">Puerto Sant Antoni</option>
-                                                    <option value="Marina Ibiza">Marina Ibiza</option>
-                                                    <option value="Marina Botafoch">Marina Botafoch</option>
-                                                    <option value="Ibiza Magna">Ibiza Magna</option>
-                                                    <option value="Club Nautico">Club Nautico</option>
+                                                    <option {{ checkselect(request()->query('location'), 'Marina Santa Eulalia') }} value="Marina Santa Eulalia">Marina Santa Eulalia</option>
+                                                    <option {{ checkselect(request()->query('location'), 'Puerto Sant Antoni') }} value="Puerto Sant Antoni">Puerto Sant Antoni</option>
+                                                    <option {{ checkselect(request()->query('location'), 'Marina Ibiza') }} value="Marina Ibiza">Marina Ibiza</option>
+                                                    <option {{ checkselect(request()->query('location'), 'Marina Botafoch') }} value="Marina Botafoch">Marina Botafoch</option>
+                                                    <option {{ checkselect(request()->query('location'), 'Ibiza Magna') }} value="Ibiza Magna">Ibiza Magna</option>
+                                                    <option {{ checkselect(request()->query('location'), 'Club Nautico') }} value="Club Nautico">Club Nautico</option>
                                                 </select>
                                             </div>
                                             </div>
@@ -364,7 +364,7 @@
                                                 </div>
                                                 <div class="where_box_text">
                                                     <h5>Dates</h5>
-                                                    <input type="text" id="calender" name="calender" placeholder="Add your dates" class="datePicker"/>
+                                                    <input type="text" value="{{ request()->query('startdate')}}" id="calender" name="calender" placeholder="Add your dates" class="datePicker"/>
                                                 </div>
                                             </div>
                                         </li>
@@ -503,7 +503,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="location_checkbox_two">
+                            {{-- <div class="location_checkbox_two">
                                 <h5>Price per day</h5>
                                 <div class="custom-wrapper">
                                     <div class="range-input">
@@ -526,7 +526,7 @@
                                     
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="location_checkbox_two">
                                 <div class="row">
                                     <div class="number_list">
@@ -767,7 +767,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="location_checkbox_two">
+                            {{-- <div class="location_checkbox_two">
                                 <h5>Price per day</h5>
                                 <div class="custom-wrapper">
                                     <div class="range-input">
@@ -790,7 +790,7 @@
                                     
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="location_checkbox_two">
                                 <div class="row">
                                     <div class="number_list">

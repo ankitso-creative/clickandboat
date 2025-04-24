@@ -27,4 +27,12 @@ class ChatService {
     {
         return $this->repository->spcialOfferSend($request);
     }
+    public function updateQuotation($id)
+    {
+        return $this->repository->updateQuotation($id);
+    }
+    public function cancelQuotation($id)
+    {
+        return $this->repository->cancelQuotation($id);
+    }
 }

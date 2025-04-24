@@ -79,4 +79,12 @@ class ChatController extends Controller
         $request = $request->all();
         return $this->service->spcialOfferSend($request);
     }
+    public function updateQuotation($id)
+    {
+        return $this->service->updateQuotation($id);
+    }
+    public function cancelQuotation($id)
+    {
+        return $this->service->cancelQuotation($id);
+    }
 }

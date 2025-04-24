@@ -51,6 +51,7 @@ class PagesController extends Controller
         $equipments = $listing->equipment;
         $flatItems=[];
         $sixEquipments='';
+        $viewEquipments='';
         $totalEquipments = 0;
         if($equipments):
             unset($equipments->id);
