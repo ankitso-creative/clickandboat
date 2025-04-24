@@ -18,6 +18,24 @@
             selectOnClose: true
         });
         $(document).ready(function () {
+            $(document).on('change','select[name="account_type"]',function(){
+                var val = $(this).val();
+                if(val == 'ibannumber')
+                {
+                    $('#accountroutingnumber-box').addClass('d-none');
+                    $('#ibannumber-box').removeClass('d-none');
+                }
+                else if(val == 'accountroutingnumber')
+                {
+                    $('#ibannumber-box').addClass('d-none');
+                    $('#accountroutingnumber-box').removeClass('d-none');
+                }
+                else
+                {
+                    $('#accountroutingnumber-box').addClass('d-none');
+                    $('#ibannumber-box').addClass('d-none');
+                }
+            })
             google.maps.event.addDomListener(window, 'load', initialize);
         });
         function initialize() 
@@ -356,54 +374,6 @@
                         </div>
                     </div>
                     <div class="mt-3 card-sec-title">
-                        <h2>Payment methods</h2>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                        <div class="form-group">
-                                <label class="label-default">These details will be used to pay you once your boat has been chartered.</label>
-                                <select name="bankaccount" class="form-control">
-                                        <option value="ibannumber">IBAN account</option>
-                                        <option value="accountroutingnumber">Account number/ Routing number</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                        <div class="form-group">
-                                <label class="label-default">Bank Account Holder (Name)</label>
-                                    <input type="text" id="accountholdername" name="bankaccount" class="form-control">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                    <label class="label-default">Account number</label>
-                                    <input type="text" id="bankaccount" name="bankaccount" class="form-control">
-                                </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                    <label class="label-default">Confirm account number</label>
-                                    <input type="text" id="confirmbankaccount" name="confirmbankaccount" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                    <label class="label-default">Routing number</label>
-                                    <input type="text" id="routingnumber" name="routingnumber" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                    <label class="label-default">BIC code / SWIFT</label>
-                                    <input type="text" id="biccode" name="biccode" class="form-control">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-3 card-sec-title">
                         <h2>Company's files</h2>
                     </div>
                     <div class="row company_profile_images">
@@ -466,6 +436,27 @@
                                 @else
                                     <div class="user-iban">
                                         <img src="{{ $iban }}" id="avatar" alt="identity">
+                                    </div>
+                                @endif
+                            @endif
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="label-default">Certificate of Ownership</label>
+                                <input type="file" id="myfiles" name="ownership" class="form-control" accept=".jpeg,.jpg,.pdf,.png">
+                            </div>
+                            @php 
+                                $ownership = $userData->getFirstMediaUrl('ownership');
+                                $extensionOw = pathinfo($ownership, PATHINFO_EXTENSION);
+                            @endphp
+                            @if($iban)
+                                @if($extensionOw == 'pdf')
+                                    <div class="user-iban">
+                                        <a href="{{ $ownership }}" target="_blank"><img src="{{ asset('app-assets/site_assets/img/pdf-img.png') }}" id="avatar" alt="identity"></a>
+                                    </div>
+                                @else
+                                    <div class="user-iban">
+                                        <img src="{{ $ownership }}" id="avatar" alt="identity">
                                     </div>
                                 @endif
                             @endif
@@ -592,6 +583,95 @@
                     </form>
                 </div>
             </div>
+        </div>
+        <div class="card-section">
+            <div class="mt-3 card-sec-title">
+                <h2>Payment methods</h2>
+            </div>
+            <form action="{{ route('boatowner.payment.update') }}" method="Post">
+                @csrf
+                @method('PUT')
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="label-default">These details will be used to pay you once your boat has been chartered.</label>
+                            <select name="account_type" class="form-control">
+                                <option value="">Select</option>
+                                <option {{ checkselect(optional($userData->paymentDetail)->account_type,'ibannumber') }} value="ibannumber">IBAN account</option>
+                                <option {{ checkselect(optional($userData->paymentDetail)->account_type,'accountroutingnumber') }} value="accountroutingnumber">Account number/ Routing number</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="label-default">Bank Account Holder (Name)</label>
+                            <input type="text" value="{{ optional($userData->paymentDetail)->account_holder_name }}" name="account_holder_name" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="row {{ (optional($userData->paymentDetail)->account_type == 'ibannumber') ? '' : 'd-none'}}" id="ibannumber-box">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="label-default">IBAN</label>
+                            <input type="text" name="iban" class="form-control" value="{{ optional($userData->paymentDetail)->iban }}">
+                            @error('iban')<span class="required">{{ $message }}</span>@enderror
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="label-default">Confirm IBAN</label>
+                            <input type="text" value="{{ optional($userData->paymentDetail)->iban }}" name="confirmiban" class="form-control">
+                            @error('confirmbankaccount')<span class="required">{{ $message }}</span>@enderror
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="label-default">BIC code / SWIFT</label>
+                            <input type="text" value="{{ optional($userData->paymentDetail)->biccode }}" name="biccode" class="form-control">
+                            @error('biccode')<span class="required">{{ $message }}</span>@enderror
+                        </div>
+                    </div>
+                </div>
+                <div class="row {{ (optional($userData->paymentDetail)->account_type == 'accountroutingnumber') ? '' : 'd-none'}}" id="accountroutingnumber-box">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="label-default">Account number</label>
+                            <input type="text" value="{{ optional($userData->paymentDetail)->account_number }}" name="account_number" class="form-control">
+                            @error('bankaccount')<span class="required">{{ $message }}</span>@enderror
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="label-default">Confirm account number</label>
+                            <input type="text" value="{{ optional($userData->paymentDetail)->account_number }}" name="confirmbaccount_number" class="form-control">
+                            @error('confirmbankaccount')<span class="required">{{ $message }}</span>@enderror
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="label-default">Routing number</label>
+                            <input type="text" value="{{ optional($userData->paymentDetail)->routing_number }}" name="routing_number" class="form-control">
+                            @error('routingnumber')<span class="required">{{ $message }}</span>@enderror
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="label-default">BIC code / SWIFT</label>
+                            <input type="text" value="{{ optional($userData->paymentDetail)->code }}" name="code" class="form-control">
+                            @error('code')<span class="required">{{ $message }}</span>@enderror
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="text-center form-group">
+                            <button class="save_btn">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
         <div class="tab-pane" id="password">
             <div class="card-section">

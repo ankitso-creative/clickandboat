@@ -92,6 +92,7 @@ Route::middleware('Setlang')->group(function(){
         Route::put('password-update', [BoatOwnerProfileController::class, 'passwordUpdate'])->name('password.update');
         Route::put('experience-update', [BoatOwnerProfileController::class, 'experienceUpdate'])->name('experience.update');
         Route::put('company-update', [BoatOwnerProfileController::class, 'companyUpdate'])->name('company.update');
+        Route::put('payment-update', [BoatOwnerProfileController::class, 'paymentUpdate'])->name('payment.update');
         Route::put('account-delete', [BoatOwnerProfileController::class, 'accountDelete'])->name('account.delete');
         Route::post('/upload-image', [BoatOwnerProfileController::class, 'uploadImage'])->name('profile.image');
         Route::get('listing',[BoatOwnerListingController::class, 'index'])->name('listing');

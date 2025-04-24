@@ -186,6 +186,14 @@ use Illuminate\Support\Facades\Session;
                 $rental_type = $request->rental_type; 
                 return $query->where('skipper', $rental_type); 
             })
+            ->when($request->has('min_length') && !empty($request->min_length), function ($query) use ($request) {
+                $min_length = $request->min_length; 
+                return $query->where('length', '>=', $min_length); 
+            })
+            ->when($request->has('max_length') && !empty($request->max_length), function ($query) use ($request) {
+                $max_length = $request->max_length; 
+                return $query->where('length', '<=', $max_length); 
+            })
             ->when($request->has('min_price') && !empty($request->min_price), function ($query) use ($request) {
                 $min_price = $request->min_price;
                 return $query->whereHas('price', function($query) use ($min_price) {

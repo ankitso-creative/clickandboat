@@ -295,9 +295,10 @@
                             @php
                                 $userId = auth()->id();
                                 $orderExists = App\Models\Order::where('user_id', $userId)->where('listing_id',$listing->id)->exists();
+                                $orderID = App\Models\Order::where('user_id', $userId)->where('listing_id',$listing->id)->value('id');
                             @endphp
                             @if($orderExists)
-                                <a href="{{ route('customer.booking.edit',$listing->id) }}" class="btn book_btn">View Order</a>
+                                <a href="{{ route('customer.booking.edit',$orderID) }}" class="btn book_btn">View Order</a>
                             @else
                                 @if($quotation->status=='Accept')
                                     <button class="btn book_btn">Confirm And Pay</button>
