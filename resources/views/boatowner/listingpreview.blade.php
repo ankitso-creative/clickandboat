@@ -593,7 +593,7 @@
             <li>
                 <div class="price_block">
                     <p class="price_block_date">Low Season Price </p>
-                    <p class="price_block_date">{{ optional($listing->seasonPrice[0] ?? null)->from ?? '' }} - {{ optional($listing->seasonPrice[0] ?? null)->to ?? '' }} </p>
+                    <p class="price_block_date">{{ implode(', ',json_decode(optional($listing->seasonPrice[0] ?? null)->from)) }} </p>
                     <p class="price_block_price">{{ minMaxPrice($lowseason,$listing->seasonPrice[0]->price) }}</p>
                 </div>
             </li>
@@ -602,7 +602,7 @@
             <li>
                 <div class="price_block">
                     <p class="price_block_date">Mid Season Price</p>
-                    <p class="price_block_date">{{ optional($listing->seasonPrice[1] ?? null)->from ?? '' }} - {{ optional($listing->seasonPrice[1] ?? null)->to ?? '' }} </p>
+                    <p class="price_block_date">{{ implode(', ',json_decode(optional($listing->seasonPrice[1] ?? null)->from)) }} </p>
                     <p class="price_block_price">{{ minMaxPrice($midSeason,$listing->seasonPrice[1]->price) }}</p>
                 </div>
             </li>
@@ -611,7 +611,7 @@
             <li>
                 <div class="price_block">
                     <p class="price_block_date">High Season Price </p>
-                    <p class="price_block_date">{{ optional($listing->seasonPrice[2] ?? null)->from ?? '' }} - {{ optional($listing->seasonPrice[2] ?? null)->to ?? '' }} </p>
+                    <p class="price_block_date">{{ implode(', ',json_decode(optional($listing->seasonPrice[2] ?? null)->from)) }} </p>
                     <p class="price_block_price">{{ minMaxPrice($highSeason,$listing->seasonPrice[2]->price) }}</p>
                 </div>
             </li>

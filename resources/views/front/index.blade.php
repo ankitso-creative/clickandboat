@@ -285,8 +285,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                                 <label>{{ __('home.search-area')}}</label>
                                                 <div class="form-group has-search">
                                                     <span class="fa fa-search form-control-feedback"></span>
-                                                    <select name="location" class="loaction-search"
-                                                        placeholder="Search Loaction">
+                                                    <select name="location" class="loaction-search" placeholder="Search Loaction">
                                                         <option value="">All Marinas</option>
                                                         <option value="Marina Santa Eulalia">Marina Santa Eulalia</option>
                                                         <option value="Puerto Sant Antoni">Puerto Sant Antoni</option>
@@ -327,12 +326,9 @@ document.addEventListener('DOMContentLoaded', function() {
                                                 <label>{{ __('home.boat-type')}}</label>
                                                 <div class="boat_select">
                                                     <span><i class="fa-solid fa-sailboat"></i></span>
-                                                    <select name="type" id="cars">
+                                                    <select name="type[]" id="cars">
                                                         <option value="">Sailboat, motorboat,...</option>
-                                                        {!!
-                                                        selectOption('categories','name','name',request()->get('type'),array('status'
-                                                        , '1'))
-                                                        !!}
+                                                        {!! selectOption('categories','name','name',request()->get('type'),array('status', '1')) !!}
                                                     </select>
                                                 </div>
                                             </div>
@@ -397,7 +393,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <label>{{ __('home.boat-type')}}</label>
                     <div class="boat_select">
                         <span><i class="fa-solid fa-sailboat"></i></span>
-                        <select name="type" id="cars">
+                        <select name="type[]" id="cars">
                             <option value="">Sailboat, motorboat,...</option>
                             {!! selectOption('categories','name','name',request()->get('type'),array('status' , '1'))
                             !!}

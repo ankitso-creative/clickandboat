@@ -332,11 +332,17 @@
                                 <p>Total: <span id="boat-total">€{{ $quotation->total }}</span></p>
                             @endif
                         </div>
-                        <div class="d-flex flex-column">
-                            <a class="btn book_pre_accept" href="#">Pre-accept the request</a>
-                            <a class="btn book_personal" href="javascript:;" data-toggle="modal" data-target="#sidebar-right">Create a personalised offer</a>
-                            <a class="btn book_refuse" href="#">Refuse the request</a>
-                        </div>
+                        @if($quotation->status == 'Pending')
+                            <div class="d-flex flex-column">
+                                <a class="btn book_pre_accept" href="{{ route('boatowner.support.update.quotation',$quotation->id) }}" >Pre-accept the request</a>
+                                <a class="btn book_personal" href="javascript:;" data-toggle="modal" data-target="#sidebar-right">Create a personalised offer</a>
+                                <a class="btn book_refuse" href="{{ route('boatowner.support.cancel.quotation',$quotation->id) }}">Refuse the request</a>
+                            </div>
+                        @else
+                            <div class="d-flex flex-column">
+                                <a class="btn book_personal">{{ $quotation->status }}</a>
+                            </div>
+                        @endif
                     </form>
                 </div>
             @endif

@@ -257,4 +257,40 @@ class ChatRepository
             ]);
         endif;
     }
+    public function updateQuotation($id)
+    {
+        $userData = auth()->user();
+        $quote = Quotation::find($id);
+        $quote->status = 'Accept';
+        if($quote->update())
+        {
+            $message = Message::create([
+                'sender_id' => $userData->id,
+                'receiver_id' => $quote->user_id,
+                'listing_id' => $quote->listing_id,
+                'message' => 'Please check your offer and click on confirm button.',
+            ]);
+            $listingSlug = Listing::where('id', $quote->listing_id)->pluck('slug')->first();
+            return redirect()->route('boatowner.message',['receiver_id' => $quote->user_id, 'slug' => $listingSlug])->with('success', 'Quotation updated successfully!'); 
+        }
+        return false;
+    }
+    public function cancelQuotation($id)
+    {
+        $userData = auth()->user();
+        $quote = Quotation::find($id);
+        $quote->status = 'Cancel';
+        if($quote->update())
+        {
+            $message = Message::create([
+                'sender_id' => $userData->id,
+                'receiver_id' => $quote->user_id,
+                'listing_id' => $quote->listing_id,
+                'message' => 'Your quotation has been cancelled, please try again later.',
+            ]);
+            $listingSlug = Listing::where('id', $quote->listing_id)->pluck('slug')->first();
+            return redirect()->route('boatowner.message',['receiver_id' => $quote->user_id, 'slug' => $listingSlug])->with('success', 'Quotation updated successfully!'); 
+        }
+        return false;
+    }
 }

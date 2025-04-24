@@ -532,24 +532,26 @@
                                 {{-- <a href="">Read More</a> --}}
                             </div>
                         </div>
-                        <div class="boat-card-content-sec">
-                            <div class="equipment-sec">
-                                <h3>Equipment available on the {{ $listing->type }}</h3>
-                                <ul class="equip-menus">
-                                    @foreach($sixEquipments as $singleEquipments)
-                                        <li>
-                                            <img src="{{ asset('app-assets/site_assets/img/equipment-icon/'.str_replace('_','-', $singleEquipments).'.png') }}" class="icon-image-equipment" alt="{{ $singleEquipments }}">
-                                            {{ ucfirst(str_replace('_',' ', $singleEquipments)) }}
-                                        </li>
-                                    @endforeach
-                                </ul>
-                                @if($totalEquipments > 6)
-                                    <div class="equip-button-sec">
-                                        <a href="#" class="equip_btn" data-toggle="modal" data-target="#equipment-modal">View all equipment (+{{ $viewEquipments}})</a>
-                                    </div>
-                                @endif
+                        @if($sixEquipments)
+                            <div class="boat-card-content-sec">
+                                <div class="equipment-sec">
+                                    <h3>Equipment available on the {{ $listing->type }}</h3>
+                                    <ul class="equip-menus">
+                                        @foreach($sixEquipments as $singleEquipments)
+                                            <li>
+                                                <img src="{{ asset('app-assets/site_assets/img/equipment-icon/'.str_replace('_','-', $singleEquipments).'.png') }}" class="icon-image-equipment" alt="{{ $singleEquipments }}">
+                                                {{ ucfirst(str_replace('_',' ', $singleEquipments)) }}
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                    @if($totalEquipments > 6)
+                                        <div class="equip-button-sec">
+                                            <a href="#" class="equip_btn" data-toggle="modal" data-target="#equipment-modal">View all equipment (+{{ $viewEquipments}})</a>
+                                        </div>
+                                    @endif
+                                </div>
                             </div>
-                        </div>
+                        @endif
                         <div class="boat-card-content-sec">
                             <div class="equipment-sec">
                                 <h3>Services provided by Mario</h3>
@@ -856,18 +858,9 @@
         </section>
     </div>
     <?php
-    $lowseason = $listing
-        ->price()
-        ->where('season_price_id', optional($listing->seasonPrice[0] ?? null)->id)
-        ->first();
-    $midSeason = $listing
-        ->price()
-        ->where('season_price_id', optional($listing->seasonPrice[1] ?? null)->id)
-        ->first();
-    $highSeason = $listing
-        ->price()
-        ->where('season_price_id', optional($listing->seasonPrice[2] ?? null)->id)
-        ->first();
+        $lowseason = $listing->price()->where('season_price_id', optional($listing->seasonPrice[0] ?? null)->id)->first();
+        $midSeason = $listing->price()->where('season_price_id', optional($listing->seasonPrice[1] ?? null)->id)->first();
+        $highSeason = $listing->price()->where('season_price_id', optional($listing->seasonPrice[2] ?? null)->id)->first();
     ?>
     <div class="offcanvas-right" id="price-list">
         <span class="close-btn" id="closeMenu">&times;</span>
@@ -882,31 +875,62 @@
                 </li>
             @endif
             @if ($lowseason && isset($listing->seasonPrice[0]))
+                @php
+                    $lowMonths = optional($listing->seasonPrice[0])->from;
+                    $allLowMonth = '';
+                    if($lowMonths){
+                        $lowmonthArray = json_decode($lowMonths);
+                        if(is_array($lowmonthArray))
+                        {
+                            $allLowMonth = implode(', ',$lowmonthArray);
+                        }
+                    }
+                @endphp
                 <li>
                     <div class="price_block">
                         <p class="price_block_date">Low Season Price </p>
-                        <p class="price_block_date">{{ optional($listing->seasonPrice[0] ?? null)->from ?? '' }} -
-                            {{ optional($listing->seasonPrice[0] ?? null)->to ?? '' }} </p>
+                        <p class="price_block_date">{{ $allLowMonth }} </p>
                         <p class="price_block_price">{{ minMaxPrice($lowseason, $listing->seasonPrice[0]->price) }}</p>
                     </div>
                 </li>
             @endif
             @if ($midSeason && isset($listing->seasonPrice[1]))
+                @php
+                    $midMonths = optional($listing->seasonPrice[1])->from;
+                    $allMidMonth = '';
+                    if($midMonths):
+                        $midMonthArray = json_decode($midMonths);
+                        if(is_array($midMonthArray))
+                        {
+                            $allMidMonth = implode(', ',$midMonthArray);
+                        }
+                        
+                    endif;
+                @endphp
                 <li>
                     <div class="price_block">
                         <p class="price_block_date">Mid Season Price</p>
-                        <p class="price_block_date">{{ optional($listing->seasonPrice[1] ?? null)->from ?? '' }} -
-                            {{ optional($listing->seasonPrice[1] ?? null)->to ?? '' }} </p>
+                        <p class="price_block_date">{{ $allMidMonth }}  </p>
                         <p class="price_block_price">{{ minMaxPrice($midSeason, $listing->seasonPrice[1]->price) }}</p>
                     </div>
                 </li>
             @endif
             @if ($highSeason && isset($listing->seasonPrice[2]))
+                @php
+                    $hMonths = optional($listing->seasonPrice[2])->from;
+                    $allHMonth = '';
+                    if($hMonths):
+                        $hMonthArray = json_decode($hMonths);
+                        if(is_array($hMonthArray))
+                        {
+                            $allMidMonth = implode(', ',$hMonthArray);
+                        }
+                    endif;
+                @endphp
                 <li>
                     <div class="price_block">
                         <p class="price_block_date">High Season Price </p>
-                        <p class="price_block_date">{{ optional($listing->seasonPrice[2] ?? null)->from ?? '' }} -
-                            {{ optional($listing->seasonPrice[2] ?? null)->to ?? '' }} </p>
+                        <p class="price_block_date">{{ $allMidMonth }}  </p>
                         <p class="price_block_price">{{ minMaxPrice($highSeason, $listing->seasonPrice[2]->price) }}</p>
                     </div>
                 </li>

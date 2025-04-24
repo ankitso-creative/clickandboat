@@ -184,7 +184,7 @@
     <div class="col-md-9 main-dashboard">
         <div class="listing_edit_btns">
             <a class="nav-item nav-link" id="nav-calender-tab" data-toggle="tab" href="#calender" role="tab" aria-controls="nav-about" aria-selected="false"></i>Calender</a>
-            <a href="{{ route('boatowner.preview',$listing->id) }}" class="pre_list_btn">Preview listing</a>
+            <a href="{{ route('boatowner.preview',$listing->id) }}" class="pre_list_btn" target="_blank">Preview listing</a>
         </div>
         <div class="px-3 py-3 tab-content px-sm-0" id="nav-tabContent">
             <div class="tab-pane fade show active" id="general" role="tabpanel" aria-labelledby="nav-general-tab">

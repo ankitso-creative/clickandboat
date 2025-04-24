@@ -293,16 +293,16 @@
                         </div>
                         <div class="d-flex flex-column">
                             @php
-                                $userId = auth()->id(); // or any specific user ID you have
+                                $userId = auth()->id();
                                 $orderExists = App\Models\Order::where('user_id', $userId)->where('listing_id',$listing->id)->exists();
                             @endphp
                             @if($orderExists)
-                                <a href="#" class="btn book_btn">View Order</a>
+                                <a href="{{ route('customer.booking.edit',$listing->id) }}" class="btn book_btn">View Order</a>
                             @else
                                 @if($quotation->status=='Accept')
                                     <button class="btn book_btn">Confirm And Pay</button>
                                 @else
-                                    <button class="btn book_btn">Book</button>
+                                    <a class="btn book_btn">{{ $quotation->status }}</a>
                                 @endif
                             @endif
                         </div>

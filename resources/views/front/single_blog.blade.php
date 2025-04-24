@@ -45,21 +45,21 @@
         <div class="container-fluid">
             <div class="row">
                 @if($relatedBlogs)
-                @foreach($relatedBlogs as $relatedBlog)
-                <div class="col-sm-12 col-md-6 col-lg-4">
-                    <div class="next_trip_box">
-                        <img src="{{ $relatedBlog->getFirstMediaUrl('blog_image') }}">
-                        <div class="next_trip_text">
-                            <h3>{{ $relatedBlog->title }}</h3>
-                            <p>{{ substr(strip_tags($relatedBlog->description),0,170) }}...</p>
-                            <div class="trip_date_text">
-                                <span><a href="{{ route('single-blog',$relatedBlog->slug) }}">View Post</a></span>
-                                <span>{{ \Carbon\Carbon::parse($relatedBlog->created_at)->format('F d, Y') }}</span>
+                    @foreach($relatedBlogs as $relatedBlog)
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <div class="next_trip_box">
+                                <img src="{{ $relatedBlog->getFirstMediaUrl('blog_image') }}">
+                                <div class="next_trip_text">
+                                    <h3>{{ $relatedBlog->title }}</h3>
+                                    <p>{{ substr(strip_tags($relatedBlog->description),0,170) }}...</p>
+                                    <div class="trip_date_text">
+                                        <span><a href="{{ route('single-blog',$relatedBlog->slug) }}">View Post</a></span>
+                                        <span>{{ \Carbon\Carbon::parse($relatedBlog->created_at)->format('F d, Y') }}</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                @endforeach
+                    @endforeach
                 @endif
             </div>
         </div>
