@@ -1217,14 +1217,13 @@ label, input, textarea, button, select {
 # Mobile menu
 --------------------------------------------------------------*/
 .nav-mobile {
-    background: #fff;
+    background: none;
     color: #fff;
     padding: 0;
     margin: 0;
     cursor: auto;
     font-size: 18px;
     list-style-type: none;
-    box-shadow: 0 5px 5px -5px #333;
 }
 .nav-mobile:after {
     content: "";
@@ -1232,25 +1231,30 @@ label, input, textarea, button, select {
     clear: both;
 }
 .nav-mobile svg {
-    height: 45px;
-    width: 65px;
+    height: 80px;
+    width: 80px;
     padding: 9px;
 }
 .navbar-nav {
     align-items: center;
 }
-.nav-mobile svg path {
-    fill: #f8a126;
+.nav-mobile .icon-open path {
+    fill: #f9a11d;
+}
+.nav-mobile .icon-close path {
+    fill: #fff;
 }
 .nav-mobile svg.icon-close {
     display: none;
     padding: 15px;
+    z-index: 9999;
+    position: absolute;
+    right: 0;
 }
 .nav-mobile li {
     width: 100%;
     line-height: 46px;
-    text-align: center;
-    float: left;
+    text-align: right;
 }
 .nav-mobile li a {
     display: block;
@@ -1263,8 +1267,8 @@ label, input, textarea, button, select {
 .nav-mobile .menu-button {
     position: absolute;
     top: 0;
-    left: 0;
-    width: 100%;
+    right: 0;
+    width: 20%;
     height: 100%;
     margin: 0;
     cursor: pointer;
@@ -1306,9 +1310,7 @@ label, input, textarea, button, select {
 }
 .nav-mobile .menu-container {
     width: 65px;
-    float: left;
     cursor: pointer;
-    position: absolute;
 }
 .nav-mobile .menu-container .menu-sidebar {
     box-shadow: 5px 0 5px -5px #333;
@@ -1318,9 +1320,9 @@ label, input, textarea, button, select {
     background: #f8a126;
     color: #333;
     position: fixed;
-    transform: translateX(-405px);
+    transform: translateX(435px);
     transition: transform 0.3s cubic-bezier(0, 0, 0.3, 1);
-    top: 45px;
+    top: 0px;
     z-index: 2;
     list-style-type: none;
     padding: 0;
@@ -1342,17 +1344,12 @@ label, input, textarea, button, select {
     right: 25px;
 }
 .nav-mobile .menu-container .menu-sidebar li {
-    height: 55px;
-    line-height: 55px;
+    height: 33px;
     font-size: 16px;
-    text-align: left;
+    text-align: center;
     position: relative;
-    /* border-bottom: 1px solid rgba(0, 0, 0, 0.1); */
-    padding-left: 20px;
+    padding: 0;
 }
-/* .nav-mobile .menu-container .menu-sidebar li:hover {
-    background: #f9a126;
-} */
 .nav-mobile .menu-container .menu-sidebar li .menu-sub {
     position: fixed;
     top: 0;
@@ -1396,11 +1393,11 @@ label, input, textarea, button, select {
 .nav-mobile{
     display: none;
   }
-.nav-mobile img {
+  .nav-mobile img {
     width: 45%;
-    float: right;
-    position: absolute;
-    top: 11px;
+    margin-left: 10px;
+    margin-top: 10px;
+    z-index: 9999;
 }
 
 .menu-sidebar form {
@@ -1453,9 +1450,6 @@ label, input, textarea, button, select {
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     outline: none;
     background-color: #fff;
-}
-.login_mov {
-    margin-top: 15px;
 }
 .nav-mobile .fa-question {
     background: #fff;
@@ -1776,6 +1770,11 @@ label, input, textarea, button, select {
     width: 40px;
     height: 40px;
     margin-right: 6px;
+}
+.scrolled {
+    background: #fff;
+    padding-bottom: 10px;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
 }
 /*--------------------------------------------------------------
 # Boat renter owner section
@@ -8372,9 +8371,10 @@ margin-right:15px;
     .home_banner_section {
         height: 86vh;
         background-position: center;
+        background-image: url(../img/mob-img.jpg);
     }
     .banner_text {
-        bottom: -15%;
+        top: 25%;
     }
     .banner_form {
         top: 15px;
@@ -8762,18 +8762,20 @@ margin-right:15px;
         font-size: 15px;
         background: #fff;
         color: #555 !important;
-        height: 51px;
+        height: 52px;
         appearance: auto;
         z-index: 999;
-        width: 96%;
-        margin: 0 0;
-        border-radius: 5px;
+        width: 32%;
+        margin-top: 90px;
+        border-radius: 47px;
         border: 1px solid #d4d4d4;
     }
     .nav-mobile li a {
         padding: 0;
-        font-weight: 400 !important;
+        font-weight: 500 !important;
         font-family: 'Montserrat' !important;
+        text-align: left;
+        text-shadow: 2px 2px 3px rgb(0 0 0 / 63%);
     }
     .about_sec_heading {
         padding-top: 30px !important;
@@ -9104,11 +9106,6 @@ margin-right:15px;
     .location-sec p {
         text-align: center;
     }
-    .nav-mobile img {
-        width: 24%;
-        top: 6px;
-        right: 20px;
-    }
     .city_box h2 {
     font-size: 25px;
     text-align: center;
@@ -9221,10 +9218,10 @@ margin-right:15px;
     height: 30px;
     padding: 5px 10px 0 9px !important;
     appearance: auto;
-    width: 96%;
-    height: 50px;
-    border-radius: 5px;
-    margin: 0 0;
+    width: 32%;
+    height: 52px;
+    border-radius: 44px;
+    margin-top: 125px;
     border: 1px solid #d4d4d4;
 }
 .boat_type_text {
@@ -9304,13 +9301,13 @@ margin-right:15px;
     display: block;
 }
 .banner_text_style p {
-    font-size: 30px;
+    font-size: 45px;
+    display: block;
+    text-align: center;
 }
 .banner_text_style {
     width: 330px;
-    margin-left: -138px;
-    top: -3%;
-    margin-top: -20px;
+    margin-left: -172px;
 }
 .boat_type_box:before,
 .boat_type_box:after{
@@ -9390,7 +9387,8 @@ margin-right:15px;
     display: none;
 }
 .banner_text_style .word {
-    margin-left: 3px;
+    margin-left: -88px;
+    padding-top: 20px;
 }
 .help_banner_section  #search {
     position: absolute;
@@ -9411,7 +9409,7 @@ margin-right:15px;
     display: block;
     position: absolute;
     width: 100%;
-    bottom: 15%;
+    bottom: 7%;
 }
 .modal-dialog .banner_form {
     display: block;
@@ -9458,6 +9456,13 @@ margin-right:15px;
 }
 .nav-mobile .menu-container .menu-sidebar li .submenu-toggle.active ~ .menu-sub, .nav-mobile .menu-container .menu-sidebar li .submenu-toggle:checked ~ .menu-sub {
     max-width: 430px;
+}
+.menu-sidebar li a {
+    text-align: center;
+    text-transform: uppercase;
+}
+.menu-sidebar {
+    padding-top: 88px !important;
 }
 }
 @media (min-width: 767px) and (max-width: 1023px) {
@@ -10381,7 +10386,7 @@ margin-right:15px;
     display: block;
     position: absolute;
     width: 100%;
-    bottom: 25%;
+    bottom: 17%;
 }
 .banner_form {
     top: 15px;
@@ -10444,6 +10449,12 @@ margin-right:15px;
 .location_rightside_box .col-sm-12.col-md-6.col-lg-4 {
     flex: 0 0 100%;
     max-width: 100%;
+}
+.main-dashboard {
+    padding: 40px 40px 0 40px;
+}
+.dashboard_box_btns a {
+    font-size: 15px;
 }
 }
 @media (min-width: 1250px) and (max-width: 1299px) {

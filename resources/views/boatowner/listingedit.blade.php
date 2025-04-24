@@ -1811,10 +1811,10 @@
                                 <i class="fa fa-angle-left"></i> Back
                             </button> -->
                             <input type="hidden" name="s" value="discount">
-                            <!-- <button type="submit" class="listing_sub_btn mt-ladda-btn ladda-button btn-outline"
+                            <button type="submit" class="listing_sub_btn mt-ladda-btn ladda-button btn-outline"
                                 data-style="contract" data-spinner-color="#333">
                                  Save
-                            </button> -->
+                            </button>
                         </div>
                     </div>
                 </form>

@@ -110,21 +110,20 @@
 
 .search-bar {
     align-items: center;
-    background: #0000007a;
-    border-radius: 50px;
-    padding: 15px 30px;
+    background: #ffffff57;
+    border-radius: 80px;
+    padding: 23px 30px;
     color: #fff;
     width: 100%;
     position: relative;
+    margin: 0px auto;
 }
-
-
 .dot {
     font-size: 1.2rem;
 }
 
 .search-button {
-    background: rgb(231 150 35 / 60%);
+    background: none;
     border: none;
     border-radius: 50%;
     width: 60px;
@@ -134,15 +133,19 @@
     font-size: 1.1rem;
     position: absolute;
     right: 10px;
-    top: 11px;
+    top: 20px;
 }
 .banner_form_mobile p {
-    font-size: 25px;
+    font-size: 22px;
     padding-bottom: 5px;
+    text-transform: uppercase;
+    font-weight: 600;
 }
 .search-options span {
     color: #fff;
-    font-size: 14px;
+    font-size: 17px;
+    font-family: 'Montserrat';
+    text-transform: uppercase;
 }
 .banner_form_mobile .modal-dialog {
     width: 95% !important;
@@ -257,13 +260,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 <p>Start your search</p>
                 <div class="search-options">
                     <span>Mariana</span>
-                    <span class="dot">•</span>
+                    <span class="dot">|</span>
                     <span>Date</span>
-                    <span class="dot">•</span>
+                    <span class="dot">|</span>
                     <span>Bot type</span>
                 </div>
                 <button class="search-button">
-                <i class="fa-solid fa-magnifying-glass"></i>
+                <img src="{{ asset('app-assets/site_assets/img/search-arrow.png') }}">
                 </button>
             </div>
             <!-- Modal -->

@@ -3,10 +3,11 @@
     @endsection @section('css')
     <style>
     .equip-menus li img, .equipment-services-sec li img {
-        width: 30px;
-        height: 30px;
-        margin-right: 10px;
-    }
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    filter: brightness(0) saturate(100%) invert(68%) sepia(83%) saturate(1245%) hue-rotate(341deg) brightness(100%) contrast(95%);
+}
     </style>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
     <link href="{{ asset('app-assets/global/plugins/bootstrap-sweetalert/sweetalert.css') }}" rel="stylesheet" type="text/css" />
