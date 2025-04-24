@@ -355,7 +355,55 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card-sec-title">
+                    <div class="mt-3 card-sec-title">
+                        <h2>Payment methods</h2>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                        <div class="form-group">
+                                <label class="label-default">These details will be used to pay you once your boat has been chartered.</label>
+                                <select name="bankaccount" class="form-control">
+                                        <option value="ibannumber">IBAN account</option>
+                                        <option value="accountroutingnumber">Account number/ Routing number</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                        <div class="form-group">
+                                <label class="label-default">Bank Account Holder (Name)</label>
+                                    <input type="text" id="accountholdername" name="bankaccount" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                    <label class="label-default">Account number</label>
+                                    <input type="text" id="bankaccount" name="bankaccount" class="form-control">
+                                </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                    <label class="label-default">Confirm account number</label>
+                                    <input type="text" id="confirmbankaccount" name="confirmbankaccount" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                    <label class="label-default">Routing number</label>
+                                    <input type="text" id="routingnumber" name="routingnumber" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                    <label class="label-default">BIC code / SWIFT</label>
+                                    <input type="text" id="biccode" name="biccode" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-3 card-sec-title">
                         <h2>Company's files</h2>
                     </div>
                     <div class="row company_profile_images">
@@ -370,7 +418,7 @@
                             @endphp
                             @if($certificate)
                                 @if($extension=='pdf')
-                                    <div class="user-Certificate">
+                                 <div class="user-Certificate">
                                         <a href="{{ $certificate }}" target="_blank"><img src="{{ asset('app-assets/site_assets/img/pdf-img.png') }}" id="avatar" alt="identity"></a>
                                     </div>
                                 @else

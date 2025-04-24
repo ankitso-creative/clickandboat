@@ -105,23 +105,8 @@
         </div>
     </header>
     <div>
-        <ul class="nav-mobile">
-            <li class="nav-item">
-                <a href="">.</a>
-            </li>
-            <!-- <li class="nav-item">
-            <select class="select-language" id="language">
-                {!! selectOption('languages','name','code',session()->get('lang'),array('status' , '1')) !!}
-            </select>
-        </li>
-        <li class="nav-item mobile_language">
-            <select name="currency" id="currency_name">
-                <option value="GBP">GBP: £</option>
-                <option value="EUR">EUR €</option>
-                <option value="opel">USD $</option>
-            </select>
-        </li> -->
-            <li><a href="{{ route('home') }}"><img src="{{ logoURL() }}"></a></li>
+        <ul class="nav-mobile" id="mobnavbar">
+        <li><a href="{{ route('home') }}"><img src="{{ logoURL() }}"></a></li>
             <li class="menu-container">
                 <input id="menu-toggle" type="checkbox">
                 <label for="menu-toggle" class="menu-button">
@@ -135,11 +120,8 @@
                 </label>
                 <ul class="menu-sidebar">
                     @if(!Auth::check())
-                    <li class="nav-item login_mov">
-                        <a class="nav-link" href="{{ route('login') }}">Login</a>
-                    </li>
                     @endif
-                    <li>
+                    <!-- <li>
                         <input type="checkbox" id="sub-one" class="submenu-toggle">
                         <label class="submenu-label" for="sub-one">About Us</label>
                         <div class="arrow right">&#8250;</div>
@@ -152,14 +134,28 @@
                             <li><a href="{{ route('blogs') }}">Our Blog</a></li>
                             <li><a href="{{ route('about-us') }}">About Us</a></li>
                         </ul>
+                    </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Start Your Search </a>
                     </li>
                     <li class="nav-item">
+                       <a class="nav-link" href="{{ route('about-us') }}">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                       <a class="nav-link" href="{{ route('location') }}">Explore Ibiza</a>
+                    </li>
+                    <li class="nav-item">
+                       <a class="nav-link" href="{{ route('blogs') }}">Our Blog</a>
+                    </li>
+                    <li class="mt-4 nav-item">
                         <a class="nav-link" href="{{ route('boatlogin') }}">Register your boat </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('help') }}"><i class="fa-solid fa-question"></i> Help </a>
+                    <li class="nav-item login_mov">
+                        <a class="nav-link" href="{{ route('login') }}">Sign Up</a>
                     </li>
-
+                    <li class="nav-item login_mov">
+                        <a class="nav-link" href="{{ route('login') }}">Login</a>
+                    </li>
                     @if(Auth::check())
                     <li><a href="{{ route('customer.dashboard') }}">Dashboard</a></li>
                     <li><a href="{{ route('logout') }}">Logout</a></li>
@@ -197,48 +193,10 @@
                                 <option value="uyu">UYU . $</option>
                         </select>
                     </li>
-                    <!-- 
-                <li>
-                    <input type="checkbox" id="sub-one" class="submenu-toggle">
-                    <label class="submenu-label" for="sub-one">About Us</label>
-                    <div class="arrow right">&#8250;</div>
-                    <ul class="menu-sub">
-                        <li class="menu-sub-title">
-                            <label class="submenu-label" for="sub-one">Back</label>
-                            <div class="arrow left">&#8249;</div>
-                        </li>
-                        <li><a href="{{ route('location') }}">Explore Ibiza</a></li>
-                        <li><a href="{{ route('blogs') }}">Our Blog</a></li>
-                        <li><a href="{{ route('about-us') }}">About Us</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('userlogin') }}">Sign Up</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('boatlogin') }}">Register your boat </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('login') }}"><i class="fa-solid fa-user"></i></a>
-                </li>
-                @if(Auth::check())
-                <li>
-                    <input type="checkbox" id="sub-two" class="submenu-toggle">
-                    <label class="submenu-label" for="sub-two">My Account</label>
-                    <div class="arrow right">&#8250;</div>
-                    <ul class="menu-sub">
-                        <li class="menu-sub-title">
-                            <label class="submenu-label" for="sub-two">Back</label>
-                            <div class="arrow left">&#8249;</div>
-                        </li>
-                        <li><a href="#">Dashboard</a></li>
-                        <li><a href="{{ route('logout') }}">Logout</a></li>
-                    </ul>
-                </li> 
-                    @endif -->
                 </ul>
             </li>
         </ul>
+        
     </div>
     @yield('content')
     <footer class="footer">
@@ -309,6 +267,20 @@
     {{-- <script src="{{ asset('app-assets/site_assets/js/map.js') }}"></script> --}}
     <script src="{{ asset('app-assets/site_assets/js/slick.min.js') }}"></script>
     <script src="{{ asset('app-assets/site_assets/js/script.js') }}?ver=<?=time()?>"></script>
+    <script>
+        // Replace '#navbar' with your actual navbar selector
+const navbar = document.querySelector('#mobnavbar');
+
+// Scroll event
+window.addEventListener('scroll', function () {
+  if (window.scrollY > 150) {
+    navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
+  }
+});
+
+    </script>
 
     @yield('js')
 
