@@ -46,11 +46,17 @@ class ChatController extends Controller
         endif;   
         
         $active = 'support';
-        return view('boatowner.support', compact('active', 'usersWithLastMessage'));
+        if(count($usersWithLastMessage)):
+            return redirect()->route('boatowner.message', ['receiver_id' => $usersWithLastMessage[0]['user']['id'], 'slug' => $usersWithLastMessage[0]['listing']['slug']])->with('success', 'Order updated successfully!'); 
+        else:
+            return view('boatowner.support', compact('active', 'usersWithLastMessage'));
+        endif;
     }
 
     public function message($receiver_id,$slug)
     {
+        $usersWithLastMessage = $this->service->usersWithLastMessage();
+
         $active = 'support';
         $slug = $slug;
         $listing = Listing::where('slug', $slug)->first();
@@ -59,7 +65,7 @@ class ChatController extends Controller
         $receiver = User::find($receiver_id);
         $replies  = $this->service->fetchMessages($receiver_id,$listing->id);
         $quotation = Quotation::where('listing_id',$listing->id)->where('user_id',$receiver_id)->first();
-        return view('boatowner.message',compact('active','receiver_id','replies','sender','receiver','slug','quotation','listing'));
+        return view('boatowner.message',compact('active','receiver_id','replies','sender','receiver','slug','quotation','listing','usersWithLastMessage'));
     }
     public function sendMessage(MessageRequest $request)
     {

@@ -195,6 +195,48 @@
 
 @section('content')
     <div class="col-lg-9 main-dashboard">
+        <div class="user-list-section">
+            <ul>
+                @if($usersWithLastMessage)
+                    @foreach($usersWithLastMessage as $userMessage)
+                        @php 
+                            $user = $userMessage['user'];
+                            $message = $userMessage['message'];
+                            $listing = $userMessage['listing'];
+                            $aClass = '';
+                            if($slug == $listing->slug):
+                                $aClass = 'user-active';
+                            endif;
+                            $image = $user->getFirstMediaUrl('profile_image');
+                            if(!$image):
+                                $image = 'https://static1.clickandboat.com/v1/o/img/mask~dddc60cc1d.png';
+                            endif;
+                        @endphp
+                        <li class="{{ $aClass }}">
+                            <a href="{{ route('boatowner.message', ['receiver_id' => $user->id, 'slug' => $listing->slug]) }}">
+                                <div class="user-box-list">
+                                    <div class="user-box-image">
+                                        <img src="{{ $image }}" />
+                                    </div>
+                                    <div class="user-box-desc">
+                                        <div class="user-title">
+                                            <h2>{{ $user->name }}</h2>
+                                            <span>{{ $message->created_at }}</span>
+                                        </div>
+                                        <div class="user-boat-name">
+                                            <p>{{ $listing->type  }} {{ $listing->boat_name }}</p>
+                                        </div>
+                                        <div class="user-last-message">
+                                            <p>{{ $message->message }} </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    @endforeach
+                @endif
+            </ul>
+        </div>
         <div class="message mCustomScrollbar" data-mcs-theme="minimal-dark">
             <div class="message-owner">
                 <div class="message-avatar-box">

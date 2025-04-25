@@ -44,10 +44,10 @@
         <div class="page-title">
             <h1>All Your Bookings Support</h1>
         </div>
-        {{-- <div class="no-booking-yet">
-            <p>You haven't made a booking yet, <a href="#">search for a boat</a>.</p>
-        </div> --}}
-        <div class="card-section">
+        <div class="no-booking-yet">
+            <p>You haven't any message.</p>
+        </div> 
+        {{-- <div class="card-section">
             <div class="card-sec-title">
                 <h2>Booking Owner Lists</h2>
             </div>
@@ -86,7 +86,7 @@
                     </table>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
     
 @endsection
