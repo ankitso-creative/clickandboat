@@ -695,7 +695,11 @@
                                                         <h3>{{ $result->city }}</h3>
                                                         <p class="location_pera">{{ $result->type }} {{ $result->manufacturer }} {{ $result->model }} sport 30 (2023)</p>
                                                         <p class="people_pera">{{ $result->capacity }} people · 30 hp · 5 m</p>
-                                                        <h5 class="location_price">From <span class="price_style">€{{ $result->price->price ?? '' }}</span> / day</h5>
+                                                        @if(getListingPrice($result->slug))
+                                                            <h5 class="location_price">From <span class="price_style">{{ getListingPrice($result->slug) }}</span> / day</h5>
+                                                        @else
+                                                            <h5 class="location_price"><span class="price_style"></span></h5>
+                                                        @endif
                                                         <div class="location_facility">
                                                             <ul>
                                                                 <li><svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">

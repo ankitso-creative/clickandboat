@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Admin\Listing;
 use App\Models\Admin\Setting;
 use App\Models\Admin\Price;
 use App\Models\Admin\SeasonPrice;
@@ -53,6 +54,12 @@ function userImage()
 }
 function bookingPrice($request)
 {
+    if(session()->has('currency_code')):
+        $to = session('currency_code');
+    else:
+        $to = 'USD';
+    endif;
+    $fromCur = Listing::where('id',$request['id'])->value('currency');
     $startDate = Carbon::parse($request['checkindate']);
     $endDate = Carbon::parse($request['checkoutdate']);
     $days = $startDate->diffInDays($endDate)+1;
@@ -74,21 +81,21 @@ function bookingPrice($request)
                     {
                         $priceArray = $price->toArray();
                         if ($priceArray['one_half_day'] && $days == 1):
-                            $total_price = $priceArray['one_half_day'];
+                            $total_price = getAmountWithoutSymble($priceArray['one_half_day'],$fromCur ,$to);
                         elseif ($priceArray['two_day'] && $days == 2):
-                            $total_price = $priceArray['two_day'];
+                            $total_price = getAmountWithoutSymble($priceArray['two_day'],$fromCur ,$to);
                         elseif ($priceArray['three_day'] && $days == 3):
-                            $total_price = $priceArray['three_day'];
+                            $total_price = getAmountWithoutSymble($priceArray['three_day'],$fromCur ,$to);
                         elseif ($priceArray['four_day'] && $days == 4):
-                            $total_price = $priceArray['four_day'];
+                            $total_price = getAmountWithoutSymble($priceArray['four_day'],$fromCur ,$to);
                         elseif ($priceArray['five_day'] && $days == 5):
-                            $total_price = $priceArray['five_day'];
+                            $total_price = getAmountWithoutSymble($priceArray['five_day'],$fromCur ,$to);
                         elseif ($priceArray['six_day'] && $days == 6):
-                            $total_price = $priceArray['six_day'];
+                            $total_price = getAmountWithoutSymble($priceArray['six_day'],$fromCur ,$to);
                         elseif ($priceArray['one_week'] && $days <= 7):
-                            $total_price = $priceArray['one_week'];
+                            $total_price = getAmountWithoutSymble($priceArray['one_week'],$fromCur ,$to);
                         else:
-                            $total_price = $season->price * $days;
+                            $total_price = getAmountWithoutSymble($season->price,$fromCur ,$to) * $days;
                         endif;
                         $servive_fee = 0;
                         $totalAmount = $total_price + $servive_fee;
@@ -101,7 +108,7 @@ function bookingPrice($request)
                     } 
                     else 
                     {
-                        $total_price = $season->price * $days;
+                        $total_price = getAmountWithoutSymble($season->price,$fromCur ,$to) * $days;
                         $servive_fee = 0;
                         $totalAmount = $total_price + $servive_fee;
                         $result = [
@@ -119,7 +126,7 @@ function bookingPrice($request)
             $price = Price::where('listing_id', $request['id'])->first();
             if ($price) {
                 $priceArray = $price->toArray();
-                $total_price = $priceArray['price'] * $days;
+                $total_price = getAmountWithoutSymble($priceArray['price'],$fromCur ,$to) * $days;
                 $servive_fee = 0;
                 $totalAmount = $total_price + $servive_fee;
                 $result = [
@@ -240,6 +247,12 @@ function maxLengthValue()
 }
 function minMaxPrice($season, $price = '')
 {
+    if(session()->has('currency_code')):
+        $to = session('currency_code');
+    else:
+        $to = 'USD';
+    endif;
+    $from = Listing::where('id',$season->listing_id)->value('currency');
     unset($season->id);
     unset($season->listing_id);
     unset($season->season_price_id);
@@ -256,28 +269,99 @@ function minMaxPrice($season, $price = '')
     $min = min($season);
     $max = max($season);
     if ($min && $max) {
-        return $min . ' - ' . $max;
+        return getAmountWithSymble($min,$from,$to) . ' - ' . getAmountWithSymble($max,$from,$to);
     } else {
         if ($min) {
-            return $min;
+            return getAmountWithSymble($min,$from,$to);
         } else {
-            return $max;
+            return getAmountWithSymble($max,$from,$to);
         }
     }
 }
-function getAmountWithSymble($price, $code)
+function priceSymbol($code)
 {
-    $req_url = 'https://api.exchangerate-api.com/v4/latest/USD';
-    $response_json = file_get_contents($req_url);
-    if(false !== $response_json) {
-        try {
-            $response_object = json_decode($response_json);
-            $EUR_price = round(($price * $response_object->rates->EUR), 2);
+    $symbols = [
+        "EUR" => '€',
+        "USD" => '$',
+        "GBP" => '£',
+        "CHF" => 'CHF',
+        "RUB" => '₽',
+        "NOK" => 'kr',
+        "SEK" => 'kr',
+        "DKK" => 'kr',
+        "CZK" => 'kr',
+        "PLN" => 'zł',
+        "CAD" => 'CAD',
+        "AUD" => 'AUD',
+        "HUF" => 'ft',
+        "RON" => 'lei',
+        "BGN" => 'Лв',
+        "HRK" => 'kn',
+        "BRL" => 'BRL',
+        "ARS" => '$',
+        "ILS" => '₪',
+        "AED" => 'د.إ ',
+        "CLP" => '$',
+        "COP" => '$',
+        "MXN" => '$',
+        "UYU" => '$',
+    ];
+    return $symbols[$code] ?? $code;
+}
+function getAmountWithoutSymble($price, $from, $to)
+{
+    if($from == $to):
+        return $price;
+    else:
+        $req_url = 'https://api.exchangerate-api.com/v4/latest/'.$from;
+        $response_json = file_get_contents($req_url);
+        if(false !== $response_json) {
+            try {
+                $response_object = json_decode($response_json);
+                $price = round(($price * $response_object->rates->{$to}), 2);
+                return $price;
+            }
+            catch(Exception $e) {
+                // Handle JSON parse error...
+            }
         }
-        catch(Exception $e) {
-            // Handle JSON parse error...
+    endif;
+}
+function getAmountWithSymble($price, $from, $to)
+{
+    if($from == $to):
+        return priceSymbol($from).$price;
+    else:
+        $req_url = 'https://api.exchangerate-api.com/v4/latest/'.$from;
+        $response_json = file_get_contents($req_url);
+        if(false !== $response_json) {
+            try {
+                $response_object = json_decode($response_json);
+                $price = round(($price * $response_object->rates->{$to}), 2);
+                return priceSymbol($to).$price;
+            }
+            catch(Exception $e) {
+                // Handle JSON parse error...
+            }
         }
-    }
+    endif;
+}
+function getListingPrice($slug)
+{
+    $listing = Listing::where('slug',$slug)->with('seasonPrice')->first();
+    $seasonPrice = $listing->seasonPrice;
+    if(count($listing->seasonPrice)):
+        $price = $seasonPrice[0]['price'];
+        if(session()->has('currency_code')):
+            $to = session('currency_code');
+        else:
+            $to = 'USD';
+        endif;
+        $price = getAmountWithSymble($price,$listing->currency, $to);
+        return $price;
+    else:
+        return '';
+    endif;  
 }
 function Timeago($time)
 {

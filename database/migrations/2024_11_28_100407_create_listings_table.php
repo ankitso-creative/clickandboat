@@ -41,6 +41,7 @@ return new class extends Migration
             $table->string('renovated')->nullable();
             $table->string('speed')->nullable();
             $table->string('slug');
+            $table->string('currency')->default('USD');
             $table->integer('status')->default('0');
             $table->timestamps();
         });

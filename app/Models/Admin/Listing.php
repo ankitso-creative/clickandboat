@@ -43,6 +43,7 @@ class Listing extends Model implements HasMedia
         'skipper_price',
         'renovated',
         'speed',
+        'currency',
     ];
     public function user() 
     {

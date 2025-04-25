@@ -325,14 +325,22 @@
                                 </div>
                             </div>
                         </div>
+                        @php 
+                            if($quotation->currency):
+                                $symble = priceSymbol($quotation->currency);
+                            else:
+                                $symble = priceSymbol('USD');
+                            endif;
+                            $fuel_price = getAmountWithoutSymble($listing->fuel_price,$listing->currency,$quotation->currency);
+                        @endphp
                         <div class="show-Price" id="show-Price-sec">
-                            <p>Hire: <span id="hire">{{ $quotation->net_amount }}</span></p>
-                            <p>Service Fee: <span id="service-fee">€{{ $quotation->service_fee }}</span></p>
+                            <p>Hire: <span id="hire">{{ $symble.$quotation->net_amount }}</span></p>
+                            <p>Service Fee: <span id="service-fee">{{ $symble.$quotation->service_fee }}</span></p>
                             @if($listing->fuel_include == '1')
-                                <p>Fuel Charges: <span id="service-fee">€{{ $listing->fuel_price }}</span></p>
-                                <p>Total: <span id="boat-total" class="price-after">€{{ $quotation->total + $listing->fuel_price }}</span></p>
+                                <p>Fuel Charges: <span id="service-fee">{{ $symble.$fuel_price }}</span></p>
+                                <p>Total: <span id="boat-total" class="price-after">{{ $symble.$quotation->total + $fuel_price }}</span></p>
                             @else
-                                <p>Total: <span id="boat-total">€{{ $quotation->total }}</span></p>
+                                <p>Total: <span id="boat-total">€{{ $symble.$quotation->total }}</span></p>
                             @endif
                         </div>
                         <div class="d-flex flex-column">

@@ -168,6 +168,11 @@ class ChatRepository
     }
     public function sendQuotation($request)
     {
+        if(session()->has('currency_code')):
+            $symble = session('currency_code');
+        else:
+            $symble = 'USD';
+        endif;
         $quotation = new Quotation();
         $user = auth()->user();
         $listingId = Listing::where('slug', $request['slug'])->pluck('id')->first();
@@ -184,6 +189,7 @@ class ChatRepository
         $quotation->service_fee = $price['servive_fee']; 
         $quotation->sub_total = $price['totalAmount'];
         $quotation->total = $price['totalAmount']; 
+        $quotation->currency = $symble;
         $quotation->status = 'Pending';
         if($quotation->save())
         {

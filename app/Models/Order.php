@@ -28,6 +28,7 @@ class Order extends Model
         'cancel_reason',
         'cancel_message',
         'payment_status',
+        'currency',
     ];
     public function listing() 
     {

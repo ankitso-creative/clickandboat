@@ -30,6 +30,7 @@ return new class extends Migration
             $table->string('amount_paid');
             $table->string('pending_amount')->nullable();
             $table->string('payment_status')->nullable();
+            $table->string('currency')->nullable();
             $table->timestamps();
         });
     }
