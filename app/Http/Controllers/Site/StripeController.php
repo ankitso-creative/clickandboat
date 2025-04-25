@@ -40,7 +40,7 @@ class StripeController extends Controller
         try {
             $paymentIntent = PaymentIntent::create([
                 'amount' => $depositAmount * 100, 
-                'currency' => 'usd',
+                'currency' => $quotation->currency,
                 'payment_method_types' => ['card'],
                 'confirmation_method' => 'automatic',  
                 'capture_method' => 'automatic', 
@@ -110,6 +110,7 @@ class StripeController extends Controller
                     'listing_id' => $listing->id,
                     'sub_total' => $depositAmount + $pending_amount,
                     'total' => $totalAmount,
+                    'currency' => $quotation->currency,
                 ]);
                 return response()->json([
                     'message' => 'Payment confirmed and order saved successfully.',

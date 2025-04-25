@@ -42,6 +42,11 @@ class PagesController extends Controller
     }
     public function singleBoat($city,$type,$slug)//test_boat
     {
+        if(session()->has('currency_code')):
+            $symble = priceSymbol(session('currency_code'));
+        else:
+            $symble = priceSymbol('USD');
+        endif;
         $listing = $this->service->singleBoatDetails($city,$type,$slug);
         $calendarArray = '';
         if(!$listing)
@@ -70,7 +75,7 @@ class PagesController extends Controller
             $totalEquipments = count($flatItems);
             $viewEquipments = count($flatItems) - 6;
         endif;
-        return view('front.single_boat',compact('listing','calendarArray','equipments','viewEquipments','sixEquipments','totalEquipments'));
+        return view('front.single_boat',compact('listing','calendarArray','equipments','viewEquipments','sixEquipments','totalEquipments','symble'));
     }
     public function locationCategry(Request $request , $type)//test_boat
     {

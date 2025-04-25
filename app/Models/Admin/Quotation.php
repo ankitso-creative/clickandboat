@@ -15,6 +15,7 @@ class Quotation extends Model
         'service_fee',
         'sub_total',
         'total',
+        'currency',
         'status',
     ];
 }

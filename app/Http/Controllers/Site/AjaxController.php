@@ -30,6 +30,6 @@ class AjaxController extends Controller
     {
         $request = $request->all();
         session(['currency_code' => $request['code']]);
-        $code =session('currency_code');;
+        $code = session('currency_code');;
     }
 }

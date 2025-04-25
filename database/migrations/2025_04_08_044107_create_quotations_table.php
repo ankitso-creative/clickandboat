@@ -21,6 +21,7 @@ return new class extends Migration
             $table->float('service_fee');
             $table->float('sub_total');
             $table->float('total');
+            $table->string('currency')->nullable();
             $table->string('status');
             $table->timestamps();
         });

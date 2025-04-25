@@ -583,9 +583,9 @@
                                 </div>
                                 <div class="show-Price d-none" id="show-Price-sec-2">
                                     <p>Days: <span id="total-days-2"></span></p>
-                                    <p>Charter Price: <span id="charter-pice-2"></span></p>
-                                    <p>Service Fee: <span id="charter-fee-2"></span></p>
-                                    <p>Total: <span id="charter-total-2"></span></p>
+                                    <p>Charter Price: {{ $symble }}<span id="charter-pice-2"></span></p>
+                                    <p>Service Fee: {{ $symble }}<span id="charter-fee-2"></span></p>
+                                    <p>Total: {{ $symble }}<span id="charter-total-2"></span></p>
                                 </div>
                                 <div class="datepicker-mobile">
                                     <div id="inline-datepicker-mobile"></div>
@@ -698,9 +698,9 @@
                                 </div>
                                 <div class="show-Price d-none" id="show-Price-sec">
                                     <p>Days: <span id="total-days"></span></p>
-                                    <p>Charter Price: <span id="charter-pice"></span></p>
-                                    <p>Service Fee: <span id="charter-fee"></span></p>
-                                    <p>Total: <span id="charter-total"></span></p>
+                                    <p>Charter Price: {{ $symble }}<span id="charter-pice"></span></p>
+                                    <p>Service Fee: {{ $symble }}<span id="charter-fee"></span></p>
+                                    <p>Total: {{ $symble }}<span id="charter-total"></span></p>
                                 </div>
                                 <div class="d-flex flex-column">
                                     @if(Auth::check())
@@ -988,7 +988,7 @@
                                 </div>
                                 <div class="show-Price d-none" id="qshow-Price-sec">
                                     <p>Days: <span id="qtotal-days"></span></p>
-                                    <p>Price: <span id="qcharter-total"></span></p>
+                                    <p>Price: {{ $symble }}<span id="qcharter-total"></span></p>
                                 </div>
                                 <div class="row message-modal-text">
                                     <div class="col-md-12">
