@@ -619,6 +619,7 @@ label, input, textarea, button, select {
     float: left;
     height: 100vh;
     border-right: 1px solid #efeeee;
+    overflow-y: auto;
 }
 .user-list-section ul {
     list-style: none;
