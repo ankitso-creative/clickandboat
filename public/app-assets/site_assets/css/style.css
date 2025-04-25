@@ -4546,11 +4546,12 @@ label, input, textarea, button, select {
     text-transform: uppercase;
 }
 .about_text_block .about_small_text {
-    font-size: 15px;
+    font-size: 30px;
     color: #f8a126;
     text-transform: uppercase;
     font-weight: 500;
     padding-top: 30px;
+    line-height: 37px !important;
 }
 .about_text_block h3 {
     font-size: 44px;
@@ -8351,6 +8352,9 @@ margin-right:15px;
 .main-dashboard input[type="file"]::file-selector-button {
     color: #000;
 }
+.about_content_section ul {
+    list-style: none;
+}
 /*--------------------------------------------------------------
 # Media Query
 --------------------------------------------------------------*/
@@ -8783,6 +8787,7 @@ margin-right:15px;
     }
     .single_boat_banner {
         height: 125px;
+        display: none;
     }
     .boat-title h1 {
         font-size: 30px;
@@ -8842,6 +8847,7 @@ margin-right:15px;
     }
     .breadcrumb {
         text-align: center;
+        padding-top: 90px;
     }
     .boat-content-sec h3 {
         text-align: center;

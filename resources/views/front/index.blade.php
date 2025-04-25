@@ -259,11 +259,11 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="search-bar" data-toggle="modal" data-target="#searchmobilefilter">
                 <p>Start your search</p>
                 <div class="search-options">
-                    <span>Mariana</span>
+                    <span>Marina</span>
                     <span class="dot">|</span>
                     <span>Date</span>
                     <span class="dot">|</span>
-                    <span>Bot type</span>
+                    <span>Boat type</span>
                 </div>
                 <button class="search-button">
                 <img src="{{ asset('app-assets/site_assets/img/search-arrow.png') }}">
