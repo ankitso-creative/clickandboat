@@ -37,11 +37,17 @@ class ChatController extends Controller
     {
         $usersWithLastMessage = $this->service->usersWithLastMessage();
         $active = 'support';
-        return view('customer.support', compact('active', 'usersWithLastMessage'));
+        if(count($usersWithLastMessage)):
+            $slug = Listing::where('id', $usersWithLastMessage[0]['listing_id'])->value('slug');
+            return redirect()->route('customer.message', $slug)->with('success', 'Order updated successfully!'); 
+        else:
+            return view('customer.support', compact('active', 'usersWithLastMessage'));
+        endif;
     }
 
     public function message($slug)
     {
+        $usersWithLastMessage = $this->service->usersWithLastMessage();
         $active = 'support';
         $listing = Listing::where('slug', $slug)->first();
         $receiver_id = $listing->user_id;
@@ -55,7 +61,7 @@ class ChatController extends Controller
         {
             $quotationID = Crypt::encrypt($quotation->id);
         }
-        return view('customer.message',compact('active','receiver_id','replies','sender','receiver','slug','quotation','listing','quotationID'));
+        return view('customer.message',compact('active','receiver_id','replies','sender','receiver','slug','quotation','listing','quotationID','usersWithLastMessage'));
     }
     public function sendMessage(MessageRequest $request)
     {
