@@ -12,8 +12,8 @@
 @section('content')
 <section class="about_banner_section">
     <div class="about_banner_text">
-        <p>About Booker Boat</p>
-        <h1>Who we are</h1>
+        <!-- <p>About Booker Boat</p> -->
+        <h1>About us</h1>
     </div>
 </section>
 <section class="about_content_section">
@@ -21,13 +21,21 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="text-center about_text_block">
-                    <h2>About Booker Boat</h2>
-                    <p class="about_small_text">the leading professional and boat hire company</p>
-                    <h3>In the beginning</h3>
-                    <p>In ac nunc in metus mattis molestie. Etiam suscipit enim id nulla dapibus vehicula. Nullam bibendum rhoncus bibendum. Phasellus vestibulum metus ex, quis efficitur ligula rutrum eu. Maecenas vehicula eget ex gravida blandit. Nunc lacinia lobortis felis. Suspendisse venenatis ultricies cursus. Praesent arcu leo, faucibus a euismod sit amet, porttitor nec felis. Etiam et volutpat ex. Maecenas nec libero sed diam scelerisque rhoncus vel nec mauris. In non nisl in mi aliquam finibus in quis est. Vivamus vestibulum, libero sed feugiat porttitor, odio ligula elementum urna, a laoreet risus velit at lorem. </p>
-                    <h3 class="about_sec_heading">The professional and yacht charter platform</h3>
-                    <p>Nunc vulputate diam ultrices, ornare mi ac, lacinia dolor. Proin ut turpis lectus. Duis vitae magna et risus dictum cursus. In vitae magna in metus volutpat egestas. Sed ornare felis eget ex tincidunt, sed condimentum ex malesuada. Nulla euismod tortor sed lorem consequat vulputate. Sed tempus purus quis tristique porttitor. Integer aliquam sapien et justo elementum pretium. Praesent in nisi in magna semper pretium.</p><br>
-                    <p>Vestibulum euismod posuere vulputate. Fusce a nunc sit amet mauris vehicula lacinia. Mauris in efficitur turpis. Vestibulum at volutpat metus. Nulla efficitur sollicitudin facilisis. Aliquam erat volutpat. Duis eget aliquam turpis.</p>
+                    <h2>About us</h2>
+                    <p class="pb-3 about_small_text">Welcome to My Boat Booker - your go-to destination for Ibiza boat rentals, made easy.</p>
+                    <!-- <h3>Welcome to My Boat Booker - your go-to destination for Ibiza boat rentals, made easy.</h3> -->
+                    <p>Born from the sun-soaked shores of Ibiza and built with a deep love for the sea, we launched My Boat Booker in 2025 with one simple goal: to make boat rentals in Ibiza as seamless, quick and reliable as possible.</p>
+                    <!-- <h3 class="about_sec_heading">The professional and yacht charter platform</h3> -->
+                    <p>After years of running a boat charter company here, we noticed a gap - booking a boat should be just as fun as being on one. So, we created a platform that brings boat owners and renters together with zero stress and all the good vibes, </p><br>
+                    <p>Whether your a group of friends chasing the iconic ibiza party experience, or a family looking to create unforgettable memories out on the water, we’ve got the perfect boat for you. Think hidden coves, crystal-clear water, and that unbeatable feeling of freedom - that’s what we’re here to deliver. </p>
+                    <h3>Why My Boat Booker?</h3>
+                    <ul>
+                        <li>-Easy, fast & secure bookings</li>
+                        <li>-A wide range of boats for every kind of adventure</li>
+                        <li>-Local knowledge, real passion and friendly support</li>
+                    </ul>
+                    <p class="pt-3"> So whether your sailing into there sunset with your favourite people or turning up the volume for a boat party to remember, let My Boat Booker be your first step to the ultimate Ibiza boat rental experience.</p>
+                    <p class="pt-3">Lets get you out on the water!"</p>
                 </div>
             </div>
         </div>

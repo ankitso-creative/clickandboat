@@ -614,6 +614,78 @@ label, input, textarea, button, select {
 /*--------------------------------------------------------------
 # Message box css
 --------------------------------------------------------------*/
+.user-list-section {
+    width: 30%;
+    float: left;
+    height: 100vh;
+    border-right: 1px solid #efeeee;
+    overflow-y: auto;
+}
+.user-list-section ul {
+    list-style: none;
+    width: 100%;
+}
+.user-list-section ul li {
+    padding: 10px;
+    transition: 0.5s;
+    border-bottom: 1px solid #efeeee;
+}
+.user-list-section ul li:last-child{
+    border-bottom: none !important;
+}
+.user-list-section ul li.user-active {
+    background: #f5f5f5;
+}
+.user-list-section ul li:hover {
+    background: #f5f5f5;
+}
+.user-list-section ul li a .user-box-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.user-list-section ul li a .user-box-list .user-box-image {
+    width: 15%;
+}
+.user-list-section ul li a .user-box-list .user-box-image img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.user-box-desc {
+    padding: 3px 10px;
+    width: 85%;
+}
+.user-box-desc .user-title {
+    display: flex;
+    justify-content: space-between;
+}
+.user-box-desc .user-title h2 {
+    margin-bottom: 0px !important;
+    text-transform: capitalize;
+    font-size: 16px;
+    padding-bottom: 0px;
+}
+.user-box-desc .user-title span {
+    font-size: 12px;
+    color: #323131;
+}
+.user-box-desc .user-boat-name p {
+    color: #f9a126;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 19px !important;
+}
+.user-box-desc .user-last-message p{
+    font-size: 14px;
+    color: #323131;
+    line-height: 19px !important;
+    overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
 .message-box {
     max-height: 100vh;
     overflow-y: auto;
@@ -625,7 +697,7 @@ label, input, textarea, button, select {
     padding: 15px 15px 0px 15px;
 }
 .message.mCustomScrollbar {
-    width: 60%;
+    width: 40%;
     float: left;
     position: relative;
 }
@@ -793,7 +865,7 @@ label, input, textarea, button, select {
     color: #f9a126;
 }
 .list-boat-sec {
-    width: 40%;
+    width: 30%;
     float: right;
     padding: 15px;
 }
@@ -4546,11 +4618,12 @@ label, input, textarea, button, select {
     text-transform: uppercase;
 }
 .about_text_block .about_small_text {
-    font-size: 15px;
+    font-size: 30px;
     color: #f8a126;
     text-transform: uppercase;
     font-weight: 500;
     padding-top: 30px;
+    line-height: 37px !important;
 }
 .about_text_block h3 {
     font-size: 44px;
@@ -8351,6 +8424,9 @@ margin-right:15px;
 .main-dashboard input[type="file"]::file-selector-button {
     color: #000;
 }
+.about_content_section ul {
+    list-style: none;
+}
 /*--------------------------------------------------------------
 # Media Query
 --------------------------------------------------------------*/
@@ -8783,6 +8859,7 @@ margin-right:15px;
     }
     .single_boat_banner {
         height: 125px;
+        display: none;
     }
     .boat-title h1 {
         font-size: 30px;
@@ -8842,6 +8919,7 @@ margin-right:15px;
     }
     .breadcrumb {
         text-align: center;
+        padding-top: 90px;
     }
     .boat-content-sec h3 {
         text-align: center;
