@@ -58,13 +58,21 @@
                     <tbody>
                         @if($results)
                             @foreach($results as $result)
+                                @php
+                                    $listing = App\Models\Admin\Listing::where('id',$result->listing_id)->first();
+                                    if($result->currency):
+                                        $symble = priceSymbol($result->currency);
+                                    else:
+                                        $symble = priceSymbol('USD');
+                                    endif;
+                                @endphp
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $result->payment_intent_id }}</td>
                                     <td>{{ $result->check_in }}</td>
                                     <td>{{ $result->check_out }}</td>
-                                    <td>Maxi Dolphin 100ft Finot Conq (2013) - NOMAD IV</td>
-                                    <td>£{{ $result->amount_paid }}</td>
+                                    <td>{{ $listing->boat_name }}</td>
+                                    <td>{{ $symble.$result->amount_paid }}</td>
                                     <td>{{ $result->payment_status }}</td>
                                     <td>{{ \Carbon\Carbon::parse($result->created_at)->format('d-m-Y') }}</td>
                                     <td>

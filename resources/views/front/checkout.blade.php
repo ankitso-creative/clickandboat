@@ -29,6 +29,7 @@
  		document.getElementById("payment-form").addEventListener("submit", async (event) => {
 			event.preventDefault();
 			const quotationID = document.getElementById("quotationID").value;
+			const paymentType = document.querySelector('input[name="payment_type"]:checked')?.value;
 			try {
 				const response = await fetch("{{ route('customer.stripe.createPaymentIntent') }}", {
 					method: "POST",
@@ -36,7 +37,7 @@
 						"Content-Type": "application/json",
 						"X-CSRF-TOKEN": "{{ csrf_token() }}"
 					},
-					body: JSON.stringify({ quotationID })
+					body: JSON.stringify({ quotationID,paymentType })
 				});
 				const data = await response.json();
 				if (data.error) {
@@ -61,7 +62,7 @@
 						body: JSON.stringify({
 							paymentIntentId: paymentIntent.id,
 							paymentStatus: paymentIntent.status, 
-							quotationID
+							quotationID,paymentType
 						})
 					});
 					const confirmationData = await confirmationResponse.json();
@@ -191,25 +192,39 @@
 												</label>
 											</div>
 										@endif
-										@if($listing->fuel_include == '0')
-											<div class="col-md-12">
-												<input type="radio" checked="" value="full-payment" class="form-check-input" name="payment_type" id="myRadiofull">
-												<label for="myRadiofull">
-													<span class="title-label">Pay the total amount</span>
-													<span class="title-text">€{{ $quotation['total'] }}</span>
-													<p>Pay the total amount of the booking today.</p>
-												</label>
-											</div>
-										@else
-											<div class="col-md-12">
-												<input type="radio" checked="" value="full-payment" class="form-check-input" name="payment_type" id="myRadiofull">
-												<label for="myRadiofull">
-													<span class="title-label">Pay the total amount with fuel charges</span>
-													<span class="title-text">€{{ $quotation['total'] + $listing->fuel_price }}</span>
-													<p>Pay the total amount of the booking today.</p>
-												</label>
-											</div>
-										@endif
+										@php
+											if($quotation->currency):
+												$symble = priceSymbol($quotation->currency);
+											else:
+												$symble = priceSymbol('USD');
+											endif;
+											$fuel_price = 0;
+											$skipper_price = 0;
+											$fuel_include = '';
+											$skipper_include = '';
+											if($listing->fuel_include == '1'):
+												$fuel_price = getAmountWithoutSymble($listing->fuel_price,$listing->currency,$quotation->currency);
+												$fuel_include = 'Fuel Charges: '.$symble.$fuel_price;
+											endif;
+											if($listing->skipper_include == '1'):
+												$skipper_price = getAmountWithoutSymble($listing->skipper_price,$listing->currency,$quotation->currency);
+												$skipper_include = 'Skipper Charges: '.$symble.$skipper_price;
+											endif;
+											$totalAmount = $quotation['total'] + $fuel_price + $skipper_price ;
+										@endphp
+										<div class="col-md-12">
+											<input type="radio" checked="" value="full-payment" class="form-check-input" name="payment_type" id="myRadiofull">
+											<label for="myRadiofull">
+												<span class="title-label">Pay the total amount</span>
+												<span class="title-text">Hire: {{ $symble.$quotation['total'] }}</span>
+												<span class="title-text">{{ $fuel_include }}</span>
+												<span class="title-text">{{ $skipper_include }}</span>
+												<span class="title-text">Total: {{ $symble.$totalAmount }}</span>
+												<p>Pay the total amount of the booking today.</p>
+											</label>
+										</div>
+										
+										
 										{{-- <div class="col-md-12">
 											<input type="radio" checked="" value="With a skipper" class="form-check-input" name="optradio" id="myRadio9">
 											<label for="myRadio9">

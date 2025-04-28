@@ -98,6 +98,9 @@ class PagesController extends Controller
     {
         $request =  $request->all();
         $listing = $this->service->getListingData($request);
+        if(!$listing):
+            return redirect()->route('customer.dashboard.index'); 
+        endif;
         $quotation = $this->service->getQuotationData($request);
         $quotationID = Crypt::encrypt($quotation->id);
         return view('front.checkout',compact('listing','quotation','quotationID'));
