@@ -21,7 +21,7 @@ class StripeController extends Controller
         $quotationID = Crypt::decrypt($request['quotationID']);
         $quotation = Quotation::find($quotationID);
         $listing = Listing::find($quotation->listing_id);
-        if($listing->security && optional($listing->security)->security_deposit == '1'):
+        if($request['paymentType'] == 'deposit-payment' && $listing->security && optional($listing->security)->security_deposit == '1'):
 			if($listing->security->type == 1):
                 $depositAmount = $listing->security->amount;
             else:
@@ -30,13 +30,17 @@ class StripeController extends Controller
             endif;
         else:
             $totalAmount = $quotation['total'];
+            $fuel_price = 0;
+            $skipper_price = 0;
             if($listing->fuel_include == '1'):
-                $totalAmount = $totalAmount + $listing->fuel_price;
+                $fuel_price = getAmountWithoutSymble($listing->fuel_price,$listing->currency,$quotation->currency);
             endif;
-            $depositAmount = $totalAmount;
+            if($listing->skipper_include == '1'):
+                $skipper_price = getAmountWithoutSymble($listing->skipper_price,$listing->currency,$quotation->currency);
+            endif;
+            $depositAmount = $totalAmount +$fuel_price + $skipper_price;
         endif;
-
-		Stripe::setApiKey(config('services.stripe.secret'));
+        Stripe::setApiKey(config('services.stripe.secret'));
         try {
             $paymentIntent = PaymentIntent::create([
                 'amount' => $depositAmount * 100, 
@@ -58,32 +62,48 @@ class StripeController extends Controller
         $paymentIntentId = $request->input('paymentIntentId');
         $paymentStatus = $request->input('paymentStatus');
         $quotationID = $request->input('quotationID');
+        $paymentType = $request->input('paymentType');
         $quotationID = Crypt::decrypt($quotationID);
         $quotation = Quotation::find($quotationID);
         $listing = Listing::find($quotation->listing_id);
-        if($listing->security && optional($listing->security)->security_deposit == '1'):
+        if( $paymentType == 'deposit-payment' && $listing->security && optional($listing->security)->security_deposit == '1'):
 			if($listing->security->type == 1):
                 $depositAmount = $listing->security->amount;
-                $totalAmount = $quotation['total'];
+                $fuel_price = 0;
+                $skipper_price = 0;
                 if($listing->fuel_include == '1'):
-                    $totalAmount = $totalAmount + $listing->fuel_price;
+                    $fuel_price = getAmountWithoutSymble($listing->fuel_price,$listing->currency,$quotation->currency);
                 endif;
+                if($listing->skipper_include == '1'):
+                    $skipper_price = getAmountWithoutSymble($listing->skipper_price,$listing->currency,$quotation->currency);
+                endif;
+                $totalAmount = $quotation['total']+ $fuel_price + $skipper_price;
                 $pending_amount = $totalAmount - $depositAmount;
             else:
                 $amount = $listing->security->amount;
                 $depositAmount = $quotation['total'] * $amount / 100;
-                $totalAmount = $quotation['total'];
+                $fuel_price = 0;
+                $skipper_price = 0;
                 if($listing->fuel_include == '1'):
-                    $totalAmount = $totalAmount + $listing->fuel_price;
+                    $fuel_price = getAmountWithoutSymble($listing->fuel_price,$listing->currency,$quotation->currency);
                 endif;
+                if($listing->skipper_include == '1'):
+                    $skipper_price = getAmountWithoutSymble($listing->skipper_price,$listing->currency,$quotation->currency);
+                endif;
+                $totalAmount = $quotation['total'] + $fuel_price + $skipper_price;
                 $pending_amount = $totalAmount - $depositAmount;
             endif;
         else:
             $totalAmount = $quotation['total'];
+            $fuel_price = 0;
+            $skipper_price = 0;
             if($listing->fuel_include == '1'):
-                $totalAmount = $totalAmount + $listing->fuel_price;
+                $fuel_price = getAmountWithoutSymble($listing->fuel_price,$listing->currency,$quotation->currency);
             endif;
-            $depositAmount = $totalAmount;
+            if($listing->skipper_include == '1'):
+                $skipper_price = getAmountWithoutSymble($listing->skipper_price,$listing->currency,$quotation->currency);
+            endif;
+            $depositAmount = $totalAmount + $fuel_price + $skipper_price;
             $pending_amount = 0;
         endif;
         

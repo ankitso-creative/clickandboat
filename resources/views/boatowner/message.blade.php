@@ -14,6 +14,7 @@
 @endsection
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 @section('js')
+<script src="{{ asset('app-assets/site_assets/js/patterns.js') }}?ver=<?=time()?>"></script>
 <script>
     $(document).ready(function() {
         var disable = [];
@@ -105,7 +106,13 @@
         var emailRegex = /[\w.-]+@[\w.-]+\.\w+/gi;
         var phoneRegex = /(\+?\d{1,4})?[\s.-]?\(?\d{2,4}\)?[\s.-]?\d{3,4}[\s.-]?\d{3,4}/g;
         var longNumberRegex = /\d{6,}/g;
-        if (emailRegex.test(message) || phoneRegex.test(message) || longNumberRegex.test(message)) {
+        var dnsPattern = /(https?:\/\/)?([\w-]+\.)+[\w-]+(\/[\w- ./?%&=]*)?/i;
+        if (emailRegex.test(message) || phoneRegex.test(message) || longNumberRegex.test(message) || dnsPattern.test(message)) {
+            $('input[name="message"]').addClass('invalid-input');
+            return;
+        }
+        else if(containsBlockedContent(message))
+        {
             $('input[name="message"]').addClass('invalid-input');
             return;
         }
@@ -121,7 +128,13 @@
         var emailRegex = /[\w.-]+@[\w.-]+\.\w+/gi;
         var phoneRegex = /(\+?\d{1,4})?[\s.-]?\(?\d{2,4}\)?[\s.-]?\d{3,4}[\s.-]?\d{3,4}/g;
         var longNumberRegex = /\d{6,}/g;
-        if (emailRegex.test(message) || phoneRegex.test(message) || longNumberRegex.test(message)) {
+        var dnsPattern = /(https?:\/\/)?([\w-]+\.)+[\w-]+(\/[\w- ./?%&=]*)?/i;
+        if (emailRegex.test(message) || phoneRegex.test(message) || longNumberRegex.test(message) || dnsPattern.test(message)) {
+            $('input[name="message"]').addClass('invalid-input');
+            return;
+        }
+        if(containsBlockedContent(message))
+        {
             $('input[name="message"]').addClass('invalid-input');
             return;
         }
