@@ -116,7 +116,7 @@
             }
             elseif($request['s']=='descriptions')
             {
-                // $listing->skipper = $request['skipper'];
+                $listing->skipper = $request['skipper'];
                 // $listing->capacity = $request['capacity'];
                 // $listing->company_name = $request['company_name'];
                 // $listing->website = $request['website'];

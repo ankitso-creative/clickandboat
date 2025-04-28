@@ -747,11 +747,16 @@
                                         <li>Check-out: <strong>{{ optional($listing->booking)->check_out }}</strong></li>
                                     </ul>
                                 </div>
+                                @php 
+                                    $fuel_cost = 'Yes';
+                                    if($listing->fuel_include == '1'):
+                                        $fuel_cost = $listing->fuel_price;
+                                    endif;
+                                @endphp
                                 <div class="col-sm-12 col-md-4 col-lg-4">
                                     <ul class="features-menu">
                                         <li><strong>Rules for the boat</strong></li>
-                                        <li>Fuel included in price:
-                                            <strong>{{ optional($listing->booking)->fuel_cost }}</strong></li>
+                                        <li>Fuel included in price: <strong>{{ $fuel_cost }}</strong></li>
                                         <li>Boat licence required: <strong>Yes (if hired without a skipper)</strong></li>
                                         <li>Minimum rental age: <strong>18 years old</strong></li>
                                     </ul>
