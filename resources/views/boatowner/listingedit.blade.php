@@ -141,6 +141,42 @@
         $('.mySelect2').select2({
 		selectOnClose: true
 	});
+    $(document).ready(function () {
+        $('#cancellationSelect').select2({
+            width: '100%',
+            minimumResultsForSearch: Infinity, 
+            templateResult: function (data) {
+                if (!data.id) return data.text;
+
+                const desc = $(data.element).data('desc') || '';
+                const $item = $('<span class="select2-option-item" data-desc="' + desc + '">' + data.text + '</span>');
+                return $item;
+            }
+        });
+        const $tooltip = $('#tooltipBox');
+        $(document).on('mousemove', '.select2-results__option .select2-option-item', function (e) {
+            const desc = $(this).data('desc');
+            if (desc) {
+            $tooltip.text(desc).css({
+                top: e.pageY + 10 + 'px',
+                left: e.pageX + 10 + 'px',
+                display: 'block'
+            });
+            }
+        });
+
+        $(document).on('mouseleave', '.select2-results__option .select2-option-item', function () {
+            $tooltip.hide();
+        });
+        $('#cancellationSelect').on('select2:close', function () {
+            $tooltip.hide();
+        });
+
+         $('#cancellationSelect').on('select2:select', function () {
+            $tooltip.hide();
+        });
+    });
+        
     </script>
 @endsection
 @section('content')
@@ -304,7 +340,7 @@
                             @error('description')<span class="required">{{ $message }}</span>@enderror
                         </div>
                         <div class="col-md-12 col-lg-6">
-                            <p class="des__pera_text">Write about your yacht Number of berths, equipment, safety features. The history of the yacht, your use of this yacht (family outings, regattas). About your area! Things to see in your area (best restaurants, places to moor, a pretty cove, a place not to be missed).Some ideas on things to do with your yacht (tell us about the best places to visit from your yacht's harbour of departure). About you! Why did you buy this yacht? In which harbour is it located? A short anecdote." to " Write a description about your boat. For example, number of berths, air conditioning, toilet and shower accessibility, unique features that make your boat stand out, cabin features, safety equipment.
+                            <p class="des__pera_text"> Write a short description of your boat, including how many people it sleeps, whether it has air conditioning or heating, and if there’s a toilet and shower. Mention any features that make your boat special, what the cabins are like, and what safety equipment is onboard. Be sure to include your pricing, what’s included in the price (like fuel, skipper, or cleaning), and what costs extra. Let people know where the boat departs from and if a security deposit is required.
                             </p>
                         </div>
                     </div>
@@ -348,6 +384,21 @@
                         <div class="col-lg-4 deposit-amount {{ $sDnone }}">
                             <label>Deposit value</label>
                             <input type="text" name="deposit_amount" value="{{ optional($listing->security)->amount }}" class="form-control"> 
+                        </div>
+                    </div>
+                    
+                    <div class="p-0 pt-4 col-sm-12">
+                        <h4 class="bold ">Is Your Boat With Or Without Captain</h4>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <label>Is Your Boat With Or Without Captain?<span class="required"> </span></label>
+                            <select name="skipper" class="form-control">
+                                <option {{ checkselect($listing->skipper,'With Skipper') }} value="With Skipper">With Skipper</option>
+                                <option {{ checkselect($listing->skipper,'Without Skipper') }} value="Without Skipper">Without Skipper</option>
+                                <option {{ checkselect($listing->skipper,'Both') }} value="Both">Both</option>
+                            </select>
+                            @error('onboard_capacity')<span class="required">{{ $message }}</span>@enderror
                         </div>
                     </div>
                     <div class="p-0 pt-4 col-sm-12">
@@ -825,17 +876,18 @@
                         <div class="clearfix"></div>
                         <div class="col-sm-3">
                             <label>Cancellation conditions:<span class="required"> * </span></label>
-                            <select name="cancellation_conditions" class="form-control">
-                                <option
+                            <select name="cancellation_conditions" class="form-control" id="cancellationSelect">
+                                <option data-desc=" Full refund to the tenant up to 1 day prior to arrival, excluding Service Fee and MyBoatBooker Commission. The tenant will be refunded the total amount of the booking (excluding Service Fee and MyBoatBooker Commission) if they cancel the booking until the day before check-in (time indicated on the listing by the owner or agreed between the users via MyBoatBooker messaging or 9:00 am, local time if not specified). If the Tenant arrives and decides to leave before the scheduled date, the days not spent on the boat are not refunded."
                                     {{ isset($listing->booking->cancellation_conditions) && $listing->booking->cancellation_conditions == 'flexible' ? 'selected':'' }}
-                                    value="flexible">Flexible</li>
-                                <option
+                                    value="flexible">Flexible</option>
+                                <option data-desc="70% refund to the tenant up to 10 days prior to arrival, excluding Service Fee and MyBoatBooker Commission. If the tenant cancels at least 10 days before check-in (time indicated on the listing by the owner or agreed upon by the users via MyBoatBooker messaging or 9:00 am local time if not specified), they will be refunded 70% of the total amount of the booking (excluding Service Fee and MyBoatBooker Commission). If they cancel less than 10 days before check-in, they will not be refunded. If the Tenant arrives and decides to leave before the scheduled date, the days not spent on the boat are not refunded."
                                     {{ isset($listing->booking->cancellation_conditions) && $listing->booking->cancellation_conditions == 'moderate' ? 'selected':'' }}
-                                    value="moderate">Moderate</li>
-                                <option
+                                    value="moderate">Moderate</option>
+                                <option  data-desc="60% refund to the tenant up to 30 days prior to arrival, excluding Service Fee and MYBoatBooker Commission. If the Renter cancels at least 30 days before check-in (time indicated on the listing by the owner or agreed between users via MyBoatBooker messaging or 9:00 am local time if not specified), they will be refunded 60% of the total amount of the booking (excluding Service Fee and MyBoatBooker Commission). If they cancel less than 30 days before check-in, they will not be refunded. If the Tenant arrives and decides to leave before the scheduled date, the days not spent on the boat are not refunded."
                                     {{ isset($listing->booking->cancellation_conditions) && $listing->booking->cancellation_conditions == 'strict' ? 'selected':'' }}
-                                    value="strict">Strict</li>
+                                    value="strict">Strict</option>
                             </select>
+                            <div id="tooltipBox" class="custom-tooltip"></div>
                             @error('cancellation_conditions')<span class="required">{{ $message }}</span>@enderror
                         </div>
                         <div class="col-sm-3">

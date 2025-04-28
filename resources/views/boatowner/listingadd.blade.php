@@ -120,9 +120,9 @@
                             <div class="form-group">
                                 <label for="exampleFormControlSelect1">Is your boat rented with a skipper?<span class="required"> * </span></label>
                                 <select name="skippers" class="form-control">
-                                    <option value="withoutskipper">Without a skipper</option>
-                                    <option value="withskipper">With a skipper</option>
-                                    <option value="withorwthout">With or without</option>
+                                    <option value="With Skipper">With Skipper</option>
+                                    <option value="Without Skipper">Without Skipper</option>
+                                    <option value="Both">Both</option>
                                 </select>
                                 @error('professional')<span class="required">{{ $message }}</span>@enderror
                             </div>

@@ -307,7 +307,7 @@
 								<div class="checkout-btn-sec">
 									<p>By selecting the button below, you unconditionally agree to the <a href="#">Terms & Conditions</a>, <a href="#">Cancellation conditions</a>, <a href="#">Insurance conditions</a>. You also agree to pay the total amount of the reservation.</p>
 									<div id="card-errors"></div>
-									<button class="btn btn-primary btn-checkout" id="submit-button">Booking request · <span>€{{ $quotation['total'] }}</span></button>
+									<button class="btn btn-primary btn-checkout" id="submit-button">Booking request </button>
 								</div>
 							</div>
 						</div>
@@ -338,7 +338,7 @@
 						<h5>Price details</h5>
 						<div class="price-tables">
 							<div class="price-heading">Charter price</div>
-							<div class="price-amount">€{{ $quotation['total'] }}</div>
+							<div class="price-amount">{{ $symble.$totalAmount }}</div>
 						</div>
 						{{-- <div class="promotional-sec">
 							<a href="#">Add a promotional code</a>
