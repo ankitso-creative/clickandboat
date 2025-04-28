@@ -299,11 +299,11 @@
                         <h4 class="bold ">Boat Description</h4>
                     </div>
                     <div class="pt-4 row">
-                        <div class="col-md-6">
+                        <div class="col-md-12 col-lg-6">
                             <textarea class="form-control" rows="13" name="description">{{ optional($listing->description[0] ?? null)->description }}</textarea>
                             @error('description')<span class="required">{{ $message }}</span>@enderror
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-12 col-lg-6">
                             <p class="des__pera_text">Write about your yacht Number of berths, equipment, safety features. The history of the yacht, your use of this yacht (family outings, regattas). About your area! Things to see in your area (best restaurants, places to moor, a pretty cove, a place not to be missed).Some ideas on things to do with your yacht (tell us about the best places to visit from your yacht's harbour of departure). About you! Why did you buy this yacht? In which harbour is it located? A short anecdote." to " Write a description about your boat. For example, number of berths, air conditioning, toilet and shower accessibility, unique features that make your boat stand out, cabin features, safety equipment.
                             </p>
                         </div>
@@ -312,11 +312,11 @@
                         <h4 class="bold ">Whats Included</h4>
                     </div>
                     <div class="pt-4 row">
-                        <div class="col-md-6">
+                        <div class="col-md-12 col-lg-6">
                             <textarea class="form-control" rows="8" name="what_included">{{ $listing->what_included }}</textarea>
                             @error('what_included')<span class="required">{{ $message }}</span>@enderror
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-12 col-lg-6">
                             <p class="des__pera_text">Write about what is included in your trip. For Example, your destinations, what is included in your price (captain, fuel, drinks, food, water sports), please state prices for anything that is not included in your price, late check out fee, sunset fee, paddle boards, snorkelling equipment, towels, start and end times.
                             </p>
                         </div>
@@ -423,7 +423,7 @@
                         <h4 class="bold ">Images</h4>
                     </div>
                     <div class="clearfix"></div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-4 col-md-12 col-lg-4">
                         <label>Cover Image:<span class="required"> * </span></label>
                         <input type="file" name="image" id="file-input" class="form-control" accept="image/*">
                     </div>

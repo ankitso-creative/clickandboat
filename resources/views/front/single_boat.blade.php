@@ -1164,4 +1164,94 @@ Thank you
     </div>
   </div>
 </div>
+<!-- Button trigger modal -->
+<button type="button" class="btn bookbutton_fix" data-toggle="modal" data-target="#bookbutton">
+  Book
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="bookbutton" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <div class="col-md-4 boat-right-sec" id="calender_sec_form">
+                        <div class="p-2 shadow-sm card">
+                            <div class="text-center d-flex flex-column">
+                                <h3>Add dates for prices</h3>
+                            </div>
+                            <!-- Rating -->
+                            <div class="mb-3 text-center see_price_btn">
+                                <a href="javascript:;" class="see-price"> See the price list</a>
+                            </div>
+                            <div class="dates_heading">
+                                <p>Dates:</p>
+                            </div>
+                            <!-- Form for dates -->
+                            <form action="{{ route('checkout') }}" method="POST">
+                                @csrf
+                                <div class="row sidebar_form">
+                                    <div class="p-0 col-md-6">
+                                        <div class="form-group">
+                                            <input type="date" id="checkin-date" name="checkin_date"
+                                                class="form-control" placeholder="Check-in" />
+                                        </div>
+                                    </div>
+                                    <div class="p-0 col-md-6">
+                                        <div class="form-group">
+                                            <input type="date" id="checkout-date" class="form-control"
+                                                name="checkout_date" placeholder="Check-out" />
+                                            <input type="hidden" id="days-val" value="" name="days_val" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="show-Price d-none" id="show-Price-sec">
+                                    <p>Days: <span id="total-days"></span></p>
+                                    <p>Charter Price: <span id="charter-pice"></span></p>
+                                    <p>Service Fee: <span id="charter-fee"></span></p>
+                                    <p>Total: <span id="charter-total"></span></p>
+                                </div>
+                                <div class="d-flex flex-column">
+                                    @if(Auth::check())
+                                        @php
+                                            $user = auth()->user();
+                                        @endphp
+                                        @if($user->role == 'customer')
+                                            <a class="mb-2 check_ava_btn" href="javascript:;" data-toggle="modal" data-target="#sidebar-right" class="btn btn-primary navbar-btn pull-left">
+                                                Book
+                                            </a>
+                                        @else
+                                            <a class="mb-2 check_ava_btn not-login-user" href="javascript:;">
+                                                Book
+                                            </a>
+                                        @endif
+                                    @else
+                                        <a class="mb-2 check_ava_btn not-login-user" href="javascript:;">
+                                            Book
+                                        </a>
+                                    @endif
+                                    
+                                    {{-- <span class="mt-1 mb-1 text-center d-block font-weight-bold">or</span>
+                                    <button class="btn book_btn">Book</button> --}}
+                                    <div class="pt-3 text-center form_text">
+                                        <p>You will only be charged if the request is accepted</p>
+                                        <p>Pay in 3 or 4 installments without fees with</p>
+                                    </div>
+                                </div>
+                            </form>
+                            <!-- Price List Link -->
+                            <div class="mt-2 text-center">
+                                <img src="{{ asset('app-assets/site_assets/img/klarna-logo.jpg') }}" />
+                            </div>
+                        </div>
+                    </div>
+      </div>
+    </div>
+  </div>
+</div>
 @endsection
