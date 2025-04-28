@@ -60,30 +60,30 @@
                         </li>
                         <li class="nav-item">
                             <select name="currency" id="currency_name">
-                                <option {{ checkselect($selectedCode,'USD') }} value="USD">USD $</option> 
-                                <option {{ checkselect($selectedCode,'EUR') }} value="EUR">EUR €</option>
-                                <option {{ checkselect($selectedCode,'GBP') }} value="GBP">GBP £</option>
-                                <option {{ checkselect($selectedCode,'CHF') }} value="CHF">CHF </option>
-                                <option {{ checkselect($selectedCode,'RUB') }} value="RUB">RUB ₽</option>
-                                <option {{ checkselect($selectedCode,'NOK') }} value="NOK">NOK kr</option>
-                                <option {{ checkselect($selectedCode,'SEK') }} value="SEK">SEK kr</option>
-                                <option {{ checkselect($selectedCode,'DKK') }} value="DKK">DKK kr</option>
-                                <option {{ checkselect($selectedCode,'CZK') }} value="CZK">CZK kr</option>
-                                <option {{ checkselect($selectedCode,'PLN') }} value="PLN">PLN zł</option>
+                                <option {{ checkselect($selectedCode,'USD') }} value="USD">USD</option> 
+                                <option {{ checkselect($selectedCode,'EUR') }} value="EUR">EUR</option>
+                                <option {{ checkselect($selectedCode,'GBP') }} value="GBP">GBP</option>
+                                <option {{ checkselect($selectedCode,'CHF') }} value="CHF">CHF</option>
+                                <option {{ checkselect($selectedCode,'RUB') }} value="RUB">RUB</option>
+                                <option {{ checkselect($selectedCode,'NOK') }} value="NOK">NOK</option>
+                                <option {{ checkselect($selectedCode,'SEK') }} value="SEK">SEK</option>
+                                <option {{ checkselect($selectedCode,'DKK') }} value="DKK">DKK</option>
+                                <option {{ checkselect($selectedCode,'CZK') }} value="CZK">CZK</option>
+                                <option {{ checkselect($selectedCode,'PLN') }} value="PLN">PLN</option>
                                 <option {{ checkselect($selectedCode,'CAD') }} value="CAD">CAD</option>
                                 <option {{ checkselect($selectedCode,'AUD') }} value="AUD">AUD</option>
-                                <option {{ checkselect($selectedCode,'HUF') }} value="HUF">HUF . ft</option>
-                                <option {{ checkselect($selectedCode,'RON') }} value="RON">RON . lei</option>
-                                <option {{ checkselect($selectedCode,'BGN') }} value="BGN">BGN . Лв</option>
-                                <option {{ checkselect($selectedCode,'HRK') }} value="HRK">HRK . kn</option>
+                                <option {{ checkselect($selectedCode,'HUF') }} value="HUF">HUF</option>
+                                <option {{ checkselect($selectedCode,'RON') }} value="RON">RON</option>
+                                <option {{ checkselect($selectedCode,'BGN') }} value="BGN">BGN</option>
+                                <option {{ checkselect($selectedCode,'HRK') }} value="HRK">HRK</option>
                                 <option {{ checkselect($selectedCode,'BRL') }} value="BRL">BRL</option>
-                                <option {{ checkselect($selectedCode,'ARS') }} value="ARS">ARS . $</option>
-                                <option {{ checkselect($selectedCode,'ILS') }}value="ILS">ILS . ₪</option>
-                                <option {{ checkselect($selectedCode,'AED') }} value="AED">AED . د.إ </option>
-                                <option {{ checkselect($selectedCode,'CLP') }} value="CLP">CLP . $</option>
-                                <option {{ checkselect($selectedCode,'COP') }} value="COP">COP . $</option>
-                                <option {{ checkselect($selectedCode,'MXN') }}value="MXN">MXN . $</option>
-                                <option {{ checkselect($selectedCode,'UYU') }} value="UYU">UYU . $</option>
+                                <option {{ checkselect($selectedCode,'ARS') }} value="ARS">ARS</option>
+                                <option {{ checkselect($selectedCode,'ILS') }}value="ILS">ILS</option>
+                                <option {{ checkselect($selectedCode,'AED') }} value="AED">AED</option>
+                                <option {{ checkselect($selectedCode,'CLP') }} value="CLP">CLP</option>
+                                <option {{ checkselect($selectedCode,'COP') }} value="COP">COP</option>
+                                <option {{ checkselect($selectedCode,'MXN') }}value="MXN">MXN</option>
+                                <option {{ checkselect($selectedCode,'UYU') }} value="UYU">UYU</option>
                             </select>
                         </li>
                         @if(!Auth::check())
@@ -176,30 +176,31 @@
                     </li>
                     <li class="nav-item mobile_language">
                         <select name="currency" id="currency_name">
-                        <option value="GBP">EUR €</option>
-                                <option value="EUR">USD $</option>
-                                <option value="opel">GBP £</option>
-                                <option value="chf">CHF </option>
-                                <option value="rub">RUB ₽</option>
-                                <option value="nok">NOK kr</option>
-                                <option value="sek">SEK kr</option>
-                                <option value="dkk">DKK kr</option>
-                                <option value="czk">CZK kr</option>
-                                <option value="pln">PLN zł</option>
-                                <option value="cad">CAD</option>
-                                <option value="aud">AUD</option>
-                                <option value="huf">HUF . ft</option>
-                                <option value="ron">RON . lei</option>
-                                <option value="bgn">BGN . Лв</option>
-                                <option value="hrk">HRK . kn</option>
-                                <option value="brl">BRL</option>
-                                <option value="ars">ARS . $</option>
-                                <option value="ils">ILS . ₪</option>
-                                <option value="aed">AED . د.إ </option>
-                                <option value="clp">CLP . $</option>
-                                <option value="cop">COP . $</option>
-                                <option value="mxn">MXN . $</option>
-                                <option value="uyu">UYU . $</option>
+                        
+                            <option {{ checkselect($selectedCode,'USD') }} value="USD">USD</option> 
+                            <option {{ checkselect($selectedCode,'EUR') }} value="EUR">EUR</option>
+                            <option {{ checkselect($selectedCode,'GBP') }} value="GBP">GBP</option>
+                            <option {{ checkselect($selectedCode,'CHF') }} value="CHF">CHF</option>
+                            <option {{ checkselect($selectedCode,'RUB') }} value="RUB">RUB</option>
+                            <option {{ checkselect($selectedCode,'NOK') }} value="NOK">NOK</option>
+                            <option {{ checkselect($selectedCode,'SEK') }} value="SEK">SEK</option>
+                            <option {{ checkselect($selectedCode,'DKK') }} value="DKK">DKK</option>
+                            <option {{ checkselect($selectedCode,'CZK') }} value="CZK">CZK</option>
+                            <option {{ checkselect($selectedCode,'PLN') }} value="PLN">PLN</option>
+                            <option {{ checkselect($selectedCode,'CAD') }} value="CAD">CAD</option>
+                            <option {{ checkselect($selectedCode,'AUD') }} value="AUD">AUD</option>
+                            <option {{ checkselect($selectedCode,'HUF') }} value="HUF">HUF</option>
+                            <option {{ checkselect($selectedCode,'RON') }} value="RON">RON</option>
+                            <option {{ checkselect($selectedCode,'BGN') }} value="BGN">BGN</option>
+                            <option {{ checkselect($selectedCode,'HRK') }} value="HRK">HRK</option>
+                            <option {{ checkselect($selectedCode,'BRL') }} value="BRL">BRL</option>
+                            <option {{ checkselect($selectedCode,'ARS') }} value="ARS">ARS</option>
+                            <option {{ checkselect($selectedCode,'ILS') }}value="ILS">ILS</option>
+                            <option {{ checkselect($selectedCode,'AED') }} value="AED">AED</option>
+                            <option {{ checkselect($selectedCode,'CLP') }} value="CLP">CLP</option>
+                            <option {{ checkselect($selectedCode,'COP') }} value="COP">COP</option>
+                            <option {{ checkselect($selectedCode,'MXN') }}value="MXN">MXN</option>
+                            <option {{ checkselect($selectedCode,'UYU') }} value="UYU">UYU</option>
                         </select>
                     </li>
                 </ul>
