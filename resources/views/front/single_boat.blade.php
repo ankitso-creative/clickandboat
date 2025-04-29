@@ -904,62 +904,111 @@
         <span class="close-btn" id="closeMenu">&times;</span>
         <h3 class="p-4">Price list</h3>
         <div class="price_list_accordian">
-        <div id="accordion">
-  <div class="card">
-    <div class="card-header" id="headingOne">
-        <h5 class="mb-0">
-            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-            Price
-            </button>
-        </h5>
-    </div>
-
-    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-        <div class="card-body">
-            <p>100</p>
-        </div>
-    </div>
-    </div>
-    <div class="card">
-        <div class="card-header" id="headingTwo">
-            <h5 class="mb-0">
-                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                Low Season Price
-                </button>
-            </h5>
-        </div>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-            <div class="card-body">
-            <p>$100</p>
-            </div>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-header" id="headingThree">
-            <h5 class="mb-0">
-                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-               Mid Season Price
-                </button>
-            </h5>
-        </div>
-        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-            <div class="card-body">
-            <p>$4-$555</p>
-            </div>
-        </div>
-    </div>
-    </div>
-
-        </div>
-        <ul class="p-4 list-unstyled">
-            @if (optional($listing->price ?? null)->price)
-                <li>
-                    <div class="price_block">
-                        <p class="price_block_date">Price </p>
-                        <p class="price_block_price">{{ $listing->price->price }}</p>
+            <div id="accordion">
+                @php
+                    if ($lowseason && isset($listing->seasonPrice[0])):
+                        $lowMonths = optional($listing->seasonPrice[0])->from;
+                        $allLowMonth = '';
+                        if($lowMonths){
+                            $lowmonthArray = json_decode($lowMonths);
+                            if(is_array($lowmonthArray))
+                            {
+                                $allLowMonth = implode(', ',$lowmonthArray);
+                            }
+                        }
+                    endif;
+                @endphp
+                @if($lowseason && isset($listing->seasonPrice[0]))
+                    @php
+                        $lowMonths = optional($listing->seasonPrice[0])->from;
+                        $allLowMonth = '';
+                        if($lowMonths){
+                            $lowmonthArray = json_decode($lowMonths);
+                            if(is_array($lowmonthArray))
+                            {
+                                $allLowMonth = implode(', ',$lowmonthArray);
+                            }
+                        }
+                    @endphp
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Low Season Price
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                            <div class="card-body">
+                                <p>Months: <span>{{ $allLowMonth }}</span></p>
+                                <h6>Prices</h6>
+                                {!! priceWithHtml($lowseason, $listing->seasonPrice[0]->price) !!}
+                            </div>
+                        </div>
                     </div>
-                </li>
-            @endif
+                @endif
+                @if($midSeason && isset($listing->seasonPrice[1]))
+                    @php
+                        $midMonths = optional($listing->seasonPrice[1])->from;
+                        $allMidMonth = '';
+                        if($midMonths):
+                            $midMonthArray = json_decode($midMonths);
+                            if(is_array($midMonthArray))
+                            {
+                                $allMidMonth = implode(', ',$midMonthArray);
+                            }
+                            
+                        endif;
+                    @endphp
+                    <div class="card">
+                        <div class="card-header" id="headingTwo">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Mid Season Price
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                            <div class="card-body">
+                                <p>Months: <span>{{ $allMidMonth }}</span></p>
+                                <h6>Prices</h6>
+                                {!! priceWithHtml($midSeason, $listing->seasonPrice[1]->price) !!}
+                            </div>
+                        </div>
+                    </div>
+                @endif
+                @if($highSeason && isset($listing->seasonPrice[2]))
+                    @php
+                        $hMonths = optional($listing->seasonPrice[2])->from;
+                        $allHMonth = '';
+                        if($hMonths):
+                            $hMonthArray = json_decode($hMonths);
+                            if(is_array($hMonthArray))
+                            {
+                                $allHMonth = implode(', ',$hMonthArray);
+                            }
+                        endif;
+                    @endphp
+                    <div class="card">
+                        <div class="card-header" id="headingThree">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    High Season Price
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                            <div class="card-body">
+                                <p>Months: <span>{{ $allHMonth }}</span></p>
+                                <h6>Prices</h6>
+                                {!! priceWithHtml($highSeason, $listing->seasonPrice[2]->price) !!}
+                            </div>
+                        </div>
+                    </div>
+                @endif
+            </div>
+        </div>
+        {{-- <ul class="p-4 list-unstyled">
             @if ($lowseason && isset($listing->seasonPrice[0]))
                 @php
                     $lowMonths = optional($listing->seasonPrice[0])->from;
@@ -1021,7 +1070,7 @@
                     </div>
                 </li>
             @endif
-        </ul>
+        </ul> --}}
     </div>
     <!-- Sidebar Right -->
     <div class="modal fade right location-modals" id="sidebar-right" tabindex="-1" role="dialog">
