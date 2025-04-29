@@ -1009,6 +1009,7 @@
             </div>
         </div>
         {{-- <ul class="p-4 list-unstyled">
+
             @if ($lowseason && isset($listing->seasonPrice[0]))
                 @php
                     $lowMonths = optional($listing->seasonPrice[0])->from;
