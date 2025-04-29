@@ -278,6 +278,37 @@ function minMaxPrice($season, $price = '')
         }
     }
 }
+function priceWithHtml($season, $price = '')
+{
+    if(session()->has('currency_code')):
+        $to = session('currency_code');
+    else:
+        $to = 'USD';
+    endif;
+    $from = Listing::where('id',$season->listing_id)->value('currency');
+    unset($season->id);
+    unset($season->listing_id);
+    unset($season->season_price_id);
+    unset($season->price);
+    unset($season->created_at);
+    unset($season->updated_at);
+    $season = $season ? $season->toArray() : [];
+    if ($price) {
+        $price = array('full_day_price' => $price);
+    }
+    if (is_array($season) && is_array($price)) {
+        $season = array_merge($price,$season, );
+    }
+    $priceHtml = '';
+    if($season):
+        foreach($season as $key => $value):
+            if($value):
+                $priceHtml .= '<p>'.ucfirst(str_replace('_',' ',$key)).': <span>'. getAmountWithSymble($value,$from,$to).'</span></p>';
+            endif;
+        endforeach;
+    endif;
+    return $priceHtml;
+}
 function priceSymbol($code)
 {
     $symbols = [
