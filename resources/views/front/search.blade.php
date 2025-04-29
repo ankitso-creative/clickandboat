@@ -297,14 +297,13 @@
                         <div class="col-md-8">
                             <select name="type[]" id="boats">
                                 <option value="">Boat</option>
-                                <option value="Motorboat">Motorboat</option>
-                                <option value="Sail boat">Sail boat</option>
-                                <option value="Ribs">Ribs</option>
-                                <option value="Catamaran">Catamaran</option>
-                                <option value="Jet ski">Jet ski</option>
-                                <option value="Yacht">Yacht</option>
-                                <option value="Sailing yacht">Sailing yacht</option>
-                                <option value="Fishing boat">Fishing boat</option>
+                                <option {{ checkSelectMulti(request()->query('type'),'Motorboat') }} value="Motorboat">Motorboat</option>
+                                <option {{ checkSelectMulti(request()->query('type'),'Sailboat') }} value="Sailboat">Sailboat</option>
+                                <option {{ checkSelectMulti(request()->query('type'),'Rib') }} value="Ribs">Rib</option>
+                                <option {{ checkSelectMulti(request()->query('type'),'Catamaran') }} value="Catamaran">Catamaran</option>
+                                <option {{ checkSelectMulti(request()->query('type'),'Yacht') }} value="Yacht">Yacht</option>
+                                <option {{ checkSelectMulti(request()->query('type'),'Sailingyacht') }} value="Sailingyacht">Sailing yacht</option>
+                                <option {{ checkSelectMulti(request()->query('type'),'Monohull') }} value="Monohull">Monohull</option>
                             </select>
                             <select name="rental_type" id="rental_type">
                                 <option value="">Skipper</option>
@@ -427,18 +426,12 @@
                                     <input type="checkbox" id="Sailingyacht" name="type[]" value="Sailingyacht" {{ checkCheckbox(request()->query('type'),'Sailingyacht') }}>
                                     <label for="Sailingyacht"> Sailing yacht</label>
                                 </div>
-                                <div class="input-group">
-                                    <input type="checkbox" id="Fishingboat" name="type[]" value="Fishingboat" {{ checkCheckbox(request()->query('type'),'Fishingboat') }}>
-                                    <label for="Fishingboat"> Fishing boat</label>
-                                </div>
+                                
                                 <div class="input-group">
                                     <input type="checkbox" id="Monohull" name="type[]" value="Monohull" {{ checkCheckbox(request()->query('type'),'Monohull') }}>
                                     <label for="Monohull"> Monohull</label>
                                 </div>
-                                <div class="input-group">
-                                    <input type="checkbox" id="Jetskis" name="type[]" value="Jetskis" {{ checkCheckbox(request()->query('type'),'Jetskis') }}>
-                                    <label for="Jetskis"> Jet skis</label>
-                                </div>
+                                
                                 <div class="input-group">
                                     <input type="checkbox" id="Rib" name="type[]" value="Rib" {{ checkCheckbox(request()->query('type'),'Rib') }}>
                                     <label for="Rib"> Rib</label>

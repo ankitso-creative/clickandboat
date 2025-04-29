@@ -23,6 +23,7 @@
             if(val == 'cancel')
             {
                 $('#reason-select').removeClass('d-none');
+                $('#evidence-box').removeClass('d-none');
             }
             else
             {
@@ -107,7 +108,7 @@
                 </div>
             </div>
         </div>
-        <form class="personal-details-form" action="{{ route('boatowner.booking.update', $results->id) }}" method="post">
+        <form class="personal-details-form" action="{{ route('boatowner.booking.update', $results->id) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="row">
@@ -153,6 +154,7 @@
                             <option {{ checkselect($results->cancel_reason,'Platform or listing error') }} value="Platform or listing error">Platform or listing error</option>
                             <option {{ checkselect($results->cancel_reason,'Other') }} value="Other">Other</option>
                         </select>
+                        @error('cancel_reason')<span class="required">{{ $message }}</span>@enderror
                     </div>
                 </div>
                 @php
@@ -166,7 +168,35 @@
                     <div class="form-group">
                         <label class="label-default">Reason<span class="required"></span></label>
                         <textarea name="cancel_message" class="form-control">{{ $results->cancel_message }}</textarea>
+                        @error('cancel_message')<span class="required">{{ $message }}</span>@enderror
                     </div>
+                </div>
+                <div class="col-md-6 {{ $dCLs }}" id="evidence-box">
+                    <div class="form-group">
+                        <label class="label-default">Provide Evidence<span class="required"></span></label>
+                        <input type="file" class="form-control" name="evidence" accept=".jpeg,.jpg,.pdf,.png">
+                        @error('evidence')<span class="required">{{ $message }}</span>@enderror
+                    </div>
+                </div>
+                <div class="col-md-6">
+                   @php 
+                        $evidence = $results->getFirstMediaUrl('evidence');
+                        $extensionEv = pathinfo($evidence, PATHINFO_EXTENSION);
+                    @endphp
+                    @if($evidence)
+                        <div class="form-group">
+                            <label class="label-default">Evidence</label>
+                        </div>
+                        @if($extensionEv == 'pdf')
+                            <div class="user-identity">
+                                <a href="{{ $evidence }}" target="_blank"><img src="{{ asset('app-assets/site_assets/img/pdf-img.png') }}" id="avatar" alt="identity"></a>
+                            </div>
+                        @else
+                            <div class="user-identity">
+                                <img src="{{ $evidence }}" id="avatar" alt="identity">
+                            </div>
+                        @endif
+                    @endif
                 </div>
             </div>
             

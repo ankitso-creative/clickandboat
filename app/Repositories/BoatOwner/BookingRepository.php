@@ -33,6 +33,14 @@ class BookingRepository
         $order->cancel_reason = $request['cancel_reason'];
         $order->cancel_message = $request['cancel_message'];
         $order->payment_status = $request['payment_status'];
+        if(isset($request['evidence']) && !empty($request['evidence'])):
+            if ($order->hasMedia('evidence')) {
+                $order->getMedia('evidence')->each(function ($media) {
+                    $media->delete();  // Delete the old image(s)
+                });
+            }
+            $media = $order->addMediaFromRequest('evidence')->toMediaCollection('evidence','evidence_files'); 
+        endif;
         if($order->update()):
             return true;
         else:
