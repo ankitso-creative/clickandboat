@@ -4,9 +4,12 @@ namespace App\Models;
 
 use App\Models\Admin\Listing;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia; 
 
-class Order extends Model
+class Order extends Model implements HasMedia
 {
+    use InteractsWithMedia;
     protected $fillable = [
         'id', 
         'user_id', 

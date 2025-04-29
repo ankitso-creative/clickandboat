@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\BoatOwner;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\BoatOwner\Booking\BookingRequest;
 use Illuminate\Http\Request;
 use App\Services\BoatOwner\BookingService;
 class BookingController extends Controller
@@ -24,9 +25,10 @@ class BookingController extends Controller
         $results =  $this->service->editBooking($id);
         return view('boatowner.bookingedit',compact('active','results'));
     }
-    public function update(Request $request,$id)
+    public function update(BookingRequest $request,$id)
     {
         $active = 'booking';
+        $request = $request->all();
         $result =  $this->service->updateBooking($request,$id);
         if($result):
             return redirect()->route('boatowner.booking.index')->with('success', 'Order updated successfully!'); 
