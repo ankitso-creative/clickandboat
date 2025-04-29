@@ -940,7 +940,7 @@
                         </div>
                         <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                             <div class="card-body">
-                                <p>Months: <span>{{ $allLowMonth }}</span></p>
+                                <p class="monthheading">Months: <span>{{ $allLowMonth }}</span></p>
                                 <h6>Prices</h6>
                                 {!! priceWithHtml($lowseason, $listing->seasonPrice[0]->price) !!}
                             </div>
@@ -970,7 +970,7 @@
                         </div>
                         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                             <div class="card-body">
-                                <p>Months: <span>{{ $allMidMonth }}</span></p>
+                                <p class="monthheading">Months: <span>{{ $allMidMonth }}</span></p>
                                 <h6>Prices</h6>
                                 {!! priceWithHtml($midSeason, $listing->seasonPrice[1]->price) !!}
                             </div>
@@ -999,7 +999,7 @@
                         </div>
                         <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
                             <div class="card-body">
-                                <p>Months: <span>{{ $allHMonth }}</span></p>
+                                <p class="monthheading">Months: <span>{{ $allHMonth }}</span></p>
                                 <h6>Prices</h6>
                                 {!! priceWithHtml($highSeason, $listing->seasonPrice[2]->price) !!}
                             </div>
