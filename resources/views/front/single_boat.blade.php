@@ -731,9 +731,9 @@
                                 </div>
                             </form>
                             <!-- Price List Link -->
-                            <div class="mt-2 text-center">
+                            {{-- <div class="mt-2 text-center">
                                 <img src="{{ asset('app-assets/site_assets/img/klarna-logo.jpg') }}" />
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                     <div class="boat-card-content-sec">
