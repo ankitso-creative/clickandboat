@@ -396,7 +396,7 @@
                             <select name="skipper" class="form-control">
                                 <option {{ checkselect($listing->skipper,'With Skipper') }} value="With Skipper">With Skipper</option>
                                 <option {{ checkselect($listing->skipper,'Without Skipper') }} value="Without Skipper">Without Skipper</option>
-                                <option {{ checkselect($listing->skipper,'Both') }} value="Both">Both</option>
+                                <option {{ checkselect($listing->skipper,'With Skipper Or Without Skipper') }} value="With Skipper Or Without Skipper">Both</option>
                             </select>
                             @error('onboard_capacity')<span class="required">{{ $message }}</span>@enderror
                         </div>

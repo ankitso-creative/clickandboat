@@ -488,6 +488,15 @@
                             </div>
                         </div>
                         <div class="boat-card-content-sec">
+                            @php
+                                if($listing->skipper == 'With Skipper'):
+                                    $skipperText = ' Boat is rented with skipper.';
+                                elseif($listing->skipper == 'Without Skipper'):
+                                    $skipperText = 'Boat is rented without skipper, proof of a boating license is required.';
+                                else:
+                                    $skipperText = 'With Skipper Or Without Skipper - Boat can be hired with both, if rented without, proof of boating license is required.';
+                                endif
+                            @endphp
                             <div class="keyinfo-sec">
                                 <div class="keyinfo-icon">
                                     <svg width="32" height="32" viewBox="0 0 48 48"
@@ -499,7 +508,7 @@
                                 </div>
                                 <div class="keyinfo-texts">
                                     <h4>{{ $listing->skipper }}</h4>
-                                    <p>A boating license is needed if you opt to sail without a skipper.</p>
+                                    <p>{{ $skipperText }}</p>
                                 </div>
                             </div>
                             <div class="keyinfo-sec">
@@ -721,7 +730,6 @@
                                             Book
                                         </a>
                                     @endif
-                                    
                                     {{-- <span class="mt-1 mb-1 text-center d-block font-weight-bold">or</span>
                                     <button class="btn book_btn">Book</button> --}}
                                     <div class="pt-3 text-center form_text">
