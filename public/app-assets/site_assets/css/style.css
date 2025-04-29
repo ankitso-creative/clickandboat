@@ -6520,9 +6520,10 @@ section.about_zigzag_section {
     height: 100%;
     background-color: #f8a126;
     color: #fff;
-    z-index: 999;
+    z-index: 99999;
     transform: translateX(100%);
     transition: transform 0.3s ease-in-out;
+    overflow-y: scroll;
 }
 .offcanvas-right.open {
     transform: translateX(0);
@@ -8297,7 +8298,7 @@ font-size: 15px;
     border: 0;
 }
 .banner_form_mobile button.close,
-.single_boat_popup button.close  {
+.single_boat_popup button.close   {
     position: absolute;
     right: 15px;
     top: 15px;
@@ -8454,8 +8455,15 @@ margin-right:15px;
     bottom: auto !important;
     left: 242px  !important;
 }
-#cancellationSelect .select2-results__options .select2-option-item {
+.select2-results__options .select2-option-item {
     display: block;
+}
+.select2-container--default .select2-selection--single {
+    height: 39px !important;
+    padding-top: 5px;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    top: 7px !important;
 }
 .modal-open .single_boat_popup {
     background: #000000b3 !important;
@@ -8472,6 +8480,36 @@ margin-right:15px;
     left: 50%;
     transform: translate(-50%, -50%) !important;
     margin: 0px !important;
+}
+.price_list_accordian {
+    padding: 0 0 0 15px;
+}
+.price_list_accordian .card-header {
+    padding: 0 0px;
+    background: #fff;
+}
+.price_list_accordian .card {
+    margin: 5px 0px;
+}
+.price_list_accordian .btn {
+    padding: 5px 10px;
+    width: 96%;
+    text-align: left;
+}
+.price_list_accordian .btn:hover{
+    border: none;
+}
+.offcanvas-right::-webkit-scrollbar {
+   height: 50px;
+}
+.price_list_accordian .btn:hover {
+    text-decoration: none;
+}
+.price_list_accordian .card-body p{
+    color: #000;
+}
+.price_list_accordian .card-body {
+    padding: 15px 15px;
 }
 /*--------------------------------------------------------------
 # Media Query
