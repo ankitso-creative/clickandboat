@@ -61,7 +61,6 @@
                 'siret' => $request['siret'], 
                 'intracommunity_vat' => $request['intracommunity_vat'],  
                 'website' => $request['website'],  
-                'booking_management_system' => isset($request['booking_management_system']) ? json_encode($request['booking_management_system']) : '',
             ]);
             if(isset($request['certificate']) && !empty($request['certificate'])):
                 if ($user->hasMedia('certificate')) {

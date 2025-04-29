@@ -316,60 +316,37 @@
                     @csrf
                     @method('PUT')
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label class="label-default">Company<span class="required"> </span></label>
                                 <input type="text" name="company_name" value="{{ optional($userData->company)->company_name }}" class="form-control">
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label class="label-default">Address<span class="required"> </span></label>
                                 <input type="text" name="companyaddress" value="{{ optional($userData->company)->address }}" class="form-control">
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label class="label-default">SIRET<span class="required"> </span></label>
                                 <input type="text" name="siret" value="{{ optional($userData->company)->siret }}" class="form-control">
                             </div>
                         </div>
+                    </div>
+                    
+                    <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="label-default">Intracommunity VAT<span class="required"> </span></label>
                                 <input type="text" name="intracommunity_vat" value="{{ optional($userData->company)->intracommunity_vat }}" class="form-control">
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="label-default">Website<span class="required"> </span></label>
                                     <input type="text" name="website" value="{{ optional($userData->company)->website }}" class="form-control">
-                            </div>
-                        </div>
-                        @php
-                            $bookingManagement = json_decode(optional($userData->company)->booking_management_system);
-                        @endphp
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="label-default">Booking Management System<span class="required"> </span></label>
-                                <select multiple name="booking_management_system[]" class="form-control mySelect2">
-                                    <option {{ checkSelectMulti($bookingManagement,'mmk') }} value="mmk">Mmk</option>
-                                    <option {{ checkSelectMulti($bookingManagement,'sedna') }} value="sedna">Sedna</option>
-                                    <option {{ checkSelectMulti($bookingManagement,'nausys') }} value="nausys">Nausys</option>
-                                    <option {{ checkSelectMulti($bookingManagement,'yachtsys') }} value="yachtsys">Yachtsys</option>
-                                    <option {{ checkSelectMulti($bookingManagement,'misterbooking') }} value="misterbooking">Mister Booking</option>
-                                    <option {{ checkSelectMulti($bookingManagement,'andronautic') }} value="andronautic">Andronautic</option>
-                                    <option {{ checkSelectMulti($bookingManagement,'digitalnautic') }} value="digitalnautic">Digital Nautic</option>
-                                    <option {{ checkSelectMulti($bookingManagement,'nauticmanager') }} value="nauticmanager">Nautic Manager</option>
-                                    <option {{ checkSelectMulti($bookingManagement,'myba') }} value="myba">MYBA</option>
-                                    <option {{ checkSelectMulti($bookingManagement,'nautal') }} value="nautal">Nautal</option>
-                                    <option {{ checkSelectMulti($bookingManagement,'fareharbor') }} value="fareharbor">Fare Harbor</option>
-                                    <option {{ checkSelectMulti($bookingManagement,'anker') }} value="anker">5 Anker</option>
-                                </select>
                             </div>
                         </div>
                     </div>
@@ -449,14 +426,14 @@
                                 $ownership = $userData->getFirstMediaUrl('ownership');
                                 $extensionOw = pathinfo($ownership, PATHINFO_EXTENSION);
                             @endphp
-                            @if($iban)
+                            @if($ownership)
                                 @if($extensionOw == 'pdf')
                                     <div class="user-iban">
-                                        <a href="{{ $ownership }}" target="_blank"><img src="{{ asset('app-assets/site_assets/img/pdf-img.png') }}" id="avatar" alt="identity"></a>
+                                        <a href="{{ $ownership }}" target="_blank"><img src="{{ asset('app-assets/site_assets/img/pdf-img.png') }}" id="avatar" alt="ownership"></a>
                                     </div>
                                 @else
                                     <div class="user-iban">
-                                        <img src="{{ $ownership }}" id="avatar" alt="identity">
+                                        <img src="{{ $ownership }}" id="avatar" alt="ownership">
                                     </div>
                                 @endif
                             @endif
