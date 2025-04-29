@@ -1190,7 +1190,7 @@
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="bookbutton" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade single_boat_popup" id="bookbutton" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -1228,6 +1228,11 @@
                                         name="checkout_date" placeholder="Check-out" />
                                     <input type="hidden" id="days-val" value="" name="days_val" />
                                 </div>
+
+                            </form>
+                            <!-- Price List Link -->
+                           
+
                             </div>
                         </div>
                         <div class="show-Price d-none" id="show-Price-sec">

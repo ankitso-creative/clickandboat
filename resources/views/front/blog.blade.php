@@ -14,10 +14,7 @@
 <section class="blog_banner">
     <div class="blog_banner_text">
         <h5>Destination Information</h5>
-        <h1>A short guide to the best Azores<br>
-            islands to visit by boat</h1>
-        <p>1 February / 2025</p>
-        <a href="#">View Post</a>
+        <h1>Our Blog</h1>
     </div>
 </section>
 <!-- /Blog banner Section-->
