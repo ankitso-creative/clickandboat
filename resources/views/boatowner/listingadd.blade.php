@@ -122,7 +122,7 @@
                                 <select name="skippers" class="form-control">
                                     <option value="With Skipper">With Skipper</option>
                                     <option value="Without Skipper">Without Skipper</option>
-                                    <option value="Both">Both</option>
+                                    <option value="With Skipper Or Without Skipper">With Skipper Or Without Skipper</option>
                                 </select>
                                 @error('professional')<span class="required">{{ $message }}</span>@enderror
                             </div>

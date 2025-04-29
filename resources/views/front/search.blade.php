@@ -307,9 +307,10 @@
                                 <option value="Fishing boat">Fishing boat</option>
                             </select>
                             <select name="rental_type" id="rental_type">
-                                <option  value="">With Or Without Skipper</option>
-                                <option {{ checkselect(request()->query('rental_type'), 'with skipper') }} value="with skipper">With Skipper</option>
-                                <option {{ checkselect(request()->query('rental_type'), 'without skipper') }} value="without skipper">Without Skipper</option>
+                                <option value="">Skipper</option>
+                                <option {{ checkselect(request()->query('rental_type'), 'With Skipper') }} value="With Skipper">With Skipper</option>
+                                <option {{ checkselect(request()->query('rental_type'), 'Without Skipper') }} value="Without Skipper">Without Skipper</option>
+                                <option {{ checkselect(request()->query('rental_type'), 'With Skipper Or Without Skipper') }} value="With Skipper Or Without Skipper">Both</option>
                             </select>
                         </div>
                         <div class="col-md-4">
@@ -378,9 +379,10 @@
                                                 <div class="where_box_text rental_tyle_field">
                                                     <h5>Rental Type</h5>
                                                     <select name="rental_type" id="rental_type">
-                                                        <option  value="">With Or Without Skipper</option>
-                                                        <option {{ checkselect(request()->query('rental_type'), 'with skipper') }} value="with skipper">With Skipper</option>
-                                                        <option {{ checkselect(request()->query('rental_type'), 'without skipper') }} value="without skipper">Without Skipper</option>
+                                                        <option  value="">Skipper</option>
+                                                        <option {{ checkselect(request()->query('rental_type'), 'With Skipper') }} value="With Skipper">With Skipper</option>
+                                                        <option {{ checkselect(request()->query('rental_type'), 'Without Skipper') }} value="Without Skipper">Without Skipper</option>
+                                                        <option {{ checkselect(request()->query('rental_type'), 'With Skipper Or Without Skipper') }} value="With Skipper Or Without Skipper">Both</option>
                                                     </select>
                                                 </div>
                                             </div>
