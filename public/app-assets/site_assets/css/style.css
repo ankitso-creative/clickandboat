@@ -8495,6 +8495,7 @@ margin-right:15px;
     padding: 5px 10px;
     width: 96%;
     text-align: left;
+    font-weight: 600;
 }
 .price_list_accordian .btn:hover{
     border: none;
@@ -8505,11 +8506,27 @@ margin-right:15px;
 .price_list_accordian .btn:hover {
     text-decoration: none;
 }
-.price_list_accordian .card-body p{
+.price_list_accordian .card-body p {
     color: #000;
+    padding: 4px 0px;
+    font-weight: 600;
 }
 .price_list_accordian .card-body {
     padding: 15px 15px;
+}
+.price_list_accordian .card-body h6 {
+    color: #f8a126;
+    font-size: 20px;
+}
+.monthheading {
+    font-size: 20px;
+    text-transform: uppercase;
+    padding-bottom: 5px;
+}
+.price_list_accordian .card-body span {
+    color: #f49e25;
+    font-weight: 600;
+    float: right;
 }
 /*--------------------------------------------------------------
 # Media Query
