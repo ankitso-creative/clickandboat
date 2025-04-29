@@ -731,9 +731,9 @@
                                 </div>
                             </form>
                             <!-- Price List Link -->
-                            <div class="mt-2 text-center">
+                            {{-- <div class="mt-2 text-center">
                                 <img src="{{ asset('app-assets/site_assets/img/klarna-logo.jpg') }}" />
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                     <div class="boat-card-content-sec">
@@ -747,22 +747,52 @@
                                         <li>Check-out: <strong>{{ optional($listing->booking)->check_out }}</strong></li>
                                     </ul>
                                 </div>
+                                @php 
+                                    if(session()->has('currency_code')):
+                                        $to = session('currency_code');
+                                    else:
+                                        $to = 'USD';
+                                    endif;
+                                    $fuel_cost = 'Yes';
+                                    if($listing->fuel_include == '1'):
+                                        $fuel_cost = getAmountWithSymble($listing->fuel_price,$listing->currency,$to);
+                                    endif;
+                                    $skipper_cost = 'Yes';
+                                    if($listing->skipper_include == '1'):
+                                        $skipper_cost = getAmountWithSymble($listing->skipper_price,$listing->currency,$to);
+                                    endif;
+                                    if(optional($listing->booking)->cancellation_conditions == 'flexible'):
+                                        $cancellation_conditions = 'Full refund to the tenant up to 1 day prior to arrival, excluding Service Fee and MyBoatBooker Commission. The tenant will be refunded the total amount of the booking (excluding Service Fee and MyBoatBooker Commission) if they cancel the booking until the day before check-in (time indicated on the listing by the owner or agreed between the users via MyBoatBooker messaging or 9:00 am, local time if not specified). If the Tenant arrives and decides to leave before the scheduled date, the days not spent on the boat are not refunded.';
+                                    elseif(optional($listing->booking)->cancellation_conditions == 'moderate'):
+                                        $cancellation_conditions = '70% refund to the tenant up to 10 days prior to arrival, excluding Service Fee and MyBoatBooker Commission. If the tenant cancels at least 10 days before check-in (time indicated on the listing by the owner or agreed upon by the users via MyBoatBooker messaging or 9:00 am local time if not specified), they will be refunded 70% of the total amount of the booking (excluding Service Fee and MyBoatBooker Commission). If they cancel less than 10 days before check-in, they will not be refunded. If the Tenant arrives and decides to leave before the scheduled date, the days not spent on the boat are not refunded.';
+                                    else:
+                                        $cancellation_conditions = '60% refund to the tenant up to 30 days prior to arrival, excluding Service Fee and MYBoatBooker Commission. If the Renter cancels at least 30 days before check-in (time indicated on the listing by the owner or agreed between users via MyBoatBooker messaging or 9:00 am local time if not specified), they will be refunded 60% of the total amount of the booking (excluding Service Fee and MyBoatBooker Commission). If they cancel less than 30 days before check-in, they will not be refunded. If the Tenant arrives and decides to leave before the scheduled date, the days not spent on the boat are not refunded.';
+                                    endif;
+                                    $security = 'No';
+                                    if(optional($listing->security)->security_deposit == '1')
+                                    {
+                                        $security = 'Yes ('.getAmountWithSymble($listing->security->amount,$listing->currency,$to).')';
+                                        if(optional($listing->security)->type == '0')
+                                        {
+                                            $security = 'Yes ('.optional($listing->security)->amount.'%)';
+                                        }
+                                    }
+                                @endphp
                                 <div class="col-sm-12 col-md-4 col-lg-4">
                                     <ul class="features-menu">
                                         <li><strong>Rules for the boat</strong></li>
-                                        <li>Fuel included in price:
-                                            <strong>{{ optional($listing->booking)->fuel_cost }}</strong></li>
+                                        <li>Fuel included in price: <strong>{{ $fuel_cost }}</strong></li>
+                                        <li>Is skipper included in the price: <strong>{{ $skipper_cost }}</strong></li>
                                         <li>Boat licence required: <strong>Yes (if hired without a skipper)</strong></li>
                                         <li>Minimum rental age: <strong>18 years old</strong></li>
+                                        <li>Security Deposit: <strong>{{ $security }}</strong></li>
                                     </ul>
                                 </div>
                                 <div class="col-sm-12 col-md-4 col-lg-4">
                                     <ul class="features-menu">
                                         <li><strong>Cancellation policy</strong></li>
-                                        <li>99% refund up to 7 days before arrival, excluding expenses.</li>
-                                        <li>Enter your travel dates to see the cancellation policy for this trip.</li>
-                                        <li><i class="fa-regular fa-calendar"></i> <a href="#calender_sec_form">Enter
-                                                dates</a></li>
+                                        <li>{{ $cancellation_conditions }}</li>
+                                        <li><i class="fa-regular fa-calendar"></i> <a href="#calender_sec_form">Enter dates</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -998,22 +1028,12 @@
                                             <li>Number of passengers for your rental</li>
                                             <li>With or without a skipper</li>
                                         </ul>
-                                        <textarea class="form-control" name="messages" id="messages"placeholder="Write your message here...">Hello {{ $listing->user->name }}, 
-I am interested in renting your motorboat, is it still available? 
-If yes, can you please send me a quote/offer? 
-Thank you
-@if(Auth::check())
-    @php
-    $user = auth()->user();
-    @endphp
-{{ $user->name }}
-@endif
+                                        <textarea class="form-control" name="messages" id="messages"placeholder="Write your message here...">Hello {{ $listing->user->name }}, I am interested in renting your {{ $listing->type }}, is it still available? If yes, can you please send me a message?
                                         </textarea>
                                     </div>
                                 </div>
                                 <div class="d-flex flex-column">
                                     <button class="btn book_btn" id="submit-qut" disabled>Send</button>
-                                    
                                 </div>
                             </form>
                         </div>
@@ -1179,77 +1199,82 @@ Thank you
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-      <div class="col-md-4 boat-right-sec" id="calender_sec_form">
-                        <div class="p-2 shadow-sm card">
-                            <div class="text-center d-flex flex-column">
-                                <h3>Add dates for prices</h3>
-                            </div>
-                            <!-- Rating -->
-                            <div class="mb-3 text-center see_price_btn">
-                                <a href="javascript:;" class="see-price"> See the price list</a>
-                            </div>
-                            <div class="dates_heading">
-                                <p>Dates:</p>
-                            </div>
-                            <!-- Form for dates -->
-                            <form action="{{ route('checkout') }}" method="POST">
-                                @csrf
-                                <div class="row sidebar_form">
-                                    <div class="p-0 col-md-6">
-                                        <div class="form-group">
-                                            <input type="date" id="checkin-date" name="checkin_date"
-                                                class="form-control" placeholder="Check-in" />
-                                        </div>
-                                    </div>
-                                    <div class="p-0 col-md-6">
-                                        <div class="form-group">
-                                            <input type="date" id="checkout-date" class="form-control"
-                                                name="checkout_date" placeholder="Check-out" />
-                                            <input type="hidden" id="days-val" value="" name="days_val" />
-                                        </div>
-                                    </div>
+        <div class="modal-body">
+            <div class="col-md-4 boat-right-sec" id="calender_sec_form">
+                <div class="p-2 shadow-sm card">
+                    <div class="text-center d-flex flex-column">
+                        <h3>Add dates for prices</h3>
+                    </div>
+                    <!-- Rating -->
+                    <div class="mb-3 text-center see_price_btn">
+                        <a href="javascript:;" class="see-price"> See the price list</a>
+                    </div>
+                    <div class="dates_heading">
+                        <p>Dates:</p>
+                    </div>
+                    <!-- Form for dates -->
+                    <form action="{{ route('checkout') }}" method="POST">
+                        @csrf
+                        <div class="row sidebar_form">
+                            <div class="p-0 col-md-6">
+                                <div class="form-group">
+                                    <input type="date" id="checkin-date" name="checkin_date"
+                                        class="form-control" placeholder="Check-in" />
                                 </div>
-                                <div class="show-Price d-none" id="show-Price-sec">
-                                    <p>Days: <span id="total-days"></span></p>
-                                    <p>Charter Price: <span id="charter-pice"></span></p>
-                                    <p>Service Fee: <span id="charter-fee"></span></p>
-                                    <p>Total: <span id="charter-total"></span></p>
+                            </div>
+                            <div class="p-0 col-md-6">
+                                <div class="form-group">
+                                    <input type="date" id="checkout-date" class="form-control"
+                                        name="checkout_date" placeholder="Check-out" />
+                                    <input type="hidden" id="days-val" value="" name="days_val" />
                                 </div>
-                                <div class="d-flex flex-column">
-                                    @if(Auth::check())
-                                        @php
-                                            $user = auth()->user();
-                                        @endphp
-                                        @if($user->role == 'customer')
-                                            <a class="mb-2 check_ava_btn" href="javascript:;" data-toggle="modal" data-target="#sidebar-right" class="btn btn-primary navbar-btn pull-left">
-                                                Book
-                                            </a>
-                                        @else
-                                            <a class="mb-2 check_ava_btn not-login-user" href="javascript:;">
-                                                Book
-                                            </a>
-                                        @endif
-                                    @else
-                                        <a class="mb-2 check_ava_btn not-login-user" href="javascript:;">
-                                            Book
-                                        </a>
-                                    @endif
-                                    
-                                    {{-- <span class="mt-1 mb-1 text-center d-block font-weight-bold">or</span>
-                                    <button class="btn book_btn">Book</button> --}}
-                                    <div class="pt-3 text-center form_text">
-                                        <p>You will only be charged if the request is accepted</p>
-                                        <p>Pay in 3 or 4 installments without fees with</p>
-                                    </div>
-                                </div>
+
                             </form>
                             <!-- Price List Link -->
-                            <!-- <div class="mt-2 text-center">
-                                <img src="{{ asset('app-assets/site_assets/img/klarna-logo.jpg') }}" />
-                            </div> -->
+                           
+
+                            </div>
                         </div>
+                        <div class="show-Price d-none" id="show-Price-sec">
+                            <p>Days: <span id="total-days"></span></p>
+                            <p>Charter Price: <span id="charter-pice"></span></p>
+                            <p>Service Fee: <span id="charter-fee"></span></p>
+                            <p>Total: <span id="charter-total"></span></p>
+                        </div>
+                        <div class="d-flex flex-column">
+                            @if(Auth::check())
+                                @php
+                                    $user = auth()->user();
+                                @endphp
+                                @if($user->role == 'customer')
+                                    <a class="mb-2 check_ava_btn" href="javascript:;" data-toggle="modal" data-target="#sidebar-right" class="btn btn-primary navbar-btn pull-left">
+                                        Book
+                                    </a>
+                                @else
+                                    <a class="mb-2 check_ava_btn not-login-user" href="javascript:;">
+                                        Book
+                                    </a>
+                                @endif
+                            @else
+                                <a class="mb-2 check_ava_btn not-login-user" href="javascript:;">
+                                    Book
+                                </a>
+                            @endif
+                            
+                            {{-- <span class="mt-1 mb-1 text-center d-block font-weight-bold">or</span>
+                            <button class="btn book_btn">Book</button> --}}
+                            <div class="pt-3 text-center form_text">
+                                <p>You will only be charged if the request is accepted</p>
+                                <p>Pay in 3 or 4 installments without fees with</p>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- Price List Link -->
+                    <div class="mt-2 text-center">
+                        <img src="{{ asset('app-assets/site_assets/img/klarna-logo.jpg') }}" />
                     </div>
+                </div>
+            </div>
       </div>
     </div>
   </div>

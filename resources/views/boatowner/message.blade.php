@@ -496,7 +496,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-12">
-                                            <button class="confirm-btn btn">Send Spcial Offer</button>
+                                            <button class="confirm-btn btn">Send Special Offer</button>
                                         </div>
                                     </div>
                                 </div>

@@ -21,7 +21,7 @@ function containsBlockedContent(message)
         "my company is", "i work at", "visit my website", "our site is",
         "our brand is", "booking site is", "company details",
         "trading name", "register here", "contact my assistant",
-        "here’s my assistant’s number","whatsapp","wp","fb","whatsap"
+        "here’s my assistant’s number","whatsapp","wp","fb","whatsap","snapchat"
     ];
 
     // Normalize message to lowercase for case-insensitive matching

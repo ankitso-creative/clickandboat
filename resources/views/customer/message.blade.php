@@ -353,7 +353,7 @@
                                 <p>Fuel Charges: <span id="service-fee">{{ $symble.$fuel_price }}</span></p>
                                 <p>Total: <span id="boat-total" class="price-after">{{ $symble.$quotation->total + $fuel_price }}</span></p>
                             @else
-                                <p>Total: <span id="boat-total">€{{ $symble.$quotation->total }}</span></p>
+                                <p>Total: <span id="boat-total">{{ $symble.$quotation->total }}</span></p>
                             @endif
                         </div>
                         <div class="d-flex flex-column">
