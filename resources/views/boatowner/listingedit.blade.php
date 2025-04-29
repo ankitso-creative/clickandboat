@@ -599,6 +599,12 @@
                 </div>
             </div>
             <div class="tab-pane fade edit_profile_sec" id="price" role="tabpanel" aria-labelledby="nav-price-tab">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h4 class="bold ">Price</h4>
+                        <p>Select a price for low season, mid season & high season. And any options that apply. You must select one price from each season.</p>
+                    </div>
+                </div>
                 <form method="POST">
                     <div class="row">
                         <div class="col-sm-12">
@@ -637,6 +643,7 @@
                                 <option {{ checkSelectMulti($lowSeasonMonth,'November') }} value="November">November</option> 
                                 <option {{ checkSelectMulti($lowSeasonMonth,'December') }} value="December">December</option> 
                             </select>
+                            @error('season_price[1][from][]')<span class="required">{{ $message }}</span>@enderror
                         </div>
                         <div class="col-sm-4">
                             <label>Full day price:<span class="required"> * </span></label>
@@ -644,38 +651,38 @@
                             <input type="hidden" name="season_price[1][name]" value="low_season">
                         </div>
                         <div class="col-sm-4">
-                            <label>Overnight stay price:<span class="required"> * </span></label>
+                            <label>Overnight stay price:<span class="required"> </span></label>
                             <input type="text" name="season_price[1][over_night_price]" value="{{ $lowseason->over_night_price ?? '' }}" class="form-control">
                         </div>
                         <div class="col-sm-4">
-                            <label>1 half day price:<span class="required"> * </span></label>
+                            <label>1 half day price:<span class="required">  </span></label>
                             <input type="text" name="season_price[1][one_half_day_price]" value="{{ $lowseason->one_half_day ?? '' }}" class="form-control">
                         </div>
                         <div class="col-sm-4">
-                            <label>2 days price:<span class="required"> * </span></label>
+                            <label>2 days price:<span class="required">  </span></label>
                             <input type="text" name="season_price[1][two_day_price]" value="{{ $lowseason->two_day ?? '' }}" class="form-control">
                         </div>
                         <div class="col-sm-4">
-                            <label>3 days price:<span class="required"> *</span></label>
+                            <label>3 days price:<span class="required"> </span></label>
                             <input type="text" name="season_price[1][three_day_price]" value="{{ $lowseason->three_day ?? '' }}" class="form-control">
                         </div>
                         <div class="col-sm-3">
-                            <label>4 days price:<span class="required"> *</span></label>
+                            <label>4 days price:<span class="required"></span></label>
                             <input type="text" name="season_price[1][four_day_price]" value="{{ $lowseason->four_day ?? '' }}" class="form-control">
                         </div>
                         <div class="clear"></div>
                         <div class="col-sm-3">
-                            <label>5 days price:<span class="required"> *</span></label>
+                            <label>5 days price:<span class="required"></span></label>
                             <input type="text" name="season_price[1][five_day_price]" value="{{ $lowseason->five_day ?? '' }}"
                                 class="form-control">
                         </div>
                         <div class="col-sm-3">
-                            <label>6 days price:<span class="required"> *</span></label>
+                            <label>6 days price:<span class="required"> </span></label>
                             <input type="text" name="season_price[1][six_day_price]" value="{{ $lowseason->six_day ?? '' }}"
                                 class="form-control">
                         </div>
                         <div class="col-sm-3">
-                            <label>1 week price:<span class="required"> *</span></label>
+                            <label>1 week price:<span class="required"> </span></label>
                             <input type="text" name="season_price[1][one_week_price]" value="{{ $lowseason->one_week ?? '' }}"
                                 class="form-control">
                         </div>
@@ -684,7 +691,7 @@
                             <h4 class="bold ">Mid Season Prices</h4>
                         </div>
                         <div class="col-sm-4">
-                            <label>Season Month:<span class="required"> *</span></label>
+                            <label>Season Month:<span class="required">* </span></label>
                             <select multiple class="form-control mySelect2" name="season_price[2][from][]">
                                 <option {{ checkSelectMulti($midSeasonMonth,'January') }} value="January">January</option> 
                                 <option {{ checkSelectMulti($midSeasonMonth,'February') }} value="February">February</option> 
@@ -701,46 +708,46 @@
                             </select>
                         </div>
                         <div class="col-sm-4">
-                            <label>Full day price:<span class="required"> *</span></label>
+                            <label>Full day price:<span class="required">* </span></label>
                             <input type="text" name="season_price[2][price]" value="{{ optional($listing->seasonPrice[1] ?? null)->price ?? '' }}" class="form-control">
                             <input type="hidden" name="season_price[2][name]" value="mid_season">
                         </div>
                         <div class="col-sm-4">
-                            <label>Overnight stay price:<span class="required"> *</span></label>
+                            <label>Overnight stay price:<span class="required"> </span></label>
                             <input type="text" name="season_price[2][over_night_price]" value="{{ $midSeason->over_night_price ?? '' }}" class="form-control">
                         </div>
                         <div class="col-sm-4">
-                            <label>1 half day price:<span class="required"> *</span></label>
+                            <label>1 half day price:<span class="required"> </span></label>
                             <input type="text" name="season_price[2][one_half_day_price]" value="{{ $midSeason->one_half_day ?? '' }}" class="form-control">
                         </div>
                         <div class="col-sm-4">
-                            <label>2 days price:<span class="required"> *</span></label>
+                            <label>2 days price:<span class="required"> </span></label>
                             <input type="text" name="season_price[2][two_day_price]" value="{{ $midSeason->two_day ?? '' }}"
                                 class="form-control">
                         </div>
                         <div class="col-sm-4">
-                            <label>3 days price:<span class="required"> *</span></label>
+                            <label>3 days price:<span class="required"></span></label>
                             <input type="text" name="season_price[2][three_day_price]" value="{{ $midSeason->three_day ?? '' }}"
                                 class="form-control">
                         </div>
                         <div class="col-sm-3">
-                            <label>4 days price:<span class="required"> *</span></label>
+                            <label>4 days price:<span class="required"> </span></label>
                             <input type="text" name="season_price[2][four_day_price]" value="{{ $midSeason->four_day ?? '' }}"
                                 class="form-control">
                         </div>
                         <div class="clear"></div>
                         <div class="col-sm-3">
-                            <label>5 days price:<span class="required"> *</span></label>
+                            <label>5 days price:<span class="required"> </span></label>
                             <input type="text" name="season_price[2][five_day_price]" value="{{ $midSeason->five_day ?? '' }}"
                                 class="form-control">
                         </div>
                         <div class="col-sm-3">
-                            <label>6 days price:<span class="required"> *</span></label>
+                            <label>6 days price:<span class="required"> </span></label>
                             <input type="text" name="season_price[2][six_day_price]" value="{{ $midSeason->six_day ?? '' }}"
                                 class="form-control">
                         </div>
                         <div class="col-sm-3">
-                            <label>1 week price:<span class="required"> *</span></label>
+                            <label>1 week price:<span class="required"></span></label>
                             <input type="text" name="season_price[2][one_week_price]" value="{{ $midSeason->one_week ?? '' }}"
                                 class="form-control">
                         </div>
@@ -749,7 +756,7 @@
                             <h4 class="bold ">High Season Prices</h4>
                         </div>
                         <div class="col-sm-4">
-                            <label>Season Month:<span class="required"> *</span></label>
+                            <label>Season Month:<span class="required">* </span></label>
                             <select multiple class="form-control mySelect2" name="season_price[3][from][]">
                                 <option {{ checkSelectMulti($highSeasonMonth,'January') }} value="January">January</option> 
                                 <option {{ checkSelectMulti($highSeasonMonth,'February') }} value="February">February</option> 
@@ -766,46 +773,46 @@
                             </select>
                         </div>
                         <div class="col-sm-4">
-                            <label>Full day price:<span class="required"> *</span></label>
+                            <label>Full day price:<span class="required">*</span></label>
                             <input type="text" name="season_price[3][price]" value="{{ optional($listing->seasonPrice[2] ?? null)->price ?? '' }}" class="form-control">
                             <input type="hidden" name="season_price[3][name]" value="high_season">
                         </div>
                         <div class="col-sm-4">
-                            <label>Overnight stay price:<span class="required"> *</span></label>
+                            <label>Overnight stay price:<span class="required"></span></label>
                             <input type="text" name="season_price[3][over_night_price]" value="{{ $highSeason->over_night_price ?? '' }}" class="form-control">
                         </div>
                         <div class="col-sm-4">
-                            <label>1 half day price:<span class="required"> *</span></label>
+                            <label>1 half day price:<span class="required"></span></label>
                             <input type="text" name="season_price[3][one_half_day_price]" value="{{ $highSeason->one_half_day ?? '' }}" class="form-control">
                         </div>
                         <div class="col-sm-4">
-                            <label>2 days price:<span class="required"> *</span></label>
+                            <label>2 days price:<span class="required"> </span></label>
                             <input type="text" name="season_price[3][two_day_price]" value="{{ $highSeason->two_day ?? '' }}"
                                 class="form-control">
                         </div>
                         <div class="col-sm-4">
-                            <label>3 days price:<span class="required"> *</span></label>
+                            <label>3 days price:<span class="required"> </span></label>
                             <input type="text" name="season_price[3][three_day_price]" value="{{ $highSeason->three_day ?? '' }}"
                                 class="form-control">
                         </div>
                         <div class="col-sm-3">
-                            <label>4 days price:<span class="required"> *</span></label>
+                            <label>4 days price:<span class="required"> </span></label>
                             <input type="text" name="season_price[3][four_day_price]" value="{{ $highSeason->four_day ?? '' }}"
                                 class="form-control">
                         </div>
                         <div class="clear"></div>
                         <div class="col-sm-3">
-                            <label>5 days price:<span class="required"> *</span></label>
+                            <label>5 days price:<span class="required"> </span></label>
                             <input type="text" name="season_price[3][five_day_price]" value="{{ $highSeason->five_day ?? '' }}"
                                 class="form-control">
                         </div>
                         <div class="col-sm-3">
-                            <label>6 days price:<span class="required"> *</span></label>
+                            <label>6 days price:<span class="required"> </span></label>
                             <input type="text" name="season_price[3][six_day_price]" value="{{ $highSeason->six_day ?? '' }}"
                                 class="form-control">
                         </div>
                         <div class="col-sm-3">
-                            <label>1 week price:<span class="required"> *</span></label>
+                            <label>1 week price:<span class="required"> </span></label>
                             <input type="text" name="season_price[3][one_week_price]" value="{{ $highSeason->one_week ?? '' }}"
                                 class="form-control">
                         </div>
