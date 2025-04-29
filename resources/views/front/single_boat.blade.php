@@ -1170,7 +1170,7 @@ Thank you
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="bookbutton" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade single_boat_popup" id="bookbutton" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -1245,9 +1245,9 @@ Thank you
                                 </div>
                             </form>
                             <!-- Price List Link -->
-                            <div class="mt-2 text-center">
+                            <!-- <div class="mt-2 text-center">
                                 <img src="{{ asset('app-assets/site_assets/img/klarna-logo.jpg') }}" />
-                            </div>
+                            </div> -->
                         </div>
                     </div>
       </div>
