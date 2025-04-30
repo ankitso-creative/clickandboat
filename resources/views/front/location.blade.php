@@ -292,7 +292,7 @@ function initialize() {
             <div class="row mob_filter_two">
                 <div class="col-md-8">
                     <select name="type" id="boats">
-                        <option value="">Boat</option>
+                        <option value="">Boat type</option>
                         <option value="Motorboat">Motorboat</option>
                         <option value="Sail boat">Sail boat</option>
                         <option value="Ribs">Ribs</option>
