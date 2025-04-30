@@ -8224,10 +8224,11 @@ font-size: 15px;
     padding: 10px 10px !important;
     border-radius: 30px;
     border: 1px solid #d4d4d4;
-    width: 41%;
+    width: 49%;
     font-size: 12px;
     background: #fff;
     color: #000;
+    height: 43px;
 }
 .mob_filter_two .col-md-8 {
     width: 60%;
@@ -8561,7 +8562,7 @@ margin-right:15px;
         font-size: 30px;
     }
     .home_banner_section {
-        height: 86vh;
+        height: 100vh;
         background-position: center;
         background-image: url(../img/mob-img.jpg);
     }

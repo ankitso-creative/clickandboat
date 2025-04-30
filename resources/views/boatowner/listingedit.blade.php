@@ -336,7 +336,7 @@
                     </div>
                     <div class="pt-4 row">
                         <div class="col-md-12 col-lg-6">
-                            <textarea class="form-control" rows="13" name="description">{{ optional($listing->description[0] ?? null)->description }}</textarea>
+                            <textarea class="form-control" rows="10" name="description">{{ optional($listing->description[0] ?? null)->description }}</textarea>
                             @error('description')<span class="required">{{ $message }}</span>@enderror
                         </div>
                         <div class="col-md-12 col-lg-6">
