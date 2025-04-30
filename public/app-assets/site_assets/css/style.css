@@ -8017,7 +8017,6 @@ font-size: 15px;
     padding: 5px 1px;
 }
 .show-Price span {
-    float: right;
     color: #f8a126;
     font-weight: 600;
 }
@@ -8545,7 +8544,7 @@ margin-right:15px;
     font-size: 14px;
 }
 .payment_heading a {
-    color: #212529;
+    color:red;
 }
 .cus_payment_method {
     width: 100%;
