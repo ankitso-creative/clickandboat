@@ -7519,8 +7519,11 @@ font-size: 15px;
     outline: none;
 }
 .alert-danger {
-    border-color: red;
+    /* border-color: red; */
     margin-top: 15px;
+}
+.user-identity img {
+    width: 15%;
 }
 .alert.alert-success {
     margin-top: 20px;

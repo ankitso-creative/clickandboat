@@ -51,10 +51,10 @@
             </div>
         @endif
         @if($errors->any())
-            <div style="color: red;">
-                <ul>
+            <div style="">
+                <ul class="list-unstyled">
                     @foreach($errors->all() as $error)
-                        <li>{{ $error }}</li>
+                        <li class="alert alert-danger">{{ $error }}</li>
                     @endforeach
                 </ul> 
             </div>
