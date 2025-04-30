@@ -8007,8 +8007,20 @@ font-size: 15px;
     color: #000 !important;
 }
 .show-Price {
-    padding-left: 15px;
+    padding: 15px;
     padding-top: 10px;
+}
+.show-Price p {
+    padding: 5px 1px;
+}
+.show-Price span {
+    float: right;
+    color: #f8a126;
+    font-weight: 600;
+}
+.show-Price p {
+    padding: 5px 1px;
+    font-weight: 600;
 }
 /*--------------------------------------------------------------
 # Contact Us page
@@ -8401,10 +8413,10 @@ margin-left:10px;
     color: #fff;
 }
 .dashbaord_detail_boxes .label, .value {
-display:block;	
+display:block;  
 position:relative;
 color: #000;
-text-align:right;	
+text-align:right;   
 margin-right:15px;
 }
 
@@ -8519,14 +8531,14 @@ margin-right:15px;
     font-size: 20px;
 }
 .monthheading {
-    font-size: 20px;
+    font-size: 16px;
     text-transform: uppercase;
     padding-bottom: 5px;
 }
 .price_list_accordian .card-body span {
     color: #f49e25;
     font-weight: 600;
-    float: right;
+    font-size: 14px;
 }
 /*--------------------------------------------------------------
 # Media Query
