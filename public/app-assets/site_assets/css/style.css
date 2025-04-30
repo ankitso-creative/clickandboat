@@ -8544,6 +8544,19 @@ margin-right:15px;
     font-weight: 600;
     font-size: 14px;
 }
+.payment_heading a {
+    color: #212529;
+}
+.cus_payment_method {
+    width: 100%;
+    display: block;
+    position: relative;
+    border: .0625rem solid #ced4da;
+    border-radius: .5rem;
+    margin-bottom: 15px;
+    margin-top: 10px;
+    padding: 0 10px;
+}
 /*--------------------------------------------------------------
 # Media Query
 --------------------------------------------------------------*/

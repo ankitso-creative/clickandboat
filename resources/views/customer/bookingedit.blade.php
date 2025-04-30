@@ -270,21 +270,27 @@
         @if($results->pending_amount)
             <form id="payment-form">
                 <div class="row">
-                    <a href="javascript:;" id="pay-pending-amount"> Click Here To pay Pending Amount</a>
-                    <div id="paymentAccordion">
-                        <!-- Card Payment -->
-                        <div class="form-group form-accordion-title">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" id="cardPayment" name="paymentMethod" class="custom-control-input" data-toggle="collapse" data-target="#cardDetails" checked>
-                                <label class="custom-control-label" for="cardPayment"><svg class="p-Icon p-Icon--card Icon p-Icon--md TabIcon p-PaymentAccordionButtonIcon TabIcon--selected" role="presentation" fill="var(--colorIcon)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" clip-rule="evenodd" d="M0 4a2 2 0 012-2h12a2 2 0 012 2H0zm0 2v6a2 2 0 002 2h12a2 2 0 002-2V6H0zm3 5a1 1 0 011-1h1a1 1 0 110 2H4a1 1 0 01-1-1z"></path></svg> Card</label>
+                    <div class="col-md-12 payment_heading">
+                        <a href="javascript:;" id="pay-pending-amount"><h5>Click Here To pay Pending Amount</h5> </a>
+                    </div>
+                    <div class="col-md-12">
+                        <div id="paymentAccordion" class="cus_payment_method">
+                            <!-- Card Payment -->
+                            <div class="form-group form-accordion-title">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" id="cardPayment" name="paymentMethod" class="custom-control-input" data-toggle="collapse" data-target="#cardDetails" checked>
+                                    <label class="custom-control-label" for="cardPayment"><svg class="p-Icon p-Icon--card Icon p-Icon--md TabIcon p-PaymentAccordionButtonIcon TabIcon--selected" role="presentation" fill="var(--colorIcon)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" clip-rule="evenodd" d="M0 4a2 2 0 012-2h12a2 2 0 012 2H0zm0 2v6a2 2 0 002 2h12a2 2 0 002-2V6H0zm3 5a1 1 0 011-1h1a1 1 0 110 2H4a1 1 0 01-1-1z"></path></svg> Card</label>
+                                </div>
+                                <input type="hidden" id="orderID" value="{{ $results->id }}" >
+                                <div id="card-element"></div>
                             </div>
-                            <input type="hidden" id="orderID" value="{{ $results->id }}" >
-                            <div id="card-element"></div>
                         </div>
                     </div>
-                    <div class="checkout-btn-sec">
-                        <div id="card-errors"></div>
-                        <button class="btn btn-primary btn-checkout" id="submit-button">Booking request </button>
+                    <div class="col-md-12">
+                        <div class="checkout-btn-sec">
+                            <div id="card-errors"></div>
+                            <button class="btn btn-primary btn-checkout" id="submit-button">Booking request </button>
+                        </div>
                     </div>
                 </div>
             </form>
