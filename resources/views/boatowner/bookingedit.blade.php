@@ -171,14 +171,14 @@
                         @error('cancel_message')<span class="required">{{ $message }}</span>@enderror
                     </div>
                 </div>
-                <div class="col-md-6 {{ $dCLs }}" id="evidence-box">
+                <div class="col-md-6 {{ $dCLsp }}" id="evidence-box">
                     <div class="form-group">
                         <label class="label-default">Provide Evidence<span class="required"></span></label>
                         <input type="file" class="form-control" name="evidence" accept=".jpeg,.jpg,.pdf,.png">
                         @error('evidence')<span class="required">{{ $message }}</span>@enderror
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 {{ $dCLsp }}">
                    @php 
                         $evidence = $results->getFirstMediaUrl('evidence');
                         $extensionEv = pathinfo($evidence, PATHINFO_EXTENSION);

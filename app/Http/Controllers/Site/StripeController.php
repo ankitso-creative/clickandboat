@@ -204,6 +204,7 @@ class StripeController extends Controller
                 $order->amount_paid = $totalAmount;
                 $order->sub_total = $totalAmount;
                 $order->total = $totalAmount;
+                event(new PendingAmountOwner($order)); dd('dasd');
                 if( $order->update())
                 {
                     $transaction = Transaction::create([
