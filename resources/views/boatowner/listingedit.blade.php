@@ -251,7 +251,7 @@
                         </div>
                         <div class="col-lg-4">
                             <label>Harbour:<span class="required"> * </span></label>
-                            <select name="harbour" class="form-control" placeholder="Search Loaction">
+                            <select name="harbour" class="form-control" placeholder="Search Location">
                                 <option value="">All Marinas</option>
                                 <option {{ checkselect($listing->harbour,'Marina Santa Eulalia') }} value="Marina Santa Eulalia">Marina Santa Eulalia</option>
                                 <option {{ checkselect($listing->harbour,'Puerto Sant Antoni') }} value="Puerto Sant Antoni">Puerto Sant Antoni</option>

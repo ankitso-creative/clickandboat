@@ -496,6 +496,9 @@ label, input, textarea, button, select {
 .right.location-modals .modal-title i{
     margin-right: 10px;
 }
+.boat-left-sec .flatpickr-day.flatpickr-disabled, .boat-left-sec .flatpickr-day.flatpickr-disabled:hover {
+    color: rgb(57 57 57 / 47%) !important;
+}
 /*--------------------------------------------------------------
 # Social Share Modal CSS Start
  --------------------------------------------------------------*/
