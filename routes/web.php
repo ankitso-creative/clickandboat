@@ -129,6 +129,10 @@ Route::middleware('Setlang')->group(function(){
         Route::resource('booking', BookingController::class);
         Route::post('/stripe/payment-intent', [StripeController::class, 'createPaymentIntent'])->name('stripe.createPaymentIntent');
         Route::post('/stripe/confirmPaymentIntent', [StripeController::class, 'confirmPaymentIntent'])->name('stripe.confirmPaymentIntent');
+
+        Route::post('/stripe/payment-pending', [StripeController::class, 'createPaymentPending'])->name('stripe.createPaymentPending');
+        Route::post('/stripe/confirmpaymentpending', [StripeController::class, 'confirmPaymentPending'])->name('stripe.confirmPaymentPending');
+
         Route::get('/support', [ChatController::class, 'index'])->name('support');
         Route::post('/support/send-quotation', [ChatController::class, 'sendQuotation'])->name('support.quotation');
         Route::get('/support/message/{slug}', [ChatController::class, 'message'])->name('message');

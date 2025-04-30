@@ -22,7 +22,6 @@
             const cardErrors = document.getElementById('card-errors');
             if (event.error) {
                 cardErrors.textContent = event.error.message;
-				submitButton.innerHTML = `Booking request`;
             } else {
                 cardErrors.textContent = ''; 
             }
