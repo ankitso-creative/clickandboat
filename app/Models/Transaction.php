@@ -13,4 +13,8 @@ class Transaction extends Model
         'amount_paid',
         'payment_status',
     ];
+    public function order() 
+    {
+        return $this->belongsTo(Order::class);
+    }
 }

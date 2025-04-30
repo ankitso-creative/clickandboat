@@ -2,6 +2,7 @@
 
 namespace App\Mail\Front;
 
+use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -27,8 +28,9 @@ class PendingOwnerMail extends Mailable
      */
     public function envelope(): Envelope
     {
+        $customer = User::where('id', $this->emailData->order->user_id)->value('name');
         return new Envelope(
-            subject: 'Confirm Pending Amount',
+            subject: 'Confirm Pending Amount - '.$customer,
         );
     }
 

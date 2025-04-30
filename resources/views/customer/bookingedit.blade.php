@@ -256,7 +256,26 @@
                         <textarea name="cancel_message" class="form-control" disabled>{{ $results->cancel_message }}</textarea>
                     </div>
                 </div>
-                
+                <div class="col-md-6 {{ $dCLsp }}">
+                    @php 
+                         $evidence = $results->getFirstMediaUrl('evidence');
+                         $extensionEv = pathinfo($evidence, PATHINFO_EXTENSION);
+                    @endphp
+                     @if($evidence)
+                         <div class="form-group">
+                             <label class="label-default">Evidence</label>
+                         </div>
+                         @if($extensionEv == 'pdf')
+                             <div class="user-identity">
+                                 <a href="{{ $evidence }}" target="_blank"><img src="{{ asset('app-assets/site_assets/img/pdf-img.png') }}" id="avatar" alt="identity"></a>
+                             </div>
+                         @else
+                             <div class="user-identity">
+                                 <img src="{{ $evidence }}" id="avatar" alt="identity">
+                             </div>
+                         @endif
+                     @endif
+                </div>
             </div>
             
             {{-- <div class="row">

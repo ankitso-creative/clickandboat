@@ -41,4 +41,8 @@ class Order extends Model implements HasMedia
     {
         return $this->belongsTo(User::class);
     }
+    public function transaction()
+    {
+        return $this->hasMany(Transaction::class);
+    }
 }
