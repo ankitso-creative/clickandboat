@@ -15,6 +15,7 @@ use Auth;
 use Stripe\Stripe;
 use Stripe\PaymentIntent;
 use App\Models\Order;
+use App\Models\Transaction;
 use Illuminate\Support\Facades\Crypt;
 
 class StripeController extends Controller
@@ -136,6 +137,12 @@ class StripeController extends Controller
                     'total' => $totalAmount,
                     'currency' => $quotation->currency,
                 ]);
+                $transaction = Transaction::create([
+                    'order_id' => $order->id, 
+                    'transactions_id' => $paymentIntent->id,
+                    'amount_paid' => $depositAmount,
+                    'payment_status' => $paymentIntent->status,
+                ]);
                 event(new BookingCustomer($order));
                 event(new BookingOwner($order));
                 return response()->json([
@@ -191,6 +198,7 @@ class StripeController extends Controller
             $paymentIntent = PaymentIntent::retrieve($paymentIntentId);
             if ($paymentIntent->status === 'succeeded') 
             {
+                $pendingAmount = $order->pending_amount;
                 $totalAmount = $order->total;
                 $order->pending_amount = '0';
                 $order->amount_paid = $totalAmount;
@@ -198,6 +206,12 @@ class StripeController extends Controller
                 $order->total = $totalAmount;
                 if( $order->update())
                 {
+                    $transaction = Transaction::create([
+                        'order_id' => $order->id, 
+                        'transactions_id' => $paymentIntentId,
+                        'amount_paid' => $pendingAmount,
+                        'payment_status' => $paymentIntent->status,
+                    ]);
                     event(new PendingAmountCustomer($order));
                     event(new PendingAmountOwner($order));
                     return response()->json([
