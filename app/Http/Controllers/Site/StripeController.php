@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Site;
 
+use App\Events\Front\BookingCustomer;
+use App\Events\Front\BookingOwner;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Listing;
 use App\Models\Admin\Quotation;
@@ -132,6 +134,8 @@ class StripeController extends Controller
                     'total' => $totalAmount,
                     'currency' => $quotation->currency,
                 ]);
+                event(new BookingCustomer($order));
+                event(new BookingOwner($order));
                 return response()->json([
                     'message' => 'Payment confirmed and order saved successfully.',
                     'order_id' => $order->id,

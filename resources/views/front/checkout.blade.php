@@ -22,12 +22,17 @@
             const cardErrors = document.getElementById('card-errors');
             if (event.error) {
                 cardErrors.textContent = event.error.message;
+				submitButton.innerHTML = `Booking request`;
             } else {
                 cardErrors.textContent = ''; 
             }
         });
  		document.getElementById("payment-form").addEventListener("submit", async (event) => {
 			event.preventDefault();
+
+			const submitButton = document.getElementById("submit-button");
+			submitButton.innerHTML = `<i class="fas fa-spinner fa-spin me-2"></i> Wait Please...`;
+
 			const quotationID = document.getElementById("quotationID").value;
 			const paymentType = document.querySelector('input[name="payment_type"]:checked')?.value;
 			try {
@@ -42,6 +47,7 @@
 				const data = await response.json();
 				if (data.error) {
 					document.getElementById("card-errors").innerText = data.error;
+					submitButton.innerHTML = `Booking request`;
 					return;
 				}
 				const { paymentIntent, error } = await stripe.confirmCardPayment(data.clientSecret, {
@@ -51,6 +57,7 @@
 				});
 				if (error) {
 					document.getElementById("card-errors").innerText = error.message;
+					submitButton.innerHTML = `Booking request`;
 				} 
 				else {
 					const confirmationResponse = await fetch("{{ route('customer.stripe.confirmPaymentIntent') }}", {
@@ -68,12 +75,14 @@
 					const confirmationData = await confirmationResponse.json();
 					if (confirmationData.error) {
 						document.getElementById("card-errors").innerText = confirmationData.error;
+						submitButton.innerHTML = `Booking request`;
 					} else {
 						window.location.href = confirmationData.url
 					}
 				}
 			} catch (error) {
 				document.getElementById("card-errors").innerText = error.message;
+				submitButton.innerHTML = `Booking request`;
 			}
 		});
 	</script>
@@ -308,6 +317,7 @@
 									<p>By selecting the button below, you unconditionally agree to the <a href="#">Terms & Conditions</a>, <a href="#">Cancellation conditions</a>, <a href="#">Insurance conditions</a>. You also agree to pay the total amount of the reservation.</p>
 									<div id="card-errors"></div>
 									<button class="btn btn-primary btn-checkout" id="submit-button">Booking request </button>
+									
 								</div>
 							</div>
 						</div>
