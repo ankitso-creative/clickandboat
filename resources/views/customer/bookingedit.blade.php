@@ -45,7 +45,7 @@
                 allowOutsideClick: false,
             }, function(isConfirm) {
                 if (isConfirm) {
-                    
+                    $('#card-box').removeClass('d-none');
                 }
             });
         });
@@ -271,9 +271,9 @@
             <form id="payment-form">
                 <div class="row">
                     <div class="col-md-12 payment_heading">
-                        <a href="javascript:;" id="pay-pending-amount"><h5>Click Here To pay Pending Amount</h5> </a>
+                        <h5><a href="javascript:;" id="pay-pending-amount">Click Here To pay Pending Amount</a></h5> 
                     </div>
-                    <div class="col-md-12">
+                    <div class="col-md-12 d-none" id="card-box">
                         <div id="paymentAccordion" class="cus_payment_method">
                             <!-- Card Payment -->
                             <div class="form-group form-accordion-title">
@@ -285,8 +285,6 @@
                                 <div id="card-element"></div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-12">
                         <div class="checkout-btn-sec">
                             <div id="card-errors"></div>
                             <button class="btn btn-primary btn-checkout" id="submit-button">Booking request </button>
