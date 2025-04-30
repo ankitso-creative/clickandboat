@@ -748,7 +748,7 @@
                         <div class="feature-sec">
                             <h3>Conditions</h3>
                             <div class="row">
-                                <div class="col-sm-12 col-md-4 col-lg-4">
+                                <div class="col-sm-12 col-md-6 col-lg-2">
                                     <ul class="features-menu">
                                         <li><strong>Check-in & check-out</strong></li>
                                         <li>Check-in: <strong>{{ optional($listing->booking)->check_in }}</strong></li>
@@ -786,7 +786,7 @@
                                         }
                                     }
                                 @endphp
-                                <div class="col-sm-12 col-md-4 col-lg-4">
+                                <div class="col-sm-12 col-md-6 col-lg-4">
                                     <ul class="features-menu">
                                         <li><strong>Rules for the boat</strong></li>
                                         <li>Fuel included in price: <strong>{{ $fuel_cost }}</strong></li>
@@ -796,7 +796,7 @@
                                         <li>Security Deposit: <strong>{{ $security }}</strong></li>
                                     </ul>
                                 </div>
-                                <div class="col-sm-12 col-md-4 col-lg-4">
+                                <div class="col-sm-12 col-md-12 col-lg-6">
                                     <ul class="features-menu">
                                         <li><strong>Cancellation policy</strong></li>
                                         <li>{{ $cancellation_conditions }}</li>
