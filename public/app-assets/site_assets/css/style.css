@@ -9686,6 +9686,9 @@ margin-right:15px;
     padding: 0px;
 
 }
+.row.mob_filter_one {
+    padding-top: 20px;
+}
 }
 @media (min-width: 767px) and (max-width: 1024px) {
     .header-slider {
