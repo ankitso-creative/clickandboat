@@ -8013,8 +8013,19 @@ font-size: 15px;
     color: #000 !important;
 }
 .show-Price {
-    padding-left: 15px;
+    padding: 15px;
     padding-top: 10px;
+}
+.show-Price p {
+    padding: 5px 1px;
+}
+.show-Price span {
+    color: #f8a126;
+    font-weight: 600;
+}
+.show-Price p {
+    padding: 5px 1px;
+    font-weight: 600;
 }
 /*--------------------------------------------------------------
 # Contact Us page
@@ -8215,10 +8226,11 @@ font-size: 15px;
     padding: 10px 10px !important;
     border-radius: 30px;
     border: 1px solid #d4d4d4;
-    width: 41%;
+    width: 49%;
     font-size: 12px;
     background: #fff;
     color: #000;
+    height: 43px;
 }
 .mob_filter_two .col-md-8 {
     width: 60%;
@@ -8407,10 +8419,10 @@ margin-left:10px;
     color: #fff;
 }
 .dashbaord_detail_boxes .label, .value {
-display:block;	
+display:block;  
 position:relative;
 color: #000;
-text-align:right;	
+text-align:right;   
 margin-right:15px;
 }
 
@@ -8525,14 +8537,27 @@ margin-right:15px;
     font-size: 20px;
 }
 .monthheading {
-    font-size: 20px;
+    font-size: 16px;
     text-transform: uppercase;
     padding-bottom: 5px;
 }
 .price_list_accordian .card-body span {
     color: #f49e25;
     font-weight: 600;
-    float: right;
+    font-size: 14px;
+}
+.payment_heading a {
+    color:red;
+}
+.cus_payment_method {
+    width: 100%;
+    display: block;
+    position: relative;
+    border: .0625rem solid #ced4da;
+    border-radius: .5rem;
+    margin-bottom: 15px;
+    margin-top: 10px;
+    padding: 0 10px;
 }
 /*--------------------------------------------------------------
 # Media Query
@@ -8552,7 +8577,7 @@ margin-right:15px;
         font-size: 30px;
     }
     .home_banner_section {
-        height: 86vh;
+        height: 100vh;
         background-position: center;
         background-image: url(../img/mob-img.jpg);
     }
@@ -9662,6 +9687,9 @@ margin-right:15px;
     display: block;
     padding: 0px;
 
+}
+.row.mob_filter_one {
+    padding-top: 20px;
 }
 }
 @media (min-width: 767px) and (max-width: 1024px) {

@@ -386,14 +386,14 @@
                                 </svg>
                                 Professional
                             </li>
-                            <li>
+                            <!-- <li>
                                 <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" clip-rule="evenodd"
                                         d="M8.02606 3.57293L8.02601 3.57493L8.02454 3.57661L8.02285 3.57809L8.02085 3.57814L8.01885 3.57809L8.01717 3.57661L8.01569 3.57493L8.01565 3.57293L8.01569 3.57093L8.01717 3.56924L8.01885 3.56777L8.02085 3.56772L8.02285 3.56777L8.02454 3.56924L8.02601 3.57093L8.02606 3.57293ZM9.00002 5.32322C9.61228 4.97997 10.0261 4.32477 10.0261 3.57293C10.0261 2.46548 9.1283 1.56772 8.02085 1.56772C6.91341 1.56772 6.01565 2.46548 6.01565 3.57293C6.01565 4.30759 6.41073 4.94997 7.00002 5.2992V5.71355L5.35419 5.71355V7.71355H7.00002L7.00002 12.6487C6.77579 12.5955 6.55563 12.5244 6.34173 12.4358C5.81598 12.218 5.33828 11.8988 4.93589 11.4964C4.5335 11.094 4.21431 10.6163 3.99654 10.0906C3.77877 9.56485 3.66669 9.00136 3.66669 8.4323H1.66669C1.66669 9.26401 1.8305 10.0876 2.14878 10.856C2.46706 11.6244 2.93357 12.3225 3.52168 12.9106C4.10978 13.4987 4.80796 13.9653 5.57636 14.2835C6.34475 14.6018 7.16831 14.7656 8.00002 14.7656C8.83172 14.7656 9.65529 14.6018 10.4237 14.2835C11.1921 13.9653 11.8903 13.4988 12.4784 12.9106C13.0665 12.3225 13.533 11.6244 13.8513 10.856C14.1695 10.0876 14.3334 9.26401 14.3334 8.4323H12.3334C12.3334 9.00136 12.2213 9.56485 12.0035 10.0906C11.7857 10.6163 11.4665 11.094 11.0641 11.4964C10.6618 11.8988 10.1841 12.218 9.65831 12.4358C9.44441 12.5244 9.22426 12.5955 9.00002 12.6487L9.00002 7.71355H10.6875V5.71355L9.00002 5.71355V5.32322Z">
                                     </path>
                                 </svg>
                                 Zudika
-                            </li>
+                            </li> -->
                         </ul>
                     </div>
                     <div class="col-md-12">
@@ -734,7 +734,6 @@
                                     <button class="btn book_btn">Book</button> --}}
                                     <div class="pt-3 text-center form_text">
                                         <p>You will only be charged if the request is accepted</p>
-                                        <p>Pay in 3 or 4 installments without fees with</p>
                                     </div>
                                 </div>
                             </form>
@@ -748,7 +747,7 @@
                         <div class="feature-sec">
                             <h3>Conditions</h3>
                             <div class="row">
-                                <div class="col-sm-12 col-md-4 col-lg-4">
+                                <div class="col-sm-12 col-md-6 col-lg-2">
                                     <ul class="features-menu">
                                         <li><strong>Check-in & check-out</strong></li>
                                         <li>Check-in: <strong>{{ optional($listing->booking)->check_in }}</strong></li>
@@ -786,7 +785,7 @@
                                         }
                                     }
                                 @endphp
-                                <div class="col-sm-12 col-md-4 col-lg-4">
+                                <div class="col-sm-12 col-md-6 col-lg-4">
                                     <ul class="features-menu">
                                         <li><strong>Rules for the boat</strong></li>
                                         <li>Fuel included in price: <strong>{{ $fuel_cost }}</strong></li>
@@ -796,7 +795,7 @@
                                         <li>Security Deposit: <strong>{{ $security }}</strong></li>
                                     </ul>
                                 </div>
-                                <div class="col-sm-12 col-md-4 col-lg-4">
+                                <div class="col-sm-12 col-md-12 col-lg-6">
                                     <ul class="features-menu">
                                         <li><strong>Cancellation policy</strong></li>
                                         <li>{{ $cancellation_conditions }}</li>
@@ -1371,7 +1370,6 @@
                             <button class="btn book_btn">Book</button> --}}
                             <div class="pt-3 text-center form_text">
                                 <p>You will only be charged if the request is accepted</p>
-                                <p>Pay in 3 or 4 installments without fees with</p>
                             </div>
                         </div>
                     </form>

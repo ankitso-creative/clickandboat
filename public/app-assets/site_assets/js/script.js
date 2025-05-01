@@ -488,6 +488,7 @@ $(document).ready(function() {
         return false;
     });
 });
+
 $(document).ready(function() {
 	$(document).on('change','#currency_name',function(){
 		var code = $(this).val();

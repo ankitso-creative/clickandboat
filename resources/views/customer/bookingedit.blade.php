@@ -3,9 +3,12 @@
 <title>Dashboard - {{ config('app.name') }}</title>
 @endsection
 @section('css')
-
+    <link href="{{ asset('app-assets/global/plugins/bootstrap-sweetalert/sweetalert.css') }}" rel="stylesheet" type="text/css" />   
 @endsection
 @section('js')
+    <script src="{{ asset('app-assets/global/plugins/bootstrap-sweetalert/sweetalert.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('app-assets/pages/scripts/ui-sweetalert.min.js') }}" type="text/javascript"></script>
+    <script src="https://js.stripe.com/v3/"></script>
    <script>
         $(document).on('change','select[name="cancel_reason"]',function(){
             var val = $(this).val();
@@ -29,7 +32,93 @@
                 $('#reason-select').addClass('d-none');
             }
         })
-   </script>
+        $('#pay-pending-amount').on('click', function() {
+            swal({
+                title: '',
+                text: 'Click to confirm pay pending amount.',
+                icon: 'warning', // Use "icon" instead of "type" in SweetAlert 2
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#aaa',
+                confirmButtonText: 'Confirm',
+                cancelButtonText: 'Cancel',
+                allowOutsideClick: false,
+            }, function(isConfirm) {
+                if (isConfirm) {
+                    
+                }
+            });
+        });
+		const stripe = Stripe("{{ config('services.stripe.key') }}");
+		const elements = stripe.elements();
+        const card = elements.create("card");
+        card.mount("#card-element");
+		card.on('change', function(event) {
+            const cardErrors = document.getElementById('card-errors');
+            if (event.error) {
+                cardErrors.textContent = event.error.message;
+            } else {
+                cardErrors.textContent = ''; 
+            }
+        });
+ 		document.getElementById("payment-form").addEventListener("submit", async (event) => {
+			event.preventDefault();
+
+			const submitButton = document.getElementById("submit-button");
+			submitButton.innerHTML = `<i class="fas fa-spinner fa-spin me-2"></i> Wait Please...`;
+
+			const orderID = document.getElementById("orderID").value;
+			try {
+				const response = await fetch("{{ route('customer.stripe.createPaymentPending') }}", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+						"X-CSRF-TOKEN": "{{ csrf_token() }}"
+					},
+					body: JSON.stringify({ orderID })
+				});
+				const data = await response.json();
+				if (data.error) {
+					document.getElementById("card-errors").innerText = data.error;
+					submitButton.innerHTML = `Pay`;
+					return;
+				}
+				const { paymentIntent, error } = await stripe.confirmCardPayment(data.clientSecret, {
+					payment_method: {
+						card: card,
+					}
+				});
+				if (error) {
+					document.getElementById("card-errors").innerText = error.message;
+					submitButton.innerHTML = `Pay`;
+				} 
+				else {
+					const confirmationResponse = await fetch("{{ route('customer.stripe.confirmPaymentPending') }}", {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json",
+							"X-CSRF-TOKEN": "{{ csrf_token() }}"
+						},
+						body: JSON.stringify({
+							paymentIntentId: paymentIntent.id,
+							paymentStatus: paymentIntent.status, 
+							orderID
+						})
+					});
+					const confirmationData = await confirmationResponse.json();
+					if (confirmationData.error) {
+						document.getElementById("card-errors").innerText = confirmationData.error;
+						submitButton.innerHTML = `Pay`;
+					} else {
+						window.location.href = confirmationData.url
+					}
+				}
+			} catch (error) {
+				document.getElementById("card-errors").innerText = error.message;
+				submitButton.innerHTML = `Pay`;
+			}
+		});
+	</script>
 @endsection
 @section('content')
     <div class="col-lg-9 main-dashboard">
@@ -167,6 +256,26 @@
                         <textarea name="cancel_message" class="form-control" disabled>{{ $results->cancel_message }}</textarea>
                     </div>
                 </div>
+                <div class="col-md-6 {{ $dCLsp }}">
+                    @php 
+                         $evidence = $results->getFirstMediaUrl('evidence');
+                         $extensionEv = pathinfo($evidence, PATHINFO_EXTENSION);
+                    @endphp
+                     @if($evidence)
+                         <div class="form-group">
+                             <label class="label-default">Evidence</label>
+                         </div>
+                         @if($extensionEv == 'pdf')
+                             <div class="user-identity">
+                                 <a href="{{ $evidence }}" target="_blank"><img src="{{ asset('app-assets/site_assets/img/pdf-img.png') }}" id="avatar" alt="identity"></a>
+                             </div>
+                         @else
+                             <div class="user-identity">
+                                 <img src="{{ $evidence }}" id="avatar" alt="identity">
+                             </div>
+                         @endif
+                     @endif
+                </div>
             </div>
             
             {{-- <div class="row">
@@ -177,6 +286,34 @@
                 </div>
             </div> --}}
         </form>
+        @if($results->pending_amount)
+            <form id="payment-form">
+                <div class="row">
+                    <div class="col-md-12 payment_heading">
+                    <h5> <a href="javascript:;" id="pay-pending-amount">Click Here  </a>To pay Pending Amount</h5>
+                    </div>
+                    <div class="col-md-12">
+                        <div id="paymentAccordion" class="cus_payment_method">
+                            <!-- Card Payment -->
+                            <div class="form-group form-accordion-title">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" id="cardPayment" name="paymentMethod" class="custom-control-input" data-toggle="collapse" data-target="#cardDetails" checked>
+                                    <label class="custom-control-label" for="cardPayment"><svg class="p-Icon p-Icon--card Icon p-Icon--md TabIcon p-PaymentAccordionButtonIcon TabIcon--selected" role="presentation" fill="var(--colorIcon)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" clip-rule="evenodd" d="M0 4a2 2 0 012-2h12a2 2 0 012 2H0zm0 2v6a2 2 0 002 2h12a2 2 0 002-2V6H0zm3 5a1 1 0 011-1h1a1 1 0 110 2H4a1 1 0 01-1-1z"></path></svg> Card</label>
+                                </div>
+                                <input type="hidden" id="orderID" value="{{ $results->id }}" >
+                                <div id="card-element"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="checkout-btn-sec">
+                            <div id="card-errors"></div>
+                            <button class="btn btn-primary btn-checkout" id="submit-button">Booking request </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        @endif
     </div>
    
 @endsection
