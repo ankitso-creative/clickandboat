@@ -441,7 +441,7 @@
                                     <label for="Yacht"> Yacht</label>
                                 </div>
                             </div>
-                            <div class="location_checkbox_two">
+                            {{-- <div class="location_checkbox_two">
                                 <h5>Filter by Marina</h5>
                                 <div class="input-group">
                                     <input type="checkbox" id="All" name="All" value="All">
@@ -473,7 +473,7 @@
                                     <input type="checkbox" id="Clubnautico" name="Clubnautico" value="Clubnautico">
                                     <label for="Clubnautico"> Club nautico</label>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="location_checkbox_two">
                                 <h5>Boat length</h5>
                                 <div class="custom-wrapper">
@@ -528,9 +528,9 @@
                                         <label>Number of peoples</label>
                                         <div class="number_list_filter">
                                             <div class="number_counter">
-                                                <a href="#"><i class="fa-solid fa-minus"></i></a>
-                                                <input type="number" id="quantity" name="quantity" min="1" max="5">
-                                                <a href="#"><i class="fa-solid fa-plus"></i></a>
+                                                <a href="javascript:;" class="people-minus"><i class="fa-solid fa-minus"></i></a>
+                                                <input type="number" id="people" value="{{ request()->query('people') ?? 0 }}" name="people">
+                                                <a href="javascript:;" class="people-plus"><i class="fa-solid fa-plus"></i></a>
                                             </div>
                                         </div>
                                     </div>
@@ -538,9 +538,9 @@
                                         <label>Number of cabins</label>
                                         <div class="number_list_filter">
                                             <div class="number_counter">
-                                                <a href="#"><i class="fa-solid fa-minus"></i></a>
-                                                <input type="number" id="quantity" name="quantity" min="1" max="5">
-                                                <a href="#"><i class="fa-solid fa-plus"></i></a>
+                                                <a href="javascript:;" class="cabins-minus"><i class="fa-solid fa-minus"></i></a>
+                                                <input type="number" id="cabins" value="{{ request()->query('cabins') ?? 0 }}" name="cabins">
+                                                <a href="javascript:;" class="cabins-plus"><i class="fa-solid fa-plus"></i></a>
                                             </div>
                                         </div>
                                     </div>
@@ -548,9 +548,9 @@
                                         <label>Number of berths</label>
                                         <div class="number_list_filter">
                                             <div class="number_counter">
-                                                <a href="#"><i class="fa-solid fa-minus"></i></a>
-                                                <input type="number" id="quantity" name="quantity" min="1" max="5">
-                                                <a href="#"><i class="fa-solid fa-plus"></i></a>
+                                                <a href="javascript:;" class="berths-minus"><i class="fa-solid fa-minus"></i></a>
+                                                <input type="number" id="berths" value="{{ request()->query('berths') ?? 0 }}" name="berths">
+                                                <a href="javascript:;" class="berths-plus"><i class="fa-solid fa-plus"></i></a>
                                             </div>
                                         </div>
                                     </div>
