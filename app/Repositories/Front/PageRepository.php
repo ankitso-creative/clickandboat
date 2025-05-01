@@ -188,6 +188,18 @@ use Illuminate\Support\Facades\Session;
                 $rental_type = $request->rental_type; 
                 return $query->where('skipper', $rental_type); 
             })
+            ->when($request->has('people') && !empty($request->people), function ($query) use ($request) {
+                $people = $request->people; 
+                return $query->where('capacity','>=', $people); 
+            })
+            ->when($request->has('cabins') && !empty($request->cabins), function ($query) use ($request) {
+                $cabins = $request->cabins; 
+                return $query->where('cabins','>=', $cabins); 
+            })
+            ->when($request->has('berths') && !empty($request->berths), function ($query) use ($request) {
+                $berths = $request->cabins; 
+                return $query->where('berths','>=', $berths); 
+            })
             ->when($request->has('min_length') && !empty($request->min_length), function ($query) use ($request) {
                 $min_length = $request->min_length; 
                 return $query->where('length', '>=', $min_length); 

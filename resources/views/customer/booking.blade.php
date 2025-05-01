@@ -73,6 +73,8 @@
                                     <td>{{ $result->check_out }}</td>
                                     <td>{{ $listing->boat_name }}</td>
                                     <td>{{ $symble.$result->amount_paid }}</td>
+                                    <td>{{ $symble.$result->pending_amount }}</td>
+                                    <td>{{ $symble.$result->total }}</td>
                                     <td>{{ $result->payment_status }}</td>
                                     <td>{{ \Carbon\Carbon::parse($result->created_at)->format('d-m-Y') }}</td>
                                     <td>

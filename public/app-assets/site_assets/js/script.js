@@ -581,6 +581,57 @@ $(document).ready(function() {
 			}
 		});
 	});
+
+	$('.people-plus').click(function() {
+        let input = $('input[name="people"]');
+        let currentVal = parseInt(input.val()) || 0;
+        input.val(currentVal + 1);
+		$('#search-filter-fom').submit();
+    });
+
+    // Minus button
+    $('.people-minus').click(function() {
+        let input = $('input[name="people"]');
+        let currentVal = parseInt(input.val()) || 0;
+        if (currentVal > 0) {
+            input.val(currentVal - 1);
+        }
+		$('#search-filter-fom').submit();
+    });
+
+	$('.cabins-plus').click(function() {
+        let input = $('input[name="cabins"]');
+        let currentVal = parseInt(input.val()) || 0;
+        input.val(currentVal + 1);
+		$('#search-filter-fom').submit();
+    });
+
+    // Minus button
+    $('.cabins-minus').click(function() {
+        let input = $('input[name="cabins"]');
+        let currentVal = parseInt(input.val()) || 0;
+        if (currentVal > 0) {
+            input.val(currentVal - 1);
+        }
+		$('#search-filter-fom').submit();
+    });
+
+	$('.berths-plus').click(function() {
+        let input = $('input[name="berths"]');
+        let currentVal = parseInt(input.val()) || 0;
+        input.val(currentVal + 1);
+		$('#search-filter-fom').submit();
+    });
+
+    // Minus button
+    $('.berths-minus').click(function() {
+        let input = $('input[name="berths"]');
+        let currentVal = parseInt(input.val()) || 0;
+        if (currentVal > 0) {
+            input.val(currentVal - 1);
+        }
+		$('#search-filter-fom').submit();
+    });
 });
 
 
