@@ -8278,9 +8278,14 @@ font-size: 15px;
     display: flex;
     justify-content: space-between;
 }
-.mobile_filter_model .close_arrow {
-    color: #000;
-    font-size: 34px;
+.mobile_filter_model button.close {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    font-size: 38px;
+    color: #f8a126;
+    opacity: 1;
+    z-index: 999;
 }
 .mobile_filter_model .modal-title{
     text-transform: uppercase;
