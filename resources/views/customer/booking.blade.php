@@ -49,7 +49,9 @@
                             <th>CheckIn Date</th>
                             <th>CheckOut Date</th>
                             <th>Boat Name</th>
-                            <th>Price</th>
+                            <th>Amount Paid</th>
+                            <th>Pending Paid</th>
+                            <th>Total Amount</th>
                             <th>Status</th>
                             <th>Submitted On</th>
                             <th>Action</th>
