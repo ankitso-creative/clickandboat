@@ -168,6 +168,9 @@
 
 @section('content')
     <div class="col-lg-9 main-dashboard">
+        <div class="message-text">
+            <p>Any personal information supplied such as email addresses, phone numbers, social media & website links will be unable to be sent. Once a booking is made, personal information will be given.</p>
+        </div>
         <div class="user-list-section">
             <ul>
                 @if($usersWithLastMessage)
