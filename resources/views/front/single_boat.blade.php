@@ -108,6 +108,16 @@
                                 $('#charter-pice, #charter-pice-2').html(response.price);
                                 $('#charter-fee, #charter-fee-2').html(response.servive_fee);
                                 $('#charter-total, #charter-total-2, #charter-total-3').html(response.totalAmount);
+                                if(response.days==1 && response.priceExist=='yes')
+                                {
+                                    $('#half_day-box').removeClass('d-none');
+                                    $('#half_day-box-2').removeClass('d-none');
+                                }
+                                else
+                                {
+                                    $('#half_day-box').addClass('d-none');
+                                    $('#half_day-box-2').addClass('d-none');
+                                }
                             } else {
                                 $('#price_display').html('<p>Price not available.</p>');
                             }
@@ -150,6 +160,16 @@
                                 $('#charter-pice').html(response.price);
                                 $('#charter-fee').html(response.servive_fee);
                                 $('#charter-total').html(response.totalAmount);
+                                if(response.days==1 && response.priceExist=='yes')
+                                {
+                                    $('#half_day-box').removeClass('d-none');
+                                    $('#half_day-box-2').removeClass('d-none');
+                                }
+                                else
+                                {
+                                    $('#half_day-box').addClass('d-none');
+                                    $('#half_day-box-2').addClass('d-none');
+                                }
                             } else {
                                 $('#price_display').html('<p>Price not available.</p>');
                             }
@@ -195,6 +215,18 @@
                                     $('#qcheckin-date').val(checkIn);
                                     $('#qcheckout-date').val(checkOut);
                                     $('#submit-qut').removeAttr('disabled');
+                                    if(response.days==1 && response.priceExist=='yes' )
+                                    {
+                                        $('#half_day-box').removeClass('d-none');
+                                        $('#half_day-box-2').removeClass('d-none');
+                                        $('#half_day-price').val(response.oneHalfDayPrice);
+                                    }
+                                    else
+                                    {
+                                        $('#half_day-box').addClass('d-none');
+                                        $('#half_day-box-2').addClass('d-none');
+                                        $('#half_day-price').val(response.oneHalfDayPrice);
+                                    }
                                 } else {
                                     $('#price_display').html('<p>Price not available.</p>');
                                 }
@@ -239,6 +271,16 @@
                                     $('#checkin-date').val(checkIn);
                                     $('#checkout-date').val(checkOut);
                                     $('#submit-qut').removeAttr('disabled');
+                                    if(response.days==1)
+                                    {
+                                        $('#half_day-box').removeClass('d-none');
+                                        $('#half_day-box-2').removeClass('d-none');
+                                    }
+                                    else
+                                    {
+                                        $('#half_day-box').addClass('d-none');
+                                        $('#half_day-box-2').addClass('d-none');
+                                    }
                                 } else {
                                     $('#price_display').html('<p>Price not available.</p>');
                                 }
@@ -338,6 +380,25 @@
                     } 
                 })
             });
+            $(document).on('click','#half_day,#half_day-2',function(){
+                if ($(this).is(':checked')) 
+                {
+                    $('#half_day,#half_day-2').prop('checked', true)
+                    var newPrice = $('#half_day-price,#half_day-price-2').val();
+                    $('#days-val, #qdays-val').val('half_day');
+                    $('#total-days, #qtotal-days').html('Half Day');
+                    $('#charter-pice').html(newPrice);
+                    $('#charter-fee').html('0');
+                    $('#charter-total,#qcharter-total').html(newPrice);
+                } 
+                else 
+                {
+                    $('#half_day,#half_day-2').prop('checked', false)
+                    $('#show-Price-sec,#qshow-Price-sec').addClass('d-none');
+                    $('#checkin-date,#qcheckin-date').val('');
+                    $('#checkout-date,#qcheckout-date').val('');
+                }
+            })
         });
     </script>
 @endsection
@@ -439,8 +500,7 @@
                             $gallery_images = $listing->getMedia('listing_gallery');
                             $image = $listing->getFirstMediaUrl('cover_images');
                             if (!$image) {
-                                $image =
-                                    'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png';
+                                $image = 'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png';
                             }
                             $profileImage = $listing->user->getFirstMediaUrl('profile_image');
                         @endphp
@@ -705,7 +765,13 @@
                                         </div>
                                     </div>
                                 </div>
+                                
                                 <div class="show-Price d-none" id="show-Price-sec">
+                                    <div class="input-group d-none" id="half_day-box">
+                                        <input type="checkbox" id="half_day" name="half_day" value="1" >
+                                        <input type="hidden" id="half_day-price" value="" >
+                                        <label for="half_day"> Half Day</label>
+                                    </div>
                                     <p>Days: <span id="total-days"></span></p>
                                     <p>Charter Price: {{ $symble }}<span id="charter-pice"></span></p>
                                     <p>Service Fee: {{ $symble }}<span id="charter-fee"></span></p>
@@ -1122,6 +1188,11 @@
                                     </div>
                                 </div>
                                 <div class="show-Price d-none" id="qshow-Price-sec">
+                                    <div class="input-group " id="half_day-box-2">
+                                        <input type="checkbox" id="half_day" name="half_day-2" value="1" >
+                                        <input type="hidden" id="half_day-price-2" value="" >
+                                        <label for="half_day"> Half Day</label>
+                                    </div>
                                     <p>Days: <span id="qtotal-days"></span></p>
                                     <p>Price: {{ $symble }}<span id="qcharter-total"></span></p>
                                 </div>
@@ -1341,6 +1412,7 @@
                             </div>
                         </div>
                         <div class="show-Price d-none" id="show-Price-sec">
+                           
                             <p>Days: <span id="total-days"></span></p>
                             <p>Charter Price: <span id="charter-pice"></span></p>
                             <p>Service Fee: <span id="charter-fee"></span></p>

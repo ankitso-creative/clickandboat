@@ -159,6 +159,8 @@ use Illuminate\Support\Facades\Session;
                 return response()->json([
                     'status' => 'sucess',
                     'price' => $result['price'],
+                    'priceExist' => $result['priceExist'],
+                    'oneHalfDayPrice' => $result['oneHalfDayPrice'],
                     'days' => $result['days'],
                     'servive_fee' => $result['servive_fee'],
                     'totalAmount' => $result['totalAmount'],

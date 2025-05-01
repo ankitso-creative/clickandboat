@@ -81,7 +81,7 @@ function bookingPrice($request)
                     {
                         $priceArray = $price->toArray();
                         if ($priceArray['one_half_day'] && $days == 1):
-                            $total_price = getAmountWithoutSymble($priceArray['one_half_day'],$fromCur ,$to);
+                            $total_price = getAmountWithoutSymble($season->price,$fromCur ,$to);
                         elseif ($priceArray['two_day'] && $days == 2):
                             $total_price = getAmountWithoutSymble($priceArray['two_day'],$fromCur ,$to);
                         elseif ($priceArray['three_day'] && $days == 3):
@@ -97,14 +97,25 @@ function bookingPrice($request)
                         else:
                             $total_price = getAmountWithoutSymble($season->price,$fromCur ,$to) * $days;
                         endif;
+                        if($priceArray['one_half_day']):
+                            $priceExist = 'yes';
+                            $oneHalfDayPrice = getAmountWithoutSymble($priceArray['one_half_day'],$fromCur ,$to);
+                        else:
+                            $priceExist = 'no';
+                            $oneHalfDayPrice = '';
+                        endif;
                         $servive_fee = 0;
                         $totalAmount = $total_price + $servive_fee;
+                       
                         $result = [
                             'price' => $total_price,
+                            'priceExist' => $priceExist,
+                            'oneHalfDayPrice' => $oneHalfDayPrice,
                             'days' => $days,
                             'servive_fee' => $servive_fee,
                             'totalAmount' => $totalAmount,
                         ];
+                       
                     } 
                     else 
                     {
@@ -117,6 +128,7 @@ function bookingPrice($request)
                             'servive_fee' => $servive_fee,
                             'totalAmount' => $totalAmount,
                         ];
+                        
                     }
                 }
             }
@@ -135,6 +147,7 @@ function bookingPrice($request)
                     'servive_fee' => $servive_fee,
                     'totalAmount' => $totalAmount,
                 ];
+               
             } 
             else 
             {
