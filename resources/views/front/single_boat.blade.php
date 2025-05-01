@@ -651,10 +651,23 @@
                                     <div id="inline-datepicker"></div>
                                 </div>
                                 <div class="show-Price d-none" id="show-Price-sec-2">
-                                    <p>Days: <span id="total-days-2"></span></p>
-                                    <p>Charter Price: {{ $symble }}<span id="charter-pice-2"></span></p>
-                                    <p>Service Fee: {{ $symble }}<span id="charter-fee-2"></span></p>
-                                    <p>Total: {{ $symble }}<span id="charter-total-2"></span></p>
+                                    <div class="row see_price_list price_row">
+                                        <div class="col-md-4">
+                                           <p>Days: <span id="total-days-2"></span></p>
+                                        </div>
+                                        <div class="col-md-4">
+                                           <p>Charter Price:<span id="charter-pice-2"> {{ $symble }}</span></p>
+                                        </div>
+                                        <div class="col-md-4">
+                                           <p>Service Fee: {{ $symble }}<span id="charter-fee-2"></span></p>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="row see_price_list price_row">
+                                    <div class="col-md-12">
+                                           <p>Total: {{ $symble }}<span id="charter-total-2"></span></p>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="datepicker-mobile">
                                     <div id="inline-datepicker-mobile"></div>
@@ -772,10 +785,23 @@
                                         <input type="hidden" id="half_day-price" value="" >
                                         <label for="half_day"> Half Day</label>
                                     </div>
-                                    <p>Days: <span id="total-days"></span></p>
-                                    <p>Charter Price: {{ $symble }}<span id="charter-pice"></span></p>
-                                    <p>Service Fee: {{ $symble }}<span id="charter-fee"></span></p>
-                                    <p>Total: {{ $symble }}<span id="charter-total"></span></p>
+                                    <div class="row price_row">
+                                        <div class="col-md-4 days_box">
+                                        <p>Days: <span id="total-days"></span></p>
+                                        </div>
+                                        <div class="col-md-4">
+                                        <p>Charter Price:<br/> {{ $symble }}<span id="charter-pice"></span></p>
+                                        </div>
+                                        <div class="col-md-4">
+                                        <p>Service Fee:<br/> {{ $symble }}<span id="charter-fee"></span></p>
+                                        </div>
+                                    </div>
+                                    <div class="row price_row">
+                                    <div class="col-md-12">
+                                        <p>Total:<br/> {{ $symble }}<span id="charter-total"></span></p>
+                                        </div>
+                                    </div>
+    
                                 </div>
                                 <div class="d-flex flex-column">
                                     @if(Auth::check())
@@ -1193,8 +1219,14 @@
                                         <input type="hidden" id="half_day-price-2" value="" >
                                         <label for="half_day"> Half Day</label>
                                     </div>
-                                    <p>Days: <span id="qtotal-days"></span></p>
-                                    <p>Price: {{ $symble }}<span id="qcharter-total"></span></p>
+                                    <div class="row popup_price price_row">
+                                        <div class="col-md-6">
+                                            <p>Days: <span id="qtotal-days"></span></p>
+                                        </div>
+                                     <div class="col-md-6">
+                                         <p>Price: {{ $symble }}<span id="qcharter-total"></span></p>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="row message-modal-text">
                                     <div class="col-md-12">
