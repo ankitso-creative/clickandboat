@@ -656,7 +656,7 @@
                                            <p>Days: <span id="total-days-2"></span></p>
                                         </div>
                                         <div class="col-md-4">
-                                           <p>Charter Price:<span id="charter-pice-2"> {{ $symble }}</span></p>
+                                           <p>Charter Price: {{ $symble }}<span id="charter-pice-2"></span></p>
                                         </div>
                                         <div class="col-md-4">
                                            <p>Service Fee: {{ $symble }}<span id="charter-fee-2"></span></p>

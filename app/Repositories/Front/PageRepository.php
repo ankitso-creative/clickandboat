@@ -190,7 +190,7 @@ use Illuminate\Support\Facades\Session;
             })
             ->when($request->has('people') && !empty($request->people), function ($query) use ($request) {
                 $people = $request->people; 
-                return $query->where('capacity','>=', $people); 
+                return $query->where('onboard_capacity','>=', $people); 
             })
             ->when($request->has('cabins') && !empty($request->cabins), function ($query) use ($request) {
                 $cabins = $request->cabins; 
