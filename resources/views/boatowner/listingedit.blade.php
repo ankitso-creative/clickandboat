@@ -212,14 +212,14 @@
                 {{-- <a class="nav-item nav-link" id="nav-calender-tab" data-toggle="tab" href="#calender" role="tab" aria-controls="nav-about" aria-selected="false"><i class="fa-regular fa-calendar"></i>Calender<span><i class="fa-solid fa-check-double"></i></span></a> --}}
                 <a class="nav-item nav-link" id="nav-equipment-tab" data-toggle="tab" href="#equipment" role="tab" aria-controls="nav-about" aria-selected="false"><i class="fa-solid fa-screwdriver-wrench"></i> Equipment<span><i class="fa-solid fa-check-double"></i></span></a>
                 <a class="nav-item nav-link" id="nav-other-tab" data-toggle="tab" href="#other" role="tab" aria-controls="nav-about" aria-selected="false"><i class="fa-solid fa-book"></i> Other<span><i class="fa-solid fa-check-double"></i></span></a>
-                <a class="nav-item nav-link" id="nav-discounts-tab" data-toggle="tab" href="#discounts" role="tab" aria-controls="nav-about" aria-selected="false"><i class="fa-solid fa-tags"></i>Discounts<span><i class="fa-solid fa-check-double"></i></span></a>
+                {{-- <a class="nav-item nav-link" id="nav-discounts-tab" data-toggle="tab" href="#discounts" role="tab" aria-controls="nav-about" aria-selected="false"><i class="fa-solid fa-tags"></i>Discounts<span><i class="fa-solid fa-check-double"></i></span></a> --}}
 
             </div>
         </nav>
     </div>
     <div class="col-md-9 main-dashboard">
         <div class="listing_edit_btns">
-            <a class="nav-item nav-link" id="nav-calender-tab" data-toggle="tab" href="#calender" role="tab" aria-controls="nav-about" aria-selected="false"></i>Calender</a>
+            {{-- <a class="nav-item nav-link" id="nav-calender-tab" data-toggle="tab" href="#calender" role="tab" aria-controls="nav-about" aria-selected="false"></i>Calender</a> --}}
             <a href="{{ route('boatowner.preview',$listing->id) }}" class="pre_list_btn" target="_blank">Preview listing</a>
         </div>
         <div class="px-3 py-3 tab-content px-sm-0" id="nav-tabContent">

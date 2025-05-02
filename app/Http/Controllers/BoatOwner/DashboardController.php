@@ -4,6 +4,7 @@ namespace App\Http\Controllers\BoatOwner;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class DashboardController extends Controller
 {
@@ -13,8 +14,22 @@ class DashboardController extends Controller
     public function index()
     {
         $active = 'dashboard'; 
-        $userData = auth()->user()->load(['profile','media']);
-        return view('boatowner.dashboard',compact('active','userData'));
+        $userData = User::where('id', auth()->user()->id)->with(['profile', 'media', 'listingOrders'])->withCount(['listingOrders', 'listing'])->first();
+        $listingCount = $userData->listing_count;
+        $ordersCount = $userData->listing_orders_count;
+        $totals = $userData->listingOrders()
+        ->getQuery()
+        ->selectRaw('
+            SUM(amount_paid) as total_paid,
+            SUM(pending_amount) as total_pending,
+            SUM(total) as total_amount
+        ')
+        ->first();
+        $amountPaidAmount = $totals->total_paid ?? 0;
+        $pendingAmount = $totals->total_pending ?? 0;
+        $totalAmount = $totals->total_amount ?? 0;
+
+        return view('boatowner.dashboard',compact('active','userData','listingCount','ordersCount','amountPaidAmount','pendingAmount','totalAmount'));
     }
 
     /**
