@@ -9767,6 +9767,14 @@ margin-right:15px;
 .row.mob_filter_one {
     padding-top: 20px;
 }
+ .show-Price  p {
+    border: 1px solid #ebebeb;
+    border-radius: 6px;
+    margin-bottom: 8px;
+}
+.price_row {
+    border: 0px solid #ebebeb;
+}
 }
 @media (min-width: 767px) and (max-width: 1024px) {
     .header-slider {
