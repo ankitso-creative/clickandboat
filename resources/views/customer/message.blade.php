@@ -199,7 +199,7 @@
                                     <div class="user-box-desc">
                                         <div class="user-title">
                                             <h2>{{ $user->name }}</h2>
-                                            <span>{{ $message->created_at }}</span>
+                                            <span>{{ $message->created_at->format('d-m-Y') }}</span>
                                         </div>
                                         <div class="user-boat-name">
                                             <p>{{ $listing->type  }} {{ $listing->boat_name }}</p>
