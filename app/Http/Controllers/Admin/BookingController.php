@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Services\Admin\Booking\BookingService;
 use Illuminate\Http\Request;
 
 class BookingController extends Controller
@@ -10,10 +11,16 @@ class BookingController extends Controller
     /**
      * Display a listing of the resource.
      */
+    protected $service;
+    public function __construct()
+    {
+        $this->service = new BookingService();
+    }
     public function index()
     {
         $active = 'booking';
-        return view('admin.booking.index',compact('active'));
+        $results = $this->service->allBookings();
+        return view('admin.booking.index',compact('active','results'));
     }
 
     /**
