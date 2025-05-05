@@ -91,6 +91,7 @@
                             </tbody>
                         </table>                                               
                     </div>
+                    
                 </div>
             </div>
             <!-- END SAMPLE TABLE PORTLET-->

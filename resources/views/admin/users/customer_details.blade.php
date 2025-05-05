@@ -100,6 +100,9 @@
                                 </tbody>
                             </table>                                               
                         </div>
+                        <div class="pagination">
+                            {{ $allCustomer->appends(request()->all())->links('pagination::default') }}
+                        </div>
                     </div>
                 </div>
                 <!-- END SAMPLE TABLE PORTLET-->

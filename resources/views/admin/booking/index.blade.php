@@ -88,6 +88,9 @@
                                 </tbody>
                             </table>                                               
                         </div>
+                        <div class="pagination">
+                            {{ $results->appends(request()->all())->links('pagination::default') }}
+                        </div>
                     </div>
                 </div>
                 <!-- END SAMPLE TABLE PORTLET-->
