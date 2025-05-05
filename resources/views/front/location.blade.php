@@ -543,7 +543,7 @@ function initialize() {
                         <div class="location_checkbox_two">
                             <div class="row">
                                 <div class="number_list">
-                                    <label>Number of peoples</label>
+                                    <label>Number of people</label>
                                     <div class="number_list_filter">
                                         <div class="number_counter">
                                             <a href="#"><i class="fa-solid fa-minus"></i></a>

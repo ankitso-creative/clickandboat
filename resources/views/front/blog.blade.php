@@ -13,7 +13,6 @@
 <!-- Blog banner Section-->
 <section class="blog_banner">
     <div class="blog_banner_text">
-        <h5>Destination Information</h5>
         <h1>Our Blog</h1>
     </div>
 </section>
