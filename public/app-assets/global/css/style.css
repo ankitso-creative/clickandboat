@@ -104,6 +104,15 @@
 }
 .portlet label {
     padding-top: 0px !important;
+    margin-top: 15px;
+}
+span.select2.select2-container.select2-container--default {
+    width: 100% !important;
+}
+span.select2.select2-container.select2-container--default {
+    height: 34px;
+    overflow: scroll;
+    overflow-x: hidden;
 }
 .pagination {
     display: flex;
@@ -127,6 +136,9 @@
   }
   .logo_img img {
     width: 140px;
+}
+.select2.select2-container.select2-container--default.select2-container--below {
+    width: 100% !important;
 }
 @media (min-width: 320px) and (max-width: 767px){
 .page-header.navbar .top-menu .navbar-nav>li.dropdown-user .dropdown-toggle {
