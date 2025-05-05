@@ -206,18 +206,18 @@
 							<li>
 								<a href="{{ $listing->id ? route('admin.listings','#booking') : 'javascript:;' }}" data-toggle="tab" class="{{ $disabled.' '.$tooltips }}">Booking</a>
 							</li>
-							<li>
+							{{-- <li>
 								<a href="{{ $listing->id ? route('admin.listings','#calender') : 'javascript:;' }}" data-toggle="tab" class="{{ $disabled.' '.$tooltips }}">Calender</a>
-							</li>
+							</li> --}}
 							<li>
 								<a href="{{ $listing->id ? route('admin.listings','#equipment') : 'javascript:;' }}" data-toggle="tab" class="{{ $disabled.' '.$tooltips }}">Equipment</a>
 							</li>
 							<li>
 								<a href="{{ $listing->id ? route('admin.listings','#other') : 'javascript:;' }}" data-toggle="tab" class="{{ $disabled.' '.$tooltips }}">Other </a>
 							</li>
-							<li>
+							{{-- <li>
 								<a href="{{ $listing->id ? route('admin.listings','#discounts') : 'javascript:;' }}" data-toggle="tab" class="{{ $disabled.' '.$tooltips }}">Discounts</a>
-							</li>
+							</li> --}}
 						</ul>
 						<div class="tab-content">
 							<div class="tab-pane active" id="general">
@@ -713,9 +713,15 @@
 												<div class="col-sm-3">
 													<label>Cancellation conditions:<span class="required"> * </span></label>
 													<select name="cancellation_conditions" class="form-control">
-														<option {{ isset($listing->booking->cancellation_conditions) && $listing->booking->cancellation_conditions == 'flexible' ? 'selected':'' }} value="flexible">Flexible</li>
-														<option {{ isset($listing->booking->cancellation_conditions) && $listing->booking->cancellation_conditions == 'moderate' ? 'selected':'' }} value="moderate">Moderate</li>
-														<option {{ isset($listing->booking->cancellation_conditions) && $listing->booking->cancellation_conditions == 'strict' ? 'selected':'' }} value="strict">Strict</li>
+														<option data-desc=" Full refund to the tenant up to 1 day prior to arrival, excluding Service Fee and MyBoatBooker Commission. The tenant will be refunded the total amount of the booking (excluding Service Fee and MyBoatBooker Commission) if they cancel the booking until the day before check-in (time indicated on the listing by the owner or agreed between the users via MyBoatBooker messaging or 9:00 am, local time if not specified). If the Tenant arrives and decides to leave before the scheduled date, the days not spent on the boat are not refunded."
+															{{ isset($listing->booking->cancellation_conditions) && $listing->booking->cancellation_conditions == 'flexible' ? 'selected':'' }}
+															value="flexible">Flexible</option>
+														<option data-desc="70% refund to the tenant up to 10 days prior to arrival, excluding Service Fee and MyBoatBooker Commission. If the tenant cancels at least 10 days before check-in (time indicated on the listing by the owner or agreed upon by the users via MyBoatBooker messaging or 9:00 am local time if not specified), they will be refunded 70% of the total amount of the booking (excluding Service Fee and MyBoatBooker Commission). If they cancel less than 10 days before check-in, they will not be refunded. If the Tenant arrives and decides to leave before the scheduled date, the days not spent on the boat are not refunded."
+															{{ isset($listing->booking->cancellation_conditions) && $listing->booking->cancellation_conditions == 'moderate' ? 'selected':'' }}
+															value="moderate">Moderate</option>
+														<option  data-desc="60% refund to the tenant up to 30 days prior to arrival, excluding Service Fee and MYBoatBooker Commission. If the Renter cancels at least 30 days before check-in (time indicated on the listing by the owner or agreed between users via MyBoatBooker messaging or 9:00 am local time if not specified), they will be refunded 60% of the total amount of the booking (excluding Service Fee and MyBoatBooker Commission). If they cancel less than 30 days before check-in, they will not be refunded. If the Tenant arrives and decides to leave before the scheduled date, the days not spent on the boat are not refunded."
+															{{ isset($listing->booking->cancellation_conditions) && $listing->booking->cancellation_conditions == 'strict' ? 'selected':'' }}
+															value="strict">Strict</option>
 													</select>
 													@error('cancellation_conditions')<span class="required">{{ $message }}</span>@enderror
 												</div>
