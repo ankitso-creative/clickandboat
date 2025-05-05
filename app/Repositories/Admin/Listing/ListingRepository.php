@@ -17,7 +17,6 @@ class ListingRepository{
         $listing->type = $request['type'];
         $listing->harbour = $request['harbour'];
         $listing->city = $request['city'];
-        $listing->professional = $request['professional'];
         $listing->manufacturer = $request['manufacturer'];
         $listing->model = $request['model'];
         $listing->skipper = $request['skipper'];
@@ -27,7 +26,6 @@ class ListingRepository{
         $listing->website = $request['website'];
         $listing->boat_name = $request['boat_name'];
         $listing->title = $request['title'];
-        $listing->description = $request['description'];
         $listing->onboard_capacity = $request['onboard_capacity'];
         $listing->cabins = $request['cabins'];
         $listing->berths = $request['berths'];
@@ -37,6 +35,11 @@ class ListingRepository{
         $listing->renovated = $request['renovated'];
         $listing->speed = $request['speed'];
         if($listing->save()):
+            $listing->description()->UpdateOrCreate(['listing_id' => $listing->id, 'language'  => 'en'],[
+                'listing_id' => $listing->id,
+                'description'  => $request['description'],
+                'language'  => 'en',
+            ]);
             return redirect()->route('admin.listings',$listing->id)->with('success', 'Your general details added successfully!'); 
         endif;
     }
@@ -83,17 +86,42 @@ class ListingRepository{
         }
         elseif($request['s']=='price')
         {
-            $listing->price()->UpdateOrCreate(['listing_id' => $listing->id],[
-                'listing_id' => $listing->id,
-                'price'  => $request['price'],
-                'one_half_day' => $request['one_half_day_price'],
-                'two_day'  => $request['two_day_price'],
-                'three_day'  => $request['three_day_price'],
-                'four_day'  => $request['four_day_price'],
-                'five_day'  => $request['five_day_price'],
-                'six_day'  => $request['six_day_price'],
-                'one_week' => $request['one_week_price'],
-            ]);
+            $listing->fuel_Include = $request['fuel_Include'];
+            $listing->fuel_price = $request['fuel_price'];
+            $listing->skipper_include = $request['skipper_include'];
+            $listing->skipper_price = $request['skipper_price'];
+            $listing->update();
+            $seasonPrices = $request['season_price'];
+            if($seasonPrices):
+                foreach($seasonPrices as $seasonPrice):
+                    if($seasonPrice['from'] && $seasonPrice['price'] )
+                    {
+                        $seasonPriceModel = $listing->seasonPrice()->UpdateOrCreate(['listing_id' => $listing->id, 'name' => $seasonPrice['name']],[
+                            'listing_id' => $listing->id,
+                            'name' => $seasonPrice['name'],
+                            'from'  => isset($seasonPrice['from']) ? json_encode($seasonPrice['from']) : '',
+                            'price'  => $seasonPrice['price'],
+                        ]);
+                        if($seasonPriceModel->id)
+                        {
+                            $array = [
+                                'listing_id' => $listing->id,
+                                'season_price_id' =>  $seasonPriceModel->id,
+                                'over_night_price' => $seasonPrice['over_night_price'],
+                                'one_half_day' => $seasonPrice['one_half_day_price'],
+                                'two_day'  => $seasonPrice['two_day_price'],
+                                'three_day'  => $seasonPrice['three_day_price'],
+                                'four_day'  => $seasonPrice['four_day_price'],
+                                'five_day'  => $seasonPrice['five_day_price'],
+                                'six_day'  => $seasonPrice['six_day_price'],
+                                'one_week' => $seasonPrice['one_week_price'],
+                            ];
+                            $listing->price()->UpdateOrCreate(['listing_id' => $listing->id,'season_price_id' =>  $seasonPriceModel->id],$array);
+                        }
+                    }
+                endforeach;
+            endif;
+           
             return redirect()->route('admin.listings',$listing->id.'#price')->with('success', 'Your price details saved successfully!'); 
         }
         elseif($request['s']=='booking')

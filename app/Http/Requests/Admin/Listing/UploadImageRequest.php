@@ -22,7 +22,7 @@ class UploadImageRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'file' => 'image|max:2048',
+            'file' => 'image',
         ];
     }
 }
