@@ -22,7 +22,8 @@ class DashboardController extends Controller
         $totatBoatOwner = $this->service->boatOwnerCount();
         $totatCustomer = $this->service->customerCount();
         $totatListing = $this->service->listingCount();
-        return view('admin.dashboard.index',compact('active','totatBoatOwner','totatCustomer','totatListing'));
+        $bookingCount = $this->service->bookingCount();
+        return view('admin.dashboard.index',compact('active','totatBoatOwner','totatCustomer','totatListing','bookingCount'));
     }
 
     /**

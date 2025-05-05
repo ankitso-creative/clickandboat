@@ -183,7 +183,7 @@
         });
         $(document).ready(function() 
         {
-            flatpickr("#checkin-date, #checkout-date", {
+            flatpickr("#checkin-date, #checkout-date,#mcheckin-date, #mcheckout-date", {
                 inline: false,
                 mode: "range",
                 dateFormat: "d-m-Y", 
@@ -196,6 +196,8 @@
                         const checkOut = formatDate(selectedDates[1]);
                         document.getElementById('checkin-date').value = checkIn;
                         document.getElementById('checkout-date').value = checkOut;
+                        document.getElementById('mcheckin-date').value = checkIn;
+                        document.getElementById('mcheckout-date').value = checkOut;
                         $.ajax({
                             url: '{{ route('getbookingprice') }}',
                             type: 'GET',
@@ -209,8 +211,8 @@
                                     $('#show-Price-sec,#qshow-Price-sec').removeClass('d-none');
                                     $('#days-val, #qdays-val').val(response.days);
                                     $('#total-days, #qtotal-days').html(response.days);
-                                    $('#charter-pice').html(response.price);
-                                    $('#charter-fee').html(response.servive_fee);
+                                    $('#charter-pice,#mcharter-pice').html(response.price);
+                                    $('#charter-fee,#mcharter-fee').html(response.servive_fee);
                                     $('#charter-total,#qcharter-total').html(response.totalAmount);
                                     $('#qcheckin-date').val(checkIn);
                                     $('#qcheckout-date').val(checkOut);
@@ -218,14 +220,18 @@
                                     if(response.days==1 && response.priceExist=='yes' )
                                     {
                                         $('#half_day-box').removeClass('d-none');
+                                        $('#mhalf_day-box').removeClass('d-none');
                                         $('#half_day-box-2').removeClass('d-none');
                                         $('#half_day-price').val(response.oneHalfDayPrice);
+                                        $('#mhalf_day-price').val(response.oneHalfDayPrice);
                                     }
                                     else
                                     {
                                         $('#half_day-box').addClass('d-none');
+                                        $('#mhalf_day-box').addClass('d-none');
                                         $('#half_day-box-2').addClass('d-none');
                                         $('#half_day-price').val(response.oneHalfDayPrice);
+                                        $('#mhalf_day-price').val(response.oneHalfDayPrice);
                                     }
                                 } else {
                                     $('#price_display').html('<p>Price not available.</p>');
@@ -384,10 +390,10 @@
                 if ($(this).is(':checked')) 
                 {
                     $('#half_day,#half_day-2').prop('checked', true)
-                    var newPrice = $('#half_day-price,#half_day-price-2').val();
+                    var newPrice = $('#half_day-price,#half_day-price-2,#mhalf_day-price').val();
                     $('#days-val, #qdays-val').val('half_day');
                     $('#total-days, #qtotal-days').html('Half Day');
-                    $('#charter-pice').html(newPrice);
+                    $('#charter-pice,#mcharter-pice').html(newPrice);
                     $('#charter-fee').html('0');
                     $('#charter-total,#qcharter-total').html(newPrice);
                 } 
@@ -398,6 +404,10 @@
                     $('#checkin-date,#qcheckin-date').val('');
                     $('#checkout-date,#qcheckout-date').val('');
                 }
+            })
+            $(document).on('click','#m-popup-form',function()
+            {
+                $('#bookbutton').modal('hide');
             })
         });
     </script>
@@ -1398,93 +1408,112 @@
 </button>
 
 <!-- Modal -->
-<div class="modal fade single_boat_popup" id="bookbutton" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-        <div class="modal-body">
-            <div class="col-md-4 boat-right-sec" id="calender_sec_form">
-                <div class="p-2 shadow-sm card">
-                    <div class="text-center d-flex flex-column">
-                        <h3>Add dates for prices</h3>
+        @if($isMobile)
+        <div class="modal fade single_boat_popup" id="bookbutton" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-                    <!-- Rating -->
-                    <div class="mb-3 text-center see_price_btn">
-                        <a href="javascript:;" class="see-price"> See the price list</a>
-                    </div>
-                    <div class="dates_heading">
-                        <p>Dates:</p>
-                    </div>
-                    <!-- Form for dates -->
-                    <form action="{{ route('checkout') }}" method="POST">
-                        @csrf
-                        <div class="row sidebar_form">
-                            <div class="p-0 col-md-6">
-                                <div class="form-group">
-                                    <input type="date" id="checkin-date" name="checkin_date"
-                                        class="form-control" placeholder="Check-in" />
+                    <div class="modal-body">
+                        <div class="col-md-4 boat-right-sec" id="calender_sec_form">
+                            <div class="p-2 shadow-sm card">
+                                <div class="text-center d-flex flex-column">
+                                    <h3>Add dates for prices</h3>
                                 </div>
-                            </div>
-                            <div class="p-0 col-md-6">
-                                <div class="form-group">
-                                    <input type="date" id="checkout-date" class="form-control"
-                                        name="checkout_date" placeholder="Check-out" />
-                                    <input type="hidden" id="days-val" value="" name="days_val" />
+                            <!-- Rating -->
+                                <div class="mb-3 text-center see_price_btn">
+                                    <a href="javascript:;" class="see-price"> See the price list</a>
                                 </div>
+                                <div class="dates_heading">
+                                    <p>Dates:</p>
+                                </div>
+                            <!-- Form for dates -->
+                                <form action="{{ route('checkout') }}" method="POST">
+                                    @csrf
+                                    <div class="row sidebar_form">
+                                        <div class="p-0 col-md-6">
+                                            <div class="form-group">
+                                                <input type="date" id="mcheckin-date" name="checkin_date"
+                                                    class="form-control" placeholder="Check-in" />
+                                            </div>
+                                        </div>
+                                        <div class="p-0 col-md-6">
+                                            <div class="form-group">
+                                                <input type="date" id="mcheckout-date" class="form-control"
+                                                    name="checkout_date" placeholder="Check-out" />
+                                                <input type="hidden" id="days-val" value="" name="days_val" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="show-Price d-none" id="show-Price-sec">
+                                        <div class="input-group d-none" id="mhalf_day-box">
+                                            <input type="checkbox" id="half_day" name="half_day" value="1" >
+                                            <input type="hidden" id="mhalf_day-price" value="" >
+                                            <label for="half_day"> Half Day</label>
+                                        </div>
+                                        <div class="row price_row">
+                                            <div class="col-md-4 days_box">
+                                            <p>Days: <span id="total-days"></span></p>
+                                            </div>
+                                            <div class="col-md-4">
+                                            <p>Charter Price:<br/> {{ $symble }}<span id="mcharter-pice"></span></p>
+                                            </div>
+                                            <div class="col-md-4">
+                                            <p>Service Fee:<br/> {{ $symble }}<span id="mcharter-fee"></span></p>
+                                            </div>
+                                        </div>
+                                        <div class="row price_row">
+                                        <div class="col-md-12">
+                                            <p>Total:<br/> {{ $symble }}<span id="charter-total"></span></p>
+                                            </div>
+                                        </div>
 
-                            </form>
-                            <!-- Price List Link -->
-                           
+                                    </div>
+                                    <div class="d-flex flex-column">
+                                        @if(Auth::check())
+                                            @php
+                                                $user = auth()->user();
+                                            @endphp
+                                            @if($user->role == 'customer')
+                                                <a class="mb-2 check_ava_btn" id="m-popup-form" href="javascript:;" data-toggle="modal" data-target="#sidebar-right" class="btn btn-primary navbar-btn pull-left">
+                                                    Book
+                                                </a>
+                                            @else
+                                                <a class="mb-2 check_ava_btn not-login-user" href="javascript:;">
+                                                    Book
+                                                </a>
+                                            @endif
+                                        @else
+                                            <a class="mb-2 check_ava_btn not-login-user" href="javascript:;">
+                                                Book
+                                            </a>
+                                        @endif
+                                        {{-- <span class="mt-1 mb-1 text-center d-block font-weight-bold">or</span>
+                                        <button class="btn book_btn">Book</button> --}}
+                                        <div class="pt-3 text-center form_text">
+                                            <p>You will only be charged if the request is accepted</p>
+                                        </div>
+                                    </div>
+                                </form>
+                                    <!-- Price List Link -->
+                                
 
                             </div>
                         </div>
-                        <div class="show-Price d-none" id="show-Price-sec">
-                           
-                            <p>Days: <span id="total-days"></span></p>
-                            <p>Charter Price: <span id="charter-pice"></span></p>
-                            <p>Service Fee: <span id="charter-fee"></span></p>
-                            <p>Total: <span id="charter-total"></span></p>
+                        <!-- Price List Link -->
+                        <div class="mt-2 text-center">
+                            <img src="{{ asset('app-assets/site_assets/img/klarna-logo.jpg') }}" />
                         </div>
-                        <div class="d-flex flex-column">
-                            @if(Auth::check())
-                                @php
-                                    $user = auth()->user();
-                                @endphp
-                                @if($user->role == 'customer')
-                                    <a class="mb-2 check_ava_btn" href="javascript:;" data-toggle="modal" data-target="#sidebar-right" class="btn btn-primary navbar-btn pull-left">
-                                        Book
-                                    </a>
-                                @else
-                                    <a class="mb-2 check_ava_btn not-login-user" href="javascript:;">
-                                        Book
-                                    </a>
-                                @endif
-                            @else
-                                <a class="mb-2 check_ava_btn not-login-user" href="javascript:;">
-                                    Book
-                                </a>
-                            @endif
-                            
-                            {{-- <span class="mt-1 mb-1 text-center d-block font-weight-bold">or</span>
-                            <button class="btn book_btn">Book</button> --}}
-                            <div class="pt-3 text-center form_text">
-                                <p>You will only be charged if the request is accepted</p>
-                            </div>
-                        </div>
-                    </form>
-                    <!-- Price List Link -->
-                    <div class="mt-2 text-center">
-                        <img src="{{ asset('app-assets/site_assets/img/klarna-logo.jpg') }}" />
                     </div>
                 </div>
             </div>
-      </div>
+        </div>
+        @endif
     </div>
-  </div>
 </div>
 @endsection

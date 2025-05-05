@@ -2,6 +2,7 @@
 namespace App\Repositories\Admin\Dashboard;
 
 use App\Models\Admin\Listing;
+use App\Models\Order;
 use App\Models\User;
 
 class DashboardRepository
@@ -17,5 +18,9 @@ class DashboardRepository
     public function listingCount()
     {
         return Listing::count();
+    }
+    public function bookingCount()
+    {
+        return Order::count();
     }
 }
