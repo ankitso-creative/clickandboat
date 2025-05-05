@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 class ListingRepository{
     public function allListing()
     {
-        return Listing::with('user')->get();
+        return Listing::with('user')->paginate(10);
     }
     public function storeGeneralSettings($request)
     {

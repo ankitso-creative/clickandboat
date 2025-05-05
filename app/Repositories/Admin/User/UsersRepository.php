@@ -6,12 +6,12 @@ use App\Models\UserDetail;
 class UsersRepository{
     public function getAllBoatOwner()
     {
-        return User::where('role', 'boatowner')->with('profile')->get();
+        return User::where('role', 'boatowner')->with('profile')->paginate(10);
         
     }
     public function getAllCustomer()
     {
-        return User::where('role', 'customer')->with('profile')->get();
+        return User::where('role', 'customer')->with('profile')->paginate(10);
         
     }
     public function store($request)

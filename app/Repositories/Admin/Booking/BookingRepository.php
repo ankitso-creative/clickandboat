@@ -23,7 +23,7 @@ class BookingRepository
     }
     public function allBookings()
     {
-        $bookings = Order::all();
+        $bookings = Order::paginate(10);
         return $bookings;
     }
     
