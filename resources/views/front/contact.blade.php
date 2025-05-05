@@ -62,23 +62,14 @@
                     </div>
                 </form>
             </div>
-            <div class="col-md-6 col-lg-5">
+            <div class=" col-md-6 col-lg-5 contact_detail">
                 <div class="sec-title">
                     <span class="sub-title">Need any help?</span>
-                    <h2>Get in touch with us</h2>
+                    <!-- <h2>Get in touch with us</h2>
                     <div class="text">Lorem ipsum is simply free text available dolor sit amet consectetur notted
-                        adipisicing elit sed do eiusmod tempor incididunt simply dolore magna.</div>
+                        adipisicing elit sed do eiusmod tempor incididunt simply dolore magna.</div> -->
                 </div>
                 <ul class="list-unstyled contact-details_info">
-                    <li class="d-block d-sm-flex align-items-center ">
-                        <div class="icon">
-                            <i class="fa-solid fa-phone"></i>
-                        </div>
-                        <div class="text">
-                            <h6>Have any question?</h6>
-                            <a href="tel:980089850"><span>Free</span> +92 (020)-9850</a>
-                        </div>
-                    </li>
                     <li class="d-block d-sm-flex align-items-center ">
                         <div class="icon">
                            <i class="fa-regular fa-envelope"></i>
@@ -88,15 +79,7 @@
                             <a href="mailto:info@myboatbooker.com">info@myboatbooker.com</a>
                         </div>
                     </li>
-                    <li class="d-block d-sm-flex align-items-center ">
-                        <div class="icon">
-                        <i class="fa-solid fa-location-dot"></i>
-                        </div>
-                        <div class="text">
-                            <h6>Visit anytime</h6>
-                            <span>66 broklyn golden street. New York</span>
-                        </div>
-                    </li>
+
                 </ul>
             </div>
         </div>
