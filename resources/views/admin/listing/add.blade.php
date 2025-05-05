@@ -76,6 +76,9 @@
     object-fit: cover;
     margin-bottom: 15px;
 }
+.select2.select2-container.select2-container--default.select2-container--below {
+    width: 100% !important;
+}
 </style>
 @section('css')
 <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css"/>
