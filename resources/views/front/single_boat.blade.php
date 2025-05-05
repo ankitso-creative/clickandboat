@@ -196,8 +196,10 @@
                         const checkOut = formatDate(selectedDates[1]);
                         document.getElementById('checkin-date').value = checkIn;
                         document.getElementById('checkout-date').value = checkOut;
+                        @if($isMobile)
                         document.getElementById('mcheckin-date').value = checkIn;
                         document.getElementById('mcheckout-date').value = checkOut;
+                        @endif
                         $.ajax({
                             url: '{{ route('getbookingprice') }}',
                             type: 'GET',
@@ -1506,9 +1508,9 @@
                             </div>
                         </div>
                         <!-- Price List Link -->
-                        <div class="mt-2 text-center">
+                        {{-- <div class="mt-2 text-center">
                             <img src="{{ asset('app-assets/site_assets/img/klarna-logo.jpg') }}" />
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

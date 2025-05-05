@@ -35,7 +35,14 @@ class StoreListingRequest extends FormRequest
             ];
         elseif($request['s']=='price'):
             return [
-                'price' => ['required'],
+                'season_price.1.from' => ['required'],
+                'season_price.2.from' => ['required'],
+                'season_price.3.from' => ['required'],
+                'season_price.1.price' => ['required'],
+                'season_price.2.price' => ['required'],
+                'season_price.3.price' => ['required'],
+                
+                
             ];
         elseif($request['s']=='booking'):
             return [
@@ -52,5 +59,16 @@ class StoreListingRequest extends FormRequest
             return [];
         endif;
         
+    }
+    public function messages()
+    {
+        return [
+            'season_price.1.from.required' => 'The low season month field required.',
+            'season_price.2.from.required' => 'The mid season month field required.',
+            'season_price.3.from.required' => 'The high season month field required.',
+            'season_price.1.price.required' => 'The low season full day price field required.',
+            'season_price.2.price.required' => 'The mid season full day price field required.',
+            'season_price.3.price.required' => 'The high season full day price field required.',
+        ];
     }
 }
