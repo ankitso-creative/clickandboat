@@ -7,7 +7,15 @@
     
 @endsection
 @section('js')
-    
+<script>
+    $(document).on('click','#togglePassword i', function () {
+        let passwordField = $('#user-password');
+        let type = passwordField.attr('type') === 'password' ? 'text' : 'password';
+        passwordField.attr('type', type);
+        
+        $(this).html(type === 'password' ? '<i class="fa-solid fa-eye"></i>' : '<i class="toggle-password fa fa-fw fa-eye-slash"></i>');
+    });
+</script>
 @endsection
 @section('content')
 <style>
@@ -53,6 +61,9 @@
                             </div>
                             <div class="text-left form-group">
                                 <input class="form-control" id="user-password" type="password" name="password" placeholder="Password" />
+                                <div id="togglePassword">
+                                    <i class="fa-solid fa-eye"></i>
+                                </div>
                                 <i class="toggle-password fa fa-fw fa-eye-slash"></i>
                                 @error('password')
                                     <span class="text-danger">{{ $message }}</span>

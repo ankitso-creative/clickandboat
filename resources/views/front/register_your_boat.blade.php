@@ -7,7 +7,15 @@
     
 @endsection
 @section('js')
-    
+    <script>
+        $(document).on('click','#togglePassword i', function () {
+            let passwordField = $('#user-password');
+            let type = passwordField.attr('type') === 'password' ? 'text' : 'password';
+            passwordField.attr('type', type);
+            
+            $(this).html(type === 'password' ? '<i class="fa-solid fa-eye"></i>' : '<i class="toggle-password fa fa-fw fa-eye-slash"></i>');
+        });
+    </script>
 @endsection
 @section('content')
 <style>
@@ -17,6 +25,7 @@
     .footer{
         display: none !important;
     }
+    
 </style>
     <!-- end .b-title-page-->
     <div class="l-main-content sign_up_form_section">
@@ -66,7 +75,9 @@
                             </div>
                             <div class="form-group">
                                 <input class="form-control" id="user-password" type="password" name="password" placeholder="Password" />
-                                <i class="toggle-password fa fa-fw fa-eye-slash"></i>
+                                <div id="togglePassword">
+                                    <i class="fa-solid fa-eye"></i>
+                                </div>
                                 <input value="boatowner" type="hidden" name="role">
                                 @error('password')
                                     <span class="danger">{{ $message }}</span>
