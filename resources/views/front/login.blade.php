@@ -53,6 +53,7 @@
                             </div>
                             <div class="text-left form-group">
                                 <input class="form-control" id="user-password" type="password" name="password" placeholder="Password" />
+                                <i class="toggle-password fa fa-fw fa-eye-slash"></i>
                                 @error('password')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror

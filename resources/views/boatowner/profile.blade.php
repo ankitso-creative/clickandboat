@@ -318,7 +318,7 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label class="label-default">Company<span class="required"> </span></label>
+                                <label class="label-default">Company Name <span class="required"> </span></label>
                                 <input type="text" name="company_name" value="{{ optional($userData->company)->company_name }}" class="form-control">
                             </div>
                         </div>
