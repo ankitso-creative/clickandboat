@@ -185,7 +185,7 @@
 <section class="single_boat_banner"></section>
 <nav aria-label="Page breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item active" aria-current="page">Yacht hire > Hire a boat in Greece with or without a licence  > Skiathos</li>
+        <li class="breadcrumb-item active" aria-current="page">Ibiza boat rental > Hire a {{ $listing->type }} ibiza > Rent a boat {{ $listing->skipper }} > Ibiza</li>
     </ol>
 </nav>
 <!-- end .b-title-page-->
@@ -301,10 +301,10 @@
                                 @endif 
                             @endforeach 
                         @else
-                            <a href="#"><img src="{{ asset('app-assets/site_assets/img/feature-img-3.jpg') }}" alt="Image" class="img-fluid" /></a>
-                            <a href="#"><img src="{{ asset('app-assets/site_assets/img/feature-img-3.jpg') }}" alt="Image" class="img-fluid" /></a>
-                            <a href="#"><img src="{{ asset('app-assets/site_assets/img/feature-img-3.jpg') }}" alt="Image" class="img-fluid" /></a>
-                            <a href="#"><img src="{{ asset('app-assets/site_assets/img/feature-img-3.jpg') }}" alt="Image" class="img-fluid" /></a>
+                            <a href="#"><img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" alt="Image" class="img-fluid" /></a>
+                            <a href="#"><img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" alt="Image" class="img-fluid" /></a>
+                            <a href="#"><img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" alt="Image" class="img-fluid" /></a>
+                            <a href="#"><img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" alt="Image" class="img-fluid" /></a>
                         @endif {{--
                         <div class="view-more-photos">
                             <a href="#"> View the photos (+10)</a>
