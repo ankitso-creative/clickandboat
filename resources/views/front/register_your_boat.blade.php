@@ -66,6 +66,7 @@
                             </div>
                             <div class="form-group">
                                 <input class="form-control" id="user-password" type="password" name="password" placeholder="Password" />
+                                <i class="toggle-password fa fa-fw fa-eye-slash"></i>
                                 <input value="boatowner" type="hidden" name="role">
                                 @error('password')
                                     <span class="danger">{{ $message }}</span>
