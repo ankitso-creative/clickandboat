@@ -50,7 +50,7 @@
             $listing->model = $request['model'];
             $listing->boat_name = $request['boat_name'];  
 
-            // $listing->skipper = $request['skipper'];
+            $listing->skipper = $request['skippers'];
             // $listing->capacity = $request['capacity'];
             // $listing->length = $request['length'];
             // $listing->company_name = $request['company_name'];
@@ -220,9 +220,6 @@
                     'cancellation_conditions'  => $request['cancellation_conditions'],
                     'check_in' => $request['check_in'],
                     'check_out'  => $request['check_out'],
-                    'check_in_rental'  => $request['check_in_rental'],
-                    'check_out_rental'  => $request['check_out_rental'],
-                    'fuel_cost'  => $request['fuel_cost'],
                     'boat_licence'  => $request['boat_licence'],
                     'night_fees' => $request['night_fees'],
                 ]);
@@ -239,8 +236,6 @@
                     'horsepower' => $request['horsepower'],
                     'width'  => $request['width'],
                     'draft'  => $request['draft'],
-                    'offshore'  => $request['offshore'],
-                    'crew_members'  => $request['crew_members'],
                     'horsepower_tender' => $request['horsepower_tender'],
                 ]);
                 return response()->json([

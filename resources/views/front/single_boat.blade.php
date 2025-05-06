@@ -2,16 +2,19 @@
     <title>Motorboat Quicksilver 675 Open 150hp</title>
     @endsection @section('css')
     <style>
-    .equip-menus li img, .equipment-services-sec li img {
-    width: 30px;
-    height: 30px;
-    margin-right: 10px;
-    filter: brightness(0) saturate(100%) invert(68%) sepia(83%) saturate(1245%) hue-rotate(341deg) brightness(100%) contrast(95%);
-}
+        .equip-menus li img, .equipment-services-sec li img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+            filter: brightness(0) saturate(100%) invert(68%) sepia(83%) saturate(1245%) hue-rotate(341deg) brightness(100%) contrast(95%);
+        }
     </style>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
     <link href="{{ asset('app-assets/global/plugins/bootstrap-sweetalert/sweetalert.css') }}" rel="stylesheet" type="text/css" />
-    @endsection @section('js')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
+    @endsection 
+    @section('js')
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAli6rCJivgzTbWznnkqFtT_btPww6WBYs&callback=initMap" async defer></script>
     <script src="{{ asset('app-assets/global/plugins/bootstrap-sweetalert/sweetalert.min.js') }}" type="text/javascript"></script>
@@ -412,6 +415,7 @@
                 $('#bookbutton').modal('hide');
             })
         });
+        Fancybox.bind("[data-fancybox='gallery']");
     </script>
 @endsection
 @section('content')
@@ -430,13 +434,13 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h1>Yacht charter in {{ $listing->city }} · {{ $listing->model }} — {{ $listing->manufacturer }}
-                            Open (2023)</h1>
+                        <h1>{{ ucfirst($listing->type) }} in {{ $listing->city }} - {{ $listing->manufacturer }} {{ $listing->model }}</h1>
                     </div>
                 </div>
                 <div class="row">
                     <div class="text-center col-md-12">
                         <ul class="rating-menus">
+                            @if($listing->skipper)
                             <li>
                                 <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" clip-rule="evenodd"
@@ -445,6 +449,7 @@
                                 </svg>
                                 {{ $listing->skipper }}
                             </li>
+                            @endif
                             <li>
                                 <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                                     <mask id="mask0_1028_12450" style="mask-type: alpha;" maskUnits="userSpaceOnUse" x="0"
@@ -459,14 +464,16 @@
                                 </svg>
                                 Professional
                             </li>
-                            <!-- <li>
+                            @if($listing->harbour)
+                            <li>
                                 <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" clip-rule="evenodd"
                                         d="M8.02606 3.57293L8.02601 3.57493L8.02454 3.57661L8.02285 3.57809L8.02085 3.57814L8.01885 3.57809L8.01717 3.57661L8.01569 3.57493L8.01565 3.57293L8.01569 3.57093L8.01717 3.56924L8.01885 3.56777L8.02085 3.56772L8.02285 3.56777L8.02454 3.56924L8.02601 3.57093L8.02606 3.57293ZM9.00002 5.32322C9.61228 4.97997 10.0261 4.32477 10.0261 3.57293C10.0261 2.46548 9.1283 1.56772 8.02085 1.56772C6.91341 1.56772 6.01565 2.46548 6.01565 3.57293C6.01565 4.30759 6.41073 4.94997 7.00002 5.2992V5.71355L5.35419 5.71355V7.71355H7.00002L7.00002 12.6487C6.77579 12.5955 6.55563 12.5244 6.34173 12.4358C5.81598 12.218 5.33828 11.8988 4.93589 11.4964C4.5335 11.094 4.21431 10.6163 3.99654 10.0906C3.77877 9.56485 3.66669 9.00136 3.66669 8.4323H1.66669C1.66669 9.26401 1.8305 10.0876 2.14878 10.856C2.46706 11.6244 2.93357 12.3225 3.52168 12.9106C4.10978 13.4987 4.80796 13.9653 5.57636 14.2835C6.34475 14.6018 7.16831 14.7656 8.00002 14.7656C8.83172 14.7656 9.65529 14.6018 10.4237 14.2835C11.1921 13.9653 11.8903 13.4988 12.4784 12.9106C13.0665 12.3225 13.533 11.6244 13.8513 10.856C14.1695 10.0876 14.3334 9.26401 14.3334 8.4323H12.3334C12.3334 9.00136 12.2213 9.56485 12.0035 10.0906C11.7857 10.6163 11.4665 11.094 11.0641 11.4964C10.6618 11.8988 10.1841 12.218 9.65831 12.4358C9.44441 12.5244 9.22426 12.5955 9.00002 12.6487L9.00002 7.71355H10.6875V5.71355L9.00002 5.71355V5.32322Z">
                                     </path>
                                 </svg>
-                                Zudika
-                            </li> -->
+                                {{ $listing->harbour }}
+                            </li>
+                            @endif
                         </ul>
                     </div>
                     <div class="col-md-12">
@@ -512,12 +519,20 @@
                             $gallery_images = $listing->getMedia('listing_gallery');
                             $image = $listing->getFirstMediaUrl('cover_images');
                             if (!$image) {
-                                $image = 'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png';
+                                if(count($gallery_images))
+                                {
+                                    $image = $gallery_images['0']->getUrl();
+                                    unset($gallery_images[0]);
+                                }
+                                else
+                                {
+                                    $image = 'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png';
+                                }
                             }
                             $profileImage = $listing->user->getFirstMediaUrl('profile_image');
                         @endphp
                         <div class="banner-first-image">
-                            <a href="#"><img src="{{ $image }}" alt="Image" class="img-fluid" /></a>
+                            <a data-fancybox="gallery" href="{{ $image }}"><img src="{{ $image }}" alt="Image" class="img-fluid" /></a>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -525,14 +540,16 @@
                             @if (count($gallery_images))
                                 @foreach ($gallery_images as $gallery_image)
                                     @if ($loop->iteration >= 1 && $loop->iteration <= 4)
-                                        <a href="#"><img src="{{ $gallery_image->getUrl() }}" alt="Image" class="img-fluid" /></a>
+                                        <a data-fancybox="gallery" href="{{ $gallery_image->getUrl() }}">
+                                            <img src="{{ $gallery_image->getUrl() }}" alt="Image" class="img-fluid" />
+                                        </a>
                                     @endif
                                 @endforeach
                             @else
-                                <a href="#"><img src="{{ asset('app-assets/site_assets/img/feature-img-3.jpg') }}" alt="Image" class="img-fluid" /></a>
-                                <a href="#"><img src="{{ asset('app-assets/site_assets/img/feature-img-3.jpg') }}" alt="Image" class="img-fluid" /></a>
-                                <a href="#"><img src="{{ asset('app-assets/site_assets/img/feature-img-3.jpg') }}" alt="Image" class="img-fluid" /></a>
-                                <a href="#"><img src="{{ asset('app-assets/site_assets/img/feature-img-3.jpg') }}" alt="Image" class="img-fluid" /></a>
+                                <a href="#"><img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" alt="Image" class="img-fluid" /></a>
+                                <a href="#"><img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" alt="Image" class="img-fluid" /></a>
+                                <a href="#"><img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" alt="Image" class="img-fluid" /></a>
+                                <a href="#"><img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" alt="Image" class="img-fluid" /></a>
                             @endif {{--
                         <div class="view-more-photos">
                             <a href="#"> View the photos (+10)</a>
@@ -552,7 +569,7 @@
                                 <div class="specification-content">
                                     <h3>{{ $listing->type }} owned by {{ $listing->user->name }}</h3>
                                     <ul class="specification-menus">
-                                        <li>{{ $listing->capacity }} people</li>
+                                        <li>{{ $listing->onboard_capacity }} people</li>
                                         <li>{{ optional($listing->otherListingSetting)->horsepower ?? '' }} horsepower</li>
                                         <li>{{ $listing->length }} meters</li>
                                     </ul>
@@ -604,8 +621,6 @@
                         <div class="boat-card-content-sec">
                             <div class="boat-description-sec">
                                 <h3>Description of {{ $listing->user->name }}'s {{ $listing->type }}</h3>
-                                <p class="boat_des_heading">{{ $listing->type }} {{ $listing->boat_name }} Open 705
-                                    {{ optional($listing->otherListingSetting)->horsepower }}hp</p>
                                 <h6>{{ $listing->title }}</h6>
                                 <p>
                                     {{ optional($listing->description[0] ?? null)->description }}
@@ -750,8 +765,8 @@
                                         Manufacturer: <strong><a href="#">{{ $listing->manufacturer }}</a></strong>
                                     </li>
                                     <li>Model: <strong>{{ $listing->model }} Open</strong></li>
-                                    <li>Engine power: <strong>150hp</strong></li>
-                                    <li>Length: <strong>{{ $listing->length }} </strong></li>
+                                    <li>Engine power: <strong>{{ optional($listing->otherListingSetting)->horsepower ?? '' }}hp</strong></li>
+                                    <li>Length: <strong>{{ $listing->length }}m </strong></li>
                                     <li>Year: <strong>{{ $listing->construction_year }}</strong></li>
                                     <li>Onboard capacity: <strong>{{ $listing->onboard_capacity }} people</strong></li>
                                     <li>Number of cabins: <strong>{{ $listing->cabins }}</strong></li>
@@ -1111,70 +1126,7 @@
                 @endif
             </div>
         </div>
-        {{-- <ul class="p-4 list-unstyled">
-
-            @if ($lowseason && isset($listing->seasonPrice[0]))
-                @php
-                    $lowMonths = optional($listing->seasonPrice[0])->from;
-                    $allLowMonth = '';
-                    if($lowMonths){
-                        $lowmonthArray = json_decode($lowMonths);
-                        if(is_array($lowmonthArray))
-                        {
-                            $allLowMonth = implode(', ',$lowmonthArray);
-                        }
-                    }
-                @endphp
-                <li>
-                    <div class="price_block">
-                        <p class="price_block_date">Low Season Price </p>
-                        <p class="price_block_date">{{ $allLowMonth }} </p>
-                        <p class="price_block_price">{{ minMaxPrice($lowseason, $listing->seasonPrice[0]->price) }}</p>
-                    </div>
-                </li>
-            @endif
-            @if ($midSeason && isset($listing->seasonPrice[1]))
-                @php
-                    $midMonths = optional($listing->seasonPrice[1])->from;
-                    $allMidMonth = '';
-                    if($midMonths):
-                        $midMonthArray = json_decode($midMonths);
-                        if(is_array($midMonthArray))
-                        {
-                            $allMidMonth = implode(', ',$midMonthArray);
-                        }
-                        
-                    endif;
-                @endphp
-                <li>
-                    <div class="price_block">
-                        <p class="price_block_date">Mid Season Price</p>
-                        <p class="price_block_date">{{ $allMidMonth }}  </p>
-                        <p class="price_block_price">{{ minMaxPrice($midSeason, $listing->seasonPrice[1]->price) }}</p>
-                    </div>
-                </li>
-            @endif
-            @if ($highSeason && isset($listing->seasonPrice[2]))
-                @php
-                    $hMonths = optional($listing->seasonPrice[2])->from;
-                    $allHMonth = '';
-                    if($hMonths):
-                        $hMonthArray = json_decode($hMonths);
-                        if(is_array($hMonthArray))
-                        {
-                            $allMidMonth = implode(', ',$hMonthArray);
-                        }
-                    endif;
-                @endphp
-                <li>
-                    <div class="price_block">
-                        <p class="price_block_date">High Season Price </p>
-                        <p class="price_block_date">{{ $allMidMonth }}  </p>
-                        <p class="price_block_price">{{ minMaxPrice($highSeason, $listing->seasonPrice[2]->price) }}</p>
-                    </div>
-                </li>
-            @endif
-        </ul> --}}
+        
     </div>
     <!-- Sidebar Right -->
     <div class="modal fade right location-modals" id="sidebar-right" tabindex="-1" role="dialog">

@@ -59,7 +59,43 @@ class ListingController extends Controller
         if(!$listing):
             return redirect()->route('boatowner.listing');
         endif;
-        return view('boatowner.listingpreview',compact('listing'));
+        $userAgent = request()->header('User-Agent');
+        $isMobile = preg_match('/Mobile|Android|iPhone|iPad|iPod/i', $userAgent);
+        if(session()->has('currency_code')):
+            $symble = priceSymbol(session('currency_code'));
+        else:
+            $symble = priceSymbol('USD');
+        endif;
+       
+        $calendarArray = '';
+        if(!$listing)
+        {
+            return redirect()->route('home');
+        }
+        $equipments = $listing->equipment;
+        $flatItems=[];
+        $sixEquipments='';
+        $viewEquipments='';
+        $totalEquipments = 0;
+        if($equipments):
+            unset($equipments->id);
+            unset($equipments->listing_id);
+            unset($equipments->created_at);
+            unset($equipments->updated_at);
+            $equipments = $equipments->toArray();
+            foreach ($equipments as $category => $itemsJson) 
+            {
+                $items = json_decode($itemsJson, true);
+                if($items):
+                    $flatItems = array_merge($flatItems, $items);
+                endif;
+            }
+            $sixEquipments = array_slice($flatItems,0,6);
+            $totalEquipments = count($flatItems);
+            $viewEquipments = count($flatItems) - 6;
+        endif;
+        
+        return view('boatowner.listingpreview',compact('listing','calendarArray','equipments','viewEquipments','sixEquipments','totalEquipments','symble','isMobile'));
     }
 
     /**
