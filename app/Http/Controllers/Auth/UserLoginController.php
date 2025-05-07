@@ -31,7 +31,7 @@ class UserLoginController extends Controller
                 Auth::logout(); 
                 return redirect()->route('login')->with('error','You are not authorized to access this account.');
             }
-            if(Session::has('listingslug')):
+            if(Session::has('listingslug') && $user->role == 'customer'):
                 $slug = Session::get('listingslug');
                 $type = Session::get('listingtype');
                 $city = Session::get('listingcity');
@@ -40,7 +40,6 @@ class UserLoginController extends Controller
                 return redirect()->route('customer.dashboard');
             endif;
         }
-
         return redirect()->back()->withErrors(['email' => 'These credentials do not match our records.']);
     }
     public function logout()

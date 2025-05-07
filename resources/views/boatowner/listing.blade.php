@@ -71,8 +71,10 @@
                             $image = 'https://static1.clickandboat.com/v1/o/img/mask~dddc60cc1d.png';
                         endif;
                         $checked = '';
+                        $bannerText = '<p class="img_commet_text">Your listing is only viewable by you, it is not yet approved by admin. </p>';
                         if($result->status==1):
                             $checked = 'checked';
+                            $bannerText = '';
                         endif;
                     @endphp
                     <div class="col-lg-4">
@@ -83,9 +85,9 @@
                             </div>
                             <ul class="list-group list-group-flush">
                             <li class="list-group-item">
-                                <a href="{{ route('boatowner.listing.edit', $result->id) }}">Edit </a> 
-                                {{-- <a href="#">Delete /</a> 
-                                <a href="#">Preview listing</a> --}}
+                                <a href="{{ route('boatowner.listing.edit', $result->id) }}">Edit /</a> 
+                                
+                                <a href="{{ route('boatowner.preview', $result->id) }}" target="_blank">Preview</a>
                             </li>
                             {{-- <li><div class="content active_inactive_btn">
                                 <label class="switch m5">
@@ -95,7 +97,7 @@
                                </div>
                            </li> --}}
                             </ul>
-                            <p class="img_commet_text">Your listing is only viewable by you, it is not yet approved by admin. </p>
+                            {!!  $bannerText !!}
                         </div>
                     </div>
                 @endforeach
