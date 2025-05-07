@@ -95,6 +95,7 @@
                                </div>
                            </li> --}}
                             </ul>
+                            <p class="img_commet_text">Your listing is only viewable by you, it is not yet approved by admin. </p>
                         </div>
                     </div>
                 @endforeach
