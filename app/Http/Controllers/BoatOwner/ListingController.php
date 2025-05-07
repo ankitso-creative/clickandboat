@@ -159,4 +159,8 @@ class ListingController extends Controller
         $request = $request->all();
         return $this->service->changeStatus($request);
     }
+    public function listingPublish($id)
+    {
+        return $this->service->listingPublish($id);
+    }
 }

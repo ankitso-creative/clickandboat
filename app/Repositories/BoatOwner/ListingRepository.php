@@ -1,7 +1,8 @@
 <?php
     namespace App\Repositories\BoatOwner;
 
-    use App\Models\Admin\Language;
+use App\Events\Admin\ListingApprove;
+use App\Models\Admin\Language;
     use App\Models\Admin\Listing;
     use Illuminate\Support\Facades\Storage;
     use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -365,6 +366,23 @@
             $listing = Listing::with(['media'])->where('id',$id)->first();
             $listing->status = $request['value'];
             return $listing->update();
+        }
+        public function listingPublish($id)
+        {
+            $listing = Listing::with(['media'])->where('id',$id)->first();
+            if($listing->seasonPrice->isEmpty())
+            {
+                return response()->json([
+                    'error' => 'error',
+                    'message' => 'Please add listing price first.',
+                ]);
+            }
+            event(new ListingApprove($listing));
+            return response()->json([
+                'success' => 'success',
+                'message' => 'Your listing has been saved, and a notification has been successfully sent to the admin. Please wait for admin approval.',
+                'redirect_url' => route('boatowner.listing'),
+            ]);
         }
     }
 
