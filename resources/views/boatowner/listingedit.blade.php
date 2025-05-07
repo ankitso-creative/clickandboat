@@ -275,6 +275,7 @@
                             <button type="submit" ntb="description" class="listing_sub_btn mt-ladda-btn ladda-button btn-outline" data-style="contract" data-spinner-color="#333">
                                 Save
                             </button>
+                            <a href="javascript:;" class="next-btn" ntp="description">Next</a>
                         </div>
                     </div>
                 </form>
@@ -445,6 +446,7 @@
                         <button type="submit" class="listing_sub_btn mt-ladda-btn ladda-button btn-outline" data-style="contract" data-spinner-color="#333">
                             Save
                         </button>
+                        <a href="javascript:;" class="next-btn" ntp="image">Next</a>
                     </div>
                 </form>
             </div>
@@ -557,9 +559,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="boat_listing_images_video_save_btn">
-                            <a href="javascript:;" id="images-uploded">Save</a>
-                        </div>
                     </div>
                     @php
                     $plans = $listing->getMedia('listing_plan');
@@ -576,6 +575,10 @@
                                 @endforeach
                             @endif
                         </div>
+                    </div>
+                    <div class="boat_listing_images_video_save_btn">
+                        <a href="javascript:;" id="images-uploded">Save</a>
+                        <a href="javascript:;" class="next-btn" ntp="price">Next</a>
                     </div>
                 </div>
             </div>
@@ -850,6 +853,7 @@
                             <button  type="submit" class="listing_sub_btn mt-ladda-btn ladda-button btn-outline " data-style="contract" data-spinner-color="#333">
                                Save
                             </button>
+                            <a href="javascript:;" class="next-btn" ntp="booking">Next</a>
                         </div>
                     </div>
                 </form>
@@ -949,6 +953,7 @@
                                 data-style="contract" data-spinner-color="#333">
                                  Save
                             </button>
+                            <a href="javascript:;" class="next-btn" ntp="equipment">Next</a>
                         </div>
                     </div>
                 </form>
@@ -1482,14 +1487,13 @@
                                 data-style="contract" data-spinner-color="#333">
                                 Save
                             </button>
+                            <a href="javascript:;" class="next-btn" ntp="other">Next</a>
                         </div>
                     </div>
                 </form>
             </div>
             <div class="tab-pane fade" id="other" role="tabpanel" aria-labelledby="nav-other-tab">
-                <form class="form-horizontal form-row-seperated"
-                    action="{{ route('admin.general-settings', $listing->id) }}" method="POST"
-                    enctype="multipart/form-data">
+                <form class="form-horizontal form-row-seperated" action="{{ route('admin.general-settings', $listing->id) }}" method="POST"enctype="multipart/form-data" ntb="">
                     <div class="row">
                         <div class="col-sm-12">
                             <h4 class="bold ">Technical points</h4>
@@ -1541,10 +1545,10 @@
                                 <i class="fa fa-angle-left"></i> Back
                             </button> -->
                             <input type="hidden" name="s" value="other">
-                            <button type="submit" class="listing_sub_btn mt-ladda-btn ladda-button btn-outline"
-                                data-style="contract" data-spinner-color="#333">
-                                 Save
+                            <button type="submit" class="listing_sub_btn mt-ladda-btn ladda-button btn-outline" data-style="contract" data-spinner-color="#333">
+                                Save
                             </button>
+                            <a href="javascript:;" class="publish-btn">Publish</a>
                         </div>
                     </div>
                 </form>
@@ -1888,6 +1892,13 @@
         $(document).on('click', '.remove_newf_row', function(e) {
             $(this).parents('.single_calender_container').remove();
         });
+        $(document).on('click', '.next-btn', function(e) {
+            var ntb = $(this).attr('ntp');
+            $('.nav-item.nav-link').removeClass('active ahow');
+            $('.tab-pane').removeClass('active show');
+            $('#nav-'+ntb+'-tab').addClass('active show');
+            $('#'+ntb+'').addClass('active show');
+        });
         $(document).on('click','#images-uploded',function(){
             $('.nav-item.nav-link').removeClass('active ahow');
             $('.tab-pane').removeClass('active show');
@@ -1921,7 +1932,49 @@
                                 $('#nav-'+ntb+'-tab').addClass('active show');
                                 $('#'+ntb+'').addClass('active show');
                             }
-                        }, 5000);
+                            else
+                            {
+                                $('.publish-btn').removeClass('d-none');
+                            }
+                        }, 2000);
+                    } else {
+                        $('.alert').removeClass('d-none');
+                        $('.alert').addClass('alert-danger');
+                        $('.message').html(response.message);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    var errors = xhr.responseJSON.errors;
+                    var errorMessage = '';
+                    for (var field in errors) {
+                        errorMessage += errors[field] + '<br>'; // Show validation errors
+                    }
+                    $('.alert').removeClass('d-none');
+                    $('.alert').addClass('alert-danger');
+                    $('.message').html(errorMessage);
+
+                }
+            });
+        })
+        $(document).on('click','.publish-btn', function(e) {
+            e.preventDefault();
+            $.ajax({
+                url: "{{ route('boatowner.listingpublish',$listing->id) }}", 
+                type: 'POST',
+                dataType: 'json',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(response) {
+                    if (response.success) {
+                        $('.alert').removeClass('alert-danger');
+                        $('.alert').removeClass('d-none');
+                        $('.alert').addClass('alert-success');
+                        $('.message').html(response.message);
+                        setTimeout(function() {
+                            $('.alert').addClass('d-none');
+                            window.location.href = response.redirect_url;
+                        }, 2000);
                     } else {
                         $('.alert').removeClass('d-none');
                         $('.alert').addClass('alert-danger');

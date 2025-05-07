@@ -87,5 +87,9 @@ class ListingService{
     {
         return $this->repository->changeStatus($request);
     }
+    public function listingPublish($id)
+    {
+        return $this->repository->listingPublish($id);
+    }
 }
 ?>
