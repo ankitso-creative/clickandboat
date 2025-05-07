@@ -95,6 +95,7 @@ Route::middleware('Setlang')->group(function(){
         Route::put('payment-update', [BoatOwnerProfileController::class, 'paymentUpdate'])->name('payment.update');
         Route::put('account-delete', [BoatOwnerProfileController::class, 'accountDelete'])->name('account.delete');
         Route::post('/upload-image', [BoatOwnerProfileController::class, 'uploadImage'])->name('profile.image');
+        Route::post('/removeprofileimage', [BoatOwnerProfileController::class, 'removeProfileImage'])->name('profile.removeProfileImage');
         Route::get('listing',[BoatOwnerListingController::class, 'index'])->name('listing');
         Route::get('listing-add',[BoatOwnerListingController::class, 'create'])->name('listing-add');
         Route::get('listing-preview/{id}',[BoatOwnerListingController::class, 'preview'])->name('preview');

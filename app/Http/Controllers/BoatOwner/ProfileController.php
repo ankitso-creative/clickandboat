@@ -66,4 +66,9 @@ class ProfileController extends Controller
         $request = $request->all();
         return $this->service->uploadImage($request);
     }
+    public function removeProfileImage(Request $request)
+    {
+        $request = $request->all();
+        return $this->service->removeProfileImage($request);
+    }
 }

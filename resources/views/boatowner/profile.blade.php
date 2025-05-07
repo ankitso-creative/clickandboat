@@ -5,18 +5,14 @@
 @section('css')
 <link href="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.1.0/css/datepicker.min.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"/>
-<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
 @endsection
 @section('js')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.1.0/js/datepicker.min.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.1.0/js/i18n/datepicker.en.min.js" type="text/javascript"></script>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAli6rCJivgzTbWznnkqFtT_btPww6WBYs&libraries=places"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
     <script>
-        $('.mySelect2').select2({
-            selectOnClose: true
-        });
+    
         $(document).ready(function () {
             $(document).on('change','select[name="account_type"]',function(){
                 var val = $(this).val();
@@ -36,42 +32,8 @@
                     $('#ibannumber-box').addClass('d-none');
                 }
             })
-            google.maps.event.addDomListener(window, 'load', initialize);
         });
-        function initialize() 
-        {
-            var input = document.getElementById('location');
-            var autocomplete = new google.maps.places.Autocomplete(input);
-            autocomplete.addListener('place_changed', function() {
-                var place = autocomplete.getPlace();
-                if (!place.geometry || !place.address_components) {
-                    console.log("Place details not found");
-                    return;
-                }
-                var city = '';
-                var country = '';
-                var state = '';
-                for (var i = 0; i < place.address_components.length; i++) {
-                    var component = place.address_components[i];
-                    if (component.types.includes('locality')) {
-                        city = component.long_name;
-                    }
-                    if (component.types.includes('administrative_area_level_1')) {
-                        state = component.long_name;
-                    }
-                    if (component.types.includes('country')) {
-                        country = component.long_name;
-                    }
-                }
-                if (city && country && state) {
-                    input.value = city + ', ' + state + ', '+ country;
-                }
-                if(city==state)
-                {
-                    input.value = city + ', ' + country;
-                }
-            });
-        }
+        
         
         const input = document.querySelector("#phone");
         const iti = window.intlTelInput(input, {
@@ -189,6 +151,7 @@
                             <p>Minimum size: 260px x 260px</p>
                             <input type="file" name="file" class="inputfile" id="file-input" accept="image/*">
                             <label for="file-input" id="fileSelectButton" class="select_img_btn">Select an image</label>
+                            <a href="javascript:;" id="removeProfile">Remove Image</a>
                         </div>
                         <div class="clear"></div>
                     </div>
@@ -268,7 +231,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="label-default">City<span class="required"> *</span></label>
-                                    <input type="text" name="city" id="location" value="{{ optional($userData->profile)->city ?? '' }}" class="form-control">
+                                    <input type="text" name="city" value="{{ optional($userData->profile)->city ?? '' }}" class="form-control">
                                     @error('city')<span class="required">{{ $message }}</span>@enderror
                                 </div>
                             </div>
@@ -316,22 +279,16 @@
                     @csrf
                     @method('PUT')
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="form-group">
-                                <label class="label-default">Company Name <span class="required"> </span></label>
-                                <input type="text" name="company_name" value="{{ optional($userData->company)->company_name }}" class="form-control">
+                                <label class="label-default">Company Name <span class="required">* </span></label>
+                                <input type="text" required name="company_name" value="{{ optional($userData->company)->company_name }}" class="form-control">
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="form-group">
-                                <label class="label-default">Address<span class="required"> </span></label>
-                                <input type="text" name="companyaddress" value="{{ optional($userData->company)->address }}" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label class="label-default">SIRET<span class="required"> </span></label>
-                                <input type="text" name="siret" value="{{ optional($userData->company)->siret }}" class="form-control">
+                                <label class="label-default">Address<span class="required">* </span></label>
+                                <input type="text" required name="companyaddress" value="{{ optional($userData->company)->address }}" class="form-control">
                             </div>
                         </div>
                     </div>
@@ -339,14 +296,14 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="label-default">Intracommunity VAT<span class="required"> </span></label>
-                                <input type="text" name="intracommunity_vat" value="{{ optional($userData->company)->intracommunity_vat }}" class="form-control">
+                                <label class="label-default">Intracommunity VAT<span class="required">* </span></label>
+                                <input type="text" required name="intracommunity_vat" value="{{ optional($userData->company)->intracommunity_vat }}" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="label-default">Website<span class="required"> </span></label>
-                                    <input type="text" name="website" value="{{ optional($userData->company)->website }}" class="form-control">
+                                <label class="label-default">Website<span class="required"> *</span></label>
+                                    <input type="text" required name="website" value="{{ optional($userData->company)->website }}" class="form-control">
                             </div>
                         </div>
                     </div>
@@ -356,8 +313,8 @@
                     <div class="row company_profile_images">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="label-default">Certificate of incorporation</label>
-                                <input type="file" id="myfiles" name="certificate" class="form-control" accept=".jpeg,.jpg,.pdf,.png">
+                                <label class="label-default">Certificate of incorporation<span class="required"> *</span></label>
+                                <input type="file" id="myfiles" required name="certificate" class="form-control" accept=".jpeg,.jpg,.pdf,.png">
                             </div>
                             @php 
                                 $certificate = $userData->getFirstMediaUrl('certificate');
@@ -377,8 +334,8 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="label-default">Identity Document (passport, ID card, driving licence)</label>
-                                <input type="file" id="myfiles" name="identity" class="form-control" accept=".jpeg,.jpg,.pdf,.png">
+                                <label class="label-default">Identity Document(passport, ID card, driving licence)<span class="required"> *</span></label>
+                                <input type="file" id="myfiles" required name="identity" class="form-control" accept=".jpeg,.jpg,.pdf,.png">
                             </div>
                             @php 
                                 $identity = $userData->getFirstMediaUrl('identity');
@@ -398,8 +355,8 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="label-default">IBAN</label>
-                                <input type="file" id="myfiles" name="iban" class="form-control" accept=".jpeg,.jpg,.pdf,.png">
+                                <label class="label-default">IBAN<span class="required"> *</span></label>
+                                <input type="file" required id="myfiles" name="iban" class="form-control" accept=".jpeg,.jpg,.pdf,.png">
                             </div>
                             @php 
                                 $iban = $userData->getFirstMediaUrl('iban');
@@ -419,8 +376,8 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="label-default">Certificate of Ownership</label>
-                                <input type="file" id="myfiles" name="ownership" class="form-control" accept=".jpeg,.jpg,.pdf,.png">
+                                <label class="label-default">Certificate of Ownership<span class="required"> *</span></label>
+                                <input type="file" required id="myfiles" name="ownership" class="form-control" accept=".jpeg,.jpg,.pdf,.png">
                             </div>
                             @php 
                                 $ownership = $userData->getFirstMediaUrl('ownership');
@@ -761,6 +718,28 @@
                     }
                 });
             });
+            $(document).on('click','#removeProfile',function(e){
+                e.preventDefault();  
+                $.ajax({
+                    url: '{{ route("boatowner.profile.removeProfileImage")}}',
+                    type: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            $('.change-avatar #avatar').attr('src', response.imageUrl).show();
+                            $('.user-avatar img').attr('src', response.imageUrl).show();
+                            $('#statusMessage').text(response.message).css('color', 'green');
+                        } else {
+                            $('#statusMessage').text("Image upload failed!").css('color', 'red');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        $('#statusMessage').text('An error occurred while uploading the image.').css('color', 'red');
+                    }
+                });
+            })
         });
     </script>
 @endsection
