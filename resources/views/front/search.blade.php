@@ -688,8 +688,8 @@
                                                 <div class="location_inner_main_box">
                                                     <div class="location_inner_text">
                                                         <h3>{{ $result->city }}</h3>
-                                                        <p class="location_pera">{{ $result->type }} {{ $result->manufacturer }} {{ $result->model }} sport 30 (2023)</p>
-                                                        <p class="people_pera">{{ $result->capacity }} people · 30 hp · 5 m</p>
+                                                        <p class="location_pera">{{ $result->type }} {{ $result->manufacturer }} {{ $result->model }}</p>
+                                                        <p class="people_pera">{{ $result->onboard_capacity }} people · {{ optional($result->otherListingSetting)->horsepower }} hp · {{ $result->length }} m</p>
                                                         @if(getListingPrice($result->slug))
                                                             <h5 class="location_price">From <span class="price_style">{{ getListingPrice($result->slug) }}</span> / day</h5>
                                                         @else

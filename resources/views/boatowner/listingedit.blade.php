@@ -184,8 +184,8 @@
         </div>
         <nav class="sidebar side_bar">
             <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                <a class="nav-item nav-link" id="nav-general-tab" data-toggle="tab" href="#general" role="tab" aria-controls="nav-home" aria-selected="true"><i class="fa-solid fa-gear"></i> General <span><i class="fa-solid fa-check-double"></i></span></a>
-                <a class="nav-item nav-link active show" id="nav-description-tab" data-toggle="tab" href="#description" role="tab" aria-controls="nav-home" aria-selected="true"><i class="fa-solid fa-pen"></i> Description <span><i class="fa-solid fa-check-double"></i></span></a>
+                <a class="nav-item nav-link active show" id="nav-general-tab" data-toggle="tab" href="#general" role="tab" aria-controls="nav-home" aria-selected="true"><i class="fa-solid fa-gear"></i> General <span><i class="fa-solid fa-check-double"></i></span></a>
+                <a class="nav-item nav-link" id="nav-description-tab" data-toggle="tab" href="#description" role="tab" aria-controls="nav-home" aria-selected="true"><i class="fa-solid fa-pen"></i> Description <span><i class="fa-solid fa-check-double"></i></span></a>
                 <a class="nav-item nav-link" id="nav-image-tab" data-toggle="tab" href="#image" role="tab" aria-controls="nav-profile" aria-selected="false"><i class="fa-solid fa-image"></i> Images<span><i class="fa-solid fa-check-double"></i></span></a>
                 <a class="nav-item nav-link" id="nav-price-tab" data-toggle="tab" href="#price" role="tab" aria-controls="nav-contact" aria-selected="false"><i class="fa-solid fa-dollar-sign"></i>Price<span><i class="fa-solid fa-check-double"></i></span></a>
                 <a class="nav-item nav-link" id="nav-booking-tab" data-toggle="tab" href="#booking" role="tab" aria-controls="nav-about" aria-selected="false"><i class="fa-solid fa-calendar-days"></i> Booking<span><i class="fa-solid fa-check-double"></i></span></a>
@@ -203,8 +203,8 @@
             <a href="{{ route('boatowner.preview',$listing->id) }}" class="pre_list_btn" target="_blank">Preview listing</a>
         </div>
         <div class="px-3 py-3 tab-content px-sm-0" id="nav-tabContent">
-            <div class="tab-pane fade" id="general" role="tabpanel" aria-labelledby="nav-general-tab">
-                <form method="POST">
+            <div class="tab-pane fade show active" id="general" role="tabpanel" aria-labelledby="nav-general-tab">
+                <form method="POST" ntb="description">
                     <div class="text-center boat_type_section">
                         <h2>Your boat</h2>
                         <h3>Type</h3>
@@ -279,7 +279,7 @@
                     </div>
                 </form>
             </div>
-            <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="nav-description-tab">
+            <div class="tab-pane fade" id="description" role="tabpanel" aria-labelledby="nav-description-tab">
                 <div class="p-0 col-sm-12">
                     <h4 class="bold ">Title</h4>
                 </div>
@@ -539,9 +539,7 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="boat_listing_images_video_save_btn">
-                            <a href="">Save</a>
-                        </div>
+                        
                         <div class="photo-section">
                             <div class="text-center phot_heading">
                                 <h1>Boat plan</h1>
@@ -558,6 +556,9 @@
                                     <p>Download from your device</p>
                                 </div>
                             </div>
+                        </div>
+                        <div class="boat_listing_images_video_save_btn">
+                            <a href="javascript:;" id="images-uploded">Save</a>
                         </div>
                     </div>
                     @php
@@ -1512,8 +1513,8 @@
                             @error('horsepower')<span class="required">{{ $message }}</span>@enderror
                         </div>
                         <div class="col-sm-4">
-                            <label>Width (m):<span class="required"></span></label>
-                            <input type="text" class="form-control" name="width" value="{{ $listing->otherListingSetting->width ?? '' }}">
+                            <label>Width (m):<span class="required">*</span></label>
+                            <input type="text" class="form-control" required name="width" value="{{ $listing->otherListingSetting->width ?? '' }}">
                         </div>
                         
                         <div class="clearfix"></div>
@@ -1887,13 +1888,18 @@
         $(document).on('click', '.remove_newf_row', function(e) {
             $(this).parents('.single_calender_container').remove();
         });
-        
+        $(document).on('click','#images-uploded',function(){
+            $('.nav-item.nav-link').removeClass('active ahow');
+            $('.tab-pane').removeClass('active show');
+            $('#nav-price-tab').addClass('active show');
+            $('#price').addClass('active show');
+        })
         $(document).on('submit', 'form', function(e) {
             e.preventDefault();
             var formData = $(this).serialize();
             var ntb = $(this).attr('ntb');
             $.ajax({
-                url: "{{ route('boatowner.listing-settings',$listing->id) }}", // URL for the image upload endpoint
+                url: "{{ route('boatowner.listing-settings',$listing->id) }}", 
                 type: 'POST',
                 data: formData,
                 dataType: 'json',
@@ -1908,10 +1914,13 @@
                         $('.message').html(response.message);
                         setTimeout(function() {
                             $('.alert').addClass('d-none');
-                            $('.nav-item.nav-link').removeClass('active ahow');
-                            $('.tab-pane').removeClass('active show');
-                            $('#nav-'+ntb+'-tab').addClass('active show');
-                            $('#'+ntb+'').addClass('active show');
+                            if(ntb != '')
+                            {
+                                $('.nav-item.nav-link').removeClass('active ahow');
+                                $('.tab-pane').removeClass('active show');
+                                $('#nav-'+ntb+'-tab').addClass('active show');
+                                $('#'+ntb+'').addClass('active show');
+                            }
                         }, 5000);
                     } else {
                         $('.alert').removeClass('d-none');
