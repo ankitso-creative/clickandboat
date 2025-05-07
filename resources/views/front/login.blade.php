@@ -8,7 +8,7 @@
 @endsection
 @section('js')
 <script>
-    $(document).on('click','#togglePassword i', function () {
+    $(document).on('click','#togglePassword', function () {
         let passwordField = $('#user-password');
         let type = passwordField.attr('type') === 'password' ? 'text' : 'password';
         passwordField.attr('type', type);
@@ -64,7 +64,6 @@
                                 <div id="togglePassword">
                                     <i class="fa-solid fa-eye"></i>
                                 </div>
-                                <i class="toggle-password fa fa-fw fa-eye-slash"></i>
                                 @error('password')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror

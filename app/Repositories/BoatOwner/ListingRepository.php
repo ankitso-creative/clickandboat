@@ -67,13 +67,15 @@
             // $listing->renovated = $request['renovated'];
             // $listing->speed = $request['speed'];
             if($listing->save()):
-                $files = $request['files'];
-                if($files) {
-                    foreach ($files as $file)
-                    {
-                        $listing->addMedia($file)->toMediaCollection('listing_gallery', 'listing'); 
+                if(isset($request['files']) && $request['files']):
+                    $files = $request['files'];
+                    if($files) {
+                        foreach ($files as $file)
+                        {
+                            $listing->addMedia($file)->toMediaCollection('listing_gallery', 'listing'); 
+                        }
                     }
-                }
+                endif;
                 return response()->json([
                     'message' => 'Image uploaded successfully',
                     'data' => [

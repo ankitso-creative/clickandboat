@@ -8,7 +8,7 @@
 @endsection
 @section('js')
     <script>
-        $(document).on('click','#togglePassword i', function () {
+        $(document).on('click','#togglePassword', function () {
             let passwordField = $('#user-password');
             let type = passwordField.attr('type') === 'password' ? 'text' : 'password';
             passwordField.attr('type', type);
