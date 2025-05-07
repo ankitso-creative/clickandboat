@@ -58,7 +58,6 @@
                 'user_id' => $userId,
                 'company_name' => $request['company_name'],
                 'address' => $request['companyaddress'],
-                'siret' => $request['siret'], 
                 'intracommunity_vat' => $request['intracommunity_vat'],  
                 'website' => $request['website'],  
             ]);
@@ -136,6 +135,21 @@
                 'routing_number' => $request['routing_number'],
             ]);
             return redirect()->route('boatowner.profile')->with('success', 'Profile information updated successfully!'); 
+        }
+        public function removeProfileImage($request)
+        {
+            $user = Auth::user();
+            if ($user->hasMedia('profile_image')) {
+                $user->getMedia('profile_image')->each(function ($media) {
+                    $media->delete();  // Delete the existing image(s)
+                });
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Profile image removed successfully.',
+                    'imageUrl' => 'https://static1.clickandboat.com/v1/o/img/mask~dddc60cc1d.png',
+                ]);
+            }
+           
         }
     }
 
