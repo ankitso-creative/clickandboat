@@ -4566,7 +4566,8 @@ label, input, textarea, button, select {
 }
 .destination_banner_img img {
     width: 100%;
-    height: auto;
+    height: 500px;
+    object-fit: cover;
 }
 .destination_banner_img .conatiner {
     max-width: 1015px;
@@ -8660,12 +8661,28 @@ margin-right:15px;
     font-size: 12px;
     line-height: 18px !important;
 }
-.toggle-password{
-    float: right;
+.l-main-content .form-group{
+    position: relative;
+}
+#togglePassword {
     cursor: pointer;
-    margin-right: 10px;
-    margin-top: -33px;
     color: #000;
+    position: absolute;
+    right: 14px;
+    top: 34%;
+}
+.img_commet_text {
+    position: absolute;
+    color: #fff;
+    top: 31%;
+    text-align: center;
+    padding: 0 20px;
+    line-height: 23px !important;
+    text-shadow: #000000 1px 0 10px;
+}
+.inner_blog_text_section ol {
+    margin-left: 15px;
+    margin-top: 15px;
 }
 /*--------------------------------------------------------------
 # Media Query
