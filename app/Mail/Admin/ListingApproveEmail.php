@@ -40,7 +40,7 @@ class ListingApproveEmail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.Admin.listing_approve_email',
+            view: 'emails.admin.listing_approve_email',
         );
 
     }
