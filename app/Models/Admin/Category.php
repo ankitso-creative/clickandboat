@@ -18,12 +18,14 @@ class Category extends Model implements HasMedia
     {
         parent::boot();
         static::saving(function ($category) {
-            $slug = Str::slug($category->name);
-            $existingSlugCount = self::where('slug', $slug)->count();
-            if ($existingSlugCount > 0) {
-                $slug = $slug . '-' . ($existingSlugCount + 1);
+            if (!$category->exists || $category->isDirty('name')) {
+                $slug = Str::slug($category->name);
+                $existingSlugCount = self::where('slug', 'LIKE', $slug . '%')->where('id', '!=', $category->id)->count();
+                if ($existingSlugCount > 0) {
+                    $slug = $slug . '-' . ($existingSlugCount + 1);
+                }
+                $category->slug = $slug;
             }
-            $category->slug = $slug;
         });
     }
 }

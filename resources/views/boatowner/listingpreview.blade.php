@@ -200,7 +200,7 @@
             <div class="row">
                 <div class="text-center col-md-12">
                     <ul class="rating-menus">
-                        @if($listing->skipper):
+                        @if($listing->skipper)
                         <li>
                             <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -325,8 +325,8 @@
                                 <h3>{{ $listing->type }} owned by {{ $listing->user->name }}</h3>
                                 <ul class="specification-menus">
                                     <li>{{ $listing->onboard_capacity }} people</li>
-                                    <li>{{ $listing->otherListingSetting->horsepower ?? '' }} horsepower</li>
                                     <li>{{ $listing->length }} meters</li>
+                                    <li>{{ $listing->construction_year }} </li>
                                 </ul>
                             </div>
                         </div>
@@ -403,7 +403,7 @@
                     @endif
                     <div class="boat-card-content-sec">
                         <div class="equipment-sec">
-                            <h3>Services provided by Mario</h3>
+                            <h3>Services provided</h3>
                             <ul class="equip-menus">
                                 <li>
                                     <svg width="28" height="28" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">

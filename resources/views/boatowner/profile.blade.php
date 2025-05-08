@@ -528,8 +528,8 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="label-default">These details will be used to pay you once your boat has been chartered.</label>
-                            <select name="account_type" class="form-control">
+                            <label class="label-default">These details will be used to pay you once your boat has been chartered.<span class="required"> *</span></label>
+                            <select name="account_type" class="form-control" required>
                                 <option value="">Select</option>
                                 <option {{ checkselect(optional($userData->paymentDetail)->account_type,'ibannumber') }} value="ibannumber">IBAN account</option>
                                 <option {{ checkselect(optional($userData->paymentDetail)->account_type,'accountroutingnumber') }} value="accountroutingnumber">Account number/ Routing number</option>

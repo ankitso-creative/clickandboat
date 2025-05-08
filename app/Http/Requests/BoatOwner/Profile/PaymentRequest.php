@@ -23,6 +23,7 @@ class PaymentRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'account_type' => ['required'],
             'confirmiban' => ['same:iban'],
             'confirmbaccount_number' => ['same:account_number'],
         ];

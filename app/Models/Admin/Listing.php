@@ -101,12 +101,14 @@ class Listing extends Model implements HasMedia
     {
         parent::boot();
         static::saving(function ($listing) {
-            $slug = Str::slug($listing->boat_name);
-            $existingSlugCount = self::where('slug', $slug)->count();
-            if ($existingSlugCount > 0) {
-                $slug = $slug . '-' . ($existingSlugCount + 1);
+            if (!$listing->exists || $listing->isDirty('boat_name')) {
+                $slug = Str::slug($listing->boat_name);
+                $existingSlugCount = self::where('slug', 'LIKE', $slug . '%')->where('id', '!=', $listing->id)->count();
+                if ($existingSlugCount > 0) {
+                    $slug = $slug . '-' . ($existingSlugCount + 1);
+                }
+                $listing->slug = $slug;
             }
-            $listing->slug = $slug;
         });
     }
 }
