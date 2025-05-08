@@ -1909,6 +1909,8 @@
             e.preventDefault();
             var formData = $(this).serialize();
             var ntb = $(this).attr('ntb');
+            var self = $(this);
+            self.find('button.listing_sub_btn').html('<i class="fas fa-spinner fa-spin me-2"></i> Wait Please...');
             $.ajax({
                 url: "{{ route('boatowner.listing-settings',$listing->id) }}", 
                 type: 'POST',
@@ -1918,6 +1920,7 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 success: function(response) {
+                    self.find('button.listing_sub_btn').html('Save');
                     if (response.success) {
                         $('.alert').removeClass('alert-danger');
                         $('.alert').removeClass('d-none');
@@ -1927,16 +1930,17 @@
                             $('.alert').addClass('d-none');
                             if(ntb != '')
                             {
-                                $('.nav-item.nav-link').removeClass('active ahow');
+                               $('.nav-item.nav-link').removeClass('active ahow');
                                 $('.tab-pane').removeClass('active show');
                                 $('#nav-'+ntb+'-tab').addClass('active show');
                                 $('#'+ntb+'').addClass('active show');
+                                $(".main-dashboard").animate({ scrollTop: $(".main-dashboard")[0].scrollHeight }, "fast");
                             }
                             else
                             {
                                 $('.publish-btn').removeClass('d-none');
                             }
-                        }, 2000);
+                        }, 3000);
                     } else {
                         $('.alert').removeClass('d-none');
                         $('.alert').addClass('alert-danger');
@@ -1944,6 +1948,7 @@
                     }
                 },
                 error: function(xhr, status, error) {
+                    self.find('button.listing_sub_btn').html('Save');
                     var errors = xhr.responseJSON.errors;
                     var errorMessage = '';
                     for (var field in errors) {

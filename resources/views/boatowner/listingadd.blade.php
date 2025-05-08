@@ -12,47 +12,7 @@
     <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
 @endsection
 @section('js')
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAli6rCJivgzTbWznnkqFtT_btPww6WBYs&libraries=places"></script>
-    <script>
-        $(document).ready(function () {
-            google.maps.event.addDomListener(window, 'load', initialize);
-        });
-        function initialize() 
-        {
-            var input = document.getElementById('location-add');
-            var autocomplete = new google.maps.places.Autocomplete(input);
-            autocomplete.addListener('place_changed', function() {
-                var place = autocomplete.getPlace();
-                if (!place.geometry || !place.address_components) {
-                    console.log("Place details not found");
-                    return;
-                }
-                var city = '';
-                var country = '';
-                var state = '';
-                for (var i = 0; i < place.address_components.length; i++) {
-                    var component = place.address_components[i];
-                    if (component.types.includes('locality')) {
-                        city = component.long_name;
-                    }
-                    if (component.types.includes('administrative_area_level_1')) {
-                        state = component.long_name;
-                    }
-                    if (component.types.includes('country')) {
-                        country = component.long_name;
-                    }
-                }
-                if (city && country && state) {
-                    input.value = city + ', ' + state + ', '+ country;
-                }
-                if(city==state)
-                {
-                    input.value = city + ', ' + country;
-                }
-                $('#search-filter-fom').submit();
-            });
-        }
-    </script>
+   
 @endsection
 @section('content')
     <div class="listing_banner">
@@ -137,42 +97,6 @@
                             <input type="text" name="boat_name" class="form-control" value="{{ old('boat_name') }}">
                             @error('boat_name')<span class="required">{{ $message }}</span>@enderror
                         </div>
-                        {{-- <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="exampleFormControlSelect1">Is your boat rented with a skipper?</label>
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-                            </div>
-                        </div> --}}
-                        {{-- <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="label-default">Capacity (authorised)</label>
-                                <input type="text" name="city" value="" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group length_input">
-                                <label class="label-default">Length (m)</label>
-                                <input type="text" name="city" value="" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="exampleFormControlSelect1">How did you find out about Click&Boat?</label>
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-                            </div>
-                        </div> --}}
                     </div>
                 </div>
                 <div class="photo-section">
@@ -304,30 +228,10 @@
                 console.error('Error uploading file:', response);
             }
         });
-        // document.getElementById('uploadForm').addEventListener('submit', function(e) {
-        //     e.preventDefault(); 
-        //     let formData = new FormData(document.getElementById('uploadForm'));
-        //     imageDropzone.files.forEach(function(file) {
-        //         formData.append("files[]", file);
-        //     });
-        //     let formAction = document.getElementById('uploadForm').action;
-        //     fetch(formAction, {
-        //         method: "POST",
-        //         body: formData,
-        //         headers: {
-        //             'X-CSRF-TOKEN': '{{ csrf_token() }}', 
-        //         }
-        //     })
-        //     .then(response => response.json())
-        //     .then(data => {
-        //         window.location.href = data.data.redirect_url; 
-        //     })
-        //     .catch(error => {
-        //         console.error('Error submitting form:', error);
-        //     });
-        // });
+       
         $('#uploadForm').on('submit', function(e) {
             e.preventDefault();
+            $('button.save_btn').html('<i class="fas fa-spinner fa-spin me-2"></i> Wait Please...');
             let formData = new FormData(this);
             imageDropzone.files.forEach(function(file) {
                 formData.append('files[]', file);
@@ -363,9 +267,11 @@
                                 }, 'fast');
                             }
                         });
+                        $('button.save_btn').html('Save');
                     } else {
                         console.error('Unexpected error:', xhr.responseText);
                         alert('An error occurred. Check console for details.');
+                        $('button.save_btn').html('Save');
                     }
                 }
             });

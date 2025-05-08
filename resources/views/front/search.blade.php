@@ -478,8 +478,8 @@
                                 <h5>Boat length</h5>
                                 <div class="custom-wrapper">
                                     <div class="boat-input">
-                                        <input type="range" class="min-boat-range" min="0" max="{{ maxLengthValue() }}" value="{{ request()->query('min_length') ?? 0 }}" step="10">
-                                        <input type="range" class="max-boat-range" min="0" max="{{ maxLengthValue() }}" value="{{ request()->query('max_length') ?? maxLengthValue() }}" step="10">
+                                        <input type="range" class="min-boat-range" min="0" max="200" value="{{ request()->query('min_length') ?? 0 }}" step="10">
+                                        <input type="range" class="max-boat-range" min="0" max="200" value="{{ request()->query('max_length') ?? maxLengthValue() }}" step="10">
                                     </div>
                                     <div class="price-input-container">
                                         <div class="slider-container-length">
@@ -491,7 +491,7 @@
                                                 <input type="number" name="min_length" class="min-length-input" value="{{ request()->query('min_length') ?? 0}}">
                                             </div>
                                             <div class="price-field">
-                                                <input type="number" name="max_length" class="max-length-input" value="{{ request()->query('max_length') ?? maxLengthValue() }}">
+                                                <input type="number" name="max_length" class="max-length-input" value="{{ request()->query('max_length') ?? 200 }}">
                                             </div>
                                         </div>
                                     
@@ -746,8 +746,8 @@
                                 <h5>Boat length</h5>
                                 <div class="custom-wrapper">
                                     <div class="boat-input">
-                                        <input type="range" class="min-boat-range" min="0" max="{{ maxLengthValue() }}" value="{{ request()->query('min_length') ?? 0 }}" step="10">
-                                        <input type="range" class="max-boat-range" min="0" max="{{ maxLengthValue() }}" value="{{ request()->query('max_length') ?? maxLengthValue() }}" step="10">
+                                        <input type="range" class="min-boat-range" min="0" max="200" value="{{ request()->query('min_length') ?? 0 }}" step="10">
+                                        <input type="range" class="max-boat-range" min="0" max="200" value="{{ request()->query('max_length') ?? 200 }}" step="10">
                                     </div>
                                     <div class="price-input-container">
                                         <div class="slider-container-length">
@@ -759,7 +759,7 @@
                                                 <input type="number" name="min_length" class="min-length-input" value="{{ request()->query('min_length') ?? 0}}">
                                             </div>
                                             <div class="price-field">
-                                                <input type="number" name="max_length" class="max-length-input" value="{{ request()->query('max_length') ?? maxLengthValue() }}">
+                                                <input type="number" name="max_length" class="max-length-input" value="{{ request()->query('max_length') ?? 200 }}">
                                             </div>
                                         </div>
                                     
