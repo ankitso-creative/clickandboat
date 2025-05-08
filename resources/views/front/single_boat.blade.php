@@ -115,11 +115,15 @@
                                 {
                                     $('#half_day-box').removeClass('d-none');
                                     $('#half_day-box-2').removeClass('d-none');
+                                    $('#half_day-price').val(response.oneHalfDayPrice);
+                                    $('#mhalf_day-price').val(response.oneHalfDayPrice);
                                 }
                                 else
                                 {
                                     $('#half_day-box').addClass('d-none');
                                     $('#half_day-box-2').addClass('d-none');
+                                    $('#half_day-price').val(response.oneHalfDayPrice);
+                                    $('#mhalf_day-price').val(response.oneHalfDayPrice);
                                 }
                             } else {
                                 $('#price_display').html('<p>Price not available.</p>');
@@ -167,11 +171,15 @@
                                 {
                                     $('#half_day-box').removeClass('d-none');
                                     $('#half_day-box-2').removeClass('d-none');
+                                    $('#half_day-price').val(response.oneHalfDayPrice);
+                                    $('#mhalf_day-price').val(response.oneHalfDayPrice);
                                 }
                                 else
                                 {
                                     $('#half_day-box').addClass('d-none');
                                     $('#half_day-box-2').addClass('d-none');
+                                    $('#half_day-price').val(response.oneHalfDayPrice);
+                                    $('#mhalf_day-price').val(response.oneHalfDayPrice);
                                 }
                             } else {
                                 $('#price_display').html('<p>Price not available.</p>');
@@ -662,9 +670,9 @@
                                         Skipper
                                     </li>
                                 </ul>
-                                <div class="equip-button-sec">
+                                {{-- <div class="equip-button-sec">
                                     <a href="#" class="equip_btn" data-toggle="modal" data-target="#services-modal">View all services</a>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                         <div class="boat-card-content-sec">
@@ -699,7 +707,7 @@
                                 <div class="datepicker-mobile">
                                     <div id="inline-datepicker-mobile"></div>
                                 </div>
-                                <a href="#" class="delete_dates">Delete the dates</a>
+                                {{-- <a href="#" class="delete_dates">Delete the dates</a> --}}
                             </div>
                         </div>
                         <div class="boat-card-content-sec">
