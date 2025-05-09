@@ -798,14 +798,12 @@
                                 <div class="row sidebar_form">
                                     <div class="p-0 col-md-6">
                                         <div class="form-group">
-                                            <input type="date" id="checkin-date" name="checkin_date"
-                                                class="form-control" placeholder="Check-in" />
+                                            <input type="date" id="checkin-date" name="checkin_date" class="form-control" placeholder="Check-in" />
                                         </div>
                                     </div>
                                     <div class="p-0 col-md-6">
                                         <div class="form-group">
-                                            <input type="date" id="checkout-date" class="form-control"
-                                                name="checkout_date" placeholder="Check-out" />
+                                            <input type="date" id="checkout-date" class="form-control" name="checkout_date" placeholder="Check-out" />
                                             <input type="hidden" id="days-val" value="" name="days_val" />
                                         </div>
                                     </div>
