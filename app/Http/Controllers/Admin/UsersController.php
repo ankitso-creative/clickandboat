@@ -108,4 +108,8 @@ class UsersController extends Controller
     {
        return $this->service->change_status($request);
     }
+    public function changeSuper(Request $request)
+    {
+       return $this->service->changeSuper($request);
+    }
 }

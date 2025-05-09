@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('provider')->nullable();
             $table->string('provider_id')->nullable();
             $table->integer('status')->default('0');
+            $table->integer('super')->default('0');
             $table->integer('deleted')->default('0');
             $table->timestamps();
         });
