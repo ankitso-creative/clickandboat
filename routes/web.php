@@ -51,6 +51,7 @@ Route::middleware('Setlang')->group(function(){
         Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
         Route::resource('users', UsersController::class);
         Route::post('user_change_status', [UsersController::class, 'changeStatus'])->name('userchange');
+        Route::post('user_change_super', [UsersController::class, 'changeSuper'])->name('usersuper');
         Route::get('boatowner', [UsersController::class, 'index'])->name('boatowner');
         Route::get('customer', [UsersController::class, 'customers'])->name('customer');
         Route::get('listing',[ListingController::class, 'index'])->name('listing');

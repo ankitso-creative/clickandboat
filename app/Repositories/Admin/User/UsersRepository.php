@@ -120,4 +120,12 @@ class UsersRepository{
         $user->update();
         return $user;
     }
+    public function changeSuper($request)
+    {
+        $id = $request['id'];
+        $user = User::where('id',$id)->first();
+        $user->super = $request['value'];
+        $user->update();
+        return $user;
+    }
 }

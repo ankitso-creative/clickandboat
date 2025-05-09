@@ -68,7 +68,8 @@
                                     <th>Email</th>
                                     <th>Phone</th>
                                     <th>Created At</th>
-                                    <th>Action</th>
+                                    <th>Super Owner</th>
+                                    <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -80,6 +81,10 @@
                                             if($boatOwner->status == 1):
                                                 $checked = 'checked';
                                             endif;
+                                            $superChecked = '';
+                                            if($boatOwner->super == 1):
+                                                $superChecked = 'checked';
+                                            endif;
                                         @endphp
                                         <tr>
                                             <th>{{ $loop->iteration  }}</th>
@@ -87,6 +92,7 @@
                                             <td>{{ $boatOwner->email }}</td>
                                             <td>@if(isset($boatOwner->profile->phone)) {{ $boatOwner->profile->phone }} @endif</td>
                                             <td>{{ $boatOwner->created_at }}</td>
+                                            <td><input  {{ $superChecked }} value="{{ $boatOwner->id }}" type="checkbox" data-size="mini" class="make-switch superOwnerStatus" data-on-color="success" data-off-color="danger"></td>
                                             <td><input  {{ $checked }} value="{{ $boatOwner->id }}" type="checkbox" data-size="mini" class="make-switch change_status" data-on-color="success" data-off-color="danger"></td>
                                             <td>
                                                 <a href="{{ route('admin.users.edit', $boatOwner->id) }}" class="btn btn-circle btn-icon-only btn-default tooltips" title = "Edit" href="javascript:;"> <i class="icon-note"></i></a>
@@ -114,66 +120,94 @@
         <!-- END CONTENT BODY -->
     </div>
     <script>
-        $(document).on('click','.change_status',function(){
-            var id = $(this).val();
-            var value = 0;
-            if ($(this).prop('checked')) {
-                value = 1;
-            }
-            $.ajax({
-                url: "{{ route('admin.userchange') }}",
-                type: 'POST',
-                data: { value: value, id: id},
-                dataType: 'json',
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                success: function(response) {
-                    if(response.success) 
-                    {
-                        $('#listing-section').html(response.html);
-                    } 
-                    else 
-                    {
-                       $('.message').html(response.message);
-                    }
-                },
-            });
-        })
-        $(document).on('click','.delete_row',function(e)
-        {
-            e.preventDefault();
-            var url = $(this).attr('href');
-            swal(
-            {
-                title: "Are you sure?",
-                text: "You will not be able to recover this!",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonColor: '#DD6B55',
-                confirmButtonText: 'Yes, I am sure!',
-                cancelButtonText: "No, cancel it!",
-                closeOnConfirm: false,
-                closeOnCancel: true
-            },
-            function(isConfirm){
-                if (isConfirm)
-                {
-                    $.ajax({
-                        type: "DELETE",
-                        url: url,
-                        data: {
-                            "_token": "{{ csrf_token() }}",
-                        },
-                        success: function (response) {
-                            swal("Deleted!", "The user has been removed.", "success");
-                            window.location.href = response.url;
-                        },
-                        error: function (response) {
-                            swal("Failed!", "Failed to remove the user.", "error");
-                        }
-                    });
+        $(document).ready(function() {
+            $(document).on('switchChange.bootstrapSwitch','.superOwnerStatus',function(){
+                var id = $(this).val();
+                var value = 0;
+                if ($(this).prop('checked')) {
+                    value = 1;
                 }
+                $.ajax({
+                    url: "{{ route('admin.usersuper') }}",
+                    type: 'POST',
+                    data: { value: value, id: id},
+                    dataType: 'json',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(response) {
+                        if(response.success) 
+                        {
+                            $('#listing-section').html(response.html);
+                        } 
+                        else 
+                        {
+                        $('.message').html(response.message);
+                        }
+                    },
+                });
+            });
+            $(document).on('click','.change_status',function(){
+                var id = $(this).val();
+                var value = 0;
+                if ($(this).prop('checked')) {
+                    value = 1;
+                }
+                $.ajax({
+                    url: "{{ route('admin.userchange') }}",
+                    type: 'POST',
+                    data: { value: value, id: id},
+                    dataType: 'json',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(response) {
+                        if(response.success) 
+                        {
+                            $('#listing-section').html(response.html);
+                        } 
+                        else 
+                        {
+                        $('.message').html(response.message);
+                        }
+                    },
+                });
+            })
+            $(document).on('click','.delete_row',function(e)
+            {
+                e.preventDefault();
+                var url = $(this).attr('href');
+                swal(
+                {
+                    title: "Are you sure?",
+                    text: "You will not be able to recover this!",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: '#DD6B55',
+                    confirmButtonText: 'Yes, I am sure!',
+                    cancelButtonText: "No, cancel it!",
+                    closeOnConfirm: false,
+                    closeOnCancel: true
+                },
+                function(isConfirm){
+                    if (isConfirm)
+                    {
+                        $.ajax({
+                            type: "DELETE",
+                            url: url,
+                            data: {
+                                "_token": "{{ csrf_token() }}",
+                            },
+                            success: function (response) {
+                                swal("Deleted!", "The user has been removed.", "success");
+                                window.location.href = response.url;
+                            },
+                            error: function (response) {
+                                swal("Failed!", "Failed to remove the user.", "error");
+                            }
+                        });
+                    }
+                });
             });
         });
     </script>
