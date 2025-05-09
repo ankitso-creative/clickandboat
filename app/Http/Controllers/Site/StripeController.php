@@ -45,6 +45,7 @@ class StripeController extends Controller
             endif;
             $depositAmount = $totalAmount +$fuel_price + $skipper_price;
         endif;
+       
         Stripe::setApiKey(config('services.stripe.secret'));
         try {
             $paymentIntent = PaymentIntent::create([

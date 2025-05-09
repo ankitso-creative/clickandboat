@@ -178,11 +178,11 @@
                         @php 
                             $user = $userMessage['user'];
                             $message = $userMessage['message'];
-                            $listing = collect($user->listing)->filter(function($listing) use ($message) {
+                            $listingM = collect($user->listing)->filter(function($listing) use ($message) {
                                 return $listing->id == $message['listing_id'];
                             })->first();
                             $aClass = '';
-                            if($slug == $listing->slug):
+                            if($slug == $listingM->slug):
                                 $aClass = 'user-active';
                             endif;
                             $image = $user->getFirstMediaUrl('profile_image');
@@ -191,7 +191,7 @@
                             endif;
                         @endphp
                         <li class="{{ $aClass }}">
-                            <a href="{{ route('customer.message', $listing->slug) }}">
+                            <a href="{{ route('customer.message', $listingM->slug) }}">
                                 <div class="user-box-list">
                                     <div class="user-box-image">
                                         <img src="{{ $image }}" />
@@ -202,7 +202,7 @@
                                             <span>{{ $message->created_at->format('d-m-Y') }}</span>
                                         </div>
                                         <div class="user-boat-name">
-                                            <p>{{ $listing->type  }} {{ $listing->boat_name }}</p>
+                                            <p>{{ $listingM->type  }} {{ $listingM->boat_name }}</p>
                                         </div>
                                         <div class="user-last-message">
                                             <p>{{ $message->message }} </p>

@@ -81,7 +81,7 @@
                         <div class="card list_edit_card" style="width: 18rem;">
                             <img class="card-img-top" src="{{ $image }}" alt="Card image cap">
                             <div class="card-body">
-                                <h5 class="card-text bold">{{ $result->boat_name }} - {{ $result->type }} {{ $result->manufacturer }} {{ $result->model }} </h5>
+                                <h5 class="card-text bold">{{ ucfirst($result->type) }} in {{ $result->city }} - {{ $result->manufacturer }} {{ $result->model }} </h5>
                             </div>
                             <ul class="list-group list-group-flush">
                             <li class="list-group-item">
