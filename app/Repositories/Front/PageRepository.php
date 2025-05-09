@@ -17,7 +17,14 @@ use Illuminate\Support\Facades\Session;
     {
         public function singleBoat($slug)
         {
-            $listing = Listing::with(['price'])->where('slug',$slug)->where('status','1')->first();
+            $listing = Listing::with([
+                'price', 
+                'description' => function( $query ){
+                $lang = empty(session()->get('lang')) ? 'en' : session()->get('lang');
+                $query->where('language', $lang);
+            }])
+            ->where('slug',$slug)->where('status','1')->first();
+
             if($listing):
                 Session::put('listingID', $listing->id);
             endif;
@@ -45,7 +52,10 @@ use Illuminate\Support\Facades\Session;
         }
         public function singleBoatDetails($city,$type,$slug)
         {
-            $listing = Listing::with(['price','seasonPrice','booking','calendar'])->where('slug',$slug)->where('city',$city)->where('type',$type)->where('status','1')->first();
+            $listing = Listing::with(['price','seasonPrice','booking','calendar', 'description' => function( $query ){
+                $lang = empty(session()->get('lang')) ? 'en' : session()->get('lang');
+                $query->where('language', $lang);
+            }])->where('slug',$slug)->where('city',$city)->where('type',$type)->where('status','1')->first();
             if($listing):
                 Session::put('listingID', $listing->id);
                 Session::put('listingcity', $listing->city);
