@@ -218,9 +218,9 @@
                         @php 
                             $user = $userMessage['user'];
                             $message = $userMessage['message'];
-                            $listing = $userMessage['listing'];
+                            $listingM = $userMessage['listing'];
                             $aClass = '';
-                            if($slug == $listing->slug):
+                            if($slug == $listingM->slug):
                                 $aClass = 'user-active';
                             endif;
                             $image = $user->getFirstMediaUrl('profile_image');
@@ -229,7 +229,7 @@
                             endif;
                         @endphp
                         <li class="{{ $aClass }}">
-                            <a href="{{ route('boatowner.message', ['receiver_id' => $user->id, 'slug' => $listing->slug]) }}">
+                            <a href="{{ route('boatowner.message', ['receiver_id' => $user->id, 'slug' => $listingM->slug]) }}">
                                 <div class="user-box-list">
                                     <div class="user-box-image">
                                         <img src="{{ $image }}" />
@@ -240,7 +240,7 @@
                                             <span>{{ $message->created_at }}</span>
                                         </div>
                                         <div class="user-boat-name">
-                                            <p>{{ $listing->type  }} {{ $listing->boat_name }}</p>
+                                            <p>{{ $listingM->type  }} {{ $listingM->boat_name }}</p>
                                         </div>
                                         <div class="user-last-message">
                                             <p>{{ $message->message }} </p>

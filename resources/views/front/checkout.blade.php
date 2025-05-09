@@ -190,12 +190,17 @@
 													$amount = $listing->security->amount;
 													$depositAmount = $quotation['total'] * $amount / 100;
 												endif;
+												if($quotation->currency):
+													$symble = priceSymbol($quotation->currency);
+												else:
+													$symble = priceSymbol('USD');
+												endif;
 											@endphp
 											<div class="col-md-12">
 												<input type="radio" value="deposit-payment" class="form-check-input" name="payment_type" id="myRadiodeposit">
 												<label for="myRadiodeposit">
 													<span class="title-label">Pay the deposit amount</span>
-													<span class="title-text">€{{ $depositAmount }}</span>
+													<span class="title-text">{{ $symble.$depositAmount }}</span>
 													<p>Pay the deposit amount of the booking today.</p>
 												</label>
 											</div>
