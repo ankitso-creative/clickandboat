@@ -59,19 +59,19 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <input class="form-control" id="user-fname" type="text" name="fname" placeholder="First Name" />
+                                <input class="form-control" id="user-fname" type="text" name="fname" placeholder="First Name" value="{{ old('fname') }}" />
                                 @error('fname')
                                     <span class="danger">{{ $message }}</span>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <input class="form-control" id="user-lname" type="text" name="lname" placeholder="Last Name" />
+                                <input class="form-control" id="user-lname" type="text" name="lname" placeholder="Last Name" value="{{ old('lname') }}" />
                                 @error('lname')
                                     <span class="danger">{{ $message }}</span>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <input class="form-control" type="tel" id="phone" name="phone" placeholder="Telephone" required>
+                                <input class="form-control" type="tel" id="phone" name="phone" placeholder="Telephone" value="{{ old('phone') }}" required>
                             </div>
                             <div class="form-group">
                                 <input class="form-control" id="user-password" type="password" name="password" placeholder="Password" />

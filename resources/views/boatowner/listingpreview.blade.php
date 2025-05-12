@@ -354,22 +354,17 @@
                                 <p>{{ $skipperText }}</p>
                             </div>
                         </div>
-                        <div class="keyinfo-sec">
-                            <div class="keyinfo-icon">
-                                <!-- <svg width="32" height="32" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        fill-rule="evenodd"
-                                        clip-rule="evenodd"
-                                        d="M15 42L14.8834 41.9933C14.386 41.9355 14 41.5128 14 41C14 40.4872 14.386 40.0645 14.8834 40.0067L15 40H23L23.0002 31.9534C18.814 31.5609 15.3391 28.7326 14.3101 24.9778C8.76137 24.627 6 19.9758 6 12C6 10.9456 6.81588 10.0818 7.85074 10.0055L8 10H14V8C14 6.94564 14.8159 6.08183 15.8507 6.00549L16 6H32C33.0544 6 33.9182 6.81588 33.9945 7.85074L34 8V10H40C41.1046 10 42 10.8954 42 12C42 19.9758 39.2386 24.627 33.6911 24.9785C32.6609 28.7323 29.1866 31.5605 25.0008 31.9533L25 40H33C33.5523 40 34 40.4477 34 41C34 41.5523 33.5523 42 33 42H15ZM32 8H16V22.6667C16 26.7 19.6 30 24 30C28.3154 30 31.8612 26.8257 31.996 22.8985L32 22.6667V8ZM14 12H8L8.00215 12.3826C8.07654 18.9285 10.0771 22.4477 14.0038 22.94L14.004 22.9336L14 22.6667V12ZM40 12H34V22.6667C34 22.758 33.9986 22.849 33.9958 22.9396C37.9229 22.4477 39.9235 18.9285 39.9978 12.3826L40 12Z"
-                                    ></path>
-                                </svg> -->
-                                <i class="fa-regular fa-star"></i>
+                        @if($listing->user->super == '1')
+                            <div class="keyinfo-sec">
+                                <div class="keyinfo-icon">
+                                    <i class="fa-regular fa-star"></i>
+                                </div>
+                                <div class="keyinfo-texts">
+                                    <h4>Super owner</h4>
+                                    <p>As a dedicated boat renter with great reviews, Mario ensures that they provide high quality services.</p>
+                                </div>
                             </div>
-                            <div class="keyinfo-texts">
-                                <h4>Super owner</h4>
-                                <p>As a dedicated boat renter with great reviews, Mario ensures that they provide high quality services.</p>
-                            </div>
-                        </div>
+                        @endif
                     </div>
                     <div class="boat-card-content-sec">
                         <div class="boat-description-sec">
@@ -456,10 +451,12 @@
                                 <p>Joined in {{ $join_date }} {!!  $textP !!}</p>
                             </div>
                         </div>
-                        <ul class="offered_rating">
-                            <li><i class="fa-solid fa-star"></i> 4.8 (31 reviews)</li>
-                            <li><i class="fa-solid fa-square-check"></i> Verified profile</li>
-                        </ul>
+                        @if($listing->user->super == '1')
+                            <ul class="offered_rating">
+                                <li><i class="fa-solid fa-star"></i> 4.8 (31 reviews)</li>
+                                <li><i class="fa-solid fa-square-check"></i> Verified profile</li>
+                            </ul>
+                        @endif
                         <p class="about_heading">About me</p>
                         <p>{{ optional($listing->user->exprience)->description }}</p>
                         <a href="#" class="read_more-btn">Read More</a>
