@@ -273,7 +273,7 @@
                         <div class="text-center actions btn-set">
                             <input type="hidden" name="s" value="general">
                             <button type="submit" ntb="description" class="listing_sub_btn mt-ladda-btn ladda-button btn-outline" data-style="contract" data-spinner-color="#333">
-                                Save
+                                Save & continue
                             </button>
                             <a href="javascript:;" class="next-btn" ntp="description">Next</a>
                         </div>
@@ -444,7 +444,7 @@
                         </div>
                         <input type="hidden" name="s" value="descriptions">
                         <button type="submit" class="listing_sub_btn mt-ladda-btn ladda-button btn-outline" data-style="contract" data-spinner-color="#333">
-                            Save
+                            Save & continue
                         </button>
                         <a href="javascript:;" class="next-btn" ntp="image">Next</a>
                     </div>
@@ -577,7 +577,7 @@
                         </div>
                     </div>
                     <div class="boat_listing_images_video_save_btn">
-                        <a href="javascript:;" id="images-uploded">Save</a>
+                        <a href="javascript:;" id="images-uploded">Save & continue</a>
                         <a href="javascript:;" class="next-btn" ntp="price">Next</a>
                     </div>
                 </div>
@@ -851,7 +851,7 @@
                             </button> -->
                             <input type="hidden" name="s" value="price">
                             <button  type="submit" class="listing_sub_btn mt-ladda-btn ladda-button btn-outline " data-style="contract" data-spinner-color="#333">
-                               Save
+                                Save & continue
                             </button>
                             <a href="javascript:;" class="next-btn" ntp="booking">Next</a>
                         </div>
@@ -949,9 +949,8 @@
                                 <i class="fa fa-angle-left"></i> Back
                             </button> -->
                             <input type="hidden" name="s" value="booking">
-                            <button type="submit" class="listing_sub_btn mt-ladda-btn ladda-button btn-outline"
-                                data-style="contract" data-spinner-color="#333">
-                                 Save
+                            <button type="submit" class="listing_sub_btn mt-ladda-btn ladda-button btn-outline" data-style="contract" data-spinner-color="#333">
+                                Save & continue
                             </button>
                             <a href="javascript:;" class="next-btn" ntp="equipment">Next</a>
                         </div>
@@ -1063,9 +1062,8 @@
                                 <i class="fa fa-angle-left"></i> Back
                             </button> -->
                             <input type="hidden" name="s" value="calendar">
-                            <button type="submit" class="listing_sub_btn mt-ladda-btn ladda-button btn-outline"
-                                data-style="contract" data-spinner-color="#333">
-                                 Save
+                            <button type="submit" class="listing_sub_btn mt-ladda-btn ladda-button btn-outline" data-style="contract" data-spinner-color="#333">
+                                Save & continue
                             </button>
                         </div>
                     </div>
@@ -1483,9 +1481,8 @@
                                 <i class="fa fa-angle-left"></i> Back
                             </button> -->
                             <input type="hidden" name="s" value="equipment">
-                            <button type="submit" class="listing_sub_btn mt-ladda-btn ladda-button btn-outline"
-                                data-style="contract" data-spinner-color="#333">
-                                Save
+                            <button type="submit" class="listing_sub_btn mt-ladda-btn ladda-button btn-outline" data-style="contract" data-spinner-color="#333">
+                                Save & continue
                             </button>
                             <a href="javascript:;" class="next-btn" ntp="other">Next</a>
                         </div>
@@ -1920,7 +1917,7 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 success: function(response) {
-                    self.find('button.listing_sub_btn').html('Save');
+                    self.find('button.listing_sub_btn').html('Save & continue');
                     if (response.success) {
                         $('.alert').removeClass('alert-danger');
                         $('.alert').removeClass('d-none');
@@ -1948,7 +1945,7 @@
                     }
                 },
                 error: function(xhr, status, error) {
-                    self.find('button.listing_sub_btn').html('Save');
+                    self.find('button.listing_sub_btn').html('Save & continue');
                     var errors = xhr.responseJSON.errors;
                     var errorMessage = '';
                     for (var field in errors) {
