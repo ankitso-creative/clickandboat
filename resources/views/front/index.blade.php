@@ -398,8 +398,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <span><i class="fa-solid fa-sailboat"></i></span>
                         <select name="type[]" id="cars">
                             <option value="">Sailboat, motorboat,...</option>
-                            {!! selectOption('categories','name','name',request()->get('type'),array('status' , '1'))
-                            !!}
+                            {!! selectOption('categories','name','name',request()->get('type'),array('status' , '1')) !!}
                         </select>
                     </div>
                 </div>
