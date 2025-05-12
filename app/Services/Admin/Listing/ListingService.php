@@ -49,4 +49,8 @@ class ListingService{
     {
         return $this->repository->changeStatus($request);
     }
+    public function changeStatusFeatured($request)
+    {
+        return $this->repository->changeStatusFeatured($request);
+    }
 }

@@ -263,4 +263,11 @@ class ListingRepository{
         $listing->status = $request['value'];
         return $listing->update();
     }
+    public function changeStatusFeatured($request)
+    {
+        $id = $request['id'];
+        $listing = Listing::where('id',$id)->first();
+        $listing->featured = $request['value'];
+        return $listing->update();
+    }
 }

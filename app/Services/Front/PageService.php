@@ -27,6 +27,10 @@ class PageService{
     {
         return $this->repository->locations();
     }
+    public function featureds()
+    {
+        return $this->repository->featureds();
+    }
     public function singleBoatDetails($city,$type,$slug)
     {
         return $this->repository->singleBoatDetails($city,$type,$slug);
