@@ -522,49 +522,74 @@
         <section class="boat-banner-sec">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6">
+                    @if($isMobile)
                         @php
-                            $gallery_images = $listing->getMedia('listing_gallery');
-                            $image = $listing->getFirstMediaUrl('cover_images');
-                            if (!$image) {
-                                if(count($gallery_images))
-                                {
-                                    $image = $gallery_images['0']->getUrl();
-                                    unset($gallery_images[0]);
-                                }
-                                else
-                                {
-                                    $image = 'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png';
-                                }
+                            $galleryImages = $listing->getMedia('listing_gallery');
+                            $imageUrls = $galleryImages->map(fn($media) => $media->getUrl())->toArray();
+
+                            $imageCoverUrl = $listing->getFirstMediaUrl('cover_images');
+                            $imageCover = $imageCoverUrl ? [$imageCoverUrl] : [];
+
+                            $allImageUrls = array_filter(array_merge($imageCover, $imageUrls));
+
+                            if (empty($allImageUrls)) {
+                                $allImageUrls = ['https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'];
                             }
-                            $profileImage = $listing->user->getFirstMediaUrl('profile_image');
                         @endphp
-                        <div class="banner-first-image">
-                            <a data-fancybox="gallery" href="{{ $image }}"><img src="{{ $image }}" alt="Image" class="img-fluid" /></a>
+                        <div class="col-md-12 mobile-image-slides">
+                            @foreach($allImageUrls as $allImageUrl)
+                                <div class="mobile-image-slide">
+                                    <a data-fancybox="gallery" href="{{ $allImageUrl }}">
+                                        <img src="{{ $allImageUrl }}" alt="Image" class="img-fluid" />
+                                    </a>
+                                </div>
+                            @endforeach
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="banner-grid-image">
-                            @if (count($gallery_images))
-                                @foreach ($gallery_images as $gallery_image)
-                                    @if ($loop->iteration >= 1 && $loop->iteration <= 4)
-                                        <a data-fancybox="gallery" href="{{ $gallery_image->getUrl() }}">
-                                            <img src="{{ $gallery_image->getUrl() }}" alt="Image" class="img-fluid" />
-                                        </a>
-                                    @endif
-                                @endforeach
-                            @else
-                                <a href="#"><img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" alt="Image" class="img-fluid" /></a>
-                                <a href="#"><img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" alt="Image" class="img-fluid" /></a>
-                                <a href="#"><img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" alt="Image" class="img-fluid" /></a>
-                                <a href="#"><img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" alt="Image" class="img-fluid" /></a>
-                            @endif {{--
-                        <div class="view-more-photos">
-                            <a href="#"> View the photos (+10)</a>
+                    @else
+                        <div class="col-md-6">
+                            @php
+                                $gallery_images = $listing->getMedia('listing_gallery');
+                                $image = $listing->getFirstMediaUrl('cover_images');
+                                if (!$image) {
+                                    if(count($gallery_images))
+                                    {
+                                        $image = $gallery_images['0']->getUrl();
+                                        unset($gallery_images[0]);
+                                    }
+                                    else
+                                    {
+                                        $image = 'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png';
+                                    }
+                                }
+                                $profileImage = $listing->user->getFirstMediaUrl('profile_image');
+                            @endphp
+                            <div class="banner-first-image">
+                                <a data-fancybox="gallery" href="{{ $image }}"><img src="{{ $image }}" alt="Image" class="img-fluid" /></a>
+                            </div>
                         </div>
-                        --}}
+                        <div class="col-md-6">
+                            <div class="banner-grid-image">
+                                @if(count($gallery_images))
+                                    @foreach ($gallery_images as $gallery_image)
+                                        @if ($loop->iteration >= 1 && $loop->iteration <= 4)
+                                            <a data-fancybox="gallery" href="{{ $gallery_image->getUrl() }}">
+                                                <img src="{{ $gallery_image->getUrl() }}" alt="Image" class="img-fluid" />
+                                            </a>
+                                        @endif
+                                    @endforeach
+                                @else
+                                    <a href="#"><img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" alt="Image" class="img-fluid" /></a>
+                                    <a href="#"><img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" alt="Image" class="img-fluid" /></a>
+                                    <a href="#"><img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" alt="Image" class="img-fluid" /></a>
+                                    <a href="#"><img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" alt="Image" class="img-fluid" /></a>
+                                @endif {{--
+                            <div class="view-more-photos">
+                                <a href="#"> View the photos (+10)</a>
+                            </div>
+                            --}}
+                            </div>
                         </div>
-                    </div>
+                    @endif
                 </div>
             </div>
         </section>
@@ -852,8 +877,7 @@
                                             Book
                                         </a>
                                     @endif
-                                    {{-- <span class="mt-1 mb-1 text-center d-block font-weight-bold">or</span>
-                                    <button class="btn book_btn">Book</button> --}}
+                                   
                                     <div class="pt-3 text-center form_text">
                                         <p>You will only be charged if the request is accepted</p>
                                     </div>
@@ -927,91 +951,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="pt-5 similar_boat_section oat-card-content-secs">
-                        <div class="text-center">
-                            <h3>Check availability of similar boats</h3>
-                        </div>
-                        <div class="pt-4 row">
-                            <div class="col-sm-12 col-md-6 col-lg-4">
-                                <div class="location_inner_box">
-                                    <img src="{{ asset('app-assets/site_assets/img/feature-img-2.jpg') }}" />
-                                    <div class="wishlist_icon">
-                                        <i class="fa-regular fa-heart"></i>
-                                    </div>
-                                    <div class="location_inner_main_box">
-                                        <div class="location_inner_text">
-                                            <h3>test</h3>
-                                            <p class="location_pera">sport 30 (2023)</p>
-                                            <p class="people_pera">people · 30 hp · 5 m</p>
-                                            <h5 class="location_price">From <span class="price_style">€27</span> / day</h5>
-                                            <div class="location_facility">
-                                                <ul>
-                                                    <li>With Skipper</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="location_review_box">
-                                            <span>Flexible cancellation</span>
-                                            <span><i class="fa-solid fa-star"></i> NEW</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-12 col-md-6 col-lg-4">
-                                <div class="location_inner_box">
-                                    <img src="{{ asset('app-assets/site_assets/img/feature-img-2.jpg') }}" />
-                                    <div class="wishlist_icon">
-                                        <i class="fa-regular fa-heart"></i>
-                                    </div>
-                                    <div class="location_inner_main_box">
-                                        <div class="location_inner_text">
-                                            <h3>test</h3>
-                                            <p class="location_pera">sport 30 (2023)</p>
-                                            <p class="people_pera">people · 30 hp · 5 m</p>
-                                            <h5 class="location_price">From <span class="price_style">€27</span> / day</h5>
-                                            <div class="location_facility">
-                                                <ul>
-                                                    <li>With Skipper</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="location_review_box">
-                                            <span>Flexible cancellation</span>
-                                            <span><i class="fa-solid fa-star"></i> NEW</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-12 col-md-6 col-lg-4">
-                                <div class="location_inner_box">
-                                    <img src="{{ asset('app-assets/site_assets/img/feature-img-2.jpg') }}" />
-                                    <div class="wishlist_icon">
-                                        <i class="fa-regular fa-heart"></i>
-                                    </div>
-                                    <div class="location_inner_main_box">
-                                        <div class="location_inner_text">
-                                            <h3>test</h3>
-                                            <p class="location_pera">sport 30 (2023)</p>
-                                            <p class="people_pera">people · 30 hp · 5 m</p>
-                                            <h5 class="location_price">From <span class="price_style">€27</span> / day</h5>
-                                            <div class="location_facility">
-                                                <ul>
-                                                    <li>With Skipper</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="location_review_box">
-                                            <span>Flexible cancellation</span>
-                                            <span><i class="fa-solid fa-star"></i> NEW</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="view_more_boats">
-                                <a href="">View More Boats</a>
-                            </div>
-                    </div> -->
                 </div>
             </div>
         </section>
