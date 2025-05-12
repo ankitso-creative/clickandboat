@@ -62,6 +62,7 @@ Route::middleware('Setlang')->group(function(){
         Route::post('listing/upload/{id?}', [ListingController::class, 'uploadImage'])->name('uploadgallery');
         Route::delete('listing/remove', [ListingController::class, 'removeImage'])->name('removegallery'); 
         Route::post('listing/change_status', [ListingController::class, 'changeStatus'])->name('listing.change-status');
+        Route::post('listing/changestatusfeatured', [ListingController::class, 'changeStatusFeatured'])->name('listing.change-status-featured');
         Route::resource('bookings', AdminBookingController::class);  
         Route::resource('blog',BlogController::class);
         Route::post('caterogy_status', [CategoryController::class, 'changeStatus'])->name('caterogystatus');

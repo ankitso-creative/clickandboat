@@ -582,11 +582,12 @@
                                     <a href="#"><img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" alt="Image" class="img-fluid" /></a>
                                     <a href="#"><img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" alt="Image" class="img-fluid" /></a>
                                     <a href="#"><img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" alt="Image" class="img-fluid" /></a>
-                                @endif {{--
-                            <div class="view-more-photos">
-                                <a href="#"> View the photos (+10)</a>
-                            </div>
-                            --}}
+                                @endif 
+                                {{--
+                                    <div class="view-more-photos">
+                                        <a href="#"> View the photos (+10)</a>
+                                    </div>
+                                --}}
                             </div>
                         </div>
                     @endif

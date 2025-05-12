@@ -50,6 +50,11 @@ use Illuminate\Support\Facades\Session;
             $category = Location::where('status','1')->with('media')->get();
             return $category;
         }
+        public function featureds()
+        {
+            $category = Listing::where('status','1')->where('featured','1')->with('media')->limit(3)->get();
+            return $category;
+        }
         public function singleBoatDetails($city,$type,$slug)
         {
             $listing = Listing::with(['price','seasonPrice','booking','calendar', 'description' => function( $query ){

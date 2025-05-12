@@ -70,6 +70,7 @@
                                         <th>Manufacturer</th>
                                         <th>Model</th>
                                         <th>Created At</th>
+                                        <th>Featured</th>
                                         <th>Active</th>
                                         <th>Action</th>
                                     </tr>
@@ -82,6 +83,10 @@
                                                 if($listing->status == 1):
                                                     $checked = 'checked';
                                                 endif;
+                                                $checkedFE = '';
+                                                if($listing->featured == 1):
+                                                    $checkedFE = 'checked';
+                                                endif;
                                             @endphp
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
@@ -91,6 +96,7 @@
                                                 <td>{{ $listing->manufacturer }}</td>
                                                 <td>{{ $listing->model }}</td>
                                                 <td>{{ $listing->created_at }}</td>
+                                                <td><input  {{ $checkedFE }} value="{{ $listing->id }}" type="checkbox" data-size="mini" class="make-switch change_status_featured" data-on-color="success" data-off-color="danger"></td>
                                                 <td><input  {{ $checked }} value="{{ $listing->id }}" type="checkbox" data-size="mini" class="make-switch change_status" data-on-color="success" data-off-color="danger"></td>
                                                 <td>
                                                     <a href="{{ route('admin.listings', $listing->id) }}" class="btn btn-circle btn-icon-only btn-default tooltips" title = "Edit" href="javascript:;"> <i class="icon-note"></i></a>
@@ -120,6 +126,32 @@
         <!-- END CONTENT BODY -->
     </div>
     <script>
+        $(document).on('switchChange.bootstrapSwitch','.change_status_featured',function(){
+            var id = $(this).val();
+            var value = 0;
+            if ($(this).prop('checked')) {
+                value = 1;
+            }
+            $.ajax({
+                url: "{{ route('admin.listing.change-status-featured') }}",
+                type: 'POST',
+                data: { value: value, id: id},
+                dataType: 'json',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(response) {
+                    if(response.success) 
+                    {
+                        $('#listing-section').html(response.html);
+                    } 
+                    else 
+                    {
+                       $('.message').html(response.message);
+                    }
+                },
+            });
+        })
         $(document).on('click','.change_status',function(){
             var id = $(this).val();
             var value = 0;

@@ -420,72 +420,36 @@ document.addEventListener('DOMContentLoaded', function() {
             <h2>{{ __('home.featured-boats')}}</h2>
         </div>
         <div class="row feature_box_main">
-            <div class="col-sm-12 col-md-4 col-lg-4">
-                <div class="featured_board_boxes">
-                    <a href="#">
-                        <img src="{{ asset('app-assets/site_assets/img/image00065.jpg') }}" alt="featured-img">
-                        <div class="featured_box_text">
-                            <p>Luxury boats</p>
-                            <h3>Cranchi 43</h3>
+            @if($featureds)
+                @foreach($featureds as $featured)
+                    <div class="col-sm-12 col-md-4 col-lg-4">
+                        <div class="featured_board_boxes">
+                            <a href="{{ route('singleboat', ['city' => $featured->city, 'type' => $featured->type, 'slug' => $featured->slug]) }}">
+                                <img src="{{ $featured->getFirstMediaUrl('cover_images') ? $featured->getFirstMediaUrl('cover_images') : 'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png' }}" alt="featured-img">
+                                <div class="featured_box_text">
+                                    <p>Luxury boats</p>
+                                    <h3>{{ ucfirst($featured->boat_name).' '.$featured->model }}</h3>
+                                </div>
+                            </a>
                         </div>
-                    </a>
-                </div>
-                <p class="featured_price">11 Guests | Price from €1690</p>
-            </div>
-            <div class="col-sm-12 col-md-4 col-lg-4">
-                <div class="featured_board_boxes">
-                    <a href="#">
-                        <img src="{{ asset('app-assets/site_assets/img/image00076.jpg') }}" alt="featured-img">
-                        <div class="featured_box_text">
-                            <p>Luxury boats</p>
-                            <h3>Chaparral 250</h3>
-                        </div>
-                    </a>
-                </div>
-                <p class="featured_price">11 Guests | Price from €1690</p>
-            </div>
-            <div class="col-sm-12 col-md-4 col-lg-4">
-                <div class="featured_board_boxes">
-                    <img src="{{ asset('app-assets/site_assets/img/image00092.jpg') }}" alt="featured-img">
-                    <div class="featured_box_text">
-                        <p>Luxury boats</p>
-                        <h3>Maiora 99</h3>
+                        <p class="featured_price">{{ $featured->onboard_capacity }} Guests | Price from {{ getListingPrice($featured->slug) }}</p>
                     </div>
-                </div>
-                <p class="featured_price">11 Guests | Price from €1690</p>
-            </div>
+                @endforeach
+            @endif
         </div>
         <div class="text-center row featured_boat_section_mobile featured_boat_slider">
-            <div class="col-sm-12 col-md-4 col-lg-4">
-                <div class="featured_boat_box">
-                    <h3>Cranchi 43</h3>
-                    <img src="{{ asset('app-assets/site_assets/img/image00092.jpg') }}" alt="featured-img">
-                    <p class="featured_price_mobile">11 Guests | Price from €1690</p>
-                    <a class="book_now_btn" href="{{ route('boats') }}"><img
-                            src="{{ asset('app-assets/site_assets/img/arrow-icon01.png') }}" alt="featured-img"> Book
-                        Now</a>
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-4 col-lg-4">
-                <div class="featured_boat_box">
-                    <h3>Chaparral 250</h3>
-                    <img src="{{ asset('app-assets/site_assets/img/image00092.jpg') }}" alt="featured-img">
-                    <p class="featured_price_mobile">11 Guests | Price from €1690</p>
-                    <a class="book_now_btn" href="{{ route('boats') }}"><img
-                            src="{{ asset('app-assets/site_assets/img/arrow-icon01.png') }}" alt="featured-img"> Book
-                        Now</a>
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-4 col-lg-4">
-                <div class="featured_boat_box">
-                    <h3>Maiora 99</h3>
-                    <img src="{{ asset('app-assets/site_assets/img/image00092.jpg') }}" alt="featured-img">
-                    <p class="featured_price_mobile">11 Guests | Price from €1690</p>
-                    <a class="book_now_btn" href="{{ route('boats') }}"><img
-                            src="{{ asset('app-assets/site_assets/img/arrow-icon01.png') }}" alt="featured-img"> Book
-                        Now</a>
-                </div>
-            </div>
+             @if($featureds)
+                @foreach($featureds as $featured)
+                    <div class="col-sm-12 col-md-4 col-lg-4">
+                        <div class="featured_boat_box">
+                            <h3>{{ ucfirst($featured->boat_name).' '.$featured->model }}</h3>
+                            <img src="{{ $featured->getFirstMediaUrl('cover_images') ? $featured->getFirstMediaUrl('cover_images') : 'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png' }}" alt="featured-img">
+                            <p class="featured_price_mobile">{{ $featured->onboard_capacity }} Guests | Price from {{ getListingPrice($featured->slug) }}</p>
+                            <a class="book_now_btn" href="{{ route('singleboat', ['city' => $featured->city, 'type' => $featured->type, 'slug' => $featured->slug]) }}"><img src="{{ asset('app-assets/site_assets/img/arrow-icon01.png') }}" alt="featured-img"> Book Now</a>
+                        </div>
+                    </div>
+                 @endforeach
+            @endif
         </div>
     </div>
 </section>
