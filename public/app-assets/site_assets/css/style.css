@@ -568,8 +568,9 @@ label, input, textarea, button, select {
 }
 .equipment-services-sec h6 {
     text-transform: uppercase;
-    font-size: 13px;
+    font-size: 16px;
     letter-spacing: 1px;
+    padding: 15px 0px;
 }
 .equipment-services-sec ul {
     list-style: none;
@@ -579,7 +580,7 @@ label, input, textarea, button, select {
     display: flex;
     align-items: center;
     gap: 15px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 .equipment-services-sec li  svg {
     width: 30px;
@@ -5574,6 +5575,7 @@ section.about_zigzag_section {
 .keyinfo-texts  p {
     margin-bottom: 0px;
     color: #000;
+    padding-top: 12px;
 }
 .ideas-grid {
     display: grid;
@@ -8053,7 +8055,7 @@ font-size: 15px;
     padding-top: 10px;
 }
 .show-Price span {
-    color: #f8a126;
+    color: #000;
     font-weight: 600;
 }
 .show-Price p {
@@ -8654,7 +8656,7 @@ margin-right:15px;
     padding-bottom: 5px;
 }
 .price_list_accordian .card-body span {
-    color: #f49e25;
+    color: #000;
     font-weight: 600;
     font-size: 14px;
 }
@@ -8702,6 +8704,30 @@ margin-right:15px;
     margin-left: 15px;
     margin-top: 15px;
 }
+.upload #removeProfile {
+    background: #f9a126;
+    padding: 13px 24px;
+    border-radius: 15px;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 20px;
+    text-transform: uppercase;
+    border: 1px solid #f9a126;
+    font-size: 15px;
+    font-family: 'Montserrat' !important;
+}
+.upload #removeProfile:hover {
+    background: none;
+    color: #f9a126;
+    border: 1px solid #f9a126;
+}
+.danger {
+    color: red;
+}
+.contact_form_section .required {
+    color: red;
+}
+
 /*--------------------------------------------------------------
 # Media Query
 --------------------------------------------------------------*/
