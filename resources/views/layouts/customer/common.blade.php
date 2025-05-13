@@ -44,9 +44,19 @@
                     </svg>
                 </label>
                 <ul class="menu-sidebar">
-                   <li><a href="{{ route('customer.booking.index') }}">Bookings</a></li>
-                        <li><a href="{{ route('logout') }}">Logout</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#"><i class="fa-solid fa-user"></i></a></li>
+                    <li><a href="{{ route('customer.booking.index') }}">Bookings</a></li>
+                    <li><a href="{{ route('logout') }}">Logout</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"><i class="fa-solid fa-user"></i></a></li>
+                    @php 
+                        $unreadCount = App\Models\Message::where('receiver_id', auth()->id())->where('seen', 0)->count();
+                    @endphp
+        
+                    <li class="{{ $active=='dashboard' ? 'active':'' }}"><a href="{{ route('customer.dashboard') }}"><i class="fas fa-th"></i> Dashboard</a></li>
+                    <li class="{{ $active=='profile' ? 'active':'' }}"><a href="{{ route('customer.profile') }}"><i class="fas fa-user-circle"></i> Profile</a></li>
+                    <li class="{{ $active=='booking' ? 'active':'' }}"><a href="{{ route('customer.booking.index') }}"><i class="fas fa-clipboard-list"></i> Bookings</a></li>
+                    <li class="{{ $active=='favourite' ? 'active':'' }}"><a href="{{ route('customer.favourite')}}"><i class="fas fa-heart"></i> Favourites</a></li>
+                    <li class="{{ $active=='support' ? 'active':'' }}"><a href="{{ route('customer.support')}}"><i class="fas fa-heart"></i> Messages @if($unreadCount) <span>({{ $unreadCount }}) </span> @endif </a></li>
+                    <li><a href="{{ route('logout') }}"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -64,7 +74,7 @@
                      @php 
                             $unreadCount = App\Models\Message::where('receiver_id', auth()->id())->where('seen', 0)->count();
                         @endphp
-                    <div clasmy-auto col-lg-9">
+                    <div class="my-auto col-lg-9">
                         <div class="menus-customer">
                             <div class="menus-header">
                                 <ul class="list-unstyled">
