@@ -30,6 +30,28 @@
     <!-- Loader-->
     <div id="page-preloader"><span class="spinner border-t_second_b border-t_prim_a"></span></div>
     <!-- Loader end-->
+        <ul class="nav-mobile" id="mobnavbar">
+        <li><a href="{{ route('home') }}"><img src="{{ logoURL() }}"></a></li>
+            <li class="menu-container">
+                <input id="menu-toggle" type="checkbox">
+                <label for="menu-toggle" class="menu-button">
+                    <svg class="icon-open" viewBox="0 0 24 24">
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
+                    </svg>
+                    <svg class="icon-close" viewBox="0 0 100 100">
+                        <path
+                            d="M83.288 88.13c-2.114 2.112-5.575 2.112-7.69 0L53.66 66.188c-2.113-2.112-5.572-2.112-7.686 0l-21.72 21.72c-2.114 2.113-5.572 2.113-7.687 0l-4.693-4.692c-2.114-2.114-2.114-5.573 0-7.688l21.72-21.72c2.112-2.115 2.112-5.574 0-7.687L11.87 24.4c-2.114-2.113-2.114-5.57 0-7.686l4.842-4.842c2.113-2.114 5.57-2.114 7.686 0l21.72 21.72c2.114 2.113 5.572 2.113 7.688 0l21.72-21.72c2.115-2.114 5.574-2.114 7.688 0l4.695 4.695c2.112 2.113 2.112 5.57-.002 7.686l-21.72 21.72c-2.112 2.114-2.112 5.573 0 7.686L88.13 75.6c2.112 2.11 2.112 5.572 0 7.687l-4.842 4.84z" />
+                    </svg>
+                </label>
+                <ul class="menu-sidebar">
+                   <li><a href="{{ route('customer.booking.index') }}">Bookings</a></li>
+                        <li><a href="{{ route('logout') }}">Logout</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#"><i class="fa-solid fa-user"></i></a></li>
+                </ul>
+            </li>
+        </ul>
+        
+    </div>
     <div class="l-theme animated-css" data-header="sticky" data-header-top="200" data-canvas="container">
         <header class="p-3 header-dashboard">
             <div class="container-fluid">
@@ -39,7 +61,10 @@
                             <img src="{{ logoURL() }}" class="img-fluid" alt="logo">
                         </a>
                     </div>
-                    <div class="my-auto col-lg-9">
+                     @php 
+                            $unreadCount = App\Models\Message::where('receiver_id', auth()->id())->where('seen', 0)->count();
+                        @endphp
+                    <div clasmy-auto col-lg-9">
                         <div class="menus-customer">
                             <div class="menus-header">
                                 <ul class="list-unstyled">

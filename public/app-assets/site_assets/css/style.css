@@ -8653,6 +8653,7 @@ margin-right:15px;
     width: 96%;
     text-align: left;
     font-weight: 600;
+    text-transform: capitalize;
 }
 .price_list_accordian .btn:hover{
     border: none;
@@ -10001,6 +10002,9 @@ margin-right:15px;
     height: 400px;
     width: 100%;
     object-fit: cover;
+}
+header.p-3.header-dashboard {
+    display: none;
 }
 }
 
