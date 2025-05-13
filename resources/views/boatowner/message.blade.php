@@ -31,22 +31,29 @@
             disable: disable,
         });
     })
-    // $(document).ready(function(){
-    //     var receiver_id = $('form#message_form input[name="receiver_id"]').val();
-    //     var data = "receiver_id="+receiver_id;
-    //     //var result = CallAjax('ajax/seen_notification', data);
-    //     setInterval(function()
-    //     {
-    //         var result = CallAjax('ajax/see_all_message_request',data);
-    //         if(result.status=="success")
-    //         {
-    //             $('.message ul').html(result.html);
-    //             $('.mCustomScrollbar ul.message_sidebar').html(result.sidebar_html);
-    //             $(".message").animate({ scrollTop: $('.message ul').height() }, "fast");
-    //         }
-    //     },5000) 
-    //         clearInterval(5000); 
-    // }); 
+    $(document).ready(function(){
+        var receiver_id = $('form#message_form input[name="receiver_id"]').val();
+        var slug = $('form#message_form input[name="slug"]').val();
+        var csrfToken = $('meta[name="csrf-token"]').attr('content');
+        setInterval(function()
+        {
+            $.ajax({
+                url: "{{ route('boatowner.support.see-count-message') }}",
+                type: "POST",
+                data: { receiver_id: receiver_id, slug: slug },
+                headers: {
+                    'X-CSRF-TOKEN': csrfToken 
+                },
+                success: function(response) {
+                    var resp = response;
+                },
+                error: function(xhr, status, error) {
+                    console.error("Error: " + status + " - " + error);
+                }
+            });
+        },5000) 
+            clearInterval(5000); 
+    }); 
     $( document ).ready(function() {
         $('#messages').animate({ scrollTop: $('#messages div.message').height() }, "fast");
     });
@@ -384,7 +391,7 @@
                             if($quotation->currency):
                                 $symble = priceSymbol($quotation->currency);
                             else:
-                                $symble = priceSymbol('USD');
+                                $symble = priceSymbol('EUR');
                             endif;
                             $fuel_price = getAmountWithoutSymble($listing->fuel_price,$listing->currency,$quotation->currency);
                         @endphp
@@ -400,8 +407,8 @@
                         </div>
                         @if($quotation->status == 'Pending')
                             <div class="d-flex flex-column">
-                                <a class="btn book_pre_accept" href="{{ route('boatowner.support.update.quotation',$quotation->id) }}" >Pre-accept the request</a>
-                                <a class="btn book_personal" href="javascript:;" data-toggle="modal" data-target="#sidebar-right">Create a personalised offer</a>
+                                <a class="btn book_pre_accept" href="{{ route('boatowner.support.update.quotation',$quotation->id) }}" >Accept booking</a>
+                                <a class="btn book_personal" href="javascript:;" data-toggle="modal" data-target="#sidebar-right">Offer a discount</a>
                                 <a class="btn book_refuse" href="{{ route('boatowner.support.cancel.quotation',$quotation->id) }}">Refuse the request</a>
                             </div>
                         @else

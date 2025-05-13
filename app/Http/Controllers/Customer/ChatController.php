@@ -72,6 +72,11 @@ class ChatController extends Controller
         $request = $request->all();
         return $this->service->seeAllMessage($request);
     }
+    public function seeCountMessage(Request $request)
+    {
+        $request = $request->all();
+        return $this->service->seeCountMessage($request);
+    }
     public function fetchMessages($receiver_id)
     {
         return $this->service->fetchMessages($receiver_id);

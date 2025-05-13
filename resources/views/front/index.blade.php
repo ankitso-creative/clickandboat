@@ -470,8 +470,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </div>
                     <div class="boat_renter_text">
-                        <p>Reach out to yacht owners at no cost and get answers to all your questions about the boat,
-                            its equipment, and availability through our built-in messaging system.</p>
+                        <p>Reach out to yacht owners at no cost and get answers to all your questions about the boat, its equipment, and availability through our built-in messaging system.</p>
                         <i class="fa-solid fa-message"></i>
                     </div>
                     <div class="boat_renter_text">
@@ -481,7 +480,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <i class="fa-solid fa-thumbs-up"></i>
                     </div>
                     <div class="find_boat_btn">
-                        <a href="{{ route('boats') }}">Find a boat</a>
+                        <a href="{{ route('search') }}">Find a boat</a>
                     </div>
                 </div>
             </div>

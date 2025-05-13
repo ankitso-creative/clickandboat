@@ -57,7 +57,7 @@ function bookingPrice($request)
     if(session()->has('currency_code')):
         $to = session('currency_code');
     else:
-        $to = 'USD';
+        $to = 'EUR';
     endif;
     $fromCur = Listing::where('id',$request['id'])->value('currency');
     $startDate = Carbon::parse($request['checkindate']);
@@ -263,7 +263,7 @@ function minMaxPrice($season, $price = '')
     if(session()->has('currency_code')):
         $to = session('currency_code');
     else:
-        $to = 'USD';
+        $to = 'EUR';
     endif;
     $from = Listing::where('id',$season->listing_id)->value('currency');
     unset($season->id);
@@ -296,7 +296,7 @@ function priceWithHtml($season, $price = '')
     if(session()->has('currency_code')):
         $to = session('currency_code');
     else:
-        $to = 'USD';
+        $to = 'EUR';
     endif;
     $from = Listing::where('id',$season->listing_id)->value('currency');
     unset($season->id);
@@ -399,7 +399,7 @@ function getListingPrice($slug)
         if(session()->has('currency_code')):
             $to = session('currency_code');
         else:
-            $to = 'USD';
+            $to = 'EUR';
         endif;
         $price = getAmountWithSymble($price,$listing->currency, $to);
         return $price;

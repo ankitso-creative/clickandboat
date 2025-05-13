@@ -15,6 +15,27 @@
             
             $(this).html(type === 'password' ? '<i class="fa-solid fa-eye"></i>' : '<i class="toggle-password fa fa-fw fa-eye-slash"></i>');
         });
+        $('#user-password').on('input', function () {
+            const password = $('#user-password').val();
+            const errors = [];
+
+            if (password.length < 8) {
+                errors.push("Password must be at least 8 characters.");
+            }
+            if (!/[a-z]/.test(password) || !/[A-Z]/.test(password)) {
+                errors.push("Password must contain both uppercase and lowercase letters.");
+            }
+            if (!/[a-zA-Z]/.test(password)) {
+                errors.push("Password must contain letters.");
+            }
+            if (!/[0-9]/.test(password)) {
+                errors.push("Password must contain at least one number.");
+            }
+            if (!/[^a-zA-Z0-9]/.test(password)) {
+                errors.push("Password must contain at least one symbol.");
+            }
+            $('#password-errors').html(errors.map(e => `<div style="color:red;">${e}</div>`).join(''));
+        });
     </script>
 @endsection
 @section('content')
@@ -79,10 +100,12 @@
                                     <i class="fa-solid fa-eye"></i>
                                 </div>
                                 <input value="boatowner" type="hidden" name="role">
+                                
                                 @error('password')
                                     <span class="danger">{{ $message }}</span>
                                 @enderror
                             </div>
+                            <div id="password-errors"></div>
                             <button type="submit" class="btn_singup">Register Your Boat</button>
                         </form>
                     </section>
