@@ -92,7 +92,7 @@ class UserRegisterController extends Controller
             'fname' => 'required|string',
             'lname' => 'required|string',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => ['required',Password::min(8)->mixedCase()->letters()->numbers()->symbols()->uncompromised(),],
+            'password' => ['required',Password::min(8)->mixedCase()->letters()->numbers()->symbols(),],
             'role' => '',
         ],$messages);
         if ($validator->fails()) {

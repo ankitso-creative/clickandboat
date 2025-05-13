@@ -67,12 +67,15 @@
                             </div>
                             <h3>{{ userName() }}</h3>
                         </div>
+                         @php 
+                            $unreadCount = App\Models\Message::where('receiver_id', auth()->id())->where('seen', 0)->count();
+                        @endphp
                         <ul>
                             <li class="{{ $active=='dashboard' ? 'active':'' }}"><a href="{{ route('customer.dashboard') }}"><i class="fas fa-th"></i> Dashboard</a></li>
                             <li class="{{ $active=='profile' ? 'active':'' }}"><a href="{{ route('customer.profile') }}"><i class="fas fa-user-circle"></i> Profile</a></li>
                             <li class="{{ $active=='booking' ? 'active':'' }}"><a href="{{ route('customer.booking.index') }}"><i class="fas fa-clipboard-list"></i> Bookings</a></li>
                             <li class="{{ $active=='favourite' ? 'active':'' }}"><a href="{{ route('customer.favourite')}}"><i class="fas fa-heart"></i> Favourites</a></li>
-                            <li class="{{ $active=='support' ? 'active':'' }}"><a href="{{ route('customer.support')}}"><i class="fas fa-heart"></i> Messages</a></li>
+                            <li class="{{ $active=='support' ? 'active':'' }}"><a href="{{ route('customer.support')}}"><i class="fas fa-heart"></i> Messages @if($unreadCount) <span>({{ $unreadCount }}) </span> @endif </a></li>
                             <li><a href="{{ route('logout') }}"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
                         </ul>
                     </aside>

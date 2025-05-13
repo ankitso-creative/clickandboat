@@ -118,6 +118,7 @@ Route::middleware('Setlang')->group(function(){
         Route::get('/support/messages/{receiver_id}/{slug}', [BoatOwnerChatController::class, 'message'])->name('message');
         Route::post('/support/send-message', [BoatOwnerChatController::class, 'sendMessage'])->name('support.send-message');
         Route::post('/support/see-all-message', [BoatOwnerChatController::class, 'seeAllMessage'])->name('support.see-all-message');
+        Route::post('/support/see-count-message', [BoatOwnerChatController::class, 'seeCountMessage'])->name('support.see-count-message');
         Route::post('/support/spcial-offer', [BoatOwnerChatController::class, 'spcialOfferSend'])->name('support.spcial-offer-edit');
         Route::get('/support/update-quotation/{id}', [BoatOwnerChatController::class, 'updateQuotation'])->name('support.update.quotation');
         Route::get('/support/cancel-quotation/{id}', [BoatOwnerChatController::class, 'cancelQuotation'])->name('support.cancel.quotation');
@@ -142,6 +143,7 @@ Route::middleware('Setlang')->group(function(){
         Route::get('/support/message/{slug}', [ChatController::class, 'message'])->name('message');
         Route::post('/support/send-message', [ChatController::class, 'sendMessage'])->name('support.send-message');
         Route::post('/support/see-all-message', [ChatController::class, 'seeAllMessage'])->name('support.see-all-message');
+        Route::post('/support/see-count-message', [ChatController::class, 'seeCountMessage'])->name('support.see-count-message');
         
     });
 

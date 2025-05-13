@@ -46,7 +46,7 @@
 				const data = await response.json();
 				if (data.error) {
 					document.getElementById("card-errors").innerText = data.error;
-					submitButton.innerHTML = `Booking request`;
+					submitButton.innerHTML = `Pay Now`;
 					return;
 				}
 				const { paymentIntent, error } = await stripe.confirmCardPayment(data.clientSecret, {
@@ -251,10 +251,10 @@
 								</div>
 								<div class="payment-sec">
 									<h4>Secure Payment <span class="text-muted"><i class="ml-2 fas fa-lock"></i></span></h4>
-									<p>
+									{{-- <p>
 										Once the booking request is made, <strong>the owner will have 48 hours to respond.
 										You will only be charged if the request is accepted.</strong>
-									</p>
+									</p> --}}
 									<div id="paymentAccordion">
 										<!-- Card Payment -->
 										<div class="form-group form-accordion-title">
@@ -318,9 +318,9 @@
 									</div>
 								</div>
 								<div class="checkout-btn-sec">
-									<p>By selecting the button below, you unconditionally agree to the <a href="#">Terms & Conditions</a>, <a href="#">Cancellation conditions</a>, <a href="#">Insurance conditions</a>. You also agree to pay the total amount of the reservation.</p>
+									<p>By selecting the button below, you unconditionally agree to the <a href="{{ route('terms-condition') }}">Terms & Conditions</a>, <a href="#">Cancellation conditions</a>, <a href="#">Insurance conditions</a>. You also agree to pay the total amount of the reservation.</p>
 									<div id="card-errors"></div>
-									<button class="btn btn-primary btn-checkout" id="submit-button">Booking request </button>
+									<button class="btn btn-primary btn-checkout" id="submit-button">Pay Now </button>
 									
 								</div>
 							</div>
@@ -330,8 +330,23 @@
 				<div class="col-md-4">
 					<div class="review-order-sec">
 						<div class="order-details">
+							@php
+                                $image = $listing->getFirstMediaUrl('cover_images');
+                                if (!$image) {
+									$gallery_images = $listing->getMedia('listing_gallery');
+                                    if(count($gallery_images))
+                                    {
+										$image = $gallery_images['0']->getUrl();
+                                    }
+                                    else
+                                    {
+                                        $image = 'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png';
+                                    }
+                                }
+                                $profileImage = $listing->user->getFirstMediaUrl('profile_image');
+                            @endphp
 							<div class="order-img">
-								<img src="https://static1.clickandboat.com/v1/p/6hzrtzourstqjpci0f3g5azw2dvhd1tb.medium.jpg" class="img-fluid" alt="order title">
+								<img src="{{ $image }}" class="img-fluid" alt="order title">
 							</div>
 							<div class="order-text">
 								<h2>{{ $listing->boat_name.' '.$listing->manufacturer.' '.$listing->model }}</h2>
@@ -343,8 +358,8 @@
 								<i class="fas fa-calendar-week"></i>
 							</div>
 							<div class="date-text">
-								<p> From {{ date('F d, Y', strtotime($quotation->checkin)) }} - <span>9:00 AM</span></p>
-								<p>To {{ date('F d, Y', strtotime( $quotation->checkout)) }} - <span>6:00 PM</span></p>
+								<p> From {{ date('F d, Y', strtotime($quotation->checkin)) }} - <span>{{ optional($listing->booking)->check_in }}</span></p>
+								<p>To {{ date('F d, Y', strtotime( $quotation->checkout)) }} - <span>{{ optional($listing->booking)->check_out }}</span></p>
 							</div>
 						</div>
 					</div>

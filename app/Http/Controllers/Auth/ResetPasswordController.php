@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Password;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use Illuminate\Validation\Rules\Password as RulesPassword;
 
 class ResetPasswordController extends Controller
 {
@@ -32,7 +33,7 @@ class ResetPasswordController extends Controller
     {
         $request->validate([
             'email' => 'required|email',
-            'password' => 'required|confirmed',
+            'password' =>['required','confirmed',RulesPassword::min(8)->mixedCase()->letters()->numbers()->symbols()],
             'token' => 'required',
         ]);
 

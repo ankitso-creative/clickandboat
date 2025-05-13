@@ -1,7 +1,8 @@
 <?php
     namespace App\Repositories\Front;
 
-    use App\Events\Front\RequestSubmitted;
+use App\Events\Front\ContactEnquery;
+use App\Events\Front\RequestSubmitted;
     use App\Models\Admin\Blog;
 use App\Models\Admin\Category;
 use App\Models\Admin\Faq;
@@ -158,7 +159,8 @@ use Illuminate\Support\Facades\Session;
         }
         public function submitEnquiry($request)
         {
-            dd($request);
+            event(new ContactEnquery($request));
+            return redirect()->route('contact')->with('success', 'Your enquiry email sent successfully!'); 
         }
         public function allLocationData()
         {

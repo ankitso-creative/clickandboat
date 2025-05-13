@@ -293,4 +293,13 @@ class ChatRepository
         }
         return false;
     }
+    public function seeCountMessage($request)
+    {
+        $listingId = Listing::where('slug', $request['slug'])->pluck('id')->first();
+        $receiver_id = $request['receiver_id'];
+        $message = Message::where('sender_id', $receiver_id)
+       ->where('listing_id', $listingId)
+       ->update(['seen' => 1]);
+
+    }
 }

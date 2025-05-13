@@ -15,6 +15,10 @@ class ChatService {
     {
         return $this->repository->seeAllMessage($request);
     }
+    public function seeCountMessage($request)
+    {
+        return $this->repository->seeCountMessage($request);
+    }
     public function fetchMessages($receiver_id,$listingId)
     {
         return $this->repository->fetchMessages($receiver_id,$listingId);

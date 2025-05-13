@@ -2,15 +2,15 @@
 
 namespace App\Mail\Front;
 
-use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Http\UploadedFile;
 
-class BookingCustomerMail extends Mailable
+class ContactMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -18,9 +18,12 @@ class BookingCustomerMail extends Mailable
      * Create a new message instance.
      */
     public $emailData;
+   
+
     public function __construct($emailData)
     {
         $this->emailData = $emailData;
+       
     }
 
     /**
@@ -28,8 +31,9 @@ class BookingCustomerMail extends Mailable
      */
     public function envelope(): Envelope
     {
+        $name = $this->emailData->request['name'];
         return new Envelope(
-            subject: 'Booking Confirmed – Check-in on '.Carbon::parse($this->emailData->order->check_in)->format('d-m-Y')
+            subject: 'New Enquiry - '.$name,
         );
     }
 
@@ -39,7 +43,7 @@ class BookingCustomerMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.front.customerbooking',
+            view: 'emails.front.enquiry',
         );
     }
 

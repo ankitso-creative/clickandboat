@@ -41,6 +41,11 @@ use App\Models\Admin\Language;
         }
         public function storeGeneralSettings($request)
         {
+            if(session()->has('currency_code')):
+                $selectedCode = session('currency_code');
+            else:
+                $selectedCode = 'EUR';
+            endif;
             $listing = new Listing();
             $listing->user_id = auth()->id();
 
@@ -52,6 +57,7 @@ use App\Models\Admin\Language;
             $listing->boat_name = $request['boat_name'];  
 
             $listing->skipper = $request['skippers'];
+            $listing->currency = $selectedCode;
             // $listing->capacity = $request['capacity'];
             // $listing->length = $request['length'];
             // $listing->company_name = $request['company_name'];

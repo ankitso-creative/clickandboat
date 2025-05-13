@@ -27,7 +27,7 @@
     if(session()->has('currency_code')):
         $selectedCode = session('currency_code');
     else:
-        $selectedCode = 'USD';
+        $selectedCode = 'EUR';
     endif;
 @endphp
 <body class="page">
@@ -60,8 +60,8 @@
                         </li>
                         <li class="nav-item">
                             <select name="currency" id="currency_name">
-                                <option {{ checkselect($selectedCode,'USD') }} value="USD">USD</option> 
                                 <option {{ checkselect($selectedCode,'EUR') }} value="EUR">EUR</option>
+                                <option {{ checkselect($selectedCode,'USD') }} value="USD">USD</option> 
                                 <option {{ checkselect($selectedCode,'GBP') }} value="GBP">GBP</option>
                                 <option {{ checkselect($selectedCode,'CHF') }} value="CHF">CHF</option>
                                 <option {{ checkselect($selectedCode,'RUB') }} value="RUB">RUB</option>
@@ -177,8 +177,8 @@
                     <li class="nav-item mobile_language">
                         <select name="currency" id="currency_name">
                         
-                            <option {{ checkselect($selectedCode,'USD') }} value="USD">USD</option> 
                             <option {{ checkselect($selectedCode,'EUR') }} value="EUR">EUR</option>
+                            <option {{ checkselect($selectedCode,'USD') }} value="USD">USD</option> 
                             <option {{ checkselect($selectedCode,'GBP') }} value="GBP">GBP</option>
                             <option {{ checkselect($selectedCode,'CHF') }} value="CHF">CHF</option>
                             <option {{ checkselect($selectedCode,'RUB') }} value="RUB">RUB</option>

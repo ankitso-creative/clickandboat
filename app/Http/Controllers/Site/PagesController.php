@@ -120,7 +120,8 @@ class PagesController extends Controller
     }
     public function submitEnquiry(ContactFormRequest $request)
     {
-        $results =  $this->service->submitEnquiry($request);
+        $request = $request->all();
+        return $this->service->submitEnquiry($request);
     }
     public function boats()
     {

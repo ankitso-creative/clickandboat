@@ -56,6 +56,22 @@
                     <div class="mb-3">
                         <textarea name="form_message" class="form-control required" rows="7" placeholder="Enter Message"></textarea>
                     </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            @if(session('success'))
+                                <div class="alert alert-success" style="display: block;">
+                                    <button class="close" data-close="alert"></button>
+                                    <span> {{ session('success') }} </span>
+                                </div>
+                            @endif
+                            @if(session('error'))
+                                <div class="alert alert-danger" style="display: block;">
+                                    <button class="close" data-close="alert"></button>
+                                    <span> {{ session('error') }} </span>
+                                </div>
+                            @endif
+                        </div>
+                    </div>
                     <div class="mb-5 contact_btns">
                         <input name="form_botcheck" class="form-control" type="hidden" value="">
                         <button type="submit" class="mb-3 theme-btn btn-style-one mb-sm-0" data-loading-text="Please wait..."><span class="btn-title">Send message</span></button>

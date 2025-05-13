@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('listing_id')->constrained('listings')->onDelete('cascade');
             $table->text('message')->nullable();
             $table->string('image')->nullable();
+            $table->tinyInteger('seen')->default('0');
             $table->timestamps();
         });
     }

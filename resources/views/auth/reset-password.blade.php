@@ -7,7 +7,34 @@
     
 @endsection
 @section('js')
-    
+    <script>
+        $('#password, #password_confirmation').on('input', function () {
+            const password = $('#password').val();
+            const confirmation = $('#password_confirmation').val();
+            const errors = [];
+
+            if (password.length < 8) {
+                errors.push("Password must be at least 8 characters.");
+            }
+            if (!/[a-z]/.test(password) || !/[A-Z]/.test(password)) {
+                errors.push("Password must contain both uppercase and lowercase letters.");
+            }
+            if (!/[a-zA-Z]/.test(password)) {
+                errors.push("Password must contain letters.");
+            }
+            if (!/[0-9]/.test(password)) {
+                errors.push("Password must contain at least one number.");
+            }
+            if (!/[^a-zA-Z0-9]/.test(password)) {
+                errors.push("Password must contain at least one symbol.");
+            }
+            if (password !== confirmation) {
+                errors.push("Password and confirmation do not match.");
+            }
+
+            $('#password-errors').html(errors.map(e => `<div style="color:red;">${e}</div>`).join(''));
+        });
+    </script>
 @endsection
 @section('content')
     <div class="section-title-page area-bg area-bg_dark area-bg_op_60">
@@ -44,13 +71,13 @@
                             </div>
                         
                             <div class="form-group">
-                                <input type="password" class="form-control" placeholder="New Password" name="password" required>
+                                <input type="password" id="password" class="form-control" placeholder="New Password" name="password" required>
                             </div>
                         
                             <div class="form-group">
-                                <input type="password" class="form-control" name="password_confirmation" placeholder="Confirm New Password" required>
+                                <input type="password" id="password_confirmation" class="form-control" name="password_confirmation" placeholder="Confirm New Password" required>
                             </div>
-                        
+                            <div id="password-errors"></div>
                             @if ($errors->any())
                                 <div>
                                     @foreach($errors->all() as $error)

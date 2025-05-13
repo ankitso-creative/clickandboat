@@ -11,8 +11,6 @@
         $listing = App\Models\Admin\Listing::where('id', $emailData->order->listing_id)->with('user')->first();
         $symbol = priceSymbol($booking->currency);
     @endphp
-    <h2>New Booking Received</h2>
-
     <p>Dear {{ $listing->user->name }},</p>
 
     <p>A new booking has just been made. Here are the details:</p>
