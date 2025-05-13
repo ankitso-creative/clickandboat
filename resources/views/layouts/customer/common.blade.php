@@ -30,7 +30,7 @@
     <!-- Loader-->
     <div id="page-preloader"><span class="spinner border-t_second_b border-t_prim_a"></span></div>
     <!-- Loader end-->
-        <ul class="nav-mobile" id="mobnavbar">
+        <ul class="nav-mobile custmer_menu" id="mobnavbar">
         <li><a href="{{ route('home') }}"><img src="{{ logoURL() }}"></a></li>
             <li class="menu-container">
                 <input id="menu-toggle" type="checkbox">
@@ -44,9 +44,6 @@
                     </svg>
                 </label>
                 <ul class="menu-sidebar">
-                    <li><a href="{{ route('customer.booking.index') }}">Bookings</a></li>
-                    <li><a href="{{ route('logout') }}">Logout</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><i class="fa-solid fa-user"></i></a></li>
                     @php 
                         $unreadCount = App\Models\Message::where('receiver_id', auth()->id())->where('seen', 0)->count();
                     @endphp
@@ -93,7 +90,7 @@
         <section class="p-0 main-dashboard-container container-fluid">
             <div class="row account-overview">
                 <div class="col-lg-3">
-                    <aside class="sidebar">
+                    <aside class="sidebar desktop_sidebar">
                         <div class="user">
                             <div class="user-avatar">
                                 <a href="#">
@@ -186,6 +183,20 @@
     {{-- <script src="{{ asset('app-assets/site_assets/js/map.js') }}"></script> --}}
     <script src="{{ asset('app-assets/site_assets/js/slick.min.js') }}"></script>
     <script src="{{ asset('app-assets/site_assets/js/script.js') }}?ver=<?=time()?>"></script>
+    <script>
+        // Replace '#navbar' with your actual navbar selector
+const navbar = document.querySelector('#mobnavbar');
+
+// Scroll event
+window.addEventListener('scroll', function () {
+  if (window.scrollY > 50) {
+    navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
+  }
+});
+
+    </script>
 
     @yield('js')
 

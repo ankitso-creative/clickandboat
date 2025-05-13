@@ -10,7 +10,7 @@
 @endsection
 @section('content')
     <div class="col-lg-3">
-        <aside class="sidebar">
+        <aside class="sidebar desktop_sidebar">
             <div class="user">
             <div class="user-avatar">
                 <a href="#">
