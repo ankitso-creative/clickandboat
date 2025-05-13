@@ -70,7 +70,7 @@ class ChatController extends Controller
         $sender = auth()->user();
         $receiver = User::find($receiver_id);
         $replies  = $this->service->fetchMessages($receiver_id,$listing->id);
-        $quotation = Quotation::where('listing_id',$listing->id)->where('user_id',$receiver_id)->first();
+        $quotation = Quotation::where('listing_id',$listing->id)->where('user_id',$receiver_id)->latest()->first();
         return view('boatowner.message',compact('active','receiver_id','replies','sender','receiver','slug','quotation','listing','usersWithLastMessage','isMobile'));
     }
     public function sendMessage(MessageRequest $request)

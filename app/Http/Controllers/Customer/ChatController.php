@@ -63,7 +63,7 @@ class ChatController extends Controller
         $sender = auth()->user();
         $receiver = User::find($receiver_id);
         $replies  = $this->service->fetchMessages($receiver_id,$listingId);
-        $quotation = Quotation::where('listing_id',$listingId)->where('user_id',$sender->id)->first();
+        $quotation = Quotation::where('listing_id',$listingId)->where('user_id',$sender->id)->latest()->first();
         $quotationID = '';
         if($quotation)
         {
