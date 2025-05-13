@@ -1158,7 +1158,7 @@
                         </div>
                         <div class="expand-location-section">
                             <h2>Expand your options</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec tortor mi.</p>
+                            <p>Your quotation has been sent to the boat owner. Please monitor the messages for the acceptance/refusal status.</p>
                             <div class="expand_loc_btn">
                                 <a href="{{ route('customer.message', $listing->slug) }}">See the conversations</a>
                                 <a href="{{ route('search') }}">Receive other quotes</a>
