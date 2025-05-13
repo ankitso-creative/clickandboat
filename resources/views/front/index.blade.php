@@ -171,11 +171,20 @@
 @section('js')
 <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.6/dist/flatpickr.min.js"></script>
 <script>
-flatpickr(".datePicker-search", {
-    inline: false,
-    dateFormat: "d-m-Y",
-    minDate: "today",
-});
+    flatpickr("#startdate", {
+        dateFormat: "d-m-Y",
+        minDate: "today",
+        onChange: function(selectedDates, dateStr, instance) {
+            // When start date changes, update minDate of end date picker
+            endPicker.set('minDate', dateStr);
+        }
+    });
+
+    // Initialize end date picker
+    const endPicker = flatpickr("#enddate", {
+        dateFormat: "d-m-Y",
+        minDate: "today"
+    });
 </script>
 <script type="text/javascript">
 document.addEventListener('DOMContentLoaded', function() {
@@ -299,7 +308,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="col date_col">
+                                            {{-- <div class="col date_col">
                                                 <label>{{ __('home.starting-date')}}</label>
                                                 <div class="mb-4 form-group">
                                                     <div class="datepicker date input-group">
@@ -307,8 +316,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                                             <span class="input-group-text"><i
                                                                     class="fa-solid fa-calendar-days"></i></span>
                                                         </div>
-                                                        <input type="text" placeholder="DD/MM/YYYY" name="startdate"
-                                                            class="form-control datePicker-search" id="fecha1">
+                                                        <input type="text" placeholder="DD/MM/YYYY" name="startdate" class="form-control datePicker-search" id="mstartdate">
                                                     </div>
                                                 </div>
                                             </div>
@@ -320,11 +328,10 @@ document.addEventListener('DOMContentLoaded', function() {
                                                             <span class="input-group-text"><i
                                                                     class="fa-solid fa-calendar-days"></i></span>
                                                         </div>
-                                                        <input type="text" placeholder="DD/MM/YYYY" name="enddate"
-                                                            class="form-control datePicker-search" id="fecha1">
+                                                        <input type="text" placeholder="DD/MM/YYYY" name="enddate" class="form-control datePicker-search" id="menddate">
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                             <div class="col location_col">
                                                 <label>{{ __('home.boat-type')}}</label>
                                                 <div class="boat_select">
@@ -376,7 +383,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <span class="input-group-text"><i class="fa-solid fa-calendar-days"></i></span>
                             </div>
                             <input type="text" placeholder="DD/MM/YYYY" name="startdate"
-                                class="form-control datePicker-search" id="fecha1">
+                                class="form-control datePicker-search" id="startdate">
                         </div>
                     </div>
                 </div>
@@ -388,7 +395,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <span class="input-group-text"><i class="fa-solid fa-calendar-days"></i></span>
                             </div>
                             <input type="text" placeholder="DD/MM/YYYY" name="enddate"
-                                class="form-control datePicker-search" id="fecha1">
+                                class="form-control datePicker-search" id="enddate">
                         </div>
                     </div>
                 </div>

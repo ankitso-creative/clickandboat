@@ -171,7 +171,7 @@ class ChatRepository
         if(session()->has('currency_code')):
             $symble = session('currency_code');
         else:
-            $symble = 'USD';
+            $symble = 'EUR';
         endif;
         $quotation = new Quotation();
         $user = auth()->user();
