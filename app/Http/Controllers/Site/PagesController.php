@@ -50,7 +50,7 @@ class PagesController extends Controller
         if(session()->has('currency_code')):
             $symble = priceSymbol(session('currency_code'));
         else:
-            $symble = priceSymbol('USD');
+            $symble = priceSymbol('EUR');
         endif;
         $listing = $this->service->singleBoatDetails($city,$type,$slug);
         $calendarArray = '';

@@ -905,7 +905,7 @@
                                     if(session()->has('currency_code')):
                                         $to = session('currency_code');
                                     else:
-                                        $to = 'USD';
+                                        $to = 'EUR';
                                     endif;
                                     $fuel_cost = 'Yes';
                                     if($listing->fuel_include == '1'):
