@@ -178,50 +178,52 @@
         <div class="message-text">
             <p>Any personal information supplied such as email addresses, phone numbers, social media & website links will be unable to be sent. Once a booking is made, personal information will be given.</p>
         </div>
-        <div class="user-list-section">
-            <ul>
-                @if($usersWithLastMessage)
-                    @foreach($usersWithLastMessage as $userMessage)
-                        @php 
-                            $user = $userMessage['user'];
-                            $message = $userMessage['message'];
-                            $listingM = collect($user->listing)->filter(function($listing) use ($message) {
-                                return $listing->id == $message['listing_id'];
-                            })->first();
-                            $aClass = '';
-                            if($slug == $listingM->slug):
-                                $aClass = 'user-active';
-                            endif;
-                            $image = $user->getFirstMediaUrl('profile_image');
-                            if(!$image):
-                                $image = 'https://static1.clickandboat.com/v1/o/img/mask~dddc60cc1d.png';
-                            endif;
-                        @endphp
-                        <li class="{{ $aClass }}">
-                            <a href="{{ route('customer.message', $listingM->slug) }}">
-                                <div class="user-box-list">
-                                    <div class="user-box-image">
-                                        <img src="{{ $image }}" />
+        @if(!$isMobile)
+            <div class="user-list-section">
+                <ul>
+                    @if($usersWithLastMessage)
+                        @foreach($usersWithLastMessage as $userMessage)
+                            @php 
+                                $user = $userMessage['user'];
+                                $message = $userMessage['message'];
+                                $listingM = collect($user->listing)->filter(function($listing) use ($message) {
+                                    return $listing->id == $message['listing_id'];
+                                })->first();
+                                $aClass = '';
+                                if($slug == $listingM->slug):
+                                    $aClass = 'user-active';
+                                endif;
+                                $image = $user->getFirstMediaUrl('profile_image');
+                                if(!$image):
+                                    $image = 'https://static1.clickandboat.com/v1/o/img/mask~dddc60cc1d.png';
+                                endif;
+                            @endphp
+                            <li class="{{ $aClass }}">
+                                <a href="{{ route('customer.message', $listingM->slug) }}">
+                                    <div class="user-box-list">
+                                        <div class="user-box-image">
+                                            <img src="{{ $image }}" />
+                                        </div>
+                                        <div class="user-box-desc">
+                                            <div class="user-title">
+                                                <h2>{{ $user->name }}</h2>
+                                                <span>{{ $message->created_at->format('d-m-Y') }}</span>
+                                            </div>
+                                            <div class="user-boat-name">
+                                                <p>{{ $listingM->type  }} {{ $listingM->boat_name }}</p>
+                                            </div>
+                                            <div class="user-last-message">
+                                                <p>{{ $message->message }} </p>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="user-box-desc">
-                                        <div class="user-title">
-                                            <h2>{{ $user->name }}</h2>
-                                            <span>{{ $message->created_at->format('d-m-Y') }}</span>
-                                        </div>
-                                        <div class="user-boat-name">
-                                            <p>{{ $listingM->type  }} {{ $listingM->boat_name }}</p>
-                                        </div>
-                                        <div class="user-last-message">
-                                            <p>{{ $message->message }} </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                    @endforeach
-                @endif
-            </ul>
-        </div>
+                                </a>
+                            </li>
+                        @endforeach
+                    @endif
+                </ul>
+            </div>
+        @endif
         <div class="message mCustomScrollbar" data-mcs-theme="minimal-dark">
             <div class="message-owner">
                 <div class="message-avatar-box">
