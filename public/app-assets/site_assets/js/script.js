@@ -102,7 +102,8 @@ $(document).ready(function(){
 			autoplay: true,
 			draggable: true,
 			loop: true,
-			arrows: true,
+			dots:true,
+			arrows: false,
 				autoplaySpeed: 3000,
 				responsive: [
 			{

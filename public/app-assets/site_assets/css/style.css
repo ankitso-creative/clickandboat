@@ -1790,7 +1790,7 @@ label, input, textarea, button, select {
     text-transform: uppercase;
 }
 .featured_board_boxes h3 {
-    font-size: 44px;
+    font-size: 22px;
     text-transform: uppercase;
 }
 .featured_price {
@@ -2932,7 +2932,7 @@ label, input, textarea, button, select {
     color: #fff !important;
 }
 .nav-tabs {
-    border-bottom: 1px solid #f9a126;
+    border-bottom: 0px solid #f9a126;
 }
 .nav-tabs .nav-item {
     margin-bottom: 0px;
@@ -3222,6 +3222,8 @@ label, input, textarea, button, select {
     margin-bottom: 40px;
     text-transform: uppercase;
     margin-top: 40px;
+    font-weight: 400;
+    font-family: 'GT America Trial Cn Md' !important;
 }
 .next-btn,
 .publish-btn {
@@ -5962,14 +5964,32 @@ section.about_zigzag_section {
 }
 #paymentAccordion .custom-radio {
     border: 0px solid #ddd;
-    padding: 0px 35px;
+    padding: 0px 29px;
     display: block;
     position: relative;
-    margin: 10px;
+    margin: 10px 0px 10px 0px;
     cursor: pointer;
     font-size: 16px;
     color: #000;
     box-shadow: none;
+}
+.finish_now_btn {
+    background: #f9a126;
+    padding: 12px 25px;
+    border-radius: 15px;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 12px;
+    text-transform: uppercase;
+    border: 1px solid #f9a126;
+    font-size: 15px;
+    display: inline-block;
+    height: 44px;
+}
+.finish_now_btn:hover{
+    border: 1px solid #f9a126 !important;
+    color: #f9a126 !important;
+    background: none !important;
 }
 #paymentAccordion .custom-control-label {
     display: flex;
@@ -5986,6 +6006,7 @@ section.about_zigzag_section {
     border-radius: .5rem;
     margin-bottom: 15px;
     margin-top: 30px;
+    padding: 0 15px;
 }
 #paymentAccordion .form-accordion-title {
     border-bottom: .0625rem solid #ced4da;
@@ -6462,9 +6483,13 @@ section.about_zigzag_section {
 }
 .book_btn:hover{
     background: none;
-    border: 1px solid #f9a126;
-    color: #f9a126;
+    border: 1px solid #f9a126 !important;
+    color: #f9a126 !important;
     box-shadow: none;
+}
+.list-boat-sec .show-Price p {
+    text-align: justify;
+    border-right: 0px solid #ebebeb
 }
 .form_text p {
     font-size: 14px;
@@ -7049,8 +7074,8 @@ font-size: 15px;
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
-    width: 24px;
-    height: 24px;
+    width: 28px;
+    height: 28px;
     cursor: pointer;
     margin: 0 10px 0 0px;
     background-color: #ced4da;
@@ -7061,17 +7086,17 @@ font-size: 15px;
     top: 7px;
 }
 .equipment_sec input[type="checkbox"]:checked::before {
-  content: "✔";
-  font-size: 18px;
-  color: #fff;
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  background: #f9a126;
-  width: 24px;
-  height: 24px;
-  border-radius: 0px;
-  padding: 0 5px;
+    content: "✔";
+    font-size: 18px;
+    color: #fff !important;
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background: #f9a126;
+    width: 29px;
+    height: 29px;
+    border-radius: 0px;
+    padding: 0 5px;
 }
 .dashboard_listing_edit h4 {
     margin-bottom: 0px;
@@ -8642,6 +8667,7 @@ margin-right:15px;
     color: #000;
     padding: 4px 0px;
     font-weight: 600;
+    text-transform: capitalize;
 }
 .price_list_accordian .card-body {
     padding: 15px 15px;
@@ -8690,6 +8716,7 @@ margin-right:15px;
     position: absolute;
     right: 14px;
     top: 34%;
+    z-index: 99;
 }
 .img_commet_text {
     position: absolute;
@@ -9168,13 +9195,14 @@ margin-right:15px;
         font-size: 25px;
         padding-top: 10px;
         text-align: left;
+        text-transform: capitalize;
     }
     .boat-title .row .col-md-12 {
         text-align: left !important;
     }
     .rating-menus li {
         padding: 0 5px 0 0;
-        font-size: 13px;
+        font-size: 10px;
     }
     .breadcrumb {
         margin-bottom: 0px;
@@ -9182,6 +9210,7 @@ margin-right:15px;
     .boat-content-sec .col-md-8 {
         padding-left: 0px;
         padding-right: 0px;
+        padding-top: 0px;
     }
     .share-menu {
         justify-content: left;
@@ -9203,12 +9232,12 @@ margin-right:15px;
         padding: 0 15px;
     }
     .location-sec {
-        padding-top: 30px;
+        padding-top: 0px;
     }
     .login_section h2,
     .signup_form h2,
     .singup_welcome_section h2 {
-        font-size: 25px;
+        font-size: 22px;
     }
     .home_page_box_text p {
         width: 100%;
@@ -9236,6 +9265,7 @@ margin-right:15px;
         text-align: left;
         padding-top: 20px;
         font-size: 25px;
+        text-transform: capitalize;
     }
     .boat-description-sec {
         padding-top: 30px;
@@ -9252,13 +9282,13 @@ margin-right:15px;
         padding-bottom: 20px;
     }
     .equip-button-sec {
-        text-align: center;
+        text-align: left;
     }
     .ideas-sec {
         padding-top: 25px;
     }
     .contact_own_btn {
-        text-align: center;
+        text-align: left;
         padding-bottom: 30px;
     }
     .more_resource_section  .more_resource_box h3 {
@@ -9485,8 +9515,15 @@ margin-right:15px;
         height: 200px;
     }
     .dashboard-logo img {
-        padding-bottom: 10px;
+        padding-bottom: 0px;
         max-width: 85px;
+    }
+    .listing_sub_btn {
+        padding: 9px 30px;
+        height: 48px;
+    }
+    .boat_listing_images_video_save_btn a {
+        padding: 9px 30px;
     }
     .header-dashboard .row {
         flex-flow: nowrap;
@@ -9930,7 +9967,43 @@ margin-right:15px;
 .offcanvas-right {
     width: 100%;
 }
+#searchmobilefilter button.close {
+    top: 20px;
 }
+.mobile-image-slides {
+    overflow: hidden;
+}
+.featured_boat_section_mobile h3 {
+    font-size: 22px;
+}
+.featured_boat_section_mobile .featured_price_mobile {
+    font-size: 16px;
+}
+.checkout-btn-sec {
+    margin-bottom: 25px;
+}
+.boat_listing_images_video_save_btn {
+    margin: 0px auto 30px;
+}
+.uploaded_img  .col-md-4 {
+    margin-bottom: 15px;
+}
+.specification-menus li:after {
+    top: 10px;
+}
+.keyinfo-texts  p {
+    padding-top: 0px;
+}
+.boat-description-sec p {
+    padding-bottom: 30px;
+}
+.boat-banner-sec img {
+    height: 400px;
+    width: 100%;
+    object-fit: cover;
+}
+}
+
 @media (min-width: 767px) and (max-width: 1024px) {
     .header-slider {
         display: none;
@@ -10023,7 +10096,7 @@ margin-right:15px;
         font-size: 30px;
     }
     .next_trip_text h3 {
-        font-size: 25px;
+        font-size: 20px;
         text-align: center;
         height: auto;
     }
@@ -10333,6 +10406,7 @@ margin-right:15px;
     .boat-title h1 {
         font-size: 30px;
         padding-top: 10px;
+        text-align: left;
     }
     .rating-menus li {
         padding: 0 5px 0 0;
@@ -10346,8 +10420,11 @@ margin-right:15px;
         padding-right: 15px;
     }
     .share-menu {   
-        justify-content: center;
+        justify-content: left;
         margin-top: 10px;
+    }
+    .share-menu li {
+        margin: 0px 30px 0px 0px;
     }
     .features-menus {
         display: block;
@@ -10378,11 +10455,11 @@ margin-right:15px;
     }
     .next_trip_section .col-sm-12.col-md-6.col-lg-4 {
         padding: 0px;
-        flex: 0 0 100%;
-        max-width: 100%;
+        flex: 0 0 50%;
+        max-width: 50%;
     }
     .next_trip_box img {
-        height: 330px;
+        height: 260px;
     }
     .next_trip_section {
         margin-bottom: 30px;
@@ -10394,9 +10471,10 @@ margin-right:15px;
         text-align: center;
     }
     .boat-content-sec h3 {
-        text-align: center;
-        padding-top: 20px;
-    }
+    font-size: 25px;
+    text-align: left;
+    padding-top: 20px;
+}
     .boat-description-sec {
         padding-top: 30px;
         text-align: center;
@@ -10943,6 +11021,43 @@ margin-right:15px;
 .uploaded_img .col-md-4 {
     flex: 0 0 50%;
     max-width: 50%;
+}
+#searchmobilefilter button.close {
+    top: 20px;
+}
+.feature_box_main {
+    display: none;
+}
+.featured_boat_section_mobile {
+    display: block;
+}
+.featured_boat_section_mobile h3 {
+    font-size: 18px;
+}
+.featured_boat_section_mobile .featured_price_mobile {
+    font-size: 16px;
+}
+.next_trip_section .row {
+    justify-content: center;
+}
+.city_box img {
+    height: 260px;
+}
+.blog_inner_banner,
+.contact_banner_section {
+    height: 440px;
+}
+.sec-title {
+    margin-bottom: 0px;
+}
+.contact-details_info {
+    margin-top: 15px;
+}
+.contat_map_section iframe {
+    height: 350px;
+}
+.boat-title .row .col-md-12 {
+    text-align: left !important;
 }
 }
 @media (min-width: 1250px) and (max-width: 1299px) {

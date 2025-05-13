@@ -257,7 +257,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="container">
             <!-- Button trigger modal -->
             <div class="search-bar" data-toggle="modal" data-target="#searchmobilefilter">
-                <p>Start your search</p>
+                <p>Book a Boat</p>
                 <div class="search-options">
                     <span>Marina</span>
                     <span class="dot">|</span>
