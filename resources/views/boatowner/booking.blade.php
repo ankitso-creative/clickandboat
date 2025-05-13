@@ -55,7 +55,9 @@
                             <th>Transaction Id</th>
                             <th>Check In</th>
                             <th>Name</th>
-                            <th>Price</th>
+                            <th>Amount Paid</th>
+                            <th>Pending Paid</th>
+                            <th>Total Amount</th>
                             <th>Status</th>
                             <th>Submitted On</th>
                             <th>Action</th> 
@@ -64,12 +66,22 @@
                     <tbody>
                         @if($results)
                             @foreach($results as $result)
+                                @php
+                                    $listing = App\Models\Admin\Listing::where('id',$result->listing_id)->first();
+                                    if($result->currency):
+                                        $symble = priceSymbol($result->currency);
+                                    else:
+                                        $symble = priceSymbol('USD');
+                                    endif;
+                                @endphp
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $result->payment_intent_id }}</td>
                                     <td>{{ $result->check_in }}</td>
                                     <td>{{ $result->user->name }}</td>
-                                    <td>{{ $result->total }}</td>
+                                    <td>{{ $symble.$result->amount_paid }}</td>
+                                    <td>{{ $symble.$result->pending_amount }}</td>
+                                    <td>{{ $symble.$result->total }}</td>
                                     <td>{{ $result->payment_status }}</td>
                                     <td>{{ $result->created_at }}</td>
                                     <td>

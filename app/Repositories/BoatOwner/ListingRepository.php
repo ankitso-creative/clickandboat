@@ -1,7 +1,8 @@
 <?php
     namespace App\Repositories\BoatOwner;
 
-    use App\Models\Admin\Language;
+use App\Events\Admin\ListingApprove;
+use App\Models\Admin\Language;
     use App\Models\Admin\Listing;
     use Illuminate\Support\Facades\Storage;
     use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -50,7 +51,7 @@
             $listing->model = $request['model'];
             $listing->boat_name = $request['boat_name'];  
 
-            // $listing->skipper = $request['skipper'];
+            $listing->skipper = $request['skippers'];
             // $listing->capacity = $request['capacity'];
             // $listing->length = $request['length'];
             // $listing->company_name = $request['company_name'];
@@ -67,13 +68,15 @@
             // $listing->renovated = $request['renovated'];
             // $listing->speed = $request['speed'];
             if($listing->save()):
-                $files = $request['files'];
-                if($files) {
-                    foreach ($files as $file)
-                    {
-                        $listing->addMedia($file)->toMediaCollection('listing_gallery', 'listing'); 
+                if(isset($request['files']) && $request['files']):
+                    $files = $request['files'];
+                    if($files) {
+                        foreach ($files as $file)
+                        {
+                            $listing->addMedia($file)->toMediaCollection('listing_gallery', 'listing'); 
+                        }
                     }
-                }
+                endif;
                 return response()->json([
                     'message' => 'Image uploaded successfully',
                     'data' => [
@@ -220,9 +223,6 @@
                     'cancellation_conditions'  => $request['cancellation_conditions'],
                     'check_in' => $request['check_in'],
                     'check_out'  => $request['check_out'],
-                    'check_in_rental'  => $request['check_in_rental'],
-                    'check_out_rental'  => $request['check_out_rental'],
-                    'fuel_cost'  => $request['fuel_cost'],
                     'boat_licence'  => $request['boat_licence'],
                     'night_fees' => $request['night_fees'],
                 ]);
@@ -239,8 +239,6 @@
                     'horsepower' => $request['horsepower'],
                     'width'  => $request['width'],
                     'draft'  => $request['draft'],
-                    'offshore'  => $request['offshore'],
-                    'crew_members'  => $request['crew_members'],
                     'horsepower_tender' => $request['horsepower_tender'],
                 ]);
                 return response()->json([
@@ -368,6 +366,23 @@
             $listing = Listing::with(['media'])->where('id',$id)->first();
             $listing->status = $request['value'];
             return $listing->update();
+        }
+        public function listingPublish($id)
+        {
+            $listing = Listing::with(['media'])->where('id',$id)->first();
+            if($listing->seasonPrice->isEmpty())
+            {
+                return response()->json([
+                    'error' => 'error',
+                    'message' => 'Please add listing price first.',
+                ]);
+            }
+            event(new ListingApprove($listing));
+            return response()->json([
+                'success' => 'success',
+                'message' => 'Your listing has been saved, and a notification has been successfully sent to the admin. Please wait for admin approval.',
+                'redirect_url' => route('boatowner.listing'),
+            ]);
         }
     }
 

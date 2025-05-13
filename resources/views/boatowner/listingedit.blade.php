@@ -20,7 +20,7 @@
 
 <script src="{{ asset('app-assets/global/plugins/bootstrap-sweetalert/sweetalert.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('app-assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js') }}" type="text/javascript"></script>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAli6rCJivgzTbWznnkqFtT_btPww6WBYs&libraries=places"></script>
+
 <!-- END PAGE LEVEL PLUGINS -->
 
 <!-- BEGIN PAGE LEVEL SCRIPTS -->
@@ -89,58 +89,7 @@
             dateFormat: "d-m-Y",
             minDate: "today",
         });
-        // flatpickr(".month-picker", {
-        //     plugins: [
-        //         new monthSelectPlugin({
-        //             shorthand: true,  
-        //             dateFormat: "F",  
-        //             altFormat: "F",  
-        //             theme: "dark"
-        //         })
-        //     ],
-        // });
         
-        $(document).ready(function () {
-            google.maps.event.addDomListener(window, 'load', initialize);
-        });
-        function initialize() 
-        {
-            var input = document.getElementById('location-edit');
-            var autocomplete = new google.maps.places.Autocomplete(input);
-            autocomplete.addListener('place_changed', function() {
-                var place = autocomplete.getPlace();
-                if (!place.geometry || !place.address_components) {
-                    console.log("Place details not found");
-                    return;
-                }
-                var city = '';
-                var country = '';
-                var state = '';
-                for (var i = 0; i < place.address_components.length; i++) {
-                    var component = place.address_components[i];
-                    if (component.types.includes('locality')) {
-                        city = component.long_name;
-                    }
-                    if (component.types.includes('administrative_area_level_1')) {
-                        state = component.long_name;
-                    }
-                    if (component.types.includes('country')) {
-                        country = component.long_name;
-                    }
-                }
-                if (city && country && state) {
-                    input.value = city + ', ' + state + ', '+ country;
-                }
-                if(city==state)
-                {
-                    input.value = city + ', ' + country;
-                }
-                $('#search-filter-fom').submit();
-            });
-        }
-        $('.mySelect2').select2({
-		selectOnClose: true
-	});
     $(document).ready(function () {
         $('#cancellationSelect').select2({
             width: '100%',
@@ -176,7 +125,38 @@
             $tooltip.hide();
         });
     });
-        
+    // $('.mySelect2').select2({
+    //         selectOnClose: true
+    //     });
+    $(document).ready(function() 
+    {
+        $('.mySelect2').select2();
+        function updateOptions() 
+        {
+            let selectedValues = [];
+            $('.mySelect2').each(function() 
+            {
+                selectedValues = selectedValues.concat($(this).val() || []);
+            });
+            $('.mySelect2').each(function() {
+                let $this = $(this);
+                let currentValues = $this.val() || [];
+                $this.find('option').each(function() {
+                    let val = $(this).val();
+                    if (currentValues.includes(val)) {
+                    $(this).prop('disabled', false); 
+                    } else if (selectedValues.includes(val)) {
+                    $(this).prop('disabled', true); 
+                    } else {
+                    $(this).prop('disabled', false); 
+                    }
+                 });
+                $this.trigger('change.mySelect2');
+            });
+        }
+        $('.mySelect2').on('change', updateOptions);
+        updateOptions(); // Initial call
+    });
     </script>
 @endsection
 @section('content')
@@ -204,27 +184,27 @@
         </div>
         <nav class="sidebar side_bar">
             <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                <a class="nav-item nav-link active" id="nav-general-tab" data-toggle="tab" href="#general" role="tab" aria-controls="nav-home" aria-selected="true"><i class="fa-solid fa-gear"></i> General <span><i class="fa-solid fa-check-double"></i></span></a>
+                <a class="nav-item nav-link active show" id="nav-general-tab" data-toggle="tab" href="#general" role="tab" aria-controls="nav-home" aria-selected="true"><i class="fa-solid fa-gear"></i> General <span><i class="fa-solid fa-check-double"></i></span></a>
                 <a class="nav-item nav-link" id="nav-description-tab" data-toggle="tab" href="#description" role="tab" aria-controls="nav-home" aria-selected="true"><i class="fa-solid fa-pen"></i> Description <span><i class="fa-solid fa-check-double"></i></span></a>
                 <a class="nav-item nav-link" id="nav-image-tab" data-toggle="tab" href="#image" role="tab" aria-controls="nav-profile" aria-selected="false"><i class="fa-solid fa-image"></i> Images<span><i class="fa-solid fa-check-double"></i></span></a>
                 <a class="nav-item nav-link" id="nav-price-tab" data-toggle="tab" href="#price" role="tab" aria-controls="nav-contact" aria-selected="false"><i class="fa-solid fa-dollar-sign"></i>Price<span><i class="fa-solid fa-check-double"></i></span></a>
-                <a class="nav-item nav-link" id="nav-booking-tab" data-toggle="tab" href="#booking" role="tab" aria-controls="nav-about" aria-selected="false"><i class="fa-solid fa-calendar-days"></i> Booking<span><i class="fa-solid fa-check-double"></i></span></a>
+                <a class="nav-item nav-link" id="nav-booking-tab" data-toggle="tab" href="#booking" role="tab" aria-controls="nav-about" aria-selected="false"><i class="fa-solid fa-calendar-days"></i> Booking Conditions<span><i class="fa-solid fa-check-double"></i></span></a>
                 {{-- <a class="nav-item nav-link" id="nav-calender-tab" data-toggle="tab" href="#calender" role="tab" aria-controls="nav-about" aria-selected="false"><i class="fa-regular fa-calendar"></i>Calender<span><i class="fa-solid fa-check-double"></i></span></a> --}}
                 <a class="nav-item nav-link" id="nav-equipment-tab" data-toggle="tab" href="#equipment" role="tab" aria-controls="nav-about" aria-selected="false"><i class="fa-solid fa-screwdriver-wrench"></i> Equipment<span><i class="fa-solid fa-check-double"></i></span></a>
                 <a class="nav-item nav-link" id="nav-other-tab" data-toggle="tab" href="#other" role="tab" aria-controls="nav-about" aria-selected="false"><i class="fa-solid fa-book"></i> Other<span><i class="fa-solid fa-check-double"></i></span></a>
-                <a class="nav-item nav-link" id="nav-discounts-tab" data-toggle="tab" href="#discounts" role="tab" aria-controls="nav-about" aria-selected="false"><i class="fa-solid fa-tags"></i>Discounts<span><i class="fa-solid fa-check-double"></i></span></a>
+                {{-- <a class="nav-item nav-link" id="nav-discounts-tab" data-toggle="tab" href="#discounts" role="tab" aria-controls="nav-about" aria-selected="false"><i class="fa-solid fa-tags"></i>Discounts<span><i class="fa-solid fa-check-double"></i></span></a> --}}
 
             </div>
         </nav>
     </div>
     <div class="col-md-9 main-dashboard">
         <div class="listing_edit_btns">
-            <a class="nav-item nav-link" id="nav-calender-tab" data-toggle="tab" href="#calender" role="tab" aria-controls="nav-about" aria-selected="false"></i>Calender</a>
+            {{-- <a class="nav-item nav-link" id="nav-calender-tab" data-toggle="tab" href="#calender" role="tab" aria-controls="nav-about" aria-selected="false"></i>Calender</a> --}}
             <a href="{{ route('boatowner.preview',$listing->id) }}" class="pre_list_btn" target="_blank">Preview listing</a>
         </div>
         <div class="px-3 py-3 tab-content px-sm-0" id="nav-tabContent">
             <div class="tab-pane fade show active" id="general" role="tabpanel" aria-labelledby="nav-general-tab">
-                <form method="POST">
+                <form method="POST" ntb="description">
                     <div class="text-center boat_type_section">
                         <h2>Your boat</h2>
                         <h3>Type</h3>
@@ -292,9 +272,10 @@
                         </div>
                         <div class="text-center actions btn-set">
                             <input type="hidden" name="s" value="general">
-                            <button type="submit" class="listing_sub_btn mt-ladda-btn ladda-button btn-outline" data-style="contract" data-spinner-color="#333">
-                                Save
+                            <button type="submit" ntb="description" class="listing_sub_btn mt-ladda-btn ladda-button btn-outline" data-style="contract" data-spinner-color="#333">
+                                Save & continue
                             </button>
+                            <a href="javascript:;" class="next-btn" ntp="description">Next</a>
                         </div>
                     </div>
                 </form>
@@ -303,7 +284,7 @@
                 <div class="p-0 col-sm-12">
                     <h4 class="bold ">Title</h4>
                 </div>
-                <form method="POST">
+                <form method="POST" ntb="image">
                     <div class="pt-3 pl-0 col-md-6">
                         <div class="form-group">
                             <label></label>
@@ -444,13 +425,13 @@
                             @error('fuel')<span class="required">{{ $message }}</span>@enderror
                         </div>
                         <div class="col-lg-4">
-                            <label>Renovated<span class="required"> * </span></label>
-                            <input type="text" name="renovated" class="form-control" required value="{{ old('renovated', $listing->renovated) }}">
+                            <label>Renovated<span class="required">  </span></label>
+                            <input type="text" name="renovated" class="form-control"  value="{{ old('renovated', $listing->renovated) }}">
                             @error('renovated')<span class="required">{{ $message }}</span>@enderror
                         </div>
                         <div class="col-lg-4">
-                            <label>Speed (Kn)<span class="required"> *</span></label>
-                            <input type="text" name="speed" class="form-control" required value="{{ old('speed', $listing->speed) }}">
+                            <label>Speed (Kn)<span class="required"></span></label>
+                            <input type="text" name="speed" class="form-control"  value="{{ old('speed', $listing->speed) }}">
                             @error('speed')<span class="required">{{ $message }}</span>@enderror
                         </div>
                     </div>
@@ -463,8 +444,9 @@
                         </div>
                         <input type="hidden" name="s" value="descriptions">
                         <button type="submit" class="listing_sub_btn mt-ladda-btn ladda-button btn-outline" data-style="contract" data-spinner-color="#333">
-                            Save
+                            Save & continue
                         </button>
+                        <a href="javascript:;" class="next-btn" ntp="image">Next</a>
                     </div>
                 </form>
             </div>
@@ -559,9 +541,7 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="boat_listing_images_video_save_btn">
-                            <a href="">Save</a>
-                        </div>
+                        
                         <div class="photo-section">
                             <div class="text-center phot_heading">
                                 <h1>Boat plan</h1>
@@ -596,6 +576,10 @@
                             @endif
                         </div>
                     </div>
+                    <div class="boat_listing_images_video_save_btn">
+                        <a href="javascript:;" id="images-uploded">Save & continue</a>
+                        <a href="javascript:;" class="next-btn" ntp="price">Next</a>
+                    </div>
                 </div>
             </div>
             <div class="tab-pane fade edit_profile_sec" id="price" role="tabpanel" aria-labelledby="nav-price-tab">
@@ -605,7 +589,7 @@
                         <p>Select a price for low season, mid season & high season. And any options that apply. You must select one price from each season.</p>
                     </div>
                 </div>
-                <form method="POST">
+                <form method="POST" ntb="booking">
                     <div class="row">
                         <div class="col-sm-12">
                             {{-- <h4 class="bold ">Price</h4> --}}
@@ -866,19 +850,20 @@
                                 <i class="fa fa-angle-left"></i> Back
                             </button> -->
                             <input type="hidden" name="s" value="price">
-                            <button type="submit" class="listing_sub_btn mt-ladda-btn ladda-button btn-outline " data-style="contract" data-spinner-color="#333">
-                               Save
+                            <button  type="submit" class="listing_sub_btn mt-ladda-btn ladda-button btn-outline " data-style="contract" data-spinner-color="#333">
+                                Save & continue
                             </button>
+                            <a href="javascript:;" class="next-btn" ntp="booking">Next</a>
                         </div>
                     </div>
                 </form>
             </div>
             <div class="tab-pane fade" id="booking" role="tabpanel" aria-labelledby="nav-booking-tab">
-                <form class="form-horizontal form-row-seperated" action="#" method="POST" enctype="multipart/form-data">
+                <form class="form-horizontal form-row-seperated" action="#" method="POST" enctype="multipart/form-data" ntb="equipment">
                     @csrf
                     <div class="row">
                         <div class="col-sm-12">
-                            <h4 class="bold ">Booking</h4>
+                            <h4 class="bold ">Booking Conditions</h4>
                         </div>
                         <div class="clearfix"></div>
                         <div class="col-sm-3">
@@ -909,24 +894,24 @@
                                 value="{{ $listing->booking->check_out ?? '' }}">
                             @error('check_out')<span class="required">{{ $message }}</span>@enderror
                         </div>
-                        <div class="col-sm-3">
+                        {{-- <div class="col-sm-3">
                             <label>Check in rental:<span class="required"> *</span></label>
                             <input type="text" class="form-control timepicker" name="check_in_rental"
                                 value="{{ $listing->booking->check_in_rental ?? '' }}">
 
-                        </div>
+                        </div> --}}
                         <div class="clearfix"></div>
-                        <div class="col-sm-3">
+                        {{-- <div class="col-sm-3">
                             <label>Check out rental:<span class="required"> *</span></label>
                             <input type="text" class="form-control timepicker " name="check_out_rental"
                                 value="{{ $listing->booking->check_out_rental ?? '' }}">
-                        </div>
-                        <div class="col-sm-3">
+                        </div> --}}
+                        {{-- <div class="col-sm-3">
                             <label>Fuel cost:<span class="required"> * </span></label>
                             <input type="text" class="form-control" name="fuel_cost" required
                                 value="{{ $listing->booking->fuel_cost ?? '' }}">
                             @error('fuel_cost')<span class="required">{{ $message }}</span>@enderror
-                        </div>
+                        </div> --}}
                         <div class="col-sm-3">
                             <label>Is a boat licence required?:<span class="required"> * </span></label>
                             <select name="boat_licence" class="form-control">
@@ -964,10 +949,10 @@
                                 <i class="fa fa-angle-left"></i> Back
                             </button> -->
                             <input type="hidden" name="s" value="booking">
-                            <button type="submit" class="listing_sub_btn mt-ladda-btn ladda-button btn-outline"
-                                data-style="contract" data-spinner-color="#333">
-                                 Save
+                            <button type="submit" class="listing_sub_btn mt-ladda-btn ladda-button btn-outline" data-style="contract" data-spinner-color="#333">
+                                Save & continue
                             </button>
+                            <a href="javascript:;" class="next-btn" ntp="equipment">Next</a>
                         </div>
                     </div>
                 </form>
@@ -1077,16 +1062,15 @@
                                 <i class="fa fa-angle-left"></i> Back
                             </button> -->
                             <input type="hidden" name="s" value="calendar">
-                            <button type="submit" class="listing_sub_btn mt-ladda-btn ladda-button btn-outline"
-                                data-style="contract" data-spinner-color="#333">
-                                 Save
+                            <button type="submit" class="listing_sub_btn mt-ladda-btn ladda-button btn-outline" data-style="contract" data-spinner-color="#333">
+                                Save & continue
                             </button>
                         </div>
                     </div>
                 </form>
             </div>
             <div class="tab-pane fade equipment_sec" id="equipment" role="tabpanel" aria-labelledby="nav-equipment-tab">
-                <form method="POST">
+                <form method="POST" ntb="other">
                     <div class="row">
                         <div class="col-sm-12">
                             <h4 class="bold ">Equipment</h4>
@@ -1497,24 +1481,22 @@
                                 <i class="fa fa-angle-left"></i> Back
                             </button> -->
                             <input type="hidden" name="s" value="equipment">
-                            <button type="submit" class="listing_sub_btn mt-ladda-btn ladda-button btn-outline"
-                                data-style="contract" data-spinner-color="#333">
-                                Save
+                            <button type="submit" class="listing_sub_btn mt-ladda-btn ladda-button btn-outline" data-style="contract" data-spinner-color="#333">
+                                Save & continue
                             </button>
+                            <a href="javascript:;" class="next-btn" ntp="other">Next</a>
                         </div>
                     </div>
                 </form>
             </div>
             <div class="tab-pane fade" id="other" role="tabpanel" aria-labelledby="nav-other-tab">
-                <form class="form-horizontal form-row-seperated"
-                    action="{{ route('admin.general-settings', $listing->id) }}" method="POST"
-                    enctype="multipart/form-data">
+                <form class="form-horizontal form-row-seperated" action="{{ route('admin.general-settings', $listing->id) }}" method="POST"enctype="multipart/form-data" ntb="">
                     <div class="row">
                         <div class="col-sm-12">
                             <h4 class="bold ">Technical points</h4>
                         </div>
                         <div class="clearfix"></div>
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                             <label>Engine type:<span class="required"> * </span></label>
                             <select class="form-control" name="engine_type">
                                 <option
@@ -1526,44 +1508,25 @@
                             </select>
                             @error('engine_type')<span class="required">{{ $message }}</span>@enderror
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                             <label>Engine horsepower (HP):<span class="required"> * </span></label>
-                            <input type="text" class="form-control" name="horsepower" required
-                                value="{{ $listing->otherListingSetting->horsepower ?? '' }}">
+                            <input type="number" min="1" class="form-control" name="horsepower" required value="{{ $listing->otherListingSetting->horsepower ?? '' }}">
                             @error('horsepower')<span class="required">{{ $message }}</span>@enderror
                         </div>
-                        <div class="col-sm-3">
-                            <label>Width (m):<span class="required"> *</span></label>
-                            <input type="text" class="form-control" name="width"
-                                value="{{ $listing->otherListingSetting->width ?? '' }}">
+                        <div class="col-sm-4">
+                            <label>Width (m):<span class="required">*</span></label>
+                            <input type="text" class="form-control" required name="width" value="{{ $listing->otherListingSetting->width ?? '' }}">
                         </div>
-                        <div class="col-sm-3">
-                            <label>Draft (m):<span class="required"> *</span></label>
-                            <input type="text" class="form-control" name="draft"
-                                value="{{ $listing->otherListingSetting->draft ?? '' }}">
-
-                        </div>
+                        
                         <div class="clearfix"></div>
                         <div class="col-sm-4">
-                            <label>Equipped offshore:<span class="required"> *</span></label>
-                            <select name="offshore" class="form-control">
-                                <option
-                                    {{ isset($listing->otherListingSetting->offshore) && $listing->otherListingSetting->offshore == 'no' ? 'selected':'' }}
-                                    value="no">No</option>
-                                <option
-                                    {{ isset($listing->otherListingSetting->offshore) && $listing->otherListingSetting->offshore == 'yes' ? 'selected':'' }}
-                                    value="yes">Yes</option>
-                            </select>
+                            <label>Draft (m):<span class="required"></span></label>
+                            <input type="text" class="form-control" name="draft" value="{{ $listing->otherListingSetting->draft ?? '' }}">
+
                         </div>
                         <div class="col-sm-4">
-                            <label>Number of crew members:<span class="required"> *</span></label>
-                            <input type="number" class="form-control" name="crew_members"
-                                value="{{ $listing->otherListingSetting->crew_members ?? '' }}">
-                        </div>
-                        <div class="col-sm-4">
-                            <label>Horsepower of the tender:<span class="required"> *</span></label>
-                            <input type="text" class="form-control" name="horsepower_tender"
-                                value="{{ $listing->otherListingSetting->horsepower_tender ?? '' }}">
+                            <label>Horsepower of the tender:<span class="required"> </span></label>
+                            <input type="text" class="form-control" name="horsepower_tender" value="{{ $listing->otherListingSetting->horsepower_tender ?? '' }}">
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -1579,10 +1542,10 @@
                                 <i class="fa fa-angle-left"></i> Back
                             </button> -->
                             <input type="hidden" name="s" value="other">
-                            <button type="submit" class="listing_sub_btn mt-ladda-btn ladda-button btn-outline"
-                                data-style="contract" data-spinner-color="#333">
-                                 Save
+                            <button type="submit" class="listing_sub_btn mt-ladda-btn ladda-button btn-outline" data-style="contract" data-spinner-color="#333">
+                                Save
                             </button>
+                            <a href="javascript:;" class="publish-btn">Publish</a>
                         </div>
                     </div>
                 </form>
@@ -1926,13 +1889,80 @@
         $(document).on('click', '.remove_newf_row', function(e) {
             $(this).parents('.single_calender_container').remove();
         });
+        $(document).on('click', '.next-btn', function(e) {
+            var ntb = $(this).attr('ntp');
+            $('.nav-item.nav-link').removeClass('active ahow');
+            $('.tab-pane').removeClass('active show');
+            $('#nav-'+ntb+'-tab').addClass('active show');
+            $('#'+ntb+'').addClass('active show');
+        });
+        $(document).on('click','#images-uploded',function(){
+            $('.nav-item.nav-link').removeClass('active ahow');
+            $('.tab-pane').removeClass('active show');
+            $('#nav-price-tab').addClass('active show');
+            $('#price').addClass('active show');
+        })
         $(document).on('submit', 'form', function(e) {
             e.preventDefault();
             var formData = $(this).serialize();
+            var ntb = $(this).attr('ntb');
+            var self = $(this);
+            self.find('button.listing_sub_btn').html('<i class="fas fa-spinner fa-spin me-2"></i> Wait Please...');
             $.ajax({
-                url: "{{ route('boatowner.listing-settings',$listing->id) }}", // URL for the image upload endpoint
+                url: "{{ route('boatowner.listing-settings',$listing->id) }}", 
                 type: 'POST',
                 data: formData,
+                dataType: 'json',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(response) {
+                    self.find('button.listing_sub_btn').html('Save & continue');
+                    if (response.success) {
+                        $('.alert').removeClass('alert-danger');
+                        $('.alert').removeClass('d-none');
+                        $('.alert').addClass('alert-success');
+                        $('.message').html(response.message);
+                        setTimeout(function() {
+                            $('.alert').addClass('d-none');
+                            if(ntb != '')
+                            {
+                               $('.nav-item.nav-link').removeClass('active ahow');
+                                $('.tab-pane').removeClass('active show');
+                                $('#nav-'+ntb+'-tab').addClass('active show');
+                                $('#'+ntb+'').addClass('active show');
+                                $(".main-dashboard").animate({ scrollTop: $(".main-dashboard")[0].scrollHeight }, "fast");
+                            }
+                            else
+                            {
+                                $('.publish-btn').removeClass('d-none');
+                            }
+                        }, 3000);
+                    } else {
+                        $('.alert').removeClass('d-none');
+                        $('.alert').addClass('alert-danger');
+                        $('.message').html(response.message);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    self.find('button.listing_sub_btn').html('Save & continue');
+                    var errors = xhr.responseJSON.errors;
+                    var errorMessage = '';
+                    for (var field in errors) {
+                        errorMessage += errors[field] + '<br>'; // Show validation errors
+                    }
+                    $('.alert').removeClass('d-none');
+                    $('.alert').addClass('alert-danger');
+                    $('.message').html(errorMessage);
+
+                }
+            });
+        })
+        $(document).on('click','.publish-btn', function(e) {
+            e.preventDefault();
+            $.ajax({
+                url: "{{ route('boatowner.listingpublish',$listing->id) }}", 
+                type: 'POST',
                 dataType: 'json',
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -1945,7 +1975,8 @@
                         $('.message').html(response.message);
                         setTimeout(function() {
                             $('.alert').addClass('d-none');
-                        }, 5000);
+                            window.location.href = response.redirect_url;
+                        }, 2000);
                     } else {
                         $('.alert').removeClass('d-none');
                         $('.alert').addClass('alert-danger');

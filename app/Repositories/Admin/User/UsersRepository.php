@@ -6,12 +6,12 @@ use App\Models\UserDetail;
 class UsersRepository{
     public function getAllBoatOwner()
     {
-        return User::where('role', 'boatowner')->with('profile')->get();
+        return User::where('role', 'boatowner')->with('profile')->paginate(10);
         
     }
     public function getAllCustomer()
     {
-        return User::where('role', 'customer')->with('profile')->get();
+        return User::where('role', 'customer')->with('profile')->paginate(10);
         
     }
     public function store($request)
@@ -117,6 +117,14 @@ class UsersRepository{
         $id = $request['id'];
         $user = User::where('id',$id)->first();
         $user->status = $request['value'];
+        $user->update();
+        return $user;
+    }
+    public function changeSuper($request)
+    {
+        $id = $request['id'];
+        $user = User::where('id',$id)->first();
+        $user->super = $request['value'];
         $user->update();
         return $user;
     }

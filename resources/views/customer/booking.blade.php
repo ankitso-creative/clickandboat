@@ -49,7 +49,9 @@
                             <th>CheckIn Date</th>
                             <th>CheckOut Date</th>
                             <th>Boat Name</th>
-                            <th>Price</th>
+                            <th>Amount Paid</th>
+                            <th>Pending Paid</th>
+                            <th>Total Amount</th>
                             <th>Status</th>
                             <th>Submitted On</th>
                             <th>Action</th>
@@ -73,6 +75,8 @@
                                     <td>{{ $result->check_out }}</td>
                                     <td>{{ $listing->boat_name }}</td>
                                     <td>{{ $symble.$result->amount_paid }}</td>
+                                    <td>{{ $symble.$result->pending_amount }}</td>
+                                    <td>{{ $symble.$result->total }}</td>
                                     <td>{{ $result->payment_status }}</td>
                                     <td>{{ \Carbon\Carbon::parse($result->created_at)->format('d-m-Y') }}</td>
                                     <td>

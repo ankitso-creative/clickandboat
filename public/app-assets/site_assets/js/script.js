@@ -59,41 +59,76 @@ $(document).ready(function(){
 		});
 	}
 	if($('.about_sliders').length)
-		{
-			$('.about_sliders').slick({
-				//infinite: true,
-				  slidesToShow: 4,
-				slidesToScroll: 1,
-				autoplay: true,
-				draggable: true,
-				loop: true,
-				arrows: true,
-				 autoplaySpeed: 3000,
-				 responsive: [
-				{
-				  breakpoint: 1000,
-				  settings: {
-					slidesToShow: 3,
-					slidesToScroll: 1
-				  }
-				},
-				{
-				  breakpoint: 770,
-				  settings: {
-					slidesToShow: 2,
-					slidesToScroll: 1
-				  }
-				},
-				{
-				  breakpoint: 480,
-				  settings: {
-					slidesToShow: 1,
-					slidesToScroll: 1
-				  }
+	{
+		$('.about_sliders').slick({
+			//infinite: true,
+				slidesToShow: 4,
+			slidesToScroll: 1,
+			autoplay: true,
+			draggable: true,
+			loop: true,
+			arrows: true,
+				autoplaySpeed: 3000,
+				responsive: [
+			{
+				breakpoint: 1000,
+				settings: {
+				slidesToShow: 3,
+				slidesToScroll: 1
 				}
-			  ]
-			});
-		}
+			},
+			{
+				breakpoint: 770,
+				settings: {
+				slidesToShow: 2,
+				slidesToScroll: 1
+				}
+			},
+			{
+				breakpoint: 480,
+				settings: {
+				slidesToShow: 1,
+				slidesToScroll: 1
+				}
+			}
+			]
+		});
+	}
+	if($('.mobile-image-slides').length)
+	{
+		$('.mobile-image-slides').slick({
+			slidesToShow: 1,
+			slidesToScroll: 1,
+			autoplay: true,
+			draggable: true,
+			loop: true,
+			arrows: true,
+				autoplaySpeed: 3000,
+				responsive: [
+			{
+				breakpoint: 1000,
+				settings: {
+				slidesToShow: 1,
+				slidesToScroll: 1
+				}
+			},
+			{
+				breakpoint: 770,
+				settings: {
+				slidesToShow: 1,
+				slidesToScroll: 1
+				}
+			},
+			{
+				breakpoint: 480,
+				settings: {
+				slidesToShow: 1,
+				slidesToScroll: 1
+				}
+			}
+			]
+		});
+	}
 	if($('.boat_type_slider').length)
 		{
 			$('.boat_type_slider').slick({
@@ -581,6 +616,57 @@ $(document).ready(function() {
 			}
 		});
 	});
+
+	$('.people-plus').click(function() {
+        let input = $('input[name="people"]');
+        let currentVal = parseInt(input.val()) || 0;
+        input.val(currentVal + 1);
+		$('#search-filter-fom').submit();
+    });
+
+    // Minus button
+    $('.people-minus').click(function() {
+        let input = $('input[name="people"]');
+        let currentVal = parseInt(input.val()) || 0;
+        if (currentVal > 0) {
+            input.val(currentVal - 1);
+        }
+		$('#search-filter-fom').submit();
+    });
+
+	$('.cabins-plus').click(function() {
+        let input = $('input[name="cabins"]');
+        let currentVal = parseInt(input.val()) || 0;
+        input.val(currentVal + 1);
+		$('#search-filter-fom').submit();
+    });
+
+    // Minus button
+    $('.cabins-minus').click(function() {
+        let input = $('input[name="cabins"]');
+        let currentVal = parseInt(input.val()) || 0;
+        if (currentVal > 0) {
+            input.val(currentVal - 1);
+        }
+		$('#search-filter-fom').submit();
+    });
+
+	$('.berths-plus').click(function() {
+        let input = $('input[name="berths"]');
+        let currentVal = parseInt(input.val()) || 0;
+        input.val(currentVal + 1);
+		$('#search-filter-fom').submit();
+    });
+
+    // Minus button
+    $('.berths-minus').click(function() {
+        let input = $('input[name="berths"]');
+        let currentVal = parseInt(input.val()) || 0;
+        if (currentVal > 0) {
+            input.val(currentVal - 1);
+        }
+		$('#search-filter-fom').submit();
+    });
 });
 
 

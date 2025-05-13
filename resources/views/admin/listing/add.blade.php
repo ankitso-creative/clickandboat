@@ -76,6 +76,9 @@
     object-fit: cover;
     margin-bottom: 15px;
 }
+.select2.select2-container.select2-container--default.select2-container--below {
+    width: 100% !important;
+}
 </style>
 @section('css')
 <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css"/>
@@ -88,7 +91,79 @@
 @section('js')
 <script src="{{ asset('app-assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('app-assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js') }}" type="text/javascript"></script>
+<script>
+	$(document).on('change','.security-deposit',function(){
+		var value = $(this).val();
+		if(value == '0')
+		{
+			$('.deposit-type, .deposit-amount').addClass('d-none');
+		}
+		else
+		{
+			$('.deposit-type, .deposit-amount').removeClass('d-none');
+		}
+	})
+	$(document).on('change','.fuel-Include',function(){
+		var val = $(this).val();
+		if(val == '0')
+		{
+			$('.fule-price').addClass('d-none');
+		}
+		else
+		{
+			$('.fule-price').removeClass('d-none');
+		}
+	})
+	$(document).on('change','.skipper-Include',function(){
+		var val = $(this).val();
+		if(val == '0')
+		{
+			$('.skipper-price').addClass('d-none');
+		}
+		else
+		{
+			$('.skipper-price').removeClass('d-none');
+		}
+	})
+	$('.mySelect2').select2({
+		selectOnClose: true
+	});
+    $(document).ready(function () {
+        $('#cancellationSelect').select2({
+            width: '100%',
+            minimumResultsForSearch: Infinity, 
+            templateResult: function (data) {
+                if (!data.id) return data.text;
 
+                const desc = $(data.element).data('desc') || '';
+                const $item = $('<span class="select2-option-item" data-desc="' + desc + '">' + data.text + '</span>');
+                return $item;
+            }
+        });
+        const $tooltip = $('#tooltipBox');
+        $(document).on('mousemove', '.select2-results__option .select2-option-item', function (e) {
+            const desc = $(this).data('desc');
+            if (desc) {
+            $tooltip.text(desc).css({
+                top: e.pageY + 10 + 'px',
+                left: e.pageX + 10 + 'px',
+                display: 'block'
+            });
+            }
+        });
+
+        $(document).on('mouseleave', '.select2-results__option .select2-option-item', function () {
+            $tooltip.hide();
+        });
+        $('#cancellationSelect').on('select2:close', function () {
+            $tooltip.hide();
+        });
+
+         $('#cancellationSelect').on('select2:select', function () {
+            $tooltip.hide();
+        });
+    });
+</script>
 @endsection
 @section('content')
     <!-- BEGIN CONTENT --> 
@@ -134,18 +209,18 @@
 							<li>
 								<a href="{{ $listing->id ? route('admin.listings','#booking') : 'javascript:;' }}" data-toggle="tab" class="{{ $disabled.' '.$tooltips }}">Booking</a>
 							</li>
-							<li>
+							{{-- <li>
 								<a href="{{ $listing->id ? route('admin.listings','#calender') : 'javascript:;' }}" data-toggle="tab" class="{{ $disabled.' '.$tooltips }}">Calender</a>
-							</li>
+							</li> --}}
 							<li>
 								<a href="{{ $listing->id ? route('admin.listings','#equipment') : 'javascript:;' }}" data-toggle="tab" class="{{ $disabled.' '.$tooltips }}">Equipment</a>
 							</li>
 							<li>
 								<a href="{{ $listing->id ? route('admin.listings','#other') : 'javascript:;' }}" data-toggle="tab" class="{{ $disabled.' '.$tooltips }}">Other </a>
 							</li>
-							<li>
+							{{-- <li>
 								<a href="{{ $listing->id ? route('admin.listings','#discounts') : 'javascript:;' }}" data-toggle="tab" class="{{ $disabled.' '.$tooltips }}">Discounts</a>
-							</li>
+							</li> --}}
 						</ul>
 						<div class="tab-content">
 							<div class="tab-pane active" id="general">
@@ -158,37 +233,23 @@
 													<h4 class="bold ">Your Yacht </h4>
 												</div>
 												<div class="clearfix"></div>
-												<div class="col-sm-3">
+												<div class="col-sm-4">
 													<label>Boat owner:<span class="required"> * </span></label>
 													<select name="user_id" class="form-control" id="userSelect2" required>
 														{!! $users !!}
 													</select>
 													@error('type')<span class="required">{{ $message }}</span>@enderror
 												</div>
-												<div class="col-sm-3">
+												<div class="col-sm-4">
 													<label>Type:<span class="required"> * </span></label>
 													<select name="type" class="form-control" required>
-														<option @if($listing->type=='Motorboat') {{ 'selected' }} @endif; value="Motorboat">Motorboat</option>
-														<option @if($listing->type=='Sailboat') {{ 'selected' }} @endif; value="Sailboat">Sailboat</option>
-														<option @if($listing->type=='RIB') {{ 'selected' }} @endif; value="RIB">RIB</option>
-														<option @if($listing->type=='Catamaran') {{ 'selected' }} @endif; value="Catamaran">Catamaran</option>
-														<option @if($listing->type=='Houseboat') {{ 'selected' }} @endif; value="Houseboat">Houseboat</option>
-														<option @if($listing->type=='Jet ski') {{ 'selected' }} @endif; value="Jet ski">Jet ski</option>
-														<option @if($listing->type=='Gulet') {{ 'selected' }} @endif; value="Gulet">Gule </option>
-														<option @if($listing->type=='Boat without licence') {{ 'selected' }} @endif; value="Boat without licence">Boat without licence</option>
-														<option @if($listing->type=='Yacht') {{ 'selected' }} @endif; value="Yacht">Yacht</option>
+														{!! selectOption('categories','name','name',$listing->type,array('status', '1')) !!}
 													</select>
 													@error('type')<span class="required">{{ $message }}</span>@enderror
 												</div>
-												<div class="col-sm-3">
+												<div class="col-sm-4">
 													<label>Harbour:<span class="required"> * </span></label>
-													<input type="text" name="harbour" value="{{ old('harbour', $listing->harbour) }}" class="form-control" required>
-													@error('harbour')<span class="required">{{ $message }}</span>@enderror
-												</div>
-												<div class="col-sm-3">
-													<label>City:<span class="required"> * </span></label>
-													<!-- <input type="text" name="city" class="form-control" required value="{{ old('city', $listing->city) }}"> -->
-													<select name="location" class="loaction-search form-control" placeholder="Search Loaction">
+													<select name="harbour" class="form-control" placeholder="Search Loaction">
 														<option value="">All Marinas</option>
 														<option value="Marina Santa Eulalia">Marina Santa Eulalia</option>
 														<option value="Puerto Sant Antoni">Puerto Sant Antoni</option>
@@ -197,17 +258,15 @@
 														<option value="Ibiza Magna">Ibiza Magna</option>
 														<option value="Club Nautico">Club Nautico</option>
 													</select>
-													@error('city')<span class="required">{{ $message }}</span>@enderror
+													@error('harbour')<span class="required">{{ $message }}</span>@enderror
 												</div>
+												
 												<div class="clearfix"></div>
 												<div class="col-sm-4">
-													<label>Are you a professional?:<span class="required"> * </span></label>
-													<select name="professional" class="form-control" required>
-														<option  @if($listing->professional=='No') {{ 'selected' }} @endif value="No">No</option>
-														<option  @if($listing->professional=='Yes') {{ 'selected' }} @endif value="Yes">Yes</option>
-													</select>
-													@error('professional')<span class="required">{{ $message }}</span>@enderror
-												</div>	
+													<label>City:<span class="required"> * </span></label>
+													<input type="text" name="city" class="form-control" required value="{{ old('city', $listing->city) }}"> 
+													@error('city')<span class="required">{{ $message }}</span>@enderror
+												</div>
 												<div class="col-sm-4">
 													<label>Manufacturer:<span class="required"> * </span></label>
 													<input type="text" name="manufacturer" class="form-control" required value="{{ old('manufacturer', $listing->manufacturer) }}">
@@ -222,9 +281,9 @@
 												<div class="col-sm-4">
 													<label>Is your boat rented with a skipper?:<span class="required"> * </span></label>
 													<select name="skipper" class="form-control" required>
-														<option @if($listing->skipper=='with skipper') {{ 'selected' }} @endif value="with skipper">With Skipper </option>
-														<option @if($listing->skipper=='without skipper') {{ 'selected' }} @endif value="without skipper">Without Skipper</option>
-														<option @if($listing->skipper=='with Or without skipper') {{ 'selected' }} @endif value="with Or without skipper">With Or Without Skipper</option>
+														<option {{ checkselect($listing->skipper,'With Skipper') }} value="With Skipper">With Skipper</option>
+														<option {{ checkselect($listing->skipper,'Without Skipper') }} value="Without Skipper">Without Skipper</option>
+														<option {{ checkselect($listing->skipper,'With Skipper Or Without Skipper') }} value="With Skipper Or Without Skipper">Both</option>
 													</select>
 													@error('skipper')<span class="required">{{ $message }}</span>@enderror
 												</div>	
@@ -268,7 +327,7 @@
 												<div class="clearfix"></div>
 												<div class="col-sm-12">
 													<label>Description:<span class="required"> </span></label>
-													<textarea type="text" name="description" class="form-control">{{ $listing->description }}</textarea>
+													<textarea type="text" name="description" class="form-control">{{ optional($listing->description[0] ?? null)->description }}</textarea>
 												</div>
 												<div class="clearfix"></div>
 												<div class="col-sm-12">
@@ -389,45 +448,246 @@
 											<div class="form-group">
 												<div class="col-sm-12">
 													<h4 class="bold ">Price</h4>
+													<p>Select a price for low season, mid season & high season. And any options that apply. You must select one price from each season.</p>
 												</div>
+												
+												@php 
+													$lowseason = $listing->price()->where('season_price_id', optional($listing->seasonPrice[0] ?? null)->id)->first();
+													$midSeason = $listing->price()->where('season_price_id', optional($listing->seasonPrice[1] ?? null)->id)->first();
+													$highSeason = $listing->price()->where('season_price_id', optional($listing->seasonPrice[2] ?? null)->id)->first();
+													$lowSeasonMonth = json_decode(optional($listing->seasonPrice[0] ?? null)->from);
+													$midSeasonMonth = json_decode(optional($listing->seasonPrice[1] ?? null)->from);
+													$highSeasonMonth = json_decode(optional($listing->seasonPrice[2] ?? null)->from);
+												@endphp
+												
 												<div class="clear"></div>
+												<div class="pt-4 col-sm-12">
+													<h4 class="bold ">Low Season Prices</h4>
+												</div>
 												<div class="col-sm-4">
-													<label>Price:<span class="required"> * </span></label>
-													<input type="text" name="price" class="form-control" required value="{{ $listing->price->price ?? '' }}">
-													@error('price')<span class="required">{{ $message }}</span>@enderror
+													<label>Season Month:<span class="required"> * </span></label>
+													<select multiple class="form-control mySelect2" name="season_price[1][from][]">
+														<option {{ checkSelectMulti($lowSeasonMonth,'January') }} value="January">January</option> 
+														<option {{ checkSelectMulti($lowSeasonMonth,'February') }} value="February">February</option> 
+														<option {{ checkSelectMulti($lowSeasonMonth, 'March') }} value="March">March</option> 
+														<option {{ checkSelectMulti($lowSeasonMonth,'April') }} value="April">April</option>
+														<option {{ checkSelectMulti($lowSeasonMonth,'May') }} value="May">May</option> 
+														<option {{ checkSelectMulti($lowSeasonMonth,'June') }} value="June">June</option> 
+														<option {{ checkSelectMulti($lowSeasonMonth,'July') }} value="July">July</option> 
+														<option {{ checkSelectMulti($lowSeasonMonth,'August') }} value="August">August</option> 
+														<option {{ checkSelectMulti($lowSeasonMonth,'September') }} value="September">September</option> 
+														<option {{ checkSelectMulti($lowSeasonMonth,'October') }} value="October">October</option> 
+														<option {{ checkSelectMulti($lowSeasonMonth,'November') }} value="November">November</option> 
+														<option {{ checkSelectMulti($lowSeasonMonth,'December') }} value="December">December</option> 
+													</select>
+													@error('season_price[1][from][]')<span class="required">{{ $message }}</span>@enderror
 												</div>
-												<div class="clear"></div>
-												<div class="col-sm-12">
-													<h4 class="bold ">Advance Price Options</h4>
+												<div class="col-sm-4">
+													<label>Full day price:<span class="required"> * </span></label>
+													<input type="text" name="season_price[1][price]" value="{{ optional($listing->seasonPrice[0] ?? null)->price ?? '' }}" class="form-control">
+													<input type="hidden" name="season_price[1][name]" value="low_season">
 												</div>
-												<div class="col-sm-3">
+												<div class="col-sm-4">
+													<label>Overnight stay price:<span class="required"> </span></label>
+													<input type="text" name="season_price[1][over_night_price]" value="{{ $lowseason->over_night_price ?? '' }}" class="form-control">
+												</div>
+												<div class="col-sm-4">
 													<label>1 half day price:<span class="required">  </span></label>
-													<input type="text" name="one_half_day_price" value="{{ $listing->price->one_half_day ?? '' }}" class="form-control" >
+													<input type="text" name="season_price[1][one_half_day_price]" value="{{ $lowseason->one_half_day ?? '' }}" class="form-control">
 												</div>
-												<div class="col-sm-3">
+												<div class="col-sm-4">
 													<label>2 days price:<span class="required">  </span></label>
-													<input type="text" name="two_day_price" value="{{ $listing->price->two_day ?? '' }}" class="form-control" >
+													<input type="text" name="season_price[1][two_day_price]" value="{{ $lowseason->two_day ?? '' }}" class="form-control">
+												</div>
+												<div class="col-sm-4">
+													<label>3 days price:<span class="required"> </span></label>
+													<input type="text" name="season_price[1][three_day_price]" value="{{ $lowseason->three_day ?? '' }}" class="form-control">
 												</div>
 												<div class="col-sm-3">
-													<label>3 days price:<span class="required">  </span></label>
-													<input type="text" name="three_day_price" value="{{ $listing->price->three_day ?? '' }}" class="form-control" >
-												</div>
-												<div class="col-sm-3">
-													<label>4 days price:<span class="required">  </span></label>
-													<input type="text" name="four_day_price" value="{{ $listing->price->four_day ?? '' }}" class="form-control" >
+													<label>4 days price:<span class="required"></span></label>
+													<input type="text" name="season_price[1][four_day_price]" value="{{ $lowseason->four_day ?? '' }}" class="form-control">
 												</div>
 												<div class="clear"></div>
-												<div class="col-sm-4">
-													<label>5 days price:<span class="required">  </span></label>
-													<input type="text" name="five_day_price" value="{{ $listing->price->five_day ?? '' }}" class="form-control" >
+												<div class="col-sm-3">
+													<label>5 days price:<span class="required"></span></label>
+													<input type="text" name="season_price[1][five_day_price]" value="{{ $lowseason->five_day ?? '' }}"
+														class="form-control">
+												</div>
+												<div class="col-sm-3">
+													<label>6 days price:<span class="required"> </span></label>
+													<input type="text" name="season_price[1][six_day_price]" value="{{ $lowseason->six_day ?? '' }}"
+														class="form-control">
+												</div>
+												<div class="col-sm-3">
+													<label>1 week price:<span class="required"> </span></label>
+													<input type="text" name="season_price[1][one_week_price]" value="{{ $lowseason->one_week ?? '' }}"
+														class="form-control">
+												</div>
+												<div class="clearfix"></div>
+												<div class="pt-4 col-sm-12">
+													<h4 class="bold ">Mid Season Prices</h4>
 												</div>
 												<div class="col-sm-4">
-													<label>6 days price:<span class="required">  </span></label>
-													<input type="text" name="six_day_price" value="{{ $listing->price->six_day ?? '' }}" class="form-control" >
+													<label>Season Month:<span class="required">* </span></label>
+													<select multiple class="form-control mySelect2" name="season_price[2][from][]">
+														<option {{ checkSelectMulti($midSeasonMonth,'January') }} value="January">January</option> 
+														<option {{ checkSelectMulti($midSeasonMonth,'February') }} value="February">February</option> 
+														<option {{ checkSelectMulti($midSeasonMonth, 'March') }} value="March">March</option> 
+														<option {{ checkSelectMulti($midSeasonMonth,'April') }} value="April">April</option>
+														<option {{ checkSelectMulti($midSeasonMonth,'May') }} value="May">May</option> 
+														<option {{ checkSelectMulti($midSeasonMonth,'June') }} value="June">June</option> 
+														<option {{ checkSelectMulti($midSeasonMonth,'July') }} value="July">July</option> 
+														<option {{ checkSelectMulti($midSeasonMonth,'August') }} value="August">August</option> 
+														<option {{ checkSelectMulti($midSeasonMonth,'September') }} value="September">September</option> 
+														<option {{ checkSelectMulti($midSeasonMonth,'October') }} value="October">October</option> 
+														<option {{ checkSelectMulti($midSeasonMonth,'November') }} value="November">November</option> 
+														<option {{ checkSelectMulti($midSeasonMonth,'December') }} value="December">December</option> 
+													</select>
 												</div>
 												<div class="col-sm-4">
-													<label>1 week price:<span class="required">  </span></label>
-													<input type="text" name="one_week_price" value="{{ $listing->price->one_week ?? '' }}" class="form-control" >
+													<label>Full day price:<span class="required">* </span></label>
+													<input type="text" name="season_price[2][price]" value="{{ optional($listing->seasonPrice[1] ?? null)->price ?? '' }}" class="form-control">
+													<input type="hidden" name="season_price[2][name]" value="mid_season">
+												</div>
+												<div class="col-sm-4">
+													<label>Overnight stay price:<span class="required"> </span></label>
+													<input type="text" name="season_price[2][over_night_price]" value="{{ $midSeason->over_night_price ?? '' }}" class="form-control">
+												</div>
+												<div class="col-sm-4">
+													<label>1 half day price:<span class="required"> </span></label>
+													<input type="text" name="season_price[2][one_half_day_price]" value="{{ $midSeason->one_half_day ?? '' }}" class="form-control">
+												</div>
+												<div class="col-sm-4">
+													<label>2 days price:<span class="required"> </span></label>
+													<input type="text" name="season_price[2][two_day_price]" value="{{ $midSeason->two_day ?? '' }}"
+														class="form-control">
+												</div>
+												<div class="col-sm-4">
+													<label>3 days price:<span class="required"></span></label>
+													<input type="text" name="season_price[2][three_day_price]" value="{{ $midSeason->three_day ?? '' }}"
+														class="form-control">
+												</div>
+												<div class="col-sm-3">
+													<label>4 days price:<span class="required"> </span></label>
+													<input type="text" name="season_price[2][four_day_price]" value="{{ $midSeason->four_day ?? '' }}"
+														class="form-control">
+												</div>
+												<div class="clear"></div>
+												<div class="col-sm-3">
+													<label>5 days price:<span class="required"> </span></label>
+													<input type="text" name="season_price[2][five_day_price]" value="{{ $midSeason->five_day ?? '' }}"
+														class="form-control">
+												</div>
+												<div class="col-sm-3">
+													<label>6 days price:<span class="required"> </span></label>
+													<input type="text" name="season_price[2][six_day_price]" value="{{ $midSeason->six_day ?? '' }}"
+														class="form-control">
+												</div>
+												<div class="col-sm-3">
+													<label>1 week price:<span class="required"></span></label>
+													<input type="text" name="season_price[2][one_week_price]" value="{{ $midSeason->one_week ?? '' }}"
+														class="form-control">
+												</div>
+												<div class="clearfix"></div>
+												<div class="pt-4 col-sm-12">
+													<h4 class="bold ">High Season Prices</h4>
+												</div>
+												<div class="col-sm-4">
+													<label>Season Month:<span class="required">* </span></label>
+													<select multiple class="form-control mySelect2" name="season_price[3][from][]">
+														<option {{ checkSelectMulti($highSeasonMonth,'January') }} value="January">January</option> 
+														<option {{ checkSelectMulti($highSeasonMonth,'February') }} value="February">February</option> 
+														<option {{ checkSelectMulti($highSeasonMonth, 'March') }} value="March">March</option> 
+														<option {{ checkSelectMulti($highSeasonMonth,'April') }} value="April">April</option>
+														<option {{ checkSelectMulti($highSeasonMonth,'May') }} value="May">May</option> 
+														<option {{ checkSelectMulti($highSeasonMonth,'June') }} value="June">June</option> 
+														<option {{ checkSelectMulti($highSeasonMonth,'July') }} value="July">July</option> 
+														<option {{ checkSelectMulti($highSeasonMonth,'August') }} value="August">August</option> 
+														<option {{ checkSelectMulti($highSeasonMonth,'September') }} value="September">September</option> 
+														<option {{ checkSelectMulti($highSeasonMonth,'October') }} value="October">October</option> 
+														<option {{ checkSelectMulti($highSeasonMonth,'November') }} value="November">November</option> 
+														<option {{ checkSelectMulti($highSeasonMonth,'December') }} value="December">December</option> 
+													</select>
+												</div>
+												<div class="col-sm-4">
+													<label>Full day price:<span class="required">*</span></label>
+													<input type="text" name="season_price[3][price]" value="{{ optional($listing->seasonPrice[2] ?? null)->price ?? '' }}" class="form-control">
+													<input type="hidden" name="season_price[3][name]" value="high_season">
+												</div>
+												<div class="col-sm-4">
+													<label>Overnight stay price:<span class="required"></span></label>
+													<input type="text" name="season_price[3][over_night_price]" value="{{ $highSeason->over_night_price ?? '' }}" class="form-control">
+												</div>
+												<div class="col-sm-4">
+													<label>1 half day price:<span class="required"></span></label>
+													<input type="text" name="season_price[3][one_half_day_price]" value="{{ $highSeason->one_half_day ?? '' }}" class="form-control">
+												</div>
+												<div class="col-sm-4">
+													<label>2 days price:<span class="required"> </span></label>
+													<input type="text" name="season_price[3][two_day_price]" value="{{ $highSeason->two_day ?? '' }}"
+														class="form-control">
+												</div>
+												<div class="col-sm-4">
+													<label>3 days price:<span class="required"> </span></label>
+													<input type="text" name="season_price[3][three_day_price]" value="{{ $highSeason->three_day ?? '' }}"
+														class="form-control">
+												</div>
+												<div class="col-sm-3">
+													<label>4 days price:<span class="required"> </span></label>
+													<input type="text" name="season_price[3][four_day_price]" value="{{ $highSeason->four_day ?? '' }}"
+														class="form-control">
+												</div>
+												<div class="clear"></div>
+												<div class="col-sm-3">
+													<label>5 days price:<span class="required"> </span></label>
+													<input type="text" name="season_price[3][five_day_price]" value="{{ $highSeason->five_day ?? '' }}"
+														class="form-control">
+												</div>
+												<div class="col-sm-3">
+													<label>6 days price:<span class="required"> </span></label>
+													<input type="text" name="season_price[3][six_day_price]" value="{{ $highSeason->six_day ?? '' }}"
+														class="form-control">
+												</div>
+												<div class="col-sm-3">
+													<label>1 week price:<span class="required"> </span></label>
+													<input type="text" name="season_price[3][one_week_price]" value="{{ $highSeason->one_week ?? '' }}"
+														class="form-control">
+												</div>
+												<div class="clearfix"></div>
+												<div class="col-lg-12">
+													<h4>Other Price</h4>
+												</div>
+												@php  
+													$fDnone = 'd-none';
+													if($listing->fuel_include == 1):
+														$fDnone = '';
+													endif;
+													$spDnone = 'd-none';
+													if($listing->skipper_include == 1):
+														$spDnone = '';
+													endif;
+												@endphp
+												<div class="col-lg-3">
+													<label>Is Fuel Included In Your Price?</label>
+													<select name="fuel_Include" class="form-control fuel-Include">
+														<option {{ checkselect($listing->fuel_include,0) }} value="0">Yes</option>
+														<option {{ checkselect($listing->fuel_include,1) }} value="1">No</option>
+													</select>
+												</div>
+												<div class="col-lg-3 fule-price {{ $fDnone }}">
+													<label>Price Of Fuel Per Hour</label>
+													<input type="text" name="fuel_price" value="{{ $listing->fuel_price }}" class="form-control"> 
+												</div>
+												<div class="col-lg-3">
+													<label>Is Skipper Included In Price?</label>
+													<select name="skipper_include" class="form-control skipper-Include">
+														<option {{ checkselect($listing->skipper_include,0) }} value="0">Yes</option>
+														<option {{ checkselect($listing->skipper_include,1) }} value="1">No</option>
+													</select>
+												</div>
+												<div class="col-lg-3 skipper-price {{ $spDnone }}">
+													<label>Price Of Skipper</label>
+													<input type="text" name="skipper_price" value="{{ $listing->skipper_price }}" class="form-control"> 
 												</div>
 											</div>
 											<div class="text-right actions btn-set">
@@ -456,9 +716,15 @@
 												<div class="col-sm-3">
 													<label>Cancellation conditions:<span class="required"> * </span></label>
 													<select name="cancellation_conditions" class="form-control">
-														<option {{ isset($listing->booking->cancellation_conditions) && $listing->booking->cancellation_conditions == 'flexible' ? 'selected':'' }} value="flexible">Flexible</li>
-														<option {{ isset($listing->booking->cancellation_conditions) && $listing->booking->cancellation_conditions == 'moderate' ? 'selected':'' }} value="moderate">Moderate</li>
-														<option {{ isset($listing->booking->cancellation_conditions) && $listing->booking->cancellation_conditions == 'strict' ? 'selected':'' }} value="strict">Strict</li>
+														<option data-desc=" Full refund to the tenant up to 1 day prior to arrival, excluding Service Fee and MyBoatBooker Commission. The tenant will be refunded the total amount of the booking (excluding Service Fee and MyBoatBooker Commission) if they cancel the booking until the day before check-in (time indicated on the listing by the owner or agreed between the users via MyBoatBooker messaging or 9:00 am, local time if not specified). If the Tenant arrives and decides to leave before the scheduled date, the days not spent on the boat are not refunded."
+															{{ isset($listing->booking->cancellation_conditions) && $listing->booking->cancellation_conditions == 'flexible' ? 'selected':'' }}
+															value="flexible">Flexible</option>
+														<option data-desc="70% refund to the tenant up to 10 days prior to arrival, excluding Service Fee and MyBoatBooker Commission. If the tenant cancels at least 10 days before check-in (time indicated on the listing by the owner or agreed upon by the users via MyBoatBooker messaging or 9:00 am local time if not specified), they will be refunded 70% of the total amount of the booking (excluding Service Fee and MyBoatBooker Commission). If they cancel less than 10 days before check-in, they will not be refunded. If the Tenant arrives and decides to leave before the scheduled date, the days not spent on the boat are not refunded."
+															{{ isset($listing->booking->cancellation_conditions) && $listing->booking->cancellation_conditions == 'moderate' ? 'selected':'' }}
+															value="moderate">Moderate</option>
+														<option  data-desc="60% refund to the tenant up to 30 days prior to arrival, excluding Service Fee and MYBoatBooker Commission. If the Renter cancels at least 30 days before check-in (time indicated on the listing by the owner or agreed between users via MyBoatBooker messaging or 9:00 am local time if not specified), they will be refunded 60% of the total amount of the booking (excluding Service Fee and MyBoatBooker Commission). If they cancel less than 30 days before check-in, they will not be refunded. If the Tenant arrives and decides to leave before the scheduled date, the days not spent on the boat are not refunded."
+															{{ isset($listing->booking->cancellation_conditions) && $listing->booking->cancellation_conditions == 'strict' ? 'selected':'' }}
+															value="strict">Strict</option>
 													</select>
 													@error('cancellation_conditions')<span class="required">{{ $message }}</span>@enderror
 												</div>
@@ -1199,7 +1465,7 @@
 		const imageDropzone = new Dropzone("#imageDropzone", {
 			url: "{{ route('admin.uploadgallery',$listing->id) }}",  // URL to handle file upload
 			paramName: 'file',  // The name that will be used to send the file
-			maxFilesize: 2,  // Max file size in MB
+			maxFilesize: 15,  // Max file size in MB
 			acceptedFiles: 'image/*',  // Only allow image files
 			dictDefaultMessage: 'Drag & Drop or Click to Upload Image',
 			headers: {

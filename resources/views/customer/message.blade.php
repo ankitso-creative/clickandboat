@@ -168,6 +168,9 @@
 
 @section('content')
     <div class="col-lg-9 main-dashboard">
+        <div class="message-text">
+            <p>Any personal information supplied such as email addresses, phone numbers, social media & website links will be unable to be sent. Once a booking is made, personal information will be given.</p>
+        </div>
         <div class="user-list-section">
             <ul>
                 @if($usersWithLastMessage)
@@ -175,11 +178,11 @@
                         @php 
                             $user = $userMessage['user'];
                             $message = $userMessage['message'];
-                            $listing = collect($user->listing)->filter(function($listing) use ($message) {
+                            $listingM = collect($user->listing)->filter(function($listing) use ($message) {
                                 return $listing->id == $message['listing_id'];
                             })->first();
                             $aClass = '';
-                            if($slug == $listing->slug):
+                            if($slug == $listingM->slug):
                                 $aClass = 'user-active';
                             endif;
                             $image = $user->getFirstMediaUrl('profile_image');
@@ -188,7 +191,7 @@
                             endif;
                         @endphp
                         <li class="{{ $aClass }}">
-                            <a href="{{ route('customer.message', $listing->slug) }}">
+                            <a href="{{ route('customer.message', $listingM->slug) }}">
                                 <div class="user-box-list">
                                     <div class="user-box-image">
                                         <img src="{{ $image }}" />
@@ -196,10 +199,10 @@
                                     <div class="user-box-desc">
                                         <div class="user-title">
                                             <h2>{{ $user->name }}</h2>
-                                            <span>{{ $message->created_at }}</span>
+                                            <span>{{ $message->created_at->format('d-m-Y') }}</span>
                                         </div>
                                         <div class="user-boat-name">
-                                            <p>{{ $listing->type  }} {{ $listing->boat_name }}</p>
+                                            <p>{{ $listingM->type  }} {{ $listingM->boat_name }}</p>
                                         </div>
                                         <div class="user-last-message">
                                             <p>{{ $message->message }} </p>

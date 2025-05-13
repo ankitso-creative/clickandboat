@@ -111,4 +111,9 @@ class ListingController extends Controller
         $request = $request->all();
         return $this->service->changeStatus($request);
     }
+    public function changeStatusFeatured(Request $request)
+    {
+        $request = $request->all();
+        return $this->service->changeStatusFeatured($request);
+    }
 }

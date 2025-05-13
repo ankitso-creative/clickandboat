@@ -571,8 +571,9 @@ label, input, textarea, button, select {
 }
 .equipment-services-sec h6 {
     text-transform: uppercase;
-    font-size: 13px;
+    font-size: 16px;
     letter-spacing: 1px;
+    padding: 15px 0px;
 }
 .equipment-services-sec ul {
     list-style: none;
@@ -582,7 +583,7 @@ label, input, textarea, button, select {
     display: flex;
     align-items: center;
     gap: 15px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 .equipment-services-sec li  svg {
     width: 30px;
@@ -3225,6 +3226,24 @@ label, input, textarea, button, select {
     text-transform: uppercase;
     margin-top: 40px;
 }
+.next-btn,
+.publish-btn {
+    background: #f9a126;
+    border: 1px solid #f9a126;
+    color: #fff;
+    padding: 13px 60px;
+    border-radius: 15px;
+    cursor: pointer;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    margin-top: 40px;
+}
+.next-btn:hover,
+.publish-btn:hover{
+    background: none !important;
+    border: 1px solid #f9a126;
+    color: #f9a126;
+}
 .listing_sub_btn:hover{
     background: none !important;
     border: 1px solid #f9a126;
@@ -3476,7 +3495,7 @@ label, input, textarea, button, select {
 }
 .boat_listing_images_video_save_btn {
     text-align: center;
-    margin-bottom: 40px;
+    margin: 0px auto;
 }
 #uploaded-images .uploaded_img img {
     width: 100% !important;
@@ -4223,6 +4242,9 @@ label, input, textarea, button, select {
 .number_counter input {
     border: none;
     border-bottom: 1px solid #ebebeb;
+    width: 34px;
+    text-align: center;
+    padding: 0 0px;
 }
 .location_pagination .pagination li {
     display: inline-block;
@@ -4566,7 +4588,8 @@ label, input, textarea, button, select {
 }
 .destination_banner_img img {
     width: 100%;
-    height: auto;
+    height: 500px;
+    object-fit: cover;
 }
 .destination_banner_img .conatiner {
     max-width: 1015px;
@@ -4684,10 +4707,22 @@ label, input, textarea, button, select {
     color: #000;
 }
 .about_slider .slick-prev::before {
-    content: url(../img/slider-icon-pre.png) !important;
+    content: '';
+    display: block;
+    width: 50px;
+    height: 50px;
+    background-image: url(../img/previous01.png);
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 .about_slider .slick-next::before {
-    content: url(../img/slider-icon-next.png) !important;
+    content: '';
+    display: block;
+    width: 50px;
+    height: 50px;
+    background-image: url(../img/next01.png);
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 .about_slider .slick-prev,
 .about_slider .slick-next {
@@ -4698,12 +4733,12 @@ label, input, textarea, button, select {
 .about_slider .slick-prev {
     bottom: -100px;
     top: auto;
-    left: 48%;
+    left: 46%;
 }
 .about_slider .slick-next {
     bottom: -100px;
     top: auto;
-    left: 52%;
+    left: 51%;
 }
 .about_slider_box:hover {
     background: #f9a126;
@@ -5132,6 +5167,9 @@ section.about_zigzag_section {
     color: #000;
     height: 84px;
 }
+.more_resource_section  a{
+    color: #000;
+}
 .more_resource_box i {
     font-size: 60px;
 }
@@ -5540,6 +5578,7 @@ section.about_zigzag_section {
 .keyinfo-texts  p {
     margin-bottom: 0px;
     color: #000;
+    padding-top: 12px;
 }
 .ideas-grid {
     display: grid;
@@ -6519,7 +6558,7 @@ section.about_zigzag_section {
     position: fixed;
     top: 0;
     right: 0;
-    width: 350px;
+    width: 390px;
     height: 100%;
     background-color: #f8a126;
     color: #fff;
@@ -6535,9 +6574,10 @@ section.about_zigzag_section {
     position: absolute;
     top: 15px;
     left: 15px;
-    font-size: 1.5rem;
     color: #fff;
     cursor: pointer;
+    font-weight: 800;
+    font-size: 35px;
 }
 #price-list h3 {
 text-align: center;
@@ -7233,7 +7273,7 @@ font-size: 15px;
     width: 100%;
     padding: 10px;
     border-radius: 10px;
-    border: 2px solid #f9a126;
+/*    border: 2px solid #f9a126;*/
     color: #a5adb6;
     cursor: pointer;
     opacity: .8;
@@ -7242,6 +7282,7 @@ font-size: 15px;
     padding-top: 40px;
     text-align: center;
     margin: 0 !important;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
   .your_boats_type .radio-with-Icon p.radioOption-Item label::after, div.radio-with-Icon p.radioOption-Item label:after, div.radio-with-Icon p.radioOption-Item label::before, div.radio-with-Icon p.radioOption-Item label:before {
     opacity: 0 !important;
@@ -7265,8 +7306,8 @@ font-size: 15px;
     opacity: 1;
     border: none;
     color: #fff;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     color: #f9a126;
+     border: 2px solid #f9a126;
 }
   .your_boats_type .radio-with-Icon p.radioOption-Item input[type="radio"]:hover, div.radio-with-Icon p.radioOption-Item input[type="radio"]:focus, div.radio-with-Icon p.radioOption-Item input[type="radio"]:active {
     margin: 0 !important;
@@ -8016,16 +8057,90 @@ font-size: 15px;
     padding: 15px;
     padding-top: 10px;
 }
-.show-Price p {
-    padding: 5px 1px;
-}
 .show-Price span {
-    color: #f8a126;
+    color: #000;
     font-weight: 600;
 }
 .show-Price p {
-    padding: 5px 1px;
+    padding: 4px 5px;
     font-weight: 600;
+    text-align: center;
+    font-size: 12px;
+    margin: 0px 0px;
+    line-height: 22px !important;
+    border-right: 1px solid #ebebeb;
+}
+.price_row {
+    border: 1px solid #ebebeb;
+    margin-bottom: 5px;
+    border-radius: 6px;
+}
+.show-Price .col-md-4,
+.show-Price .col-md-12 {
+    padding: 0 0px;
+}
+.show-Price .col-md-6 {
+    padding: 0px 0px;
+}
+.days_box span{
+    display: block;
+}
+.see_price_list {
+    width: 96%;
+}
+.show-Price label {
+    margin: 0;
+    padding: 0 10px;
+    position: absolute;
+    left: 15px;
+    top: 8px;
+}
+.show-Price #half_day-box {
+    margin: 10px 0px;
+}
+.show-Price input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    margin: 0 10px 0 0px;
+    background-color: #ced4da;
+    border: 2px solid #ced4da;
+    border-radius: 0px;
+    display: inline-block;
+    position: relative;
+    top: 7px;
+    right: 8px;
+}
+.show-Price input[type="checkbox"]:checked::before {
+    content: "✔";
+    font-size: 18px;
+    color: #fff;
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background: #f9a126;
+    width: 24px;
+    height: 24px;
+    border-radius: 0px;
+    padding: 0 5px;
+  }
+  .show-Price #half_day-box {
+    margin-bottom: 25px;
+}
+#qshow-Price-sec .popup_price {
+    margin-right: -9px !important;
+    margin-left: -7px !important;
+}
+.show-Price #half_day-box-2 {
+    margin-bottom: 25px;
+}
+.single_boat_popup .show-Price  p {
+    border: 1px solid #ebebeb;
+    border-radius: 6px;
+    margin-bottom: 8px;
 }
 /*--------------------------------------------------------------
 # Contact Us page
@@ -8120,7 +8235,7 @@ font-size: 15px;
 .contact-details_info {
     position: relative;
     display: block;
-    margin-top: 41px;
+    margin-top: 105px;
 }
 .list-unstyled {
     padding-left: 0;
@@ -8320,11 +8435,10 @@ font-size: 15px;
     padding: 0;
     border: 0;
 }
-.banner_form_mobile button.close,
-.single_boat_popup button.close   {
+.banner_form_mobile button.close, .single_boat_popup button.close {
     position: absolute;
-    right: 15px;
-    top: 15px;
+    right: 25px;
+    top: 52px;
     font-size: 38px;
     color: #f8a126;
     opacity: 1;
@@ -8455,8 +8569,8 @@ margin-right:15px;
 .bookbutton_fix {
     position: fixed;
     bottom: 0px;
-    right: 15%;
-    width: 70%;
+    right: 11%;
+    width: 75%;
     background: #f8a126;
     display: none;
     z-index: 999;
@@ -8493,19 +8607,17 @@ margin-right:15px;
 }
 .single_boat_popup .modal-content {
     padding-bottom: 30px;
-    border-radius: 40px !important;
+    border-radius: 0px !important;
+    height: 100vh;
 }
 .single_boat_popup .modal-dialog {
-    width: 95% !important;
-    max-width: 95%;
+    width: 100% !important;
+    max-width: 100%;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) !important;
     margin: 0px !important;
 }
 .price_list_accordian {
-    padding: 0 0 0 15px;
+    padding: 0 15px 0 15px;
 }
 .price_list_accordian .card-header {
     padding: 0 0px;
@@ -8547,7 +8659,7 @@ margin-right:15px;
     padding-bottom: 5px;
 }
 .price_list_accordian .card-body span {
-    color: #f49e25;
+    color: #000;
     font-weight: 600;
     font-size: 14px;
 }
@@ -8564,6 +8676,61 @@ margin-right:15px;
     margin-top: 10px;
     padding: 0 10px;
 }
+.message-text p {
+    text-align: center;
+    padding: 10px 0 7px 0px;
+    background: #323131;
+    color: #fff;
+    font-size: 12px;
+    line-height: 18px !important;
+}
+.l-main-content .form-group{
+    position: relative;
+}
+#togglePassword {
+    cursor: pointer;
+    color: #000;
+    position: absolute;
+    right: 14px;
+    top: 34%;
+}
+.img_commet_text {
+    position: absolute;
+    color: #fff;
+    top: 31%;
+    text-align: center;
+    padding: 0 20px;
+    line-height: 23px !important;
+    text-shadow: #000000 1px 0 10px;
+}
+.inner_blog_text_section ol {
+    margin-left: 15px;
+    margin-top: 15px;
+}
+.upload #removeProfile {
+    background: #f9a126;
+    padding: 13px 24px;
+    border-radius: 15px;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 20px;
+    text-transform: uppercase;
+    border: 1px solid #f9a126;
+    font-size: 15px;
+    font-family: 'Montserrat' !important;
+}
+.upload #removeProfile:hover {
+    background: none;
+    color: #f9a126;
+    border: 1px solid #f9a126;
+}
+.danger {
+    color: red;
+}
+.contact_form_section .required {
+    color: red;
+}
+
 /*--------------------------------------------------------------
 # Media Query
 --------------------------------------------------------------*/
@@ -8763,6 +8930,8 @@ margin-right:15px;
     }
     .about_text_block .about_small_text {
         padding-top: 5px;
+        font-size: 20px;
+        line-height: 30px !important;
     }
     .about_text_block h3 {
         font-size: 30px;
@@ -8999,8 +9168,12 @@ margin-right:15px;
         display: none;
     }
     .boat-title h1 {
-        font-size: 30px;
+        font-size: 25px;
         padding-top: 10px;
+        text-align: left;
+    }
+    .boat-title .row .col-md-12 {
+        text-align: left !important;
     }
     .rating-menus li {
         padding: 0 5px 0 0;
@@ -9010,12 +9183,16 @@ margin-right:15px;
         margin-bottom: 0px;
     }
     .boat-content-sec .col-md-8 {
-        padding-left: 15px;
-        padding-right: 15px;
+        padding-left: 0px;
+        padding-right: 0px;
     }
-    .share-menu {   
-        justify-content: center;
+    .share-menu {
+        justify-content: left;
         margin-top: 10px;
+        margin-left: -30px;
+    }
+    .breadcrumb-item.active {
+        text-align: left;
     }
     .features-menus {
         display: block;
@@ -9059,12 +9236,13 @@ margin-right:15px;
         padding-top: 90px;
     }
     .boat-content-sec h3 {
-        text-align: center;
+        text-align: left;
         padding-top: 20px;
+        font-size: 25px;
     }
     .boat-description-sec {
         padding-top: 30px;
-        text-align: center;
+        text-align: left;
         font-size: 25px;
     }
     .keyinfo-sec {
@@ -9289,18 +9467,22 @@ margin-right:15px;
     .datepicker-mobile {
         display: block;
     }
-    .sidebar_form input {
-        margin-bottom: 25px;
-    }
     .idea_sec_text h3 {
         text-align: left;
         padding-top: 0;
     }
     #experience input[type="checkbox"], .setting_section input[type="checkbox"] {
         margin: 0 0px 0 0px;
+        width: 30px;
+        height: 30px;
+    }
+    #experience input[type="checkbox"]:checked::before, .setting_section input[type="checkbox"]:checked::before {
+        width: 30px;
+        height: 30px;
+        padding: 3px 7px;
     }
     #experience label, .setting_section label {
-        font-size: 13px;
+        font-size: 15px;
     }
     .natutical_message_box textarea {
         height: 200px;
@@ -9317,9 +9499,10 @@ margin-right:15px;
     }
     #map {
         width: 100%;
+        z-index: -1;
     }
     .location-sec p {
-        text-align: center;
+        text-align: left;
     }
     .city_box h2 {
     font-size: 25px;
@@ -9624,7 +9807,7 @@ margin-right:15px;
     display: block;
     position: absolute;
     width: 100%;
-    bottom: 7%;
+    bottom: 15%;
 }
 .modal-dialog .banner_form {
     display: block;
@@ -9696,6 +9879,60 @@ margin-right:15px;
 .row.mob_filter_one {
     padding-top: 20px;
 }
+.user-list-section {
+    width: 100%;
+    height: auto;
+}
+.user-list-section ul li a .user-box-list {
+    padding: 0px 15px;
+}
+.message-text p {
+    padding: 10px 20px 7px 20px;
+}
+.modal.right .modal-dialog {
+    width: 100%;
+    max-width: 100%;
+}
+.location-modals i.fa-solid.fa-xmark {
+    font-weight: 800;
+    top: 15px;
+    font-size: 38px;
+    color: #f8a126;
+    opacity: 1;
+    z-index: 999;
+}
+.single_boat_popup .modal-header {
+    border-bottom: 0px;
+}
+.sidebar_form .col-md-6 {
+    width: 50%;
+}
+.specification-menus li {
+    font-size: 12px;
+}
+.location-modals {
+    z-index: 9999;
+}
+.features-menu {
+    padding-bottom: 30px;
+}
+.setting_section label {
+    font-size: 13px;
+    position: relative;
+    top: -10px;
+}
+.flatpickr-calendar.rangeMode.animate.inline.arrowTop {
+    width: 100%;
+}
+.flatpickr-innerContainer {
+    display: contents !important;
+}
+#mhalf_day-box {
+    margin-bottom: 20px;
+}
+.offcanvas-right {
+    width: 100%;
+}
 }
 @media (min-width: 767px) and (max-width: 1024px) {
     .header-slider {
@@ -9706,7 +9943,7 @@ margin-right:15px;
         position: fixed;
         top: 0;
         width: 100%;
-        z-index: 999;
+        z-index: 9999;
     }
     .banner_text h1 {
         font-size: 30px;

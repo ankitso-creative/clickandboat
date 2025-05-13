@@ -51,6 +51,7 @@ Route::middleware('Setlang')->group(function(){
         Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
         Route::resource('users', UsersController::class);
         Route::post('user_change_status', [UsersController::class, 'changeStatus'])->name('userchange');
+        Route::post('user_change_super', [UsersController::class, 'changeSuper'])->name('usersuper');
         Route::get('boatowner', [UsersController::class, 'index'])->name('boatowner');
         Route::get('customer', [UsersController::class, 'customers'])->name('customer');
         Route::get('listing',[ListingController::class, 'index'])->name('listing');
@@ -61,6 +62,7 @@ Route::middleware('Setlang')->group(function(){
         Route::post('listing/upload/{id?}', [ListingController::class, 'uploadImage'])->name('uploadgallery');
         Route::delete('listing/remove', [ListingController::class, 'removeImage'])->name('removegallery'); 
         Route::post('listing/change_status', [ListingController::class, 'changeStatus'])->name('listing.change-status');
+        Route::post('listing/changestatusfeatured', [ListingController::class, 'changeStatusFeatured'])->name('listing.change-status-featured');
         Route::resource('bookings', AdminBookingController::class);  
         Route::resource('blog',BlogController::class);
         Route::post('caterogy_status', [CategoryController::class, 'changeStatus'])->name('caterogystatus');
@@ -95,6 +97,7 @@ Route::middleware('Setlang')->group(function(){
         Route::put('payment-update', [BoatOwnerProfileController::class, 'paymentUpdate'])->name('payment.update');
         Route::put('account-delete', [BoatOwnerProfileController::class, 'accountDelete'])->name('account.delete');
         Route::post('/upload-image', [BoatOwnerProfileController::class, 'uploadImage'])->name('profile.image');
+        Route::post('/removeprofileimage', [BoatOwnerProfileController::class, 'removeProfileImage'])->name('profile.removeProfileImage');
         Route::get('listing',[BoatOwnerListingController::class, 'index'])->name('listing');
         Route::get('listing-add',[BoatOwnerListingController::class, 'create'])->name('listing-add');
         Route::get('listing-preview/{id}',[BoatOwnerListingController::class, 'preview'])->name('preview');
@@ -107,6 +110,7 @@ Route::middleware('Setlang')->group(function(){
         Route::post('listing/upload/{id}', [BoatOwnerListingController::class, 'uploadImage'])->name('uploadgallery');
         Route::post('listing/addgalleryImage', [BoatOwnerListingController::class, 'addgalleryImage'])->name('addgallery');
         Route::post('listing/uploadPlanImage/{id}', [BoatOwnerListingController::class, 'uploadPlanImage'])->name('uploadplanimage');
+        Route::post('listing/listingPublish/{id}', [BoatOwnerListingController::class, 'listingPublish'])->name('listingpublish');
         Route::delete('listing/remove', [BoatOwnerListingController::class, 'removeImage'])->name('removegallery'); 
         Route::get('customers', [CustomerController::class, 'index'])->name('customers'); 
         Route::resource('booking', BoatOwnerBookingController::class);

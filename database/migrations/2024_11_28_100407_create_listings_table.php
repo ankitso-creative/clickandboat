@@ -43,6 +43,7 @@ return new class extends Migration
             $table->string('slug');
             $table->string('currency')->default('USD');
             $table->integer('status')->default('0');
+            $table->tinyInteger('featured')->default('0');
             $table->timestamps();
         });
     }

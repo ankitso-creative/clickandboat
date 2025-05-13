@@ -35,5 +35,9 @@ class ProfileService{
     {
         return $this->repository->uploadImage($request);
     }
+    public function removeProfileImage($request)
+    {
+        return $this->repository->removeProfileImage($request);
+    }
 }
 ?>

@@ -2,16 +2,19 @@
     <title>Motorboat Quicksilver 675 Open 150hp</title>
     @endsection @section('css')
     <style>
-    .equip-menus li img, .equipment-services-sec li img {
-    width: 30px;
-    height: 30px;
-    margin-right: 10px;
-    filter: brightness(0) saturate(100%) invert(68%) sepia(83%) saturate(1245%) hue-rotate(341deg) brightness(100%) contrast(95%);
-}
+        .equip-menus li img, .equipment-services-sec li img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+            filter: brightness(0) saturate(100%) invert(68%) sepia(83%) saturate(1245%) hue-rotate(341deg) brightness(100%) contrast(95%);
+        }
     </style>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
     <link href="{{ asset('app-assets/global/plugins/bootstrap-sweetalert/sweetalert.css') }}" rel="stylesheet" type="text/css" />
-    @endsection @section('js')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
+    @endsection 
+    @section('js')
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAli6rCJivgzTbWznnkqFtT_btPww6WBYs&callback=initMap" async defer></script>
     <script src="{{ asset('app-assets/global/plugins/bootstrap-sweetalert/sweetalert.min.js') }}" type="text/javascript"></script>
@@ -112,11 +115,15 @@
                                 {
                                     $('#half_day-box').removeClass('d-none');
                                     $('#half_day-box-2').removeClass('d-none');
+                                    $('#half_day-price').val(response.oneHalfDayPrice);
+                                    $('#mhalf_day-price').val(response.oneHalfDayPrice);
                                 }
                                 else
                                 {
                                     $('#half_day-box').addClass('d-none');
                                     $('#half_day-box-2').addClass('d-none');
+                                    $('#half_day-price').val(response.oneHalfDayPrice);
+                                    $('#mhalf_day-price').val(response.oneHalfDayPrice);
                                 }
                             } else {
                                 $('#price_display').html('<p>Price not available.</p>');
@@ -164,11 +171,15 @@
                                 {
                                     $('#half_day-box').removeClass('d-none');
                                     $('#half_day-box-2').removeClass('d-none');
+                                    $('#half_day-price').val(response.oneHalfDayPrice);
+                                    $('#mhalf_day-price').val(response.oneHalfDayPrice);
                                 }
                                 else
                                 {
                                     $('#half_day-box').addClass('d-none');
                                     $('#half_day-box-2').addClass('d-none');
+                                    $('#half_day-price').val(response.oneHalfDayPrice);
+                                    $('#mhalf_day-price').val(response.oneHalfDayPrice);
                                 }
                             } else {
                                 $('#price_display').html('<p>Price not available.</p>');
@@ -183,7 +194,7 @@
         });
         $(document).ready(function() 
         {
-            flatpickr("#checkin-date, #checkout-date", {
+            flatpickr("#checkin-date, #checkout-date,#mcheckin-date, #mcheckout-date", {
                 inline: false,
                 mode: "range",
                 dateFormat: "d-m-Y", 
@@ -196,6 +207,10 @@
                         const checkOut = formatDate(selectedDates[1]);
                         document.getElementById('checkin-date').value = checkIn;
                         document.getElementById('checkout-date').value = checkOut;
+                        @if($isMobile)
+                        document.getElementById('mcheckin-date').value = checkIn;
+                        document.getElementById('mcheckout-date').value = checkOut;
+                        @endif
                         $.ajax({
                             url: '{{ route('getbookingprice') }}',
                             type: 'GET',
@@ -209,8 +224,8 @@
                                     $('#show-Price-sec,#qshow-Price-sec').removeClass('d-none');
                                     $('#days-val, #qdays-val').val(response.days);
                                     $('#total-days, #qtotal-days').html(response.days);
-                                    $('#charter-pice').html(response.price);
-                                    $('#charter-fee').html(response.servive_fee);
+                                    $('#charter-pice,#mcharter-pice').html(response.price);
+                                    $('#charter-fee,#mcharter-fee').html(response.servive_fee);
                                     $('#charter-total,#qcharter-total').html(response.totalAmount);
                                     $('#qcheckin-date').val(checkIn);
                                     $('#qcheckout-date').val(checkOut);
@@ -218,14 +233,18 @@
                                     if(response.days==1 && response.priceExist=='yes' )
                                     {
                                         $('#half_day-box').removeClass('d-none');
+                                        $('#mhalf_day-box').removeClass('d-none');
                                         $('#half_day-box-2').removeClass('d-none');
                                         $('#half_day-price').val(response.oneHalfDayPrice);
+                                        $('#mhalf_day-price').val(response.oneHalfDayPrice);
                                     }
                                     else
                                     {
                                         $('#half_day-box').addClass('d-none');
+                                        $('#mhalf_day-box').addClass('d-none');
                                         $('#half_day-box-2').addClass('d-none');
                                         $('#half_day-price').val(response.oneHalfDayPrice);
+                                        $('#mhalf_day-price').val(response.oneHalfDayPrice);
                                     }
                                 } else {
                                     $('#price_display').html('<p>Price not available.</p>');
@@ -384,10 +403,10 @@
                 if ($(this).is(':checked')) 
                 {
                     $('#half_day,#half_day-2').prop('checked', true)
-                    var newPrice = $('#half_day-price,#half_day-price-2').val();
+                    var newPrice = $('#half_day-price,#half_day-price-2,#mhalf_day-price').val();
                     $('#days-val, #qdays-val').val('half_day');
                     $('#total-days, #qtotal-days').html('Half Day');
-                    $('#charter-pice').html(newPrice);
+                    $('#charter-pice,#mcharter-pice').html(newPrice);
                     $('#charter-fee').html('0');
                     $('#charter-total,#qcharter-total').html(newPrice);
                 } 
@@ -399,7 +418,12 @@
                     $('#checkout-date,#qcheckout-date').val('');
                 }
             })
+            $(document).on('click','#m-popup-form',function()
+            {
+                $('#bookbutton').modal('hide');
+            })
         });
+        Fancybox.bind("[data-fancybox='gallery']");
     </script>
 @endsection
 @section('content')
@@ -418,13 +442,13 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h1>Yacht charter in {{ $listing->city }} · {{ $listing->model }} — {{ $listing->manufacturer }}
-                            Open (2023)</h1>
+                        <h1>{{ ucfirst($listing->type) }} in {{ $listing->city }} - {{ $listing->manufacturer }} {{ $listing->model }}</h1>
                     </div>
                 </div>
                 <div class="row">
                     <div class="text-center col-md-12">
                         <ul class="rating-menus">
+                            @if($listing->skipper)
                             <li>
                                 <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" clip-rule="evenodd"
@@ -433,6 +457,7 @@
                                 </svg>
                                 {{ $listing->skipper }}
                             </li>
+                            @endif
                             <li>
                                 <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                                     <mask id="mask0_1028_12450" style="mask-type: alpha;" maskUnits="userSpaceOnUse" x="0"
@@ -447,14 +472,16 @@
                                 </svg>
                                 Professional
                             </li>
-                            <!-- <li>
+                            @if($listing->harbour)
+                            <li>
                                 <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" clip-rule="evenodd"
                                         d="M8.02606 3.57293L8.02601 3.57493L8.02454 3.57661L8.02285 3.57809L8.02085 3.57814L8.01885 3.57809L8.01717 3.57661L8.01569 3.57493L8.01565 3.57293L8.01569 3.57093L8.01717 3.56924L8.01885 3.56777L8.02085 3.56772L8.02285 3.56777L8.02454 3.56924L8.02601 3.57093L8.02606 3.57293ZM9.00002 5.32322C9.61228 4.97997 10.0261 4.32477 10.0261 3.57293C10.0261 2.46548 9.1283 1.56772 8.02085 1.56772C6.91341 1.56772 6.01565 2.46548 6.01565 3.57293C6.01565 4.30759 6.41073 4.94997 7.00002 5.2992V5.71355L5.35419 5.71355V7.71355H7.00002L7.00002 12.6487C6.77579 12.5955 6.55563 12.5244 6.34173 12.4358C5.81598 12.218 5.33828 11.8988 4.93589 11.4964C4.5335 11.094 4.21431 10.6163 3.99654 10.0906C3.77877 9.56485 3.66669 9.00136 3.66669 8.4323H1.66669C1.66669 9.26401 1.8305 10.0876 2.14878 10.856C2.46706 11.6244 2.93357 12.3225 3.52168 12.9106C4.10978 13.4987 4.80796 13.9653 5.57636 14.2835C6.34475 14.6018 7.16831 14.7656 8.00002 14.7656C8.83172 14.7656 9.65529 14.6018 10.4237 14.2835C11.1921 13.9653 11.8903 13.4988 12.4784 12.9106C13.0665 12.3225 13.533 11.6244 13.8513 10.856C14.1695 10.0876 14.3334 9.26401 14.3334 8.4323H12.3334C12.3334 9.00136 12.2213 9.56485 12.0035 10.0906C11.7857 10.6163 11.4665 11.094 11.0641 11.4964C10.6618 11.8988 10.1841 12.218 9.65831 12.4358C9.44441 12.5244 9.22426 12.5955 9.00002 12.6487L9.00002 7.71355H10.6875V5.71355L9.00002 5.71355V5.32322Z">
                                     </path>
                                 </svg>
-                                Zudika
-                            </li> -->
+                                {{ $listing->harbour }}
+                            </li>
+                            @endif
                         </ul>
                     </div>
                     <div class="col-md-12">
@@ -495,39 +522,75 @@
         <section class="boat-banner-sec">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6">
+                    @if($isMobile)
                         @php
-                            $gallery_images = $listing->getMedia('listing_gallery');
-                            $image = $listing->getFirstMediaUrl('cover_images');
-                            if (!$image) {
-                                $image = 'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png';
+                            $galleryImages = $listing->getMedia('listing_gallery');
+                            $imageUrls = $galleryImages->map(fn($media) => $media->getUrl())->toArray();
+
+                            $imageCoverUrl = $listing->getFirstMediaUrl('cover_images');
+                            $imageCover = $imageCoverUrl ? [$imageCoverUrl] : [];
+
+                            $allImageUrls = array_filter(array_merge($imageCover, $imageUrls));
+
+                            if (empty($allImageUrls)) {
+                                $allImageUrls = ['https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'];
                             }
-                            $profileImage = $listing->user->getFirstMediaUrl('profile_image');
                         @endphp
-                        <div class="banner-first-image">
-                            <a href="#"><img src="{{ $image }}" alt="Image" class="img-fluid" /></a>
+                        <div class="col-md-12 mobile-image-slides">
+                            @foreach($allImageUrls as $allImageUrl)
+                                <div class="mobile-image-slide">
+                                    <a data-fancybox="gallery" href="{{ $allImageUrl }}">
+                                        <img src="{{ $allImageUrl }}" alt="Image" class="img-fluid" />
+                                    </a>
+                                </div>
+                            @endforeach
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="banner-grid-image">
-                            @if (count($gallery_images))
-                                @foreach ($gallery_images as $gallery_image)
-                                    @if ($loop->iteration >= 1 && $loop->iteration <= 4)
-                                        <a href="#"><img src="{{ $gallery_image->getUrl() }}" alt="Image" class="img-fluid" /></a>
-                                    @endif
-                                @endforeach
-                            @else
-                                <a href="#"><img src="{{ asset('app-assets/site_assets/img/feature-img-3.jpg') }}" alt="Image" class="img-fluid" /></a>
-                                <a href="#"><img src="{{ asset('app-assets/site_assets/img/feature-img-3.jpg') }}" alt="Image" class="img-fluid" /></a>
-                                <a href="#"><img src="{{ asset('app-assets/site_assets/img/feature-img-3.jpg') }}" alt="Image" class="img-fluid" /></a>
-                                <a href="#"><img src="{{ asset('app-assets/site_assets/img/feature-img-3.jpg') }}" alt="Image" class="img-fluid" /></a>
-                            @endif {{--
-                        <div class="view-more-photos">
-                            <a href="#"> View the photos (+10)</a>
+                    @else
+                        <div class="col-md-6">
+                            @php
+                                $gallery_images = $listing->getMedia('listing_gallery');
+                                $image = $listing->getFirstMediaUrl('cover_images');
+                                if (!$image) {
+                                    if(count($gallery_images))
+                                    {
+                                        $image = $gallery_images['0']->getUrl();
+                                        unset($gallery_images[0]);
+                                    }
+                                    else
+                                    {
+                                        $image = 'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png';
+                                    }
+                                }
+                                $profileImage = $listing->user->getFirstMediaUrl('profile_image');
+                            @endphp
+                            <div class="banner-first-image">
+                                <a data-fancybox="gallery" href="{{ $image }}"><img src="{{ $image }}" alt="Image" class="img-fluid" /></a>
+                            </div>
                         </div>
-                        --}}
+                        <div class="col-md-6">
+                            <div class="banner-grid-image">
+                                @if(count($gallery_images))
+                                    @foreach ($gallery_images as $gallery_image)
+                                        @if ($loop->iteration >= 1 && $loop->iteration <= 4)
+                                            <a data-fancybox="gallery" href="{{ $gallery_image->getUrl() }}">
+                                                <img src="{{ $gallery_image->getUrl() }}" alt="Image" class="img-fluid" />
+                                            </a>
+                                        @endif
+                                    @endforeach
+                                @else
+                                    <a href="#"><img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" alt="Image" class="img-fluid" /></a>
+                                    <a href="#"><img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" alt="Image" class="img-fluid" /></a>
+                                    <a href="#"><img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" alt="Image" class="img-fluid" /></a>
+                                    <a href="#"><img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" alt="Image" class="img-fluid" /></a>
+                                @endif 
+                                {{--
+                                    <div class="view-more-photos">
+                                        <a href="#"> View the photos (+10)</a>
+                                    </div>
+                                --}}
+                            </div>
                         </div>
-                    </div>
+                    @endif
                 </div>
             </div>
         </section>
@@ -540,9 +603,9 @@
                                 <div class="specification-content">
                                     <h3>{{ $listing->type }} owned by {{ $listing->user->name }}</h3>
                                     <ul class="specification-menus">
-                                        <li>{{ $listing->capacity }} people</li>
-                                        <li>{{ optional($listing->otherListingSetting)->horsepower ?? '' }} horsepower</li>
+                                        <li>{{ $listing->onboard_capacity }} people</li>
                                         <li>{{ $listing->length }} meters</li>
+                                        <li>{{ $listing->construction_year }} </li>
                                     </ul>
                                 </div>
                             </div>
@@ -571,29 +634,22 @@
                                     <p>{{ $skipperText }}</p>
                                 </div>
                             </div>
-                            <div class="keyinfo-sec">
-                                <div class="keyinfo-icon">
-                                    <!-- <svg width="32" height="32" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            fill-rule="evenodd"
-                                            clip-rule="evenodd"
-                                            d="M15 42L14.8834 41.9933C14.386 41.9355 14 41.5128 14 41C14 40.4872 14.386 40.0645 14.8834 40.0067L15 40H23L23.0002 31.9534C18.814 31.5609 15.3391 28.7326 14.3101 24.9778C8.76137 24.627 6 19.9758 6 12C6 10.9456 6.81588 10.0818 7.85074 10.0055L8 10H14V8C14 6.94564 14.8159 6.08183 15.8507 6.00549L16 6H32C33.0544 6 33.9182 6.81588 33.9945 7.85074L34 8V10H40C41.1046 10 42 10.8954 42 12C42 19.9758 39.2386 24.627 33.6911 24.9785C32.6609 28.7323 29.1866 31.5605 25.0008 31.9533L25 40H33C33.5523 40 34 40.4477 34 41C34 41.5523 33.5523 42 33 42H15ZM32 8H16V22.6667C16 26.7 19.6 30 24 30C28.3154 30 31.8612 26.8257 31.996 22.8985L32 22.6667V8ZM14 12H8L8.00215 12.3826C8.07654 18.9285 10.0771 22.4477 14.0038 22.94L14.004 22.9336L14 22.6667V12ZM40 12H34V22.6667C34 22.758 33.9986 22.849 33.9958 22.9396C37.9229 22.4477 39.9235 18.9285 39.9978 12.3826L40 12Z"
-                                        ></path>
-                                    </svg> -->
-                                    <i class="fa-regular fa-star"></i>
+                            @if($listing->user->super == '1')
+                                <div class="keyinfo-sec">
+                                    <div class="keyinfo-icon">
+                                        <i class="fa-regular fa-star"></i>
+                                    </div>
+                                    <div class="keyinfo-texts">
+                                        <h4>Super owner</h4>
+                                        <p>As a dedicated boat renter with great reviews, Mario ensures that they provide high
+                                            quality services.</p>
+                                    </div>
                                 </div>
-                                <div class="keyinfo-texts">
-                                    <h4>Super owner</h4>
-                                    <p>As a dedicated boat renter with great reviews, Mario ensures that they provide high
-                                        quality services.</p>
-                                </div>
-                            </div>
+                            @endif
                         </div>
                         <div class="boat-card-content-sec">
                             <div class="boat-description-sec">
                                 <h3>Description of {{ $listing->user->name }}'s {{ $listing->type }}</h3>
-                                <p class="boat_des_heading">{{ $listing->type }} {{ $listing->boat_name }} Open 705
-                                    {{ optional($listing->otherListingSetting)->horsepower }}hp</p>
                                 <h6>{{ $listing->title }}</h6>
                                 <p>
                                     {{ optional($listing->description[0] ?? null)->description }}
@@ -623,7 +679,7 @@
                         @endif
                         <div class="boat-card-content-sec">
                             <div class="equipment-sec">
-                                <h3>Services provided by Mario</h3>
+                                <h3>Services provided</h3>
                                 <ul class="equip-menus">
                                     <li>
                                         <svg width="28" height="28" viewBox="0 0 48 48"
@@ -635,9 +691,9 @@
                                         Skipper
                                     </li>
                                 </ul>
-                                <div class="equip-button-sec">
+                                {{-- <div class="equip-button-sec">
                                     <a href="#" class="equip_btn" data-toggle="modal" data-target="#services-modal">View all services</a>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                         <div class="boat-card-content-sec">
@@ -651,15 +707,28 @@
                                     <div id="inline-datepicker"></div>
                                 </div>
                                 <div class="show-Price d-none" id="show-Price-sec-2">
-                                    <p>Days: <span id="total-days-2"></span></p>
-                                    <p>Charter Price: {{ $symble }}<span id="charter-pice-2"></span></p>
-                                    <p>Service Fee: {{ $symble }}<span id="charter-fee-2"></span></p>
-                                    <p>Total: {{ $symble }}<span id="charter-total-2"></span></p>
+                                    <div class="row see_price_list price_row">
+                                        <div class="col-md-4">
+                                           <p>Days: <span id="total-days-2"></span></p>
+                                        </div>
+                                        <div class="col-md-4">
+                                           <p>Charter Price: {{ $symble }}<span id="charter-pice-2"></span></p>
+                                        </div>
+                                        <div class="col-md-4">
+                                           <p>Service Fee: {{ $symble }}<span id="charter-fee-2"></span></p>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="row see_price_list price_row">
+                                    <div class="col-md-12">
+                                           <p>Total: {{ $symble }}<span id="charter-total-2"></span></p>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="datepicker-mobile">
                                     <div id="inline-datepicker-mobile"></div>
                                 </div>
-                                <a href="#" class="delete_dates">Delete the dates</a>
+                                {{-- <a href="#" class="delete_dates">Delete the dates</a> --}}
                             </div>
                         </div>
                         <div class="boat-card-content-sec">
@@ -683,10 +752,12 @@
                                     <p>Joined in {{ $join_date }} {!! $textP !!}</p>
                                 </div>
                             </div>
-                            <ul class="offered_rating">
-                                <li><i class="fa-solid fa-star"></i> 4.8 (31 reviews)</li>
-                                <li><i class="fa-solid fa-square-check"></i> Verified profile</li>
-                            </ul>
+                            @if($listing->user->super == '1')
+                                <ul class="offered_rating">
+                                    <li><i class="fa-solid fa-star"></i> 4.8 (31 reviews)</li>
+                                    <li><i class="fa-solid fa-square-check"></i> Verified profile</li>
+                                </ul>
+                            @endif
                             <p class="about_heading">About me</p>
                             <p>{{ optional($listing->user->exprience)->description }}</p>
                             <a href="#" class="read_more-btn">Read More</a>
@@ -725,8 +796,8 @@
                                         Manufacturer: <strong><a href="#">{{ $listing->manufacturer }}</a></strong>
                                     </li>
                                     <li>Model: <strong>{{ $listing->model }} Open</strong></li>
-                                    <li>Engine power: <strong>150hp</strong></li>
-                                    <li>Length: <strong>{{ $listing->length }} </strong></li>
+                                    <li>Engine power: <strong>{{ optional($listing->otherListingSetting)->horsepower ?? '' }}hp</strong></li>
+                                    <li>Length: <strong>{{ $listing->length }}m </strong></li>
                                     <li>Year: <strong>{{ $listing->construction_year }}</strong></li>
                                     <li>Onboard capacity: <strong>{{ $listing->onboard_capacity }} people</strong></li>
                                     <li>Number of cabins: <strong>{{ $listing->cabins }}</strong></li>
@@ -753,14 +824,12 @@
                                 <div class="row sidebar_form">
                                     <div class="p-0 col-md-6">
                                         <div class="form-group">
-                                            <input type="date" id="checkin-date" name="checkin_date"
-                                                class="form-control" placeholder="Check-in" />
+                                            <input type="date" id="checkin-date" name="checkin_date" class="form-control" placeholder="Check-in" />
                                         </div>
                                     </div>
                                     <div class="p-0 col-md-6">
                                         <div class="form-group">
-                                            <input type="date" id="checkout-date" class="form-control"
-                                                name="checkout_date" placeholder="Check-out" />
+                                            <input type="date" id="checkout-date" class="form-control" name="checkout_date" placeholder="Check-out" />
                                             <input type="hidden" id="days-val" value="" name="days_val" />
                                         </div>
                                     </div>
@@ -772,10 +841,23 @@
                                         <input type="hidden" id="half_day-price" value="" >
                                         <label for="half_day"> Half Day</label>
                                     </div>
-                                    <p>Days: <span id="total-days"></span></p>
-                                    <p>Charter Price: {{ $symble }}<span id="charter-pice"></span></p>
-                                    <p>Service Fee: {{ $symble }}<span id="charter-fee"></span></p>
-                                    <p>Total: {{ $symble }}<span id="charter-total"></span></p>
+                                    <div class="row price_row">
+                                        <div class="col-md-4 days_box">
+                                        <p>Days: <span id="total-days"></span></p>
+                                        </div>
+                                        <div class="col-md-4">
+                                        <p>Charter Price:<br/> {{ $symble }}<span id="charter-pice"></span></p>
+                                        </div>
+                                        <div class="col-md-4">
+                                        <p>Service Fee:<br/> {{ $symble }}<span id="charter-fee"></span></p>
+                                        </div>
+                                    </div>
+                                    <div class="row price_row">
+                                    <div class="col-md-12">
+                                        <p>Total:<br/> {{ $symble }}<span id="charter-total"></span></p>
+                                        </div>
+                                    </div>
+    
                                 </div>
                                 <div class="d-flex flex-column">
                                     @if(Auth::check())
@@ -796,8 +878,7 @@
                                             Book
                                         </a>
                                     @endif
-                                    {{-- <span class="mt-1 mb-1 text-center d-block font-weight-bold">or</span>
-                                    <button class="btn book_btn">Book</button> --}}
+                                   
                                     <div class="pt-3 text-center form_text">
                                         <p>You will only be charged if the request is accepted</p>
                                     </div>
@@ -871,91 +952,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="pt-5 similar_boat_section oat-card-content-secs">
-                        <div class="text-center">
-                            <h3>Check availability of similar boats</h3>
-                        </div>
-                        <div class="pt-4 row">
-                            <div class="col-sm-12 col-md-6 col-lg-4">
-                                <div class="location_inner_box">
-                                    <img src="{{ asset('app-assets/site_assets/img/feature-img-2.jpg') }}" />
-                                    <div class="wishlist_icon">
-                                        <i class="fa-regular fa-heart"></i>
-                                    </div>
-                                    <div class="location_inner_main_box">
-                                        <div class="location_inner_text">
-                                            <h3>test</h3>
-                                            <p class="location_pera">sport 30 (2023)</p>
-                                            <p class="people_pera">people · 30 hp · 5 m</p>
-                                            <h5 class="location_price">From <span class="price_style">€27</span> / day</h5>
-                                            <div class="location_facility">
-                                                <ul>
-                                                    <li>With Skipper</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="location_review_box">
-                                            <span>Flexible cancellation</span>
-                                            <span><i class="fa-solid fa-star"></i> NEW</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-12 col-md-6 col-lg-4">
-                                <div class="location_inner_box">
-                                    <img src="{{ asset('app-assets/site_assets/img/feature-img-2.jpg') }}" />
-                                    <div class="wishlist_icon">
-                                        <i class="fa-regular fa-heart"></i>
-                                    </div>
-                                    <div class="location_inner_main_box">
-                                        <div class="location_inner_text">
-                                            <h3>test</h3>
-                                            <p class="location_pera">sport 30 (2023)</p>
-                                            <p class="people_pera">people · 30 hp · 5 m</p>
-                                            <h5 class="location_price">From <span class="price_style">€27</span> / day</h5>
-                                            <div class="location_facility">
-                                                <ul>
-                                                    <li>With Skipper</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="location_review_box">
-                                            <span>Flexible cancellation</span>
-                                            <span><i class="fa-solid fa-star"></i> NEW</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-12 col-md-6 col-lg-4">
-                                <div class="location_inner_box">
-                                    <img src="{{ asset('app-assets/site_assets/img/feature-img-2.jpg') }}" />
-                                    <div class="wishlist_icon">
-                                        <i class="fa-regular fa-heart"></i>
-                                    </div>
-                                    <div class="location_inner_main_box">
-                                        <div class="location_inner_text">
-                                            <h3>test</h3>
-                                            <p class="location_pera">sport 30 (2023)</p>
-                                            <p class="people_pera">people · 30 hp · 5 m</p>
-                                            <h5 class="location_price">From <span class="price_style">€27</span> / day</h5>
-                                            <div class="location_facility">
-                                                <ul>
-                                                    <li>With Skipper</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="location_review_box">
-                                            <span>Flexible cancellation</span>
-                                            <span><i class="fa-solid fa-star"></i> NEW</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="view_more_boats">
-                                <a href="">View More Boats</a>
-                            </div>
-                    </div> -->
                 </div>
             </div>
         </section>
@@ -1073,70 +1069,7 @@
                 @endif
             </div>
         </div>
-        {{-- <ul class="p-4 list-unstyled">
-
-            @if ($lowseason && isset($listing->seasonPrice[0]))
-                @php
-                    $lowMonths = optional($listing->seasonPrice[0])->from;
-                    $allLowMonth = '';
-                    if($lowMonths){
-                        $lowmonthArray = json_decode($lowMonths);
-                        if(is_array($lowmonthArray))
-                        {
-                            $allLowMonth = implode(', ',$lowmonthArray);
-                        }
-                    }
-                @endphp
-                <li>
-                    <div class="price_block">
-                        <p class="price_block_date">Low Season Price </p>
-                        <p class="price_block_date">{{ $allLowMonth }} </p>
-                        <p class="price_block_price">{{ minMaxPrice($lowseason, $listing->seasonPrice[0]->price) }}</p>
-                    </div>
-                </li>
-            @endif
-            @if ($midSeason && isset($listing->seasonPrice[1]))
-                @php
-                    $midMonths = optional($listing->seasonPrice[1])->from;
-                    $allMidMonth = '';
-                    if($midMonths):
-                        $midMonthArray = json_decode($midMonths);
-                        if(is_array($midMonthArray))
-                        {
-                            $allMidMonth = implode(', ',$midMonthArray);
-                        }
-                        
-                    endif;
-                @endphp
-                <li>
-                    <div class="price_block">
-                        <p class="price_block_date">Mid Season Price</p>
-                        <p class="price_block_date">{{ $allMidMonth }}  </p>
-                        <p class="price_block_price">{{ minMaxPrice($midSeason, $listing->seasonPrice[1]->price) }}</p>
-                    </div>
-                </li>
-            @endif
-            @if ($highSeason && isset($listing->seasonPrice[2]))
-                @php
-                    $hMonths = optional($listing->seasonPrice[2])->from;
-                    $allHMonth = '';
-                    if($hMonths):
-                        $hMonthArray = json_decode($hMonths);
-                        if(is_array($hMonthArray))
-                        {
-                            $allMidMonth = implode(', ',$hMonthArray);
-                        }
-                    endif;
-                @endphp
-                <li>
-                    <div class="price_block">
-                        <p class="price_block_date">High Season Price </p>
-                        <p class="price_block_date">{{ $allMidMonth }}  </p>
-                        <p class="price_block_price">{{ minMaxPrice($highSeason, $listing->seasonPrice[2]->price) }}</p>
-                    </div>
-                </li>
-            @endif
-        </ul> --}}
+        
     </div>
     <!-- Sidebar Right -->
     <div class="modal fade right location-modals" id="sidebar-right" tabindex="-1" role="dialog">
@@ -1193,8 +1126,14 @@
                                         <input type="hidden" id="half_day-price-2" value="" >
                                         <label for="half_day"> Half Day</label>
                                     </div>
-                                    <p>Days: <span id="qtotal-days"></span></p>
-                                    <p>Price: {{ $symble }}<span id="qcharter-total"></span></p>
+                                    <div class="row popup_price price_row">
+                                        <div class="col-md-6">
+                                            <p>Days: <span id="qtotal-days"></span></p>
+                                        </div>
+                                     <div class="col-md-6">
+                                         <p>Price: {{ $symble }}<span id="qcharter-total"></span></p>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="row message-modal-text">
                                     <div class="col-md-12">
@@ -1366,93 +1305,112 @@
 </button>
 
 <!-- Modal -->
-<div class="modal fade single_boat_popup" id="bookbutton" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-        <div class="modal-body">
-            <div class="col-md-4 boat-right-sec" id="calender_sec_form">
-                <div class="p-2 shadow-sm card">
-                    <div class="text-center d-flex flex-column">
-                        <h3>Add dates for prices</h3>
+        @if($isMobile)
+        <div class="modal fade single_boat_popup" id="bookbutton" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-                    <!-- Rating -->
-                    <div class="mb-3 text-center see_price_btn">
-                        <a href="javascript:;" class="see-price"> See the price list</a>
-                    </div>
-                    <div class="dates_heading">
-                        <p>Dates:</p>
-                    </div>
-                    <!-- Form for dates -->
-                    <form action="{{ route('checkout') }}" method="POST">
-                        @csrf
-                        <div class="row sidebar_form">
-                            <div class="p-0 col-md-6">
-                                <div class="form-group">
-                                    <input type="date" id="checkin-date" name="checkin_date"
-                                        class="form-control" placeholder="Check-in" />
+                    <div class="modal-body">
+                        <div class="col-md-4 boat-right-sec" id="calender_sec_form">
+                            <div class="p-2 shadow-sm card">
+                                <div class="text-center d-flex flex-column">
+                                    <h3>Add dates for prices</h3>
                                 </div>
-                            </div>
-                            <div class="p-0 col-md-6">
-                                <div class="form-group">
-                                    <input type="date" id="checkout-date" class="form-control"
-                                        name="checkout_date" placeholder="Check-out" />
-                                    <input type="hidden" id="days-val" value="" name="days_val" />
+                            <!-- Rating -->
+                                <div class="mb-3 text-center see_price_btn">
+                                    <a href="javascript:;" class="see-price"> See the price list</a>
                                 </div>
+                                <div class="dates_heading">
+                                    <p>Dates:</p>
+                                </div>
+                            <!-- Form for dates -->
+                                <form action="{{ route('checkout') }}" method="POST">
+                                    @csrf
+                                    <div class="row sidebar_form">
+                                        <div class="p-0 col-md-6">
+                                            <div class="form-group">
+                                                <input type="date" id="mcheckin-date" name="checkin_date"
+                                                    class="form-control" placeholder="Check-in" />
+                                            </div>
+                                        </div>
+                                        <div class="p-0 col-md-6">
+                                            <div class="form-group">
+                                                <input type="date" id="mcheckout-date" class="form-control"
+                                                    name="checkout_date" placeholder="Check-out" />
+                                                <input type="hidden" id="days-val" value="" name="days_val" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="show-Price d-none" id="show-Price-sec">
+                                        <div class="input-group d-none" id="mhalf_day-box">
+                                            <input type="checkbox" id="half_day" name="half_day" value="1" >
+                                            <input type="hidden" id="mhalf_day-price" value="" >
+                                            <label for="half_day"> Half Day</label>
+                                        </div>
+                                        <div class="row price_row">
+                                            <div class="col-md-4 days_box">
+                                            <p>Days: <span id="total-days"></span></p>
+                                            </div>
+                                            <div class="col-md-4">
+                                            <p>Charter Price:<br/> {{ $symble }}<span id="mcharter-pice"></span></p>
+                                            </div>
+                                            <div class="col-md-4">
+                                            <p>Service Fee:<br/> {{ $symble }}<span id="mcharter-fee"></span></p>
+                                            </div>
+                                        </div>
+                                        <div class="row price_row">
+                                        <div class="col-md-12">
+                                            <p>Total:<br/> {{ $symble }}<span id="charter-total"></span></p>
+                                            </div>
+                                        </div>
 
-                            </form>
-                            <!-- Price List Link -->
-                           
+                                    </div>
+                                    <div class="d-flex flex-column">
+                                        @if(Auth::check())
+                                            @php
+                                                $user = auth()->user();
+                                            @endphp
+                                            @if($user->role == 'customer')
+                                                <a class="mb-2 check_ava_btn" id="m-popup-form" href="javascript:;" data-toggle="modal" data-target="#sidebar-right" class="btn btn-primary navbar-btn pull-left">
+                                                    Book
+                                                </a>
+                                            @else
+                                                <a class="mb-2 check_ava_btn not-login-user" href="javascript:;">
+                                                    Book
+                                                </a>
+                                            @endif
+                                        @else
+                                            <a class="mb-2 check_ava_btn not-login-user" href="javascript:;">
+                                                Book
+                                            </a>
+                                        @endif
+                                        {{-- <span class="mt-1 mb-1 text-center d-block font-weight-bold">or</span>
+                                        <button class="btn book_btn">Book</button> --}}
+                                        <div class="pt-3 text-center form_text">
+                                            <p>You will only be charged if the request is accepted</p>
+                                        </div>
+                                    </div>
+                                </form>
+                                    <!-- Price List Link -->
+                                
 
                             </div>
                         </div>
-                        <div class="show-Price d-none" id="show-Price-sec">
-                           
-                            <p>Days: <span id="total-days"></span></p>
-                            <p>Charter Price: <span id="charter-pice"></span></p>
-                            <p>Service Fee: <span id="charter-fee"></span></p>
-                            <p>Total: <span id="charter-total"></span></p>
-                        </div>
-                        <div class="d-flex flex-column">
-                            @if(Auth::check())
-                                @php
-                                    $user = auth()->user();
-                                @endphp
-                                @if($user->role == 'customer')
-                                    <a class="mb-2 check_ava_btn" href="javascript:;" data-toggle="modal" data-target="#sidebar-right" class="btn btn-primary navbar-btn pull-left">
-                                        Book
-                                    </a>
-                                @else
-                                    <a class="mb-2 check_ava_btn not-login-user" href="javascript:;">
-                                        Book
-                                    </a>
-                                @endif
-                            @else
-                                <a class="mb-2 check_ava_btn not-login-user" href="javascript:;">
-                                    Book
-                                </a>
-                            @endif
-                            
-                            {{-- <span class="mt-1 mb-1 text-center d-block font-weight-bold">or</span>
-                            <button class="btn book_btn">Book</button> --}}
-                            <div class="pt-3 text-center form_text">
-                                <p>You will only be charged if the request is accepted</p>
-                            </div>
-                        </div>
-                    </form>
-                    <!-- Price List Link -->
-                    <div class="mt-2 text-center">
-                        <img src="{{ asset('app-assets/site_assets/img/klarna-logo.jpg') }}" />
+                        <!-- Price List Link -->
+                        {{-- <div class="mt-2 text-center">
+                            <img src="{{ asset('app-assets/site_assets/img/klarna-logo.jpg') }}" />
+                        </div> --}}
                     </div>
                 </div>
             </div>
-      </div>
+        </div>
+        @endif
     </div>
-  </div>
 </div>
 @endsection

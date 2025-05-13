@@ -127,11 +127,13 @@
             </div>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-3">
+            <a href="{{ route('blogs') }}">
             <div class="more_resource_box">
             <i class="fa-solid fa-sailboat"></i>
                 <h3>Check our blog</h3>
                 <p>Visit our blog to get inspiration for your next trip!</p>
             </div>
+            </a>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-3">
             <div class="more_resource_box">

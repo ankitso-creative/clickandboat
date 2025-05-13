@@ -23,7 +23,14 @@ class CompanyRequest extends FormRequest
     public function rules(): array
     {
         return [
-            
+            'company_name' => ['required'],
+            'companyaddress' => ['required'],
+            'intracommunity_vat' => ['required'],
+            'website' => ['required'],
+            'certificate' => ['required'],
+            'identity' => ['required'],
+            'iban' => ['required'],
+            'ownership' => ['required'],
         ];
     }
 }

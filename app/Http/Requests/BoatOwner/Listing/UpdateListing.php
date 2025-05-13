@@ -30,7 +30,7 @@ class UpdateListing extends FormRequest
                 'manufacturer' => ['required'],
                 'model' => ['required'],
                 'boat_name' => ['required'],
-                'file' => 'nullable|image',
+                'file' => 'image',
             ];
         elseif($request['s']=='descriptions'):
             return [
@@ -44,8 +44,6 @@ class UpdateListing extends FormRequest
                 'length' => ['required'],
                 'construction_year' => ['required'],
                 'fuel' => ['required'],
-                'renovated' => ['required'],
-                'speed' => ['required'],
             ];
         elseif($request['s']=='price'):
             return [
@@ -68,6 +66,7 @@ class UpdateListing extends FormRequest
             return [
                 'engine_type' => ['required'],
                 'horsepower' => ['required'],
+                'width' => ['required'],
             ];
         else:
             return [];

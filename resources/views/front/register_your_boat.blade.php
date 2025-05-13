@@ -7,7 +7,15 @@
     
 @endsection
 @section('js')
-    
+    <script>
+        $(document).on('click','#togglePassword', function () {
+            let passwordField = $('#user-password');
+            let type = passwordField.attr('type') === 'password' ? 'text' : 'password';
+            passwordField.attr('type', type);
+            
+            $(this).html(type === 'password' ? '<i class="fa-solid fa-eye"></i>' : '<i class="toggle-password fa fa-fw fa-eye-slash"></i>');
+        });
+    </script>
 @endsection
 @section('content')
 <style>
@@ -17,6 +25,7 @@
     .footer{
         display: none !important;
     }
+    
 </style>
     <!-- end .b-title-page-->
     <div class="l-main-content sign_up_form_section">
@@ -50,22 +59,25 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <input class="form-control" id="user-fname" type="text" name="fname" placeholder="First Name" />
+                                <input class="form-control" id="user-fname" type="text" name="fname" placeholder="First Name" value="{{ old('fname') }}" />
                                 @error('fname')
                                     <span class="danger">{{ $message }}</span>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <input class="form-control" id="user-lname" type="text" name="lname" placeholder="Last Name" />
+                                <input class="form-control" id="user-lname" type="text" name="lname" placeholder="Last Name" value="{{ old('lname') }}" />
                                 @error('lname')
                                     <span class="danger">{{ $message }}</span>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <input class="form-control" type="tel" id="phone" name="phone" placeholder="Telephone" required>
+                                <input class="form-control" type="tel" id="phone" name="phone" placeholder="Telephone" value="{{ old('phone') }}" required>
                             </div>
                             <div class="form-group">
                                 <input class="form-control" id="user-password" type="password" name="password" placeholder="Password" />
+                                <div id="togglePassword">
+                                    <i class="fa-solid fa-eye"></i>
+                                </div>
                                 <input value="boatowner" type="hidden" name="role">
                                 @error('password')
                                     <span class="danger">{{ $message }}</span>

@@ -25,7 +25,8 @@ class PagesController extends Controller
         $blogs = $this->service->blogs();
         $categories = $this->service->categories();
         $locations = $this->service->locations();
-        return view('front.index',compact('blogs','categories','locations'));
+        $featureds = $this->service->featureds();
+        return view('front.index',compact('blogs','categories','locations','featureds'));
     }
     public function thankYou()
     {
@@ -33,15 +34,19 @@ class PagesController extends Controller
     }
     public function single($slug)//test_boat
     {
+        $userAgent = request()->header('User-Agent');
         $listing = $this->service->singleBoat($slug);
+        $isMobile = preg_match('/Mobile|Android|iPhone|iPad|iPod/i', $userAgent);
         if(!$listing)
         {
             return redirect()->route('home');
         }
-        return view('front.single_boat',compact('listing'));
+        return view('front.single_boat',compact('listing','isMobile'));
     }
     public function singleBoat($city,$type,$slug)//test_boat
     {
+        $userAgent = request()->header('User-Agent');
+        $isMobile = preg_match('/Mobile|Android|iPhone|iPad|iPod/i', $userAgent);
         if(session()->has('currency_code')):
             $symble = priceSymbol(session('currency_code'));
         else:
@@ -75,7 +80,7 @@ class PagesController extends Controller
             $totalEquipments = count($flatItems);
             $viewEquipments = count($flatItems) - 6;
         endif;
-        return view('front.single_boat',compact('listing','calendarArray','equipments','viewEquipments','sixEquipments','totalEquipments','symble'));
+        return view('front.single_boat',compact('listing','calendarArray','equipments','viewEquipments','sixEquipments','totalEquipments','symble','isMobile'));
     }
     public function locationCategry(Request $request , $type)//test_boat
     {

@@ -10,6 +10,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Facades\Session;
 
 class UserRegisterController extends Controller
@@ -91,7 +92,7 @@ class UserRegisterController extends Controller
             'fname' => 'required|string',
             'lname' => 'required|string',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required',
+            'password' => ['required',Password::min(8)->mixedCase()->letters()->numbers()->symbols()->uncompromised(),],
             'role' => '',
         ],$messages);
         if ($validator->fails()) {

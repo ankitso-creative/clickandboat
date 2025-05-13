@@ -17,7 +17,14 @@ use Illuminate\Support\Facades\Session;
     {
         public function singleBoat($slug)
         {
-            $listing = Listing::with(['price'])->where('slug',$slug)->where('status','1')->first();
+            $listing = Listing::with([
+                'price', 
+                'description' => function( $query ){
+                $lang = empty(session()->get('lang')) ? 'en' : session()->get('lang');
+                $query->where('language', $lang);
+            }])
+            ->where('slug',$slug)->where('status','1')->first();
+
             if($listing):
                 Session::put('listingID', $listing->id);
             endif;
@@ -43,9 +50,17 @@ use Illuminate\Support\Facades\Session;
             $category = Location::where('status','1')->with('media')->get();
             return $category;
         }
+        public function featureds()
+        {
+            $category = Listing::where('status','1')->where('featured','1')->with('media')->limit(3)->get();
+            return $category;
+        }
         public function singleBoatDetails($city,$type,$slug)
         {
-            $listing = Listing::with(['price','seasonPrice','booking','calendar'])->where('slug',$slug)->where('city',$city)->where('type',$type)->where('status','1')->first();
+            $listing = Listing::with(['price','seasonPrice','booking','calendar', 'description' => function( $query ){
+                $lang = empty(session()->get('lang')) ? 'en' : session()->get('lang');
+                $query->where('language', $lang);
+            }])->where('slug',$slug)->where('city',$city)->where('type',$type)->where('status','1')->first();
             if($listing):
                 Session::put('listingID', $listing->id);
                 Session::put('listingcity', $listing->city);
@@ -187,6 +202,18 @@ use Illuminate\Support\Facades\Session;
             ->when($request->has('rental_type') && !empty($request->rental_type), function ($query) use ($request) {
                 $rental_type = $request->rental_type; 
                 return $query->where('skipper', $rental_type); 
+            })
+            ->when($request->has('people') && !empty($request->people), function ($query) use ($request) {
+                $people = $request->people; 
+                return $query->where('onboard_capacity','>=', $people); 
+            })
+            ->when($request->has('cabins') && !empty($request->cabins), function ($query) use ($request) {
+                $cabins = $request->cabins; 
+                return $query->where('cabins','>=', $cabins); 
+            })
+            ->when($request->has('berths') && !empty($request->berths), function ($query) use ($request) {
+                $berths = $request->cabins; 
+                return $query->where('berths','>=', $berths); 
             })
             ->when($request->has('min_length') && !empty($request->min_length), function ($query) use ($request) {
                 $min_length = $request->min_length; 

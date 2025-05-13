@@ -51,19 +51,45 @@
                                 <thead class=" text-primary">
                                     <tr>
                                         <th>#</th>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Phone</th>
-                                        <th>Created At</th>
-                                        <th>Action</th>
+                                        <th>Customer Name</th>
+                                        <th>Owner Name</th>
+                                        <th>Boat Name</th>
+                                        <th>Pain Amount</th>
+                                        <th>Pending Amount</th>
+                                        <th>Total Amount</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                                        
+                                        @if($results)
+                                            @foreach($results as $result)
+                                                @php 
+                                                    $listing = App\Models\Admin\Listing::where('id',$result->listing_id)->with('user')->first();
+                                                    $customer_name = App\Models\User::where('id',$result->user_id)->value('name');
+                                                    if($result->currency):
+                                                        $symble = priceSymbol($result->currency);
+                                                    else:
+                                                        $symble = priceSymbol('USD');
+                                                    endif;
+                                                @endphp
+                                                <tr>
+                                                    <td>{{ $loop->iteration }}</td>
+                                                    <td>{{ $customer_name }}</td>
+                                                    <td>{{ $listing->user->name }}</td>
+                                                    <td>{{ $listing->boat_name }}</td>
+                                                    <td>{{ $symble.$result->amount_paid }}</td>
+                                                    <td>{{ $symble.$result->pending_amount }}</td>
+                                                    <td>{{ $symble.$result->total }}</td>
+                                                    
+                                                </tr>  
+                                            @endforeach
+                                        @endif             
                                     </tr> 
                                 </tbody>
                             </table>                                               
+                        </div>
+                        <div class="pagination">
+                            {{ $results->appends(request()->all())->links('pagination::default') }}
                         </div>
                     </div>
                 </div>

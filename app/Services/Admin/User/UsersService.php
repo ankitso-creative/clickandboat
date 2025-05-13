@@ -39,6 +39,10 @@ class UsersService{
         return $this->repository->deleteUser($id);
 
     }
+    public function changeSuper($id)
+    {
+        return $this->repository->changeSuper($id);
+    }
     public function change_status($request)
     {
         $user =  $this->repository->change_status($request);

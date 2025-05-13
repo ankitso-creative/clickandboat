@@ -16,7 +16,7 @@ class BlogRepository
             return $query->where('language', $language); 
         })
         ->orderBy('order_by', 'ASC')
-        ->paginate(9);
+        ->paginate(10);
 
         return $blog;
     }
