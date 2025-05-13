@@ -37,9 +37,15 @@ class ChatController extends Controller
     {
         $usersWithLastMessage = $this->service->usersWithLastMessage();
         $active = 'support';
+        $userAgent = request()->header('User-Agent');
+        $isMobile = preg_match('/Mobile|Android|iPhone|iPad|iPod/i', $userAgent);
         if(count($usersWithLastMessage)):
-            $slug = Listing::where('id', $usersWithLastMessage[0]['listing_id'])->value('slug');
-            return redirect()->route('customer.message', $slug)->with('success', 'Order updated successfully!'); 
+            if($isMobile):
+                return view('customer.support', compact('active', 'usersWithLastMessage','isMobile'));
+            else:
+                $slug = Listing::where('id', $usersWithLastMessage[0]['listing_id'])->value('slug');
+                return redirect()->route('customer.message', $slug)->with('success', 'Order updated successfully!'); 
+            endif;   
         else:
             return view('customer.support', compact('active', 'usersWithLastMessage'));
         endif;
@@ -47,6 +53,8 @@ class ChatController extends Controller
 
     public function message($slug)
     {
+        $userAgent = request()->header('User-Agent');
+        $isMobile = preg_match('/Mobile|Android|iPhone|iPad|iPod/i', $userAgent);
         $usersWithLastMessage = $this->service->usersWithLastMessage();
         $active = 'support';
         $listing = Listing::where('slug', $slug)->first();
@@ -61,7 +69,7 @@ class ChatController extends Controller
         {
             $quotationID = Crypt::encrypt($quotation->id);
         }
-        return view('customer.message',compact('active','receiver_id','replies','sender','receiver','slug','quotation','listing','quotationID','usersWithLastMessage'));
+        return view('customer.message',compact('active','receiver_id','replies','sender','receiver','slug','quotation','listing','quotationID','usersWithLastMessage','isMobile'));
     }
     public function sendMessage(MessageRequest $request)
     {

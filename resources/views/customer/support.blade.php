@@ -80,9 +80,51 @@
         <div class="page-title">
             <h1>All Your Bookings Support</h1>
         </div>
-        <div class="no-booking-yet">
-            <p>You haven't any message</a>.</p>
-        </div> 
+        @if(!$isMobile):
+            <div class="no-booking-yet">
+                <p>You haven't any message.</p>
+            </div> 
+        @endif
+        @if($usersWithLastMessage && $isMobile)
+            <div class="user-list-section">
+                <ul>
+                    @foreach($usersWithLastMessage as $userMessage)
+                        @php 
+                            $user = $userMessage['user'];
+                            $message = $userMessage['message'];
+                            $image = $user->getFirstMediaUrl('profile_image');
+                            if(!$image):
+                                $image = 'https://static1.clickandboat.com/v1/o/img/mask~dddc60cc1d.png';
+                            endif;
+                            $listingM = collect($user->listing)->filter(function($listing) use ($message) {
+                                return $listing->id == $message['listing_id'];
+                            })->first();
+                        @endphp
+                        <li class="">
+                            <a href="{{ route('customer.message', $listingM->slug) }}">
+                                <div class="user-box-list">
+                                    <div class="user-box-image">
+                                        <img src="{{ $image }}" />
+                                    </div>
+                                    <div class="user-box-desc">
+                                        <div class="user-title">
+                                            <h2>{{ $user->name }}</h2>
+                                            <span>{{ $message->created_at }}</span>
+                                        </div>
+                                        <div class="user-boat-name">
+                                            <p>{{ $listingM->type  }} {{ $listingM->boat_name }}</p>
+                                        </div>
+                                        <div class="user-last-message">
+                                            <p>{{ $message->message }} </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif 
         {{-- <div class="card-section">
             <div class="card-sec-title">
                 <h2>Booking Owner Lists</h2>

@@ -66,84 +66,88 @@
             })
         });
         /* Price range Slider */
-        const rangevalue = document.querySelector(".slider-container .price-slider");
-        const rangeInputvalue = document.querySelectorAll(".range-input input");
-        let priceGap = 50;
-        const priceInputvalue = document.querySelectorAll(".price-input input");
-
-        const form = document.getElementById("priceForm"); // Get the form element
-
-        let timeout; // Timeout variable for debounce effect
-
-        // Function to submit the form
+        let timeout;
         const submitForm = () => {
-            $('#search-filter-fom').submit(); // Trigger the form submission using jQuery
+           $('#search-filter-fom').submit(); 
         };
+        // const rangevalue = document.querySelector(".slider-container .price-slider");
+        // const rangeInputvalue = document.querySelectorAll(".range-input input");
+        // let priceGap = 50;
+        // const priceInputvalue = document.querySelectorAll(".price-input input");
 
-        for (let i = 0; i < priceInputvalue.length; i++) {
-            priceInputvalue[i].addEventListener("input", e => {
-                let minp = parseInt(priceInputvalue[0].value);
-                let maxp = parseInt(priceInputvalue[1].value);
-                let diff = maxp - minp;
+        // const form = document.getElementById("priceForm"); // Get the form element
 
-                if (minp < 0) {
-                    alert("Minimum price cannot be less than 0");
-                    priceInputvalue[0].value = 0;
-                    minp = 0;
-                }
-                if (maxp > {{ maxPriceValue() }}) {
-                    alert("Maximum price cannot be greater than 10000");
-                    priceInputvalue[1].value = {{ maxPriceValue() }};
-                    maxp = {{ maxPriceValue() }};
-                }
-                if (minp > maxp - priceGap) {
-                    priceInputvalue[0].value = maxp - priceGap;
-                    minp = maxp - priceGap;
+        // let timeout; // Timeout variable for debounce effect
 
-                    if (minp < 0) {
-                        priceInputvalue[0].value = 0;
-                        minp = 0;
-                    }
-                }
-                if (diff >= priceGap && maxp <= rangeInputvalue[1].max) {
-                    if (e.target.className === "min-input") {
-                        rangeInputvalue[0].value = minp;
-                        let value1 = rangeInputvalue[0].max;
-                        rangevalue.style.left = `${(minp / value1) * 100}%`;
-                    } else {
-                        rangeInputvalue[1].value = maxp;
-                        let value2 = rangeInputvalue[1].max;
-                        rangevalue.style.right = `${100 - (maxp / value2) * 100}%`;
-                    }
-                }
-                clearTimeout(timeout);
-                timeout = setTimeout(submitForm, 1000); 
-            });
+        // // Function to submit the form
+        // const submitForm = () => {
+        //     $('#search-filter-fom').submit(); // Trigger the form submission using jQuery
+        // };
 
-            for (let i = 0; i < rangeInputvalue.length; i++) {
-                rangeInputvalue[i].addEventListener("input", e => {
-                    let minVal = parseInt(rangeInputvalue[0].value);
-                    let maxVal = parseInt(rangeInputvalue[1].value);
-                    let diff = maxVal - minVal;
+        // for (let i = 0; i < priceInputvalue.length; i++) {
+        //     priceInputvalue[i].addEventListener("input", e => {
+        //         let minp = parseInt(priceInputvalue[0].value);
+        //         let maxp = parseInt(priceInputvalue[1].value);
+        //         let diff = maxp - minp;
 
-                    if (diff < priceGap) {
-                        if (e.target.className === "min-range") {
-                            rangeInputvalue[0].value = maxVal - priceGap;
-                        } else {
-                            rangeInputvalue[1].value = minVal + priceGap;
-                        }
-                    } else {
-                        priceInputvalue[0].value = minVal;
-                        priceInputvalue[1].value = maxVal;
-                        rangevalue.style.left = `${(minVal / rangeInputvalue[0].max) * 100}%`;
-                        rangevalue.style.right = `${100 - (maxVal / rangeInputvalue[1].max) * 100}%`;
-                    }
+        //         if (minp < 0) {
+        //             alert("Minimum price cannot be less than 0");
+        //             priceInputvalue[0].value = 0;
+        //             minp = 0;
+        //         }
+        //         if (maxp > {{ maxPriceValue() }}) {
+        //             alert("Maximum price cannot be greater than 10000");
+        //             priceInputvalue[1].value = {{ maxPriceValue() }};
+        //             maxp = {{ maxPriceValue() }};
+        //         }
+        //         if (minp > maxp - priceGap) {
+        //             priceInputvalue[0].value = maxp - priceGap;
+        //             minp = maxp - priceGap;
 
-                    clearTimeout(timeout);
-                    timeout = setTimeout(submitForm, 1000); 
-                });
-            }
-        }
+        //             if (minp < 0) {
+        //                 priceInputvalue[0].value = 0;
+        //                 minp = 0;
+        //             }
+        //         }
+        //         if (diff >= priceGap && maxp <= rangeInputvalue[1].max) {
+        //             if (e.target.className === "min-input") {
+        //                 rangeInputvalue[0].value = minp;
+        //                 let value1 = rangeInputvalue[0].max;
+        //                 rangevalue.style.left = `${(minp / value1) * 100}%`;
+        //             } else {
+        //                 rangeInputvalue[1].value = maxp;
+        //                 let value2 = rangeInputvalue[1].max;
+        //                 rangevalue.style.right = `${100 - (maxp / value2) * 100}%`;
+        //             }
+        //         }
+        //         clearTimeout(timeout);
+        //         timeout = setTimeout(submitForm, 1000); 
+        //     });
+
+        //     for (let i = 0; i < rangeInputvalue.length; i++) {
+        //         rangeInputvalue[i].addEventListener("input", e => {
+        //             let minVal = parseInt(rangeInputvalue[0].value);
+        //             let maxVal = parseInt(rangeInputvalue[1].value);
+        //             let diff = maxVal - minVal;
+
+        //             if (diff < priceGap) {
+        //                 if (e.target.className === "min-range") {
+        //                     rangeInputvalue[0].value = maxVal - priceGap;
+        //                 } else {
+        //                     rangeInputvalue[1].value = minVal + priceGap;
+        //                 }
+        //             } else {
+        //                 priceInputvalue[0].value = minVal;
+        //                 priceInputvalue[1].value = maxVal;
+        //                 rangevalue.style.left = `${(minVal / rangeInputvalue[0].max) * 100}%`;
+        //                 rangevalue.style.right = `${100 - (maxVal / rangeInputvalue[1].max) * 100}%`;
+        //             }
+
+        //             clearTimeout(timeout);
+        //             timeout = setTimeout(submitForm, 1000); 
+        //         });
+        //     }
+        // }
         /* Length range  Slider*/
         const lengthvalue = document.querySelector(".slider-container-length .length-slider");
         const lengthInputvalue = document.querySelectorAll(".boat-input input");

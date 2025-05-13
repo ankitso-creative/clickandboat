@@ -218,6 +218,7 @@
         <div class="message-text">
             <p>Any personal information supplied such as email addresses, phone numbers, social media & website links will be unable to be sent. Once a booking is made, personal information will be given.</p>
         </div>
+        @if(!$isMobile)
         <div class="user-list-section">
             <ul>
                 @if($usersWithLastMessage)
@@ -260,6 +261,7 @@
                 @endif
             </ul>
         </div>
+        @endif
         <div class="message mCustomScrollbar" data-mcs-theme="minimal-dark">
             <div class="message-owner">
                 <div class="message-avatar-box">
