@@ -4,36 +4,29 @@
     <title>Manage Users</title>
 @endsection
 @section('css')
-    
+    <style>
+    .header{
+        display: none !important;
+    }
+    .footer{
+        display: none !important;
+    }
+</style>
 @endsection
 @section('js')
     
 @endsection
 @section('content')
-    <div class="section-title-page area-bg area-bg_dark area-bg_op_60">
-        <div class="area-bg__inner">
-            <div class="container text-center">
-                <h1 class="b-title-page">LOGIN</h1>
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item"><a href="blog.html">Pages</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Login</li>
-                    </ol>
-                </nav>
-                <!-- end .breadcrumb-->
-
-            </div>
-        </div>
-    </div>
     <!-- end .b-title-page-->   
-    <div class="l-main-content">
+    <div class="l-main-content login_section">
         <div class="container">
+            <div class="sing_upform_logo">
+                <a href="{{ route('home') }}"><img src="{{ whiteLogoURL() }}"></a>
+            </div>
             <div class="row">
-                <div class="col-md-6 mx-auto">
+                <div class="mx-auto col-md-12">
+                    <h2 class="text-center ui-title-inner">Reset Password</h2>
                     <section class="section-form-contacts">
-                        <h2 class="ui-title-inner text-center">Reset Password</h2>
-                        <p class="text-center">Nulla pariatur excepteur sint occaecat cupidatat no proident culpa qui officia des mollit anim id est lab orum ut perspiciatis unde omnis iste natuser sit volupta tem accusantium sed ipsum laudantium.</p>
                         <div id="success"></div>
                         <form action="{{ route('password.update') }}" method="POST">
                             @csrf
@@ -59,8 +52,8 @@
                                 </div>
                             @endif
                         
-                            <div class="form-group text-center">
-                                <button type="submit" class="btn btn-primary">Reset Password</button>
+                            <div class="text-center form-group">
+                                <button type="submit" class="login_btn">Reset Password</button>
                             </div>
                         </form>
                     </section>
