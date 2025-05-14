@@ -2847,16 +2847,17 @@ label, input, textarea, button, select {
 .main-dashboard .dashboard_box_one {
     border: 1px solid #ebebeb;
     padding: 20px 20px;
-    border-radius: 20px 0px 0px 0px;
+    border-radius: 20px 20px 20px 20px;
 }
 .main-dashboard .dashboard_box_two {
     border: 1px solid #ebebeb;
     padding: 20px 20px;
-    border-radius: 0 0 20px 20px;
+    border-radius: 20px 20px 20px 20px;
 }
 .main-dashboard .dashboard_box_one_text {
     display: flex;
     align-items: center;
+    margin-top: 15px;
 }
 .main-dashboard .box_percentage p {
     font-size: 28px;
@@ -8764,7 +8765,7 @@ margin-right:15px;
 }
 .message-text {
     position: fixed;
-    z-index: 9;
+    z-index: 99;
 }
 .home_filter .date_col .datepicker.date.input-group input {
     background-color: #00000047 !important;
@@ -8774,6 +8775,31 @@ margin-right:15px;
 }
 .home_banner_mobile_filter .banner_form input {
     line-height: 28px;
+}
+.complete_profile_text h2 {
+    padding-bottom: 0px;
+}
+.complete_profile_text a {
+    background: #f9a126;
+    display: inline-block;
+    color: #fff;
+    border-radius: 15px;
+    border: 1px solid #f8a126;
+    padding: 9px 41px;
+    text-transform: uppercase;
+    margin-top: 10px;
+}
+.complete_profile_text a:hover{
+    background: none;
+    color: #f9a126;
+    border: 1px solid #f9a126;
+}
+.complete_profile_text {
+    display: flex;
+    justify-content: space-between;
+}
+.share-menu svg {
+    filter: brightness(0) saturate(100%) invert(68%) sepia(34%) saturate(2517%) hue-rotate(343deg) brightness(108%) contrast(95%);
 }
 /*--------------------------------------------------------------
 # Media Query
@@ -9406,7 +9432,7 @@ margin-right:15px;
         text-align: center;
     }
     .main-dashboard-container  h2 {
-        font-size: 25px;
+        font-size: 22px;
         text-align: center;
         padding: 0 15px;
     }
@@ -10038,7 +10064,7 @@ header.p-3.header-dashboard {
     background: none;
 }
 .message-text {
-    margin-top: 85px;
+    margin-top: 80px;
 }
 .custmer_menu .menu-sidebar li a {
     text-align: left;
@@ -10058,6 +10084,14 @@ header.p-3.header-dashboard {
 }
 .upload #removeProfile {
     font-size: 13px;
+}
+.list-boat-img img {
+    height: 85px;
+    object-fit: cover;
+}
+.complete_profile_text {
+    text-align: center;
+    display: block;
 }
 }
 
@@ -11143,6 +11177,15 @@ header.p-3.header-dashboard {
 }
 .your_listing_section img {
     height: 270px;
+}
+.boat-banner-sec img {
+    height: 400px;
+    width: 100%;
+    object-fit: cover;
+}
+.user-list-section {
+    width: 100%;
+    padding: 0px 90px;
 }
 }
 @media (min-width: 1250px) and (max-width: 1299px) {
