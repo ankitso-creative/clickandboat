@@ -21,7 +21,7 @@
             <div class="card-section user-dashboard_section">
                 <div class="dashboard_box_one">
                     <div class="row">
-                        <div class="col-md-9">
+                        <div class="col-md-9"> 
                             <div class="dashboard_box_one_text">
                                 <div class="box_percentage">
                                     <p>+20%</p>
@@ -34,10 +34,23 @@
                         </div>
                         <div class="col-md-3">
                             <div class="dashboard_box_btns">
-                                <a href="#">Add a photo</a>
+                                <a href="{{ route('customer.profile') }}">Add a photo</a>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        @endif
+        @if(!isset($userData->profile) && empty($userData->profile))
+            <div class="card-section user-dashboard_section">
+                <div class="dashboard_box_two mb-2">
+                    <div class="complete_profile_text">
+                        <div class="profile_com_text">
+                            <h2>Complete your profile to add important information.</h2>
+                            <p>We need a few more details to serve you better.</p>
+                        </div>
+                        <a href="{{ route('customer.profile') }}">Finish</a>
+                    </div> 
                 </div>
             </div>
         @endif

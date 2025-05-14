@@ -42,6 +42,19 @@
             </div>
         </div>
     @endif
+    @if(!isset($userData->profile) && empty($userData->profile))
+        <div class="card-section user-dashboard_section">
+            <div class="dashboard_box_two mb-2">
+                <div class="complete_profile_text">
+                    <div class="profile_com_text">
+                        <h2>Complete your profile to add important information.</h2>
+                        <p>We need a few more details to serve you better.</p>
+                    </div>
+                    <a href="{{ route('boatowner.profile') }}">Finish</a>
+                </div> 
+            </div>
+        </div>
+    @endif
     @php
         if(session()->has('currency_code')):
             $code = session('currency_code');
