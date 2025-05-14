@@ -179,17 +179,15 @@
             endPicker.set('minDate', dateStr);
         }
     });
-
-    // Initialize end date picker
     const endPicker = flatpickr("#enddate", {
         dateFormat: "d-m-Y",
         minDate: "today"
     });
+
     flatpickr("#mstartdate", {
         dateFormat: "d-m-Y",
         minDate: "today",
         onChange: function(selectedDates, dateStr, instance) {
-            // When start date changes, update minDate of end date picker
             mendPicker.set('minDate', dateStr);
         }
     });

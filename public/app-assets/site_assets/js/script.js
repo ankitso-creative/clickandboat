@@ -104,8 +104,8 @@ $(document).ready(function(){
 			loop: true,
 			dots:true,
 			arrows: false,
-				autoplaySpeed: 3000,
-				responsive: [
+			autoplaySpeed: 3000,
+			responsive: [
 			{
 				breakpoint: 1000,
 				settings: {
