@@ -307,7 +307,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body home_banner_mobile_filter">
                             <div class="banner_form">
                                 <div class="container-fluid">
                                     <form action="{{ route('search') }}" method="get">
@@ -375,7 +375,7 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
     </div>
 </section>
-<div class="banner_form">
+<div class="banner_form home_filter">
     <div class="container-fluid">
         <form action="{{ route('search') }}" method="get">
             <div class="row">
