@@ -264,6 +264,12 @@ use Illuminate\Support\Facades\Session;
                     $query->whereNotNull('over_night_price');
                 });
             })
+            ->when($request->has('startdate') && !empty($request->startdate), function ($query) use ($request) {
+                $month = Carbon::parse($request->startdate)->format('F'); // "May"
+                return $query->whereHas('seasonPrice', function ($query) use ($month) {
+                    $query->whereRaw('JSON_CONTAINS(`from`, ?)', [json_encode($month)]);
+                });
+            })
             ->with(['price','equipment'])
             ->paginate(9);
             return $listing;

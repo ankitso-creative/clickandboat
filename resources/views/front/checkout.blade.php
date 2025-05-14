@@ -321,7 +321,6 @@
 									<p>By selecting the button below, you unconditionally agree to the <a href="{{ route('terms-condition') }}">Terms & Conditions</a>, <a href="#">Cancellation conditions</a>, <a href="#">Insurance conditions</a>. You also agree to pay the total amount of the reservation.</p>
 									<div id="card-errors"></div>
 									<button class="btn btn-primary btn-checkout" id="submit-button">Pay Now </button>
-									
 								</div>
 							</div>
 						</div>

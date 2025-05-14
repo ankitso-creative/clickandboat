@@ -82,10 +82,12 @@
 </style>
 @section('css')
 <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css"/>
-<link href="{{ asset('app-assets/global/plugins/select2/css/select2.min.css') }}" rel="stylesheet" type="text/css" />
 <link href="{{ asset('app-assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css') }}" rel="stylesheet" type="text/css" />
 <link href="{{ asset('app-assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css') }}" rel="stylesheet" type="text/css" />
-<script src="{{ asset('app-assets/global/plugins/select2/js/select2.min.js') }}" type="text/javascript"></script>
+
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
 <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
 @endsection
 @section('js')
@@ -125,9 +127,35 @@
 			$('.skipper-price').removeClass('d-none');
 		}
 	})
-	$('.mySelect2').select2({
-		selectOnClose: true
-	});
+	$(document).ready(function() 
+    {
+        $('.mySelect2').select2();
+        function updateOptions() 
+        {
+            let selectedValues = [];
+            $('.mySelect2').each(function() 
+            {
+                selectedValues = selectedValues.concat($(this).val() || []);
+            });
+            $('.mySelect2').each(function() {
+                let $this = $(this);
+                let currentValues = $this.val() || [];
+                $this.find('option').each(function() {
+                    let val = $(this).val();
+                    if (currentValues.includes(val)) {
+                    $(this).prop('disabled', false); 
+                    } else if (selectedValues.includes(val)) {
+                    $(this).prop('disabled', true); 
+                    } else {
+                    $(this).prop('disabled', false); 
+                    }
+                 });
+                $this.trigger('change.mySelect2');
+            });
+        }
+        $('.mySelect2').on('change', updateOptions);
+        updateOptions(); // Initial call
+    });
     $(document).ready(function () {
         $('#cancellationSelect').select2({
             width: '100%',
