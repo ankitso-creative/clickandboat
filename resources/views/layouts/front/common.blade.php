@@ -143,9 +143,6 @@
                         </ul>
                     </li> -->
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Start Your Search </a>
-                    </li>
-                    <li class="nav-item">
                        <a class="nav-link" href="{{ route('about-us') }}">About Us</a>
                     </li>
                     <li class="nav-item">
@@ -153,6 +150,9 @@
                     </li>
                     <li class="nav-item">
                        <a class="nav-link" href="{{ route('blogs') }}">Our Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('search') }}">Book a Baot </a>
                     </li>
                     @if(!Auth::check())
                     <li class="mt-4 nav-item">
