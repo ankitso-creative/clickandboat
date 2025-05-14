@@ -320,6 +320,12 @@
                             <button type="button" data-toggle="modal" data-target="#staticBackdrop" class="btn filter_btn"><i class="fa-solid fa-sliders"></i> Filter</button>
                         </div>
                     </div>
+                    <input type="hidden"value="{{ request()->query('people') ?? 0 }}" name="people">
+                    <input type="hidden"value="{{ request()->query('cabins') ?? 0 }}" name="cabins">
+                    <input type="hidden"value="{{ request()->query('berths') ?? 0 }}" name="berths">
+                    <input type="hidden"value="{{ request()->query('equipment') ?? 0 }}" name="equipment">
+                    <input type="hidden"value="{{ request()->query('min_length') ?? 0 }}" name="min_length">
+                    <input type="hidden"value="{{ request()->query('max_length') ?? 0 }}" name="max_length">
                 </form>
             </div>
         </section>
@@ -601,32 +607,28 @@
                             <div class="location_checkbox_two">
                                 <h5>Equipment</h5>
                                 <div class="input-group">
-                                    <input type="checkbox" id="wakeboard" name="equipment" value="Wakeboard">
+                                    <input type="checkbox" {{ singleCheckbox(request()->query('equipment'),'Wakeboard') }} id="wakeboard" name="equipment" value="Wakeboard">
                                     <label for="wakeboard"> Wakeboard</label><br>
                                 </div>
                                 <div class="input-group">
-                                    <input type="checkbox" id="towable-tube" name="equipment" value="towable">
+                                    <input type="checkbox" {{ singleCheckbox(request()->query('equipment'),'towable') }} id="towable-tube" name="equipment" value="towable">
                                     <label for="towable-tube">Towable Tube</label><br>
                                 </div>
                                 <div class="input-group">
-                                    <input type="checkbox" id="watermaker" name="equipment" value="watermarker">
-                                    <label for="watermaker"> Watermarker</label><br>
+                                    <input type="checkbox" {{ singleCheckbox(request()->query('equipment'),'watermarker') }} id="watermaker" name="equipment" value="watermarker">
+                                    <label for="watermaker"> watermarker</label><br>
                                 </div>
                                 <div class="input-group">
-                                    <input type="checkbox" id="generator" name="equipment" value="generator">
+                                    <input type="checkbox" {{ singleCheckbox(request()->query('equipment'),'generator') }} id="generator" name="equipment" value="generator">
                                     <label for="generator"> Generator</label><br>
                                 </div>
                                 <div class="input-group">
-                                    <input type="checkbox" id="air-conditioning" name="equipment" value="Conditioning">
+                                    <input type="checkbox" {{ singleCheckbox(request()->query('equipment'),'Conditioning') }} id="air-conditioning" name="equipment" value="Conditioning">
                                     <label for="air-conditioning"> Air Conditioning</label><br>
                                 </div>
                                 <div class="input-group">
-                                    <input type="checkbox" id="external-speakers" name="equipment" value="external">
+                                    <input type="checkbox" {{ singleCheckbox(request()->query('equipment'),'external') }} id="external-speakers" name="equipment" value="external">
                                     <label for="external-speakers"> External speakers</label><br>
-                                </div>
-                                <div class="input-group">
-                                    <input type="checkbox" id="events" name="equipment" value="events">
-                                    <label for="events"> Air Conditioning</label><br>
                                 </div>
                             </div>
                             <div class="location_checkbox_two">
@@ -797,12 +799,12 @@
                             <div class="location_checkbox_two">
                                 <div class="row">
                                     <div class="number_list">
-                                        <label>Number of people</label>
+                                        <label>Number of peoples</label>
                                         <div class="number_list_filter">
                                             <div class="number_counter">
-                                                <a href="#"><i class="fa-solid fa-minus"></i></a>
-                                                <input type="number" id="quantity" name="quantity" min="1" max="5">
-                                                <a href="#"><i class="fa-solid fa-plus"></i></a>
+                                                <a href="javascript:;" class="people-minus"><i class="fa-solid fa-minus"></i></a>
+                                                <input type="number" id="people" value="{{ request()->query('people') ?? 0 }}" name="people">
+                                                <a href="javascript:;" class="people-plus"><i class="fa-solid fa-plus"></i></a>
                                             </div>
                                         </div>
                                     </div>
@@ -810,9 +812,9 @@
                                         <label>Number of cabins</label>
                                         <div class="number_list_filter">
                                             <div class="number_counter">
-                                                <a href="#"><i class="fa-solid fa-minus"></i></a>
-                                                <input type="number" id="quantity" name="quantity" min="1" max="5">
-                                                <a href="#"><i class="fa-solid fa-plus"></i></a>
+                                                <a href="javascript:;" class="cabins-minus"><i class="fa-solid fa-minus"></i></a>
+                                                <input type="number" id="cabins" value="{{ request()->query('cabins') ?? 0 }}" name="cabins">
+                                                <a href="javascript:;" class="cabins-plus"><i class="fa-solid fa-plus"></i></a>
                                             </div>
                                         </div>
                                     </div>
@@ -820,9 +822,9 @@
                                         <label>Number of berths</label>
                                         <div class="number_list_filter">
                                             <div class="number_counter">
-                                                <a href="#"><i class="fa-solid fa-minus"></i></a>
-                                                <input type="number" id="quantity" name="quantity" min="1" max="5">
-                                                <a href="#"><i class="fa-solid fa-plus"></i></a>
+                                                <a href="javascript:;" class="berths-minus"><i class="fa-solid fa-minus"></i></a>
+                                                <input type="number" id="berths" value="{{ request()->query('berths') ?? 0 }}" name="berths">
+                                                <a href="javascript:;" class="berths-plus"><i class="fa-solid fa-plus"></i></a>
                                             </div>
                                         </div>
                                     </div>
@@ -869,33 +871,30 @@
                             <div class="location_checkbox_two">
                                 <h5>Equipment</h5>
                                 <div class="input-group">
-                                    <input type="checkbox" id="wakeboard" name="equipment" value="Wakeboard">
+                                    <input type="checkbox" {{ singleCheckbox(request()->query('equipment'),'Wakeboard') }} id="wakeboard" name="equipment" value="Wakeboard">
                                     <label for="wakeboard"> Wakeboard</label><br>
                                 </div>
                                 <div class="input-group">
-                                    <input type="checkbox" id="towable-tube" name="equipment" value="towable">
+                                    <input type="checkbox" {{ singleCheckbox(request()->query('equipment'),'towable') }} id="towable-tube" name="equipment" value="towable">
                                     <label for="towable-tube">Towable Tube</label><br>
                                 </div>
                                 <div class="input-group">
-                                    <input type="checkbox" id="watermaker" name="equipment" value="watermarker">
+                                    <input type="checkbox" {{ singleCheckbox(request()->query('equipment'),'watermarker') }} id="watermaker" name="equipment" value="watermarker">
                                     <label for="watermaker"> watermarker</label><br>
                                 </div>
                                 <div class="input-group">
-                                    <input type="checkbox" id="generator" name="equipment" value="generator">
+                                    <input type="checkbox" {{ singleCheckbox(request()->query('equipment'),'generator') }} id="generator" name="equipment" value="generator">
                                     <label for="generator"> Generator</label><br>
                                 </div>
                                 <div class="input-group">
-                                    <input type="checkbox" id="air-conditioning" name="equipment" value="Conditioning">
+                                    <input type="checkbox" {{ singleCheckbox(request()->query('equipment'),'Conditioning') }} id="air-conditioning" name="equipment" value="Conditioning">
                                     <label for="air-conditioning"> Air Conditioning</label><br>
                                 </div>
                                 <div class="input-group">
-                                    <input type="checkbox" id="external-speakers" name="equipment" value="external">
+                                    <input type="checkbox" {{ singleCheckbox(request()->query('equipment'),'external') }} id="external-speakers" name="equipment" value="external">
                                     <label for="external-speakers"> External speakers</label><br>
                                 </div>
-                                <div class="input-group">
-                                    <input type="checkbox" id="events" name="equipment" value="events">
-                                    <label for="events"> Air Conditioning</label><br>
-                                </div>
+                               
                             </div>
                             <div class="location_checkbox_two">
                                 <div class="toggle_filter">
@@ -911,6 +910,12 @@
                                     </div>
                                 </div>
                                 <input type="hidden" name="location" value="{{ request()->query('location') }}">
+                                @if(!empty(request()->query('type')))
+                                    @foreach(request()->query('type') as $valueT)
+                                        <input type="hidden" name="type[]" value="{{ $valueT }}">
+                                    @endforeach
+                                @endif
+                               
                                 <input type="hidden" name="rental_type" value="{{ request()->query('rental_type') }}">
                                 <div class="toggle_filter">
                                     <div class="toggle_text">
