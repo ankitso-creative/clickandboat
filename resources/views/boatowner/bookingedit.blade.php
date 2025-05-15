@@ -59,7 +59,13 @@
                 </ul> 
             </div>
         @endif
-       
+        @php
+            $listing = App\Models\Admin\Listing::where('id',$results->listing_id)->first();
+            $symble = priceSymbol($listing->currency);
+            $amountPaid = getAmountWithoutSymble($results->amount_paid,$results->currency,$listing->currency);
+            $pendingAmount = getAmountWithoutSymble($results->pending_amount,$results->currency,$listing->currency);
+            $total = getAmountWithoutSymble($results->total,$results->currency,$listing->currency);
+        @endphp
         <div class="row">
             <div class="col-md-12">
                 <h5>Booking Details</h5>
@@ -90,21 +96,21 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label class="label-default">Amount Paid<span class="required"> </span></label>
-                    <input type="text" name="city" id="location" value="{{ $results->amount_paid }}" disabled class="form-control">
+                    <input type="text" name="city" id="location" value="{{ round($amountPaid) }}" disabled class="form-control">
                     
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label class="label-default">Pending Amount<span class="required"> </span></label>
-                    <input type="text" name="state" value="{{ $results->pending_amount }}" disabled class="form-control">
+                    <input type="text" name="state" value="{{ round($pendingAmount) }}" disabled class="form-control">
                     
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label class="label-default">Total<span class="required"></span></label>
-                    <input type="text" name="state" value="{{ $results->total }}" disabled class="form-control">
+                    <input type="text" name="state" value="{{ round($total) }}" disabled class="form-control">
                 </div>
             </div>
         </div>

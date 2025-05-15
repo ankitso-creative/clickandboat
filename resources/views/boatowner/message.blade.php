@@ -391,21 +391,17 @@
                         </div>
                         @php 
                             if($quotation->currency):
-                                $symble = priceSymbol($quotation->currency);
+                                $symble = priceSymbol($listing->currency);
                             else:
                                 $symble = priceSymbol('EUR');
                             endif;
-                            $fuel_price = getAmountWithoutSymble($listing->fuel_price,$listing->currency,$quotation->currency);
+                            $total = getAmountWithoutSymble($quotation->total,$quotation->currency,$listing->currency);
+                            $netAmount = getAmountWithoutSymble($quotation->net_amount,$quotation->currency,$listing->currency);
                         @endphp
                         <div class="show-Price" id="show-Price-sec">
-                            <p>Hire: <span id="hire" class="price-after">{{ $symble.$quotation->net_amount }}</span></p>
+                            <p>Hire: <span id="hire" class="price-after">{{ $symble.round($netAmount) }}</span></p>
                             <p>Service Fee: <span id="service-fee">{{ $symble.$quotation->service_fee }}</span></p>
-                            @if($listing->fuel_include == '1')
-                                <p>Fuel Charges: <span id="service-fee">{{ $symble.$fuel_price }}</span></p>
-                                <p>Total: <span id="boat-total" class="price-after">{{ $symble.$quotation->total + $fuel_price }}</span></p>
-                            @else
-                                <p>Total: <span id="boat-total">{{ $symble.$quotation->total }}</span></p>
-                            @endif
+                            <p>Total: <span id="boat-total">{{ $symble.round($total) }}</span></p>
                         </div>
                         @if($quotation->status == 'Pending')
                             <div class="d-flex flex-column">

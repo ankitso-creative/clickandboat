@@ -68,20 +68,19 @@
                             @foreach($results as $result)
                                 @php
                                     $listing = App\Models\Admin\Listing::where('id',$result->listing_id)->first();
-                                    if($result->currency):
-                                        $symble = priceSymbol($result->currency);
-                                    else:
-                                        $symble = priceSymbol('USD');
-                                    endif;
+                                    $symble = priceSymbol($listing->currency);
+                                    $amountPaid = getAmountWithoutSymble($result->amount_paid,$result->currency,$listing->currency);
+                                    $pendingAmount = getAmountWithoutSymble($result->pending_amount,$result->currency,$listing->currency);
+                                    $total = getAmountWithoutSymble($result->total,$result->currency,$listing->currency);
                                 @endphp
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $result->payment_intent_id }}</td>
                                     <td>{{ $result->check_in }}</td>
                                     <td>{{ $result->user->name }}</td>
-                                    <td>{{ $symble.$result->amount_paid }}</td>
-                                    <td>{{ $symble.$result->pending_amount }}</td>
-                                    <td>{{ $symble.$result->total }}</td>
+                                    <td>{{ $symble.round($amountPaid) }}</td>
+                                    <td>{{ $symble.round($pendingAmount) }}</td>
+                                    <td>{{ $symble.round($total) }}</td>
                                     <td>{{ $result->payment_status }}</td>
                                     <td>{{ $result->created_at }}</td>
                                     <td>
@@ -94,6 +93,9 @@
                         @endif
                     </tbody>
                 </table>
+            </div>
+            <div class="pagination">
+                {{ $results->appends(request()->all())->links('pagination::default') }}
             </div>
         </div>
     </div>
