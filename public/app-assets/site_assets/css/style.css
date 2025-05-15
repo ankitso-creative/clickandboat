@@ -6301,7 +6301,8 @@ section.about_zigzag_section {
     color: #000;
     text-align: left;
     text-transform: uppercase;
-    padding-top: 10px;
+    padding-top: 0px;
+    margin-bottom: 0px;
 }
 .boat-title .col-md-12 {
     text-align: left !important;
@@ -7850,7 +7851,7 @@ font-size: 15px;
     color: #000;
     text-transform: uppercase;
     padding-top: 30px;
-    text-align: center;
+    text-align: left;
 }
 .city_page_text ul {
     margin-left: 30px;
@@ -8814,6 +8815,9 @@ margin-right:15px;
 .share-menu svg {
     filter: brightness(0) saturate(100%) invert(68%) sepia(34%) saturate(2517%) hue-rotate(343deg) brightness(108%) contrast(95%);
 }
+#card-errors {
+    color: red !important;
+}
 /*--------------------------------------------------------------
 # Media Query
 --------------------------------------------------------------*/
@@ -9252,14 +9256,15 @@ margin-right:15px;
     }
     .boat-title h1 {
         font-size: 25px;
-        padding-top: 10px;
+        padding-top: 0px;
         text-align: left;
         text-transform: capitalize;
     }
    .boat-title .row .col-md-12 {
-        text-align: left !important;
-        padding-left: 15px;
-    }
+    text-align: left !important;
+    padding-left: 15px;
+    padding-top: 3px;
+}
     .rating-menus li {
         padding: 0 5px 0 0;
         font-size: 10px;
@@ -9274,7 +9279,7 @@ margin-right:15px;
     }
     .share-menu {
         justify-content: left;
-        margin-top: 10px;
+        margin-top: 0px;
         margin-left: -30px;
         bottom: 0;
     }
@@ -9350,6 +9355,7 @@ margin-right:15px;
     }
     .ideas-sec {
         padding-top: 25px;
+        align-items: center;
     }
     .contact_own_btn {
         text-align: left;
@@ -9432,7 +9438,7 @@ margin-right:15px;
         font-size: 25px;
     }
     .main-dashboard {
-        padding: 50px 30px 0px 30px;
+        padding: 120px 30px 0px 30px;
         min-height: auto;
     }
     .no_message_box {
@@ -10113,6 +10119,9 @@ header.p-3.header-dashboard {
 }
 .breadcrumb {
     padding-left: 15px;
+}
+.boat-banner-sec .slick-dotted.slick-slider {
+    margin-bottom: 5px;
 }
 }
 
