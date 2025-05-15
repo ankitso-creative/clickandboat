@@ -76,6 +76,7 @@
                             <div class="menus-header">
                                 <ul class="list-unstyled">
                                     <li><a href="{{ route('customer.booking.index') }}">Bookings</a></li>
+                                    <li><a href="#">Messages</a></li>
                                     <li><a href="{{ route('logout') }}">Logout</a></li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="#"><i class="fa-solid fa-user"></i></a>
@@ -134,7 +135,7 @@
                 </div>
                 <div class="col-md-12 col-md-6 col-lg-3">
                     <div class="footer_menu">
-                        <h5>About Boat Daze</h5>
+                        <h5>About my Boat Booker</h5>
                         <ul>
                             <li><a href="{{ route('home') }}">Home</a></li>
                             <li><a href="{{ route('about-us') }}">About Us</a></li>

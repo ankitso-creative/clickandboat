@@ -152,7 +152,7 @@
                        <a class="nav-link" href="{{ route('blogs') }}">Our Blog</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('search') }}">Book a Baot </a>
+                        <a class="nav-link" href="{{ route('search') }}">Book a Boat </a>
                     </li>
                     @if(!Auth::check())
                     <li class="mt-4 nav-item">
