@@ -11,7 +11,7 @@
     <p><a href="{{ route('admin.login') }}">click here</a> to login admin dashboard.</p>
     <p>
         Best regards, <br>
-        The Click And Boat Team
+        The Boat Booker Team
     </p>
 </body>
 </html>
