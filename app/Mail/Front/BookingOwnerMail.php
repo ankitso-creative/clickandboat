@@ -2,6 +2,7 @@
 
 namespace App\Mail\Front;
 
+use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -27,8 +28,9 @@ class BookingOwnerMail extends Mailable
      */
     public function envelope(): Envelope
     {
+        $customer = User::where('id', $this->emailData->order->user_id)->first();
         return new Envelope(
-            subject: 'Booking Receiver',
+            subject: 'New Booking from - '.$customer->name ,
         );
     }
 
