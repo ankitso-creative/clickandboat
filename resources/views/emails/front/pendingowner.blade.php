@@ -18,6 +18,6 @@
     <p><strong> Paid Amount:</strong> {{  $symbol.$transaction->amount_paid }}</p>
     <p><strong> Total Booking Amount:</strong> {{  $symbol.$booking->total }}</p>
     <p>Best regards,</p>
-    <p><strong>My Boat Booker Team</strong></p>
+    <p>The Boat Booker Team</p>
 </body>
 </html>
