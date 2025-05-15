@@ -10,17 +10,12 @@ class BookingRepository
     public function allBooking()
     {
         $user = auth()->user();
-        $listings = $user->load('listings.orders.user');  // Eager load 'orders' and their related 'user'
-        $bookings = [];
-        foreach ($listings->listings as $listing) 
-        {
-            foreach ($listing->orders as $order) 
-            {
-                $order->userDetails = $order->user;
-                $order->listingDetails = $listing;
-                $bookings[] = $order;
-            }
-        }
+        $bookings = Order::whereHas('listing', function ($query) use ($user) {
+            $query->where('user_id', $user->id);
+        })
+        ->with(['user', 'listing'])
+        ->orderBy('created_at', 'desc') // optional: sort by latest
+        ->paginate(10); // change 10 to whatever per-page count you want
         return $bookings;
     }
     public function editBooking($id)

@@ -37,20 +37,20 @@ class StripeController extends Controller
             $totalAmount = $quotation['total'];
             $fuel_price = 0;
             $skipper_price = 0;
-            if($listing->fuel_include == '1'):
-                $fuel_price = getAmountWithoutSymble($listing->fuel_price,$listing->currency,$quotation->currency);
-            endif;
-            if($listing->skipper_include == '1'):
-                $skipper_price = getAmountWithoutSymble($listing->skipper_price,$listing->currency,$quotation->currency);
-            endif;
+            // if($listing->fuel_include == '1'):
+            //     $fuel_price = getAmountWithoutSymble($listing->fuel_price,$listing->currency,$quotation->currency);
+            // endif;
+            // if($listing->skipper_include == '1'):
+            //     $skipper_price = getAmountWithoutSymble($listing->skipper_price,$listing->currency,$quotation->currency);
+            // endif;
             $depositAmount = $totalAmount +$fuel_price + $skipper_price;
         endif;
-       
+        $depositAmount = getAmountWithoutSymble($depositAmount,$quotation->currency,$listing->currency);
         Stripe::setApiKey(config('services.stripe.secret'));
         try {
             $paymentIntent = PaymentIntent::create([
-                'amount' => $depositAmount * 100, 
-                'currency' => $quotation->currency,
+                'amount' =>  round($depositAmount) * 100, 
+                'currency' => $listing->currency,
                 'payment_method_types' => ['card'],
                 'confirmation_method' => 'automatic',  
                 'capture_method' => 'automatic', 
@@ -77,12 +77,12 @@ class StripeController extends Controller
                 $depositAmount = $listing->security->amount;
                 $fuel_price = 0;
                 $skipper_price = 0;
-                if($listing->fuel_include == '1'):
-                    $fuel_price = getAmountWithoutSymble($listing->fuel_price,$listing->currency,$quotation->currency);
-                endif;
-                if($listing->skipper_include == '1'):
-                    $skipper_price = getAmountWithoutSymble($listing->skipper_price,$listing->currency,$quotation->currency);
-                endif;
+                // if($listing->fuel_include == '1'):
+                //     $fuel_price = getAmountWithoutSymble($listing->fuel_price,$listing->currency,$quotation->currency);
+                // endif;
+                // if($listing->skipper_include == '1'):
+                //     $skipper_price = getAmountWithoutSymble($listing->skipper_price,$listing->currency,$quotation->currency);
+                // endif;
                 $totalAmount = $quotation['total']+ $fuel_price + $skipper_price;
                 $pending_amount = $totalAmount - $depositAmount;
             else:
@@ -90,12 +90,12 @@ class StripeController extends Controller
                 $depositAmount = $quotation['total'] * $amount / 100;
                 $fuel_price = 0;
                 $skipper_price = 0;
-                if($listing->fuel_include == '1'):
-                    $fuel_price = getAmountWithoutSymble($listing->fuel_price,$listing->currency,$quotation->currency);
-                endif;
-                if($listing->skipper_include == '1'):
-                    $skipper_price = getAmountWithoutSymble($listing->skipper_price,$listing->currency,$quotation->currency);
-                endif;
+                // if($listing->fuel_include == '1'):
+                //     $fuel_price = getAmountWithoutSymble($listing->fuel_price,$listing->currency,$quotation->currency);
+                // endif;
+                // if($listing->skipper_include == '1'):
+                //     $skipper_price = getAmountWithoutSymble($listing->skipper_price,$listing->currency,$quotation->currency);
+                // endif;
                 $totalAmount = $quotation['total'] + $fuel_price + $skipper_price;
                 $pending_amount = $totalAmount - $depositAmount;
             endif;
@@ -103,12 +103,12 @@ class StripeController extends Controller
             $totalAmount = $quotation['total'];
             $fuel_price = 0;
             $skipper_price = 0;
-            if($listing->fuel_include == '1'):
-                $fuel_price = getAmountWithoutSymble($listing->fuel_price,$listing->currency,$quotation->currency);
-            endif;
-            if($listing->skipper_include == '1'):
-                $skipper_price = getAmountWithoutSymble($listing->skipper_price,$listing->currency,$quotation->currency);
-            endif;
+            // if($listing->fuel_include == '1'):
+            //     $fuel_price = getAmountWithoutSymble($listing->fuel_price,$listing->currency,$quotation->currency);
+            // endif;
+            // if($listing->skipper_include == '1'):
+            //     $skipper_price = getAmountWithoutSymble($listing->skipper_price,$listing->currency,$quotation->currency);
+            // endif;
             $depositAmount = $totalAmount + $fuel_price + $skipper_price;
             $pending_amount = 0;
         endif;
