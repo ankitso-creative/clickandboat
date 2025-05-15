@@ -15,7 +15,7 @@
     <p>Dear {{ $customer }},</p>
 
     <p>Thank you for paying your pending amount.</p>
-    <p>If you have any questions or need to make changes, feel free to contact us.</p>
+    <p>If you have any questions or need to make changes, feel free to <a href="mailto:shubham@so-creative.co.uk">contact us.</a></p>
 
     <p>We look forward to seeing you!</p>
 

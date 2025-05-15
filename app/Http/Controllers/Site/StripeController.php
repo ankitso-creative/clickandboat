@@ -167,11 +167,13 @@ class StripeController extends Controller
         $request = $request->all();
         $orderId = $request['orderID'];
         $order = Order::where('id',$orderId)->first();
+        $listing = Listing::where('id',$order->listing_id)->first();
+        $pending_amount = getAmountWithoutSymble($order->pending_amount,$order->currency,$listing->currency);
         Stripe::setApiKey(config('services.stripe.secret'));
         try {
             $paymentIntent = PaymentIntent::create([
-                'amount' => $order->pending_amount * 100, 
-                'currency' => $order->currency,
+                'amount' => round($pending_amount) * 100, 
+                'currency' => $listing->currency,
                 'payment_method_types' => ['card'],
                 'confirmation_method' => 'automatic',  
                 'capture_method' => 'automatic', 
