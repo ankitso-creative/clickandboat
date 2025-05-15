@@ -570,7 +570,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-6 col-md-6 col-lg-4">
-                    <a href="{{ route('locationlisting','Ibiza') }}">
+                    <a href="{{ route('locationlisting','Marina Santa Eulalia') }}">
                         <div class="boat_by_location_box">
                             <div class="boat_by_location_text">
                                 <h3>Marina Santa Eulalia</h3>
@@ -579,7 +579,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     </a>
                 </div>
                 <div class="col-sm-6 col-md-6 col-lg-4">
-                    <a href="{{ route('locationlisting','Guadeloupe') }}">
+                    <a href="{{ route('locationlisting','Puerto Sant Antoni') }}">
                         <div class="boat_by_location_box">
                             <div class="boat_by_location_text">
                                 <h3>Puerto Sant Antoni </h3>
@@ -588,7 +588,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     </a>
                 </div>
                 <div class="col-sm-6 col-md-6 col-lg-4">
-                    <a href="{{ route('locationlisting','Italy') }}">
+                    <a href="{{ route('locationlisting','Marina Ibiza') }}">
                         <div class="boat_by_location_box">
                             <div class="boat_by_location_text">
                                 <h3>Marina Ibiza</h3>
@@ -597,7 +597,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     </a>
                 </div>
                 <div class="col-sm-6 col-md-6 col-lg-4">
-                    <a href="{{ route('locationlisting','Dubai') }}">
+                    <a href="{{ route('locationlisting','Marina Botafoch') }}">
                         <div class="boat_by_location_box">
                             <div class="boat_by_location_text">
                                 <h3>Marina Botafoch</h3>
@@ -606,7 +606,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     </a>
                 </div>
                 <div class="col-sm-6 col-md-6 col-lg-4">
-                    <a href="{{ route('locationlisting','Croatia') }}">
+                    <a href="{{ route('locationlisting','Ibiza Magna') }}">
                         <div class="boat_by_location_box">
                             <div class="boat_by_location_text">
                                 <h3> Ibiza Magna</h3>
@@ -615,7 +615,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     </a>
                 </div>
                 <div class="col-sm-6 col-md-6 col-lg-4">
-                    <a href="{{ route('locationlisting','Greece') }}">
+                    <a href="{{ route('locationlisting','Club Nautico') }}">
                         <div class="boat_by_location_box">
                             <div class="boat_by_location_text">
                                 <h3>Club Nautico</h3>
