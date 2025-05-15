@@ -195,12 +195,13 @@
 												else:
 													$symble = priceSymbol('USD');
 												endif;
+												$depositAmount = getAmountWithoutSymble($depositAmount,$quotation->currency,$listing->currency);
 											@endphp
 											<div class="col-md-12">
 												<input type="radio" value="deposit-payment" class="form-check-input" name="payment_type" id="myRadiodeposit">
 												<label for="myRadiodeposit">
 													<span class="title-label">Pay the deposit amount</span>
-													<span class="title-text">{{ $symble.$depositAmount }}</span>
+													<span class="title-text">{{ $symble.round($depositAmount) }}</span>
 													<p>Pay the deposit amount of the booking today.</p>
 												</label>
 											</div>
@@ -215,14 +216,14 @@
 											$skipper_price = 0;
 											$fuel_include = '';
 											$skipper_include = '';
-											if($listing->fuel_include == '1'):
-												$fuel_price = getAmountWithoutSymble($listing->fuel_price,$listing->currency,$quotation->currency);
-												$fuel_include = 'Fuel Charges: '.$symble.$fuel_price;
-											endif;
-											if($listing->skipper_include == '1'):
-												$skipper_price = getAmountWithoutSymble($listing->skipper_price,$listing->currency,$quotation->currency);
-												$skipper_include = 'Skipper Charges: '.$symble.$skipper_price;
-											endif;
+											// if($listing->fuel_include == '1'):
+											// 	$fuel_price = getAmountWithoutSymble($listing->fuel_price,$listing->currency,$quotation->currency);
+											// 	$fuel_include = 'Fuel Charges: '.$symble.$fuel_price;
+											// endif;
+											// if($listing->skipper_include == '1'):
+											// 	$skipper_price = getAmountWithoutSymble($listing->skipper_price,$listing->currency,$quotation->currency);
+											// 	$skipper_include = 'Skipper Charges: '.$symble.$skipper_price;
+											// endif;
 											$totalAmount = $quotation['total'] + $fuel_price + $skipper_price ;
 										@endphp
 										<div class="col-md-12">
@@ -230,8 +231,8 @@
 											<label for="myRadiofull">
 												<span class="title-label">Pay the total amount</span>
 												<span class="title-text">Hire: {{ $symble.$quotation['total'] }}</span>
-												<span class="title-text">{{ $fuel_include }}</span>
-												<span class="title-text">{{ $skipper_include }}</span>
+												{{-- <span class="title-text">{{ $fuel_include }}</span>
+												<span class="title-text">{{ $skipper_include }}</span> --}}
 												<span class="title-text">Total: {{ $symble.$totalAmount }}</span>
 												<p>Pay the total amount of the booking today.</p>
 											</label>
@@ -318,7 +319,7 @@
 									</div>
 								</div>
 								<div class="checkout-btn-sec">
-									<p>By selecting the button below, you unconditionally agree to the <a href="{{ route('terms-condition') }}">Terms & Conditions</a>, <a href="#">Cancellation conditions</a>, <a href="#">Insurance conditions</a>. You also agree to pay the total amount of the reservation.</p>
+									<p>By selecting the button below, you unconditionally agree to the <a href="{{ route('terms-condition') }}">Terms & Conditions</a>. You also agree to pay the total amount of the reservation.</p>
 									<div id="card-errors"></div>
 									<button class="btn btn-primary btn-checkout" id="submit-button">Pay Now </button>
 								</div>

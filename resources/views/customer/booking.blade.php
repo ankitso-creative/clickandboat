@@ -65,7 +65,7 @@
                                     if($result->currency):
                                         $symble = priceSymbol($result->currency);
                                     else:
-                                        $symble = priceSymbol('USD');
+                                        $symble = priceSymbol('EUR');
                                     endif;
                                 @endphp
                                 <tr>

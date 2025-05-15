@@ -9,7 +9,10 @@
         $booking = $emailData->order;
         $customer = App\Models\User::where('id', $emailData->order->user_id)->first();
         $listing = App\Models\Admin\Listing::where('id', $emailData->order->listing_id)->with('user')->first();
-        $symbol = priceSymbol($booking->currency);
+        $symbol = priceSymbol($listing->currency);
+        $amountPaid = getAmountWithoutSymble($booking->amount_paid,$booking->currency,$listing->currency);
+        $pendingAmount = getAmountWithoutSymble($booking->pending_amount,$booking->currency,$listing->currency);
+        $total = getAmountWithoutSymble($booking->total,$booking->currency,$listing->currency);
     @endphp
     <p>Dear {{ $listing->user->name }},</p>
 
@@ -20,9 +23,9 @@
         <li><strong>Email:</strong> {{ $customer->email }}</li>
         <li><strong>Transaction ID:</strong> {{ $booking->payment_intent_id }}</li>
         <li><strong>Check In Date:</strong> {{ $booking->check_in }}</li>
-        <li><strong>Amount Paid:</strong> {{ $symbol.$booking->amount_paid }}</li>
-        <li><strong>Pending Paid:</strong> {{ $symbol.$booking->pending_amount }}</li>
-        <li><strong>Total Amount:</strong> {{ $symbol.$booking->total }}</li>
+        <li><strong>Amount Paid:</strong> {{ $symbol.round($amountPaid) }}</li>
+        <li><strong>Pending Paid:</strong> {{ $symbol.round($pendingAmount) }}</li>
+        <li><strong>Total Amount:</strong> {{ $symbol.round($total) }}</li>
     </ul>
 
     <p>Please make the necessary preparations or follow-up as needed.</p>
