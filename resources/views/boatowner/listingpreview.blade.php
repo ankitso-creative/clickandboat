@@ -268,6 +268,30 @@
     <section class="boat-banner-sec">
         <div class="container">
             <div class="row">
+                @php
+                    $galleryImages = $listing->getMedia('listing_gallery');
+                    $imageUrls = $galleryImages->map(fn($media) => $media->getUrl())->toArray();
+
+                    $imageCoverUrl = $listing->getFirstMediaUrl('cover_images');
+                    $imageCover = $imageCoverUrl ? [$imageCoverUrl] : [];
+
+                    $allImageUrls = array_filter(array_merge($imageCover, $imageUrls));
+
+                    if (empty($allImageUrls)) {
+                        $allImageUrls = ['https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'];
+                    }
+                @endphp
+                <div class="col-md-12 mobile-image-slides">
+                    @foreach($allImageUrls as $allImageUrl)
+                        <div class="mobile-image-slide">
+                            <a data-fancybox="gallery" href="{{ $allImageUrl }}">
+                                <img src="{{ $allImageUrl }}" alt="Image" class="img-fluid" />
+                            </a>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-md-6">
                     @php 
                         $gallery_images = $listing->getMedia('listing_gallery'); 
