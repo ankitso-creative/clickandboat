@@ -5370,6 +5370,7 @@ section.about_zigzag_section {
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
+    display: none;
 }
 .breadCrumbContainer__breadCrumb {
     width: 100%;
@@ -5378,6 +5379,9 @@ section.about_zigzag_section {
 }
 .breadcrumb {
     background: none;
+    max-width: 1138px !important;
+    margin: 0px auto;
+    padding-left: 0;
 }
 .single_blog_heading h1 {
     font-size: 44px;
@@ -5435,6 +5439,11 @@ section.about_zigzag_section {
     justify-content: end;
     margin-bottom: 15px;
     align-items: baseline;
+    position: relative;
+    bottom: 33px;
+}
+.boat-banner-sec {
+    margin-top: -25px;
 }
 .share-menu li {
     margin-left: 30px;
@@ -6290,9 +6299,13 @@ section.about_zigzag_section {
 .boat-title h1 {
     font-size: 40px;
     color: #000;
-    text-align: center;
+    text-align: left;
     text-transform: uppercase;
-    padding-top: 65px;
+    padding-top: 10px;
+}
+.boat-title .col-md-12 {
+    text-align: left !important;
+    padding-left: 0;
 }
 .specification-content h3 {
     font-size: 28px;
@@ -9243,8 +9256,9 @@ margin-right:15px;
         text-align: left;
         text-transform: capitalize;
     }
-    .boat-title .row .col-md-12 {
+   .boat-title .row .col-md-12 {
         text-align: left !important;
+        padding-left: 15px;
     }
     .rating-menus li {
         padding: 0 5px 0 0;
@@ -9262,6 +9276,10 @@ margin-right:15px;
         justify-content: left;
         margin-top: 10px;
         margin-left: -30px;
+        bottom: 0;
+    }
+    .boat-banner-sec {
+        margin-top: 0;
     }
     .breadcrumb-item.active {
         text-align: left;
@@ -10093,6 +10111,9 @@ header.p-3.header-dashboard {
     text-align: center;
     display: block;
 }
+.breadcrumb {
+    padding-left: 15px;
+}
 }
 
 @media (min-width: 767px) and (max-width: 1024px) {
@@ -10513,6 +10534,10 @@ header.p-3.header-dashboard {
     .share-menu {   
         justify-content: left;
         margin-top: 10px;
+        bottom: 0;
+    }
+    .boat-banner-sec {
+        margin-top: 0;
     }
     .share-menu li {
         margin: 0px 30px 0px 0px;
@@ -10555,9 +10580,11 @@ header.p-3.header-dashboard {
     .next_trip_section {
         margin-bottom: 30px;
     }
-    .number_list {
-        margin: 0 25px 0 10px;
-    }
+    .breadcrumb {
+        text-align: center;
+        margin-top: 85px;
+        margin-left: 25px;
+     }
     .breadcrumb {
         text-align: center;
     }
