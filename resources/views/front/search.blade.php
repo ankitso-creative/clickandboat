@@ -683,14 +683,41 @@
                                                 $heart_html = '';
                                             endif;
                                         endif;
-                                    @endphp                                                                                                                                                                                                                                                                                 
+                                    
+                                        $baseUrl = route('singleboat', [
+                                            'city' => $result->city,
+                                            'type' => $result->type,
+                                            'slug' => $result->slug
+                                        ]);
+                                        $startDate = request('startdate');
+                                        $endDate = request('enddate');
+                                        if(!empty($startDate) && !empty($endDate)) 
+                                        {
+                                            $query = '?startdate=' . urlencode($startDate) . '&enddate=' . urlencode($endDate);
+                                        }
+                                        elseif(!empty($startDate))
+                                        {
+                                            $query = '?startdate=' . urlencode($startDate) . '&enddate=' . urlencode($startDate);
+                                        }
+                                        elseif(!empty($endDate))
+                                        {
+                                            $query = '?startdate=' . urlencode($endDate) . '&enddate=' . urlencode($endDate);
+                                        }
+                                        else 
+                                        {
+                                           $query = '';
+                                        }
+
+                                        $fullUrl = $baseUrl . $query;
+
+                                    @endphp                                                                                                                                                                                                                                                                                
                                     <div class="col-sm-12 col-md-6 col-lg-4">
                                         <div class="location_inner_box">
-                                            <a href="{{ route('singleboat', ['city' => $result->city, 'type' => $result->type, 'slug' => $result->slug]) }}">
+                                            <a href="{{ $fullUrl }}">
                                                 <img src="{{ $result->getFirstMediaUrl('cover_images') ? $result->getFirstMediaUrl('cover_images') : 'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png' }}">
                                             </a>
                                             {!! $heart_html !!} 
-                                            <a href="{{ route('singleboat', ['city' => $result->city, 'type' => $result->type, 'slug' => $result->slug]) }}">
+                                            <a href="{{ $fullUrl }}">
                                                 <div class="location_inner_main_box">
                                                     <div class="location_inner_text">
                                                         <h3>{{ $result->city }}</h3>

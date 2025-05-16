@@ -570,12 +570,20 @@
                         <div class="col-md-6">
                             <div class="banner-grid-image">
                                 @if(count($gallery_images))
+                                    @php
+                                       $count = 0;
+                                    @endphp
                                     @foreach ($gallery_images as $gallery_image)
-                                        @if ($loop->iteration >= 1 && $loop->iteration <= 4)
-                                            <a data-fancybox="gallery" href="{{ $gallery_image->getUrl() }}">
-                                                <img src="{{ $gallery_image->getUrl() }}" alt="Image" class="img-fluid" />
-                                            </a>
-                                        @endif
+                                        @php
+                                            $count++;
+                                            $dNone = '';
+                                            if($count > 4):
+                                                $dNone = 'd-none';
+                                            endif;
+                                        @endphp
+                                        <a data-fancybox="gallery" href="{{ $gallery_image->getUrl() }}" class="{{ $dNone }}">
+                                            <img src="{{ $gallery_image->getUrl() }}" alt="Image" class="img-fluid" />
+                                        </a>
                                     @endforeach
                                 @else
                                     <a href="#"><img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" alt="Image" class="img-fluid" /></a>
@@ -583,11 +591,11 @@
                                     <a href="#"><img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" alt="Image" class="img-fluid" /></a>
                                     <a href="#"><img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" alt="Image" class="img-fluid" /></a>
                                 @endif 
-                                {{--
+                                @if($count > 4)
                                     <div class="view-more-photos">
-                                        <a href="#"> View the photos (+10)</a>
+                                        <a data-fancybox="gallery" href="{{ $image }}"> View the photos (+{{ $count - 4 }})</a>
                                     </div>
-                                --}}
+                                @endif
                             </div>
                         </div>
                     @endif
@@ -821,44 +829,85 @@
                             <!-- Form for dates -->
                             <form action="{{ route('checkout') }}" method="POST">
                                 @csrf
+                                @php
+                                    $startDate = request('startdate');
+                                    $endDate = request('enddate');
+                                    $price = '';
+                                    $days = '';
+                                    if(!empty($startDate) && !empty($endDate)) 
+                                    {
+                                        $request['checkindate'] = $startDate;
+                                        $request['checkoutdate'] = $endDate;
+                                        $request['id'] = $listing->id;
+                                        $price = bookingPrice($request);
+                                        $days = $price['days'];
+                                    }
+                                @endphp
                                 <div class="row sidebar_form">
                                     <div class="p-0 col-md-6">
                                         <div class="form-group">
-                                            <input type="date" id="checkin-date" name="checkin_date" class="form-control" placeholder="Check-in" />
+                                            <input type="text" id="checkin-date" name="checkin_date" value="{{ request('startdate') }}" class="form-control" placeholder="Check-in" />
                                         </div>
                                     </div>
                                     <div class="p-0 col-md-6">
                                         <div class="form-group">
-                                            <input type="date" id="checkout-date" class="form-control" name="checkout_date" placeholder="Check-out" />
-                                            <input type="hidden" id="days-val" value="" name="days_val" />
+                                            <input type="text" id="checkout-date" class="form-control" name="checkout_date" value="{{ request('enddate') }}" placeholder="Check-out" />
+                                            <input type="hidden" id="days-val" value="{{ $days }}" name="days_val" />
                                         </div>
                                     </div>
                                 </div>
-                                
-                                <div class="show-Price d-none" id="show-Price-sec">
-                                    <div class="input-group d-none" id="half_day-box">
-                                        <input type="checkbox" id="half_day" name="half_day" value="1" >
-                                        <input type="hidden" id="half_day-price" value="" >
-                                        <label for="half_day"> Half Day</label>
+                                @if($price)
+                                    <div class="show-Price" id="show-Price-sec">
+                                        @if($price['priceExist'] == 'yes')
+                                            <div class="input-group" id="half_day-box">
+                                                <input type="checkbox" id="half_day" name="half_day" value="1" >
+                                                <input type="hidden" id="half_day-price" value="{{ $price['oneHalfDayPrice'] }}" >
+                                                <label for="half_day"> Half Day</label>
+                                            </div>
+                                        @endif
+                                        <div class="row price_row">
+                                            <div class="col-md-4 days_box">
+                                            <p>Days: <span id="total-days">{{ $price['days'] }}</span></p>
+                                            </div>
+                                            <div class="col-md-4">
+                                            <p>Charter Price:<br/> {{ $symble }}<span id="charter-pice">{{ $price['price'] }}</span></p>
+                                            </div>
+                                            <div class="col-md-4">
+                                            <p>Service Fee:<br/> {{ $symble }}<span id="charter-fee">0</span></p>
+                                            </div>
+                                        </div>
+                                        <div class="row price_row">
+                                            <div class="col-md-12">
+                                                <p>Total:<br/> {{ $symble }}<span id="charter-total">{{ $price['totalAmount'] }}</span></p>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="row price_row">
-                                        <div class="col-md-4 days_box">
-                                        <p>Days: <span id="total-days"></span></p>
+                                @else
+                                    <div class="show-Price d-none" id="show-Price-sec">
+                                        <div class="input-group d-none" id="half_day-box">
+                                            <input type="checkbox" id="half_day" name="half_day" value="1" >
+                                            <input type="hidden" id="half_day-price" value="" >
+                                            <label for="half_day"> Half Day</label>
                                         </div>
-                                        <div class="col-md-4">
-                                        <p>Charter Price:<br/> {{ $symble }}<span id="charter-pice"></span></p>
+                                        <div class="row price_row">
+                                            <div class="col-md-4 days_box">
+                                            <p>Days: <span id="total-days"></span></p>
+                                            </div>
+                                            <div class="col-md-4">
+                                            <p>Charter Price:<br/> {{ $symble }}<span id="charter-pice"></span></p>
+                                            </div>
+                                            <div class="col-md-4">
+                                            <p>Service Fee:<br/> {{ $symble }}<span id="charter-fee"></span></p>
+                                            </div>
                                         </div>
-                                        <div class="col-md-4">
-                                        <p>Service Fee:<br/> {{ $symble }}<span id="charter-fee"></span></p>
+                                        <div class="row price_row">
+                                        <div class="col-md-12">
+                                            <p>Total:<br/> {{ $symble }}<span id="charter-total"></span></p>
+                                            </div>
                                         </div>
+        
                                     </div>
-                                    <div class="row price_row">
-                                    <div class="col-md-12">
-                                        <p>Total:<br/> {{ $symble }}<span id="charter-total"></span></p>
-                                        </div>
-                                    </div>
-    
-                                </div>
+                                @endif
                                 <div class="d-flex flex-column">
                                     @if(Auth::check())
                                         @php
@@ -1120,21 +1169,41 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="show-Price d-none" id="qshow-Price-sec">
-                                    <div class="input-group " id="half_day-box-2">
-                                        <input type="checkbox" id="half_day" name="half_day-2" value="1" >
-                                        <input type="hidden" id="half_day-price-2" value="" >
-                                        <label for="half_day"> Half Day</label>
-                                    </div>
-                                    <div class="row popup_price price_row">
+                                @if($price)
+                                    <div class="show-Price" id="qshow-Price-sec">
+                                        @if($price['priceExist'] == 'yes')
+                                            <div class="input-group " id="half_day-box-2">
+                                                <input type="checkbox" id="half_day" name="half_day-2" value="1" >
+                                                <input type="hidden" id="half_day-price-2" value="{{ $price['oneHalfDayPrice'] }}" >
+                                                <label for="half_day"> Half Day</label>
+                                            </div>
+                                        @endif
+                                        <div class="row popup_price price_row">
+                                            <div class="col-md-6">
+                                                <p>Days: <span id="qtotal-days">{{ $price['days'] }}</span></p>
+                                            </div>
                                         <div class="col-md-6">
-                                            <p>Days: <span id="qtotal-days"></span></p>
-                                        </div>
-                                     <div class="col-md-6">
-                                         <p>Price: {{ $symble }}<span id="qcharter-total"></span></p>
+                                            <p>Price: {{ $symble }}<span id="qcharter-total">{{ $price['totalAmount'] }}</span></p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                @else
+                                    <div class="show-Price d-none" id="qshow-Price-sec">
+                                        <div class="input-group " id="half_day-box-2">
+                                            <input type="checkbox" id="half_day" name="half_day-2" value="1" >
+                                            <input type="hidden" id="half_day-price-2" value="" >
+                                            <label for="half_day"> Half Day</label>
+                                        </div>
+                                        <div class="row popup_price price_row">
+                                            <div class="col-md-6">
+                                                <p>Days: <span id="qtotal-days"></span></p>
+                                            </div>
+                                        <div class="col-md-6">
+                                            <p>Price: {{ $symble }}<span id="qcharter-total"></span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
                                 <div class="row message-modal-text">
                                     <div class="col-md-12">
                                         <h6>Your message</h6>
@@ -1331,46 +1400,85 @@
                             <!-- Form for dates -->
                                 <form action="{{ route('checkout') }}" method="POST">
                                     @csrf
+                                    @php
+                                        $startDate = request('startdate');
+                                        $endDate = request('enddate');
+                                        $price = '';
+                                        $days = '';
+                                        if(!empty($startDate) && !empty($endDate)) 
+                                        {
+                                            $request['checkindate'] = $startDate;
+                                            $request['checkoutdate'] = $endDate;
+                                            $request['id'] = $listing->id;
+                                            $price = bookingPrice($request);
+                                            $days = $price['days'];
+                                        }
+                                    @endphp
                                     <div class="row sidebar_form">
                                         <div class="p-0 col-md-6">
                                             <div class="form-group">
-                                                <input type="date" id="mcheckin-date" name="checkin_date"
-                                                    class="form-control" placeholder="Check-in" />
+                                                <input type="date" id="mcheckin-date" name="checkin_date" value="{{ request('startdate') }}" class="form-control" placeholder="Check-in" />
                                             </div>
                                         </div>
                                         <div class="p-0 col-md-6">
                                             <div class="form-group">
-                                                <input type="date" id="mcheckout-date" class="form-control"
-                                                    name="checkout_date" placeholder="Check-out" />
-                                                <input type="hidden" id="days-val" value="" name="days_val" />
+                                                <input type="date" id="mcheckout-date" class="form-control" name="checkout_date" placeholder="Check-out" value="{{ request('startdate') }}" />
+                                                <input type="hidden" id="days-val" value="{{ $days }}" name="days_val" />
                                             </div>
                                         </div>
                                     </div>
-                                    
-                                    <div class="show-Price d-none" id="show-Price-sec">
-                                        <div class="input-group d-none" id="mhalf_day-box">
-                                            <input type="checkbox" id="half_day" name="half_day" value="1" >
-                                            <input type="hidden" id="mhalf_day-price" value="" >
-                                            <label for="half_day"> Half Day</label>
+                                    @if($price)
+                                        <div class="show-Price" id="show-Price-sec">
+                                            @if($price['priceExist'] == 'yes')
+                                                <div class="input-group" id="mhalf_day-box">
+                                                    <input type="checkbox" id="half_day" name="half_day" value="1" >
+                                                    <input type="hidden" id="mhalf_day-price" value="{{ $price['oneHalfDayPrice'] }}" >
+                                                    <label for="half_day"> Half Day</label>
+                                                </div>
+                                            @endif
+                                            <div class="row price_row">
+                                                <div class="col-md-4 days_box">
+                                                <p>Days: <span id="total-days">{{ $price['days'] }}</span></p>
+                                                </div>
+                                                <div class="col-md-4">
+                                                <p>Charter Price:<br/> {{ $symble }}<span id="mcharter-pice">{{ $price['price'] }}</span></p>
+                                                </div>
+                                                <div class="col-md-4">
+                                                <p>Service Fee:<br/> {{ $symble }}<span id="mcharter-fee">0</span></p>
+                                                </div>
+                                            </div>
+                                            <div class="row price_row">
+                                            <div class="col-md-12">
+                                                <p>Total:<br/> {{ $symble }}<span id="charter-total">{{ $price['totalAmount'] }}</span></p>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="row price_row">
-                                            <div class="col-md-4 days_box">
-                                            <p>Days: <span id="total-days"></span></p>
+                                    @else:
+                                        <div class="show-Price d-none" id="show-Price-sec">
+                                            <div class="input-group d-none" id="mhalf_day-box">
+                                                <input type="checkbox" id="half_day" name="half_day" value="1" >
+                                                <input type="hidden" id="mhalf_day-price" value="" >
+                                                <label for="half_day"> Half Day</label>
                                             </div>
-                                            <div class="col-md-4">
-                                            <p>Charter Price:<br/> {{ $symble }}<span id="mcharter-pice"></span></p>
+                                            <div class="row price_row">
+                                                <div class="col-md-4 days_box">
+                                                <p>Days: <span id="total-days"></span></p>
+                                                </div>
+                                                <div class="col-md-4">
+                                                <p>Charter Price:<br/> {{ $symble }}<span id="mcharter-pice"></span></p>
+                                                </div>
+                                                <div class="col-md-4">
+                                                <p>Service Fee:<br/> {{ $symble }}<span id="mcharter-fee"></span></p>
+                                                </div>
                                             </div>
-                                            <div class="col-md-4">
-                                            <p>Service Fee:<br/> {{ $symble }}<span id="mcharter-fee"></span></p>
+                                            <div class="row price_row">
+                                            <div class="col-md-12">
+                                                <p>Total:<br/> {{ $symble }}<span id="charter-total"></span></p>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="row price_row">
-                                        <div class="col-md-12">
-                                            <p>Total:<br/> {{ $symble }}<span id="charter-total"></span></p>
-                                            </div>
-                                        </div>
 
-                                    </div>
+                                        </div>
+                                    @endif
                                     <div class="d-flex flex-column">
                                         @if(Auth::check())
                                             @php
