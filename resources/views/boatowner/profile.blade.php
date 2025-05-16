@@ -89,7 +89,7 @@
             <a class="nav-link" href="#password">Password</a>
         </li>
         <li class="nav-item" role="presentation">
-            <a class="nav-link" href="#delete">Setting</a>
+            <a class="nav-link" href="#delete">Settings</a>
         </li>
     </ul>
     <div class="">
@@ -650,7 +650,7 @@
         <div class="mb-5 tab-pane" id="delete">
             <div class="card-section">
                 <div class="card-sec-title">
-                    <h2>Setting</h2>
+                    <h2>Settings</h2>
                 </div>
                 <div class="setting_section">
                     <div class="input-group">
