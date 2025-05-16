@@ -44,7 +44,7 @@
         <div class="page-title">
             <h1>All Your Bookings Support</h1>
         </div>
-        @if(!$isMobile):
+        @if(!$isMobile)
             <div class="no-booking-yet">
                 <p>You haven't any message.</p>
             </div> 

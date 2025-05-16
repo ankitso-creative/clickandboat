@@ -223,6 +223,7 @@ class ChatRepository
         $quotation->net_amount = $PriceAfterDiscount;
         $quotation->sub_total = $PriceAfterDiscount + $quotationServiceFee;
         $quotation->total = $PriceAfterDiscount + $quotationServiceFee;
+        $quotation->discount = $request['discount'];
         $quotation->status = 'Accept';
         if($quotation->update()):
             $message = Message::create([

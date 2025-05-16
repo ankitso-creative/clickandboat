@@ -366,7 +366,7 @@
                         <div class="d-flex flex-column">
                             @php
                                 $userId = auth()->id();
-                                $orderExists = App\Models\Order::where('user_id', $userId)->where('listing_id',$listing->id)->where('checkin',$quotation->checkin)->exists();
+                                $orderExists = App\Models\Order::where('user_id', $userId)->where('listing_id',$listing->id)->where('check_in',$quotation->checkin)->exists();
                                 $orderID = App\Models\Order::where('user_id', $userId)->where('listing_id',$listing->id)->value('id');
                             @endphp
                             @if($orderExists)

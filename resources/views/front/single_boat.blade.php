@@ -909,11 +909,11 @@
                                     endif;
                                     $fuel_cost = 'Yes';
                                     if($listing->fuel_include == '1'):
-                                        $fuel_cost = getAmountWithSymble($listing->fuel_price,$listing->currency,$to);
+                                        $fuel_cost = 'No';
                                     endif;
                                     $skipper_cost = 'Yes';
                                     if($listing->skipper_include == '1'):
-                                        $skipper_cost = getAmountWithSymble($listing->skipper_price,$listing->currency,$to);
+                                        $skipper_cost = 'No';
                                     endif;
                                     if(optional($listing->booking)->cancellation_conditions == 'flexible'):
                                         $cancellation_conditions = 'Full refund to the tenant up to 1 day prior to arrival, excluding Service Fee and MyBoatBooker Commission. The tenant will be refunded the total amount of the booking (excluding Service Fee and MyBoatBooker Commission) if they cancel the booking until the day before check-in (time indicated on the listing by the owner or agreed between the users via MyBoatBooker messaging or 9:00 am, local time if not specified). If the Tenant arrives and decides to leave before the scheduled date, the days not spent on the boat are not refunded.';

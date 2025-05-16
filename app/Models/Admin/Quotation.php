@@ -9,6 +9,7 @@ class Quotation extends Model
     protected $fillable = [
         'user_id',
         'listing_id',
+        'days',
         'checkin',
         'checkout',
         'net_amount',

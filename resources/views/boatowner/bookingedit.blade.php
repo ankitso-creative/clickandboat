@@ -61,10 +61,30 @@
         @endif
         @php
             $listing = App\Models\Admin\Listing::where('id',$results->listing_id)->first();
+            $request['checkindate'] = $results->check_in;
+            $request['checkoutdate'] = $results->check_out;
+            $request['id'] = $results->listing_id;
+            $price = bookingPrice($request,$listing->currency);
             $symble = priceSymbol($listing->currency);
-            $amountPaid = getAmountWithoutSymble($results->amount_paid,$results->currency,$listing->currency);
-            $pendingAmount = getAmountWithoutSymble($results->pending_amount,$results->currency,$listing->currency);
-            $total = getAmountWithoutSymble($results->total,$results->currency,$listing->currency);
+
+            $total = $price['totalAmount'];
+            if($results->discount):
+                $totalWD = $price['totalAmount'] * $results->discount / 100;
+                $total = $price['totalAmount'] - $totalWD;
+            endif;
+            $pendingAmount = $results->pending_amount;
+            if($pendingAmount):
+                $security = $listing->security->amount;
+                $pendingAmount = $total - $security;
+            else:
+                $totalWD = $price['totalAmount'] * $results->discount / 100;
+                $amountPaid = $price['totalAmount'];
+            endif;
+            $amountPaid = $price['totalAmount'] - $pendingAmount;
+            if($results->discount):
+                $amountPaidWD = $price['totalAmount'] * $results->discount / 100;
+                $amountPaid = $amountPaid - $amountPaidWD;
+            endif;
         @endphp
         <div class="row">
             <div class="col-md-12">
@@ -96,21 +116,21 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label class="label-default">Amount Paid<span class="required"> </span></label>
-                    <input type="text" name="city" id="location" value="{{ round($amountPaid) }}" disabled class="form-control">
+                    <input type="text" name="city" id="location" value="{{ $amountPaid }}" disabled class="form-control">
                     
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label class="label-default">Pending Amount<span class="required"> </span></label>
-                    <input type="text" name="state" value="{{ round($pendingAmount) }}" disabled class="form-control">
+                    <input type="text" name="state" value="{{ $pendingAmount }}" disabled class="form-control">
                     
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label class="label-default">Total<span class="required"></span></label>
-                    <input type="text" name="state" value="{{ round($total) }}" disabled class="form-control">
+                    <input type="text" name="state" value="{{ $total }}" disabled class="form-control">
                 </div>
             </div>
         </div>
