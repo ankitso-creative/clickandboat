@@ -105,6 +105,7 @@ class UserRegisterController extends Controller
         $user = User::create([
             'name' => $request->fname.' '.$request->lname,
             'email' => $request->email,
+            'phone' => $request->phone,
             'password' => Hash::make($request->password),
             'role' => $request->role ?? 'customer',
             'status' => $status,

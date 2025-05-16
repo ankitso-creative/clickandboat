@@ -1,6 +1,7 @@
 <?php 
 namespace App\Repositories\BoatOwner;
 
+use App\Events\Front\CancelBooking;
 use App\Models\Admin\Booking;
 use App\Models\Order;
 use App\Models\User;
@@ -31,12 +32,15 @@ class BookingRepository
         if(isset($request['evidence']) && !empty($request['evidence'])):
             if ($order->hasMedia('evidence')) {
                 $order->getMedia('evidence')->each(function ($media) {
-                    $media->delete();  // Delete the old image(s)
+                    $media->delete(); 
                 });
             }
             $media = $order->addMediaFromRequest('evidence')->toMediaCollection('evidence','evidence_files'); 
         endif;
         if($order->update()):
+            if($order->payment_status == 'cancel'):
+                event(new CancelBooking($order));
+            endif;
             return true;
         else:
             return false;

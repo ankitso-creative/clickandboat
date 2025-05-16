@@ -181,6 +181,17 @@ class StripeController extends Controller
         $order = Order::where('id',$orderId)->first();
         $listing = Listing::where('id',$order->listing_id)->first();
         $pending_amount = getAmountWithoutSymble($order->pending_amount,$order->currency,$listing->currency);
+        $request['checkindate'] = $order->check_in;
+        $request['checkoutdate'] = $order->check_out;
+        $request['id'] = $order->listing_id;
+        $price = bookingPrice($request,$listing->currency);
+        $security = $listing->security->amount;
+        $total = $price['totalAmount'];
+        if($order->discount):
+            $totalWD = $price['totalAmount'] * $order->discount / 100;
+            $total = $total - $totalWD;
+        endif;
+        $pending_amount = $total - $security;
         Stripe::setApiKey(config('services.stripe.secret'));
         try {
             $paymentIntent = PaymentIntent::create([
