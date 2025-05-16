@@ -32,6 +32,7 @@ class Order extends Model implements HasMedia
         'cancel_message',
         'payment_status',
         'currency',
+        'discount',
     ];
     public function listing() 
     {

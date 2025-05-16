@@ -68,19 +68,41 @@
                             @foreach($results as $result)
                                 @php
                                     $listing = App\Models\Admin\Listing::where('id',$result->listing_id)->first();
+                                    $request['checkindate'] = $result->check_in;
+                                    $request['checkoutdate'] = $result->check_out;
+                                    $request['id'] = $result->listing_id;
+                                    $price = bookingPrice($request,$listing->currency);
                                     $symble = priceSymbol($listing->currency);
-                                    $amountPaid = getAmountWithoutSymble($result->amount_paid,$result->currency,$listing->currency);
-                                    $pendingAmount = getAmountWithoutSymble($result->pending_amount,$result->currency,$listing->currency);
-                                    $total = getAmountWithoutSymble($result->total,$result->currency,$listing->currency);
+
+                                    $total = $price['totalAmount'];
+                                    if($result->discount):
+                                        $totalWD = $price['totalAmount'] * $result->discount / 100;
+                                        $total = $price['totalAmount'] - $totalWD;
+                                    endif;
+                                    $pendingAmount = $result->pending_amount;
+                                    if($pendingAmount):
+                                        $security = $listing->security->amount;
+                                        $pendingAmount = $total - $security;
+                                    else:
+                                        $totalWD = $price['totalAmount'] * $result->discount / 100;
+                                        $amountPaid = $price['totalAmount'];
+                                    endif;
+                                    $amountPaid = $price['totalAmount'] - $pendingAmount;
+                                    if($result->discount):
+                                        $amountPaidWD = $price['totalAmount'] * $result->discount / 100;
+                                        $amountPaid = $amountPaid - $amountPaidWD;
+                                    endif;
+                                    
+                                    
                                 @endphp
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $result->payment_intent_id }}</td>
                                     <td>{{ $result->check_in }}</td>
                                     <td>{{ $result->user->name }}</td>
-                                    <td>{{ $symble.round($amountPaid) }}</td>
-                                    <td>{{ $symble.round($pendingAmount) }}</td>
-                                    <td>{{ $symble.round($total) }}</td>
+                                    <td>{{ $symble.$amountPaid }}</td>
+                                    <td>{{ $symble.$pendingAmount }}</td>
+                                    <td>{{ $symble.$total }}</td>
                                     <td>{{ $result->payment_status }}</td>
                                     <td>{{ $result->created_at }}</td>
                                     <td>

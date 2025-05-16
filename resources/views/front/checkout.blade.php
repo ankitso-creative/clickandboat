@@ -56,7 +56,7 @@
 				});
 				if (error) {
 					document.getElementById("card-errors").innerText = error.message;
-					submitButton.innerHTML = `Booking request`;
+					submitButton.innerHTML = `Pay Now`;
 				} 
 				else {
 					const confirmationResponse = await fetch("{{ route('customer.stripe.confirmPaymentIntent') }}", {
@@ -74,14 +74,14 @@
 					const confirmationData = await confirmationResponse.json();
 					if (confirmationData.error) {
 						document.getElementById("card-errors").innerText = confirmationData.error;
-						submitButton.innerHTML = `Booking request`;
+						submitButton.innerHTML = `Pay Now`;
 					} else {
 						window.location.href = confirmationData.url
 					}
 				}
 			} catch (error) {
 				document.getElementById("card-errors").innerText = error.message;
-				submitButton.innerHTML = `Booking request`;
+				submitButton.innerHTML = `Pay Now`;
 			}
 		});
 	</script>
@@ -193,15 +193,15 @@
 												if($quotation->currency):
 													$symble = priceSymbol($quotation->currency);
 												else:
-													$symble = priceSymbol('USD');
+													$symble = priceSymbol('EUR');
 												endif;
-												$depositAmount = getAmountWithoutSymble($depositAmount,$quotation->currency,$listing->currency);
+												$depositAmount = getAmountWithoutSymble($depositAmount,$listing->currency,$quotation->currency);
 											@endphp
 											<div class="col-md-12">
 												<input type="radio" value="deposit-payment" class="form-check-input" name="payment_type" id="myRadiodeposit">
 												<label for="myRadiodeposit">
 													<span class="title-label">Pay the deposit amount</span>
-													<span class="title-text">{{ $symble.round($depositAmount) }}</span>
+													<span class="title-text">{{ $symble.round($depositAmount,2) }}</span>
 													<p>Pay the deposit amount of the booking today.</p>
 												</label>
 											</div>
@@ -210,7 +210,7 @@
 											if($quotation->currency):
 												$symble = priceSymbol($quotation->currency);
 											else:
-												$symble = priceSymbol('USD');
+												$symble = priceSymbol('EUR');
 											endif;
 											$fuel_price = 0;
 											$skipper_price = 0;
@@ -321,7 +321,7 @@
 								<div class="checkout-btn-sec">
 									<p>By selecting the button below, you unconditionally agree to the <a href="{{ route('terms-condition') }}">Terms & Conditions</a>. You also agree to pay the total amount of the reservation.</p>
 									<div id="card-errors"></div>
-									<button class="btn btn-primary btn-checkout" id="submit-button">Pay Now </button>
+									<button class="btn btn-checkout" id="submit-button">Pay Now </button>
 								</div>
 							</div>
 						</div>

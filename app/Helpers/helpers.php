@@ -52,13 +52,18 @@ function userImage()
     endif;
     return $image;
 }
-function bookingPrice($request)
+function bookingPrice($request,$currency='')
 {
-    if(session()->has('currency_code')):
-        $to = session('currency_code');
-    else:
-        $to = 'EUR';
-    endif;
+    $to = $currency;
+    if(!$currency)
+    {
+        if(session()->has('currency_code')):
+            $to = session('currency_code');
+        else:
+            $to = 'EUR';
+        endif;
+    }
+    
     $fromCur = Listing::where('id',$request['id'])->value('currency');
     $startDate = Carbon::parse($request['checkindate']);
     $endDate = Carbon::parse($request['checkoutdate']);
