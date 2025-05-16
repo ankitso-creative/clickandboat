@@ -119,7 +119,7 @@ use App\Models\Admin\Language;
                 if($listing->update()):
                     return response()->json([
                         'success' => 'success',
-                        'message' => 'Your general settings updated successfully',
+                        'message' => 'Listing saved. Redirecting to the next step.',
                     ]); 
                 endif;
             }

@@ -18,5 +18,6 @@ class Quotation extends Model
         'total',
         'currency',
         'status',
+        'discount',
     ];
 }

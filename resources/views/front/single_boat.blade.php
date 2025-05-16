@@ -760,7 +760,7 @@
                             @endif
                             <p class="about_heading">About me</p>
                             <p>{{ optional($listing->user->exprience)->description }}</p>
-                            <a href="#" class="read_more-btn">Read More</a>
+                            {{-- <a href="#" class="read_more-btn">Read More</a> --}}
                             <div class="offere_language">
                                 <p><i class="fa-solid fa-language"></i> Language spoken: <span
                                         class="offered_language_style">English</span></p>

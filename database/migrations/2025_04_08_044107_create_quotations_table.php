@@ -23,6 +23,7 @@ return new class extends Migration
             $table->float('sub_total');
             $table->float('total');
             $table->string('currency')->nullable();
+            $table->integer('discount')->nullable();
             $table->string('status');
             $table->timestamps();
         });
