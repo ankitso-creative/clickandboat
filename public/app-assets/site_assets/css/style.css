@@ -17,6 +17,25 @@
     font-style: normal;
     font-display: swap;
 }
+@font-face {
+    font-family: 'GT America Trial Cn Md';
+    src: url('./../GTAmericaTrial-CnMd.woff2') format('woff2'),
+        url('./../GTAmericaTrial-CnMd.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GT America Trial Cn Rg';
+    src: url('./../GTAmericaTrial-CnRg.woff2') format('woff2'),
+        url('./../GTAmericaTrial-CnRg.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+
 
 @font-face {
     font-family: 'Montserrat';
@@ -340,8 +359,8 @@ a{
     font-family: 'GT America Trial Cn Md' !important;
 }
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'GT America Trial Cn Bd';
-    font-weight:700 !important;
+     font-family: 'GT America Trial Cn Md';
+    font-weight:500 !important;
 }
 .form-control:focus {
     box-shadow: none;
@@ -1214,13 +1233,15 @@ label, input, textarea, button, select {
 #currency_name::-ms-expand {
     display: none;
 }
-#currency_name option{
-    background:#fff;
+#currency_name option {
+    background: #fff;
     color: #000;
+    font-weight: 400;
 }
 #language option {
     background: #fff;
     color: #000;
+    font-weight: 400;
 }
 #language option:hover,
 #currency_name:hover{
@@ -1252,7 +1273,8 @@ label, input, textarea, button, select {
     min-width: 135px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-  }
+    margin-top: 1px;
+}
   
   .my_account_btn .dropdown-content a {
     color: #262626 !important;
@@ -1260,6 +1282,7 @@ label, input, textarea, button, select {
     text-decoration: none;
     display: block;
     text-transform: uppercase;
+    font-weight: 400;
 }
   .my_account_btn .dropdown-content a:hover{
     color: #f9a126 !important;
@@ -1307,9 +1330,13 @@ label, input, textarea, button, select {
     clear: both;
 }
 .nav-mobile svg {
-    height: 80px;
-    width: 80px;
+    height: 45px;
+    width: 45px;
     padding: 9px;
+}
+.icon-open {
+    height: 75px !important;
+    width: 75px !important;
 }
 .navbar-nav {
     align-items: center;
@@ -1326,6 +1353,10 @@ label, input, textarea, button, select {
     z-index: 9999;
     position: absolute;
     right: 0;
+    background: #f8a126;
+    border-radius: 51px;
+    margin-top: 8px;
+    margin-right: 6px;
 }
 .nav-mobile li {
     width: 100%;
@@ -1378,11 +1409,14 @@ label, input, textarea, button, select {
     pointer-events: auto;
     transition: opacity 0.3s cubic-bezier(0, 0, 0.3, 1);
 }
-.nav-mobile #menu-toggle.active ~ .menu-sidebar, .nav-mobile #menu-toggle:checked ~ .menu-sidebar {
+.nav-mobile #menu-toggle.active ~ .menu-sidebar,
+.nav-mobile #menu-toggle:checked ~ .menu-sidebar {
     transform: translateX(0);
     transition: transform 0.3s cubic-bezier(0, 0, 0.3, 1);
     z-index: 11;
     max-width: 100%;
+    overflow-x: auto;   /* or scroll if needed */
+    overflow-y: hidden; /* this will now work correctly */
 }
 .nav-mobile .menu-container {
     width: 65px;
@@ -1393,7 +1427,7 @@ label, input, textarea, button, select {
     display: block;
     width: 100%;
     bottom: 0;
-    background: #f8a126;
+    background: #37393c;
     color: #333;
     position: fixed;
     transform: translateX(435px);
@@ -1420,11 +1454,14 @@ label, input, textarea, button, select {
     right: 25px;
 }
 .nav-mobile .menu-container .menu-sidebar li {
-    height: 33px;
+    height: 40px;
     font-size: 16px;
     text-align: center;
     position: relative;
     padding: 0;
+}
+.nav-mobile .menu-container .menu-sidebar li {
+    text-align: left;
 }
 .nav-mobile .menu-container .menu-sidebar li .menu-sub {
     position: fixed;
@@ -1653,6 +1690,7 @@ label, input, textarea, button, select {
     -webkit-appearance: none; /* Removes default Safari styling */
     -moz-appearance: none; /* Removes default Firefox styling */
     appearance: none;
+    padding: 0 5px;
 }
 .has-search select option {
     background: #fff;
@@ -1706,6 +1744,7 @@ label, input, textarea, button, select {
     -webkit-appearance: none; /* Removes default Safari styling */
     -moz-appearance: none; /* Removes default Firefox styling */
     appearance: none;
+    padding: 0 5px;
 }
 .boat_select span {
     position: absolute;
@@ -2367,7 +2406,7 @@ label, input, textarea, button, select {
 }
 .next_trip_text h3 {
     font-size: 28px;
-    text-transform: uppercase;
+    text-transform: capitalize;
     color: #000;
     height: 135px;
 }
@@ -5702,6 +5741,10 @@ section.about_zigzag_section {
 }
 .features-menus li strong{
     margin-left: 10px;
+    font-weight: 500;
+}
+.features-menu strong {
+    font-weight: 500;
 }
 .boat-right-sec {
     padding: 50px 0px;
@@ -6941,9 +6984,6 @@ font-size: 15px;
 .equipment_Sec label {
     padding: 15px 15px 0px 0px !important;
 }
-.main-dashboard .tab-pane label {
-    padding: 3px 0 0px 0px;
-}
 .dashboard_listing_edit .select2-container {
     width: 100% !important;
 }
@@ -7134,7 +7174,7 @@ font-size: 15px;
     border: 1px solid #ddd;
     display: block;
     position: relative;
-    margin: 5px 5px;
+    margin: 10px  5px 0 0px;
     cursor: pointer;
     font-size: 16px;
     text-align: center;
@@ -8099,11 +8139,11 @@ font-size: 15px;
 }
 .show-Price span {
     color: #000;
-    font-weight: 600;
+    font-weight: 500;
 }
 .show-Price p {
     padding: 4px 5px;
-    font-weight: 600;
+    font-weight: 500;
     text-align: center;
     font-size: 12px;
     margin: 0px 0px;
@@ -8676,6 +8716,7 @@ margin-right:15px;
     text-align: left;
     font-weight: 600;
     text-transform: capitalize;
+    font-size: 16px;
 }
 .price_list_accordian .btn:hover{
     border: none;
@@ -8696,8 +8737,11 @@ margin-right:15px;
     padding: 15px 15px;
 }
 .price_list_accordian .card-body h6 {
-    color: #f8a126;
-    font-size: 20px;
+    color: #ee9a25;
+    font-size: 16px;
+    font-weight: 600 !important;
+    font-family: 'Montserrat';
+    padding-top: 7px;
 }
 .monthheading {
     font-size: 16px;
@@ -8817,6 +8861,28 @@ margin-right:15px;
 }
 #card-errors {
     color: red !important;
+}
+.mobile-image-slides {
+    display: none;
+}
+.nav_email {
+    margin-top: 95px;
+}
+.nav_email a {
+    font-size: 16px !important;
+    text-transform: lowercase !important;
+}
+.nav_social_media ul {
+    display: flex;
+}
+.nav_social_media ul {
+    list-style: none;
+}
+.nav_social_media li {
+    width: auto !important;
+}
+.nav_social_media {
+    margin-top: -15px;
 }
 /*--------------------------------------------------------------
 # Media Query
@@ -9226,25 +9292,26 @@ margin-right:15px;
     .single_blog_trip .col-sm-12.col-md-6.col-lg-4 {
         padding: 0px;
     }
-    #language {
-        padding: 4px 1px 2px 8px !important;
-        font-size: 15px;
-        background: #fff;
-        color: #555 !important;
-        height: 52px;
-        appearance: auto;
-        z-index: 999;
-        width: 32%;
-        margin-top: 90px;
-        border-radius: 47px;
-        border: 1px solid #d4d4d4;
-    }
+   #language {
+    padding: 4px 1px 2px 8px !important;
+    font-size: 15px;
+    background: #fff;
+    color: #555 !important;
+    height: 52px;
+    appearance: auto;
+    z-index: 999;
+    width: 32%;
+    margin-top: 40px;
+    border-radius: 47px;
+    border: 1px solid #d4d4d4;
+    margin-left: 20px;
+}
     .nav-mobile li a {
         padding: 0;
-        font-weight: 500 !important;
+        font-weight: 600 !important;
         font-family: 'Montserrat' !important;
         text-align: left;
-        text-shadow: 2px 2px 3px rgb(0 0 0 / 63%);
+/*        text-shadow: 2px 2px 3px rgb(0 0 0 / 63%);*/
     }
     .about_sec_heading {
         padding-top: 30px !important;
@@ -9590,8 +9657,11 @@ margin-right:15px;
         max-width: 85px;
     }
     .listing_sub_btn {
-        padding: 9px 30px;
+        padding: 9px 20px;
         height: 48px;
+    }
+    .next-btn, .publish-btn {
+        padding: 13px 40px;
     }
     .boat_listing_images_video_save_btn a {
         padding: 9px 30px;
@@ -9724,8 +9794,9 @@ margin-right:15px;
     width: 32%;
     height: 52px;
     border-radius: 44px;
-    margin-top: 125px;
+    margin-top: 56px;
     border: 1px solid #d4d4d4;
+    margin-left: 20px;
 }
 .boat_type_text {
     left: 50%;
@@ -9962,8 +10033,10 @@ margin-right:15px;
     max-width: 430px;
 }
 .menu-sidebar li a {
-    text-align: center;
-    text-transform: uppercase;
+    text-align: left;
+    text-transform: capitalize;
+    margin-left: 22px;
+    font-size: 24px;
 }
 .menu-sidebar {
     padding-top: 88px !important;
@@ -10122,6 +10195,12 @@ header.p-3.header-dashboard {
 }
 .boat-banner-sec .slick-dotted.slick-slider {
     margin-bottom: 5px;
+}
+.mobile-image-slides {
+    display: block;
+}
+.boat-banner-sec .row .col-md-6 {
+    display: none;
 }
 }
 

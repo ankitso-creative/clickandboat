@@ -203,6 +203,14 @@
                             <option {{ checkselect($selectedCode,'UYU') }} value="UYU">UYU</option>
                         </select>
                     </li>
+                    <li class="nav_email"><a href="mailto:info@myboatbooker.com">info@myboatbooker.com</a></li>
+                    <li class="nav_social_media">
+                        <ul>
+                            <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+                            <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                        </ul>
+                    </li>
                 </ul>
             </li>
         </ul>
