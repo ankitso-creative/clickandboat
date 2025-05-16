@@ -119,7 +119,7 @@ use App\Models\Admin\Language;
                 if($listing->update()):
                     return response()->json([
                         'success' => 'success',
-                        'message' => 'Your general settings updated successfully',
+                        'message' => 'Listing saved. Redirecting to the next step.',
                     ]); 
                 endif;
             }
@@ -176,9 +176,7 @@ use App\Models\Admin\Language;
             elseif($request['s']=='price')
             {
                 $listing->fuel_Include = $request['fuel_Include'];
-                $listing->fuel_price = $request['fuel_price'];
                 $listing->skipper_include = $request['skipper_include'];
-                $listing->skipper_price = $request['skipper_price'];
                 $listing->update();
                 // $listing->price()->UpdateOrCreate(['listing_id' => $listing->id],[
                 //     'listing_id' => $listing->id,

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('listing_id')->constrained('listings')->onDelete('cascade');
+            $table->string('days');
             $table->string('checkin');
             $table->string('checkout');
             $table->float('net_amount');
@@ -22,6 +23,7 @@ return new class extends Migration
             $table->float('sub_total');
             $table->float('total');
             $table->string('currency')->nullable();
+            $table->integer('discount')->nullable();
             $table->string('status');
             $table->timestamps();
         });

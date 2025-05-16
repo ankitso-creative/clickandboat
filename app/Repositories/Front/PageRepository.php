@@ -77,7 +77,7 @@ use Illuminate\Support\Facades\Session;
         }
         public function locationListing($city)
         {
-            $listing =  Listing::where('status', '1')->where('city', $city)->with(['price'])->paginate(9);
+            $listing =  Listing::where('status', '1')->where('harbour', $city)->with(['price'])->paginate(9);
             return $listing;
         }
         public function singleBlog($slug)

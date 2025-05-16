@@ -683,14 +683,41 @@
                                                 $heart_html = '';
                                             endif;
                                         endif;
-                                    @endphp                                                                                                                                                                                                                                                                                 
+                                    
+                                        $baseUrl = route('singleboat', [
+                                            'city' => $result->city,
+                                            'type' => $result->type,
+                                            'slug' => $result->slug
+                                        ]);
+                                        $startDate = request('startdate');
+                                        $endDate = request('enddate');
+                                        if(!empty($startDate) && !empty($endDate)) 
+                                        {
+                                            $query = '?startdate=' . urlencode($startDate) . '&enddate=' . urlencode($endDate);
+                                        }
+                                        elseif(!empty($startDate))
+                                        {
+                                            $query = '?startdate=' . urlencode($startDate) . '&enddate=' . urlencode($startDate);
+                                        }
+                                        elseif(!empty($endDate))
+                                        {
+                                            $query = '?startdate=' . urlencode($endDate) . '&enddate=' . urlencode($endDate);
+                                        }
+                                        else 
+                                        {
+                                           $query = '';
+                                        }
+
+                                        $fullUrl = $baseUrl . $query;
+
+                                    @endphp                                                                                                                                                                                                                                                                                
                                     <div class="col-sm-12 col-md-6 col-lg-4">
                                         <div class="location_inner_box">
-                                            <a href="{{ route('singleboat', ['city' => $result->city, 'type' => $result->type, 'slug' => $result->slug]) }}">
+                                            <a href="{{ $fullUrl }}">
                                                 <img src="{{ $result->getFirstMediaUrl('cover_images') ? $result->getFirstMediaUrl('cover_images') : 'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png' }}">
                                             </a>
                                             {!! $heart_html !!} 
-                                            <a href="{{ route('singleboat', ['city' => $result->city, 'type' => $result->type, 'slug' => $result->slug]) }}">
+                                            <a href="{{ $fullUrl }}">
                                                 <div class="location_inner_main_box">
                                                     <div class="location_inner_text">
                                                         <h3>{{ $result->city }}</h3>
@@ -708,7 +735,9 @@
                                                                             d="M14.6666 6.66666C14.6666 4.99999 10.6666 2.66666 7.99998 2.66666C5.33331 2.66666 1.33331 4.99999 1.33331 6.66666C1.33331 7.56633 1.6247 8.466 2.20748 9.36568C4.13831 8.89966 6.06915 8.66666 7.99998 8.66666C9.89884 8.66666 11.7977 8.89201 13.6965 9.34271C14.3433 8.12733 14.6666 7.23531 14.6666 6.66666ZM7.99998 9.99999C9.77776 9.99999 11.5555 10.2222 13.3333 10.6667C12.2222 12.4444 10.4444 13.3333 7.99998 13.3333C5.55554 13.3333 3.77776 12.4444 2.66665 10.6667C4.44442 10.2222 6.2222 9.99999 7.99998 9.99999ZM7.99998 6.66666C8.55226 6.66666 8.99998 6.21894 8.99998 5.66666C8.99998 5.11437 8.55226 4.66666 7.99998 4.66666C7.44769 4.66666 6.99998 5.11437 6.99998 5.66666C6.99998 6.21894 7.44769 6.66666 7.99998 6.66666Z">
                                                                         </path>
                                                                     </svg>{{ $result->skipper }}</li>
-                                                                <li><i class="fa-solid fa-trophy"></i> Super owner</li>
+                                                                @if(optional($result->user)->super)
+                                                                    <li><i class="fa-solid fa-trophy"></i> Super owner</li>
+                                                                @endif
                                                             </ul>
                                                         </div>
                                                     </div>

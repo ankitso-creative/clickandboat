@@ -13,7 +13,7 @@
     <p>Welcome aboard!</p>
     <p>
         Best regards, <br>
-        The Click And Boat Team
+        The Boat Booker Team
     </p>
 </body>
 </html>

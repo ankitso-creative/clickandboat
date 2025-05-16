@@ -181,15 +181,17 @@ class ChatRepository
         $request['checkoutdate'] = $request['checkout_date'];
         $request['id'] = $listingId;
         $price = bookingPrice($request);
-        
+         
         $quotation->user_id = $user->id;
         $quotation->listing_id =  $listingId;
+        $quotation->days =  $price['days'];
         $quotation->checkin = $request['checkin_date'];
         $quotation->checkout = $request['checkout_date'];
         if(isset($request['half_day-2']) && !empty($request['half_day-2'])){
             $quotation->net_amount = $price['oneHalfDayPrice'];
             $quotation->sub_total = $price['oneHalfDayPrice'];
-            $quotation->total = $price['oneHalfDayPrice']; 
+            $quotation->total = $price['oneHalfDayPrice'];
+            $quotation->days =  'half_day'; 
         }
         else{
             $quotation->net_amount = $price['price'];

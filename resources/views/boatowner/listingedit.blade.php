@@ -821,10 +821,10 @@
                                 <option {{ checkselect($listing->fuel_include,1) }} value="1">No</option>
                             </select>
                         </div>
-                        <div class="col-lg-3 fule-price {{ $fDnone }}">
+                        {{-- <div class="col-lg-3 fule-price {{ $fDnone }}">
                             <label>Price Of Fuel Per Hour</label>
                             <input type="text" name="fuel_price" value="{{ $listing->fuel_price }}" class="form-control"> 
-                        </div>
+                        </div> --}}
                         <div class="col-lg-3">
                             <label>Is Skipper Included In Price?</label>
                             <select name="skipper_include" class="form-control skipper-Include">
@@ -832,10 +832,10 @@
                                 <option {{ checkselect($listing->skipper_include,1) }} value="1">No</option>
                             </select>
                         </div>
-                        <div class="col-lg-3 skipper-price {{ $spDnone }}">
+                        {{-- <div class="col-lg-3 skipper-price {{ $spDnone }}">
                             <label>Price Of Skipper</label>
                             <input type="text" name="skipper_price" value="{{ $listing->skipper_price }}" class="form-control"> 
-                        </div>
+                        </div> --}}
 
                     </div>
                     <div class="row ">

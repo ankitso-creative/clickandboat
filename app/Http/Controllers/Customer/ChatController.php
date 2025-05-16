@@ -47,7 +47,7 @@ class ChatController extends Controller
                 return redirect()->route('customer.message', $slug)->with('success', 'Order updated successfully!'); 
             endif;   
         else:
-            return view('customer.support', compact('active', 'usersWithLastMessage'));
+            return view('customer.support', compact('active', 'usersWithLastMessage','isMobile'));
         endif;
     }
 

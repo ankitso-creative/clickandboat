@@ -395,13 +395,31 @@
                             else:
                                 $symble = priceSymbol('EUR');
                             endif;
-                            $total = getAmountWithoutSymble($quotation->total,$quotation->currency,$listing->currency);
-                            $netAmount = getAmountWithoutSymble($quotation->net_amount,$quotation->currency,$listing->currency);
+                            $request['checkindate'] = $quotation->checkin;
+                            $request['checkoutdate'] = $quotation->checkout;
+                            $request['id'] = $quotation->listing_id;
+                            $price = bookingPrice($request,$listing->currency);
+                            if($quotation->days == 'half_day'):
+                                $netAmount = $price['oneHalfDayPrice'];
+                                $total = $price['oneHalfDayPrice'];
+                            else:
+                                $netAmount = $price['price'];
+                                $total = $price['totalAmount'];
+                            endif;
+                            if($quotation->discount):
+                                $netAmountWD = $price['price'] * $quotation->discount / 100;
+                                $totalWD = $price['totalAmount'] * $quotation->discount / 100;
+                                $netAmount = $price['price'] - $netAmountWD;
+                                $total = $price['totalAmount'] - $totalWD;
+                            else:
+                                $netAmount = $price['price'];
+                                $total = $price['totalAmount'];
+                            endif;
                         @endphp
                         <div class="show-Price" id="show-Price-sec">
-                            <p>Hire: <span id="hire" class="price-after">{{ $symble.round($netAmount) }}</span></p>
+                            <p>Hire: <span id="hire" class="price-after">{{ $symble.$netAmount }}</span></p>
                             <p>Service Fee: <span id="service-fee">{{ $symble.$quotation->service_fee }}</span></p>
-                            <p>Total: <span id="boat-total">{{ $symble.round($total) }}</span></p>
+                            <p>Total: <span id="boat-total">{{ $symble.$total }}</span></p>
                         </div>
                         @if($quotation->status == 'Pending')
                             <div class="d-flex flex-column">
@@ -463,9 +481,9 @@
                                 </div>
                                 @php 
                                     if($quotation->currency):
-                                        $symble = priceSymbol($quotation->currency);
+                                        $symble = priceSymbol($listing->currency);
                                     else:
-                                        $symble = priceSymbol('USD');
+                                        $symble = priceSymbol('EUR');
                                     endif;
                                 @endphp
                                 <div class="rental-feilds-box">
@@ -474,7 +492,7 @@
                                             <div class="form-group">
                                                 <div class="charter-sec">
                                                     <div class="charter-title"><p>Charter</p></div>
-                                                    <div class="charter-price price-after"><p>{{ $symble.$quotation->total }}</p></div>
+                                                    <div class="charter-price"><p>{{ $symble }}<span class="price-after">{{ $total }}</span></p></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -500,7 +518,7 @@
                                         <div class="col-md-12">
                                             <div class="total-form-group">
                                                 <div class="total-title"><h6>Total Price</h6></div>
-                                                <div class="total-amount price-after" id="price-get" pdata="{{ $quotation->total }}" ><p>{{ $symble.$quotation->total }}</p></div>
+                                                <div class="total-amount" id="price-get" pdata="{{ $total }}" ><p>{{ $symble }}<span class="price-after">{{ $total }}</span></p></div>
                                             </div>
                                         </div>
                                         <div class="col-md-12">

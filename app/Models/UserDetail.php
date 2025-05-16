@@ -12,7 +12,6 @@ class UserDetail extends Model
         'last_name',
         'gender',
         'dob',
-        'phone',
         'address',
         'address_line_two',
         'city',

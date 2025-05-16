@@ -89,10 +89,12 @@ class PagesController extends Controller
         $results = $this->service->locationCategry($type);
         return view('front.search',compact('results','isMobile'));
     }
-    public function locationListing($city)//test_boat
+    public function locationListing(Request $request,$city)//test_boat
     {
+        $userAgent = $request->header('User-Agent');
+        $isMobile = preg_match('/Mobile|Android|iPhone|iPad|iPod/i', $userAgent);
         $results = $this->service->locationListing($city);
-        return view('front.location',compact('results'));
+        return view('front.search',compact('results','isMobile'));
     }
     public function getBookingPrice(Request $request)
     {

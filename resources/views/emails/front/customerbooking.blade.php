@@ -22,13 +22,13 @@
         <li><strong>Total Amount:</strong> {{ $symbol.$booking->total }}</li>
     </ul>
 
-    <p>If you have any questions or need to make changes, feel free to contact us.</p>
+    <p>If you have any questions or need to make changes, feel free to <a href="mailto:shubham@so-creative.co.uk">contact us.</a></p>
 
     <p>We look forward to seeing you!</p>
 
     <br>
 
     <p>Best regards,</p>
-    <p><strong>My Boat Booker Team</strong></p>
+    <p>The Boat Booker Team</p>
 </body>
 </html>
