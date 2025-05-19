@@ -86,7 +86,7 @@
                                         <h3>{{ $result->listing->city }}</h3>
                                         <p class="location_pera">{{ $result->listing->type }} {{ $result->listing->manufacturer }} {{ $result->listing->model }} sport 30 (2023)</p>
                                         <p class="people_pera">{{ $result->listing->capacity }} people · 30 hp · 5 m</p>
-                                        <h5 class="location_price">From <span class="price_style">€{{ $result->listing->price->price ?? '' }}</span> / day</h5>
+                                        <h5 class="location_price">From <span class="price_style">{{ getListingPrice($result->listing->slug) }}</span> / day</h5>
                                         <div class="location_facility">
                                             <ul>
                                                 <li><svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
