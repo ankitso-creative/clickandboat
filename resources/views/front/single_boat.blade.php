@@ -573,7 +573,7 @@
                                     @php
                                        $count = 0;
                                     @endphp
-                                    @foreach ($gallery_images as $gallery_image)
+                                    @foreach($gallery_images as $gallery_image)
                                         @php
                                             $count++;
                                             $dNone = '';
@@ -591,10 +591,12 @@
                                     <a href="#"><img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" alt="Image" class="img-fluid" /></a>
                                     <a href="#"><img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" alt="Image" class="img-fluid" /></a>
                                 @endif 
-                                @if($count > 4)
-                                    <div class="view-more-photos">
-                                        <a data-fancybox="gallery" href="{{ $image }}"> View the photos (+{{ $count - 4 }})</a>
-                                    </div>
+                                @if(count($gallery_images))
+                                    @if($count > 4)
+                                        <div class="view-more-photos">
+                                            <a data-fancybox="gallery" href="{{ $image }}"> View the photos (+{{ $count - 4 }})</a>
+                                        </div>
+                                    @endif
                                 @endif
                             </div>
                         </div>
