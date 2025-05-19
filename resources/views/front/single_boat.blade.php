@@ -1453,7 +1453,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    @else:
+                                    @else
                                         <div class="show-Price d-none" id="show-Price-sec">
                                             <div class="input-group d-none" id="mhalf_day-box">
                                                 <input type="checkbox" id="half_day" name="half_day" value="1" >
