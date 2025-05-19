@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Enums\Auth\Role\RolesEnum;
+use App\Events\Auth\NewUserRegistered;
 use App\Events\Auth\UserRegistered;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -119,6 +120,7 @@ class UserRegisterController extends Controller
         }
         else
         {
+            event(new NewUserRegistered($user));
             Auth::login($user);
             Session::forget('email-user');
             return redirect()->route('customer.dashboard')->with('success', 'Registration successful!');
