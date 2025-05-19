@@ -2,10 +2,12 @@
 namespace App\Repositories\BoatOwner;
 
 use App\Events\Auth\ChatMessageSent;
+use App\Mail\Chat\ChatMessageMailCustomer;
 use App\Models\Admin\Listing;
 use App\Models\Admin\Quotation;
 use App\Models\Message;
 use App\Models\User;
+use Illuminate\Support\Facades\Mail;
 
 class ChatRepository 
 {
@@ -36,6 +38,16 @@ class ChatRepository
             'message' => $request->message,
             'image' => $imagePath,
         ]);
+
+        $receiverEmail = User::where('id',$request->receiver_id)->value('email');
+        $receiverName = User::where('id',$request->receiver_id)->value('name');
+        
+        Mail::to($receiverEmail)->queue(new ChatMessageMailCustomer([
+            'sender_name' => $userData->name,
+            'receiver_name' => $receiverName,
+            'message' => $request->message,
+            'listing_id' => $listingId,
+        ]));
 
         if(empty($userData->getFirstMediaUrl('profile_image'))):
             $userImage =  'https://static1.clickandboat.com/v1/o/img/mask~dddc60cc1d.png';
