@@ -17,7 +17,7 @@
                 'first_name' => $request['first_name'],
                 'last_name' => $request['last_name'],
                 'gender' => $request['gender'],
-                'phone' => $request['phone'],
+                'dob' => $request['dob'],
                 'address' => $request['address'],
                 'city' => $request['city'],
                 'state' => $request['state'],

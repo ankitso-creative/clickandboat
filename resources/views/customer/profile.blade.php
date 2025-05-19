@@ -132,18 +132,29 @@
                     <form class="personal-details-form" action="{{ route('customer.profile.update') }}" method="post">
                         @csrf
                         @method('PUT')
+                        @php
+                            $nameArray = explode(' ',$userData->name); 
+                            $first = '';
+                            $last = '';
+                            if(isset($nameArray[0])):
+                                $first = $nameArray[0];
+                            endif;
+                            if(isset($nameArray[1])):
+                                $last = $nameArray[1];
+                            endif;
+                        @endphp
                         <div class="pt-3 row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="label-default">First Name<span class="required"> *</span></label>
-                                    <input type="text" name="first_name" value="{{ optional($userData->profile)->first_name ?? '' }}" class="form-control">
+                                    <input type="text" name="first_name" value="{{ (optional($userData->profile)->first_name) ?? $first }}" class="form-control">
                                     @error('first_name')<span class="required">{{ $message }}</span>@enderror
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="label-default">Last Name<span class="required"> *</span></label>
-                                    <input type="text" name="last_name" value="{{ optional($userData->profile)->last_name ?? '' }}" class="form-control">
+                                    <input type="text" name="last_name" value="{{ (optional($userData->profile)->last_name) ?? $last }}" class="form-control">
                                     @error('last_name')<span class="required">{{ $message }}</span>@enderror
                                 </div>
                             </div>
@@ -170,7 +181,7 @@
                         <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="label-default">Date of birth</label>
-                                    <input type="text" name="dob" value="{{ optional($userData->profile)->dob ?? '' }}" class="form-control date-picker" autocomplete="off">
+                                    <input type="text" name="dob" value="{{ optional($userData->profile)->dob ? \Carbon\Carbon::parse($userData->profile->dob)->format('d-m-Y') : ''  }}" class="form-control date-picker" autocomplete="off">
                                 </div>
                         </div>
                         <div class="col-md-6">
@@ -413,15 +424,16 @@
         </div>
     </div>
     <script>
-    $(document).ready(function() {
-        $('.date-picker').datepicker({
-            language: 'en',
-            format: 'dd-mm-yyyy',
-            autoclose: true,
-            todayHighlight: true,
-            maxDate: new Date(),
+        $(document).ready(function() {
+            $('.date-picker').datepicker({
+                language: 'en',
+                format: 'dd-mm-yyyy',   
+                autoclose: true,        
+                todayHighlight: true,  
+                maxDate : new Date(),
+            });
+            
         });
-    });
     $(document).ready(function() {
         $('#file-input').on('change', function(e) {
             e.preventDefault();
