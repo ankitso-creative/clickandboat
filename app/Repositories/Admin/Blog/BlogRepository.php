@@ -2,18 +2,25 @@
 namespace App\Repositories\Admin\Blog;
 use App\Models\Admin\Blog;
 use App\Models\Admin\BlogComment;
+use App\Repositories\Translator\TranslatorRepository;
+use App\Models\Admin\Language;
 
 class BlogRepository
 {
+    protected $translate ;
+    public function __construct()
+    {
+        $this->translate = new TranslatorRepository();
+    }
     public function allBlogs($request)
     {
         $blog = Blog::when($request->has('name') && !empty($request->name), function ($query) use ($request) {
             $name = $request->name; 
             return $query->where('title', $name); 
         })
-        ->when($request->has('language') && !empty($request->language), function ($query) use ($request) {
-            $language = $request->language; 
-            return $query->where('language', $language); 
+        ->when(true, function ($query) use ($request) {
+            $language = $request->has('language') && !empty($request->language) ? $request->language : 'en'; 
+            return $query->where('language', $language);        
         })
         ->orderBy('order_by', 'ASC')
         ->paginate(10);
@@ -28,6 +35,18 @@ class BlogRepository
         $blog->language = $request['language'];
         if($blog->save()):
             self::uploadImage($request['banner_image'],$blog->id);
+            $languages = Language::where('code','<>',$request['language'])->where('status','1')->get();
+            if($languages){
+                foreach($languages as $language)
+                {
+                    $translatedBlog = new Blog();
+                    $translatedBlog->title = $this->translate->translateContent($request['title'], $language->code);
+                    $translatedBlog->description = $this->translate->translateContent($request['description'], $language->code);
+                    $translatedBlog->language = $language->code;
+                    $translatedBlog->group_id = $blog->id;
+                    $translatedBlog->save();
+                }
+            }
             return true;
         else:
             return false;

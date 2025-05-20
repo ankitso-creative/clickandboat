@@ -824,19 +824,26 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="row">
             @if(count($blogs))
             @foreach($blogs as $blog)
-            <div class="col-sm-12 col-md-6 col-lg-4">
-                <div class="next_trip_box">
-                    <img src="{{ $blog->getFirstMediaUrl('blog_image') }}">
-                    <div class="next_trip_text">
-                        <h3>{{ $blog->title }}</h3>
-                        <p>{{ substr(strip_tags($blog->description),0,170) }}...</p>
-                        <div class="trip_date_text">
-                            <span><a href="{{ route('single-blog',$blog->slug) }}">View Post</a></span>
-                            <span>{{ \Carbon\Carbon::parse($blog->created_at)->format('F d, Y') }}</span>
+                @php
+                    $image = $blog->getFirstMediaUrl('blog_image');
+                    if(!$image):
+                        $blogG = App\Models\Admin\Blog::where('id', $blog->group_id)->first();
+                        $image = $blogG->getFirstMediaUrl('blog_image');
+                    endif;
+                @endphp
+                <div class="col-sm-12 col-md-6 col-lg-4">
+                    <div class="next_trip_box">
+                        <img src="{{ $image }}">
+                        <div class="next_trip_text">
+                            <h3>{{ $blog->title }}</h3>
+                            <p>{{ substr(strip_tags($blog->description),0,170) }}...</p>
+                            <div class="trip_date_text">
+                                <span><a href="{{ route('single-blog',$blog->slug) }}">View Post</a></span>
+                                <span>{{ \Carbon\Carbon::parse($blog->created_at)->format('F d, Y') }}</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
             @endforeach
             @endif
         </div>

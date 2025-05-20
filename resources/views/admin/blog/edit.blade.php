@@ -35,9 +35,16 @@
 										<input type="file" name="banner_image" value="" class="form-control"/> 
                                         @error('banner_image')<span class="required">{{ $message }}</span>@enderror
 									</div>
+									@php
+										$image = $result->getFirstMediaUrl('blog_image');
+										if(!$image):
+											$blogG = App\Models\Admin\Blog::where('id', $result->group_id)->first();
+											$image = $blogG->getFirstMediaUrl('blog_image');
+										endif;
+									@endphp
 									<div class="col-sm-4">
 										<label>Banner Image:<span class="required"> </span></label>
-										<img src="{{ $result->getFirstMediaUrl('blog_image') }}" class="img-responsive">
+										<img src="{{ $image }}" class="img-responsive">
 									</div>
 									<div class="col-sm-12">
 										<label>Description:<span class="required"> * </span></label>
