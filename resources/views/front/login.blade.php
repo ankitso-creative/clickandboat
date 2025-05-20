@@ -25,7 +25,33 @@
     .footer{
         display: none !important;
     }
+    .header-video {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#myVideo {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover; /* Or use 'contain' if you want no cropping */
+    object-position: center;
+    display: block;
+    background-color: black;
+}
+
 </style>
+<section class="hero">
+  <div class="video fade-in">
+    <div class="video_background">
+      <div class="video_wrapper">
+        <iframe src="https://www.youtube.com/embed/z977gKXg1_k?controls=0&showinfo=0&rel=0&autoplay=1&mute=1&loop=1&playlist=z977gKXg1_k&modestbranding=1&playsinline=1
+" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</section>
     <!-- end .b-title-page-->   
     <div class="l-main-content login_section">
         <div class="container">

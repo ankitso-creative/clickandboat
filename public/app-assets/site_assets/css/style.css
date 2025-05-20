@@ -1415,8 +1415,7 @@ label, input, textarea, button, select {
     transition: transform 0.3s cubic-bezier(0, 0, 0.3, 1);
     z-index: 11;
     max-width: 100%;
-    overflow-x: auto;   /* or scroll if needed */
-    overflow-y: hidden; /* this will now work correctly */
+  
 }
 .nav-mobile .menu-container {
     width: 65px;
@@ -2116,11 +2115,12 @@ label, input, textarea, button, select {
 # Boat by loaction section
 --------------------------------------------------------------*/
 .boat_by_location{
-    background-image: url(../img/location-bg.jpg);
+    background-image: url(../img/image00026.jpg);
     width: 100%;
     height: 420px;
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
 }
 .boat_by_location_section {
     margin-top: 35px;
@@ -2488,20 +2488,21 @@ label, input, textarea, button, select {
 /*--------------------------------------------------------------
 # Signup form
 --------------------------------------------------------------*/
-.login_sign_up_form{
+/* .login_sign_up_form{
     background-image: url(../img/register-page--sign-up.jpg);
     width: 100%;
     height: 100vh;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
-}
+} */
 .login_sign_up_form .container {
     max-width: 700px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    z-index: 999;
 }
 .login_sign_up_form .col-md-12 {
     background: #fff;
@@ -2620,20 +2621,21 @@ label, input, textarea, button, select {
 /*--------------------------------------------------------------
 # Login form
 --------------------------------------------------------------*/
-.login_section{
+ /* .login_section{
     background-image: url(../img/register-page--sign-up.jpg);
     width: 100%;
     height: 100vh;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
-}
+}  */
 .login_section .container {
     max-width: 700px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    z-index: 99;
 }
 .login_section .container .col-md-12 {
     background: #fff;
@@ -3259,7 +3261,7 @@ label, input, textarea, button, select {
     background: #f9a126;
     border: 1px solid #f9a126;
     color: #fff;
-    padding: 9px 60px;
+    padding: 9px 30px;
     border-radius: 15px;
     cursor: pointer;
     margin-bottom: 40px;
@@ -3552,12 +3554,13 @@ label, input, textarea, button, select {
 # Location Page
 --------------------------------------------------------------*/
 .location_page_banner{
-    background-image: url(../img/location-banner.jpg);
+    background-image: url(../img/image00036.jpg);
     width: 100%;
     height: 285px;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
+    background-position: center;
 }
 .location_banner_text {
     position: absolute;
@@ -3571,6 +3574,7 @@ label, input, textarea, button, select {
     color: #fff;
     text-align: center;
     text-transform: uppercase;
+    text-shadow: 0px 2px 0px #0000004d, 0 0 2em #0000008a, 0 0 1.2em #0000008a;
 }
 .location_main_heading h2 {
     font-size: 28px;
@@ -4678,7 +4682,7 @@ label, input, textarea, button, select {
 }
 .about_content_section .container {
     max-width: 1040px;
-    margin: 50px auto 0;
+    margin: 40px auto 0;
 }
 .about_text_block h2 {
     font-size: 64px;
@@ -4688,7 +4692,7 @@ label, input, textarea, button, select {
 .about_text_block .about_small_text {
     font-size: 30px;
     color: #f8a126;
-    text-transform: uppercase;
+    text-transform: capitalize;
     font-weight: 500;
     padding-top: 30px;
     line-height: 37px !important;
@@ -8884,6 +8888,91 @@ margin-right:15px;
 .nav_social_media {
     margin-top: -15px;
 }
+.language_tab h5 {
+    text-transform: uppercase;
+}
+
+#myVideo {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover; /* Or use 'contain' if you want no cropping */
+    object-position: center;
+    display: block;
+    background-color: black;
+}
+.hero {
+    background-color: #37393c;
+    /* border: 2rem solid hsla(0, 0%, 100%, 1); */
+    height: 100vh;
+    position: relative;
+    scroll-snap-align: start;
+    z-index: 1;
+}
+
+.hero .overlay {
+  height: auto;
+  left: 50%;
+  max-width: 1000px;
+  opacity: 0.9;
+  position: absolute;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 65vw;
+  z-index: 2;
+}
+
+.hero .overlay figure,
+.hero .overlay figcaption {
+  margin-bottom: 0;
+}
+
+.hero .overlay figcaption {
+  border-top: 1px solid hsla(0, 0%, 100%, 0.9);
+  color: hsla(0, 0%, 100%, 0.9);
+  font-family: "DIN Medium Regular", sans-serif;
+  font-size: clamp(1.25rem, 4vw, 2.5rem);
+  letter-spacing: 0.25rem;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  text-align: center;
+  text-transform: uppercase;
+  word-spacing: 1.5rem;
+}
+
+.video.fade-in {
+  -moz-animation-delay: 1.5s;
+  -webkit-animation-delay: 1.5s;
+  animation-delay: 1.5s;
+}
+
+.video {
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
+}
+
+.video_background {
+  background-color: transparent;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.video_wrapper,
+.video_background iframe {
+  height: 120%;
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  top: -10%;
+  width: 100%;
+}
+.about_text_block ul li {
+    font-family: 'Montserrat';
+}
 /*--------------------------------------------------------------
 # Media Query
 --------------------------------------------------------------*/
@@ -9078,13 +9167,15 @@ margin-right:15px;
     .about_banner_text h1 {
         font-size: 30px;
     }
-    .about_text_block h2 {
+   .about_text_block h2 {
         font-size: 30px;
+        padding-bottom: 10px;
     }
     .about_text_block .about_small_text {
         padding-top: 5px;
         font-size: 20px;
         line-height: 30px !important;
+        text-transform: capitalize;
     }
     .about_text_block h3 {
         font-size: 30px;
@@ -9820,6 +9911,7 @@ margin-right:15px;
 .list-boat-sec {
     width: 100%;
     padding: 25px 15px 0px 30px;
+    margin-top: 15px;
 }
 .message.mCustomScrollbar {
     width: 100%;
@@ -10201,6 +10293,9 @@ header.p-3.header-dashboard {
 }
 .boat-banner-sec .row .col-md-6 {
     display: none;
+}
+.sing_upform_logo {
+    padding-top: 20px;
 }
 }
 
@@ -11499,4 +11594,17 @@ header.p-3.header-dashboard {
 .home_page_slider .slick-prev {
     left: 5%;
 }
+}
+@media (min-aspect-ratio: 16/9) {
+  .video_wrapper {
+    height: 300%;
+    top: -100%;
+  }
+}
+
+@media (max-aspect-ratio: 16/9) {
+  .video_wrapper {
+    left: -200%;
+    width: 500%;
+  }
 }
