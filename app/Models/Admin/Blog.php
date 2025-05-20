@@ -14,6 +14,7 @@ class Blog extends Model implements HasMedia
         'description',
         'language',
         'read_minutes',
+        'group_id',
         'order_by',
     ];
     public static function boot()

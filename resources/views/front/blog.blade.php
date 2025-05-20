@@ -35,11 +35,20 @@
                     <a href="'. route('single-blog',$blog->slug) .'">View Post</a>
                 </div>';
                 $featuredBlogimage = $blog->getFirstMediaUrl('blog_image');
+                if(!$featuredBlogimage):
+                    $blogG = App\Models\Admin\Blog::where('id', $blog->group_id)->first();
+                    $featuredBlogimage = $blogG->getFirstMediaUrl('blog_image');
+                endif;
             else:
+                $image = $blog->getFirstMediaUrl('blog_image');
+                if(!$image):
+                    $blogG = App\Models\Admin\Blog::where('id', $blog->group_id)->first();
+                    $image = $blogG->getFirstMediaUrl('blog_image');
+                endif;
                 $blogHtml .= '<div class="row align-items-center">
                     <div class="col-sm-12 col-md-6 col-lg-6">
                         <div class="blog_img">
-                            <img src="'.$blog->getFirstMediaUrl('blog_image').'">
+                            <img src="'.$image.'">
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-6 col-lg-6">

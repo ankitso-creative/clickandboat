@@ -11,7 +11,14 @@
 @endsection
 @section('content')
     <!-- Banner Section -->
-    <section class="blog_inner_banner" style="background-image: url('{{ $result->getFirstMediaUrl('blog_image') }}')">
+    @php
+        $imageBNR = $result->getFirstMediaUrl('blog_image');
+        if(!$imageBNR):
+            $blogGBN = App\Models\Admin\Blog::where('id', $result->group_id)->first();
+            $imageBNR = $blogGBN->getFirstMediaUrl('blog_image');
+        endif;
+    @endphp
+    <section class="blog_inner_banner" style="background-image: url('{{ $imageBNR }}')">
         <div class="blog_inner_text_box">
             <p class="blog_text">Inspiration</p>
             {{-- <h1>A New Year’s Eve Yacht Party:<br>
@@ -40,15 +47,22 @@
     </section>
     <!-- /Blog text images section -->
     <!-- next trip Section -->
-    <section class="next_trip_section single_blog_trip">
-        <h2>You May Also Like</h2>
-        <div class="container-fluid">
-            <div class="row">
-                @if($relatedBlogs)
+    @if($relatedBlogs)
+        <section class="next_trip_section single_blog_trip">
+            <h2>You May Also Like</h2>
+            <div class="container-fluid">
+                <div class="row">
                     @foreach($relatedBlogs as $relatedBlog)
+                        @php
+                            $image = $relatedBlog->getFirstMediaUrl('blog_image');
+                            if(!$image):
+                                $blogG = App\Models\Admin\Blog::where('id', $relatedBlog->group_id)->first();
+                                $image = $blogG->getFirstMediaUrl('blog_image');
+                            endif;
+                        @endphp
                         <div class="col-sm-12 col-md-6 col-lg-4">
                             <div class="next_trip_box">
-                                <img src="{{ $relatedBlog->getFirstMediaUrl('blog_image') }}">
+                                <img src="{{ $image }}">
                                 <div class="next_trip_text">
                                     <h3>{{ $relatedBlog->title }}</h3>
                                     <p>{{ substr(strip_tags($relatedBlog->description),0,170) }}...</p>
@@ -60,10 +74,10 @@
                             </div>
                         </div>
                     @endforeach
-                @endif
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @endif
     <!-- /next trip Section -->
     <!-- Single blog form Section -->
     <section class="single_blog_comment_section">

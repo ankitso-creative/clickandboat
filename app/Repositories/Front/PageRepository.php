@@ -33,12 +33,14 @@ use Illuminate\Support\Facades\Session;
         }
         public function blogs()
         {
-            $blogs = Blog::where('status','1')->orderBy('created_at', 'desc')->limit(3)->get();
+            $lang = empty(session()->get('lang')) ? 'en' : session()->get('lang');
+            $blogs = Blog::where('status','1')->where('language', $lang)->orderBy('created_at', 'desc')->limit(3)->get();
             return $blogs;
         }
         public function allBlogs()
         {
-            $blogs = Blog::where('status','1')->orderBy('order_by', 'asc')->paginate(7);
+            $lang = empty(session()->get('lang')) ? 'en' : session()->get('lang');
+            $blogs = Blog::where('status','1')->where('language', $lang)->orderBy('order_by', 'asc')->paginate(7);
             return $blogs;
         }
         public function categories()
@@ -137,7 +139,8 @@ use Illuminate\Support\Facades\Session;
         }
         public function relatedBlog($id)
         {
-            $relatedBlogs =  Blog::where('status', '1')->where('id','!=', $id)->inRandomOrder()->limit(3)->get();
+            $lang = empty(session()->get('lang')) ? 'en' : session()->get('lang');
+            $relatedBlogs =  Blog::where('status', '1')->where('language', $lang)->where('id','!=', $id)->inRandomOrder()->limit(3)->get();
             return $relatedBlogs;
         }
         public function getListingData($request)

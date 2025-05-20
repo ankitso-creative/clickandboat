@@ -17,6 +17,7 @@ return new class extends Migration
             $table->longText('description');
             $table->integer('read_minutes')->nullable();
             $table->integer('order_by')->default('1');
+            $table->bigInteger('group_id')->nullable();
             $table->integer('status')->default('1');
             $table->timestamps();
         });
