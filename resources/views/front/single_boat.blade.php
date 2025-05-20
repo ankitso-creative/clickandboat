@@ -611,7 +611,10 @@
                         <div class="boat-card-content-sec">
                             <div class="specification-box">
                                 <div class="specification-content">
-                                    <h3>{{ $listing->type }} owned by {{ $listing->user->name }}</h3>
+                                    @php
+                                        $nameArray = explode(' ', $listing->user->name);
+                                    @endphp
+                                    <h3>{{ $listing->type }} owned by {{ $nameArray[0] }}</h3>
                                     <ul class="specification-menus">
                                         <li>{{ $listing->onboard_capacity }} people</li>
                                         <li>{{ $listing->length }} meters</li>
@@ -659,7 +662,7 @@
                         </div>
                         <div class="boat-card-content-sec">
                             <div class="boat-description-sec">
-                                <h3>Description of {{ $listing->user->name }}'s {{ $listing->type }}</h3>
+                                <h3>Description of {{ $nameArray[0] }}'s {{ $listing->type }}</h3>
                                 <h6>{{ $listing->title }}</h6>
                                 <p>
                                     {{ optional($listing->description[0] ?? null)->description }}
@@ -757,9 +760,12 @@
                                 <div class="idea_Sec_img">
                                     <img src="{{ $image }}" />
                                 </div>
+                                @php
+                                    $nameArray = explode(' ', $listing->user->name);
+                                @endphp
                                 <div class="idea_sec_text">
-                                    <h3>{{ $listing->user->name }}</h3>
-                                    <p>Joined in {{ $join_date }} {!! $textP !!}</p>
+                                    <h3>{{ $nameArray[0] }}</h3>
+                                    <p>Joined in {{ $join_date }}</p>
                                 </div>
                             </div>
                             @if($listing->user->super == '1')

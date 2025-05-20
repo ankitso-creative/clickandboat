@@ -110,11 +110,14 @@
     }); 
     $(document).on('keyup','input[name="message"]',function(){
         var message = $(this).val();
-        var emailRegex = /[\w.-]+@[\w.-]+\.\w+/gi;
-        var phoneRegex = /(\+?\d{1,4})?[\s.-]?\(?\d{2,4}\)?[\s.-]?\d{3,4}[\s.-]?\d{3,4}/g;
-        var longNumberRegex = /\d{6,}/g;
+        var cleanedMessage = message.replace(/\s+/g, '');
+        var emailRegex = /[\w.-]+\s*@\s*[\w.-]+\s*\.\s*\w+/gi;
+        var phoneRegex = /(\+?\d{1,4})?[\s\-.\(]*\d{2,4}[\s\-.\)]*\d{3,4}[\s\-.\)]*\d{3,4}/g;
+        var longNumberRegex = /\d{4,}/g;
         var dnsPattern = /(https?:\/\/)?([\w-]+\.)+[\w-]+(\/[\w- ./?%&=]*)?/i;
-        if (emailRegex.test(message) || phoneRegex.test(message) || longNumberRegex.test(message) || dnsPattern.test(message)) {
+        var digitMatches = message.match(/\d/g);
+        var totalDigits = digitMatches ? digitMatches.length : 0;
+        if (emailRegex.test(cleanedMessage) || phoneRegex.test(message) || longNumberRegex.test(message) || dnsPattern.test(cleanedMessage) || totalDigits > 4 ) {
             $('input[name="message"]').addClass('invalid-input');
             return;
         }
@@ -132,11 +135,14 @@
     $(document).on('submit','#message_form', function(e) {
         e.preventDefault();
         var message = $('input[name="message"]').val();
-        var emailRegex = /[\w.-]+@[\w.-]+\.\w+/gi;
-        var phoneRegex = /(\+?\d{1,4})?[\s.-]?\(?\d{2,4}\)?[\s.-]?\d{3,4}[\s.-]?\d{3,4}/g;
-        var longNumberRegex = /\d{6,}/g;
+        var cleanedMessage = message.replace(/\s+/g, '');
+        var emailRegex = /[\w.-]+\s*@\s*[\w.-]+\s*\.\s*\w+/gi;
+        var phoneRegex = /(\+?\d{1,4})?[\s\-.\(]*\d{2,4}[\s\-.\)]*\d{3,4}[\s\-.\)]*\d{3,4}/g;
+        var longNumberRegex = /\d{4,}/g;
         var dnsPattern = /(https?:\/\/)?([\w-]+\.)+[\w-]+(\/[\w- ./?%&=]*)?/i;
-        if (emailRegex.test(message) || phoneRegex.test(message) || longNumberRegex.test(message) || dnsPattern.test(message)) {
+        var digitMatches = message.match(/\d/g);
+        var totalDigits = digitMatches ? digitMatches.length : 0;
+        if (emailRegex.test(cleanedMessage) || phoneRegex.test(message) || longNumberRegex.test(message) || dnsPattern.test(cleanedMessage) || totalDigits > 4) {
             $('input[name="message"]').addClass('invalid-input');
             return;
         }

@@ -10,9 +10,23 @@
         $customer = App\Models\User::where('id', $emailData->order->user_id)->first();
         $listing = App\Models\Admin\Listing::where('id', $emailData->order->listing_id)->with('user')->first();
         $symbol = priceSymbol($listing->currency);
-        $amountPaid = getAmountWithoutSymble($booking->amount_paid,$booking->currency,$listing->currency);
-        $pendingAmount = getAmountWithoutSymble($booking->pending_amount,$booking->currency,$listing->currency);
-        $total = getAmountWithoutSymble($booking->total,$booking->currency,$listing->currency);
+        
+        $request['checkindate'] = $booking->check_in;
+        $request['checkoutdate'] = $booking->check_out;
+        $request['id'] = $booking->listing_id;
+        $price = bookingPrice($request,$listing->currency);
+        $security = $listing->security->amount;
+        $total = $price['totalAmount'];
+        if($booking->discount):
+            $totalWD = $price['totalAmount'] * $booking->discount / 100;
+            $total = $total - $totalWD;
+        endif;
+        $pendingAmount = 0;
+        $amountPaid =  $total;
+        if($booking->pending_amount):
+            $pendingAmount = $total - $security;
+            $amountPaid = $security;
+        endif;
     @endphp
     <p>Dear {{ $listing->user->name }},</p>
 
@@ -23,9 +37,9 @@
         <li><strong>Email:</strong> {{ $customer->email }}</li>
         <li><strong>Transaction ID:</strong> {{ $booking->payment_intent_id }}</li>
         <li><strong>Check In Date:</strong> {{ $booking->check_in }}</li>
-        <li><strong>Amount Paid:</strong> {{ $symbol.round($amountPaid) }}</li>
-        <li><strong>Pending Paid:</strong> {{ $symbol.round($pendingAmount) }}</li>
-        <li><strong>Total Amount:</strong> {{ $symbol.round($total) }}</li>
+        <li><strong>Amount Paid:</strong> {{ $symbol.$amountPaid }}</li>
+        <li><strong>Pending Paid:</strong> {{ $symbol.$pendingAmount }}</li>
+        <li><strong>Total Amount:</strong> {{ $symbol.$total }}</li>
     </ul>
 
     <p>Please make the necessary preparations or follow-up as needed.</p>
