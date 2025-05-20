@@ -303,7 +303,7 @@
                                 <option value="">Boat</option>
                                 <option {{ checkSelectMulti(request()->query('type'),'Motorboat') }} value="Motorboat">Motorboat</option>
                                 <option {{ checkSelectMulti(request()->query('type'),'Sailboat') }} value="Sailboat">Sailboat</option>
-                                <option {{ checkSelectMulti(request()->query('type'),'Rib') }} value="Ribs">Rib</option>
+                                <option {{ checkSelectMulti(request()->query('type'),'Rib') }} value="Rib">Rib</option>
                                 <option {{ checkSelectMulti(request()->query('type'),'Catamaran') }} value="Catamaran">Catamaran</option>
                                 <option {{ checkSelectMulti(request()->query('type'),'Yacht') }} value="Yacht">Yacht</option>
                                 <option {{ checkSelectMulti(request()->query('type'),'Sailingyacht') }} value="Sailingyacht">Sailing yacht</option>
@@ -417,7 +417,7 @@
                             <div class="location_checkbox_two">
                                 <h5>Boat type</h5>
                                 <div class="input-group">
-                                    <input type="checkbox" id="All" name="All" value="All">
+                                    <input type="checkbox" id="All" name="type" value="">
                                     <label for="All"> All</label>
                                 </div>
                                 <div class="input-group">
