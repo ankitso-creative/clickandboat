@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('last_name');
             $table->string('gender');
             $table->string('dob')->nullable();
-            $table->string('phone');
             $table->string('address');
             $table->string('address_line_two')->nullable();
             $table->string('city');

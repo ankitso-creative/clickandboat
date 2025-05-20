@@ -2,25 +2,28 @@
 
 namespace App\Mail\Front;
 
-use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Http\UploadedFile;
 
-class BookingOwnerMail extends Mailable
+class CancelBookingMail extends Mailable
 {
     use Queueable, SerializesModels;
 
     /**
      * Create a new message instance.
      */
-    public $emailData;
-    public function __construct($emailData)
+    public $order;
+   
+
+    public function __construct($order)
     {
-        $this->emailData = $emailData;
+        $this->order = $order;
+       
     }
 
     /**
@@ -28,9 +31,8 @@ class BookingOwnerMail extends Mailable
      */
     public function envelope(): Envelope
     {
-        $customer = User::where('id', $this->emailData->order->user_id)->first();
         return new Envelope(
-            subject: 'New Booking from - '.$customer->name ,
+            subject: 'Booking Cancel – Check-in on - '.$this->order->order->check_in,
         );
     }
 
@@ -40,7 +42,7 @@ class BookingOwnerMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.front.ownerbooking',
+            view: 'emails.front.cancelbooking',
         );
     }
 

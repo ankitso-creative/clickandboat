@@ -268,74 +268,83 @@
     <section class="boat-banner-sec">
         <div class="container">
             <div class="row">
-                @php
-                    $galleryImages = $listing->getMedia('listing_gallery');
-                    $imageUrls = $galleryImages->map(fn($media) => $media->getUrl())->toArray();
+                @if($isMobile)
+                    @php
+                        $galleryImages = $listing->getMedia('listing_gallery');
+                        $imageUrls = $galleryImages->map(fn($media) => $media->getUrl())->toArray();
 
-                    $imageCoverUrl = $listing->getFirstMediaUrl('cover_images');
-                    $imageCover = $imageCoverUrl ? [$imageCoverUrl] : [];
+                        $imageCoverUrl = $listing->getFirstMediaUrl('cover_images');
+                        $imageCover = $imageCoverUrl ? [$imageCoverUrl] : [];
 
-                    $allImageUrls = array_filter(array_merge($imageCover, $imageUrls));
+                        $allImageUrls = array_filter(array_merge($imageCover, $imageUrls));
 
-                    if (empty($allImageUrls)) {
-                        $allImageUrls = ['https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'];
-                    }
-                @endphp
-                <div class="col-md-12 mobile-image-slides">
-                    @foreach($allImageUrls as $allImageUrl)
-                        <div class="mobile-image-slide">
-                            <a data-fancybox="gallery" href="{{ $allImageUrl }}">
-                                <img src="{{ $allImageUrl }}" alt="Image" class="img-fluid" />
-                            </a>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    @php 
-                        $gallery_images = $listing->getMedia('listing_gallery'); 
-                        $image = $listing->getFirstMediaUrl('cover_images'); 
-                        if(!$image) 
-                        { 
-                            if(count($gallery_images))
-                            {
-                                $image = $gallery_images['0']->getUrl();
-                                unset($gallery_images[0]);
-                            }
-                            else
-                            {
-                                $image = 'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png';
-                            }
-                        } 
-                        $profileImage = $listing->user->getFirstMediaUrl('profile_image'); 
+                        if (empty($allImageUrls)) {
+                            $allImageUrls = ['https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'];
+                        }
                     @endphp
-                    <div class="banner-first-image">
-                        <a data-fancybox="gallery" href="{{ $image }}"><img src="{{ $image }}" alt="Image" class="img-fluid" /></a>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="banner-grid-image">
-                        @if(count($gallery_images)) 
-                            @foreach ($gallery_images as $gallery_image) 
-                                @if ($loop->iteration >= 1 && $loop->iteration <= 4)
-                                <a data-fancybox="gallery" href="{{ $gallery_image->getUrl() }}">
-                                    <img src="{{ $gallery_image->getUrl() }}" alt="Image" class="img-fluid" />
+                    <div class="col-md-12 mobile-image-slides">
+                        @foreach($allImageUrls as $allImageUrl)
+                            <div class="mobile-image-slide">
+                                <a data-fancybox="gallery" href="{{ $allImageUrl }}">
+                                    <img src="{{ $allImageUrl }}" alt="Image" class="img-fluid" />
                                 </a>
-                                @endif 
-                            @endforeach 
-                        @else
-                            <a href="#"><img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" alt="Image" class="img-fluid" /></a>
-                            <a href="#"><img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" alt="Image" class="img-fluid" /></a>
-                            <a href="#"><img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" alt="Image" class="img-fluid" /></a>
-                            <a href="#"><img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" alt="Image" class="img-fluid" /></a>
-                        @endif {{--
-                        <div class="view-more-photos">
-                            <a href="#"> View the photos (+10)</a>
-                        </div>
-                        --}}
+                            </div>
+                        @endforeach
                     </div>
-                </div>
+                @else
+                    <div class="col-md-6">
+                        @php
+                            $gallery_images = $listing->getMedia('listing_gallery');
+                            $image = $listing->getFirstMediaUrl('cover_images');
+                            if (!$image) {
+                                if(count($gallery_images))
+                                {
+                                    $image = $gallery_images['0']->getUrl();
+                                    unset($gallery_images[0]);
+                                }
+                                else
+                                {
+                                    $image = 'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png';
+                                }
+                            }
+                            $profileImage = $listing->user->getFirstMediaUrl('profile_image');
+                        @endphp
+                        <div class="banner-first-image">
+                            <a data-fancybox="gallery" href="{{ $image }}"><img src="{{ $image }}" alt="Image" class="img-fluid" /></a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="banner-grid-image">
+                            @if(count($gallery_images))
+                                @php
+                                    $count = 0;
+                                @endphp
+                                @foreach ($gallery_images as $gallery_image)
+                                    @php
+                                        $count++;
+                                        $dNone = '';
+                                        if($count > 4):
+                                            $dNone = 'd-none';
+                                        endif;
+                                    @endphp
+                                    <a data-fancybox="gallery" href="{{ $gallery_image->getUrl() }}" class="{{ $dNone }}">
+                                        <img src="{{ $gallery_image->getUrl() }}" alt="Image" class="img-fluid" />
+                                    </a>
+                                @endforeach
+                            @else
+                                <a href="#"><img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" alt="Image" class="img-fluid" /></a>
+                                <a href="#"><img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" alt="Image" class="img-fluid" /></a>
+                                <a href="#"><img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" alt="Image" class="img-fluid" /></a>
+                                <a href="#"><img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" alt="Image" class="img-fluid" /></a>
+                            @endif 
+                            @if($count > 4):
+                                <div class="view-more-photos">
+                                    <a data-fancybox="gallery" href="{{ $image }}"> View the photos (+{{ $count - 4 }})</a>
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+                @endif
             </div>
         </div>
     </section>
@@ -575,7 +584,7 @@
                                 if(session()->has('currency_code')):
                                     $to = session('currency_code');
                                 else:
-                                    $to = 'USD';
+                                    $to = 'EUR';
                                 endif;
                                 $fuel_cost = 'Yes';
                                 if($listing->fuel_include == '1'):

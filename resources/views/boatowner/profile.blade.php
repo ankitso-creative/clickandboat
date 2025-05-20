@@ -43,8 +43,8 @@
         });
 
         
-        @if(old('phone', optional($userData->profile)->phone))
-            iti.setNumber("{{ old('phone', optional($userData->profile)->phone) }}");
+        @if(old('phone', $userData->phone))
+            iti.setNumber("{{ old('phone', $userData->phone) }}");
         @endif
 
     </script>
@@ -215,7 +215,7 @@
                         <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="label-default">Phone<span class="required"> *</span></label>
-                                    <input id="phone" type="tel" name="phone" value="{{ optional($userData->profile)->phone ?? '' }}" class="form-control">
+                                    <input id="phone" type="tel" name="phone" value="{{ $userData->phone ?? '' }}" class="form-control">
                                     @error('phone')<span class="required">{{ $message }}</span>@enderror
                                 </div>
                             </div>

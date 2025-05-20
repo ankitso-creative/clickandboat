@@ -26,15 +26,19 @@ class StripeController extends Controller
         $quotationID = Crypt::decrypt($request['quotationID']);
         $quotation = Quotation::find($quotationID);
         $listing = Listing::find($quotation->listing_id);
+        $request['checkindate'] = $quotation->checkin;
+        $request['checkoutdate'] = $quotation->checkout;
+        $request['id'] = $quotation->listing_id;
+        $price = bookingPrice($request,$listing->currency);
         if($request['paymentType'] == 'deposit-payment' && $listing->security && optional($listing->security)->security_deposit == '1'):
 			if($listing->security->type == 1):
                 $depositAmount = $listing->security->amount;
             else:
                 $amount = $listing->security->amount;
-                $depositAmount = $quotation['total'] * $amount / 100;
+                $depositAmount = $price['totalAmount'] * $amount / 100;
             endif;
         else:
-            $totalAmount = $quotation['total'];
+            $totalAmount = $price['totalAmount'];
             $fuel_price = 0;
             $skipper_price = 0;
             // if($listing->fuel_include == '1'):
@@ -43,13 +47,16 @@ class StripeController extends Controller
             // if($listing->skipper_include == '1'):
             //     $skipper_price = getAmountWithoutSymble($listing->skipper_price,$listing->currency,$quotation->currency);
             // endif;
-            $depositAmount = $totalAmount +$fuel_price + $skipper_price;
+            $depositAmount = $totalAmount + $fuel_price + $skipper_price;
+            if($quotation->discount):
+                $depositAmountWD =  $depositAmount * $quotation->discount / 100;
+                $depositAmount = $depositAmount - $depositAmountWD;
+            endif;
         endif;
-        $depositAmount = getAmountWithoutSymble($depositAmount,$quotation->currency,$listing->currency);
         Stripe::setApiKey(config('services.stripe.secret'));
         try {
             $paymentIntent = PaymentIntent::create([
-                'amount' =>  round($depositAmount) * 100, 
+                'amount' =>  round($depositAmount,2) * 100, 
                 'currency' => $listing->currency,
                 'payment_method_types' => ['card'],
                 'confirmation_method' => 'automatic',  
@@ -75,6 +82,8 @@ class StripeController extends Controller
         if( $paymentType == 'deposit-payment' && $listing->security && optional($listing->security)->security_deposit == '1'):
 			if($listing->security->type == 1):
                 $depositAmount = $listing->security->amount;
+                $depositAmount = getAmountWithoutSymble($depositAmount,$listing->currency,$quotation->currency);
+                $depositAmount = round($depositAmount,2);
                 $fuel_price = 0;
                 $skipper_price = 0;
                 // if($listing->fuel_include == '1'):
@@ -88,6 +97,8 @@ class StripeController extends Controller
             else:
                 $amount = $listing->security->amount;
                 $depositAmount = $quotation['total'] * $amount / 100;
+                $depositAmount = getAmountWithoutSymble($depositAmount,$listing->currency,$quotation->currency);
+                $depositAmount = round($depositAmount,2);
                 $fuel_price = 0;
                 $skipper_price = 0;
                 // if($listing->fuel_include == '1'):
@@ -137,6 +148,7 @@ class StripeController extends Controller
                     'sub_total' => $depositAmount + $pending_amount,
                     'total' => $totalAmount,
                     'currency' => $quotation->currency,
+                    'discount' => $quotation->discount,
                 ]);
                 $transaction = Transaction::create([
                     'order_id' => $order->id, 
@@ -167,11 +179,24 @@ class StripeController extends Controller
         $request = $request->all();
         $orderId = $request['orderID'];
         $order = Order::where('id',$orderId)->first();
+        $listing = Listing::where('id',$order->listing_id)->first();
+        $pending_amount = getAmountWithoutSymble($order->pending_amount,$order->currency,$listing->currency);
+        $request['checkindate'] = $order->check_in;
+        $request['checkoutdate'] = $order->check_out;
+        $request['id'] = $order->listing_id;
+        $price = bookingPrice($request,$listing->currency);
+        $security = $listing->security->amount;
+        $total = $price['totalAmount'];
+        if($order->discount):
+            $totalWD = $price['totalAmount'] * $order->discount / 100;
+            $total = $total - $totalWD;
+        endif;
+        $pending_amount = $total - $security;
         Stripe::setApiKey(config('services.stripe.secret'));
         try {
             $paymentIntent = PaymentIntent::create([
-                'amount' => $order->pending_amount * 100, 
-                'currency' => $order->currency,
+                'amount' => round($pending_amount) * 100, 
+                'currency' => $listing->currency,
                 'payment_method_types' => ['card'],
                 'confirmation_method' => 'automatic',  
                 'capture_method' => 'automatic', 

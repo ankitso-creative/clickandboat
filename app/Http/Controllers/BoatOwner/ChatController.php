@@ -54,7 +54,7 @@ class ChatController extends Controller
                 return redirect()->route('boatowner.message', ['receiver_id' => $usersWithLastMessage[0]['user']['id'], 'slug' => $usersWithLastMessage[0]['listing']['slug']])->with('success', 'Order updated successfully!'); 
             endif;   
         else:
-            return view('boatowner.support', compact('active', 'usersWithLastMessage'));
+            return view('boatowner.support', compact('active', 'usersWithLastMessage','isMobile'));
         endif;
     }
 

@@ -306,7 +306,9 @@
                         </div>
                         <div class="checkout-btn-sec">
                             <div id="card-errors"></div>
-                            <button class="btn btn-checkout" id="submit-button">Booking request</button>
+
+                            <button class="btn btn-primary btn-checkout" id="submit-button">Pay Now</button>
+
                         </div>
                     </div>
                 </div>

@@ -13,7 +13,7 @@
     <p>Looking forward to having you as part of our community!</p>
     <p>
         Best regards, <br>
-        The Click And Boat Team
+        The Boat Booker Team
     </p>
 </body>
 </html>

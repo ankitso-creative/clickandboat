@@ -4,6 +4,7 @@ use App\Models\Admin\Listing;
 use App\Models\Admin\Setting;
 use App\Models\Admin\Price;
 use App\Models\Admin\SeasonPrice;
+use Illuminate\Support\Facades\Cache;
 use Carbon\Carbon;
 
 function clean($string, $symbol = "-")
@@ -52,13 +53,18 @@ function userImage()
     endif;
     return $image;
 }
-function bookingPrice($request)
+function bookingPrice($request,$currency='')
 {
-    if(session()->has('currency_code')):
-        $to = session('currency_code');
-    else:
-        $to = 'EUR';
-    endif;
+    $to = $currency;
+    if(!$currency)
+    {
+        if(session()->has('currency_code')):
+            $to = session('currency_code');
+        else:
+            $to = 'EUR';
+        endif;
+    }
+    
     $fromCur = Listing::where('id',$request['id'])->value('currency');
     $startDate = Carbon::parse($request['checkindate']);
     $endDate = Carbon::parse($request['checkoutdate']);
@@ -354,30 +360,41 @@ function priceSymbol($code)
 }
 function getAmountWithoutSymble($price, $from, $to)
 {
-    if($from == $to):
+    if ($from == $to) {
         return $price;
-    else:
-        $req_url = 'https://api.exchangerate-api.com/v4/latest/'.$from;
-        $response_json = file_get_contents($req_url);
-        if(false !== $response_json) {
-            try {
-                $response_object = json_decode($response_json);
-                $price = round(($price * $response_object->rates->{$to}), 2);
-                return $price;
-            }
-            catch(Exception $e) {
-                // Handle JSON parse error...
-            }
+    }
+
+    $key = "latest_price_of_".$from;
+    $response_json = Cache::remember($key, now()->addDay(), function () use ($from) {
+        $req_url = 'https://api.exchangerate-api.com/v4/latest/' . $from;
+        return file_get_contents($req_url);
+    });
+    
+
+    if (false !== $response_json) {
+        try {
+            $response_object = json_decode($response_json);
+            return round(($price * $response_object->rates->{$to}), 2);
+        } catch (Exception $e) {
+            // Handle error gracefully, or fallback
+            return $price;
         }
-    endif;
+    }
+
+    return $price;    
+    
 }
 function getAmountWithSymble($price, $from, $to)
 {
+    
     if($from == $to):
         return priceSymbol($from).$price;
     else:
-        $req_url = 'https://api.exchangerate-api.com/v4/latest/'.$from;
-        $response_json = file_get_contents($req_url);
+        $key = "latest_price_of_".$from;
+        $response_json = Cache::remember($key, now()->addDay(), function () use ($from) {
+            $req_url = 'https://api.exchangerate-api.com/v4/latest/' . $from;
+            return file_get_contents($req_url);
+        });
         if(false !== $response_json) {
             try {
                 $response_object = json_decode($response_json);
@@ -389,6 +406,7 @@ function getAmountWithSymble($price, $from, $to)
             }
         }
     endif;
+
 }
 function getListingPrice($slug)
 {

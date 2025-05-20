@@ -9,6 +9,7 @@
             $userId = auth()->id();
             $user = User::where('id', $userId)->with('profile')->first();
             $user->name = $request['first_name']." ".$request['last_name'];
+            $user->phone = $request['phone'];
             $user->update();
             $user->profile()->UpdateOrCreate(['user_id' => $userId],[
                 'user_id' => $userId,
@@ -16,7 +17,6 @@
                 'last_name' => $request['last_name'],
                 'gender' => $request['gender'],
                 'dob' => $request['dob'],
-                'phone' => $request['phone'],
                 'address' => $request['address'],
                 'city' => $request['city'],
                 'state' => $request['state'],
