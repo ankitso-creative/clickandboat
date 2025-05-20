@@ -408,19 +408,37 @@
                             if($quotation->days == 'half_day'):
                                 $netAmount = $price['oneHalfDayPrice'];
                                 $total = $price['oneHalfDayPrice'];
+                                if($quotation->discount):
+                                    $netAmountWD = $price['price'] * $quotation->discount / 100;
+                                    $totalWD = $price['totalAmount'] * $quotation->discount / 100;
+                                    $netAmount = $price['oneHalfDayPrice'] - $netAmountWD;
+                                    $total = $price['oneHalfDayPrice'] - $totalWD;
+                                else:
+                                    $netAmount = $price['price'];
+                                    $total = $price['totalAmount'];
+                                endif;
                             else:
                                 $netAmount = $price['price'];
                                 $total = $price['totalAmount'];
+                                if($quotation->discount):
+                                    $netAmountWD = $price['price'] * $quotation->discount / 100;
+                                    $totalWD = $price['totalAmount'] * $quotation->discount / 100;
+                                    $netAmount = $price['price'] - $netAmountWD;
+                                    $total = $price['totalAmount'] - $totalWD;
+                                else:
+                                    $netAmount = $price['price'];
+                                    $total = $price['totalAmount'];
+                                endif;
                             endif;
-                            if($quotation->discount):
-                                $netAmountWD = $price['price'] * $quotation->discount / 100;
-                                $totalWD = $price['totalAmount'] * $quotation->discount / 100;
-                                $netAmount = $price['price'] - $netAmountWD;
-                                $total = $price['totalAmount'] - $totalWD;
-                            else:
-                                $netAmount = $price['price'];
-                                $total = $price['totalAmount'];
-                            endif;
+                            // if($quotation->discount):
+                            //     $netAmountWD = $price['price'] * $quotation->discount / 100;
+                            //     $totalWD = $price['totalAmount'] * $quotation->discount / 100;
+                            //     $netAmount = $price['price'] - $netAmountWD;
+                            //     $total = $price['totalAmount'] - $totalWD;
+                            // else:
+                            //     $netAmount = $price['price'];
+                            //     $total = $price['totalAmount'];
+                            // endif;
                         @endphp
                         <div class="show-Price" id="show-Price-sec">
                             <p>Hire: <span id="hire" class="price-after">{{ $symble.$netAmount }}</span></p>

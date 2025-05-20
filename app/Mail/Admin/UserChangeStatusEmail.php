@@ -28,7 +28,7 @@ class UserChangeStatusEmail extends Mailable
     {
         if($this->user->status==1):
             return new Envelope(
-                subject: 'Your Account has been Approved! Start Exploring Click And Boat',
+                subject: 'Your Account has been Approved! Start Exploring My Boat Booker',
             );
         else:
             return new Envelope(

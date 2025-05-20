@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Dear {{ $user->name }},</h1>
-    <p>Thank you for registering with Click And Boat! We’re excited to have you on board.</p>
+    <p>Thank you for registering with My Boat Booker! We’re excited to have you on board.</p>
     <p>Looking forward to having you as part of our community!</p>
     <p>
         Best regards, <br>

@@ -16,9 +16,13 @@
         $request['id'] = $booking->listing_id;
         $price = bookingPrice($request,$listing->currency);
         $security = $listing->security->amount;
-        $total = $price['totalAmount'];
+        if($booking->days == 'half_day'):
+            $total = $price['oneHalfDayPrice'];
+        else:
+            $total = $price['totalAmount'];
+        endif;
         if($booking->discount):
-            $totalWD = $price['totalAmount'] * $booking->discount / 100;
+            $totalWD = $total * $booking->discount / 100;
             $total = $total - $totalWD;
         endif;
         $pendingAmount = 0;

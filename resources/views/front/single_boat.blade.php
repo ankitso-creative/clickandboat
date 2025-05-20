@@ -290,15 +290,23 @@
                                     $('#checkin-date').val(checkIn);
                                     $('#checkout-date').val(checkOut);
                                     $('#submit-qut').removeAttr('disabled');
-                                    if(response.days==1)
+                                    if(response.days==1 && response.priceExist=='yes' )
                                     {
                                         $('#half_day-box').removeClass('d-none');
+                                        $('#mhalf_day-box').removeClass('d-none');
                                         $('#half_day-box-2').removeClass('d-none');
+                                        $('#half_day-price').val(response.oneHalfDayPrice);
+                                        $('#half_day-price-2').val(response.oneHalfDayPrice);
+                                        $('#mhalf_day-price').val(response.oneHalfDayPrice);
                                     }
                                     else
                                     {
                                         $('#half_day-box').addClass('d-none');
+                                        $('#mhalf_day-box').addClass('d-none');
                                         $('#half_day-box-2').addClass('d-none');
+                                        $('#half_day-price').val(response.oneHalfDayPrice);
+                                        $('#half_day-price-2').val(response.oneHalfDayPrice);
+                                        $('#mhalf_day-price').val(response.oneHalfDayPrice);
                                     }
                                 } else {
                                     $('#price_display').html('<p>Price not available.</p>');
@@ -408,7 +416,7 @@
                     $('#total-days, #qtotal-days').html('Half Day');
                     $('#charter-pice,#mcharter-pice').html(newPrice);
                     $('#charter-fee').html('0');
-                    $('#charter-total,#qcharter-total').html(newPrice);
+                    $('#charter-total,#qcharter-total,#qcharter-total').html(newPrice);
                 } 
                 else 
                 {
@@ -1181,7 +1189,7 @@
                                     <div class="show-Price" id="qshow-Price-sec">
                                         @if($price['priceExist'] == 'yes')
                                             <div class="input-group " id="half_day-box-2">
-                                                <input type="checkbox" id="half_day" name="half_day-2" value="1" >
+                                                <input type="checkbox" id="half_day-2" name="half_day-2" value="1" >
                                                 <input type="hidden" id="half_day-price-2" value="{{ $price['oneHalfDayPrice'] }}" >
                                                 <label for="half_day"> Half Day</label>
                                             </div>
@@ -1198,7 +1206,7 @@
                                 @else
                                     <div class="show-Price d-none" id="qshow-Price-sec">
                                         <div class="input-group " id="half_day-box-2">
-                                            <input type="checkbox" id="half_day" name="half_day-2" value="1" >
+                                            <input type="checkbox" id="half_day-2" name="half_day-2" value="1" >
                                             <input type="hidden" id="half_day-price-2" value="" >
                                             <label for="half_day"> Half Day</label>
                                         </div>

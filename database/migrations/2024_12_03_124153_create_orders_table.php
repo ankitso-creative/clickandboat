@@ -31,6 +31,7 @@ return new class extends Migration
             $table->string('pending_amount')->nullable();
             $table->string('payment_status')->nullable();
             $table->string('currency')->nullable();
+            $table->string('days')->nullable();
             $table->integer('discount')->nullable();
             $table->timestamps();
         });
