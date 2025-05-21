@@ -12,8 +12,8 @@
         $customer = App\Models\User::where('id', $emailData->favorite->user_id)->first();
         $description = App\Models\EmailTemplate::where('slug', 'boat-added-on-favotite-email')->value('description');
         $from = array('{{name}}', '{{url}}');
-        $to = array(route('boatowner.message', ['receiver_id' => $customer->id, 'slug' => $listing->slug]));
-        $html = str_replace($listing->user->name,$from,$to, $description);
+        $to = array($listing->user->name,route('boatowner.message', ['receiver_id' => $customer->id, 'slug' => $listing->slug]));
+        $html = str_replace($from,$to, $description);
     @endphp
     {!! $html !!}
 </body>

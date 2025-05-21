@@ -6,9 +6,10 @@
     
 </head>
 <body>
+    {{-- {{admin_login_url}} --}}
     @php
         $description = App\Models\Admin\listing::where('slug', 'listing-approve-email')->value('description');
-        $html = str_replace('{{admin_login_url}}',route('admin.login'), $description);
+        $html = str_replace('{{admin_login_url}}',route('admin.login'), $description)
     @endphp
     {!! $html !!}
 </body>

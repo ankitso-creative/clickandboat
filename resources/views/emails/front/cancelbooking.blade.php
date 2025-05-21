@@ -11,7 +11,7 @@
         $customer = $order->user->name;
        
         $description = App\Models\EmailTemplate::where('slug', 'booking-cancel-email')->value('description');
-        $html = str_replace('{{name}}',$customer, $description);
+        $html = str_replace('{{customer}}',$customer, $description);
     @endphp
     {!! $html !!}
     
