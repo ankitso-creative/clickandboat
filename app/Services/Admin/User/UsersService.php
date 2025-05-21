@@ -46,7 +46,9 @@ class UsersService{
     public function change_status($request)
     {
         $user =  $this->repository->change_status($request);
-        event(new UserChangeStatus($user));
+        if($user->role == 'boatowner'):
+            event(new UserChangeStatus($user));
+        endif;
         return true;
     }
 }

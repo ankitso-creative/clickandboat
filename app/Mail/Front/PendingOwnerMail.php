@@ -31,7 +31,7 @@ class PendingOwnerMail extends Mailable
     {
         $customer = User::where('id', $this->emailData->order->user_id)->value('name');
         // {{customer}}
-        $subject = EmailTemplate::where('slug', 'booking-cancel-email')->value('subject');
+        $subject = EmailTemplate::where('slug', 'pending-owner-email')->value('subject');
         $subject = str_replace('{{customer}}',$customer, $subject);
         return new Envelope(
             subject: ''.$subject,

@@ -33,7 +33,7 @@
         endif;
         $description = App\Models\EmailTemplate::where('slug', 'owner-booking-email')->value('description');
         $from = array('{{owner_name}}','{{name}}', '{{email}}','{{payment_intent_id}}', '{{check_in}}',' {{amountPaid}}', '{{pendingAmount}}' ,'{{total}}');
-        $to = array($listing->user->name,$customer->name,$customer->email,$booking->payment_intent_id,$booking->check_in,$symbol.$amountPaid,$$symbol.$pendingAmount,$symbol.$total);
+        $to = array($listing->user->name,$customer->name,$customer->email,$booking->payment_intent_id,$booking->check_in,$symbol.$amountPaid,$symbol.$pendingAmount,$symbol.$total);
         $html = str_replace($from,$to, $description);
     @endphp
     {!! $html !!}
