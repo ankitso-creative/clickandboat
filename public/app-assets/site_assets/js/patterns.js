@@ -22,7 +22,10 @@ function containsBlockedContent(message)
         "our brand is", "booking site is", "company details",
         "trading name", "register here", "contact my assistant",
         "here’s my assistant’s number","whatsapp","wp","fb","whatsap","snapchat","[dot]","dot",
-        "[at]","[at","at]"
+        "[at]","[at","at]","dot com","dotcom","c o m","c.o.m","c0m","c0m","(com)","[com]","{com}",
+        ".c0m","dot.c0m","@.com",". com","dot. com","d o t c o m","d.o.t.c.o.m",
+        "c.om","co.m","c om","c. o. m.","c0m","c-0-m","c_0_m","com/",
+        "com.","com","com!","com?","com"
     ];
 
     // Normalize message to lowercase for case-insensitive matching

@@ -2,6 +2,7 @@
 
 namespace App\Mail\Front;
 
+use App\Models\EmailTemplate;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -31,8 +32,10 @@ class CancelBookingMail extends Mailable
      */
     public function envelope(): Envelope
     {
+        $subject = EmailTemplate::where('slug', 'booking-cancel-email')->value('subject');
+        $subject = str_replace('{{check_in}}',$this->order->order->check_in, $subject);
         return new Envelope(
-            subject: 'Booking Cancel – Check-in on - '.$this->order->order->check_in,
+            subject: ''.$subject,
         );
     }
 

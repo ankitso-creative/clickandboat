@@ -2,6 +2,7 @@
 
 namespace App\Mail\Auth;
 
+use App\Models\EmailTemplate;
 use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -27,8 +28,10 @@ class NewUserRegisterEmail extends Mailable
      */
     public function envelope(): Envelope
     {
+        $subject = EmailTemplate::where('slug', 'new-user-register-email')->value('subject');
+        
         return new Envelope(
-            subject: 'Thanks for Registering with us',
+            subject: ''.$subject,
         );
     }
 

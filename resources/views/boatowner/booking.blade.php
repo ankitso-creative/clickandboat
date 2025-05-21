@@ -73,23 +73,27 @@
                                     $request['id'] = $result->listing_id;
                                     $price = bookingPrice($request,$listing->currency);
                                     $symble = priceSymbol($listing->currency);
-
-                                    $total = $price['totalAmount'];
+                                    if($result->days == 'half_day'):
+                                        $total = $price['oneHalfDayPrice'];
+                                    else:
+                                        $total = $price['totalAmount'];
+                                    endif;
+                                    
                                     if($result->discount):
-                                        $totalWD = $price['totalAmount'] * $result->discount / 100;
-                                        $total = $price['totalAmount'] - $totalWD;
+                                        $totalWD = $total * $result->discount / 100;
+                                        $total = $total - $totalWD;
                                     endif;
                                     $pendingAmount = $result->pending_amount;
                                     if($pendingAmount):
                                         $security = $listing->security->amount;
                                         $pendingAmount = $total - $security;
                                     else:
-                                        $totalWD = $price['totalAmount'] * $result->discount / 100;
-                                        $amountPaid = $price['totalAmount'];
+                                        $totalWD = $total * $result->discount / 100;
+                                        $amountPaid =$total;
                                     endif;
-                                    $amountPaid = $price['totalAmount'] - $pendingAmount;
+                                    $amountPaid = $total - $pendingAmount;
                                     if($result->discount):
-                                        $amountPaidWD = $price['totalAmount'] * $result->discount / 100;
+                                        $amountPaidWD = $total * $result->discount / 100;
                                         $amountPaid = $amountPaid - $amountPaidWD;
                                     endif;
                                     

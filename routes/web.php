@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\BookingController as AdminBookingController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\EmailTemplateController;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\ListingController;
 use App\Http\Controllers\Admin\LocationController;
@@ -29,6 +30,7 @@ use App\Http\Controllers\Customer\ProfileController;
 use App\Http\Controllers\Site\AjaxController;
 use App\Http\Controllers\Site\PagesController;
 use App\Http\Controllers\Site\StripeController;
+
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Request;
 
@@ -50,6 +52,7 @@ Route::middleware('Setlang')->group(function(){
         Route::put('profile/update', [AdminLoginController::class, 'update'])->name('update');
         Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
         Route::resource('users', UsersController::class);
+        Route::resource('emailtemplate', EmailTemplateController::class);
         Route::post('user_change_status', [UsersController::class, 'changeStatus'])->name('userchange');
         Route::post('user_change_super', [UsersController::class, 'changeSuper'])->name('usersuper');
         Route::get('boatowner', [UsersController::class, 'index'])->name('boatowner');

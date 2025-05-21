@@ -2,6 +2,7 @@
 
 namespace App\Mail\Front;
 
+use App\Models\EmailTemplate;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -27,6 +28,7 @@ class PendingCustomerMail extends Mailable
      */
     public function envelope(): Envelope
     {
+        $subject = EmailTemplate::where('slug', 'pending-customer-email')->value('subject');
         return new Envelope(
             subject: 'Your Pending Amount Paid',
         );

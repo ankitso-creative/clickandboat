@@ -33,6 +33,7 @@ class Order extends Model implements HasMedia
         'payment_status',
         'currency',
         'discount',
+        'days',
     ];
     public function listing() 
     {

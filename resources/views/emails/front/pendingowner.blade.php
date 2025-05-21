@@ -16,20 +16,22 @@
         $request['id'] = $booking->listing_id;
         $price = bookingPrice($request,$listing->currency);
         $security = $listing->security->amount;
-        $total = $price['totalAmount'];
+        if($booking->days == 'half_day'):
+            $total = $price['oneHalfDayPrice'];
+        else:
+            $total = $price['totalAmount'];
+        endif;
         if($booking->discount):
-            $totalWD = $price['totalAmount'] * $booking->discount / 100;
+            $totalWD = $total * $booking->discount / 100;
             $total = $total - $totalWD;
         endif;
         $pending_amount = $total - $security;
-       
+
+        $description = App\Models\EmailTemplate::where('slug', 'pending-owner-email')->value('description');
+        $from = array('{{owner_name}}','{{customer_name}}','{{pending_amount}}' ,'{{total}}');
+        $to = array($listing->user->name,$customer->name,$symbol.$pending_amount, $symbol.$total);
+        $html = str_replace($from,$to, $description);
     @endphp
-    <p>Dear {{ $listing->user->name }},</p>
-    <p>We’re pleased to inform you that the customer has completed the pending payment for the boat booking.</p>
-    <p><strong> Customer Name:</strong> {{  $customer->name }}</p>
-    <p><strong> Paid Amount:</strong> {{  $symbol.$pending_amount }}</p>
-    <p><strong> Total Booking Amount:</strong> {{  $symbol.$total }}</p>
-    <p>Best regards,</p>
-    <p>The Boat Booker Team</p>
+    {!! $html !!}
 </body>
 </html>

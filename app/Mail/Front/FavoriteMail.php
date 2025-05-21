@@ -2,6 +2,7 @@
 
 namespace App\Mail\Front;
 
+use App\Models\EmailTemplate;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -31,8 +32,9 @@ class FavoriteMail extends Mailable
      */
     public function envelope(): Envelope
     {
+        $subject = EmailTemplate::where('slug', 'boat-added-on-favotite-email')->value('subject');
         return new Envelope(
-            subject: 'Your Boat Added On Favotite',
+            subject: ''.$subject,
         );
     }
 

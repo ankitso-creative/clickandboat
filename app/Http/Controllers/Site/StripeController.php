@@ -34,11 +34,20 @@ class StripeController extends Controller
 			if($listing->security->type == 1):
                 $depositAmount = $listing->security->amount;
             else:
-                $amount = $listing->security->amount;
-                $depositAmount = $price['totalAmount'] * $amount / 100;
+                if($quotation->days == 'half_day'):
+                    $amount = $listing->security->amount;
+                    $depositAmount = $price['oneHalfDayPrice'] * $amount / 100;
+                else:
+                    $amount = $listing->security->amount;
+                    $depositAmount = $price['totalAmount'] * $amount / 100;
+                endif;
             endif;
         else:
-            $totalAmount = $price['totalAmount'];
+            if($quotation->days == 'half_day'):
+                $totalAmount = $price['oneHalfDayPrice'];
+            else:
+                $totalAmount = $price['totalAmount'];
+            endif;
             $fuel_price = 0;
             $skipper_price = 0;
             // if($listing->fuel_include == '1'):
@@ -149,6 +158,7 @@ class StripeController extends Controller
                     'total' => $totalAmount,
                     'currency' => $quotation->currency,
                     'discount' => $quotation->discount,
+                    'days' => $quotation->days,
                 ]);
                 $transaction = Transaction::create([
                     'order_id' => $order->id, 
@@ -186,9 +196,13 @@ class StripeController extends Controller
         $request['id'] = $order->listing_id;
         $price = bookingPrice($request,$listing->currency);
         $security = $listing->security->amount;
-        $total = $price['totalAmount'];
+        if($order->days == 'half_day'):
+            $total = $price['oneHalfDayPrice'];
+        else:
+            $total = $price['totalAmount'];
+        endif;
         if($order->discount):
-            $totalWD = $price['totalAmount'] * $order->discount / 100;
+            $totalWD = $total * $order->discount / 100;
             $total = $total - $totalWD;
         endif;
         $pending_amount = $total - $security;
