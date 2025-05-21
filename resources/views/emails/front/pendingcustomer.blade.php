@@ -10,6 +10,7 @@
         $customer = App\Models\User::where('id', $emailData->order->user_id)->value('name');
         $symbol = priceSymbol($booking->currency);
     @endphp
+    {{-- {{customer}} --}}
     <h2>Booking Confirmation</h2>
 
     <p>Dear {{ $customer }},</p>

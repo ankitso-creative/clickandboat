@@ -6,12 +6,11 @@
     
 </head>
 <body>
-    <h1>Dear Admin,</h1>
-    <p>A new listing has been submitted and is awaiting your review. Please log in to the admin panel to review and approve the listing.</p>
-    <p><a href="{{ route('admin.login') }}">click here</a> to login admin dashboard.</p>
-    <p>
-        Best regards, <br>
-        The Boat Booker Team
-    </p>
+    {{-- {{admin_login_url}} --}}
+    @php
+        $description = App\Models\Admin\listing::where('slug', 'listing-approve-email')->value('description');
+        $html = str_replace('{{admin_login_url}}',route('admin.login'), $description)
+    @endphp
+    {!! $html !!}
 </body>
 </html>

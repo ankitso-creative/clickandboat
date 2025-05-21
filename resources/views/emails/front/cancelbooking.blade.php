@@ -10,7 +10,7 @@
         $order = $order->order;
         $customer = $order->user->name;
     @endphp
-    
+    {{-- {{customer}} --}}
     <p>Dear {{ $customer }},</p>
     <p>We regret to inform you that your booking  has been cancelled.</p>
     <p>If you have any questions or need further assistance, please don’t hesitate to <a href="mailto:shubham@so-creative.co.uk">contact us.</a></p>

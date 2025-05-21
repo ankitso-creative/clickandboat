@@ -31,6 +31,7 @@ class CancelBookingMail extends Mailable
      */
     public function envelope(): Envelope
     {
+        // {{check_in}}
         return new Envelope(
             subject: 'Booking Cancel – Check-in on - '.$this->order->order->check_in,
         );

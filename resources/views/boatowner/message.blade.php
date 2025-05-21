@@ -414,8 +414,8 @@
                                     $netAmount = $price['oneHalfDayPrice'] - $netAmountWD;
                                     $total = $price['oneHalfDayPrice'] - $totalWD;
                                 else:
-                                    $netAmount = $price['price'];
-                                    $total = $price['totalAmount'];
+                                    $netAmount = $price['oneHalfDayPrice'];
+                                    $total = $price['oneHalfDayPrice'];
                                 endif;
                             else:
                                 $netAmount = $price['price'];

@@ -29,6 +29,7 @@ class BookingOwnerMail extends Mailable
     public function envelope(): Envelope
     {
         $customer = User::where('id', $this->emailData->order->user_id)->first();
+        // {{name}}
         return new Envelope(
             subject: 'New Booking from - '.$customer->name ,
         );

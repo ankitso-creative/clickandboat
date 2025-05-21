@@ -246,6 +246,14 @@
                                 <span class="arrow open"></span>
                             </a>
                         </li>
+                        <li class="nav-item start {{ $active == 'templates' ? 'active open' : '' }}">
+                            <a href="{{ route('admin.emailtemplate.index') }}" class="nav-link">
+                                <i class="fa fa-file"></i>
+                                <span class="title">Manage Email Templates</span>
+                                <span class="selected"></span>
+                                <span class="arrow open"></span>
+                            </a>
+                        </li>
                         <li class="nav-item {{ $active == 'settings' ? 'active open' : '' }}">
                             <a href="javascript:;" class="nav-link nav-toggle">
                                 <i class="fa fa-gear"></i>

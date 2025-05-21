@@ -29,6 +29,7 @@ class PendingOwnerMail extends Mailable
     public function envelope(): Envelope
     {
         $customer = User::where('id', $this->emailData->order->user_id)->value('name');
+        // {{customer}}
         return new Envelope(
             subject: 'Confirm Pending Amount - '.$customer,
         );

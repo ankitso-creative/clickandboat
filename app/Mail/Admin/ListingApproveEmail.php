@@ -28,6 +28,7 @@ class ListingApproveEmail extends Mailable
      */
     public function envelope(): Envelope
     {
+        // {{ownername}}
         $customer = User::where('id', $this->listing->user_id)->value('name');
         return new Envelope(
             subject: 'New Listing Saved by Owner – Awaiting Your Approval - '.$customer,

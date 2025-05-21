@@ -32,6 +32,7 @@
             $amountPaid = $security;
         endif;
     @endphp
+    {{-- {{name}} {{email}} {{payment_intent_id}} {{check_in}} {{amountPaid}} {{pendingAmount}} {{total}} --}}
     <p>Dear {{ $listing->user->name }},</p>
 
     <p>A new booking has just been made. Here are the details:</p>

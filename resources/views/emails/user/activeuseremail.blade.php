@@ -6,6 +6,7 @@
     <title>Click And Boat</title>
 </head>
 <body>
+    {{-- {{ name }} --}}
     <h1>Dear {{ $user->name }},</h1>
     <p>Great news! Your account with My Boat Booker has been successfully verified and approved. You can now log in and begin exploring all the features of our platform.</p>
     <p>Start by adding your boats, browse through listings, and much more. We’re excited to see what you’ll contribute!</p>

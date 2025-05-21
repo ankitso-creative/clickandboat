@@ -67,22 +67,26 @@
             $price = bookingPrice($request,$listing->currency);
             $symble = priceSymbol($listing->currency);
 
-            $total = $price['totalAmount'];
+            if($results->days == 'half_day'):
+                $total = $price['oneHalfDayPrice'];
+            else:
+                $total = $price['totalAmount'];
+            endif;
             if($results->discount):
-                $totalWD = $price['totalAmount'] * $results->discount / 100;
-                $total = $price['totalAmount'] - $totalWD;
+                $totalWD = $total * $results->discount / 100;
+                $total = $total - $totalWD;
             endif;
             $pendingAmount = $results->pending_amount;
             if($pendingAmount):
                 $security = $listing->security->amount;
                 $pendingAmount = $total - $security;
             else:
-                $totalWD = $price['totalAmount'] * $results->discount / 100;
-                $amountPaid = $price['totalAmount'];
+                $totalWD = $total * $results->discount / 100;
+                $amountPaid = $total;
             endif;
-            $amountPaid = $price['totalAmount'] - $pendingAmount;
+            $amountPaid = $total - $pendingAmount;
             if($results->discount):
-                $amountPaidWD = $price['totalAmount'] * $results->discount / 100;
+                $amountPaidWD = $total * $results->discount / 100;
                 $amountPaid = $amountPaid - $amountPaidWD;
             endif;
         @endphp

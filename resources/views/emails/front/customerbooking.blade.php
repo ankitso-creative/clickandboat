@@ -10,6 +10,7 @@
         $customer = App\Models\User::where('id', $emailData->order->user_id)->value('name');
         $symbol = priceSymbol($booking->currency);
     @endphp
+    {{-- {{$customer}} {{payment_intent_id}} {{check_in}} {{amount_paid}} {{pending_amount}} {{total}} --}}
     <p>Dear {{ $customer }},</p>
 
     <p>Thank you for your booking! We’re happy to confirm the details below:</p>
