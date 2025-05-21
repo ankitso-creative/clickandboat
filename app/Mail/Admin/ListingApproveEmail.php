@@ -3,6 +3,7 @@
 namespace App\Mail\Admin;
 
 use App\Models\Admin\Listing;
+use App\Models\EmailTemplate;
 use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -29,9 +30,11 @@ class ListingApproveEmail extends Mailable
     public function envelope(): Envelope
     {
         // {{ownername}}
+        $subject = EmailTemplate::where('slug', 'listing-approve-email')->value('subject');
         $customer = User::where('id', $this->listing->user_id)->value('name');
+        $subject = str_replace('{{ownername}}',$customer, $subject);
         return new Envelope(
-            subject: 'New Listing Saved by Owner – Awaiting Your Approval - '.$customer,
+            subject: ''.$subject,
         );
     }
 

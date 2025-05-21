@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Mail\Admin;
+
+use App\Models\EmailTemplate;
 use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -27,12 +29,14 @@ class UserChangeStatusEmail extends Mailable
     public function envelope(): Envelope
     {
         if($this->user->status==1):
+            $subject = EmailTemplate::where('slug', 'active-usere-eail')->value('subject');
             return new Envelope(
-                subject: 'Your Account has been Approved! Start Exploring My Boat Booker',
+                subject: ''.$subject,
             );
         else:
+            $subject = EmailTemplate::where('slug', 'account-registration-email')->value('subject');
             return new Envelope(
-                subject: 'Account Registration Status',
+                subject: ''.$subject,
             );
         endif;
     }

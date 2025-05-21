@@ -9,7 +9,6 @@
     @php 
         $details = $emailData->request;
     @endphp
-    {{--  {{name}} {{email}} {{phone}} {{form_message}} --}}
     <p><strong>Name</strong>: {{ $details['name'] }}</p>
     <p><strong>email</strong>: {{ $details['email'] }}</p>
     <p><strong>Phone</strong>: {{ $details['phone'] }}</p>

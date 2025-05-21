@@ -30,9 +30,9 @@
         <div class="page-content">
             <!-- BEGIN PAGE TITLE-->
             <h1 class="page-title">Manage Emails
-                <span style="float: right;">
+                {{-- <span style="float: right;">
                     <a href="{{ route('admin.emailtemplate.create')}}" class="btn green"><i class="fa fa-plus"></i> &nbsp;New</a>
-                </span>
+                </span> --}}
             </h1>
             <div class="row" style="margin-bottom: 20px">
                 

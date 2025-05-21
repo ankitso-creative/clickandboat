@@ -2,6 +2,7 @@
 
 namespace App\Mail\Front;
 
+use App\Models\EmailTemplate;
 use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -28,8 +29,10 @@ class BookingCustomerMail extends Mailable
      */
     public function envelope(): Envelope
     {
+        $subject = EmailTemplate::where('slug', 'customer-booking-email')->value('subject');
+        $subject = str_replace('{{check_in}}',Carbon::parse($this->emailData->order->check_in)->format('d-m-Y'), $subject);
         return new Envelope(
-            subject: 'Booking Confirmed – Check-in on '.Carbon::parse($this->emailData->order->check_in)->format('d-m-Y')
+            subject: ''.$subject
         );
     }
 

@@ -7,12 +7,10 @@
 </head>
 <body>
     {{-- {{name}} --}}
-    <h1>Dear {{ $user->name }},</h1>
-    <p>Thank you for registering with My Boat Booker! We’re excited to have you on board.</p>
-    <p>Looking forward to having you as part of our community!</p>
-    <p>
-        Best regards, <br>
-        The Boat Booker Team
-    </p>
+    @php
+        $description = App\Models\EmailTemplate::where('slug', 'new-user-register-email')->value('description');
+        $html = str_replace('{{name}}',$user->name, $description)
+    @endphp
+    {!! $html !!}
 </body>
 </html>

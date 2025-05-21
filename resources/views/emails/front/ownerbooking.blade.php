@@ -31,27 +31,11 @@
             $pendingAmount = $total - $security;
             $amountPaid = $security;
         endif;
+        $description = App\Models\EmailTemplate::where('slug', 'owner-booking-email')->value('description');
+        $from = array('{{owner_name}}','{{name}}', '{{email}}','{{payment_intent_id}}', '{{check_in}}',' {{amountPaid}}', '{{pendingAmount}}' ,'{{total}}');
+        $to = array($listing->user->name,$customer->name,$customer->email,$booking->payment_intent_id,$booking->check_in,$symbol.$amountPaid,$$symbol.$pendingAmount,$symbol.$total);
+        $html = str_replace($from,$to, $description);
     @endphp
-    {{-- {{name}} {{email}} {{payment_intent_id}} {{check_in}} {{amountPaid}} {{pendingAmount}} {{total}} --}}
-    <p>Dear {{ $listing->user->name }},</p>
-
-    <p>A new booking has just been made. Here are the details:</p>
-
-    <ul>
-        <li><strong>Customer Name:</strong> {{ $customer->name }}</li>
-        <li><strong>Email:</strong> {{ $customer->email }}</li>
-        <li><strong>Transaction ID:</strong> {{ $booking->payment_intent_id }}</li>
-        <li><strong>Check In Date:</strong> {{ $booking->check_in }}</li>
-        <li><strong>Amount Paid:</strong> {{ $symbol.$amountPaid }}</li>
-        <li><strong>Pending Paid:</strong> {{ $symbol.$pendingAmount }}</li>
-        <li><strong>Total Amount:</strong> {{ $symbol.$total }}</li>
-    </ul>
-
-    <p>Please make the necessary preparations or follow-up as needed.</p>
-
-    <br>
-
-    <p>Best regards,</p>
-    <p>The Boat Booker Team</p>
+    {!! $html !!}
 </body>
 </html>

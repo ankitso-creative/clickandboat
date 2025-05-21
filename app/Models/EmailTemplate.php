@@ -13,16 +13,16 @@ class EmailTemplate extends Model
         'slug',
         'who_receive',
     ];
-    public static function boot()
-    {
-        parent::boot();
-        static::saving(function ($emailTemplate) {
-            $slug = Str::slug($emailTemplate->title);
-            $existingSlugCount = self::where('slug', $slug)->count();
-            if ($existingSlugCount > 0) {
-                $slug = $slug . '-' . ($existingSlugCount + 1);
-            }
-            $emailTemplate->slug = $slug;
-        });
-    }
+    // public static function boot()
+    // {
+    //     parent::boot();
+    //     static::saving(function ($emailTemplate) {
+    //         $slug = Str::slug($emailTemplate->title);
+    //         $existingSlugCount = self::where('slug', $slug)->count();
+    //         if ($existingSlugCount > 0) {
+    //             $slug = $slug . '-' . ($existingSlugCount + 1);
+    //         }
+    //         $emailTemplate->slug = $slug;
+    //     });
+    // }
 }
