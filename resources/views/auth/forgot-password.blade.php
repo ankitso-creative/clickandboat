@@ -19,16 +19,6 @@
     }
 </style>
     <!-- end .b-title-page--> 
-<section class="hero">
-  <div class="video fade-in">
-    <div class="video_background">
-      <div class="video_wrapper">
-        <iframe src="https://www.youtube.com/embed/z977gKXg1_k?controls=0&showinfo=0&rel=0&autoplay=1&mute=1&loop=1&playlist=z977gKXg1_k&modestbranding=1&playsinline=1
-" frameborder="0" allowfullscreen></iframe>
-      </div>
-    </div>
-  </div>
-</section>
     <div class="l-main-content login_section">
         <div class="container sing_upform_logo">
         <a href="{{ route('home') }}"><img src="{{ asset('app-assets/site_assets/img/myboatbooker-logo.webp') }}"></a>

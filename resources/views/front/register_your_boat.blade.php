@@ -49,16 +49,15 @@
     
 </style>
     <!-- end .b-title-page-->
-<section class="hero">
-  <div class="video fade-in">
-    <div class="video_background">
-      <div class="video_wrapper">
-        <iframe src="https://www.youtube.com/embed/z977gKXg1_k?controls=0&showinfo=0&rel=0&autoplay=1&mute=1&loop=1&playlist=z977gKXg1_k&modestbranding=1&playsinline=1
-" frameborder="0" allowfullscreen></iframe>
+    <section class="hero">
+      <div class="video fade-in">
+        <div class="video_background">
+          <div class="video_wrapper">
+            <iframe src="https://www.youtube.com/embed/aNxaF7lb8eo?controls=0&showinfo=0&rel=0&autoplay=1&mute=1&loop=1&playlist=aNxaF7lb8eo&modestbranding=1&playsinline=1" frameborder="0" allowfullscreen></iframe>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
     <div class="l-main-content sign_up_form_section">
         <div class="container">
         <div class="sing_upform_logo">

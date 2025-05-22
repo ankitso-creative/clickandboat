@@ -344,6 +344,7 @@ ul,
 li {
     margin: 0;
     padding: 0;
+    font-family: 'Montserrat';
 }
 body {
     font-weight: normal;
@@ -1171,7 +1172,7 @@ label, input, textarea, button, select {
     border-radius: 30px;
     margin: 0 7px;
     border: 1px solid #000;
-    padding: 3px 23px 1px 14px !important;
+    padding: 3px 0px 1px 14px !important;
     text-shadow: none;
     color: #262626;
     cursor: pointer;
@@ -1278,7 +1279,7 @@ label, input, textarea, button, select {
   
   .my_account_btn .dropdown-content a {
     color: #262626 !important;
-    padding: 5px 16px;
+    padding: 5px 14px;
     text-decoration: none;
     display: block;
     text-transform: uppercase;
@@ -1575,10 +1576,168 @@ label, input, textarea, button, select {
     font-size: 15px;
 }
 /*--------------------------------------------------------------
+# Index page css
+--------------------------------------------------------------*/
+.custom-div {
+    position: relative;
+    display: inline-block;
+    /* background-color: #d9d9d9; */
+    /* width: calc(100vw / 3 - 2px);
+  height: 100vh; */
+    padding: 0;
+    margin: -2px;
+    overflow: visible;
+    outline: 1px white solid;
+    cursor: none;
+}
+
+.custom-div .text {
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    background-color: transparent;
+    font-size: 60px;
+    font-weight: 800;
+    display: none;
+    pointer-events: none;
+    text-transform: uppercase;
+    color: #f9a126;
+    font-family: 'GT America Trial Cn Bd';
+}
+
+.text {
+    z-index: 999;
+}
+
+.custom-div:nth-child(odd) {
+    /* background-color: #d9d9d9; */
+}
+
+.banner_text_style {
+    position: absolute;
+    width: 840px;
+    left: 50%;
+    margin-left: -360px;
+    height: 40px;
+    top: 50%;
+    margin-top: -20px;
+}
+
+.banner_text_style p {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0;
+    font-size: 72px;
+    color: #fff;
+    font-weight: 600;
+    text-shadow: 0px 2px 0px #0000004d, 0 0 2em #0000008a, 0 0 1.2em #0000008a;
+    font-family: 'GT America Trial Cn Bd';
+}
+
+.banner_text_style .word {
+    position: absolute;
+    opacity: 0;
+    margin-left: 15px;
+}
+
+.banner_text_style .letter {
+    display: inline-block;
+    position: relative;
+    float: left;
+    transform: translateZ(25px);
+    transform-origin: 50% 50% 25px;
+}
+
+.banner_text_style .letter.out {
+    transform: rotateX(90deg);
+    transition: transform 0.32s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+.banner_text_style .letter.behind {
+    transform: rotateX(-90deg);
+}
+
+.banner_text_style .letter.in {
+    transform: rotateX(0deg);
+    transition: transform 0.38s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.banner_text_style .wisteria {
+    color: #f9a126;
+}
+
+.banner_text_style .belize {
+    color: #f9a126;
+}
+
+.banner_text_style .pomegranate {
+    color: #f9a126;
+}
+
+.banner_text_style .green {
+    color: #f9a126;
+}
+
+.banner_text_style .midnight {
+    color: #f9a126;
+}
+
+.search-bar {
+    align-items: center;
+    background: #ffffff57;
+    border-radius: 80px;
+    padding: 23px 30px;
+    color: #fff;
+    width: 100%;
+    position: relative;
+    margin: 0px auto;
+}
+.dot {
+    font-size: 1.2rem;
+}
+
+.search-button {
+    background: none;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    color: white;
+    font-size: 1.1rem;
+    position: absolute;
+    right: 10px;
+    top: 20px;
+}
+.banner_form_mobile p {
+    font-size: 22px;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.search-options span {
+    color: #fff;
+    font-size: 17px;
+    font-family: 'Montserrat';
+    text-transform: uppercase;
+}
+.banner_form_mobile .modal-dialog {
+    width: 95% !important;
+    max-width: 95%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) !important;
+    margin: 0px !important;
+}
+
+/*--------------------------------------------------------------
 # Home Banner
 --------------------------------------------------------------*/
 .home_banner_section {
-    background-image: url(../img/boat-banner-image.jpg);
+    background-image: url(../img/image00001.jpeg);
     width: 100%;
     height: 90vh;
     background-repeat: no-repeat;
@@ -2488,14 +2647,14 @@ label, input, textarea, button, select {
 /*--------------------------------------------------------------
 # Signup form
 --------------------------------------------------------------*/
-/* .login_sign_up_form{
-    background-image: url(../img/register-page--sign-up.jpg);
+.login_sign_up_form{
+    background-image: url(../img/image00017.jpg);
     width: 100%;
     height: 100vh;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
-} */
+}
 .login_sign_up_form .container {
     max-width: 700px;
     position: absolute;
@@ -2621,14 +2780,14 @@ label, input, textarea, button, select {
 /*--------------------------------------------------------------
 # Login form
 --------------------------------------------------------------*/
- /* .login_section{
-    background-image: url(../img/register-page--sign-up.jpg);
+ .login_section{
+    background-image: url(../img/image00017.jpg);
     width: 100%;
     height: 100vh;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
-}  */
+} 
 .login_section .container {
     max-width: 700px;
     position: absolute;
@@ -2715,20 +2874,21 @@ label, input, textarea, button, select {
 /*--------------------------------------------------------------
 # Sign Up Form
 --------------------------------------------------------------*/
-.sign_up_form_section {
+/*.sign_up_form_section {
     background-image: url(../img/register-page--sign-up.jpg);
     width: 100%;
     height: 100vh;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
-}
+}*/
 .sign_up_form_section .container {
     max-width: 700px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    z-index: 999;
 }
 .sign_up_form_section .container .col-md-12 {
     background: #fff;
@@ -3554,13 +3714,13 @@ label, input, textarea, button, select {
 # Location Page
 --------------------------------------------------------------*/
 .location_page_banner{
-    background-image: url(../img/image00036.jpg);
+    background-image: url(../img/image001.jpg);
     width: 100%;
     height: 285px;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
-    background-position: center;
+    background-position: top;
 }
 .location_banner_text {
     position: absolute;
@@ -4648,6 +4808,10 @@ label, input, textarea, button, select {
     width: 100%;
     height: 100%;
     opacity: 0.3;
+}
+.inner_blog_text_section li {
+    font-size: 15px;
+    line-height: 26px;
 }
 /*--------------------------------------------------------------
 # About page
@@ -6864,6 +7028,7 @@ font-size: 15px;
 }
 .your_listing_section .list-group-flush {
     text-align: center;
+    display: block;
 }
 .your_listing_section .list-group-item {
     border: 0px solid rgba(0, 0, 0, 0.125);
@@ -8828,7 +8993,9 @@ margin-right:15px;
 .message-text {
     position: fixed;
     z-index: 99;
+    top: 74px;
 }
+ 
 .home_filter .date_col .datepicker.date.input-group input {
     background-color: #00000047 !important;
     height: 44px !important;
