@@ -800,7 +800,7 @@
                         <div class="boat-card-content-sec">
                             <div class="location-sec">
                                 <h3>Location</h3>
-                                <p>Location of the motorboat: {{ $listing->city }}</p>
+                               <p>Motorboat Location: {{ $listing->city }}</p>
                                 <div id="map"></div>
                             </div>
                         </div>

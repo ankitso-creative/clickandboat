@@ -504,7 +504,7 @@
                     <div class="boat-card-content-sec">
                         <div class="location-sec">
                             <h3>Location</h3>
-                            <p>Location of the motorboat: {{ $listing->city }}</p>
+                            <p>Motorboat Location: {{ $listing->city }}</p>
                             <div id="map"></div>
                         </div>
                     </div>
@@ -559,14 +559,10 @@
                                 <button class="btn book_btn" disabled>Book</button>
                                 <div class="pt-3 text-center form_text">
                                     <p>You will only be charged if the request is accepted</p>
-                                    <p>Pay in 3 or 4 installments without fees with</p>
                                 </div>
                             </div>
                         </form>
                         <!-- Price List Link -->
-                        <div class="mt-2 text-center">
-                            <img src="{{ asset('app-assets/site_assets/img/klarna-logo.jpg') }}" />
-                        </div>
                     </div>
                 </div>
                 <div class="boat-card-content-sec">
@@ -590,7 +586,7 @@
                                 if($listing->fuel_include == '1'):
                                     $fuel_cost = getAmountWithSymble($listing->fuel_price,$listing->currency,$to);
                                 endif;
-                                $skipper_cost = 'Yes';
+                             $skipper_cost = 'Yes';
                                 if($listing->skipper_include == '1'):
                                     $skipper_cost = getAmountWithSymble($listing->skipper_price,$listing->currency,$to);
                                 endif;
