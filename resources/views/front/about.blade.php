@@ -13,7 +13,7 @@
 <section class="about_banner_section">
     <div class="about_banner_text">
         <!-- <p>About Booker Boat</p> -->
-        <h1>About us</h1>
+        <h1>{{ __('about.title')}}</h1>
     </div>
 </section>
 <section class="about_content_section">
@@ -21,21 +21,21 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="text-center about_text_block">
-                    <h2>About us</h2>
-                    <p class="pb-3 about_small_text">Welcome to My Boat Booker - your go-to destination for Ibiza boat rentals, made easy.</p>
+                    <h2>{{ __('about.title')}}</h2>
+                    <p class="pb-3 about_small_text">{{ __('about.sb-title') }}</p>
                     <!-- <h3>Welcome to My Boat Booker - your go-to destination for Ibiza boat rentals, made easy.</h3> -->
-                    <p>Born from the sun-soaked shores of Ibiza and built with a deep love for the sea, we launched My Boat Booker in 2025 with one simple goal: to make boat rentals in Ibiza as seamless, quick and reliable as possible.</p><br>
+                    <p>{{ __('about.p-1') }}</p><br>
                     <!-- <h3 class="about_sec_heading">The professional and yacht charter platform</h3> -->
-                    <p>After years of running a boat charter company here, we noticed a gap - booking a boat should be just as fun as being on one. So, we created a platform that brings boat owners and renters together with zero stress and all the good vibes, </p><br>
-                    <p>Whether your a group of friends chasing the iconic ibiza party experience, or a family looking to create unforgettable memories out on the water, we’ve got the perfect boat for you. Think hidden coves, crystal-clear water, and that unbeatable feeling of freedom - that’s what we’re here to deliver. </p>
-                    <h3>Why My Boat Booker?</h3>
+                    <p>{{ __('about.p-2') }} </p><br>
+                    <p>{{ __('about.p-3') }} </p>
+                    <h3>{{ __('about.heading') }}</h3>
                     <ul>
-                        <li>Easy, fast & secure bookings</li>
-                        <li>A wide range of boats for every kind of adventure</li>
-                        <li>Local knowledge, real passion and friendly support</li>
+                        <li>{{ __('about.li-1') }}</li>
+                        <li>{{ __('about.li-2') }}</li>
+                        <li>{{ __('about.li-3') }}</li>
                     </ul>
-                    <p class="pt-3"> So whether your sailing into there sunset with your favourite people or turning up the volume for a boat party to remember, let My Boat Booker be your first step to the ultimate Ibiza boat rental experience.</p>
-                    <p class="pt-3">Lets get you out on the water!"</p>
+                    <p class="pt-3"> {{ __('about.p-4') }}</p>
+                    <p class="pt-3">{{ __('about.p-5') }}</p>
                 </div>
             </div>
         </div>
@@ -52,7 +52,7 @@
             </div>
         </div>
         <div class="about_find_boat">
-            <a  href="{{ route('search') }}">Find a Boat</a>
+            <a  href="{{ route('search') }}">{{ __('about.find-boat') }}</a>
         </div>
     </div>
 </section>
@@ -63,36 +63,31 @@
             <div class="about_slide col-md-4">
                 <div class="about_slider_box ">
                     <img src="{{ asset('app-assets/site_assets/img/about-icon-1.png') }}">
-                    <h3>More than
-                    1,100,000 members</h3>
+                    <h3>{{ __('about.icon-1') }}</h3>
                 </div>
             </div>
             <div class="about_slide col-md-4">
                 <div class="about_slider_box">
                     <img src="{{ asset('app-assets/site_assets/img/about-icon-2.png') }}">
-                    <h3>More than
-                    55,000 boats</h3>
+                    <h3>{{ __('about.icon-2') }}</h3>
                 </div>
             </div>
             <div class="about_slide col-md-4">
                 <div class="about_slider_box">
                     <img src="{{ asset('app-assets/site_assets/img/about-icon-3.png') }}">
-                    <h3>More than
-                    750 harbours</h3>
+                    <h3>{{ __('about.icon-3') }}</h3>
                 </div>
             </div>
             <div class="about_slide col-md-4">
                 <div class="about_slider_box">
                     <img src="{{ asset('app-assets/site_assets/img/about-icon-4.png') }}">
-                    <h3>More than
-                    560165 client reviews</h3>
+                    <h3>{{ __('about.icon-4') }}</h3>
                 </div>
             </div>
             <div class="about_slide col-md-4">
                 <div class="about_slider_box">
                     <img src="{{ asset('app-assets/site_assets/img/about-icon-1.png') }}">
-                    <h3>More than
-                    1,100,000 members</h3>
+                    <h3>{{ __('about.icon-5') }}</h3>
                 </div>
             </div>
         </div>

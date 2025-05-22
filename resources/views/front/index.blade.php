@@ -269,13 +269,13 @@ document.addEventListener('DOMContentLoaded', function() {
         <!-- <h1>{{ __('home.banner')}}<span class="banner_text_style">...</span><br>{{ __('home.bannet-text')}} <span
                 class="banner_text_style">{{ __('home.bannet1')}}.</span></h1> -->
         <div class="banner_text_style">
-            <p>IBIZA BOAT</p>
+            <p>{{ __('home.banner') }}</p>
             <p>
-                <span class="word wisteria">BOOKING.</span>
-                <span class="word belize">RENTALS.</span>
-                <span class="word pomegranate">DAYS.</span>
-                <span class="word pomegranate">HIRE.</span>
-                <span class="word pomegranate">TRIPS.</span>
+                <span class="word wisteria">{{ __('home.banner-text') }}</span>
+                <span class="word belize">{{ __('home.banner1') }}</span>
+                <span class="word pomegranate">{{ __('home.banner2') }}</span>
+                <span class="word pomegranate">{{ __('home.banner3') }}</span>
+                <span class="word pomegranate">{{ __('home.banner4') }}</span>
             </p>
         </div>
     </div>
@@ -283,13 +283,13 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="container">
             <!-- Button trigger modal -->
             <div class="search-bar" data-toggle="modal" data-target="#searchmobilefilter">
-                <p>Book a Boat</p>
+                <p>{{ __('home.bannermob1') }}</p>
                 <div class="search-options">
-                    <span>Marina</span>
+                    <span>{{ __('home.bannermob2') }}</span>
                     <span class="dot">|</span>
-                    <span>Date</span>
+                    <span>{{ __('home.bannermob3') }}</span>
                     <span class="dot">|</span>
-                    <span>Boat type</span>
+                    <span>{{ __('home.bannermob4') }}</span>
                 </div>
                 <button class="search-button">
                 <img src="{{ asset('app-assets/site_assets/img/search-arrow.png') }}">
@@ -483,56 +483,41 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-6">
                 <div class="boat_renter_box box-one">
-                    <h2>Boat renter</h2>
+                    <h2>{{ __('home.boatrenter')}}</h2>
                     <div class="boat_renter_text">
-                        <p>Browse all our listings using the search tool. Enjoy complete peace of mind with
-                            MyBoatBooker, providing you with a safe, secure, and worry-free boating experience. Whether
-                            you're a seasoned sailor or a first-time boater, we ensure that every aspect of your journey
-                            is well taken care of. With our reliable services, you can focus on enjoying the open water
-                            while we handle the details, offering you the confidence and support you deserve throughout
-                            your entire boating adventure.</p>
+                        <p>{{ __('home.boatrenter1')}}</p>
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </div>
                     <div class="boat_renter_text">
-                        <p>Reach out to yacht owners at no cost and get answers to all your questions about the boat, its equipment, and availability through our built-in messaging system.</p>
+                        <p>{{ __('home.boatrenter2')}}</p>
                         <i class="fa-solid fa-message"></i>
                     </div>
                     <div class="boat_renter_text">
-                        <p>Securely book the yacht of your dreams online in just a few clicks. You’ll only be charged
-                            once the owner approves your charter request. With 100% secure payment, MyBoatBooker acts as
-                            your trusted third party every step of the way.</p>
+                        <p>{{ __('home.boatrenter3')}}</p>
                         <i class="fa-solid fa-thumbs-up"></i>
                     </div>
                     <div class="find_boat_btn">
-                        <a href="{{ route('search') }}">Find a boat</a>
+                        <a href="{{ route('search') }}">{{ __('home.boatrenter4')}}</a>
                     </div>
                 </div>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-6">
                 <div class="boat_renter_box box-two">
-                    <h2>Boat owner</h2>
+                    <h2>{{ __('home.boatowner')}}</h2>
                     <div class="boat_renter_text">
-                        <p>List your boat for free and make it available to a wide range of people seeking the perfect
-                            charter experience. Whether you own a luxurious yacht, a sleek sailboat, a versatile RIB, a
-                            powerful motorboat, or a spacious catamaran, MyBoatBooker offers a seamless platform to
-                            connect you with potential renters.</p>
+                        <p>{{ __('home.boatowner1')}}</p>
                         <i class="fa-solid fa-sailboat"></i>
                     </div>
                     <div class="boat_renter_text">
-                        <p>Charter your boat on your own terms, to whoever you choose, whenever it suits you, and at the
-                            price you set. MyBoatBooker helps you earn income from your yacht and offset maintenance and
-                            operating costs.</p>
+                        <p>{{ __('home.boatowner2')}}</p>
                         <i class="fa-solid fa-location-crosshairs"></i>
                     </div>
                     <div class="boat_renter_text">
-                        <p>Why register your boat with MyBoatBooker? By listing your boat with us, you open up
-                            opportunities to earn income, increase your boat’s visibility, and make it available to a
-                            wide range of potential charterers. Enjoy a hassle-free experience with trusted bookings,
-                            secure payments, and the peace of mind that comes with our reliable platform.</p>
+                        <p>{{ __('home.boatowner3')}}</p>
                         <i class="fa-solid fa-lock"></i>
                     </div>
                     <div class="estimate_btn">
-                        <a href="{{ route('boatlogin') }}">Register your boat</a>
+                        <a href="{{ route('boatlogin') }}">{{ __('home.boatowner4')}}</a>
                     </div>
                 </div>
             </div>
@@ -544,7 +529,7 @@ document.addEventListener('DOMContentLoaded', function() {
 @if(count($categories))
 <section class="boat_type_section_slider">
     <div class="boat_type_sec">
-        <h2>Boat Types</h2>
+        <h2>{{ __('home.boattypes') }}</h2>
         <div class="row boat_type_slider">
             @foreach($categories as $category)
             <div class="col-sm-12 col-md-6 col-lg-6">
@@ -631,7 +616,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <!-- Follow sailer Section -->
 <section class="follow_sailer_section">
     <div class="container-fluid">
-        <h2>Amazing Tales Shared <br> by sailors</h2>
+        <h2>{{ __('home.amazing') }} <br> {{ __('home.amazing1') }}</h2>
         <div class="row home_review_slider">
             <div class="col-sm-12 col-md-6 col-lg-6">
                 <div class="follow_sailer_box">
@@ -647,16 +632,11 @@ document.addEventListener('DOMContentLoaded', function() {
                                     <li><i class="fa-solid fa-star"></i></li>
                                 </ul>
                             </div>
-                            <p>Jan 2025 Ibiza boat rental in Santa Eulalia, Ibiza.</p>
+                            <p>{{ __('home.amazing3') }}</p>
                         </div>
                     </div>
                     <p class="follow_main_text more">
-                        We had a great boat trip to Formentera a couple of weeks ago. The boat itself was
-                        immaculate—clean, spacious, and felt brand new, which made the experience even more enjoyable.
-                        Jay was fantastic, making sure we felt completely at ease from the start. They were attentive,
-                        offering drinks throughout the trip and ensuring we were comfortable. The captain was excellent,
-                        providing a smooth and safe journey and stopping in great spots around the island of formentera.
-                        Overall, it was a perfect day on the water, highly recommend Jay’s boat.
+                        {{ __('home.amazing2') }}
                     </p>
                 </div>
             </div>
@@ -677,17 +657,10 @@ document.addEventListener('DOMContentLoaded', function() {
                                     <li><i class="fa-solid fa-star"></i></li>
                                 </ul>
                             </div>
-                            <p>Jan 2025 Ibiza boat rental in San Anotnio, Ibiza.</p>
+                            <p> {{ __('home.chris') }}</p>
                         </div>
                     </div>
-                    <p class="follow_main_text more">We recently rented Hugo's yacht for a day trip from Ibiza to
-                        Formentera,
-                        and it was an unforgettable experience! The yacht itself is stunning—sleek, modern, and
-                        incredibly spacious, making it perfect for our large group. The staff was another highlight of
-                        the trip. They were attentive, friendly, and went above and beyond to make sure we had
-                        everything we needed. From drinks and snacks to local knowledge about the best spots to visit in
-                        Formentera, they truly made the day special. I highly recommend renting this yacht for anyone
-                        looking to explore the beautiful Balearic Islands in style and comfort!!</p>
+                    <p class="follow_main_text more"> {{ __('home.chris1') }}</p>
                 </div>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-6">
@@ -705,13 +678,10 @@ document.addEventListener('DOMContentLoaded', function() {
                                     <li><i class="fa-solid fa-star"></i></li>
                                 </ul>
                             </div>
-                            <p>Jan 2025 Ibiza boat rental in Marina Botafoch, Ibiza.</p>
+                            <p> {{ __('home.helena') }}</p>
                         </div>
                     </div>
-                    <p class="follow_main_text more">The Captain & Staff where fantastic. Excellent communication before
-                        the
-                        trip, helped organise the itinerary and communicated with the lunch restaurant. Stunning
-                        location and great clean and spacious boat. Will be back and highly recommend</p>
+                    <p class="follow_main_text more"> {{ __('home.helena1') }}</p>
                 </div>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-6">
@@ -730,14 +700,10 @@ document.addEventListener('DOMContentLoaded', function() {
                                     <li><i class="fa-solid fa-star"></i></li>
                                 </ul>
                             </div>
-                            <p>Jan 2025 Ibiza boat rental in Marina Ibiza, Ibiza.</p>
+                            <p> {{ __('home.Paul') }}</p>
                         </div>
                     </div>
-                    <p class="follow_main_text more">Most amazing day on the water. The girls found us on the port and
-                        walked
-                        us to the right boat. Alfonso assisted us with anything we needed while on the water. We went to
-                        the most beautiful spots and there were no restrictions with what we could do on board.
-                        Everything we needed was provided for us. 10/10 experience</p>
+                    <p class="follow_main_text more"> {{ __('home.Paul1') }}</p>
                 </div>
             </div>
         </div>
@@ -818,8 +784,8 @@ document.addEventListener('DOMContentLoaded', function() {
 <!-- /unique slider Section -->
 <!-- next trip Section -->
 <section class="next_trip_section">
-    <h2>GET INSPIRED<br>
-        BY OUR IBIZA BLOG</h2>
+    <h2>{{ __('home.blog') }}<br>
+        {{ __('home.blog1') }}</h2>
     <div class="container-fluid">
         <div class="row">
             @if(count($blogs))
@@ -848,7 +814,7 @@ document.addEventListener('DOMContentLoaded', function() {
             @endif
         </div>
         <div class="text-center all_blog_button">
-            <a href="{{ route('blogs') }}">View All Blogs</a>
+            <a href="{{ route('blogs') }}">{{ __('home.blog2') }}</a>
         </div>
     </div>
 </section>

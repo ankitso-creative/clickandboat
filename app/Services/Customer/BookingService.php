@@ -19,5 +19,9 @@ class BookingService{
     {
         return $this->repository->updateBooking($request,$id);
     }
+    public function storeReview($request)
+    {
+        return $this->repository->storeReview($request);
+    }
 }
 ?>

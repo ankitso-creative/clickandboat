@@ -134,6 +134,8 @@ Route::middleware('Setlang')->group(function(){
         Route::post('/upload-image', [ProfileController::class, 'uploadImage'])->name('profile.image');
         Route::get('/favourites', [ProfileController::class, 'favourite'])->name('favourite');
         Route::get('/paymentconfirm', [BookingController::class, 'paymentConfirm'])->name('paymentconfirm');
+        Route::get('/addreview/{slug}', [BookingController::class, 'addReview'])->name('addreview');
+        Route::post('/submitreview', [BookingController::class, 'submitReview'])->name('submitreview');
         Route::resource('booking', BookingController::class);
         Route::post('/stripe/payment-intent', [StripeController::class, 'createPaymentIntent'])->name('stripe.createPaymentIntent');
         Route::post('/stripe/confirmPaymentIntent', [StripeController::class, 'confirmPaymentIntent'])->name('stripe.confirmPaymentIntent');

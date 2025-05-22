@@ -29,6 +29,7 @@
             {
                 $('#reason-select').addClass('d-none');
                 $('#reason-box').addClass('d-none');
+                $('#evidence-box').addClass('d-none');
             }
         })
    </script>
@@ -150,6 +151,7 @@
                         <label class="label-default">Booking Status<span class="required"></span></label>
                         <select name="payment_status" class="form-control">
                             <option {{ checkselect($results->payment_status,'succeeded') }} value="succeeded">Success</option>
+                            <option {{ checkselect($results->payment_status,'Completed') }} value="Completed">Completed</option>
                             <option {{ checkselect($results->payment_status,'cancel') }} value="cancel">cancel</option>
                         </select>
                     </div>

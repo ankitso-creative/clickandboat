@@ -778,7 +778,9 @@
                             </div>
                             @if($listing->user->super == '1')
                                 <ul class="offered_rating">
-                                    <li><i class="fa-solid fa-star"></i> 4.8 (31 reviews)</li>
+                                    @if($listing->averageRating())
+                                    <li><i class="fa-solid fa-star"></i> {{ $listing->averageRating() }} ({{ $listing->reviewsCount() }} reviews)</li>
+                                    @endif
                                     <li><i class="fa-solid fa-square-check"></i> Verified profile</li>
                                 </ul>
                             @endif
