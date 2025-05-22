@@ -173,7 +173,7 @@
                         <h5>Follow Us</h5>
                         <ul>
                             <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
-                            <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                            <li><a href="https://www.instagram.com/myboatbooker?igsh=bzltdXo3MHgzd2cx&utm_source=qr" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
                             <li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
                         </ul>
                     </div>
