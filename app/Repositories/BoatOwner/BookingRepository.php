@@ -2,7 +2,9 @@
 namespace App\Repositories\BoatOwner;
 
 use App\Events\Front\CancelBooking;
+use App\Events\Front\CompletedBooking;
 use App\Models\Admin\Booking;
+use App\Models\ListingReview;
 use App\Models\Order;
 use App\Models\User;
 
@@ -29,6 +31,7 @@ class BookingRepository
         $order->cancel_reason = $request['cancel_reason'];
         $order->cancel_message = $request['cancel_message'];
         $order->payment_status = $request['payment_status'];
+        $exist = ListingReview::where('user_id',$order->user_id)->where('listing_id',$order->listing_id)->exists();
         if(isset($request['evidence']) && !empty($request['evidence'])):
             if ($order->hasMedia('evidence')) {
                 $order->getMedia('evidence')->each(function ($media) {
@@ -40,6 +43,9 @@ class BookingRepository
         if($order->update()):
             if($order->payment_status == 'cancel'):
                 event(new CancelBooking($order));
+            endif;
+            if($order->payment_status == 'Completed' &&  !$exist):
+                event(new CompletedBooking($order));
             endif;
             return true;
         else:

@@ -67,6 +67,8 @@
                                     else:
                                         $symble = priceSymbol('EUR');
                                     endif;
+                                    $userId = auth()->id();
+                                    $exist = App\Models\ListingReview::where('user_id',$userId)->where('listing_id',$listing->id)->exists();
                                 @endphp
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
@@ -82,6 +84,9 @@
                                     <td>
                                         <div class="td-actions">
                                             <a class="btn btn-success" href="{{ route('customer.booking.edit',$result->id) }}"><i class="fas fa-edit"></i></a>
+                                            @if( $result->payment_status == 'Completed' && !$exist)
+                                                <a class="btn btn-success" href="{{ route('customer.addreview',$listing->slug) }}"><i class="fas fa-star"></i></a>
+                                            @endif
                                         </div>
                                     </td>
                                 </tr>

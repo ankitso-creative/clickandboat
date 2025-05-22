@@ -55,17 +55,17 @@
 <!-- Help Banner Section -->
 <section class="help_banner_section">
     <div class="help_banner_text">
-        <h5>Welcome to our Help Center</h5>
-        <h1>How can we help you?</h1>
-        <p>Search our knowledge base for answers to more than 150 questions !</p>
+        <h5>{{ __('help.title')}}</h5>
+        <h1>{{ __('help.sub-title')}}</h1>
+        <p>{{ __('help.p-1')}}</p>
         <div id="search-wrapper">
             <form >
                 <i class="search-icon fas fa-search"></i>
                 <input type="text" id="search" name="question" value="{{ request()->query('question') ?? '' }}" placeholder="Search...">
-                <button id="search-button">Search</button>
+                <button id="search-button">{{ __('help.Search-btn')}}</button>
             </form>
         </div>
-        <p><span class="help_text_style">Contact MyBoatBooker</p>
+        <p><span class="help_text_style">{{ __('help.tag-line')}}</p>
     </div>
 </section>
 <!-- /Help Banner Section -->
@@ -73,7 +73,7 @@
 <section class="knowledge_section">
     <div class="container">
         <div class="text-center knowlwdge_heaidng">
-            <h2>Knowledge base</h2>
+            <h2>{{ __('help.faq-heading')}}</h2>
         </div>
         <div class="row">
             <div class="mx-auto col-lg-10">
@@ -104,7 +104,7 @@
                 <div class="mt-5 text-center read_more_btn">
                     @if ($faqs->hasMorePages())
                         <div class="mt-4 text-center">
-                            <button id="loadMore" class="btn" data-next-page="{{ $faqs->currentPage() + 1 }}">View More</button>
+                            <button id="loadMore" class="btn" data-next-page="{{ $faqs->currentPage() + 1 }}">{{ __('help.view-btn')}}</button>
                         </div>
                     @endif
                 </div>
@@ -115,38 +115,37 @@
 <!-- More resources Section -->
 <section class="more_resource_section">
     <div class="text-center more_resource_heading">
-        <h2>More resources</h2>
+        <h2>{{ __('help.resources-heading')}}</h2>
     </div>
     <div class="row">
         <div class="col-sm-12 col-md-6 col-lg-3">
             <div class="more_resource_box">
             <i class="fa-solid fa-clock"></i>
-                <h3>Customer Care
-                    opening hours</h3>
-                <p>Our agents are available from Monday to Friday from 9 am to 6 pm</p>
+                <h3>{{ __('help.sec1-heading')}}</h3>
+                <p>{{ __('help.sec1-p')}}</p>
             </div>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-3">
             <a href="{{ route('blogs') }}">
             <div class="more_resource_box">
             <i class="fa-solid fa-sailboat"></i>
-                <h3>Check our blog</h3>
-                <p>Visit our blog to get inspiration for your next trip!</p>
+                <h3>{{ __('help.sec2-heading')}}</h3>
+                <p>{{ __('help.sec2-p')}}</p>
             </div>
             </a>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-3">
             <div class="more_resource_box">
             <i class="fa-brands fa-square-instagram"></i>
-                <h3>Follow Us on instagram</h3>
-                <p>To keep more than 40.000 boats in your pocket or handle your bookings directly from the harbor!</p>
+                <h3>{{ __('help.sec3-heading')}}</h3>
+                <p>{{ __('help.sec3-p')}}</p>
             </div>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-3">
             <div class="more_resource_box">
             <i class="fa-brands fa-square-facebook"></i>
-                <h3> Follow our facebook</h3>
-                <p>To keep more than 40.000 boats in your pocket or handle your bookings directly from the harbor!</p>
+                <h3> {{ __('help.sec4-heading')}}</h3>
+                <p>{{ __('help.sec4-p')}}</p>
             </div>
         </div>
     </div>
@@ -157,10 +156,9 @@
     <div class="row align-items-center">
         <div class="col-sm-12 col-md-6 col-lg-6">
             <div class="help_contact_text">
-                <h2>Contact us!</h2>
-                <p>Still have questions? If you didn't find what you need, you can send an inquiry through our contact
-                    form.</p>
-                <a href="{{ route('contact') }}">Submit a request</a>
+                <h2>{{ __('help.contact-us')}}</h2>
+                <p>{{ __('help.contact-p')}}</p>
+                <a href="{{ route('contact') }}">{{ __('help.submit-btn')}}</a>
             </div>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-6">

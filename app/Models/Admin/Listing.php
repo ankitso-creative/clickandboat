@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Admin\Price;
 use App\Models\FavoriteItem;
+use App\Models\ListingReview;
 use App\Models\Message;
 use App\Models\Order;
 use Spatie\MediaLibrary\HasMedia;
@@ -96,6 +97,18 @@ class Listing extends Model implements HasMedia
     public function security() 
     {
         return $this->hasOne(SecurityDeposit::class);
+    }
+    public function reviews() 
+    {
+        return $this->hasMany(ListingReview::class);
+    }
+    public function averageRating()
+    {
+        return round($this->reviews()->avg('rate'), 1); // returns 4.8, 3.7, etc.
+    }
+    public function reviewsCount()
+    {
+        return $this->reviews()->count();
     }
     public static function boot()
     {
