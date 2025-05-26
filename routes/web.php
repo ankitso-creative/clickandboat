@@ -130,6 +130,7 @@ Route::middleware('Setlang')->group(function(){
         Route::get('dashboard', [CustomerDashboardController::class, 'index'])->name('dashboard');
         Route::get('profile', [ProfileController::class, 'index'])->name('profile');
         Route::put('update', [ProfileController::class, 'update'])->name('profile.update');
+        Route::put('account-delete', [ProfileController::class, 'accountDelete'])->name('account.delete');
         Route::put('password-update', [ProfileController::class, 'passwordUpdate'])->name('password.update');
         Route::post('/upload-image', [ProfileController::class, 'uploadImage'])->name('profile.image');
         Route::get('/favourites', [ProfileController::class, 'favourite'])->name('favourite');

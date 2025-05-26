@@ -48,4 +48,8 @@ class ProfileController extends Controller
         $request = $request->all();
         return $this->service->uploadImage($request);
     }
+    public function accountDelete(Request $request)
+    {
+        return $this->service->accountDelete($request);
+    }
 }

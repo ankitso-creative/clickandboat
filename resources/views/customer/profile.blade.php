@@ -407,10 +407,13 @@
                     <h2>Setting</h2>
                 </div>
                 <div class="card-content">
-                    <form class="deactivate-form" action="" method="">
+                    <form class="deactivate-form" action="{{ route('customer.account.delete') }}" method="Post">
+                        @csrf
+                        @method('PUT')
                         <div class="card-sec-title">
                             <p>Delete My Account</p>
                         </div>
+                        <input type="hidden" name="delete" value="1">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">

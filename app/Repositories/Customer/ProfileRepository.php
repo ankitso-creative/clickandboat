@@ -58,6 +58,17 @@
             $items = FavoriteItem::where('user_id', $userId)->with(['listing'])->get();
             return $items;
         }
+         public function accountDelete($request)
+        {
+            $user = Auth::user();
+            $user->deleted = $request['delete'];
+            if($user->update()):
+                Auth::guard("web")->logout(); 
+                return redirect()->route('login')->with('success', 'Your account deleted successfully.');
+            else:
+                return redirect()->route('boatowner.profile')->with('error', 'Please try again.');
+            endif;
+        }
     }
 
 ?>

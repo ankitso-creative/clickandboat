@@ -26,11 +26,12 @@ class UserLoginController extends Controller
         {
             Session::forget('email-user'); 
             $user = Auth::user();
-            if ($user->status != 1) 
+            if ($user->status != 1 || $user->deleted == 1) 
             {
                 Auth::logout(); 
                 return redirect()->route('login')->with('error','You are not authorized to access this account.');
             }
+            
             if(Session::has('listingslug') && $user->role == 'customer'):
                 $slug = Session::get('listingslug');
                 $type = Session::get('listingtype');

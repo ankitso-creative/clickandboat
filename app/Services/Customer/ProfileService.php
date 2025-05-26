@@ -23,5 +23,9 @@ class ProfileService{
     {
         return $this->repository->favouriteItems();
     }
+    public function accountDelete($request)
+    {
+        return $this->repository->accountDelete($request);
+    }
 }
 ?>
