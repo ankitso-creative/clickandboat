@@ -24,7 +24,6 @@
     </div>
     @endif
     <div class="">
-        
         <div class="tab-pane" id="password">
             <div class="card-section">
                 <div class="card-content">
@@ -36,11 +35,11 @@
                                     <label class="label-default">Rating<span class="required"> *</span></label>
                                     <select name="rating" class="form-control">
                                         <option value="">Please Select</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
+                                        <option {{ checkselect($review->rate ?? '',1) }} value="1">1</option>
+                                        <option {{ checkselect($review->rate ?? '',2) }} value="2">2</option>
+                                        <option {{ checkselect($review->rate ?? '',3) }} value="3">3</option>
+                                        <option {{ checkselect($review->rate ?? '',4) }} value="4">4</option>
+                                        <option {{ checkselect($review->rate ?? '',5) }} value="5">5</option>
                                     </select>
                                 </div>
                                 @error('rating')<span class="required">{{ $message }}</span>@enderror
@@ -48,7 +47,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label class="label-default">Review<span class="required"> *</span></label>
-                                    <textarea name="review" value="" class="form-control"></textarea>
+                                    <textarea name="review" value="" class="form-control"> {{ $review->review ?? '' }}</textarea>
                                     <input type="hidden" name="slug" value="{{ $slug }}">
                                     @error('review')<span class="required">{{ $message }}</span>@enderror
                                 </div>

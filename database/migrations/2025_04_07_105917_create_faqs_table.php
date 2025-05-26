@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->longText('question');
             $table->longText('answer');
+            $table->bigInteger('group_id')->nullable();
+            $table->string('language')->nullable();
             $table->tinyInteger('status')->default('1');
             $table->timestamps();
         });

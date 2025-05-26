@@ -99,6 +99,7 @@
                             $listingM = collect($user->listing)->filter(function($listing) use ($message) {
                                 return $listing->id == $message['listing_id'];
                             })->first();
+                            $userL = explode(' ', $user->name);
                         @endphp
                         <li class="">
                             <a href="{{ route('customer.message', $listingM->slug) }}">
@@ -108,7 +109,7 @@
                                     </div>
                                     <div class="user-box-desc">
                                         <div class="user-title">
-                                            <h2>{{ $user->name }}</h2>
+                                            <h2>{{ $userL[0] }}</h2>
                                             <span>{{ $message->created_at }}</span>
                                         </div>
                                         <div class="user-boat-name">

@@ -74,7 +74,46 @@ class BlogRepository
         else:
             return false;
         endif;
+
     }
+
+    // public function blogUpdate($request,$id)
+    // {
+    //     $blog = Blog::findOrFail($id);
+    //     $blog->title = $request['title'];
+    //     $blog->description = $request['description'];
+    //     $blog->language = $request['language'];
+
+    //     if ($blog->save()) {
+    //         // Handle banner image upload
+    //         if (isset($request['banner_image'])) {
+    //             self::uploadImage($request['banner_image'], $blog->id);
+    //         }
+
+    //         // Update translated versions
+    //         $languages = Language::where('code', '<>', $request['language'])->where('status', '1')->get();
+
+    //         foreach ($languages as $language) {
+    //             $translatedBlog = Blog::where('group_id', $blog->id)->where('language', $language->code)->first();
+
+    //             if (!$translatedBlog) {
+    //                 // If translation doesn't exist, create a new one
+    //                 $translatedBlog = new Blog();
+    //                 $translatedBlog->group_id = $blog->id;
+    //                 $translatedBlog->language = $language->code;
+    //             }
+
+    //             $translatedBlog->title = $this->translate->translateContent($request['title'], $language->code);
+    //             $translatedBlog->description = $this->translate->translateContent($request['description'], $language->code);
+    //             $translatedBlog->save();
+    //         }
+
+    //         return true;
+    //     } else {
+    //         return false;
+    //     }
+    // }
+
     public function blogDestroy($id)
     {
         $blog = Blog::find($id);

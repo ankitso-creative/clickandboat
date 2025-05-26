@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Customer\Profile\ReviewRequest;
+use App\Models\Admin\Listing;
+use App\Models\ListingReview;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Services\Customer\BookingService;
@@ -46,7 +48,10 @@ class BookingController extends Controller
     public function addReview($slug)
     {
         $active = 'booking';
-        return view('customer.review',compact('active','slug'));
+        $userId = auth()->id();
+        $listing = Listing::where('slug',$slug)->first();
+        $review = ListingReview::where('user_id',$userId)->where('listing_id',$listing->id)->first();
+        return view('customer.review',compact('active','slug','review'));
     }
     public function submitReview(ReviewRequest $request)
     {

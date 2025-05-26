@@ -1151,7 +1151,8 @@
                     <div class="owner-details-contain">
                         <div class="owner-detail-box">
                             <div class="owner-title">
-                                <p>{{ $listing->user->name }}</p>
+                                
+                                <p>{{ $nameArray[0] }}</p>
                             </div>
                             @php
                                 $image = $listing->user->getFirstMediaUrl('profile_image');
@@ -1230,7 +1231,10 @@
                                             <li>Number of passengers for your rental</li>
                                             <li>With or without a skipper</li>
                                         </ul>
-                                        <textarea class="form-control" name="messages" id="messages"placeholder="Write your message here...">Hello {{ $listing->user->name }}, I am interested in renting your {{ $listing->type }}, is it still available? If yes, can you please send me a message?
+                                        @php
+                                            $nameArray = explode(' ', $listing->user->name);
+                                        @endphp
+                                        <textarea class="form-control" name="messages" id="messages"placeholder="Write your message here...">Hello {{ $nameArray[0] }}, I am interested in renting your {{ $listing->type }}, is it still available? If yes, can you please send me a message?
                                         </textarea>
                                     </div>
                                 </div>

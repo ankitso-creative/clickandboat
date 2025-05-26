@@ -2,9 +2,15 @@
 namespace App\Repositories\Admin\Faq;
 
 use App\Models\Admin\Faq;
-
+use App\Models\Admin\Language;
+use App\Repositories\Translator\TranslatorRepository;
 class FaqRepository
 {
+    protected $translate ;
+    public function __construct()
+    {
+        $this->translate = new TranslatorRepository();
+    }
     public function allFaqs($request)
     {
         $blog = Faq::when($request->has('question') && !empty($request->question), function ($query) use ($request) {
@@ -19,7 +25,21 @@ class FaqRepository
         $faq = new Faq();
         $faq->question = $request['question'];
         $faq->answer = $request['answer'];
+        $faq->language = 'en';
         if($faq->save()):
+            $languages = Language::where('code','<>','en')->where('status','1')->get();
+            if($languages)
+            {
+                foreach($languages as $language)
+                {
+                    $translatedFaq = new Faq();
+                    $translatedFaq->question = $this->translate->translateContent($request['question'], $language->code);
+                    $translatedFaq->answer = $this->translate->translateContent($request['answer'], $language->code);
+                    $translatedFaq->language = $language->code;
+                    $translatedFaq->group_id = $faq->id;
+                    $translatedFaq->save();
+                }
+            }
             return true;
         else:
             return false;

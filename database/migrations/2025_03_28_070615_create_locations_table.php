@@ -18,6 +18,7 @@ return new class extends Migration
             $table->longText('description_for_home_pape')->nullable();
             $table->string('language');
             $table->string('slug');
+            $table->bigInteger('group_id')->nullable();
             $table->tinyInteger('status')->default('1');
             $table->timestamps();
         });
