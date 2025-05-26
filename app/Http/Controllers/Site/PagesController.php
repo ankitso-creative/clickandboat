@@ -180,6 +180,7 @@ class PagesController extends Controller
     public function help(Request $request)
     {
         //$request = $request->all();
+        $lang = empty(session()->get('lang')) ? 'en' : session()->get('lang');
         $faqs = Faq::where('status', '1')
         ->when($request->has('question') && !empty($request->question), function ($query) use ($request) {
             $question = $request->question;

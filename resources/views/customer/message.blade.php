@@ -203,6 +203,9 @@
                                 if(!$image):
                                     $image = 'https://static1.clickandboat.com/v1/o/img/mask~dddc60cc1d.png';
                                 endif;
+                                
+                                $userL = explode(' ', $user->name);
+                    
                             @endphp
                             <li class="{{ $aClass }}">
                                 <a href="{{ route('customer.message', $listingM->slug) }}">
@@ -212,7 +215,7 @@
                                         </div>
                                         <div class="user-box-desc">
                                             <div class="user-title">
-                                                <h2>{{ $user->name }}</h2>
+                                                <h2>{{ $userL[0] }}</h2>
                                                 <span>{{ $message->created_at->format('d-m-Y') }}</span>
                                             </div>
                                             <div class="user-boat-name">
@@ -242,8 +245,11 @@
                         @endphp
                         <img src="<?php echo $image?>" alt="user">
                     </div>
+                    @php
+                        $nameArray = explode(' ', $receiver->name);
+                    @endphp
                     <div class="message-avatar-title">
-                        <h3><?php echo $receiver->name?></h3>
+                        <h3>{{ $nameArray[0] }}</h3>
                     </div>
                 </div>
             </div>
@@ -317,7 +323,10 @@
         
         <div class="list-boat-sec">
             <div class="list-title">
-                <h2>Your request regarding the boat of {{ $receiver->name }}</h2>
+                @php
+                    $nameArray = explode(' ', $receiver->name);
+                @endphp
+                <h2>Your request regarding the boat of {{ $nameArray[0] }}</h2>
             </div>
             <div class="list-boat-box">
                 <div class="list-boat-img">

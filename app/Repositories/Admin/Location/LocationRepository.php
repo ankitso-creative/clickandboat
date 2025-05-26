@@ -1,9 +1,17 @@
 <?php
 namespace App\Repositories\Admin\Location;
+
+use App\Models\Admin\Language;
 use App\Models\Admin\Location;
+use App\Repositories\Translator\TranslatorRepository;
 
 class LocationRepository
 {
+    protected $translate ;
+    public function __construct()
+    {
+        $this->translate = new TranslatorRepository();
+    }
     public function allLocations($request)
     {
         $blog = Location::when($request->has('name') && !empty($request->name), function ($query) use ($request) {
@@ -26,6 +34,19 @@ class LocationRepository
         $blog->language = $request['language'];
         if($blog->save()):
             self::uploadImage($request['banner_image'],$blog->id);
+            $languages = Language::where('code','<>',$request['language'])->where('status','1')->get();
+            if($languages){
+                foreach($languages as $language)
+                {
+                    $translatedBlog = new Location();
+                    $translatedBlog->name = $this->translate->translateContent($request['name'], $language->code);
+                    $translatedBlog->description = $this->translate->translateContent($request['description'], $language->code);
+                    $translatedBlog->description_for_home_pape = $this->translate->translateContent($request['description_for_home_pape'], $language->code);
+                    $translatedBlog->language = $language->code;
+                    $translatedBlog->group_id = $blog->id;
+                    $translatedBlog->save();
+                }
+            }
             return true;
         else:
             return false;
