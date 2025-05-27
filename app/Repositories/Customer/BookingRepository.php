@@ -19,13 +19,38 @@ use App\Models\ListingReview;
             $userId = auth()->id();
             return Order::where('user_id',$userId)->where('id',$id)->first();
         }
+        // public function updateBooking($request,$id)
+        // {
+        //     $order = Order::find($id);
+        //     $order->cancel_reason = $request['cancel_reason'];
+        //     $order->cancel_message = $request['cancel_message'];
+        //     $order->payment_status = $request['payment_status'];
+        //     if($order->update()):
+        //         return true;
+        //     else:
+        //         return false;
+        //     endif;
+        // }
         public function updateBooking($request,$id)
         {
             $order = Order::find($id);
             $order->cancel_reason = $request['cancel_reason'];
             $order->cancel_message = $request['cancel_message'];
             $order->payment_status = $request['payment_status'];
+            //$exist = ListingReview::where('user_id',$order->user_id)->where('listing_id',$order->listing_id)->exists();
+            if(isset($request['evidence']) && !empty($request['evidence'])):
+                if ($order->hasMedia('evidence')) {
+                    $order->getMedia('evidence')->each(function ($media) {
+                        $media->delete(); 
+                    });
+                }
+                $media = $order->addMediaFromRequest('evidence')->toMediaCollection('evidence','evidence_files'); 
+            endif;
             if($order->update()):
+                // if($order->payment_status == 'cancel'):
+                //     event(new CancelBooking($order));
+                // endif;
+            
                 return true;
             else:
                 return false;

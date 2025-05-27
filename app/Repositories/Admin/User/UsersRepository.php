@@ -2,6 +2,7 @@
 namespace App\Repositories\Admin\User;
 use App\Models\User;
 use App\Models\UserDetail;
+use Illuminate\Support\Facades\DB;
 
 class UsersRepository{
     public function getAllBoatOwner()
@@ -118,6 +119,10 @@ class UsersRepository{
         $user = User::where('id',$id)->first();
         $user->status = $request['value'];
         $user->update();
+        if($request['value'] == '0') 
+        {
+            DB::table('sessions')->where('user_id', $id)->delete();
+        }
         return $user;
     }
     public function changeSuper($request)

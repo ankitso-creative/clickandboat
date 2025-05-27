@@ -24,7 +24,7 @@ class SendWelcomeEmail
      */
     public function handle(UserRegistered $event): void
     {
-        Mail::to('shubham@so-creative.co.uk')->send(new UserRegisterAdminEmail($event->user));
+        Mail::to('contact@myboatbooker.com')->send(new UserRegisterAdminEmail($event->user));
         Mail::to($event->user->email)->send(new UserRegisterEmail($event->user));
     }
 }

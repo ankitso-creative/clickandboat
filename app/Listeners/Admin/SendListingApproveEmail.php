@@ -23,6 +23,6 @@ class SendListingApproveEmail
      */
     public function handle(ListingApprove $event): void
     {
-       Mail::to('shubham@so-creative.co.uk')->send(new ListingApproveEmail($event->listing));
+       Mail::to('contact@myboatbooker.com')->send(new ListingApproveEmail($event->listing));
     }
 }

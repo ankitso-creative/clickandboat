@@ -23,6 +23,6 @@ class SendContactEnquery
      */
     public function handle(ContactEnquery $event): void
     {
-         Mail::to('shubham@so-creative.co.uk')->send(new ContactMail($event));
+         Mail::to('contact@myboatbooker.com')->send(new ContactMail($event));
     }
 }

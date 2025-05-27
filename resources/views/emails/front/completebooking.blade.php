@@ -22,7 +22,7 @@
 
     <p>
         Best regards, <br>
-        My Boat Booker
+        The MyBoatBooker Team
     </p> 
 
 </body>
