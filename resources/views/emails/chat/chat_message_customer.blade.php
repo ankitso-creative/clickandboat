@@ -17,7 +17,7 @@
    <p style="text-align: center;  margin: 30px auto;"><a href="{{ route('customer.support') }}" style="background: #f9a126;color: #fff; text-decoration: none; padding: 10px 20px; border-radius: 3px; margin: 30px auto;">Reply to the message</a></p>
     <p>
         Best regards, <br>
-        My Boat Booker
+        The MyBoatBooker Team
     </p>
     
 </body>

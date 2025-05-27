@@ -15,7 +15,7 @@
         <b>Registration Date:</b> {{ $user->created_at }}</p>
     <p>
         Best regards, <br>
-        My Boat Booker
+        The MyBoatBooker Team
     </p>
 </body>
 </html>

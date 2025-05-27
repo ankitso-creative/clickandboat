@@ -22,6 +22,6 @@ class SendRequestEmail
      */
     public function handle(RequestSubmitted $event): void
     {
-        Mail::to('shubham@so-creative.co.uk')->send(new RequestSubmittedMail($event->emailData, $event->file));
+        Mail::to('contact@myboatbooker.com')->send(new RequestSubmittedMail($event->emailData, $event->file));
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\BoatOwner\Booking\BookingRequest;
 use App\Http\Requests\Customer\Profile\ReviewRequest;
 use App\Models\Admin\Listing;
 use App\Models\ListingReview;
@@ -34,7 +35,7 @@ class BookingController extends Controller
         $results =  $this->service->editBooking($id);
         return view('customer.bookingedit',compact('active','results'));
     }
-    public function update(Request $request,$id)
+    public function update(BookingRequest $request,$id)
     {
         $active = 'booking';
         $result =  $this->service->updateBooking($request,$id);

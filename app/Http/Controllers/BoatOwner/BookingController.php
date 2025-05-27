@@ -32,9 +32,9 @@ class BookingController extends Controller
         $result =  $this->service->updateBooking($request,$id);
         if($result):
             return redirect()->route('boatowner.booking.index')->with('success', 'Order updated successfully!'); 
-         else:
-             session()->flash('error', 'There was an error with your updation.');
-             return redirect()->route('boatowner.booking.index');  
-         endif;
+        else:
+            session()->flash('error', 'There was an error with your updation.');
+            return redirect()->route('boatowner.booking.index');  
+        endif;
     }
 } 
